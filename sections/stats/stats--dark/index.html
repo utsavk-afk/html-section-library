@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- ===== STATS — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stats — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+.metrics{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px 40px 104px;
+  width:100%;
+  -webkit-font-smoothing:antialiased;
+}
+
+.metrics__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* Header — asymmetric, left-weighted, not centered */
+.metrics__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:0;
+}
+
+.metrics__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+.metrics__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+
+.metrics__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:34px;
+  line-height:1.12;
+  letter-spacing:-.01em;
+  max-width:15ch;
+}
+.metrics__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.metrics__note{
+  flex:0 0 auto;
+  max-width:230px;
+  font-size:13.5px;
+  line-height:1.65;
+  color:var(--muted);
+  text-align:right;
+  padding-bottom:4px;
+}
+
+/* Stat grid — first cell spans wider (one focal point) */
+.metrics__grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr 1fr 1fr;
+}
+
+.stat{
+  padding:44px 32px 40px;
+  border-right:1px solid var(--line);
+  position:relative;
+}
+.stat:last-child{border-right:none;}
+
+/* Focal stat gets the accent treatment */
+.stat--lead{
+  padding-left:0;
+}
+.stat--lead .stat__num{
+  color:var(--accent);
+}
+
+.stat__num{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:76px;
+  line-height:.92;
+  letter-spacing:-.03em;
+  display:flex;
+  align-items:baseline;
+  gap:2px;
+}
+.stat__unit{
+  font-size:34px;
+  letter-spacing:-.01em;
+  color:var(--muted);
+}
+.stat--lead .stat__unit{color:var(--accent);}
+
+.stat__label{
+  margin-top:20px;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:var(--ink);
+}
+.stat__desc{
+  margin-top:7px;
+  font-size:13px;
+  line-height:1.55;
+  color:var(--muted);
+  max-width:22ch;
+}
+
+/* thin accent tick under the lead number */
+.stat--lead .stat__num::after{
+  content:"";
+}
+
+.metrics__foot{
+  margin-top:0;
+  border-top:1px solid var(--line);
+  padding-top:22px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:12.5px;
+  color:var(--muted);
+}
+.metrics__foot .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  flex:0 0 auto;
+}
+
+@media(max-width:640px){
+  .metrics{padding:64px 22px 72px;}
+  .metrics__head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:22px;
+    padding-bottom:36px;
+  }
+  .metrics__title{font-size:27px;max-width:100%;}
+  .metrics__note{text-align:left;max-width:100%;padding-bottom:0;}
+  .metrics__grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .stat{
+    padding:30px 20px 28px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .stat--lead{padding-left:20px;grid-column:1 / -1;border-right:none;}
+  .stat:nth-child(odd){border-right:1px solid var(--line);}
+  .stat:nth-child(even){border-right:none;}
+  .stat__num{font-size:58px;}
+  .stat__unit{font-size:26px;}
+  .metrics__foot{flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+<section class="metrics">
+  <div class="metrics__inner">
+
+    <div class="metrics__head">
+      <div>
+        <span class="metrics__eyebrow">Measured, not promised</span>
+        <h2 class="metrics__title">Numbers teams actually ship <em>after</em> dropping this in.</h2>
+      </div>
+      <p class="metrics__note">Aggregated from 4,180 repositories that installed the library between Jan and Jun 2026.</p>
+    </div>
+
+    <div class="metrics__grid">
+
+      <div class="stat stat--lead">
+        <div class="stat__num">63<span class="stat__unit">%</span></div>
+        <div class="stat__label">Less setup time</div>
+        <p class="stat__desc">Median time from clone to first passing build, versus a hand-rolled config.</p>
+      </div>
+
+      <div class="stat">
+        <div class="stat__num">18<span class="stat__unit">k</span></div>
+        <div class="stat__label">Copy-paste installs</div>
+        <p class="stat__desc">Sections pulled straight into Claude Code prompts.</p>
+      </div>
+
+      <div class="stat">
+        <div class="stat__num">0<span class="stat__unit">dep</span></div>
+        <div class="stat__label">Runtime libraries</div>
+        <p class="stat__desc">No bundler, no framework, no lock file to babysit.</p>
+      </div>
+
+      <div class="stat">
+        <div class="stat__num">4.9<span class="stat__unit">/5</span></div>
+        <div class="stat__label">Maintainer rating</div>
+        <p class="stat__desc">From 2,301 verified pull-request reviews.</p>
+      </div>
+
+    </div>
+
+    <div class="metrics__foot">
+      <span class="dot"></span>
+      Self-reported figures, updated quarterly. Full methodology lives in the repo README.
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

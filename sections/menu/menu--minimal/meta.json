@@ -1,0 +1,6 @@
+{
+  "type": "menu",
+  "name": "menu--minimal",
+  "style": "minimal",
+  "file": "index.html"
+}

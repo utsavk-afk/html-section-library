@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!-- ===== CTA — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --accent:#F59E42;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --panel:#17171C;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.cta{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:120px clamp(24px,6vw,96px);
+}
+
+/* faint amber horizon glow-free — just a hairline gradient wash, no bloom */
+.cta::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(245,158,66,0.05) 0%, transparent 42%),
+    radial-gradient(120% 80% at 82% -10%, rgba(245,158,66,0.06), transparent 55%);
+  pointer-events:none;
+}
+
+/* vertical measure line — asymmetric focal anchor on the left */
+.cta::after{
+  content:"";
+  position:absolute;
+  left:clamp(24px,6vw,96px);
+  top:0;
+  bottom:0;
+  width:1px;
+  background:linear-gradient(180deg,transparent,var(--line) 20%,var(--line) 80%,transparent);
+  opacity:.7;
+}
+
+.cta__inner{
+  position:relative;
+  max-width:1160px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.35fr 0.65fr;
+  gap:clamp(40px,6vw,88px);
+  align-items:end;
+}
+
+.cta__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:34px;
+}
+.cta__eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(245,158,66,0.12);
+}
+.cta__eyebrow .rule{
+  width:44px;height:1px;background:var(--line);
+}
+
+.cta__headline{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,5.4vw,72px);
+  line-height:1.02;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  max-width:15ch;
+}
+.cta__headline em{
+  font-style:italic;
+  color:var(--accent);
+  font-weight:500;
+}
+
+.cta__sub{
+  margin-top:26px;
+  font-size:clamp(15px,1.3vw,17px);
+  line-height:1.6;
+  color:var(--muted);
+  max-width:44ch;
+}
+
+/* right column — action stack, bottom-aligned */
+.cta__action{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:20px;
+  padding-bottom:6px;
+}
+
+.cta__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  background:var(--accent);
+  color:#1A1206;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:16px;
+  letter-spacing:-0.01em;
+  text-decoration:none;
+  padding:17px 26px 17px 30px;
+  border-radius:3px;
+  border:1px solid var(--accent);
+  transition:transform .18s ease, background .18s ease;
+  white-space:nowrap;
+}
+.cta__btn:hover{
+  background:#F7AE5C;
+  transform:translateY(-1px);
+}
+.cta__btn svg{
+  width:17px;height:17px;
+  transition:transform .18s ease;
+}
+.cta__btn:hover svg{transform:translateX(3px);}
+
+.cta__reassure{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:13.5px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.cta__reassure svg{
+  width:15px;height:15px;
+  flex:0 0 auto;
+  stroke:var(--accent);
+}
+
+/* thin meta row along the bottom of the left block */
+.cta__meta{
+  margin-top:52px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-wrap:wrap;
+  gap:28px;
+  font-size:13px;
+  color:var(--muted);
+}
+.cta__meta b{
+  color:var(--ink);
+  font-weight:600;
+}
+
+@media(max-width:640px){
+  .cta{padding:72px 22px;}
+  .cta::after{display:none;}
+  .cta__inner{
+    grid-template-columns:1fr;
+    gap:38px;
+    align-items:start;
+  }
+  .cta__headline{font-size:38px;max-width:100%;}
+  .cta__action{align-items:stretch;}
+  .cta__btn{justify-content:center;font-size:15px;}
+  .cta__meta{margin-top:34px;gap:18px 26px;}
+}
+</style>
+</head>
+<body>
+
+<section class="cta" aria-labelledby="cta-title">
+  <div class="cta__inner">
+
+    <div class="cta__lead">
+      <span class="cta__eyebrow">
+        <span class="dot"></span>
+        Section library — v1.4
+        <span class="rule"></span>
+      </span>
+
+      <h2 class="cta__headline" id="cta-title">
+        Stop hand-building the same&nbsp;<em>hero</em> for the fourteenth time.
+      </h2>
+
+      <p class="cta__sub">
+        Copy any block straight into Claude Code — pricing tables, testimonial walls,
+        footers, this exact CTA. Every file is one self-contained HTML document. No
+        dependencies, no config, no npm install waiting to fail.
+      </p>
+
+      <div class="cta__meta">
+        <span><b>62</b> sections</span>
+        <span><b>9</b> style systems</span>
+        <span><b>MIT</b> licensed</span>
+        <span><b>0</b> build steps</span>
+      </div>
+    </div>
+
+    <div class="cta__action">
+      <a class="cta__btn" href="#copy">
+        Copy the library
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
+        </svg>
+      </a>
+      <p class="cta__reassure">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+        Free forever. No sign-up, no email wall — clone and ship.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

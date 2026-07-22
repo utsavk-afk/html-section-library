@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!-- ===== COMPARISON-TABLE — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparison Table — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e1;
+  --accent:#C0492B;
+  --serif:'Inter',sans-serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --accent-tint:#faf0ed;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.cmp{
+  max-width:1080px;
+  margin:0 auto;
+  padding:96px 40px 104px;
+}
+
+/* ---- header: left-aligned, asymmetric ---- */
+.cmp__head{
+  max-width:620px;
+  margin-bottom:52px;
+}
+.cmp__eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:18px;
+}
+.cmp__title{
+  font-size:34px;
+  line-height:1.16;
+  font-weight:600;
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.cmp__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+.cmp__lede{
+  font-size:16px;
+  color:var(--muted);
+  max-width:520px;
+}
+
+/* ---- table ---- */
+.tbl{
+  width:100%;
+  border-collapse:collapse;
+  font-size:15px;
+}
+.tbl thead th{
+  text-align:left;
+  padding:0 22px 20px;
+  vertical-align:bottom;
+  font-weight:500;
+}
+.tbl th.crit{
+  width:44%;
+}
+.tbl th.col{
+  width:18.66%;
+  text-align:center;
+}
+
+/* the "them" column header */
+.col__label{
+  display:block;
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted);
+  letter-spacing:.01em;
+}
+/* the highlighted "us" column header sits in a raised card */
+.col--us{
+  position:relative;
+}
+.col--us .col__inner{
+  display:block;
+  background:var(--accent);
+  color:#fff;
+  border-radius:11px 11px 0 0;
+  padding:16px 14px 18px;
+  margin-bottom:-1px;
+  box-shadow:0 14px 30px -18px rgba(192,73,43,.55);
+}
+.col--us .col__tag{
+  display:inline-block;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+  margin-bottom:6px;
+}
+.col--us .col__name{
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:-.01em;
+}
+
+/* body rows */
+.tbl tbody td{
+  padding:19px 22px;
+  border-top:1px solid var(--line);
+  vertical-align:middle;
+}
+.tbl tbody tr:first-child td{
+  border-top:1px solid var(--ink);
+}
+.crit-name{
+  font-weight:500;
+  color:var(--ink);
+}
+.crit-sub{
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:3px;
+  font-weight:400;
+}
+
+/* the highlighted column cells — tinted channel down the table */
+td.cell--us{
+  background:var(--accent-tint);
+  text-align:center;
+}
+td.cell{
+  text-align:center;
+  color:var(--muted);
+}
+
+/* value text inside cells */
+.val{
+  font-size:14px;
+  color:var(--muted);
+}
+.val--us{
+  font-size:14px;
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* marks — CSS/SVG only */
+.mark{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+}
+.mark svg{display:block;}
+.mark--yes svg{stroke:var(--accent);}
+.mark--yes.mark--plain svg{stroke:var(--ink);}
+.mark--no svg{stroke:#c9c6c2;}
+
+/* footer row under table */
+.tbl tfoot td{
+  padding:26px 22px 0;
+  border-top:1px solid var(--ink);
+}
+.foot__cta{
+  text-align:center;
+}
+.foot__btn{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  font-size:13.5px;
+  font-weight:600;
+  text-decoration:none;
+  padding:11px 20px;
+  border-radius:8px;
+  box-shadow:0 12px 26px -16px rgba(192,73,43,.6);
+}
+.foot__note{
+  font-size:13px;
+  color:var(--muted);
+  vertical-align:middle;
+}
+
+/* rounded bottom of the us-column channel */
+.tbl tbody tr:last-child td.cell--us{
+  border-radius:0 0 11px 11px;
+}
+
+@media(max-width:640px){
+  .cmp{padding:60px 20px 72px;}
+  .cmp__title{font-size:26px;}
+  .cmp__head{margin-bottom:36px;}
+  .tbl{font-size:13.5px;}
+  .tbl thead th{padding:0 10px 14px;}
+  .tbl th.crit{width:40%;}
+  .tbl th.col{width:30%;}
+  .tbl tbody td{padding:14px 10px;}
+  .col--us .col__inner{padding:12px 8px 14px;border-radius:9px 9px 0 0;}
+  .col--us .col__name{font-size:13.5px;}
+  .col--us .col__tag{font-size:9px;}
+  .crit-sub{display:none;}
+  .mark{width:18px;height:18px;}
+  .foot__note{display:block;margin-bottom:14px;}
+}
+</style>
+</head>
+<body>
+<section class="cmp">
+  <div class="cmp__head">
+    <p class="cmp__eyebrow">Ship-Kit vs. the rest</p>
+    <h1 class="cmp__title">Most component libraries hand you parts. <em>We hand you a running page.</em></h1>
+    <p class="cmp__lede">A side-by-side look at what you actually get when the download finishes — not the marketing checklist, the real one.</p>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th class="crit">What you get</th>
+        <th class="col"><span class="col__label">Free CSS kits</span></th>
+        <th class="col col--us">
+          <span class="col__inner">
+            <span class="col__tag">You are here</span>
+            <span class="col__name">Ship-Kit</span>
+          </span>
+        </th>
+        <th class="col"><span class="col__label">Paid UI packs</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="crit-name">Copy-paste, zero build step</span>
+          <span class="crit-sub">Drop the file in, it renders — no npm, no bundler</span>
+        </td>
+        <td class="cell"><span class="mark mark--no"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke-width="1.6" stroke-linecap="round"><line x1="3.5" y1="7.5" x2="11.5" y2="7.5"/></svg></span></td>
+        <td class="cell--us"><span class="mark mark--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3 3 7-7.4"/></svg></span></td>
+        <td class="cell"><span class="mark mark--no"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke-width="1.6" stroke-linecap="round"><line x1="3.5" y1="7.5" x2="11.5" y2="7.5"/></svg></span></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="crit-name">Real placeholder copy</span>
+          <span class="crit-sub">Written sentences, never "Lorem ipsum dolor"</span>
+        </td>
+        <td class="cell"><span class="mark mark--no"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke-width="1.6" stroke-linecap="round"><line x1="3.5" y1="7.5" x2="11.5" y2="7.5"/></svg></span></td>
+        <td class="cell--us"><span class="mark mark--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3 3 7-7.4"/></svg></span></td>
+        <td class="cell"><span class="mark mark--yes mark--plain"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3 3 7-7.4"/></svg></span></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="crit-name">Dependencies to install</span>
+          <span class="crit-sub">External JS, icon fonts, CDN calls</span>
+        </td>
+        <td class="cell"><span class="val">2–4</span></td>
+        <td class="cell--us"><span class="val--us">None</span></td>
+        <td class="cell"><span class="val">6+</span></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="crit-name">Responsive out of the box</span>
+          <span class="crit-sub">One mobile breakpoint already wired</span>
+        </td>
+        <td class="cell"><span class="mark mark--yes mark--plain"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3 3 7-7.4"/></svg></span></td>
+        <td class="cell--us"><span class="mark mark--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3 3 7-7.4"/></svg></span></td>
+        <td class="cell"><span class="mark mark--yes mark--plain"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3 3 7-7.4"/></svg></span></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="crit-name">Design tokens exposed</span>
+          <span class="crit-sub">Recolor the whole section from one :root block</span>
+        </td>
+        <td class="cell"><span class="mark mark--no"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke-width="1.6" stroke-linecap="round"><line x1="3.5" y1="7.5" x2="11.5" y2="7.5"/></svg></span></td>
+        <td class="cell--us"><span class="mark mark--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3 3 7-7.4"/></svg></span></td>
+        <td class="cell"><span class="mark mark--no"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke-width="1.6" stroke-linecap="round"><line x1="3.5" y1="7.5" x2="11.5" y2="7.5"/></svg></span></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="crit-name">Price</span>
+          <span class="crit-sub">What it costs to use in a client project</span>
+        </td>
+        <td class="cell"><span class="val">Free</span></td>
+        <td class="cell--us"><span class="val--us">Free</span></td>
+        <td class="cell"><span class="val">$49–$249</span></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><span class="foot__note">40+ sections. MIT-licensed. Yours to fork.</span></td>
+        <td class="foot__cta cell--us" colspan="1"><a class="foot__btn" href="#copy">Copy this section</a></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</section>
+</body>
+</html>

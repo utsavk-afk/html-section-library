@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Accordion — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Archivo+Narrow:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== FAQ-ACCORDION — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-soft:#161616;
+  --paper:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:rgba(244,244,239,0.14);
+  --line-strong:rgba(244,244,239,0.32);
+  --dim:#9A9A92;
+  --pill-radius:999px;
+  --font-display:'Archivo',system-ui,sans-serif;
+  --font-body:'Archivo Narrow','Archivo',system-ui,sans-serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+.faq-acid{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 72px 104px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(199,241,59,0.10), transparent 34%),
+    var(--ink);
+  overflow:hidden;
+}
+
+/* decorative offset dot, top-left focal accent */
+.faq-acid__spark{
+  position:absolute;
+  top:112px;left:-40px;
+  width:180px;height:180px;
+  background:var(--magenta);
+  border-radius:50%;
+  filter:none;
+  opacity:0.9;
+  z-index:0;
+}
+
+.faq-acid__inner{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:0.82fr 1.18fr;
+  gap:88px;
+  align-items:start;
+}
+
+/* ---- Left rail (asymmetric focal column) ---- */
+.faq-acid__aside{
+  position:sticky;
+  top:48px;
+}
+
+.faq-acid__tag{
+  display:inline-block;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--lime);
+  padding:8px 16px;
+  border-radius:var(--pill-radius);
+  margin-bottom:26px;
+}
+
+.faq-acid__title{
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:clamp(46px,5.6vw,88px);
+  line-height:0.9;
+  letter-spacing:-0.03em;
+  text-transform:uppercase;
+}
+.faq-acid__title em{
+  font-style:normal;
+  color:var(--magenta);
+}
+.faq-acid__title span{
+  display:block;
+  color:var(--lime);
+  -webkit-text-stroke:0;
+}
+
+.faq-acid__sub{
+  margin-top:26px;
+  max-width:320px;
+  font-size:17px;
+  line-height:1.5;
+  color:var(--dim);
+}
+
+.faq-acid__cta{
+  margin-top:34px;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:0.02em;
+  text-decoration:none;
+  color:var(--ink);
+  background:var(--paper);
+  padding:15px 26px;
+  border-radius:var(--pill-radius);
+  transition:background .18s ease,transform .18s ease;
+}
+.faq-acid__cta:hover{background:var(--lime);transform:translateY(-2px);}
+.faq-acid__cta b{font-weight:900;}
+
+/* ---- Right column: accordion ---- */
+.faq-acid__list{
+  border-top:1px solid var(--line-strong);
+}
+
+.faq-item{
+  border-bottom:1px solid var(--line);
+}
+.faq-item[open]{
+  background:linear-gradient(90deg, rgba(199,241,59,0.06), transparent 60%);
+}
+
+.faq-item__q{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  padding:26px 8px 26px 0;
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:clamp(19px,1.8vw,25px);
+  line-height:1.14;
+  letter-spacing:-0.01em;
+  color:var(--paper);
+  transition:color .16s ease;
+}
+.faq-item__q::-webkit-details-marker{display:none;}
+.faq-item__q:hover{color:var(--lime);}
+
+.faq-item__num{
+  flex:0 0 auto;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:0.04em;
+  color:var(--dim);
+  width:34px;
+}
+
+.faq-item__text{flex:1;}
+
+.faq-item__mark{
+  flex:0 0 auto;
+  position:relative;
+  width:34px;height:34px;
+  border-radius:50%;
+  background:transparent;
+  border:2px solid var(--line-strong);
+  transition:background .18s ease,border-color .18s ease,transform .25s ease;
+}
+.faq-item__mark::before,
+.faq-item__mark::after{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  width:13px;height:2.5px;
+  background:var(--paper);
+  border-radius:2px;
+  transform:translate(-50%,-50%);
+  transition:transform .25s ease,background .18s ease;
+}
+.faq-item__mark::after{transform:translate(-50%,-50%) rotate(90deg);}
+.faq-item__q:hover .faq-item__mark{border-color:var(--lime);}
+.faq-item[open] .faq-item__mark{
+  background:var(--magenta);
+  border-color:var(--magenta);
+  transform:rotate(180deg);
+}
+.faq-item[open] .faq-item__mark::before,
+.faq-item[open] .faq-item__mark::after{background:var(--ink);}
+.faq-item[open] .faq-item__mark::after{transform:translate(-50%,-50%) rotate(0deg);}
+
+.faq-item__a{
+  padding:0 68px 30px 58px;
+  max-width:640px;
+  font-size:16.5px;
+  line-height:1.62;
+  color:#C9C9C1;
+}
+.faq-item__a a{
+  color:var(--lime);
+  text-decoration:none;
+  border-bottom:1.5px solid var(--lime);
+}
+.faq-item__a strong{color:var(--paper);font-weight:600;}
+
+/* open reveal animation */
+.faq-item[open] .faq-item__a{
+  animation:faqReveal .28s ease both;
+}
+@keyframes faqReveal{
+  from{opacity:0;transform:translateY(-6px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ---- Responsive ---- */
+@media(max-width:640px){
+  .faq-acid{padding:56px 22px 64px;}
+  .faq-acid__spark{width:120px;height:120px;top:70px;left:-56px;}
+  .faq-acid__inner{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .faq-acid__aside{position:static;top:auto;}
+  .faq-acid__sub{max-width:none;}
+  .faq-item__q{gap:14px;padding:20px 4px;}
+  .faq-item__num{width:26px;font-size:12px;}
+  .faq-item__mark{width:30px;height:30px;}
+  .faq-item__a{padding:0 6px 24px 40px;font-size:16px;}
+}
+</style>
+</head>
+<body>
+
+<section class="faq-acid" aria-labelledby="faq-heading">
+  <span class="faq-acid__spark" aria-hidden="true"></span>
+
+  <div class="faq-acid__inner">
+
+    <aside class="faq-acid__aside">
+      <span class="faq-acid__tag">Support &nbsp;/&nbsp; Answers</span>
+      <h2 class="faq-acid__title" id="faq-heading">
+        Ask us<br>
+        <em>the</em> <span>hard ones.</span>
+      </h2>
+      <p class="faq-acid__sub">
+        The stuff sales pages skip: refunds, migration, seat limits, and who actually owns your data. Straight answers, no asterisks.
+      </p>
+      <a class="faq-acid__cta" href="#contact">Still stuck? <b>Ping a human&nbsp;→</b></a>
+    </aside>
+
+    <div class="faq-acid__list">
+
+      <details class="faq-item" open>
+        <summary class="faq-item__q">
+          <span class="faq-item__num">01</span>
+          <span class="faq-item__text">How fast can I move my current project over?</span>
+          <span class="faq-item__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-item__a">
+          Most teams are fully switched in <strong>under a weekend</strong>. Our importer pulls boards, tasks, comments, and attachments straight from Trello, Asana, Notion, and Linear — nothing is retyped by hand. A migration engineer double-checks the mapping before you flip the switch. <a href="#migrate">See the import checklist</a>.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__q">
+          <span class="faq-item__num">02</span>
+          <span class="faq-item__text">Is there a free plan, or just a trial?</span>
+          <span class="faq-item__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-item__a">
+          Both. The <strong>Free</strong> tier is genuinely free forever — up to 3 workspaces and 5 collaborators, no card required. The 14-day Pro trial unlocks automations, guest access, and reporting so you can test the parts that actually cost money before you commit to them.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__q">
+          <span class="faq-item__num">03</span>
+          <span class="faq-item__text">What happens to my data if I cancel?</span>
+          <span class="faq-item__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-item__a">
+          You own it, full stop. Export everything to <strong>JSON or CSV</strong> in one click, any time — before, during, or after cancellation. We keep a read-only copy for 30 days in case you change your mind, then it's permanently wiped from our servers and backups.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__q">
+          <span class="faq-item__num">04</span>
+          <span class="faq-item__text">Can I add and remove seats mid-cycle?</span>
+          <span class="faq-item__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-item__a">
+          Yes — add someone at 2pm on a Tuesday and you're billed a <strong>prorated amount</strong> only for the days they're active. Remove a seat and the credit rolls straight onto your next invoice. No annual lock-in, no "contact sales to downgrade" nonsense.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__q">
+          <span class="faq-item__num">05</span>
+          <span class="faq-item__text">Do you actually offer real human support?</span>
+          <span class="faq-item__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-item__a">
+          Every plan — including Free — gets live chat with a real person, <strong>Mon–Fri, 7am to 8pm CET</strong>. Median first reply is 8 minutes. Pro and Business plans add a private Slack channel and a named onboarding lead for your first month.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__q">
+          <span class="faq-item__num">06</span>
+          <span class="faq-item__text">How do you handle security and compliance?</span>
+          <span class="faq-item__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-item__a">
+          We're <strong>SOC 2 Type II</strong> certified and GDPR-compliant, with data encrypted at rest (AES-256) and in transit (TLS 1.3). SSO/SAML, SCIM provisioning, and audit logs ship on the Business plan. <a href="#trust">Read the full trust report</a>.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__q">
+          <span class="faq-item__num">07</span>
+          <span class="faq-item__text">Will it connect to the tools we already use?</span>
+          <span class="faq-item__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-item__a">
+          Out of the box it talks to <strong>Slack, GitHub, Figma, Google Drive, and Zapier</strong>, plus a documented REST API and webhooks for everything else. Building a custom integration? Our developer sandbox is open on every plan, trial included.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!-- ===== HIGHLIGHTS — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highlights — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EC;
+  --muted:#8C8C82;
+  --line:#26261F;
+  --accent:#C7F13B;      /* lime */
+  --accent-2:#FF4D9D;    /* magenta */
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',system-ui,sans-serif;
+}
+
+.hl{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px clamp(20px,5vw,88px) 104px;
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+
+/* corner marker — one intentional asymmetric flourish */
+.hl__spark{
+  position:absolute;
+  top:64px;right:clamp(20px,5vw,88px);
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:.18em;
+  color:var(--bg);
+  background:var(--accent);
+  padding:7px 14px 6px;
+  transform:rotate(3deg);
+  border-radius:2px;
+}
+
+/* header — asymmetric, left-weighted */
+.hl__head{
+  max-width:760px;
+  margin-bottom:56px;
+}
+.hl__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent-2);
+  margin-bottom:22px;
+}
+.hl__kicker span{
+  width:26px;height:2px;background:var(--accent-2);display:inline-block;
+}
+.hl__title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(38px,6.2vw,80px);
+  line-height:.92;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+}
+.hl__title em{
+  font-style:normal;
+  color:var(--bg);
+  background:var(--accent);
+  padding:0 .12em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.hl__title .mag{color:var(--accent-2);background:none;padding:0;}
+
+/* the strip */
+.hl__strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+  align-items:stretch;
+}
+.hl__item{
+  border-top:3px solid var(--line);
+  padding-top:22px;
+  position:relative;
+}
+/* varied elevation/spacing — the standout tile */
+.hl__item--pop{
+  background:var(--accent);
+  color:var(--bg);
+  border-top:none;
+  border-radius:14px;
+  padding:24px 22px 26px;
+  margin-top:-14px;
+  box-shadow:8px 10px 0 var(--accent-2);
+}
+
+.hl__mark{
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:11px;
+  background:#161610;
+  margin-bottom:20px;
+}
+.hl__item--pop .hl__mark{background:rgba(10,10,10,.12);}
+.hl__mark svg{display:block;}
+
+.hl__num{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(30px,3.4vw,44px);
+  line-height:1;
+  letter-spacing:-.02em;
+  margin-bottom:10px;
+}
+.hl__num small{font-size:.5em;font-weight:800;vertical-align:top;margin-left:2px;}
+.hl__item .hl__num{color:var(--accent);}
+.hl__item--pop .hl__num{color:var(--bg);}
+.hl__item--mag .hl__num{color:var(--accent-2);}
+
+.hl__label{
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:-.01em;
+  margin-bottom:8px;
+  line-height:1.15;
+}
+.hl__desc{
+  font-size:14px;
+  line-height:1.5;
+  font-weight:500;
+  color:var(--muted);
+}
+.hl__item--pop .hl__desc{color:#1c1c14;font-weight:600;}
+
+/* tiny chunky pill tag */
+.hl__tag{
+  display:inline-block;
+  margin-top:16px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:5px 11px;
+  border-radius:100px;
+  background:#161610;
+  color:var(--accent);
+}
+.hl__item--pop .hl__tag{background:var(--bg);color:var(--accent);}
+.hl__item--mag .hl__tag{color:var(--accent-2);}
+
+@media(max-width:640px){
+  .hl{padding:64px 20px 72px;}
+  .hl__spark{top:24px;transform:rotate(4deg);}
+  .hl__head{margin-bottom:40px;}
+  .hl__strip{grid-template-columns:1fr;gap:14px;}
+  .hl__item{border-top-width:2px;padding-top:18px;}
+  .hl__item--pop{margin-top:0;box-shadow:5px 6px 0 var(--accent-2);}
+}
+</style>
+</head>
+<body>
+
+<section class="hl" aria-label="Highlights">
+  <div class="hl__spark">SHIP IT ⚡</div>
+
+  <div class="hl__head">
+    <div class="hl__kicker"><span></span>WHY TEAMS DROP THIS IN</div>
+    <h1 class="hl__title">Paste once. <em>Run</em><br>the whole <span class="mag">stack.</span></h1>
+  </div>
+
+  <div class="hl__strip">
+
+    <div class="hl__item hl__item--pop">
+      <div class="hl__mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/>
+        </svg>
+      </div>
+      <div class="hl__num">0<small>&nbsp;setup</small></div>
+      <div class="hl__label">Zero-build drop-in</div>
+      <div class="hl__desc">One HTML file, no bundler, no npm install. Paste it into Claude Code and it just renders.</div>
+      <span class="hl__tag">INSTANT</span>
+    </div>
+
+    <div class="hl__item">
+      <div class="hl__mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C7F13B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="14" rx="2"/>
+          <path d="M8 21h8M12 18v3M7 9l2 2-2 2M12 13h4"/>
+        </svg>
+      </div>
+      <div class="hl__num">140+</div>
+      <div class="hl__label">Copy-paste sections</div>
+      <div class="hl__desc">Heroes, pricing, FAQs, footers — every block self-contained and ready to remix.</div>
+      <span class="hl__tag">LIBRARY</span>
+    </div>
+
+    <div class="hl__item hl__item--mag">
+      <div class="hl__mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF4D9D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/>
+          <circle cx="12" cy="12" r="3.2"/>
+        </svg>
+      </div>
+      <div class="hl__num">1&nbsp;file</div>
+      <div class="hl__label">Fonts &amp; tokens baked in</div>
+      <div class="hl__desc">Google Fonts link plus a tidy :root token block, so restyling the whole thing is a five-line edit.</div>
+      <span class="hl__tag">TOKENIZED</span>
+    </div>
+
+    <div class="hl__item">
+      <div class="hl__mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C7F13B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12h4l2.5-7 5 18 2.5-11H21"/>
+        </svg>
+      </div>
+      <div class="hl__num">100%</div>
+      <div class="hl__label">Responsive &amp; free</div>
+      <div class="hl__desc">Every section ships a mobile breakpoint and an MIT license. Fork it, sell it, whatever.</div>
+      <span class="hl__tag">MIT</span>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

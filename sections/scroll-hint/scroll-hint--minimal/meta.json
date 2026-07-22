@@ -1,0 +1,6 @@
+{
+  "type": "scroll-hint",
+  "name": "scroll-hint--minimal",
+  "style": "minimal",
+  "file": "index.html"
+}

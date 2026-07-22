@@ -1,0 +1,6 @@
+{
+  "type": "transformation",
+  "name": "transformation--editorial",
+  "style": "editorial",
+  "file": "index.html"
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- ===== AVATAR-STACK — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Stack — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e1;
+  --accent:#C0492B;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+}
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+
+/* ---- section shell ---- */
+.proof{
+  width:100%;
+  padding:112px 48px 120px;
+  display:flex;
+  justify-content:center;
+}
+.proof__inner{
+  width:100%;
+  max-width:1200px;
+}
+
+/* eyebrow */
+.proof__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.proof__eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+
+/* headline row: asymmetric — big stack left, meta right */
+.proof__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 340px;
+  gap:56px;
+  align-items:center;
+}
+
+.proof__lede{
+  font-size:clamp(28px,3vw,40px);
+  line-height:1.16;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  max-width:20ch;
+}
+.proof__lede .mark{color:var(--accent);}
+
+.proof__stackrow{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-top:36px;
+  flex-wrap:wrap;
+}
+
+/* ---- avatar cluster ---- */
+.avatars{display:flex;align-items:center;}
+.avatars .av{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:2.5px solid var(--bg);
+  margin-left:-16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  font-weight:600;
+  color:#fff;
+  letter-spacing:.01em;
+  position:relative;
+  box-shadow:0 1px 2px rgba(20,20,20,.06);
+  transition:transform .18s ease;
+}
+.avatars .av:first-child{margin-left:0;}
+.avatars .av:hover{transform:translateY(-4px);z-index:6;}
+
+/* muted, non-rainbow tones — desaturated, one warm accent avatar */
+.av--1{background:#3a3a3a;}
+.av--2{background:#8a7d6b;}
+.av--3{background:var(--accent);}       /* the one intentional accent */
+.av--4{background:#5c6b6a;}
+.av--5{background:#6a5f74;}
+.av--more{
+  background:#f2efeb;
+  color:var(--ink);
+  font-weight:600;
+  font-size:13px;
+  border:2.5px solid var(--bg);
+}
+
+.proof__count{
+  font-size:15px;
+  line-height:1.45;
+  color:var(--ink);
+}
+.proof__count b{font-weight:600;}
+.proof__count span{color:var(--muted);display:block;font-size:13.5px;margin-top:2px;}
+
+/* ---- meta column: rating + logos-as-text ---- */
+.meta{
+  border-left:1px solid var(--line);
+  padding-left:32px;
+}
+.rating{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;}
+.rating__score{
+  font-size:34px;
+  font-weight:700;
+  letter-spacing:-0.03em;
+  line-height:1;
+}
+.stars{display:inline-flex;gap:3px;}
+.stars svg{width:17px;height:17px;display:block;}
+.rating__meta{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:2px;
+}
+.rating__meta a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;}
+.rating__meta a:hover{border-color:var(--accent);}
+
+.meta__divider{height:1px;background:var(--line);margin:22px 0;}
+
+.meta__quote{
+  font-size:14.5px;
+  line-height:1.55;
+  color:var(--ink);
+}
+.meta__cite{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-top:14px;
+  font-size:12.5px;
+  color:var(--muted);
+}
+.meta__cite .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .proof{padding:72px 22px 78px;}
+  .proof__grid{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+  .proof__lede{font-size:26px;max-width:none;}
+  .proof__stackrow{gap:16px;margin-top:28px;}
+  .avatars .av{width:46px;height:46px;font-size:14px;margin-left:-14px;}
+  .meta{
+    border-left:none;
+    border-top:1px solid var(--line);
+    padding-left:0;
+    padding-top:30px;
+  }
+  .rating__score{font-size:30px;}
+}
+</style>
+</head>
+<body>
+
+<section class="proof">
+  <div class="proof__inner">
+    <span class="proof__eyebrow">Trusted by build teams</span>
+
+    <div class="proof__grid">
+      <!-- focal: the stack -->
+      <div>
+        <h2 class="proof__lede">
+          Shipped by engineers who paste, not <span class="mark">rebuild</span>.
+        </h2>
+
+        <div class="proof__stackrow">
+          <div class="avatars" aria-hidden="true">
+            <div class="av av--1">RK</div>
+            <div class="av av--2">TM</div>
+            <div class="av av--3">SP</div>
+            <div class="av av--4">JL</div>
+            <div class="av av--5">DA</div>
+            <div class="av av--more">+2.4k</div>
+          </div>
+          <p class="proof__count">
+            <b>Join 2,480 teams</b> copying these sections
+            <span>Vercel, Linear-sized startups &amp; solo builders</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- meta column -->
+      <aside class="meta">
+        <div class="rating">
+          <span class="rating__score">4.9</span>
+          <span class="stars" aria-label="4.9 out of 5 stars">
+            <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.5l2.47 5.26 5.78.63-4.3 3.9 1.18 5.71L10 14.9 4.87 17l1.18-5.71-4.3-3.9 5.78-.63z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.5l2.47 5.26 5.78.63-4.3 3.9 1.18 5.71L10 14.9 4.87 17l1.18-5.71-4.3-3.9 5.78-.63z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.5l2.47 5.26 5.78.63-4.3 3.9 1.18 5.71L10 14.9 4.87 17l1.18-5.71-4.3-3.9 5.78-.63z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.5l2.47 5.26 5.78.63-4.3 3.9 1.18 5.71L10 14.9 4.87 17l1.18-5.71-4.3-3.9 5.78-.63z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.5v13.4L4.87 17l1.18-5.71-4.3-3.9 5.78-.63z"/><path d="M10 1.5l2.47 5.26 5.78.63-4.3 3.9 1.18 5.71L10 14.9z" fill="#e6e4e1"/></svg>
+          </span>
+        </div>
+        <p class="rating__meta">from <b style="color:var(--ink);font-weight:600;">612 reviews</b> on <a href="#reviews">the library repo</a></p>
+
+        <div class="meta__divider"></div>
+
+        <p class="meta__quote">"Dropped three of these into a client landing page before lunch. No dependencies, no fighting a framework."</p>
+        <p class="meta__cite"><span class="dot"></span> Priya S. — frontend lead, Kettle &amp; Co.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

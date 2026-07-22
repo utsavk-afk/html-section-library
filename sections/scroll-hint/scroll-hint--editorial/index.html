@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!-- ===== SCROLL-HINT — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Hint — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== SCROLL-HINT — EDITORIAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --muted:#6E6A61;
+  --hair:#DEDBD2;
+  --paper:#F4F2EC;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+  --pad:clamp(22px,5vw,84px);
+}
+
+body{
+  background:var(--light);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.scrollhint{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:var(--light);
+}
+
+/* ---- hero portion : the thing you're scrolling out of ---- */
+.sh-hero{
+  flex:1 1 auto;
+  position:relative;
+  padding:clamp(34px,6vw,72px) var(--pad) 0;
+  display:grid;
+  grid-template-columns:1fr;
+  align-content:space-between;
+  min-height:0;
+}
+
+.sh-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:20px;
+  padding-bottom:clamp(30px,6vh,80px);
+}
+
+.sh-eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.sh-issue{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* focal block — deliberately not centered, pushed left */
+.sh-lead{
+  max-width:15ch;
+}
+.sh-lead h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(40px,7.4vw,104px);
+  line-height:.98;
+  letter-spacing:-.015em;
+  color:var(--ink);
+}
+.sh-lead h1 em{
+  font-style:italic;
+  font-weight:500;
+  color:var(--accent);
+}
+
+.sh-sub{
+  margin-top:26px;
+  max-width:34ch;
+  font-size:clamp(14px,1.4vw,16px);
+  line-height:1.6;
+  color:var(--muted);
+  padding-left:2px;
+  border-left:1px solid var(--hair);
+  padding-left:16px;
+}
+
+/* ---- scroll cue row, sits at hero baseline ---- */
+.sh-cuerow{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  padding:clamp(28px,6vh,64px) 0 clamp(20px,4vh,34px);
+}
+
+.sh-cue{
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  text-decoration:none;
+  color:var(--ink);
+}
+.sh-cue-label{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  transition:color .3s ease;
+}
+.sh-cue:hover .sh-cue-label{color:var(--accent);}
+
+/* the animated mouse / rail cue — pure CSS */
+.sh-mouse{
+  position:relative;
+  width:24px;
+  height:40px;
+  border:1.5px solid var(--ink);
+  border-radius:14px;
+  flex:0 0 auto;
+}
+.sh-mouse::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:8px;
+  width:3px;
+  height:7px;
+  margin-left:-1.5px;
+  border-radius:2px;
+  background:var(--accent);
+  animation:wheel 1.9s cubic-bezier(.6,.05,.3,1) infinite;
+}
+@keyframes wheel{
+  0%{transform:translateY(0);opacity:0;}
+  18%{opacity:1;}
+  70%{transform:translateY(14px);opacity:0;}
+  100%{transform:translateY(14px);opacity:0;}
+}
+
+/* the dropping chevrons */
+.sh-chevs{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+  margin-left:4px;
+}
+.sh-chevs span{
+  width:9px;height:9px;
+  border-right:1.5px solid var(--accent);
+  border-bottom:1.5px solid var(--accent);
+  transform:rotate(45deg);
+  opacity:0;
+  animation:chev 1.9s ease-in-out infinite;
+}
+.sh-chevs span:nth-child(1){animation-delay:0s;}
+.sh-chevs span:nth-child(2){animation-delay:.18s;}
+.sh-chevs span:nth-child(3){animation-delay:.36s;}
+@keyframes chev{
+  0%{opacity:0;transform:rotate(45deg) translate(-3px,-3px);}
+  50%{opacity:1;}
+  100%{opacity:0;transform:rotate(45deg) translate(3px,3px);}
+}
+
+/* right side of cue row: page marker */
+.sh-marker{
+  text-align:right;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(13px,1.4vw,15px);
+  color:var(--muted);
+  line-height:1.4;
+}
+.sh-marker b{
+  display:block;
+  font-style:normal;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin-bottom:4px;
+}
+
+/* ---- the peek of the next block ---- */
+.sh-peek{
+  flex:0 0 auto;
+  position:relative;
+  background:var(--ink);
+  color:var(--light);
+  padding:clamp(26px,4.4vw,40px) var(--pad) clamp(40px,6vw,58px);
+  overflow:hidden;
+}
+.sh-peek::before{
+  /* hairline tick strip */
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  height:1px;
+  background:repeating-linear-gradient(90deg,var(--accent) 0 2px,transparent 2px 28px);
+  opacity:.55;
+}
+.sh-peek-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:clamp(18px,4vw,60px);
+}
+.sh-peek-tag{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.sh-peek h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(22px,3.4vw,44px);
+  line-height:1.05;
+  letter-spacing:-.01em;
+  margin-top:10px;
+  max-width:20ch;
+}
+.sh-peek h2 em{font-style:italic;color:#E3A183;}
+.sh-peek-num{
+  flex:0 0 auto;
+  font-family:var(--serif);
+  font-size:clamp(46px,9vw,120px);
+  line-height:.8;
+  font-weight:400;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(252,252,250,.34);
+  letter-spacing:-.02em;
+}
+
+/* faint under-peek to imply MORE content below the fold */
+.sh-underpeek{
+  position:absolute;
+  left:var(--pad);right:var(--pad);
+  bottom:-11px;
+  height:22px;
+  border-radius:4px 4px 0 0;
+  background:var(--paper);
+  opacity:.14;
+}
+
+@media (max-width:640px){
+  .scrollhint{min-height:auto;}
+  .sh-top{padding-bottom:26px;}
+  .sh-lead h1{font-size:clamp(38px,13vw,60px);}
+  .sh-sub{margin-top:18px;}
+  .sh-cuerow{flex-direction:row;align-items:center;padding-top:30px;}
+  .sh-marker{display:none;}
+  .sh-peek-inner{gap:16px;}
+  .sh-peek-num{font-size:clamp(40px,20vw,72px);}
+  .sh-peek h2{font-size:clamp(20px,6.4vw,30px);}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .sh-mouse::after,.sh-chevs span{animation:none;opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<section class="scrollhint" aria-label="Hero with scroll hint">
+  <div class="sh-hero">
+    <div>
+      <div class="sh-top">
+        <span class="sh-eyebrow">The Long View — No.&nbsp;07</span>
+        <span class="sh-issue">Summer 2026 / Field Notes</span>
+      </div>
+
+      <div class="sh-lead">
+        <h1>Slow<br>reading,<br><em>on&nbsp;purpose.</em></h1>
+        <p class="sh-sub">An essay series about the craft of attention — written to be finished in one sitting, no autoplay, no counters ticking in the corner.</p>
+      </div>
+    </div>
+
+    <div class="sh-cuerow">
+      <a class="sh-cue" href="#next-block" aria-label="Scroll to keep reading">
+        <span class="sh-mouse" aria-hidden="true"></span>
+        <span class="sh-chevs" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="sh-cue-label">Keep reading</span>
+      </a>
+      <p class="sh-marker"><b>Below</b><em>Chapter one, in&nbsp;full</em></p>
+    </div>
+  </div>
+
+  <div class="sh-peek" id="next-block">
+    <div class="sh-peek-inner">
+      <div>
+        <span class="sh-peek-tag">Chapter One</span>
+        <h2>The morning I <em>deleted</em> every unread badge.</h2>
+      </div>
+      <div class="sh-peek-num" aria-hidden="true">01</div>
+    </div>
+    <div class="sh-underpeek" aria-hidden="true"></div>
+  </div>
+</section>
+
+</body>
+</html>

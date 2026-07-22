@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Lead Capture — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== HERO-LEAD-CAPTURE — MINIMAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e1;
+  --line-soft:#f0eeec;
+  --paper:#ffffff;
+  --accent:#C0492B;
+  --accent-ink:#9e3a20;
+  --radius-sm:6px;
+  --radius-lg:14px;
+  --maxw:1180px;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.hlc{
+  width:100%;
+  padding:76px 32px 88px;
+}
+.hlc__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:72px;
+  align-items:center;
+}
+
+/* ---- left column: the pitch ---- */
+.hlc__lead{
+  max-width:560px;
+}
+.hlc__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  margin-bottom:26px;
+}
+.hlc__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1.5px;
+  background:var(--accent);
+}
+.hlc__title{
+  font-size:52px;
+  line-height:1.06;
+  font-weight:700;
+  letter-spacing:-0.028em;
+  color:var(--ink);
+}
+.hlc__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+.hlc__sub{
+  margin-top:22px;
+  font-size:18px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:460px;
+}
+
+/* ---- the capture form ---- */
+.hlc__form{
+  margin-top:34px;
+  display:flex;
+  gap:10px;
+  align-items:stretch;
+  max-width:480px;
+}
+.hlc__field{
+  position:relative;
+  flex:1;
+}
+.hlc__input{
+  width:100%;
+  height:52px;
+  padding:0 16px;
+  font-family:var(--font);
+  font-size:15.5px;
+  color:var(--ink);
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.hlc__input::placeholder{color:#a5a2a0;}
+.hlc__input:focus{
+  outline:none;
+  border-color:var(--ink);
+  box-shadow:0 0 0 3px rgba(20,20,20,0.06);
+}
+.hlc__btn{
+  height:52px;
+  padding:0 24px;
+  font-family:var(--font);
+  font-size:15px;
+  font-weight:600;
+  color:#fff;
+  background:var(--accent);
+  border:none;
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .15s ease, transform .1s ease;
+}
+.hlc__btn:hover{background:var(--accent-ink);}
+.hlc__btn:active{transform:translateY(1px);}
+
+.hlc__reassure{
+  margin-top:15px;
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.hlc__reassure svg{flex-shrink:0;}
+
+/* ---- right column: the offbeat proof card ---- */
+.hlc__aside{
+  position:relative;
+}
+.hlc__card{
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:28px 28px 24px;
+  background:var(--paper);
+  box-shadow:0 1px 2px rgba(20,20,20,0.03);
+}
+.hlc__card-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line-soft);
+}
+.hlc__card-title{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+}
+.hlc__card-badge{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+}
+.hlc__stack{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding-top:20px;
+}
+.hlc__row{
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+}
+.hlc__avatar{
+  width:36px;height:36px;
+  flex-shrink:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+}
+.hlc__avatar--a{background:#2f2a26;}
+.hlc__avatar--b{background:var(--accent);}
+.hlc__avatar--c{background:#4a5548;}
+.hlc__quote{
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--ink);
+}
+.hlc__who{
+  margin-top:3px;
+  font-size:12px;
+  color:var(--muted);
+}
+.hlc__count{
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid var(--line-soft);
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+.hlc__count-num{
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+}
+.hlc__count-txt{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.35;
+}
+/* accent tick floating off the card corner — asymmetric detail */
+.hlc__tick{
+  position:absolute;
+  top:-9px;left:26px;
+  background:var(--accent);
+  color:#fff;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.03em;
+  padding:5px 11px;
+  border-radius:100px;
+}
+
+/* ---- responsive ---- */
+@media(max-width:900px){
+  .hlc__inner{grid-template-columns:1fr;gap:44px;}
+  .hlc__title{font-size:44px;}
+  .hlc__aside{max-width:480px;}
+}
+@media(max-width:640px){
+  .hlc{padding:52px 20px 60px;}
+  .hlc__title{font-size:34px;}
+  .hlc__sub{font-size:16px;}
+  .hlc__form{flex-direction:column;gap:10px;}
+  .hlc__btn{width:100%;}
+  .hlc__card{padding:24px 20px 20px;}
+}
+</style>
+</head>
+<body>
+<section class="hlc">
+  <div class="hlc__inner">
+
+    <div class="hlc__lead">
+      <span class="hlc__eyebrow">The Friday Handoff</span>
+      <h1 class="hlc__title">Ship the deck<br>before <em>you finish</em> your coffee.</h1>
+      <p class="hlc__sub">A weekly two-page teardown of one real B2B pitch deck — what landed, what stalled, and the exact slide we'd rebuild. No fluff, no webinars.</p>
+
+      <form class="hlc__form" action="#" method="post" novalidate>
+        <div class="hlc__field">
+          <input class="hlc__input" type="email" name="email" placeholder="you@company.com" aria-label="Work email" required>
+        </div>
+        <button class="hlc__btn" type="submit">Get the teardown</button>
+      </form>
+
+      <p class="hlc__reassure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#737373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        One email on Fridays. Unsubscribe in a click — 3,900+ founders already read it.
+      </p>
+    </div>
+
+    <aside class="hlc__aside">
+      <span class="hlc__tick">This week's issue</span>
+      <div class="hlc__card">
+        <div class="hlc__card-head">
+          <span class="hlc__card-title">Issue #47 — The 11-word slide</span>
+          <span class="hlc__card-badge">Free</span>
+        </div>
+
+        <div class="hlc__stack">
+          <div class="hlc__row">
+            <div class="hlc__avatar hlc__avatar--a">RD</div>
+            <div>
+              <p class="hlc__quote">"Cut our sales cycle by a full week. I read it at 6am and rewrote the whole thing by 9."</p>
+              <p class="hlc__who">Rina D. — Founder, Northbeam</p>
+            </div>
+          </div>
+          <div class="hlc__row">
+            <div class="hlc__avatar hlc__avatar--b">MK</div>
+            <div>
+              <p class="hlc__quote">"The only newsletter I don't archive. It's short and it's actually about the work."</p>
+              <p class="hlc__who">Marcus K. — Head of GTM, Loop</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hlc__count">
+          <span class="hlc__count-num">2 min</span>
+          <span class="hlc__count-txt">average read time.<br>Lands every Friday, 7am.</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+</body>
+</html>

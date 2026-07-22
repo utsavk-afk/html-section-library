@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusted By — Client Name List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== client-name-list — EDITORIAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --muted:#6E6A61;
+  --hair:#DFDCD3;
+  --hair-strong:#C9C5BA;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--light);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.tb{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 72px 96px;
+}
+
+/* top row: label left, meta right — asymmetric */
+.tb__top{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--hair-strong);
+}
+.tb__label{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.tb__meta{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-align:right;
+}
+
+/* headline sits under the rule, left-weighted */
+.tb__head{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:48px;
+  align-items:end;
+  margin-top:40px;
+  margin-bottom:54px;
+}
+.tb__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(34px,4.4vw,60px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  max-width:14ch;
+}
+.tb__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.tb__note{
+  font-size:15px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:40ch;
+  padding-bottom:6px;
+}
+.tb__note strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* the wrapped name list — the focal point */
+.tb__names{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(26px,3.5vw,46px);
+  line-height:1.28;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  max-width:26ch;
+}
+.tb__names .n{
+  white-space:nowrap;
+}
+.tb__names .sep{
+  color:var(--hair-strong);
+  font-style:normal;
+  padding:0 .28em;
+}
+.tb__names .n--star{
+  font-style:italic;
+  color:var(--accent);
+}
+
+/* footer strip */
+.tb__foot{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:24px;
+  margin-top:56px;
+  padding-top:24px;
+  border-top:1px solid var(--hair);
+}
+.tb__count{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:18px;
+  color:var(--muted);
+}
+.tb__count b{
+  font-style:normal;
+  font-weight:600;
+  color:var(--ink);
+}
+.tb__cta{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1.5px solid var(--accent);
+  padding-bottom:3px;
+  transition:color .2s ease;
+}
+.tb__cta:hover{color:var(--accent);}
+
+@media(max-width:640px){
+  .tb{padding:64px 24px 60px;}
+  .tb__top{flex-direction:column;gap:10px;align-items:flex-start;}
+  .tb__meta{text-align:left;}
+  .tb__head{grid-template-columns:1fr;gap:22px;margin-top:30px;margin-bottom:36px;}
+  .tb__title{max-width:none;}
+  .tb__names{max-width:none;font-size:clamp(22px,7vw,30px);line-height:1.34;}
+  .tb__foot{flex-direction:column;align-items:flex-start;gap:16px;}
+}
+</style>
+</head>
+<body>
+<section class="tb">
+  <div class="tb__top">
+    <span class="tb__label">Trusted By</span>
+    <span class="tb__meta">Selected Partners · 2014—2026</span>
+  </div>
+
+  <div class="tb__head">
+    <h2 class="tb__title">Names we keep good <em>company</em> with.</h2>
+    <p class="tb__note">A working list of the founders, publishers, and product teams who&rsquo;ve shipped alongside us &mdash; <strong>no logos, just the work</strong>.</p>
+  </div>
+
+  <p class="tb__names">
+    <span class="n">Halden &amp; Fair</span><span class="sep">/</span><span class="n">Northbound Studio</span><span class="sep">/</span><span class="n n--star">Meridian Type</span><span class="sep">/</span><span class="n">Cormorant Press</span><span class="sep">/</span><span class="n">Grayling Labs</span><span class="sep">/</span><span class="n"> Oskar &amp; Vale</span><span class="sep">/</span><span class="n">Fielder Coffee</span><span class="sep">/</span><span class="n">The Salt Print</span><span class="sep">/</span><span class="n n--star">Junco</span><span class="sep">/</span><span class="n">Brightwater Co.</span><span class="sep">/</span><span class="n">Ridgeline Outfitters</span><span class="sep">/</span><span class="n">Ptarmigan Books</span><span class="sep">/</span><span class="n">Marlow &amp; Reed</span><span class="sep">/</span><span class="n">Foundry Nine</span><span class="sep">/</span><span class="n n--star">Ember Field</span><span class="sep">/</span><span class="n">The Quiet Ledger</span>
+  </p>
+
+  <div class="tb__foot">
+    <p class="tb__count"><b>40+</b> teams, since two thousand fourteen.</p>
+    <a class="tb__cta" href="#">Read the case notes</a>
+  </div>
+</section>
+</body>
+</html>

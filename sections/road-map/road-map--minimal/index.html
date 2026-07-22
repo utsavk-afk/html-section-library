@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!-- ===== ROAD-MAP — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — Product</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --accent:#C0492B;
+  --line:#e7e5e2;
+  --line-soft:#f1efec;
+  --bg:#ffffff;
+  --chip:#f6f4f1;
+  --maxw:1200px;
+  --r-sm:4px;
+  --r-md:10px;
+}
+
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.roadmap{
+  width:100%;
+  padding:96px 40px 104px;
+}
+.roadmap__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* ---- header : asymmetric, left-weighted ---- */
+.rm-head{
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:48px;
+  align-items:end;
+  padding-bottom:44px;
+  margin-bottom:56px;
+  border-bottom:1px solid var(--line);
+}
+.rm-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.rm-eyebrow::before{
+  content:"";
+  width:22px;
+  height:1.5px;
+  background:var(--accent);
+  display:block;
+}
+.rm-title{
+  font-size:44px;
+  font-weight:700;
+  letter-spacing:-.025em;
+  line-height:1.08;
+  max-width:15ch;
+}
+.rm-title em{
+  font-style:normal;
+  color:var(--accent);
+}
+.rm-meta{
+  padding-bottom:6px;
+}
+.rm-meta p{
+  font-size:15px;
+  color:var(--muted);
+  max-width:38ch;
+  margin-bottom:20px;
+}
+.rm-updated{
+  font-size:13px;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:500;
+}
+.rm-updated span{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+
+/* ---- columns ---- */
+.rm-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+}
+.rm-col{
+  padding:0 32px;
+  border-left:1px solid var(--line-soft);
+}
+.rm-col:first-child{
+  padding-left:0;
+  border-left:none;
+}
+.rm-col:last-child{
+  padding-right:0;
+}
+
+.rm-col__head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:28px;
+}
+.rm-col__label{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+.rm-col--now .rm-col__label{
+  color:var(--accent);
+}
+.rm-col__count{
+  font-size:12px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---- item cards ---- */
+.rm-item{
+  padding:18px 0;
+  border-top:1px solid var(--line-soft);
+}
+.rm-item:first-of-type{
+  border-top:1px solid var(--line);
+}
+.rm-item__tag{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:inline-block;
+  margin-bottom:9px;
+}
+.rm-item__name{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  margin-bottom:6px;
+}
+.rm-item__desc{
+  font-size:13.5px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+/* shipped: check + strike-mute feel */
+.rm-col--done .rm-item__name{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  color:var(--ink);
+}
+.rm-col--done .rm-item__name::before{
+  content:"";
+  flex:none;
+  margin-top:5px;
+  width:12px;height:7px;
+  border-left:2px solid var(--accent);
+  border-bottom:2px solid var(--accent);
+  transform:rotate(-45deg);
+}
+
+/* in-progress: accent left edge + progress meter */
+.rm-col--now .rm-item{
+  position:relative;
+  padding-left:18px;
+}
+.rm-col--now .rm-item::before{
+  content:"";
+  position:absolute;
+  left:0;top:19px;bottom:19px;
+  width:2px;
+  background:var(--accent);
+  border-radius:2px;
+}
+.rm-progress{
+  margin-top:12px;
+  height:3px;
+  width:100%;
+  background:var(--line);
+  border-radius:3px;
+  overflow:hidden;
+}
+.rm-progress i{
+  display:block;
+  height:100%;
+  background:var(--accent);
+  border-radius:3px;
+}
+.rm-progress-lab{
+  margin-top:7px;
+  font-size:11px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+/* next: hollow marker */
+.rm-col--next .rm-item__name{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+}
+.rm-col--next .rm-item__name::before{
+  content:"";
+  flex:none;
+  margin-top:4px;
+  width:8px;height:8px;
+  border:1.5px solid var(--muted);
+  border-radius:50%;
+}
+.rm-col--next .rm-item__eta{
+  display:inline-block;
+  margin-top:10px;
+  font-size:11px;
+  font-weight:600;
+  color:var(--ink);
+  background:var(--chip);
+  padding:3px 9px;
+  border-radius:var(--r-sm);
+}
+
+.rm-foot{
+  margin-top:56px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.rm-foot p{
+  font-size:13.5px;
+  color:var(--muted);
+}
+.rm-foot a{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-bottom:1.5px solid var(--accent);
+  padding-bottom:3px;
+}
+.rm-foot a:hover{color:var(--accent);}
+
+@media(max-width:640px){
+  .roadmap{padding:60px 22px 72px;}
+  .rm-head{
+    grid-template-columns:1fr;
+    gap:26px;
+    margin-bottom:40px;
+    padding-bottom:32px;
+  }
+  .rm-title{font-size:32px;}
+  .rm-cols{grid-template-columns:1fr;gap:8px;}
+  .rm-col{
+    padding:28px 0 4px;
+    border-left:none;
+    border-top:1px solid var(--line);
+  }
+  .rm-col:first-child{border-top:none;padding-top:4px;}
+}
+</style>
+</head>
+<body>
+<section class="roadmap" aria-label="Product roadmap">
+  <div class="roadmap__inner">
+
+    <header class="rm-head">
+      <div>
+        <span class="rm-eyebrow">Roadmap · Q3 2026</span>
+        <h1 class="rm-title">Where <em>Halyard</em> is headed this quarter.</h1>
+      </div>
+      <div class="rm-meta">
+        <p>Every line ships behind a flag first. Dates slip before scope does — we cut, we don't cram.</p>
+        <p class="rm-updated"><span></span>Last updated July 22, 2026</p>
+      </div>
+    </header>
+
+    <div class="rm-cols">
+
+      <!-- SHIPPED -->
+      <div class="rm-col rm-col--done">
+        <div class="rm-col__head">
+          <span class="rm-col__label">Shipped</span>
+          <span class="rm-col__count">3 / done</span>
+        </div>
+
+        <article class="rm-item">
+          <span class="rm-item__tag">Editor</span>
+          <h3 class="rm-item__name">Inline comment threads</h3>
+          <p class="rm-item__desc">Resolve, reopen, and @-mention teammates without leaving the document.</p>
+        </article>
+
+        <article class="rm-item">
+          <span class="rm-item__tag">Import</span>
+          <h3 class="rm-item__name">CSV &amp; Notion migration</h3>
+          <p class="rm-item__desc">Bring existing boards over with column mapping preserved on first sync.</p>
+        </article>
+
+        <article class="rm-item">
+          <span class="rm-item__tag">Performance</span>
+          <h3 class="rm-item__name">40% faster board loads</h3>
+          <p class="rm-item__desc">Rewrote the render path — large boards now paint under 300ms cold.</p>
+        </article>
+      </div>
+
+      <!-- IN PROGRESS -->
+      <div class="rm-col rm-col--now">
+        <div class="rm-col__head">
+          <span class="rm-col__label">In progress</span>
+          <span class="rm-col__count">2 active</span>
+        </div>
+
+        <article class="rm-item">
+          <span class="rm-item__tag">Automations</span>
+          <h3 class="rm-item__name">Recurring task rules</h3>
+          <p class="rm-item__desc">Trigger cards on a schedule or when a status flips. In private beta with 40 teams.</p>
+          <div class="rm-progress"><i style="width:72%"></i></div>
+          <p class="rm-progress-lab">72% · beta closes Aug 8</p>
+        </article>
+
+        <article class="rm-item">
+          <span class="rm-item__tag">Mobile</span>
+          <h3 class="rm-item__name">Offline draft mode</h3>
+          <p class="rm-item__desc">Edit on the subway, sync on reconnect with conflict-safe merges.</p>
+          <div class="rm-progress"><i style="width:35%"></i></div>
+          <p class="rm-progress-lab">35% · in build</p>
+        </article>
+      </div>
+
+      <!-- NEXT -->
+      <div class="rm-col rm-col--next">
+        <div class="rm-col__head">
+          <span class="rm-col__label">Next up</span>
+          <span class="rm-col__count">3 planned</span>
+        </div>
+
+        <article class="rm-item">
+          <span class="rm-item__tag">Analytics</span>
+          <h3 class="rm-item__name">Cycle-time dashboards</h3>
+          <p class="rm-item__desc">See where work stalls between columns, per team and per label.</p>
+          <span class="rm-item__eta">Est. Sept</span>
+        </article>
+
+        <article class="rm-item">
+          <span class="rm-item__tag">API</span>
+          <h3 class="rm-item__name">Webhooks v2</h3>
+          <p class="rm-item__desc">Signed payloads, retries with backoff, and a replay log for missed events.</p>
+          <span class="rm-item__eta">Est. Sept</span>
+        </article>
+
+        <article class="rm-item">
+          <span class="rm-item__tag">Access</span>
+          <h3 class="rm-item__name">SCIM provisioning</h3>
+          <p class="rm-item__desc">Auto-add and deactivate seats from Okta and Entra ID.</p>
+          <span class="rm-item__eta">Under review</span>
+        </article>
+      </div>
+
+    </div>
+
+    <footer class="rm-foot">
+      <p>Have something we missed? Every request gets read by the team that builds it.</p>
+      <a href="#request">Request a feature &rarr;</a>
+    </footer>
+
+  </div>
+</section>
+</body>
+</html>

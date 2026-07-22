@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- ===== client-name-list — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusted By — Client Name List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --paper:#F4F3EE;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --smoke:#6B6B63;
+  --hair:rgba(10,10,10,.14);
+  --font:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.tb{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin-inline:auto;
+  padding:96px clamp(20px,5vw,88px) 104px;
+  overflow:hidden;
+}
+
+/* corner marks / editorial furniture */
+.tb__mark{
+  position:absolute;
+  top:40px;
+  right:clamp(20px,5vw,88px);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--smoke);
+}
+.tb__mark b{color:var(--lime);}
+
+/* header row — asymmetric, left-weighted */
+.tb__head{
+  display:flex;
+  align-items:flex-end;
+  gap:24px;
+  flex-wrap:wrap;
+  padding-bottom:34px;
+  border-bottom:2px solid var(--hair);
+  border-color:rgba(244,243,238,.16);
+}
+.tb__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--lime);
+  color:var(--ink);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:9px 18px 8px;
+  border-radius:999px;
+}
+.tb__kicker span{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--magenta);
+}
+.tb__count{
+  margin-left:auto;
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.02em;
+  color:var(--smoke);
+  text-align:right;
+  line-height:1.3;
+}
+.tb__count b{
+  display:block;
+  color:var(--paper);
+  font-size:34px;
+  line-height:1;
+  letter-spacing:-.02em;
+}
+
+/* the big typographic list */
+.tb__list{
+  margin-top:clamp(34px,5vw,60px);
+  font-weight:900;
+  font-size:clamp(38px,7.2vw,104px);
+  line-height:.98;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:0 .34em;
+}
+.tb__name{
+  color:var(--paper);
+  transition:color .18s ease;
+  position:relative;
+  cursor:default;
+  white-space:nowrap;
+}
+.tb__name:hover{color:var(--lime);}
+/* dot separators */
+.tb__dot{
+  color:var(--magenta);
+  font-size:.5em;
+  transform:translateY(-.18em);
+  margin-inline:-.06em;
+}
+/* two names carry the accent by default — focal points */
+.tb__name--lime{color:var(--lime);}
+.tb__name--mag{
+  color:var(--ink);
+  background:var(--magenta);
+  padding:0 .12em;
+  border-radius:.1em;
+}
+.tb__name--mag:hover{color:var(--ink);}
+/* one name outlined for texture */
+.tb__name--ghost{
+  color:transparent;
+  -webkit-text-stroke:2px rgba(244,243,238,.4);
+}
+.tb__name--ghost:hover{
+  color:var(--lime);
+  -webkit-text-stroke:2px var(--lime);
+}
+
+/* footer strip */
+.tb__foot{
+  margin-top:clamp(44px,6vw,72px);
+  display:flex;
+  align-items:center;
+  gap:22px 34px;
+  flex-wrap:wrap;
+}
+.tb__note{
+  max-width:520px;
+  font-size:16px;
+  font-weight:600;
+  line-height:1.5;
+  color:var(--smoke);
+}
+.tb__note em{
+  font-style:normal;
+  color:var(--paper);
+}
+.tb__cta{
+  margin-left:auto;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--paper);
+  color:var(--ink);
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:.02em;
+  text-decoration:none;
+  padding:15px 26px;
+  border-radius:999px;
+  transition:transform .15s ease,background .15s ease;
+}
+.tb__cta svg{transition:transform .15s ease;}
+.tb__cta:hover{background:var(--lime);}
+.tb__cta:hover svg{transform:translateX(4px);}
+
+@media(max-width:640px){
+  .tb{padding:64px 20px 72px;}
+  .tb__mark{position:static;margin-bottom:20px;text-align:left;}
+  .tb__head{padding-bottom:24px;}
+  .tb__count{margin-left:0;text-align:left;width:100%;}
+  .tb__count b{font-size:28px;}
+  .tb__list{font-size:clamp(32px,12vw,54px);gap:0 .28em;}
+  .tb__foot{margin-top:40px;}
+  .tb__cta{margin-left:0;width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<section class="tb" aria-label="Clients we work with">
+  <p class="tb__mark">Client Roster <b>/</b> 2019—2026</p>
+
+  <div class="tb__head">
+    <span class="tb__kicker"><span></span>Trusted by the loud ones</span>
+    <p class="tb__count"><b>240+</b>brands shipped since 2019</p>
+  </div>
+
+  <h2 class="tb__list" aria-label="Client names">
+    <span class="tb__name">Northwind</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name tb__name--lime">Rally&nbsp;Coffee</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Beckett&nbsp;&amp;&nbsp;Fox</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Hover Labs</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name tb__name--mag">Fathom</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Cobalt Row</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name tb__name--ghost">Marrow</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Ostrom&nbsp;Bank</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Pinehold</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name tb__name--lime">Volt&nbsp;District</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Saffron&nbsp;Kit</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Tandem&nbsp;Goods</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Meridian&nbsp;9</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name tb__name--mag">Halcyon</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Duro&nbsp;Athletics</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Kettle&nbsp;River</span><span class="tb__dot" aria-hidden="true">●</span>
+    <span class="tb__name">Wren&nbsp;Studio</span>
+  </h2>
+
+  <div class="tb__foot">
+    <p class="tb__note">
+      Retainers, launches, and one-week sprints — <em>from seed-stage upstarts to a Fortune-500 payments desk.</em> If your logo isn't here yet, we saved you a slot.
+    </p>
+    <a class="tb__cta" href="#work">
+      See the case studies
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+        <path d="M1 7h15M11 1l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+</body>
+</html>

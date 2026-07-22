@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!-- ===== CONTACT-FORM — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6E6A61;
+  --line:#DEDBD2;
+  --accent:#B4472B;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.contact{
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 88px 108px;
+}
+
+.contact__label{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:28px;
+}
+.contact__label::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--accent);
+}
+
+.contact__grid{
+  display:grid;
+  grid-template-columns:0.82fr 1.18fr;
+  gap:96px;
+  align-items:start;
+}
+
+/* ---- left: editorial intro + contact info ---- */
+.intro__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.04;
+  letter-spacing:-.015em;
+  margin-bottom:26px;
+}
+.intro__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.intro__lede{
+  font-size:16px;
+  color:var(--muted);
+  max-width:34ch;
+  margin-bottom:52px;
+}
+
+.info{
+  border-top:1px solid var(--line);
+}
+.info__row{
+  display:flex;
+  gap:20px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+}
+.info__k{
+  flex:0 0 118px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding-top:3px;
+}
+.info__v{
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.35;
+}
+.info__v a{
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  padding-bottom:1px;
+  transition:border-color .2s,color .2s;
+}
+.info__v a:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+}
+.info__v span{
+  display:block;
+  font-family:var(--sans);
+  font-size:13.5px;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+/* ---- right: the form panel ---- */
+.form{
+  background:#FFFFFF;
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:52px 56px 48px;
+  box-shadow:0 1px 0 rgba(27,26,23,.02),0 24px 48px -32px rgba(27,26,23,.18);
+}
+.form__eyebrow{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.form__head{
+  font-family:var(--serif);
+  font-size:23px;
+  font-weight:500;
+  margin-bottom:34px;
+}
+
+.field{
+  margin-bottom:26px;
+}
+.field--row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-bottom:26px;
+}
+.field label{
+  display:block;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin-bottom:9px;
+}
+.field input,
+.field textarea{
+  width:100%;
+  font-family:var(--sans);
+  font-size:15.5px;
+  color:var(--ink);
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--line);
+  padding:6px 0 11px;
+  transition:border-color .2s;
+}
+.field textarea{
+  resize:vertical;
+  min-height:96px;
+  line-height:1.55;
+}
+.field input::placeholder,
+.field textarea::placeholder{
+  color:#B4AFA3;
+}
+.field input:focus,
+.field textarea:focus{
+  outline:none;
+  border-bottom-color:var(--accent);
+}
+
+.form__foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  margin-top:38px;
+}
+.form__note{
+  font-size:12.5px;
+  color:var(--muted);
+  max-width:24ch;
+}
+.submit{
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--accent);
+  border:none;
+  border-radius:2px;
+  padding:15px 34px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  transition:background .2s,transform .2s;
+  white-space:nowrap;
+}
+.submit:hover{
+  background:#9C3B22;
+  transform:translateY(-1px);
+}
+.submit svg{display:block;}
+
+@media(max-width:640px){
+  .contact{padding:64px 24px 72px;}
+  .contact__grid{
+    grid-template-columns:1fr;
+    gap:52px;
+  }
+  .intro__title{font-size:38px;}
+  .intro__lede{margin-bottom:38px;}
+  .form{padding:34px 26px 32px;}
+  .field--row{grid-template-columns:1fr;gap:0;margin-bottom:0;}
+  .field--row .field{margin-bottom:26px;}
+  .form__foot{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .submit{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+<section class="contact">
+  <p class="contact__label">Start a conversation</p>
+
+  <div class="contact__grid">
+    <!-- left column -->
+    <div class="intro">
+      <h2 class="intro__title">Tell us about the<br>project you're <em>weighing</em>.</h2>
+      <p class="intro__lede">We read every note ourselves. Expect a considered reply within two working days — no bots, no ticket numbers.</p>
+
+      <div class="info">
+        <div class="info__row">
+          <div class="info__k">Email</div>
+          <div class="info__v"><a href="mailto:studio@northfield.co">studio@northfield.co</a></div>
+        </div>
+        <div class="info__row">
+          <div class="info__k">Studio</div>
+          <div class="info__v">41 Marlow Yard, Unit 3<br><span>Bristol, BS1 6QT — United Kingdom</span></div>
+        </div>
+        <div class="info__row">
+          <div class="info__k">Hours</div>
+          <div class="info__v">Mon–Thu, 9–5<br><span>Fridays reserved for making</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- right column: form -->
+    <form class="form" action="#" method="post" novalidate>
+      <p class="form__eyebrow">Enquiry</p>
+      <h3 class="form__head">A few details to get us started</h3>
+
+      <div class="field--row">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="Rowan Castellano" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="message">What are you hoping to build?</label>
+        <textarea id="message" name="message" placeholder="A short paragraph on the scope, timeline, and roughly where the budget sits is plenty to begin."></textarea>
+      </div>
+
+      <div class="form__foot">
+        <p class="form__note">By sending this you agree we may reply to the address above.</p>
+        <button type="submit" class="submit">
+          Send message
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+            <path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+</body>
+</html>

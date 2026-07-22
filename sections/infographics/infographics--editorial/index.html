@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!-- ===== INFOGRAPHICS — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where the Hours Go — Infographic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-soft:#54514A;
+  --accent:#B4472B;
+  --accent-deep:#8F3620;
+  --line:#E1DED5;
+  --line-strong:#C8C4B7;
+  --paper:#F5F3EC;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.report{
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 80px 104px;
+}
+
+/* header band */
+.report__kicker{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:26px;
+}
+.report__kicker::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--accent);
+}
+.report__kicker span{color:var(--ink-soft);}
+
+.report__head{
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:56px;
+  align-items:end;
+  padding-bottom:38px;
+  border-bottom:1px solid var(--line-strong);
+}
+.report__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(38px,4.4vw,60px);
+  line-height:1.04;
+  letter-spacing:-0.015em;
+  max-width:13ch;
+}
+.report__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.report__lede{
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.55;
+  color:var(--ink-soft);
+  padding-bottom:6px;
+}
+.report__lede .src{
+  display:block;
+  margin-top:16px;
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+
+/* main grid: chart left, readout right */
+.grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
+  gap:72px;
+  margin-top:60px;
+  align-items:start;
+}
+
+/* --- BAR CHART --- */
+.chart__caption{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:34px;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+}
+.chart__caption b{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:13px;
+  letter-spacing:normal;
+  text-transform:none;
+  color:var(--ink);
+}
+
+.bars{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.bar{
+  display:grid;
+  grid-template-columns:180px 1fr 62px;
+  align-items:center;
+  gap:20px;
+  padding:17px 0;
+  border-top:1px solid var(--line);
+}
+.bar:last-child{border-bottom:1px solid var(--line);}
+
+.bar__name{
+  font-family:var(--serif);
+  font-size:17px;
+  font-weight:500;
+  line-height:1.2;
+}
+.bar__name small{
+  display:block;
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.04em;
+  color:var(--ink-soft);
+  margin-top:3px;
+}
+.bar__track{
+  position:relative;
+  height:15px;
+}
+.bar__fill{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  background:var(--ink);
+  border-radius:0 2px 2px 0;
+}
+.bar--lead .bar__fill{
+  background:var(--accent);
+}
+.bar--lead .bar__name{color:var(--accent-deep);}
+.bar__val{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:500;
+  text-align:right;
+  letter-spacing:-0.01em;
+  font-variant-numeric:tabular-nums;
+}
+.bar--lead .bar__val{color:var(--accent-deep);}
+.bar__val sup{
+  font-family:var(--sans);
+  font-size:10px;
+  font-weight:600;
+  color:var(--ink-soft);
+  margin-left:2px;
+  vertical-align:super;
+}
+
+.chart__axis{
+  display:flex;
+  justify-content:space-between;
+  margin-top:14px;
+  padding-left:200px;
+  font-size:10px;
+  letter-spacing:.14em;
+  color:var(--ink-soft);
+}
+
+/* --- READOUT / donut side --- */
+.readout{
+  border-left:1px solid var(--line-strong);
+  padding-left:46px;
+}
+.readout__label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:30px;
+}
+
+.donut{
+  display:flex;
+  align-items:center;
+  gap:26px;
+  margin-bottom:38px;
+}
+.donut__ring{
+  --sweep:38;
+  position:relative;
+  width:132px;
+  height:132px;
+  flex:none;
+  border-radius:50%;
+  background:
+    conic-gradient(
+      var(--accent) 0 calc(var(--sweep) * 1%),
+      var(--paper) calc(var(--sweep) * 1%) 100%
+    );
+}
+.donut__ring::after{
+  content:"";
+  position:absolute;
+  inset:17px;
+  border-radius:50%;
+  background:var(--bg);
+}
+.donut__center{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:1;
+}
+.donut__center b{
+  font-family:var(--serif);
+  font-size:30px;
+  font-weight:500;
+  line-height:1;
+  color:var(--accent-deep);
+}
+.donut__center span{
+  font-size:9px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-top:5px;
+}
+.donut__note{
+  font-family:var(--serif);
+  font-size:15px;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+.donut__note em{font-style:italic;color:var(--ink);}
+
+.stat{
+  padding:22px 0;
+  border-top:1px solid var(--line);
+}
+.stat:last-child{border-bottom:1px solid var(--line);}
+.stat__num{
+  font-family:var(--serif);
+  font-size:34px;
+  font-weight:500;
+  line-height:1;
+  letter-spacing:-0.02em;
+}
+.stat--accent .stat__num{color:var(--accent-deep);}
+.stat__desc{
+  font-size:13px;
+  line-height:1.45;
+  color:var(--ink-soft);
+  margin-top:10px;
+  max-width:30ch;
+}
+.stat__desc b{color:var(--ink);font-weight:600;}
+
+.report__foot{
+  margin-top:56px;
+  padding-top:22px;
+  border-top:1px solid var(--line-strong);
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.report__foot em{
+  font-family:var(--serif);
+  font-style:italic;
+  letter-spacing:normal;
+  text-transform:none;
+  font-size:14px;
+  color:var(--ink);
+}
+
+@media(max-width:640px){
+  .report{padding:52px 22px 60px;}
+  .report__head{
+    grid-template-columns:1fr;
+    gap:24px;
+    align-items:start;
+  }
+  .report__title{font-size:33px;max-width:none;}
+  .grid{
+    grid-template-columns:1fr;
+    gap:44px;
+    margin-top:40px;
+  }
+  .bar{
+    grid-template-columns:1fr 54px;
+    gap:6px 14px;
+    padding:15px 0;
+  }
+  .bar__name{grid-column:1 / -1;}
+  .bar__track{grid-column:1;}
+  .bar__val{grid-column:2;grid-row:2;}
+  .chart__axis{padding-left:0;}
+  .readout{
+    border-left:none;
+    border-top:1px solid var(--line-strong);
+    padding-left:0;
+    padding-top:38px;
+  }
+  .donut{gap:20px;}
+}
+</style>
+</head>
+<body>
+<section class="report">
+  <p class="report__kicker">The Instrumented Week <span>· Field study, 2026</span></p>
+
+  <div class="report__head">
+    <h1 class="report__title">Where the hours actually <em>go</em> once you measure them.</h1>
+    <p class="report__lede">
+      We logged 1,204 focused work sessions across 63 engineering teams for eleven weeks. The gap between where people <em>believe</em> their day disappears and where the timers say it does turned out to be wide.
+      <span class="src">Source · Cadence Labs time-audit dataset, Q2 2026</span>
+    </p>
+  </div>
+
+  <div class="grid">
+    <!-- BAR CHART -->
+    <div class="chart">
+      <div class="chart__caption">
+        <span>Average weekday, hours per person</span>
+        <b>n = 1,204 sessions</b>
+      </div>
+
+      <div class="bars">
+        <div class="bar bar--lead">
+          <div class="bar__name">Context switching <small>Meetings, pings, re-orientation</small></div>
+          <div class="bar__track"><div class="bar__fill" style="width:82%"></div></div>
+          <div class="bar__val">3.7<sup>h</sup></div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Deep, uninterrupted work <small>Sessions over 45 min</small></div>
+          <div class="bar__track"><div class="bar__fill" style="width:46%"></div></div>
+          <div class="bar__val">2.1<sup>h</sup></div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Review &amp; async replies <small>Docs, code review, threads</small></div>
+          <div class="bar__track"><div class="bar__fill" style="width:33%"></div></div>
+          <div class="bar__val">1.5<sup>h</sup></div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Planning &amp; admin <small>Tickets, standups, tooling</small></div>
+          <div class="bar__track"><div class="bar__fill" style="width:20%"></div></div>
+          <div class="bar__val">0.9<sup>h</sup></div>
+        </div>
+      </div>
+
+      <div class="chart__axis">
+        <span>0H</span><span>1H</span><span>2H</span><span>3H</span><span>4H</span>
+      </div>
+    </div>
+
+    <!-- READOUT -->
+    <div class="readout">
+      <p class="readout__label">The headline number</p>
+
+      <div class="donut">
+        <div class="donut__ring" style="--sweep:38">
+          <div class="donut__center">
+            <b>38%</b>
+            <span>of the day</span>
+          </div>
+        </div>
+        <p class="donut__note">
+          More than a third of the logged day is spent <em>switching</em> — not on the work itself, but on getting back to it.
+        </p>
+      </div>
+
+      <div class="stat stat--accent">
+        <div class="stat__num">23 min</div>
+        <p class="stat__desc">Median time to <b>regain full focus</b> after a single interruption. Most people estimated four.</p>
+      </div>
+
+      <div class="stat">
+        <div class="stat__num">2.1×</div>
+        <p class="stat__desc">Teams that protected two morning hours shipped <b>twice the reviewed work</b> per week.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="report__foot">
+    <span>Cadence Labs · Instrumented Week</span>
+    <em>Measured, not remembered.</em>
+    <span>Fig. 01 / 04</span>
+  </div>
+</section>
+</body>
+</html>

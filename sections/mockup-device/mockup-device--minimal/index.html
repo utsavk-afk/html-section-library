@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!-- ===== MOCKUP-DEVICE — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup Device — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#ffffff;
+    --ink:#141414;
+    --muted:#737373;
+    --line:#e6e4e0;
+    --accent:#C0492B;
+    --serif:'Inter',ui-serif,Georgia,serif;
+    --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+
+  /* ---------- section shell ---------- */
+  .mkd{
+    width:100%;
+    padding:96px 64px;
+    border-top:1px solid var(--line);
+  }
+  .mkd__inner{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);
+    gap:80px;
+    align-items:center;
+  }
+
+  /* ---------- left column: copy ---------- */
+  .mkd__copy{max-width:440px;}
+  .mkd__eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:26px;
+  }
+  .mkd__eyebrow::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--accent);
+  }
+  .mkd__title{
+    font-size:44px;
+    line-height:1.08;
+    font-weight:700;
+    letter-spacing:-0.025em;
+    margin-bottom:22px;
+  }
+  .mkd__title em{
+    font-style:normal;
+    color:var(--accent);
+  }
+  .mkd__lead{
+    font-size:17px;
+    color:var(--muted);
+    line-height:1.6;
+    margin-bottom:34px;
+  }
+  .mkd__points{list-style:none;margin-bottom:38px;}
+  .mkd__points li{
+    display:flex;
+    gap:13px;
+    padding:13px 0;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+  .mkd__points li:first-child{padding-top:0;}
+  .mkd__points strong{font-weight:600;}
+  .mkd__points span{color:var(--muted);}
+  .mkd__tick{
+    flex:none;
+    width:18px;height:18px;
+    margin-top:1px;
+    color:var(--accent);
+  }
+  .mkd__cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--ink);
+    color:var(--bg);
+    font-family:inherit;
+    font-size:15px;
+    font-weight:600;
+    padding:14px 26px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    text-decoration:none;
+  }
+  .mkd__cta svg{width:16px;height:16px;}
+  .mkd__note{
+    margin-top:16px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .mkd__note b{color:var(--ink);font-weight:600;}
+
+  /* ---------- right column: device ---------- */
+  .mkd__stage{
+    position:relative;
+    padding-left:14px;
+  }
+  /* faint grounding rule behind the browser, off-center for asymmetry */
+  .mkd__stage::before{
+    content:"";
+    position:absolute;
+    left:-40px;right:56px;bottom:-26px;
+    height:1px;
+    background:var(--line);
+  }
+
+  .browser{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 1px 1px rgba(20,20,20,.03),
+               0 18px 46px -22px rgba(20,20,20,.22);
+  }
+  .browser__bar{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 16px;
+    border-bottom:1px solid var(--line);
+    background:#fbfaf9;
+  }
+  .browser__dots{display:flex;gap:7px;}
+  .browser__dots i{
+    width:11px;height:11px;border-radius:50%;
+    background:#dedbd6;display:block;
+  }
+  .browser__url{
+    flex:1;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    height:28px;
+    padding:0 12px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:7px;
+    font-size:12.5px;
+    color:var(--muted);
+  }
+  .browser__url svg{width:12px;height:12px;color:#9c9a96;}
+  .browser__url b{color:var(--ink);font-weight:500;}
+
+  /* app UI inside the browser */
+  .app{display:grid;grid-template-columns:150px 1fr;min-height:352px;}
+  .app__side{
+    border-right:1px solid var(--line);
+    padding:18px 14px;
+    background:#fcfbfa;
+  }
+  .app__brand{
+    display:flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;
+    letter-spacing:-.01em;
+    margin-bottom:22px;
+  }
+  .app__brand .mark{
+    width:20px;height:20px;border-radius:6px;
+    background:var(--accent);
+    display:inline-block;
+  }
+  .app__nav{list-style:none;display:flex;flex-direction:column;gap:3px;}
+  .app__nav li{
+    display:flex;align-items:center;gap:9px;
+    font-size:12.5px;color:var(--muted);
+    padding:8px 9px;border-radius:6px;
+  }
+  .app__nav li.is-active{
+    background:#fff;color:var(--ink);font-weight:600;
+    border:1px solid var(--line);
+  }
+  .app__nav .ico{
+    width:13px;height:13px;flex:none;
+    border:1.5px solid currentColor;border-radius:3px;opacity:.7;
+  }
+  .app__nav li.is-active .ico{border-color:var(--accent);opacity:1;}
+
+  .app__main{padding:22px 22px 26px;}
+  .app__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    margin-bottom:20px;
+  }
+  .app__h{font-size:15px;font-weight:600;}
+  .app__sub{font-size:11.5px;color:var(--muted);}
+  .app__filter{
+    font-size:11px;font-weight:600;color:var(--accent);
+    display:inline-flex;align-items:center;gap:5px;
+  }
+  .app__filter i{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+
+  /* stat row — varied, not uniform grid */
+  .stats{display:flex;gap:14px;margin-bottom:22px;}
+  .stat{
+    flex:1;
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:12px 13px;
+  }
+  .stat--lead{
+    flex:1.35;
+    border-color:transparent;
+    background:#fbf1ee;
+  }
+  .stat__k{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .stat__v{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-top:6px;}
+  .stat--lead .stat__v{color:var(--accent);}
+  .stat__d{font-size:11px;color:var(--muted);margin-top:3px;}
+  .stat--lead .stat__d{color:#a2503c;}
+
+  /* mini chart drawn with CSS bars */
+  .chart{
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:16px 16px 14px;
+  }
+  .chart__top{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:16px;
+  }
+  .chart__t{font-size:12.5px;font-weight:600;}
+  .chart__legend{display:flex;gap:14px;font-size:10.5px;color:var(--muted);}
+  .chart__legend span{display:inline-flex;align-items:center;gap:5px;}
+  .chart__legend i{width:8px;height:8px;border-radius:2px;display:inline-block;}
+  .dot-ink{background:var(--ink);}
+  .dot-acc{background:var(--accent);}
+  .bars{display:flex;align-items:flex-end;gap:14px;height:104px;}
+  .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;}
+  .bar__stack{
+    width:100%;max-width:26px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    gap:3px;height:88px;
+  }
+  .bar__a{background:var(--ink);border-radius:3px 3px 0 0;}
+  .bar__b{background:var(--accent);border-radius:3px 3px 0 0;}
+  .bar__x{font-size:10px;color:var(--muted);}
+
+  /* floating toast — the one bit of overlap/asymmetry */
+  .toast{
+    position:absolute;
+    right:-22px;bottom:34px;
+    display:flex;align-items:center;gap:11px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:11px 14px;
+    box-shadow:0 12px 30px -14px rgba(20,20,20,.28);
+  }
+  .toast__av{
+    width:30px;height:30px;border-radius:50%;flex:none;
+    background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:700;
+  }
+  .toast__t{font-size:12px;font-weight:600;line-height:1.3;}
+  .toast__s{font-size:11px;color:var(--muted);}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:640px){
+    .mkd{padding:56px 22px;}
+    .mkd__inner{grid-template-columns:1fr;gap:44px;}
+    .mkd__title{font-size:33px;}
+    .mkd__copy{max-width:none;}
+    .mkd__stage{padding-left:0;}
+    .mkd__stage::before{display:none;}
+    .app{grid-template-columns:1fr;}
+    .app__side{display:none;}
+    .stats{flex-wrap:wrap;}
+    .stat,.stat--lead{flex:1 1 44%;}
+    .toast{right:10px;bottom:14px;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="mkd">
+    <div class="mkd__inner">
+
+      <!-- LEFT: copy -->
+      <div class="mkd__copy">
+        <span class="mkd__eyebrow">Retention dashboard</span>
+        <h1 class="mkd__title">See which cohorts leak <em>before</em> the invoice does.</h1>
+        <p class="mkd__lead">
+          Meridian watches every subscription event and flags the accounts
+          drifting toward cancellation — so your CS team calls them in week two,
+          not after the churn report lands.
+        </p>
+
+        <ul class="mkd__points">
+          <li>
+            <svg class="mkd__tick" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l3.5 3.5L16 5.5"/></svg>
+            <span><strong>Live event stream</strong> — logins, seats, failed payments in one timeline.</span>
+          </li>
+          <li>
+            <svg class="mkd__tick" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l3.5 3.5L16 5.5"/></svg>
+            <span><strong>Risk score</strong> that updates hourly, no SQL required.</span>
+          </li>
+          <li>
+            <svg class="mkd__tick" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l3.5 3.5L16 5.5"/></svg>
+            <span><strong>Slack alerts</strong> the moment an account crosses your threshold.</span>
+          </li>
+        </ul>
+
+        <a class="mkd__cta" href="#">
+          Start a 14-day trial
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 5.5L15.5 10 11 14.5"/></svg>
+        </a>
+        <p class="mkd__note">No card needed. Connects to Stripe in <b>under 4 minutes</b>.</p>
+      </div>
+
+      <!-- RIGHT: device -->
+      <div class="mkd__stage">
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots"><i></i><i></i><i></i></div>
+            <div class="browser__url">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="9" width="10" height="7" rx="1.5"/><path d="M7 9V6.5a3 3 0 016 0V9"/></svg>
+              app.meridian.io/<b>retention</b>
+            </div>
+          </div>
+
+          <div class="app">
+            <!-- sidebar -->
+            <aside class="app__side">
+              <div class="app__brand"><span class="mark"></span>Meridian</div>
+              <ul class="app__nav">
+                <li><span class="ico"></span>Overview</li>
+                <li class="is-active"><span class="ico"></span>Retention</li>
+                <li><span class="ico"></span>Accounts</li>
+                <li><span class="ico"></span>Revenue</li>
+                <li><span class="ico"></span>Settings</li>
+              </ul>
+            </aside>
+
+            <!-- main -->
+            <div class="app__main">
+              <div class="app__head">
+                <div>
+                  <div class="app__h">Churn risk — Q3 cohorts</div>
+                  <div class="app__sub">Updated 6 min ago</div>
+                </div>
+                <span class="app__filter"><i></i>Last 90 days</span>
+              </div>
+
+              <div class="stats">
+                <div class="stat stat--lead">
+                  <div class="stat__k">At risk</div>
+                  <div class="stat__v">37</div>
+                  <div class="stat__d">accounts · $84k ARR</div>
+                </div>
+                <div class="stat">
+                  <div class="stat__k">Saved</div>
+                  <div class="stat__v">19</div>
+                  <div class="stat__d">this month</div>
+                </div>
+                <div class="stat">
+                  <div class="stat__k">Net retention</div>
+                  <div class="stat__v">108%</div>
+                  <div class="stat__d">+3 pts</div>
+                </div>
+              </div>
+
+              <div class="chart">
+                <div class="chart__top">
+                  <span class="chart__t">Activity vs. risk signals</span>
+                  <span class="chart__legend">
+                    <span><i class="dot-ink"></i>Active</span>
+                    <span><i class="dot-acc"></i>At risk</span>
+                  </span>
+                </div>
+                <div class="bars">
+                  <div class="bar"><div class="bar__stack"><div class="bar__b" style="height:18%"></div><div class="bar__a" style="height:44%"></div></div><span class="bar__x">Apr</span></div>
+                  <div class="bar"><div class="bar__stack"><div class="bar__b" style="height:26%"></div><div class="bar__a" style="height:52%"></div></div><span class="bar__x">May</span></div>
+                  <div class="bar"><div class="bar__stack"><div class="bar__b" style="height:34%"></div><div class="bar__a" style="height:40%"></div></div><span class="bar__x">Jun</span></div>
+                  <div class="bar"><div class="bar__stack"><div class="bar__b" style="height:22%"></div><div class="bar__a" style="height:64%"></div></div><span class="bar__x">Jul</span></div>
+                  <div class="bar"><div class="bar__stack"><div class="bar__b" style="height:14%"></div><div class="bar__a" style="height:72%"></div></div><span class="bar__x">Aug</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- floating toast -->
+        <div class="toast">
+          <div class="toast__av">NW</div>
+          <div>
+            <div class="toast__t">Northwind Labs flagged</div>
+            <div class="toast__s">Risk 82 · seats down 40%</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

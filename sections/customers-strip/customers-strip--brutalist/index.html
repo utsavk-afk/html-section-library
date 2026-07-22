@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customers Strip — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CUSTOMERS-STRIP — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --font-head:'Archivo',sans-serif;
+  --font-mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-mono);
+  -webkit-font-smoothing:antialiased;
+}
+
+.cs-strip{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:88px 56px;
+  background:
+    linear-gradient(var(--ink) 3px,transparent 3px) 0 0/100% 44px;
+  background-color:var(--paper);
+  position:relative;
+}
+/* faint top+bottom rule frame */
+.cs-strip::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--paper);
+  z-index:0;
+}
+.cs-inner{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:40px;
+  align-items:center;
+}
+
+/* ---- eyebrow tag ---- */
+.cs-tag{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 12px;
+  transform:rotate(-1.5deg);
+  margin-bottom:26px;
+}
+
+/* ---- headline ---- */
+.cs-head{
+  font-family:var(--font-head);
+  font-weight:900;
+  text-transform:uppercase;
+  font-size:clamp(30px,4vw,52px);
+  line-height:0.95;
+  letter-spacing:-1px;
+  margin-bottom:22px;
+}
+.cs-head mark{
+  background:var(--acid);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+/* ---- avatars row + join line ---- */
+.cs-people{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+.cs-avatars{
+  display:flex;
+  padding-left:6px;
+}
+.cs-av{
+  width:58px;
+  height:58px;
+  margin-left:-14px;
+  border:var(--border);
+  border-radius:50%;
+  background:var(--white);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-head);
+  font-weight:800;
+  font-size:18px;
+  color:var(--ink);
+  box-shadow:2px 2px 0 var(--ink);
+  transition:transform .12s ease;
+}
+.cs-av:first-child{margin-left:0;}
+.cs-av:hover{transform:translateY(-4px);z-index:5;}
+.cs-av.c1{background:var(--acid);}
+.cs-av.c2{background:var(--red);color:var(--white);}
+.cs-av.c3{background:var(--white);}
+.cs-av.c4{background:var(--ink);color:var(--acid);}
+.cs-av.c5{background:var(--acid);}
+.cs-av.more{
+  background:var(--ink);
+  color:var(--white);
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:13px;
+}
+.cs-join{
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:15px;
+  line-height:1.3;
+}
+.cs-join b{
+  font-family:var(--font-head);
+  font-weight:900;
+  font-size:19px;
+}
+.cs-join .sub{
+  display:block;
+  font-weight:400;
+  font-size:12px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  opacity:.72;
+  margin-top:2px;
+}
+
+/* ---- rating chip ---- */
+.cs-rating{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--white);
+  border:var(--border);
+  box-shadow:var(--shadow-sm);
+  padding:12px 16px;
+}
+.cs-stars{
+  font-family:var(--font-head);
+  letter-spacing:1px;
+  color:var(--ink);
+  font-size:18px;
+}
+.cs-stars b{color:var(--red);}
+.cs-rating .num{
+  font-family:var(--font-head);
+  font-weight:900;
+  font-size:20px;
+  border-left:3px solid var(--ink);
+  padding-left:12px;
+}
+.cs-rating .src{
+  font-family:var(--font-mono);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  opacity:.7;
+}
+
+/* ---- right: stat block / logos ---- */
+.cs-side{
+  border:var(--border);
+  box-shadow:var(--shadow);
+  background:var(--white);
+}
+.cs-side-top{
+  background:var(--acid);
+  border-bottom:var(--border);
+  padding:22px 24px 18px;
+}
+.cs-num{
+  font-family:var(--font-head);
+  font-weight:900;
+  font-size:clamp(46px,6vw,68px);
+  line-height:0.9;
+  letter-spacing:-2px;
+}
+.cs-num-cap{
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-top:8px;
+}
+.cs-logos{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.cs-logo{
+  padding:16px 18px;
+  font-family:var(--font-head);
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  border-top:3px solid var(--ink);
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.cs-logo:nth-child(even){border-left:3px solid var(--ink);}
+.cs-logo .mk{
+  width:14px;height:14px;
+  background:var(--red);
+  flex:0 0 auto;
+}
+.cs-logo:nth-child(2) .mk{background:var(--ink);border-radius:50%;}
+.cs-logo:nth-child(3) .mk{background:var(--acid);border:2px solid var(--ink);}
+.cs-logo:nth-child(4) .mk{background:var(--ink);transform:rotate(45deg);}
+
+@media(max-width:640px){
+  .cs-strip{padding:52px 22px;}
+  .cs-inner{grid-template-columns:1fr;gap:30px;}
+  .cs-av{width:50px;height:50px;font-size:15px;margin-left:-12px;}
+  .cs-people{gap:16px;}
+  .cs-rating{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<section class="cs-strip">
+  <div class="cs-inner">
+
+    <!-- LEFT: message + social proof -->
+    <div class="cs-main">
+      <span class="cs-tag">// TRUSTED BY BUILDERS</span>
+      <h1 class="cs-head">Shipping teams already <mark>run on it</mark> daily.</h1>
+
+      <div class="cs-people">
+        <div class="cs-avatars">
+          <div class="cs-av c1">DR</div>
+          <div class="cs-av c2">KM</div>
+          <div class="cs-av c3">AO</div>
+          <div class="cs-av c4">JW</div>
+          <div class="cs-av c5">TP</div>
+          <div class="cs-av more">+9K</div>
+        </div>
+        <div class="cs-join">
+          <b>Join 9,412 teams</b>
+          <span class="sub">Onboarded since launch</span>
+        </div>
+      </div>
+
+      <div class="cs-rating">
+        <span class="cs-stars">★★★★<b>★</b></span>
+        <span class="num">4.9</span>
+        <span class="src">1,204 reviews · G2</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: stat + customer logos -->
+    <div class="cs-side">
+      <div class="cs-side-top">
+        <div class="cs-num">312M</div>
+        <div class="cs-num-cap">Tasks pushed through last quarter</div>
+      </div>
+      <div class="cs-logos">
+        <div class="cs-logo"><span class="mk"></span>NORTHWIND</div>
+        <div class="cs-logo"><span class="mk"></span>PARSEC</div>
+        <div class="cs-logo"><span class="mk"></span>DELTAWORKS</div>
+        <div class="cs-logo"><span class="mk"></span>HELIOGRID</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

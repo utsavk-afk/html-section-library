@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!-- ===== PRICING — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6E6A61;
+  --line:#E4E1D8;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.pricing{
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 80px 120px;
+}
+
+/* ---- masthead: asymmetric, left-weighted ---- */
+.pricing__head{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--line);
+}
+.eyebrow{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:22px;
+}
+.pricing__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.06;
+  letter-spacing:-.015em;
+  max-width:15ch;
+}
+.pricing__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.pricing__note{
+  font-size:15px;
+  line-height:1.65;
+  color:var(--muted);
+  max-width:34ch;
+  padding-bottom:6px;
+}
+.pricing__note b{
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* ---- tier row ---- */
+.tiers{
+  margin-top:56px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  align-items:stretch;
+}
+
+.tier{
+  padding:40px 38px 44px;
+  border:1px solid var(--line);
+  border-left:none;
+  display:flex;
+  flex-direction:column;
+}
+.tier:first-child{
+  border-left:1px solid var(--line);
+  border-top-left-radius:4px;
+  border-bottom-left-radius:4px;
+}
+.tier:last-child{
+  border-top-right-radius:4px;
+  border-bottom-right-radius:4px;
+}
+
+/* ---- the dominant middle tier ---- */
+.tier--feature{
+  border:2px solid var(--accent);
+  border-radius:6px;
+  margin:-26px -2px;
+  padding:52px 40px 56px;
+  background:var(--bg);
+  position:relative;
+  box-shadow:0 24px 48px -28px rgba(180,71,43,.28);
+  z-index:2;
+}
+.tier--feature .tier__ribbon{
+  position:absolute;
+  top:-11px;
+  left:40px;
+  background:var(--accent);
+  color:#FCFCFA;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:5px 12px;
+  border-radius:2px;
+}
+
+.tier__name{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:22px;
+  letter-spacing:-.01em;
+}
+.tier__for{
+  margin-top:8px;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.tier__price{
+  margin-top:30px;
+  display:flex;
+  align-items:baseline;
+  gap:6px;
+}
+.tier__amount{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:46px;
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.tier--feature .tier__amount{color:var(--accent);}
+.tier__cycle{
+  font-size:13px;
+  color:var(--muted);
+}
+.tier__blurb{
+  margin-top:18px;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+  padding-bottom:26px;
+  border-bottom:1px solid var(--line);
+  max-width:30ch;
+}
+
+.tier__features{
+  list-style:none;
+  margin:26px 0 34px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.tier__features li{
+  display:flex;
+  gap:12px;
+  font-size:14px;
+  line-height:1.5;
+  align-items:flex-start;
+}
+.tier__features svg{
+  flex-shrink:0;
+  margin-top:2px;
+}
+.tier__features .check{color:var(--accent);}
+.tier__features .dim{color:#B9B4A8;}
+.tier__features li.muted{color:var(--muted);}
+
+.tier__cta{
+  margin-top:auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:14px 22px;
+  font-size:13px;
+  letter-spacing:.04em;
+  font-weight:500;
+  text-decoration:none;
+  border-radius:3px;
+  transition:transform .18s ease, background .18s ease, color .18s ease;
+}
+.tier__cta--ghost{
+  border:1px solid var(--ink);
+  color:var(--ink);
+}
+.tier__cta--ghost:hover{
+  background:var(--ink);
+  color:var(--bg);
+  transform:translateY(-1px);
+}
+.tier__cta--solid{
+  background:var(--accent);
+  color:#FCFCFA;
+}
+.tier__cta--solid:hover{
+  background:#9C3B22;
+  transform:translateY(-1px);
+}
+.tier__cta svg{transition:transform .18s ease;}
+.tier__cta:hover svg{transform:translateX(3px);}
+
+.pricing__foot{
+  margin-top:44px;
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.pricing__foot span{color:var(--line);}
+.pricing__foot em{font-family:var(--serif);font-style:italic;color:var(--ink);}
+
+@media(max-width:640px){
+  .pricing{padding:64px 22px 80px;}
+  .pricing__head{
+    grid-template-columns:1fr;
+    gap:26px;
+    align-items:start;
+  }
+  .pricing__title{font-size:36px;}
+  .pricing__note{padding-bottom:0;}
+  .tiers{
+    grid-template-columns:1fr;
+    margin-top:44px;
+    gap:0;
+  }
+  .tier{
+    border-left:1px solid var(--line);
+    border-top:none;
+    border-radius:0;
+  }
+  .tier:first-child{
+    border-top:1px solid var(--line);
+    border-radius:4px 4px 0 0;
+  }
+  .tier:last-child{border-radius:0 0 4px 4px;}
+  .tier--feature{
+    margin:0;
+    padding:44px 30px 48px;
+    border:2px solid var(--accent);
+    border-radius:6px;
+  }
+  .tier--feature .tier__ribbon{left:30px;}
+  .pricing__foot{flex-wrap:wrap;margin-top:34px;}
+}
+</style>
+</head>
+<body>
+
+<section class="pricing">
+  <div class="pricing__head">
+    <div>
+      <p class="eyebrow">Plans &amp; Pricing</p>
+      <h2 class="pricing__title">Priced for the work,<br>not the <em>logo count.</em></h2>
+    </div>
+    <p class="pricing__note">Every plan ships with the full editor, unlimited exports, and no per-seat surprise on renewal. <b>Switch or cancel any month</b> — we invoice for what you actually used.</p>
+  </div>
+
+  <div class="tiers">
+
+    <!-- Tier 1 -->
+    <div class="tier">
+      <h3 class="tier__name">Studio</h3>
+      <p class="tier__for">For solo makers</p>
+      <div class="tier__price">
+        <span class="tier__amount">$18</span>
+        <span class="tier__cycle">/ month, billed yearly</span>
+      </div>
+      <p class="tier__blurb">One workspace, the essentials, and enough room to ship your first ten projects.</p>
+      <ul class="tier__features">
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>1 workspace, up to 3 projects</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited PDF &amp; PNG exports</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Community support, 48h reply</li>
+        <li class="muted"><svg class="dim" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>No shared brand library</li>
+      </ul>
+      <a class="tier__cta tier__cta--ghost" href="#">Start free
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Tier 2 — dominant -->
+    <div class="tier tier--feature">
+      <span class="tier__ribbon">Most chosen</span>
+      <h3 class="tier__name">Atelier</h3>
+      <p class="tier__for">For working teams</p>
+      <div class="tier__price">
+        <span class="tier__amount">$46</span>
+        <span class="tier__cycle">/ month, per editor</span>
+      </div>
+      <p class="tier__blurb">Shared libraries, real-time collaboration, and the review flow teams actually keep using.</p>
+      <ul class="tier__features">
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited workspaces &amp; projects</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Shared brand library &amp; tokens</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Inline comments &amp; approvals</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Version history, 90 days</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support, 4h reply</li>
+      </ul>
+      <a class="tier__cta tier__cta--solid" href="#">Start 14-day trial
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="tier">
+      <h3 class="tier__name">Foundry</h3>
+      <p class="tier__for">For scaled orgs</p>
+      <div class="tier__price">
+        <span class="tier__amount">Let's talk</span>
+      </div>
+      <p class="tier__blurb">SSO, audit logs, and a named contact who knows your rollout by its first name.</p>
+      <ul class="tier__features">
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Atelier</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>SAML SSO &amp; SCIM provisioning</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Audit logs &amp; role permissions</li>
+        <li><svg class="check" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated success manager</li>
+      </ul>
+      <a class="tier__cta tier__cta--ghost" href="#">Book a call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+  <p class="pricing__foot">All prices in USD, exclusive of tax. <span>&bull;</span> <em>Nonprofits &amp; students</em> — 40% off, just ask.</p>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!-- ===== MANIFESTO — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifesto — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,900&family=Archivo+Expanded:wght@800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --paper:#F4F4EC;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --smoke:#8A8A82;
+  --line:#242422;
+  --font:'Archivo',system-ui,sans-serif;
+  --shout:'Archivo Expanded','Archivo',system-ui,sans-serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.mfx{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:76px 68px 84px;
+  overflow:hidden;
+}
+
+/* top strip */
+.mfx__strip{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:52px;
+}
+.mfx__tag{
+  font-family:var(--shout);
+  font-weight:900;
+  font-size:.72rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  padding:9px 18px;
+  border-radius:999px;
+}
+.mfx__tag--lime{background:var(--lime);color:var(--ink);}
+.mfx__tag--ghost{border:1.5px solid var(--line);color:var(--smoke);letter-spacing:.14em;}
+.mfx__tag--pink{background:var(--magenta);color:var(--ink);}
+.mfx__rule{
+  flex:1;
+  min-width:40px;
+  height:1.5px;
+  background:var(--line);
+}
+
+/* headline block — the focal point, hard left */
+.mfx__lead{
+  max-width:1080px;
+}
+.mfx__kicker{
+  font-family:var(--font);
+  font-weight:800;
+  font-size:.9rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--magenta);
+  margin-bottom:26px;
+}
+.mfx__h{
+  font-family:var(--shout);
+  font-weight:900;
+  font-size:clamp(2.9rem,8.1vw,7.4rem);
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.mfx__h em{
+  font-style:normal;
+  color:var(--lime);
+}
+.mfx__h .mfx__mark{
+  color:var(--ink);
+  background:var(--magenta);
+  padding:0 .12em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+/* belief list — asymmetric two column on desktop */
+.mfx__beliefs{
+  margin-top:64px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:2px;
+  border-top:2px solid var(--line);
+}
+.mfx__row{
+  display:flex;
+  gap:22px;
+  padding:26px 30px 26px 4px;
+  border-bottom:2px solid var(--line);
+  align-items:flex-start;
+}
+.mfx__row:nth-child(3),
+.mfx__row:nth-child(4){
+  padding-left:34px;
+}
+.mfx__num{
+  font-family:var(--shout);
+  font-weight:900;
+  font-size:1.5rem;
+  line-height:1;
+  color:var(--lime);
+  min-width:52px;
+  padding-top:3px;
+}
+.mfx__row:nth-child(even) .mfx__num{color:var(--magenta);}
+.mfx__belief{
+  font-weight:800;
+  font-size:clamp(1.15rem,1.7vw,1.5rem);
+  line-height:1.12;
+  letter-spacing:-.01em;
+}
+.mfx__belief span{
+  display:block;
+  margin-top:9px;
+  font-weight:400;
+  font-size:.94rem;
+  line-height:1.5;
+  color:var(--smoke);
+  letter-spacing:0;
+}
+
+/* footer line + pill CTA, pushed right */
+.mfx__foot{
+  margin-top:56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.mfx__sign{
+  font-weight:900;
+  font-style:italic;
+  font-size:1.05rem;
+  letter-spacing:-.01em;
+}
+.mfx__sign b{color:var(--lime);font-style:normal;}
+.mfx__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--lime);
+  color:var(--ink);
+  font-family:var(--shout);
+  font-weight:900;
+  font-size:.98rem;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:17px 30px;
+  border-radius:999px;
+  transition:transform .12s ease,background .12s ease;
+}
+.mfx__cta:hover{transform:translateY(-2px);background:var(--magenta);}
+.mfx__cta svg{width:20px;height:20px;display:block;}
+
+/* oversized ghost numeral, decorative, top-right */
+.mfx__ghost{
+  position:absolute;
+  top:-38px;
+  right:-30px;
+  font-family:var(--shout);
+  font-weight:900;
+  font-size:26rem;
+  line-height:1;
+  color:transparent;
+  -webkit-text-stroke:2px var(--line);
+  text-stroke:2px var(--line);
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+}
+.mfx__strip,.mfx__lead,.mfx__beliefs,.mfx__foot{position:relative;z-index:1;}
+
+@media(max-width:640px){
+  .mfx{padding:48px 22px 56px;}
+  .mfx__strip{margin-bottom:34px;gap:10px;}
+  .mfx__rule{display:none;}
+  .mfx__kicker{margin-bottom:18px;font-size:.78rem;}
+  .mfx__beliefs{
+    grid-template-columns:1fr;
+    margin-top:44px;
+  }
+  .mfx__row,
+  .mfx__row:nth-child(3),
+  .mfx__row:nth-child(4){padding:22px 2px;}
+  .mfx__num{font-size:1.2rem;min-width:40px;}
+  .mfx__foot{margin-top:40px;gap:20px;}
+  .mfx__cta{width:100%;justify-content:center;}
+  .mfx__ghost{font-size:13rem;top:-14px;right:-18px;}
+}
+</style>
+</head>
+<body>
+<section class="mfx" aria-label="Manifesto">
+  <div class="mfx__ghost" aria-hidden="true">#</div>
+
+  <div class="mfx__strip">
+    <span class="mfx__tag mfx__tag--lime">The House Rules</span>
+    <span class="mfx__tag mfx__tag--ghost">v3.0 / no apologies</span>
+    <span class="mfx__rule" aria-hidden="true"></span>
+    <span class="mfx__tag mfx__tag--pink">Read it twice</span>
+  </div>
+
+  <div class="mfx__lead">
+    <p class="mfx__kicker">What we actually believe</p>
+    <h1 class="mfx__h">
+      Good enough is a <em>slow leak</em>.
+      We ship things that <span class="mfx__mark">refuse</span> to be ignored.
+    </h1>
+  </div>
+
+  <ol class="mfx__beliefs">
+    <li class="mfx__row">
+      <span class="mfx__num">01</span>
+      <p class="mfx__belief">
+        Boring is the only real risk.
+        <span>A safe design nobody remembers costs more than a loud one that gets argued about. We take the argument.</span>
+      </p>
+    </li>
+    <li class="mfx__row">
+      <span class="mfx__num">02</span>
+      <p class="mfx__belief">
+        Taste is a decision, not a mood.
+        <span>Every color, every gap, every hard edge is chosen on purpose and defended out loud. Nothing is here by accident.</span>
+      </p>
+    </li>
+    <li class="mfx__row">
+      <span class="mfx__num">03</span>
+      <p class="mfx__belief">
+        Ship it before it's precious.
+        <span>Perfect is a hiding place. We put work in front of real people while we still have the nerve to change it.</span>
+      </p>
+    </li>
+    <li class="mfx__row">
+      <span class="mfx__num">04</span>
+      <p class="mfx__belief">
+        Copy that whispers gets deleted.
+        <span>If a headline could belong to any brand on earth, it belongs to none. We write the sentence only we would say.</span>
+      </p>
+    </li>
+  </ol>
+
+  <div class="mfx__foot">
+    <p class="mfx__sign">Signed, everyone who refused to round the corners. <b>&mdash; The whole studio.</b></p>
+    <a class="mfx__cta" href="#">
+      Steal this manifesto
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- ===== TESTIMONIALS — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EF;
+  --muted:#8C8C86;
+  --line:#26261F;
+  --accent:#C7F13B;      /* lime */
+  --accent-2:#FF4D9D;    /* magenta */
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',system-ui,sans-serif;
+}
+
+.acid-testimonials{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px clamp(20px,5vw,88px) 104px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* top hairline + kicker row */
+.acid-testimonials .kickrow{
+  display:flex;
+  align-items:baseline;
+  gap:18px;
+  flex-wrap:wrap;
+  border-top:2px solid var(--line);
+  padding-top:20px;
+  margin-bottom:44px;
+}
+.acid-testimonials .kicker{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--accent);
+  padding:7px 14px 6px;
+  border-radius:999px;
+  line-height:1;
+}
+.acid-testimonials .kickmeta{
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.04em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.acid-testimonials .kickmeta b{color:var(--accent-2);}
+
+/* headline — oversized, asymmetric, left-weighted */
+.acid-testimonials .lede{
+  max-width:900px;
+  margin-bottom:64px;
+}
+.acid-testimonials h2{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(42px,8.2vw,104px);
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.acid-testimonials h2 .mag{color:var(--accent-2);}
+.acid-testimonials h2 em{
+  font-style:normal;
+  -webkit-text-stroke:2px var(--accent);
+  color:transparent;
+}
+
+/* layout: one big featured quote + a stacked pair — asymmetric */
+.acid-testimonials .wrap{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:26px;
+  align-items:stretch;
+}
+.acid-testimonials .stack{
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+}
+
+/* base card */
+.acid-testimonials .card{
+  border-radius:26px;
+  padding:38px 38px 32px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+
+/* FEATURED card — lime, dark ink, big scale */
+.acid-testimonials .card--feature{
+  background:var(--accent);
+  color:var(--bg);
+  border-radius:34px;
+  padding:clamp(34px,4vw,58px);
+}
+.acid-testimonials .mark{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:120px;
+  line-height:.6;
+  height:56px;
+  display:block;
+}
+.acid-testimonials .card--feature .mark{color:var(--bg);}
+.acid-testimonials .card--feature blockquote{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:clamp(24px,3.1vw,40px);
+  line-height:1.08;
+  letter-spacing:-.015em;
+  margin:22px 0 34px;
+}
+.acid-testimonials .card--feature blockquote mark{
+  background:var(--bg);
+  color:var(--accent);
+  padding:.02em .18em;
+  border-radius:6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.acid-testimonials .card--feature .attrib{margin-top:auto;}
+
+/* attribution block */
+.acid-testimonials .attrib{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.acid-testimonials .avatar{
+  width:54px;height:54px;
+  border-radius:50%;
+  flex:none;
+  display:grid;
+  place-items:center;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:19px;
+  letter-spacing:.01em;
+}
+.acid-testimonials .card--feature .avatar{
+  background:var(--bg);color:var(--accent);
+  border:3px solid var(--bg);
+}
+.acid-testimonials .who{line-height:1.2;}
+.acid-testimonials .who .name{
+  font-weight:800;font-size:16px;letter-spacing:.01em;
+  display:flex;align-items:center;gap:7px;
+}
+.acid-testimonials .who .role{
+  font-weight:600;font-size:13px;letter-spacing:.02em;
+  opacity:.72;
+}
+.acid-testimonials .card--feature .rating{
+  display:inline-flex;gap:3px;margin-left:auto;
+  align-self:center;
+}
+.acid-testimonials .card--feature .rating svg{width:17px;height:17px;fill:var(--bg);}
+
+/* small dark cards in the stack */
+.acid-testimonials .card--dark{
+  background:#131310;
+  border:2px solid var(--line);
+  color:var(--ink);
+  flex:1;
+}
+.acid-testimonials .card--dark .mark{color:var(--accent-2);font-size:88px;height:40px;}
+.acid-testimonials .card--dark blockquote{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:clamp(16px,1.35vw,19px);
+  line-height:1.42;
+  letter-spacing:-.005em;
+  margin:16px 0 26px;
+}
+.acid-testimonials .card--dark blockquote b{
+  color:var(--accent);font-weight:800;
+}
+/* the second dark card gets the magenta accent instead */
+.acid-testimonials .card--dark.alt .mark{color:var(--accent);}
+.acid-testimonials .card--dark.alt blockquote b{color:var(--accent-2);}
+
+.acid-testimonials .card--dark .attrib{margin-top:auto;}
+.acid-testimonials .card--dark .avatar{
+  background:var(--accent-2);color:var(--bg);
+}
+.acid-testimonials .card--dark.alt .avatar{
+  background:var(--accent);color:var(--bg);
+}
+.acid-testimonials .verified{
+  width:15px;height:15px;flex:none;
+}
+.acid-testimonials .card--feature .verified path{fill:var(--bg);}
+.acid-testimonials .card--dark .verified path{fill:var(--accent);}
+
+/* corner tag on feature card */
+.acid-testimonials .tag{
+  position:absolute;
+  top:26px;right:26px;
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--accent-2);
+  color:var(--ink);
+  padding:6px 11px 5px;
+  border-radius:999px;
+  transform:rotate(4deg);
+}
+
+@media (max-width:640px){
+  .acid-testimonials{padding:64px 20px 72px;}
+  .acid-testimonials .kickrow{margin-bottom:30px;}
+  .acid-testimonials .lede{margin-bottom:40px;}
+  .acid-testimonials h2{font-size:clamp(38px,13vw,60px);}
+  .acid-testimonials .wrap{grid-template-columns:1fr;gap:18px;}
+  .acid-testimonials .stack{gap:18px;}
+  .acid-testimonials .card{padding:30px 26px 26px;}
+  .acid-testimonials .card--feature{padding:34px 28px 28px;}
+  .acid-testimonials .card--feature blockquote{font-size:24px;}
+  .acid-testimonials .card--feature .rating{
+    margin-left:0;order:-1;margin-bottom:2px;
+  }
+  .acid-testimonials .attrib{flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<section class="acid-testimonials">
+
+  <div class="kickrow">
+    <span class="kicker">Receipts</span>
+    <span class="kickmeta">Real teams shipping with the section library — <b>1,400+ paste-ins this month</b></span>
+  </div>
+
+  <div class="lede">
+    <h2>They pasted it. <span class="mag">Then</span><br><em>they kept it.</em></h2>
+  </div>
+
+  <div class="wrap">
+
+    <!-- FEATURED -->
+    <article class="card card--feature">
+      <span class="tag">★ Editor pick</span>
+      <span class="mark">&ldquo;</span>
+      <blockquote>
+        I dropped one section into Claude Code and shipped a landing page before lunch. <mark>No build step, no dependency hell</mark> — it just worked and it actually looked designed, not generated.
+      </blockquote>
+      <div class="attrib">
+        <div class="avatar">RM</div>
+        <div class="who">
+          <span class="name">Rosa Medina
+            <svg class="verified" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 2.1 3.3-.4 1.2 3.1 3 1.5-1 3.2 1 3.2-3 1.5-1.2 3.1-3.3-.4L12 23l-2.6-2.1-3.3.4-1.2-3.1-3-1.5 1-3.2-1-3.2 3-1.5L6.1 2.7l3.3.4z"/></svg>
+          </span>
+          <span class="role">Founding Engineer · Halyard Labs</span>
+        </div>
+        <span class="rating" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.8 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.8 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.8 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.8 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.8 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg>
+        </span>
+      </div>
+    </article>
+
+    <!-- STACK OF TWO -->
+    <div class="stack">
+
+      <article class="card card--dark">
+        <span class="mark">&ldquo;</span>
+        <blockquote>
+          Our whole team stopped fighting over Tailwind configs. We grab a section, tweak the <b>token block</b>, done. Onboarding a junior went from a week to an afternoon.
+        </blockquote>
+        <div class="attrib">
+          <div class="avatar">DK</div>
+          <div class="who">
+            <span class="name">Devon Kraus
+              <svg class="verified" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 2.1 3.3-.4 1.2 3.1 3 1.5-1 3.2 1 3.2-3 1.5-1.2 3.1-3.3-.4L12 23l-2.6-2.1-3.3.4-1.2-3.1-3-1.5 1-3.2-1-3.2 3-1.5L6.1 2.7l3.3.4z"/></svg>
+            </span>
+            <span class="role">Design Lead · Postmark Studio</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card card--dark alt">
+        <span class="mark">&ldquo;</span>
+        <blockquote>
+          I don't write CSS. I described a pricing page to Claude, it pulled three sections from here, and I had something I'd <b>actually pay a freelancer for</b>. Zero setup.
+        </blockquote>
+        <div class="attrib">
+          <div class="avatar">AO</div>
+          <div class="who">
+            <span class="name">Amara Okonkwo
+              <svg class="verified" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 2.1 3.3-.4 1.2 3.1 3 1.5-1 3.2 1 3.2-3 1.5-1.2 3.1-3.3-.4L12 23l-2.6-2.1-3.3.4-1.2-3.1-3-1.5 1-3.2-1-3.2 3-1.5L6.1 2.7l3.3.4z"/></svg>
+            </span>
+            <span class="role">Solo Founder · Ledgerpine</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>

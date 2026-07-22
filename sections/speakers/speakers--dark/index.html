@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!-- ===== speakers — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speakers — The Interface Summit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --panel-2:#1c1c22;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --faint:#71717A;
+  --line:#2a2a31;
+  --line-2:#34343c;
+  --amber:#F59E42;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.speakers{
+  width:100%;
+  padding:96px 40px 104px;
+  position:relative;
+}
+.speakers__inner{
+  max-width:1440px;
+  margin:0 auto;
+}
+
+/* header row — asymmetric, left-weighted */
+.sp-head{
+  display:grid;
+  grid-template-columns:1.35fr 0.65fr;
+  gap:40px;
+  align-items:end;
+  padding-bottom:44px;
+  border-bottom:1px solid var(--line);
+}
+.sp-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--amber);
+  font-weight:600;
+  margin-bottom:22px;
+}
+.sp-kicker::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--amber);
+}
+.sp-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.03;
+  letter-spacing:-0.01em;
+}
+.sp-title em{
+  font-style:italic;
+  color:var(--muted);
+}
+.sp-meta{
+  text-align:right;
+}
+.sp-meta p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+.sp-meta strong{
+  color:var(--ink);
+  font-weight:500;
+}
+.sp-meta .sp-date{
+  display:block;
+  margin-top:14px;
+  font-size:13px;
+  letter-spacing:0.04em;
+  color:var(--faint);
+}
+
+/* grid */
+.sp-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.sp-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:26px 26px 24px;
+  display:flex;
+  flex-direction:column;
+  transition:border-color .25s ease, background .25s ease, transform .25s ease;
+}
+.sp-card:hover{
+  border-color:var(--line-2);
+  background:var(--panel-2);
+  transform:translateY(-2px);
+}
+
+/* one featured card breaks the uniform grid */
+.sp-card--feature{
+  grid-column:span 1;
+  grid-row:span 2;
+  background:linear-gradient(180deg,#1b1b21 0%,#161619 100%);
+  border-color:var(--line-2);
+  border-radius:20px;
+  padding:34px 32px 30px;
+  justify-content:space-between;
+}
+.sp-card--feature .sp-avatar{
+  width:76px;height:76px;font-size:26px;border-radius:18px;
+}
+.sp-card--feature .sp-name{font-size:24px;}
+.sp-card--feature .sp-talk{font-size:17px;}
+
+.sp-card__top{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:22px;
+}
+.sp-avatar{
+  width:58px;
+  height:58px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:20px;
+  color:var(--ink);
+  flex-shrink:0;
+  border:1px solid rgba(255,255,255,.09);
+  letter-spacing:0.01em;
+}
+/* distinct avatar tints — no two the same */
+.av-1{background:linear-gradient(145deg,#3a2e22,#241d16);color:#F59E42;}
+.av-2{background:linear-gradient(145deg,#232a34,#181c22);color:#93b7d6;}
+.av-3{background:linear-gradient(145deg,#2c2431,#1c1822);color:#c3a3d6;}
+.av-4{background:linear-gradient(145deg,#22322b,#161e1a);color:#8fd0b0;}
+.av-5{background:linear-gradient(145deg,#332327,#211619);color:#dc9aa4;}
+.av-6{background:linear-gradient(145deg,#2f2c22,#1e1c15);color:#d6cd8a;}
+
+.sp-id .sp-name{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:19px;
+  line-height:1.15;
+  letter-spacing:-0.005em;
+}
+.sp-id .sp-role{
+  margin-top:5px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.4;
+}
+.sp-id .sp-role span{color:var(--faint);}
+
+.sp-card__body{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+}
+.sp-tag{
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--faint);
+  font-weight:600;
+  display:block;
+  margin-bottom:8px;
+}
+.sp-talk{
+  font-size:15.5px;
+  line-height:1.4;
+  color:var(--ink);
+  font-weight:500;
+}
+.sp-feature-note{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+  margin-top:16px;
+}
+.sp-feature-flag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:#121216;
+  background:var(--amber);
+  padding:6px 12px;
+  border-radius:999px;
+  align-self:flex-start;
+}
+
+.sp-foot{
+  margin-top:36px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.sp-foot p{
+  font-size:14px;
+  color:var(--muted);
+}
+.sp-foot a{
+  color:var(--ink);
+  text-decoration:none;
+  font-weight:500;
+  font-size:14px;
+  border-bottom:1px solid var(--amber);
+  padding-bottom:2px;
+  transition:color .2s ease;
+}
+.sp-foot a:hover{color:var(--amber);}
+
+@media(max-width:640px){
+  .speakers{padding:56px 20px 64px;}
+  .sp-head{grid-template-columns:1fr;gap:22px;align-items:start;padding-bottom:32px;}
+  .sp-title{font-size:36px;}
+  .sp-meta{text-align:left;}
+  .sp-grid{grid-template-columns:1fr;gap:14px;margin-top:28px;}
+  .sp-card--feature{grid-row:span 1;padding:28px 24px;}
+  .sp-card--feature .sp-avatar{width:64px;height:64px;font-size:22px;}
+  .sp-card--feature .sp-name{font-size:22px;}
+  .sp-foot{margin-top:26px;}
+}
+</style>
+</head>
+<body>
+<section class="speakers">
+  <div class="speakers__inner">
+
+    <div class="sp-head">
+      <div>
+        <span class="sp-kicker">Speakers · Track A</span>
+        <h2 class="sp-title">Six practitioners on <em>shipping interfaces</em><br>people actually trust.</h2>
+      </div>
+      <div class="sp-meta">
+        <p><strong>The Interface Summit</strong><br>Warehouse 9, Lisbon</p>
+        <span class="sp-date">Oct 14–15, 2026 · 09:30 GMT</span>
+      </div>
+    </div>
+
+    <div class="sp-grid">
+
+      <!-- featured, spans two rows -->
+      <article class="sp-card sp-card--feature">
+        <span class="sp-feature-flag">Opening keynote</span>
+        <div>
+          <div class="sp-card__top">
+            <div class="sp-avatar av-1">MK</div>
+            <div class="sp-id">
+              <div class="sp-name">Mara Kessler</div>
+              <div class="sp-role">VP Design, <span>Ledger &amp; Loam</span></div>
+            </div>
+          </div>
+          <div class="sp-tag">Keynote · 45 min</div>
+          <p class="sp-talk">The Boring Button: why the safest control on screen is the one nobody notices.</p>
+          <p class="sp-feature-note">A ten-year retrospective on removing friction from money-movement flows — and the three redesigns that quietly cut support tickets in half.</p>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <div class="sp-card__top">
+          <div class="sp-avatar av-2">DA</div>
+          <div class="sp-id">
+            <div class="sp-name">Dev Anand</div>
+            <div class="sp-role">Staff Engineer, <span>Northpine</span></div>
+          </div>
+        </div>
+        <div class="sp-card__body">
+          <span class="sp-tag">Talk · 25 min</span>
+          <p class="sp-talk">Rendering 40,000 rows without a spinner or a lie.</p>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <div class="sp-card__top">
+          <div class="sp-avatar av-3">SO</div>
+          <div class="sp-id">
+            <div class="sp-name">Sofia Okonkwo</div>
+            <div class="sp-role">Head of Research, <span>Fielded</span></div>
+          </div>
+        </div>
+        <div class="sp-card__body">
+          <span class="sp-tag">Talk · 25 min</span>
+          <p class="sp-talk">Watching people fail on purpose: the usability lab we stopped hiding.</p>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <div class="sp-card__top">
+          <div class="sp-avatar av-4">TR</div>
+          <div class="sp-id">
+            <div class="sp-name">Théo Rivière</div>
+            <div class="sp-role">Design Systems Lead, <span>Cobalt</span></div>
+          </div>
+        </div>
+        <div class="sp-card__body">
+          <span class="sp-tag">Workshop · 60 min</span>
+          <p class="sp-talk">Tokens that survive a rebrand: versioning color without breaking prod.</p>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <div class="sp-card__top">
+          <div class="sp-avatar av-5">JH</div>
+          <div class="sp-id">
+            <div class="sp-name">Joan Hale</div>
+            <div class="sp-role">Principal PM, <span>Aperture Labs</span></div>
+          </div>
+        </div>
+        <div class="sp-card__body">
+          <span class="sp-tag">Fireside · 30 min</span>
+          <p class="sp-talk">Saying no to the dashboard: cutting a feature nobody would defend.</p>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <div class="sp-card__top">
+          <div class="sp-avatar av-6">RB</div>
+          <div class="sp-id">
+            <div class="sp-name">Rai Bhatt</div>
+            <div class="sp-role">Accessibility Engineer, <span>Openframe</span></div>
+          </div>
+        </div>
+        <div class="sp-card__body">
+          <span class="sp-tag">Talk · 25 min</span>
+          <p class="sp-talk">Keyboard-first, mouse-optional: rebuilding a checkout for screen readers.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="sp-foot">
+      <p>Full two-track schedule and 11 more sessions drop three weeks before doors.</p>
+      <a href="#lineup">See the complete lineup →</a>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

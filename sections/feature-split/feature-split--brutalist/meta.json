@@ -1,0 +1,6 @@
+{
+  "type": "feature-split",
+  "name": "feature-split--brutalist",
+  "style": "brutalist",
+  "file": "index.html"
+}

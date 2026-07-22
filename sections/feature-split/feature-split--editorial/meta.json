@@ -1,0 +1,6 @@
+{
+  "type": "feature-split",
+  "name": "feature-split--editorial",
+  "style": "editorial",
+  "file": "index.html"
+}

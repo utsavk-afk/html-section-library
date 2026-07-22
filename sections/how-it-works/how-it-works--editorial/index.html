@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!-- ===== HOW-IT-WORKS — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6E6A61;
+  --line:#E2DFD6;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+.hiw{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 64px 120px;
+  -webkit-font-smoothing:antialiased;
+}
+.hiw__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ---- header: asymmetric, left-weighted ---- */
+.hiw__head{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:72px;
+  border-bottom:1px solid var(--line);
+}
+.hiw__label{
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:22px;
+}
+.hiw__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.06;
+  letter-spacing:-0.015em;
+}
+.hiw__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.hiw__lede{
+  font-size:16px;
+  line-height:1.7;
+  color:var(--muted);
+  max-width:34ch;
+  justify-self:end;
+}
+
+/* ---- steps: staggered rows, not a card grid ---- */
+.hiw__steps{
+  margin-top:8px;
+}
+.step{
+  display:grid;
+  grid-template-columns:132px 1fr 1fr;
+  gap:40px;
+  align-items:start;
+  padding:52px 0;
+  border-bottom:1px solid var(--line);
+}
+.step:last-child{border-bottom:none;}
+
+.step__num{
+  font-family:var(--serif);
+  font-size:15px;
+  letter-spacing:.14em;
+  color:var(--accent);
+  font-weight:500;
+  padding-top:10px;
+  position:relative;
+}
+.step__num::after{
+  content:"";
+  position:absolute;
+  left:2px;
+  top:44px;
+  width:38px;
+  height:1px;
+  background:var(--accent);
+  opacity:.55;
+}
+.step__title{
+  font-family:var(--serif);
+  font-size:30px;
+  font-weight:400;
+  line-height:1.14;
+  letter-spacing:-0.01em;
+}
+.step__title em{font-style:italic;}
+.step__body{
+  font-size:16px;
+  line-height:1.72;
+  color:var(--muted);
+  padding-top:6px;
+  max-width:40ch;
+}
+.step__body b{
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* deliberate stagger: push middle steps inward */
+.step--02{padding-left:56px;}
+.step--03{padding-left:28px;}
+
+.step__kicker{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+
+/* ---- footer note ---- */
+.hiw__foot{
+  margin-top:56px;
+  display:flex;
+  align-items:baseline;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.hiw__foot-mark{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:19px;
+}
+.hiw__foot-mark span{color:var(--accent);}
+.hiw__foot-note{
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:.01em;
+}
+
+@media(max-width:640px){
+  .hiw{padding:72px 24px 80px;}
+  .hiw__head{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-bottom:48px;
+  }
+  .hiw__title{font-size:36px;}
+  .hiw__lede{justify-self:start;max-width:none;}
+  .step{
+    grid-template-columns:1fr;
+    gap:14px;
+    padding:36px 0;
+  }
+  .step--02,.step--03{padding-left:0;}
+  .step__num{padding-top:0;}
+  .step__num::after{display:none;}
+  .step__title{font-size:25px;}
+  .hiw__foot{margin-top:40px;}
+}
+</style>
+</head>
+<body>
+<section class="hiw">
+  <div class="hiw__inner">
+
+    <header class="hiw__head">
+      <div>
+        <p class="hiw__label">How the library works</p>
+        <h2 class="hiw__title">Drop a section in,<br><em>ship</em> the page by lunch.</h2>
+      </div>
+      <p class="hiw__lede">
+        Every block is one self-contained HTML file — no build step, no
+        dependencies to chase. Three moves take you from an empty folder
+        to a working page.
+      </p>
+    </header>
+
+    <div class="hiw__steps">
+
+      <article class="step step--01">
+        <div class="step__num">Step 01</div>
+        <div>
+          <span class="step__kicker">Browse</span>
+          <h3 class="step__title">Pick a section that<br>already <em>looks</em> finished.</h3>
+        </div>
+        <p class="step__body">
+          Filter by type — hero, pricing, testimonial, FAQ. Every card
+          previews live, so <b>what you see is exactly what lands</b> in
+          your project.
+        </p>
+      </article>
+
+      <article class="step step--02">
+        <div class="step__num">Step 02</div>
+        <div>
+          <span class="step__kicker">Copy</span>
+          <h3 class="step__title">Paste the file straight<br>into Claude Code.</h3>
+        </div>
+        <p class="step__body">
+          One <code>index.html</code>, tokens and all. Say <b>“make the
+          accent teal and swap the copy”</b> — the whole section rewrites
+          in place, no untangling required.
+        </p>
+      </article>
+
+      <article class="step step--03">
+        <div class="step__num">Step 03</div>
+        <div>
+          <span class="step__kicker">Ship</span>
+          <h3 class="step__title">Stack, tweak, and<br><em>push</em> it live.</h3>
+        </div>
+        <p class="step__body">
+          Sections share the same <code>:root</code> variables, so they
+          stack into one coherent page. Edit a few lines, <b>deploy the
+          same afternoon</b>.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="hiw__foot">
+      <p class="hiw__foot-mark">Free forever<span>.</span> No sign-up, no attribution.</p>
+      <p class="hiw__foot-note">MIT-licensed · 60+ sections and counting</p>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

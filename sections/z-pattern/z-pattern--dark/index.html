@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- ===== Z-PATTERN — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Pattern — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --line:#2A2A31;
+  --line-soft:#212127;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-head:'Fraunces',Georgia,serif;
+  --maxw:1180px;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+.zsec{
+  width:100%;
+  padding:88px 40px 96px;
+}
+.zwrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* --- kicker header --- */
+.zhead{
+  display:flex;
+  align-items:baseline;
+  gap:18px;
+  margin-bottom:64px;
+  flex-wrap:wrap;
+}
+.ztag{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--amber);
+  font-weight:600;
+  padding-top:4px;
+}
+.zhead h2{
+  font-family:var(--font-head);
+  font-weight:500;
+  font-size:34px;
+  line-height:1.12;
+  letter-spacing:-.01em;
+  max-width:640px;
+}
+.zhead h2 em{font-style:italic;color:var(--muted);}
+
+/* --- rows --- */
+.zrow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:56px;
+  padding:44px 0;
+  border-top:1px solid var(--line-soft);
+}
+.zrow:first-of-type{border-top:none;}
+.zrow.flip .ztext{order:2;}
+.zrow.flip .zvis{order:1;}
+
+/* --- text block --- */
+.zstep{
+  font-family:var(--font-head);
+  font-size:13px;
+  color:var(--amber);
+  letter-spacing:.04em;
+  margin-bottom:16px;
+  display:inline-block;
+}
+.zstep b{font-weight:600;font-variant-numeric:tabular-nums;}
+.ztext h3{
+  font-family:var(--font-head);
+  font-weight:500;
+  font-size:27px;
+  line-height:1.2;
+  letter-spacing:-.01em;
+  margin-bottom:14px;
+}
+.ztext p{
+  color:var(--muted);
+  font-size:15.5px;
+  line-height:1.62;
+  max-width:44ch;
+}
+.ztext .zmeta{
+  margin-top:22px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.zpill{
+  font-size:12px;
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:5px 12px;
+  background:var(--panel);
+}
+.zpill.on{
+  border-color:rgba(245,158,66,.4);
+  color:var(--amber);
+}
+
+/* --- visuals: shared panel --- */
+.zvis{
+  min-height:236px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:
+    linear-gradient(180deg,#18181e,#141419);
+  position:relative;
+  overflow:hidden;
+  padding:24px;
+}
+
+/* VISUAL 1 — code / prompt terminal */
+.vterm{display:flex;flex-direction:column;gap:0;}
+.vterm .bar{
+  display:flex;align-items:center;gap:7px;
+  padding-bottom:16px;border-bottom:1px solid var(--line-soft);
+}
+.dot{width:9px;height:9px;border-radius:50%;background:#33333c;}
+.dot.a{background:var(--amber);}
+.vterm .barlabel{
+  margin-left:6px;font-size:11px;color:var(--muted);
+  letter-spacing:.04em;font-variant-numeric:tabular-nums;
+}
+.vterm .body{
+  padding-top:16px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12.5px;line-height:1.9;
+}
+.vterm .ln{color:var(--muted);white-space:nowrap;}
+.vterm .ln .k{color:var(--amber);}
+.vterm .ln .s{color:var(--ink);}
+.vterm .ln .c{color:#5a5a64;}
+.vterm .cursor{
+  display:inline-block;width:7px;height:15px;
+  background:var(--amber);vertical-align:-2px;margin-left:2px;
+}
+
+/* VISUAL 2 — stacked layout blocks (asymmetric) */
+.vstack{display:grid;grid-template-columns:1.4fr .9fr;gap:12px;height:100%;}
+.vstack .col{display:flex;flex-direction:column;gap:12px;}
+.blk{
+  border:1px solid var(--line-soft);
+  border-radius:9px;
+  background:#16161b;
+  padding:14px;
+}
+.blk .h{height:8px;border-radius:4px;background:#2c2c34;width:60%;margin-bottom:9px;}
+.blk .h.w{width:80%;}
+.blk .l{height:6px;border-radius:3px;background:#232329;margin-bottom:7px;}
+.blk .l:last-child{width:70%;}
+.blk.acc{border-color:rgba(245,158,66,.35);background:linear-gradient(160deg,rgba(245,158,66,.08),transparent);}
+.blk.acc .h{background:var(--amber);width:44%;}
+.blk.big{flex:1;}
+.blk .swatch{width:26px;height:26px;border-radius:7px;background:var(--amber);margin-bottom:12px;}
+
+/* VISUAL 3 — metric / progress card */
+.vmetric{display:flex;flex-direction:column;justify-content:space-between;height:100%;}
+.vmetric .top{display:flex;justify-content:space-between;align-items:flex-start;}
+.vmetric .num{font-family:var(--font-head);font-weight:500;font-size:52px;line-height:1;letter-spacing:-.02em;}
+.vmetric .num small{font-size:22px;color:var(--muted);}
+.vmetric .badge{font-size:11px;color:var(--amber);border:1px solid rgba(245,158,66,.35);border-radius:6px;padding:4px 8px;letter-spacing:.03em;}
+.vmetric .sub{color:var(--muted);font-size:13px;margin-top:8px;}
+.bars{display:flex;align-items:flex-end;gap:9px;height:70px;margin-top:20px;}
+.bars i{flex:1;background:#26262d;border-radius:4px 4px 0 0;display:block;}
+.bars i:nth-child(1){height:34%;}
+.bars i:nth-child(2){height:52%;}
+.bars i:nth-child(3){height:41%;}
+.bars i:nth-child(4){height:68%;}
+.bars i:nth-child(5){height:58%;}
+.bars i:nth-child(6){height:88%;background:var(--amber);}
+.bars i:nth-child(7){height:74%;}
+
+/* footer cta line */
+.zfoot{
+  margin-top:60px;
+  padding-top:26px;
+  border-top:1px solid var(--line-soft);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;
+}
+.zfoot p{color:var(--muted);font-size:14px;}
+.zfoot p b{color:var(--ink);font-weight:600;}
+.zbtn{
+  font-family:var(--font-body);
+  font-size:14px;font-weight:500;
+  color:var(--bg);background:var(--amber);
+  border:none;border-radius:8px;
+  padding:12px 22px;cursor:pointer;
+  letter-spacing:.01em;
+}
+
+@media(max-width:640px){
+  .zsec{padding:56px 20px 64px;}
+  .zhead{margin-bottom:44px;gap:12px;}
+  .zhead h2{font-size:26px;}
+  .zrow{grid-template-columns:1fr;gap:26px;padding:34px 0;}
+  .zrow.flip .ztext{order:1;}
+  .zrow.flip .zvis{order:2;}
+  .zvis{min-height:200px;}
+  .ztext h3{font-size:22px;}
+  .vterm .body{font-size:11.5px;}
+  .vterm .ln{white-space:normal;}
+  .zfoot{flex-direction:column;align-items:flex-start;}
+  .zbtn{width:100%;}
+}
+</style>
+</head>
+<body>
+<section class="zsec">
+  <div class="zwrap">
+
+    <div class="zhead">
+      <span class="ztag">/ Drop-in blocks</span>
+      <h2>Paste a section, ship a page. <em>Everything you need to move from prompt to production without a build step.</em></h2>
+    </div>
+
+    <!-- ROW 1: text left / visual right -->
+    <div class="zrow">
+      <div class="ztext">
+        <span class="zstep"><b>01</b> — Copy the block</span>
+        <h3>One file, zero dependencies</h3>
+        <p>Each section is a single self-contained HTML file. No npm install, no Tailwind config, no CDN roulette. Grab it, drop it into Claude Code, and it renders exactly the same on the first try.</p>
+        <div class="zmeta">
+          <span class="zpill on">index.html</span>
+          <span class="zpill">Inline CSS</span>
+          <span class="zpill">No JS libs</span>
+        </div>
+      </div>
+      <div class="zvis">
+        <div class="vterm">
+          <div class="bar">
+            <span class="dot a"></span><span class="dot"></span><span class="dot"></span>
+            <span class="barlabel">sections/z-pattern/index.html</span>
+          </div>
+          <div class="body">
+            <div class="ln"><span class="c">/* dark · luxe · asymmetric */</span></div>
+            <div class="ln"><span class="k">&lt;section</span> <span class="s">class=</span><span class="k">"zsec"</span><span class="k">&gt;</span></div>
+            <div class="ln">&nbsp;&nbsp;<span class="k">&lt;div</span> <span class="s">class=</span><span class="k">"zrow"</span><span class="k">&gt;</span></div>
+            <div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;<span class="s">paste. render. done.</span><span class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: visual left / text right -->
+    <div class="zrow flip">
+      <div class="ztext">
+        <span class="zstep"><b>02</b> — Restyle in seconds</span>
+        <h3>Tokens do the heavy lifting</h3>
+        <p>Every color, radius, and font lives in a single <code>:root</code> block. Swap the amber accent for your brand, nudge the border tone, and the whole section re-skins itself — no find-and-replace archaeology across 400 lines.</p>
+        <div class="zmeta">
+          <span class="zpill">--amber</span>
+          <span class="zpill">--line</span>
+          <span class="zpill on">--font-head</span>
+        </div>
+      </div>
+      <div class="zvis">
+        <div class="vstack">
+          <div class="col">
+            <div class="blk big">
+              <div class="swatch"></div>
+              <div class="h w"></div>
+              <div class="l"></div><div class="l"></div><div class="l"></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="blk acc">
+              <div class="h"></div><div class="l"></div><div class="l"></div>
+            </div>
+            <div class="blk big">
+              <div class="h"></div><div class="l"></div><div class="l"></div><div class="l"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: text left / visual right -->
+    <div class="zrow">
+      <div class="ztext">
+        <span class="zstep"><b>03</b> — Ship with confidence</span>
+        <h3>Responsive down to 320px</h3>
+        <p>Nothing overflows, nothing jumps. Each block collapses to a clean single column on mobile and holds its rhythm on a 1440px desktop. What you preview is what your users get.</p>
+        <div class="zmeta">
+          <span class="zpill">320 → 1440px</span>
+          <span class="zpill on">0 overflow</span>
+          <span class="zpill">AA contrast</span>
+        </div>
+      </div>
+      <div class="zvis">
+        <div class="vmetric">
+          <div class="top">
+            <div>
+              <div class="num">100<small>/100</small></div>
+              <div class="sub">Layout stability across 7 breakpoints</div>
+            </div>
+            <span class="badge">STABLE</span>
+          </div>
+          <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zfoot">
+      <p><b>48 sections</b> and counting — heroes, pricing, FAQ, footers. All free, all copy-paste.</p>
+      <button class="zbtn">Browse the library →</button>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

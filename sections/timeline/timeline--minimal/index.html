@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!-- ===== TIMELINE — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e6e6;
+  --accent:#c0492b;
+  --serif:'Inter',sans-serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.tl-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 48px 120px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.tl-wrap{
+  max-width:1080px;
+  margin:0 auto;
+}
+
+/* Header — left aligned, one focal point */
+.tl-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.tl-eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+
+.tl-head{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:40px;
+  align-items:end;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+}
+.tl-title{
+  font-size:41px;
+  line-height:1.08;
+  font-weight:700;
+  letter-spacing:-0.025em;
+  max-width:15ch;
+}
+.tl-lede{
+  font-size:15.5px;
+  line-height:1.65;
+  color:var(--muted);
+  max-width:38ch;
+  padding-bottom:5px;
+}
+
+/* Timeline body — vertical rail on the left */
+.tl-list{
+  margin-top:8px;
+  position:relative;
+}
+/* the connecting line */
+.tl-list::before{
+  content:"";
+  position:absolute;
+  left:135px;
+  top:44px;
+  bottom:40px;
+  width:1px;
+  background:var(--line);
+}
+
+.tl-item{
+  display:grid;
+  grid-template-columns:135px 1fr;
+  gap:0;
+  padding:38px 0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.tl-item:last-child{border-bottom:none;}
+
+.tl-year{
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:var(--ink);
+  padding-top:1px;
+}
+.tl-year span{
+  display:block;
+  font-size:11.5px;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+/* the content column, nudged right of the rail */
+.tl-body{
+  padding-left:48px;
+  position:relative;
+}
+/* node on the line */
+.tl-body::before{
+  content:"";
+  position:absolute;
+  left:-49px;
+  top:6px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--bg);
+  border:1.5px solid var(--muted);
+  transform:translateX(-50%);
+}
+/* one intentional accent: the current/latest milestone */
+.tl-item.is-now .tl-body::before{
+  background:var(--accent);
+  border-color:var(--accent);
+  box-shadow:0 0 0 5px rgba(192,73,43,0.12);
+}
+
+.tl-item-title{
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:-0.012em;
+  line-height:1.3;
+  margin-bottom:9px;
+}
+.tl-item-desc{
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:52ch;
+}
+.tl-tag{
+  display:inline-block;
+  margin-left:10px;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--accent);
+  vertical-align:middle;
+  transform:translateY(-1px);
+}
+
+@media(max-width:640px){
+  .tl-section{padding:72px 24px 80px;}
+  .tl-head{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding-bottom:40px;
+  }
+  .tl-title{font-size:31px;}
+  .tl-list::before{left:5px;top:34px;bottom:32px;}
+  .tl-item{
+    grid-template-columns:1fr;
+    gap:14px;
+    padding:30px 0 30px 30px;
+  }
+  .tl-year{
+    padding-top:0;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .tl-year span{margin-top:0;}
+  .tl-body{padding-left:0;}
+  .tl-body::before{
+    left:-30px;
+    top:5px;
+    transform:none;
+  }
+}
+</style>
+</head>
+<body>
+<section class="tl-section">
+  <div class="tl-wrap">
+
+    <div class="tl-head">
+      <div>
+        <span class="tl-eyebrow">How we got here</span>
+        <h2 class="tl-title">Five releases that shaped the way the toolkit works today.</h2>
+      </div>
+      <p class="tl-lede">Starting as a single formatting script in 2021, the library grew one deliberate step at a time. No rewrites, no pivots — just steady additions people actually asked for.</p>
+    </div>
+
+    <div class="tl-list">
+
+      <div class="tl-item">
+        <div class="tl-year">2021<span>March</span></div>
+        <div class="tl-body">
+          <h3 class="tl-item-title">The first snippet ships</h3>
+          <p class="tl-item-desc">A 40-line prompt for cleaning up meeting notes, pasted into a public gist. It got 300 stars in a weekend and made the case for a proper collection.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2022<span>January</span></div>
+        <div class="tl-body">
+          <h3 class="tl-item-title">Twelve prompts become a folder</h3>
+          <p class="tl-item-desc">The scattered snippets moved into a versioned repo with a README and copy buttons. Contributions opened up, and the first ten pull requests landed within a month.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2023<span>September</span></div>
+        <div class="tl-body">
+          <h3 class="tl-item-title">Categories and search arrive</h3>
+          <p class="tl-item-desc">With 180 entries, browsing broke down. We added tags, a fuzzy search box, and a rule that every prompt ships with a real before-and-after example.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2024<span>June</span></div>
+        <div class="tl-body">
+          <h3 class="tl-item-title">Drop-in for Claude Code</h3>
+          <p class="tl-item-desc">Each section became a self-contained file you could paste straight into your editor — no build step, no dependencies. Weekly installs crossed four thousand.</p>
+        </div>
+      </div>
+
+      <div class="tl-item is-now">
+        <div class="tl-year">2026<span>Today</span></div>
+        <div class="tl-body">
+          <h3 class="tl-item-title">Community-owned and free<span class="tl-tag">Now</span></h3>
+          <p class="tl-item-desc">Governance handed to a working group of forty maintainers. Everything stays MIT-licensed, and the roadmap is decided in the open every quarter.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

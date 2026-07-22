@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Lead Capture — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Archivo+Narrow:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== HERO-LEAD-CAPTURE — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-soft:#1A1A1A;
+  --paper:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --white:#FFFFFF;
+  --grey:#8A8A82;
+  --line:#2A2A2A;
+  --pill-radius:999px;
+  --card-radius:22px;
+  --font-display:'Archivo',system-ui,sans-serif;
+  --font-body:'Archivo Narrow','Archivo',system-ui,sans-serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--white);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+.acid-hero{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:760px;
+  background:var(--ink);
+  overflow:hidden;
+  padding:64px 72px 72px;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:56px;
+  align-items:center;
+}
+
+/* offset dotted texture in a corner, not centered */
+.acid-hero::before{
+  content:"";
+  position:absolute;
+  top:-40px;
+  right:-40px;
+  width:340px;
+  height:340px;
+  background-image:radial-gradient(var(--line) 2px,transparent 2px);
+  background-size:22px 22px;
+  opacity:.9;
+  z-index:0;
+  pointer-events:none;
+}
+
+.acid-topbar{
+  grid-column:1 / -1;
+  position:absolute;
+  top:34px;
+  left:72px;
+  right:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index:3;
+}
+.acid-brand{
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:-.01em;
+  color:var(--white);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.acid-brand .dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--lime);
+  display:inline-block;
+}
+.acid-tag{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--lime);
+  padding:7px 15px;
+  border-radius:var(--pill-radius);
+}
+
+/* ---- Left column ---- */
+.acid-left{
+  position:relative;
+  z-index:2;
+  padding-top:36px;
+}
+.acid-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--magenta);
+  margin-bottom:26px;
+}
+.acid-eyebrow .bar{
+  width:34px;height:3px;background:var(--magenta);display:inline-block;
+}
+.acid-head{
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:78px;
+  line-height:0.94;
+  letter-spacing:-.03em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.acid-head .mark{
+  color:var(--ink);
+  background:var(--lime);
+  padding:0 12px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.acid-head .under{
+  position:relative;
+  color:var(--magenta);
+}
+.acid-sub{
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:19px;
+  line-height:1.45;
+  color:#CFCFC7;
+  max-width:460px;
+  margin:26px 0 34px;
+}
+.acid-sub strong{color:var(--white);font-weight:700;}
+
+/* ---- Inline lead capture ---- */
+.acid-form{
+  display:flex;
+  align-items:stretch;
+  gap:0;
+  background:var(--white);
+  border-radius:var(--pill-radius);
+  padding:6px;
+  max-width:520px;
+  box-shadow:8px 8px 0 var(--magenta);
+}
+.acid-form input[type=email]{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:16px;
+  color:var(--ink);
+  padding:0 20px;
+  min-width:0;
+}
+.acid-form input[type=email]::placeholder{color:#9A9A92;font-weight:500;}
+.acid-form button{
+  border:none;
+  cursor:pointer;
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--lime);
+  padding:15px 28px;
+  border-radius:var(--pill-radius);
+  white-space:nowrap;
+  transition:transform .12s ease,background .12s ease;
+}
+.acid-form button:hover{background:var(--magenta);color:var(--white);transform:translateY(-1px);}
+
+.acid-reassure{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:13px;
+  color:var(--grey);
+}
+.acid-reassure svg{flex-shrink:0;}
+.acid-reassure b{color:#CFCFC7;font-weight:700;}
+
+/* ---- Right column: asymmetric stat/proof card ---- */
+.acid-right{
+  position:relative;
+  z-index:2;
+  justify-self:end;
+  width:100%;
+  max-width:400px;
+}
+.acid-card{
+  position:relative;
+  background:var(--ink-soft);
+  border:2px solid var(--line);
+  border-radius:var(--card-radius);
+  padding:30px 30px 26px;
+  transform:rotate(2.5deg);
+}
+.acid-card .sticker{
+  position:absolute;
+  top:-18px;
+  left:-16px;
+  transform:rotate(-8deg);
+  background:var(--lime);
+  color:var(--ink);
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:8px 14px;
+  border-radius:10px;
+}
+.acid-stat{
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:66px;
+  line-height:1;
+  letter-spacing:-.03em;
+  color:var(--lime);
+}
+.acid-stat-label{
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:15px;
+  color:#B8B8B0;
+  margin:8px 0 24px;
+  line-height:1.35;
+}
+.acid-divider{height:2px;background:var(--line);margin:0 -30px 22px;}
+
+.acid-avatars{display:flex;align-items:center;gap:0;margin-bottom:14px;}
+.acid-av{
+  width:40px;height:40px;border-radius:50%;
+  margin-left:-10px;
+  border:2px solid var(--ink-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:800;font-size:14px;color:var(--ink);
+}
+.acid-av:first-child{margin-left:0;}
+.acid-av.a1{background:var(--lime);}
+.acid-av.a2{background:var(--magenta);color:var(--white);}
+.acid-av.a3{background:#E8E8E0;}
+.acid-av.a4{background:var(--white);}
+.acid-av.more{background:var(--line);color:var(--lime);font-size:12px;}
+.acid-proof{
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:14px;
+  line-height:1.4;
+  color:#B8B8B0;
+}
+.acid-proof b{color:var(--white);font-weight:700;}
+
+.acid-badge{
+  position:absolute;
+  bottom:52px;
+  right:-14px;
+  background:var(--magenta);
+  color:var(--white);
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  padding:10px 14px;
+  border-radius:12px;
+  transform:rotate(-4deg);
+  z-index:3;
+}
+
+/* ---- Responsive ---- */
+@media(max-width:640px){
+  .acid-hero{
+    grid-template-columns:1fr;
+    gap:44px;
+    padding:96px 24px 56px;
+    min-height:auto;
+  }
+  .acid-topbar{left:24px;right:24px;top:26px;}
+  .acid-tag{display:none;}
+  .acid-left{padding-top:8px;}
+  .acid-head{font-size:52px;}
+  .acid-sub{font-size:17px;}
+  .acid-form{
+    flex-direction:column;
+    border-radius:22px;
+    padding:8px;
+    box-shadow:6px 6px 0 var(--magenta);
+    max-width:100%;
+  }
+  .acid-form input[type=email]{padding:14px 16px;}
+  .acid-form button{width:100%;border-radius:16px;padding:15px;}
+  .acid-right{justify-self:stretch;max-width:100%;}
+  .acid-card{transform:rotate(0);}
+  .acid-badge{bottom:-14px;right:14px;}
+  .acid-stat{font-size:56px;}
+}
+</style>
+</head>
+<body>
+<section class="acid-hero">
+
+  <div class="acid-topbar">
+    <div class="acid-brand"><span class="dot"></span>SENDFORGE</div>
+    <div class="acid-tag">Now in open beta</div>
+  </div>
+
+  <div class="acid-left">
+    <span class="acid-eyebrow"><span class="bar"></span>Cold email, decoded</span>
+    <h1 class="acid-head">
+      Ship emails<br>
+      people <span class="mark">actually</span><br>
+      <span class="under">open.</span>
+    </h1>
+    <p class="acid-sub">
+      Get the weekly teardown where we rip apart <strong>real B2B campaigns</strong> —
+      subject lines, first-line hooks, and the exact reply rates. No fluff, no gurus.
+    </p>
+
+    <form class="acid-form" onsubmit="return false">
+      <input type="email" placeholder="you@company.com" aria-label="Email address" required>
+      <button type="submit">Get the teardown</button>
+    </form>
+
+    <div class="acid-reassure">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z" stroke="#8A8A82" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>One email each Tuesday. <b>Unsubscribe in one click</b> — we never sell your address.</span>
+    </div>
+  </div>
+
+  <div class="acid-right">
+    <div class="acid-card">
+      <span class="sticker">Free forever</span>
+      <div class="acid-stat">41%</div>
+      <div class="acid-stat-label">median open rate readers hit after 4 issues of applying the swipe files.</div>
+      <div class="acid-divider"></div>
+      <div class="acid-avatars">
+        <span class="acid-av a1">JM</span>
+        <span class="acid-av a2">RK</span>
+        <span class="acid-av a3">TA</span>
+        <span class="acid-av a4">DN</span>
+        <span class="acid-av more">+9k</span>
+      </div>
+      <p class="acid-proof"><b>9,200+ founders &amp; SDRs</b> read it every week — from seed startups to Series C sales teams.</p>
+    </div>
+    <div class="acid-badge">No spam. Ever.</div>
+  </div>
+
+</section>
+</body>
+</html>

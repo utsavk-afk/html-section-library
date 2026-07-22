@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratings — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+/* ===== RATINGS — DARK / LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --amber:#F59E42;
+  --star-off:#3A3A42;
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.rt-section{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 64px;
+  background:
+    radial-gradient(680px 420px at 88% 8%, rgba(245,158,66,0.06), transparent 70%),
+    var(--bg);
+}
+
+.rt-wrap{
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:72px;
+  align-items:center;
+}
+
+/* ---- Left: focal score ---- */
+.rt-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.rt-eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--amber);
+}
+
+.rt-score-row{
+  display:flex;
+  align-items:baseline;
+  gap:20px;
+  margin-bottom:18px;
+}
+.rt-score{
+  font-family:var(--serif);
+  font-size:104px;
+  line-height:0.82;
+  font-weight:500;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+}
+.rt-score-max{
+  font-family:var(--serif);
+  font-size:34px;
+  font-weight:400;
+  color:var(--muted);
+}
+
+.rt-stars{
+  display:flex;
+  gap:5px;
+  margin-bottom:18px;
+}
+.rt-stars svg{width:26px;height:26px;display:block;}
+
+.rt-count{
+  font-size:15.5px;
+  color:var(--muted);
+  line-height:1.6;
+  max-width:34ch;
+  margin-bottom:34px;
+}
+.rt-count strong{color:var(--ink);font-weight:600;}
+
+.rt-line{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:14px;
+  color:var(--muted);
+}
+.rt-line .avatars{display:flex;}
+.rt-line .av{
+  width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;
+  font-size:11px;font-weight:700;color:#121216;
+  border:2px solid var(--bg);
+  margin-left:-9px;
+}
+.rt-line .av:first-child{margin-left:0;}
+.av.a{background:#F59E42;}
+.av.b{background:#E8DCCB;}
+.av.c{background:#B7C4C9;}
+.av.d{background:#D6A79A;}
+
+/* ---- Right: platform panels ---- */
+.rt-panels{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.rt-panel{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:18px;
+  padding:20px 22px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  transition:border-color .18s ease;
+}
+.rt-panel:hover{border-color:#3b3b44;}
+
+/* the featured panel breaks the symmetry: bigger, amber-edged, offset */
+.rt-panel.feat{
+  border-radius:18px;
+  border-color:rgba(245,158,66,0.42);
+  padding:26px 24px;
+  margin-right:-28px;
+  background:linear-gradient(180deg,#1b1913,#17171c 60%);
+}
+
+.rt-badge{
+  width:44px;height:44px;
+  border-radius:11px;
+  display:grid;place-items:center;
+  background:#1f1f26;
+  border:1px solid var(--line);
+  flex:none;
+}
+.rt-panel.feat .rt-badge{width:52px;height:52px;background:#221d14;border-color:rgba(245,158,66,0.35);}
+.rt-badge svg{width:24px;height:24px;}
+
+.rt-pname{
+  font-size:15px;
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.3;
+}
+.rt-pmeta{
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.rt-pscore{
+  text-align:right;
+  flex:none;
+}
+.rt-pscore .num{
+  font-family:var(--serif);
+  font-size:26px;
+  font-weight:500;
+  color:var(--ink);
+  line-height:1;
+}
+.rt-panel.feat .rt-pscore .num{font-size:32px;}
+.rt-pscore .mini{
+  display:flex;
+  gap:2px;
+  justify-content:flex-end;
+  margin-top:6px;
+}
+.rt-pscore .mini svg{width:13px;height:13px;}
+
+.rt-foot{
+  grid-column:1 / -1;
+  margin-top:6px;
+  font-size:12.5px;
+  color:var(--muted);
+  padding-left:2px;
+}
+
+@media(max-width:640px){
+  .rt-section{padding:56px 22px;}
+  .rt-wrap{grid-template-columns:1fr;gap:44px;}
+  .rt-score{font-size:80px;}
+  .rt-score-max{font-size:28px;}
+  .rt-panel.feat{margin-right:0;}
+  .rt-count{max-width:none;}
+}
+</style>
+</head>
+<body>
+<section class="rt-section">
+  <div class="rt-wrap">
+
+    <!-- Focal point: the score -->
+    <div class="rt-lead">
+      <span class="rt-eyebrow"><span class="dot"></span>Rated by real teams</span>
+
+      <div class="rt-score-row">
+        <span class="rt-score">4.9</span>
+        <span class="rt-score-max">/ 5.0</span>
+      </div>
+
+      <div class="rt-stars" aria-label="4.9 out of 5 stars">
+        <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+        <!-- 90% filled star -->
+        <svg viewBox="0 0 24 24">
+          <defs><linearGradient id="pf" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="90%" stop-color="var(--amber)"/>
+            <stop offset="90%" stop-color="var(--star-off)"/>
+          </linearGradient></defs>
+          <path fill="url(#pf)" d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/>
+        </svg>
+      </div>
+
+      <p class="rt-count">Averaged across <strong>2,847 verified reviews</strong> from finance, ops, and engineering teams over the last 18 months.</p>
+
+      <div class="rt-line">
+        <span class="avatars">
+          <span class="av a">DK</span>
+          <span class="av b">MR</span>
+          <span class="av c">JL</span>
+          <span class="av d">PA</span>
+        </span>
+        <span>98% would recommend it to a colleague.</span>
+      </div>
+    </div>
+
+    <!-- Platform badges -->
+    <div class="rt-panels">
+
+      <div class="rt-panel feat">
+        <div class="rt-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.3l6.1-.7L12 3z"/></svg>
+        </div>
+        <div>
+          <div class="rt-pname">G2 Crowd</div>
+          <div class="rt-pmeta">Leader · Mid-Market Winter 2026</div>
+        </div>
+        <div class="rt-pscore">
+          <div class="num">4.9</div>
+          <div class="mini">
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="rt-panel">
+        <div class="rt-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E4E4E7" stroke-width="1.7" stroke-linecap="round"><path d="M4 12h16M4 7h16M4 17h10"/></svg>
+        </div>
+        <div>
+          <div class="rt-pname">Capterra</div>
+          <div class="rt-pmeta">1,204 reviews · Top rated</div>
+        </div>
+        <div class="rt-pscore">
+          <div class="num">4.8</div>
+          <div class="mini">
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--star-off)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="rt-panel">
+        <div class="rt-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E4E4E7" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path stroke-linecap="round" d="M12 8v4l2.6 1.6"/></svg>
+        </div>
+        <div>
+          <div class="rt-pname">TrustRadius</div>
+          <div class="rt-pmeta">640 reviews · trScore 9.4</div>
+        </div>
+        <div class="rt-pscore">
+          <div class="num">9.4</div>
+          <div class="mini">
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 5.9 20.2 7.1 13.6 2.3 9l6.6-.9L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <p class="rt-foot">Ratings self-reported by review platforms and refreshed weekly.</p>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

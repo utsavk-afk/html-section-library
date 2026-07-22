@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!-- ===== ABOUT — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --accent:#F59E42;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+.about{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:120px 64px;
+  min-height:720px;
+  display:flex;
+  align-items:center;
+}
+
+.about__inner{
+  max-width:1440px;
+  margin:0 auto;
+  width:100%;
+  display:grid;
+  grid-template-columns:1.35fr 0.65fr;
+  gap:96px;
+  align-items:start;
+}
+
+/* ---- left: story ---- */
+.about__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:36px;
+}
+.about__eyebrow::before{
+  content:"";
+  width:28px;
+  height:1px;
+  background:var(--accent);
+}
+
+.about__lead{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:44px;
+  line-height:1.18;
+  letter-spacing:-0.01em;
+  max-width:19ch;
+  margin-bottom:40px;
+}
+.about__lead em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.about__body{
+  max-width:52ch;
+  color:var(--muted);
+  font-size:16.5px;
+  line-height:1.72;
+}
+.about__body p + p{ margin-top:18px; }
+.about__body strong{
+  color:var(--ink);
+  font-weight:500;
+}
+
+.about__meta{
+  margin-top:48px;
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.about__meta-item{ min-width:120px; }
+.about__meta-item span{
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.about__meta-item b{
+  font-weight:500;
+  font-size:15px;
+  color:var(--ink);
+}
+
+/* ---- right: stat panel + visual ---- */
+.about__aside{
+  position:relative;
+  padding-top:8px;
+}
+
+.about__stat{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:34px 32px 30px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent);
+}
+.about__stat-num{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:74px;
+  line-height:1;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+}
+.about__stat-num i{
+  font-style:normal;
+  color:var(--accent);
+}
+.about__stat-label{
+  margin-top:14px;
+  font-size:14.5px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+/* concentric-arc CSS visual — one focal accent */
+.about__viz{
+  margin-top:24px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:26px 30px 30px;
+  overflow:hidden;
+}
+.about__viz-title{
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+.about__bars{
+  display:flex;
+  align-items:flex-end;
+  gap:11px;
+  height:96px;
+}
+.about__bar{
+  flex:1;
+  background:var(--line);
+  border-radius:3px 3px 0 0;
+}
+.about__bar--a{ height:38%; }
+.about__bar--b{ height:54%; }
+.about__bar--c{ height:47%; }
+.about__bar--d{ height:71%; }
+.about__bar--e{ height:63%; }
+.about__bar--f{ height:100%; background:var(--accent); }
+.about__bar--g{ height:82%; }
+.about__viz-foot{
+  display:flex;
+  justify-content:space-between;
+  margin-top:14px;
+  font-size:12px;
+  color:var(--muted);
+}
+.about__viz-foot b{ color:var(--ink); font-weight:500; }
+
+@media (max-width:640px){
+  .about{ padding:72px 22px; }
+  .about__inner{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .about__lead{ font-size:31px; max-width:100%; }
+  .about__body{ font-size:15.5px; }
+  .about__meta{ gap:28px; margin-top:36px; }
+  .about__stat-num{ font-size:60px; }
+}
+</style>
+</head>
+<body>
+<section class="about">
+  <div class="about__inner">
+
+    <div class="about__story">
+      <p class="about__eyebrow">Our story · est. 2016</p>
+
+      <h2 class="about__lead">
+        We build tools for people who’d rather ship than <em>configure</em>.
+      </h2>
+
+      <div class="about__body">
+        <p>
+          Sundry started as a shared frustration: three engineers tired of
+          wiring the same auth, billing, and deploy plumbing into every side
+          project. So we spent a weekend collapsing it into <strong>one command</strong> —
+          and never went back.
+        </p>
+        <p>
+          Ten years on, that instinct still runs the company. We keep the
+          surface area small, the defaults honest, and the docs written by the
+          same folks who wrote the code. No growth team, no dark patterns —
+          just software we’d want on our own machines.
+        </p>
+      </div>
+
+      <div class="about__meta">
+        <div class="about__meta-item">
+          <span>Team</span>
+          <b>34 people, 9 timezones</b>
+        </div>
+        <div class="about__meta-item">
+          <span>Funding</span>
+          <b>Profitable since 2019</b>
+        </div>
+        <div class="about__meta-item">
+          <span>Headquarters</span>
+          <b>Everywhere &amp; Lisbon</b>
+        </div>
+      </div>
+    </div>
+
+    <aside class="about__aside">
+      <div class="about__stat">
+        <div class="about__stat-num"><i>41</i>k</div>
+        <p class="about__stat-label">
+          developers deploy on Sundry every week — without opening a
+          single YAML file.
+        </p>
+      </div>
+
+      <div class="about__viz">
+        <p class="about__viz-title">Deploys / hour · today</p>
+        <div class="about__bars">
+          <div class="about__bar about__bar--a"></div>
+          <div class="about__bar about__bar--b"></div>
+          <div class="about__bar about__bar--c"></div>
+          <div class="about__bar about__bar--d"></div>
+          <div class="about__bar about__bar--e"></div>
+          <div class="about__bar about__bar--f"></div>
+          <div class="about__bar about__bar--g"></div>
+        </div>
+        <div class="about__viz-foot">
+          <span>00:00</span>
+          <span>peak <b>2,180</b></span>
+          <span>now</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+</body>
+</html>

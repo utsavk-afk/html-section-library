@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!-- ===== PRICING — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:"Archivo","Arial Black",sans-serif;
+  --sans:"Space Mono",monospace;
+}
+
+.pr-sec{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--serif);
+  padding:72px 48px 88px;
+  border-top:4px solid var(--line);
+  border-bottom:4px solid var(--line);
+  overflow:hidden;
+}
+
+.pr-wrap{max-width:1440px;margin:0 auto;}
+
+/* ---- header row: asymmetric, left-weighted ---- */
+.pr-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  border-bottom:3px solid var(--line);
+  padding-bottom:22px;
+  margin-bottom:48px;
+  flex-wrap:wrap;
+}
+.pr-head-left{max-width:640px;}
+.pr-kicker{
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  display:inline-block;
+  background:var(--ink);
+  color:var(--accent);
+  padding:6px 12px;
+  margin-bottom:20px;
+}
+.pr-title{
+  font-weight:900;
+  font-size:clamp(38px,5.4vw,72px);
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.pr-title em{
+  font-style:normal;
+  background:var(--accent);
+  box-shadow:6px 6px 0 var(--line);
+  padding:0 8px;
+  display:inline-block;
+  transform:rotate(-1.5deg);
+}
+.pr-note{
+  font-family:var(--sans);
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  max-width:280px;
+  text-align:right;
+  border-left:3px solid var(--red);
+  padding-left:14px;
+}
+.pr-note b{color:var(--ink);}
+
+/* ---- grid ---- */
+.pr-grid{
+  display:grid;
+  grid-template-columns:1fr 1.12fr 1fr;
+  gap:26px;
+  align-items:start;
+}
+
+/* ---- card base ---- */
+.pr-card{
+  background:#fff;
+  border:3px solid var(--line);
+  box-shadow:6px 6px 0 var(--line);
+  padding:30px 28px 34px;
+  position:relative;
+}
+.pr-tier{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+.pr-plan{
+  font-weight:900;
+  font-size:30px;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+  line-height:1;
+  margin-bottom:16px;
+}
+.pr-price{
+  display:flex;
+  align-items:baseline;
+  gap:6px;
+  border-top:2px solid var(--line);
+  border-bottom:2px solid var(--line);
+  padding:16px 0;
+  margin-bottom:6px;
+}
+.pr-price .amt{font-weight:900;font-size:52px;line-height:.9;letter-spacing:-.03em;}
+.pr-price .per{font-family:var(--sans);font-size:13px;color:var(--muted);}
+.pr-sub{
+  font-family:var(--sans);
+  font-size:12px;
+  color:var(--muted);
+  margin:14px 0 22px;
+  line-height:1.4;
+}
+
+/* ---- feature list ---- */
+.pr-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:28px;}
+.pr-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  font-family:var(--sans);
+  font-size:13.5px;
+  line-height:1.35;
+}
+.pr-list svg{flex:0 0 auto;margin-top:1px;}
+.pr-list .off{color:#B4B4AE;text-decoration:line-through;}
+
+/* ---- button ---- */
+.pr-btn{
+  display:block;
+  width:100%;
+  text-align:center;
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ink);
+  background:#fff;
+  border:3px solid var(--line);
+  padding:16px;
+  cursor:pointer;
+  box-shadow:4px 4px 0 var(--line);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.pr-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line);}
+.pr-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--line);}
+
+/* ---- middle / featured tier ---- */
+.pr-card.feat{
+  border:4px solid var(--line);
+  box-shadow:10px 10px 0 var(--accent), 10px 10px 0 3px var(--line);
+  transform:translateY(-14px);
+  padding-top:44px;
+  z-index:2;
+}
+.pr-flag{
+  position:absolute;
+  top:-4px;left:-4px;
+  background:var(--red);
+  color:#fff;
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:7px 14px;
+  border:3px solid var(--line);
+}
+.pr-card.feat .pr-plan{font-size:34px;}
+.pr-card.feat .pr-price{border-color:var(--line);}
+.pr-card.feat .pr-price .amt{font-size:60px;}
+.pr-card.feat .pr-btn{background:var(--accent);}
+.pr-card.feat .pr-btn:hover{background:var(--ink);color:var(--accent);}
+
+.pr-foot{
+  margin-top:44px;
+  border-top:3px solid var(--line);
+  padding-top:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  font-family:var(--sans);
+  font-size:12px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.pr-foot span b{color:var(--ink);}
+
+@media(max-width:640px){
+  .pr-sec{padding:44px 20px 56px;}
+  .pr-head{flex-direction:column;align-items:flex-start;gap:18px;}
+  .pr-note{text-align:left;max-width:none;}
+  .pr-grid{grid-template-columns:1fr;gap:30px;}
+  .pr-card.feat{transform:none;box-shadow:8px 8px 0 var(--accent),8px 8px 0 3px var(--line);}
+  .pr-title{font-size:44px;}
+}
+</style>
+</head>
+<body>
+
+<section class="pr-sec">
+  <div class="pr-wrap">
+
+    <div class="pr-head">
+      <div class="pr-head-left">
+        <span class="pr-kicker">// Pricing · No Trial Cards</span>
+        <h2 class="pr-title">PICK A PLAN,<br>SHIP <em>THIS WEEK</em></h2>
+      </div>
+      <p class="pr-note">Billed monthly. Cancel anytime, no clawback. <b>Annual = 2 months free.</b></p>
+    </div>
+
+    <div class="pr-grid">
+
+      <!-- TIER 1 -->
+      <article class="pr-card">
+        <div class="pr-tier">Tier 01</div>
+        <h3 class="pr-plan">Solo</h3>
+        <div class="pr-price">
+          <span class="amt">$0</span>
+          <span class="per">/ forever</span>
+        </div>
+        <p class="pr-sub">For the one-person build. Kick tires with zero risk.</p>
+        <ul class="pr-list">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            1 workspace, 1 seat
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            300 build minutes / month
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            Community Discord support
+          </li>
+          <li class="off">
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4 L14 14 M14 4 L4 14" fill="none" stroke="#B4B4AE" stroke-width="3"/></svg>
+            Team roles &amp; permissions
+          </li>
+          <li class="off">
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4 L14 14 M14 4 L4 14" fill="none" stroke="#B4B4AE" stroke-width="3"/></svg>
+            Priority queue
+          </li>
+        </ul>
+        <a href="#" class="pr-btn">Start Free →</a>
+      </article>
+
+      <!-- TIER 2 — FEATURED -->
+      <article class="pr-card feat">
+        <div class="pr-flag">◆ Most Teams Pick This</div>
+        <div class="pr-tier">Tier 02</div>
+        <h3 class="pr-plan">Studio</h3>
+        <div class="pr-price">
+          <span class="amt">$29</span>
+          <span class="per">/ seat / mo</span>
+        </div>
+        <p class="pr-sub">For squads that ship daily. Everything in Solo, cranked up.</p>
+        <ul class="pr-list">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            Unlimited workspaces
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            10,000 build minutes / month
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            Team roles &amp; permissions
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            Priority queue + 4h support SLA
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            Git sync + CI hooks
+          </li>
+        </ul>
+        <a href="#" class="pr-btn">Get Studio →</a>
+      </article>
+
+      <!-- TIER 3 -->
+      <article class="pr-card">
+        <div class="pr-tier">Tier 03</div>
+        <h3 class="pr-plan">Foundry</h3>
+        <div class="pr-price">
+          <span class="amt">Let's<br>talk</span>
+        </div>
+        <p class="pr-sub">For orgs at scale. Custom limits, contracts, the works.</p>
+        <ul class="pr-list">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            Everything in Studio
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            Unlimited build minutes
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            SSO / SAML + audit logs
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            Dedicated engineer + 1h SLA
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9.5 L7 14 L16 3.5" fill="none" stroke="#111" stroke-width="3"/></svg>
+            On-prem / VPC deploy
+          </li>
+        </ul>
+        <a href="#" class="pr-btn">Book a Call →</a>
+      </article>
+
+    </div>
+
+    <div class="pr-foot">
+      <span>[ 14-day money-back on all paid plans ]</span>
+      <span><b>Questions?</b> billing@shipfast.dev</span>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

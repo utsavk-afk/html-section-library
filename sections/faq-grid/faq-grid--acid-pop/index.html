@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Grid — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== FAQ-GRID — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-soft:#161616;
+  --paper:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:#2A2A2A;
+  --mute:#8B8B85;
+  --font:'Archivo',system-ui,sans-serif;
+}
+
+.acid-faq{
+  background:var(--ink);
+  color:#fff;
+  font-family:var(--font);
+  padding:88px 40px 96px;
+  width:100%;
+}
+.acid-faq__inner{
+  max-width:1440px;
+  margin:0 auto;
+}
+
+/* ---- Header: asymmetric, left-weighted ---- */
+.acid-faq__head{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:48px;
+  align-items:end;
+  border-bottom:3px solid var(--line);
+  padding-bottom:40px;
+  margin-bottom:56px;
+}
+.acid-faq__tag{
+  display:inline-block;
+  background:var(--lime);
+  color:var(--ink);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:8px 18px;
+  border-radius:999px;
+  margin-bottom:22px;
+}
+.acid-faq__title{
+  font-weight:900;
+  font-size:clamp(44px,6.4vw,92px);
+  line-height:.92;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+}
+.acid-faq__title em{
+  font-style:normal;
+  color:var(--magenta);
+}
+.acid-faq__aside{
+  padding-bottom:6px;
+}
+.acid-faq__aside p{
+  color:var(--mute);
+  font-weight:500;
+  font-size:16px;
+  line-height:1.5;
+  max-width:38ch;
+}
+.acid-faq__aside a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:18px;
+  color:var(--lime);
+  font-weight:800;
+  font-size:15px;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.acid-faq__aside a svg{width:16px;height:16px;}
+
+/* ---- Grid: two columns, deliberately non-uniform blocks ---- */
+.acid-faq__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px 40px;
+}
+.faq-item{
+  border-top:3px solid var(--line);
+  padding-top:22px;
+}
+.faq-item__q{
+  display:flex;
+  gap:14px;
+  align-items:baseline;
+}
+.faq-item__num{
+  font-weight:800;
+  font-size:14px;
+  color:var(--magenta);
+  letter-spacing:.05em;
+  flex:0 0 auto;
+  padding-top:3px;
+}
+.faq-item__h{
+  font-weight:800;
+  font-size:22px;
+  line-height:1.12;
+  letter-spacing:-.01em;
+}
+.faq-item__a{
+  color:var(--mute);
+  font-weight:500;
+  font-size:15px;
+  line-height:1.55;
+  margin-top:12px;
+  padding-left:32px;
+}
+.faq-item__a strong{color:#e9e9e4;font-weight:700;}
+
+/* Featured block — the one focal point, magenta, spans wider */
+.faq-item--feature{
+  grid-column:1 / -1;
+  background:var(--magenta);
+  color:var(--ink);
+  border:none;
+  border-radius:22px;
+  padding:32px 34px;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:28px;
+  align-items:center;
+}
+.faq-item--feature .faq-item__num{color:var(--ink);opacity:.6;}
+.faq-item--feature .faq-item__h{font-size:27px;line-height:1.05;}
+.faq-item--feature .faq-item__a{color:#2a0016;padding-left:0;margin-top:0;font-size:15.5px;font-weight:600;}
+.faq-item--feature .faq-item__a strong{color:var(--ink);}
+.feature-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  background:var(--ink);
+  color:var(--lime);
+  font-weight:800;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  padding:12px 22px;
+  border-radius:999px;
+  text-decoration:none;
+}
+
+/* Lime accent block — smaller, offset emphasis */
+.faq-item--pop{
+  background:var(--lime);
+  color:var(--ink);
+  border:none;
+  border-radius:16px;
+  padding:24px 26px;
+}
+.faq-item--pop .faq-item__num{color:var(--ink);opacity:.55;}
+.faq-item--pop .faq-item__a{color:#2f3a06;padding-left:32px;font-weight:600;}
+.faq-item--pop .faq-item__a strong{color:var(--ink);}
+
+/* Soft-fill block — subtle elevation variety */
+.faq-item--soft{
+  background:var(--ink-soft);
+  border:none;
+  border-radius:14px;
+  padding:24px 26px;
+}
+
+@media(max-width:640px){
+  .acid-faq{padding:56px 20px 64px;}
+  .acid-faq__head{
+    grid-template-columns:1fr;
+    gap:26px;
+    align-items:start;
+    padding-bottom:30px;
+    margin-bottom:38px;
+  }
+  .acid-faq__grid{grid-template-columns:1fr;gap:22px;}
+  .faq-item--feature{
+    grid-template-columns:1fr;
+    gap:18px;
+    padding:26px 22px;
+  }
+  .faq-item__h{font-size:20px;}
+  .faq-item--feature .faq-item__h{font-size:23px;}
+  .acid-faq__aside p{max-width:100%;}
+}
+</style>
+</head>
+<body>
+<section class="acid-faq">
+  <div class="acid-faq__inner">
+
+    <header class="acid-faq__head">
+      <div>
+        <span class="acid-faq__tag">Answers, no runaround</span>
+        <h1 class="acid-faq__title">Ask us<br>the <em>hard</em> stuff.</h1>
+      </div>
+      <div class="acid-faq__aside">
+        <p>The 8 questions our support team fields most — pricing, migration, refunds, the works. Still stuck after reading? A human replies in under 4 hours.</p>
+        <a href="#contact">
+          Message the team
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <div class="acid-faq__grid">
+
+      <div class="faq-item">
+        <div class="faq-item__q">
+          <span class="faq-item__num">01</span>
+          <h3 class="faq-item__h">How long does setup actually take?</h3>
+        </div>
+        <p class="faq-item__a">Most teams are live inside <strong>15 minutes</strong>. Paste your API key, pick a workspace, and the import wizard pulls in your existing projects automatically — no CSV wrangling.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">
+          <span class="faq-item__num">02</span>
+          <h3 class="faq-item__h">Can I switch plans mid-cycle?</h3>
+        </div>
+        <p class="faq-item__a">Anytime. Upgrades apply instantly and we <strong>prorate the difference</strong> down to the day. Downgrades kick in at your next renewal so you never lose paid-for time.</p>
+      </div>
+
+      <article class="faq-item faq-item--feature">
+        <div>
+          <div class="faq-item__q">
+            <span class="faq-item__num">03</span>
+            <h3 class="faq-item__h">What happens to my data if I cancel?</h3>
+          </div>
+          <a class="feature-cta" href="#export">
+            See the export docs
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <p class="faq-item__a">You keep everything. Export a <strong>full JSON + CSV archive</strong> with one click, and we hold your workspace in cold storage for 30 days in case you change your mind. No hostage tactics, ever.</p>
+      </article>
+
+      <div class="faq-item faq-item--pop">
+        <div class="faq-item__q">
+          <span class="faq-item__num">04</span>
+          <h3 class="faq-item__h">Is there a free trial?</h3>
+        </div>
+        <p class="faq-item__a"><strong>14 days, all features, no card.</strong> When the trial ends you drop to the free tier automatically — nothing gets charged unless you say so.</p>
+      </div>
+
+      <div class="faq-item faq-item--soft">
+        <div class="faq-item__q">
+          <span class="faq-item__num">05</span>
+          <h3 class="faq-item__h">Do you offer team discounts?</h3>
+        </div>
+        <p class="faq-item__a">Yes — seats 6 through 20 are <strong>25% off</strong>, and past 20 we cut a custom annual deal. Nonprofits and classrooms get 50% with a quick verification.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">
+          <span class="faq-item__num">06</span>
+          <h3 class="faq-item__h">Where is my data stored?</h3>
+        </div>
+        <p class="faq-item__a">In <strong>SOC 2 Type II</strong> data centers in the US and EU — you choose the region at signup. Everything is encrypted at rest with AES-256 and in transit over TLS 1.3.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">
+          <span class="faq-item__num">07</span>
+          <h3 class="faq-item__h">Can I get a refund?</h3>
+        </div>
+        <p class="faq-item__a">If the first <strong>30 days</strong> don't click, email us and we refund the full amount — no exit survey, no five-step retention gauntlet. One reply and it's done.</p>
+      </div>
+
+      <div class="faq-item faq-item--soft">
+        <div class="faq-item__q">
+          <span class="faq-item__num">08</span>
+          <h3 class="faq-item__h">Does support cost extra?</h3>
+        </div>
+        <p class="faq-item__a">Never. <strong>Live chat and email are included on every plan</strong>, free tier included. Paid plans add priority routing and a guaranteed 4-hour first response.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

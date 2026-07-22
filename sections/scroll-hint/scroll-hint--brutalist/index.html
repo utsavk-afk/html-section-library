@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Hint — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== SCROLL-HINT — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:3px solid var(--ink);
+  --line-thick:4px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --font-head:'Archivo',sans-serif;
+  --font-mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-mono);
+  -webkit-font-smoothing:antialiased;
+}
+
+.sh{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:720px;
+  border-bottom:var(--line-thick);
+  padding:56px 48px 0;
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  grid-template-rows:auto 1fr auto;
+  gap:0 48px;
+  overflow:hidden;
+}
+
+/* top marquee-ish tag row */
+.sh__tags{
+  grid-column:1 / -1;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  border-bottom:var(--line);
+  padding-bottom:20px;
+  margin-bottom:44px;
+}
+.sh__tag{
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  padding:6px 12px;
+  border:2px solid var(--ink);
+  background:var(--white);
+}
+.sh__tag--fill{background:var(--acid);}
+.sh__tag--red{background:var(--red);color:var(--white);border-color:var(--red);}
+.sh__tag-idx{
+  margin-left:auto;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.14em;
+}
+
+/* lead */
+.sh__lead{
+  grid-column:1 / 2;
+  align-self:start;
+  max-width:660px;
+}
+.sh__eyebrow{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.2em;
+  background:var(--ink);
+  color:var(--acid);
+  padding:5px 10px;
+  margin-bottom:22px;
+}
+.sh__title{
+  font-family:var(--font-head);
+  font-weight:900;
+  text-transform:uppercase;
+  font-size:clamp(38px,5.4vw,74px);
+  line-height:0.94;
+  letter-spacing:-0.02em;
+}
+.sh__title em{
+  font-style:normal;
+  background:var(--acid);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.sh__title .mark{color:var(--red);}
+.sh__sub{
+  margin-top:26px;
+  font-size:15px;
+  line-height:1.55;
+  max-width:440px;
+  padding-left:16px;
+  border-left:4px solid var(--red);
+}
+
+/* right rail — peek slab of the next block */
+.sh__peek{
+  grid-column:2 / 3;
+  grid-row:2 / 4;
+  position:relative;
+  align-self:stretch;
+  min-height:340px;
+}
+.sh__peek-card{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  border:var(--line-thick);
+  background:var(--white);
+  box-shadow:var(--shadow);
+}
+.sh__peek-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:var(--line);
+  padding:12px 16px;
+  background:var(--ink);
+  color:var(--paper);
+}
+.sh__peek-head b{
+  font-family:var(--font-head);
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:13px;
+  letter-spacing:0.1em;
+}
+.sh__dots{display:flex;gap:6px;}
+.sh__dots i{width:11px;height:11px;border:2px solid var(--paper);display:block;}
+.sh__dots i:nth-child(2){background:var(--acid);border-color:var(--acid);}
+.sh__peek-body{padding:20px 16px 26px;}
+.sh__row{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:2px dashed var(--ink);
+}
+.sh__row:last-child{border-bottom:none;padding-bottom:0;}
+.sh__row .n{
+  font-family:var(--font-head);
+  font-weight:900;
+  font-size:26px;
+}
+.sh__row .n--red{color:var(--red);}
+.sh__row .t{
+  font-family:var(--font-head);
+  font-weight:700;
+  text-transform:uppercase;
+  font-size:14px;
+  letter-spacing:0.04em;
+}
+.sh__row .d{
+  font-size:11px;
+  display:block;
+  margin-top:3px;
+  color:#444;
+  letter-spacing:0.02em;
+}
+/* the "peek" fade slab under the card — hints there's more below */
+.sh__peek-more{
+  position:absolute;
+  left:14px;
+  right:-14px;
+  top:26px;
+  bottom:-40px;
+  background:var(--acid);
+  border:var(--line-thick);
+  z-index:-1;
+}
+
+/* scroll cue — bottom-left focal */
+.sh__cue{
+  grid-column:1 / 2;
+  align-self:end;
+  display:flex;
+  align-items:flex-end;
+  gap:20px;
+  padding-bottom:34px;
+}
+.sh__cue-label{
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.28em;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  padding:6px 0;
+}
+.sh__mouse{
+  position:relative;
+  width:44px;
+  height:72px;
+  border:var(--line-thick);
+  border-radius:26px;
+  background:var(--white);
+  box-shadow:var(--shadow-red);
+  flex:0 0 auto;
+}
+.sh__mouse::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:11px;
+  width:6px;
+  height:14px;
+  margin-left:-3px;
+  background:var(--ink);
+  border-radius:4px;
+  animation:wheel 1.5s ease-in-out infinite;
+}
+@keyframes wheel{
+  0%{transform:translateY(0);opacity:0;}
+  20%{opacity:1;}
+  70%{transform:translateY(20px);opacity:1;}
+  100%{transform:translateY(24px);opacity:0;}
+}
+.sh__chevrons{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding-bottom:4px;
+}
+.sh__chevrons span{
+  width:22px;
+  height:22px;
+  border-right:var(--line-thick);
+  border-bottom:var(--line-thick);
+  transform:rotate(45deg);
+  opacity:0.25;
+  animation:blink 1.5s linear infinite;
+}
+.sh__chevrons span:nth-child(2){animation-delay:0.2s;}
+.sh__chevrons span:nth-child(3){animation-delay:0.4s;}
+@keyframes blink{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
+.sh__cue-meta{
+  font-family:var(--font-mono);
+  font-size:12px;
+  line-height:1.5;
+  padding-bottom:2px;
+}
+.sh__cue-meta b{font-weight:700;}
+.sh__cue-meta .bar{
+  display:inline-block;
+  margin-top:8px;
+  height:10px;
+  width:120px;
+  border:2px solid var(--ink);
+  background:linear-gradient(90deg,var(--red) 42%,transparent 42%);
+}
+
+@media(max-width:640px){
+  .sh{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto auto auto;
+    padding:32px 20px 0;
+    min-height:0;
+    gap:0;
+  }
+  .sh__tags{margin-bottom:28px;padding-bottom:14px;gap:10px;}
+  .sh__tag-idx{margin-left:auto;}
+  .sh__lead,.sh__peek,.sh__cue{grid-column:1 / -1;grid-row:auto;}
+  .sh__title{font-size:clamp(34px,11vw,54px);}
+  .sh__peek{margin-top:36px;min-height:0;position:relative;}
+  .sh__peek-card{position:relative;}
+  .sh__peek-more{
+    left:10px;right:-10px;top:18px;bottom:-24px;
+  }
+  .sh__cue{margin-top:52px;padding-bottom:28px;gap:14px;}
+  .sh__cue-label{writing-mode:horizontal-tb;transform:none;letter-spacing:0.2em;}
+  .sh__cue-meta .bar{width:96px;}
+}
+</style>
+</head>
+<body>
+<section class="sh" aria-label="Scroll to continue">
+
+  <div class="sh__tags">
+    <span class="sh__tag sh__tag--fill">FIELD NOTES</span>
+    <span class="sh__tag">ISSUE 04</span>
+    <span class="sh__tag sh__tag--red">LIVE</span>
+    <span class="sh__tag-idx">SEC. 01 / 07 — HERO</span>
+  </div>
+
+  <div class="sh__lead">
+    <span class="sh__eyebrow">Keep going &darr;</span>
+    <h1 class="sh__title">
+      There&rsquo;s <em>more</em><br>
+      below the <span class="mark">fold.</span>
+    </h1>
+    <p class="sh__sub">
+      You&rsquo;ve read the top. Now scroll down for the raw teardown &mdash;
+      seven sections, zero fluff, every claim receipted.
+    </p>
+  </div>
+
+  <aside class="sh__peek" aria-hidden="true">
+    <div class="sh__peek-more"></div>
+    <div class="sh__peek-card">
+      <div class="sh__peek-head">
+        <b>Next: The Breakdown</b>
+        <span class="sh__dots"><i></i><i></i><i></i></span>
+      </div>
+      <div class="sh__peek-body">
+        <div class="sh__row">
+          <span class="n">01</span>
+          <span class="t">Ship the audit
+            <span class="d">Full-page teardown, annotated frame by frame</span>
+          </span>
+        </div>
+        <div class="sh__row">
+          <span class="n n--red">02</span>
+          <span class="t">Cut the fat
+            <span class="d">Every rule justified or deleted &mdash; no filler</span>
+          </span>
+        </div>
+        <div class="sh__row">
+          <span class="n">03</span>
+          <span class="t">Copy &amp; paste
+            <span class="d">Drop the block, keep the receipts</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sh__cue">
+    <span class="sh__cue-label">Scroll</span>
+    <div class="sh__mouse" role="img" aria-label="Animated scroll indicator"></div>
+    <div class="sh__chevrons" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="sh__cue-meta">
+      <b>00:00 / 07:00</b><br>
+      Progress locked at start<br>
+      <span class="bar" aria-hidden="true"></span>
+    </div>
+  </div>
+
+</section>
+</body>
+</html>

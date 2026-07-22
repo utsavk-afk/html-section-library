@@ -1,0 +1,372 @@
+/* ===== HERO — DARK/LUXE ===== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#26262C;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+}
+
+html{-webkit-font-smoothing:antialiased;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+
+.hero{
+  position:relative;
+  width:100%;
+  min-height:760px;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+
+/* faint structural grid — quiet, no glow */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:96px 96px;
+  background-position:center top;
+  opacity:.18;
+  -webkit-mask-image:radial-gradient(120% 90% at 78% 20%,#000 30%,transparent 72%);
+          mask-image:radial-gradient(120% 90% at 78% 20%,#000 30%,transparent 72%);
+  pointer-events:none;
+}
+
+.hero__inner{
+  position:relative;
+  z-index:1;
+  max-width:1440px;
+  margin:0 auto;
+  padding:34px 72px 64px;
+}
+
+/* top rail */
+.rail{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:88px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  font-size:16px;
+}
+.brand__mark{
+  width:26px;height:26px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  display:grid;place-items:center;
+  position:relative;
+}
+.brand__mark::after{
+  content:"";
+  width:9px;height:9px;
+  background:var(--accent);
+  border-radius:2px;
+  transform:rotate(45deg);
+}
+.rail nav{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  font-size:14.5px;
+  color:var(--muted);
+}
+.rail nav a{color:inherit;text-decoration:none;transition:color .18s;}
+.rail nav a:hover{color:var(--ink);}
+.rail__ver{
+  font-family:var(--sans);
+  font-variant-numeric:tabular-nums;
+  font-size:12.5px;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:5px 12px;
+}
+
+/* asymmetric grid: copy left-heavy, panel right */
+.grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:72px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+}
+
+.title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:70px;
+  line-height:1.02;
+  letter-spacing:-.02em;
+  max-width:11ch;
+}
+.title em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.subhead{
+  margin-top:26px;
+  max-width:44ch;
+  font-size:18px;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+.cta{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:38px;
+  flex-wrap:wrap;
+}
+.btn{
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:500;
+  border-radius:10px;
+  padding:14px 24px;
+  cursor:pointer;
+  border:1px solid transparent;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  transition:transform .16s,background .18s,border-color .18s;
+}
+.btn--primary{
+  background:var(--accent);
+  color:#1a1206;
+  font-weight:600;
+}
+.btn--primary:hover{transform:translateY(-1px);background:#f7ab5a;}
+.btn--ghost{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--line);
+}
+.btn--ghost:hover{border-color:#3a3a44;}
+.btn kbd{
+  font-family:var(--sans);
+  font-size:12px;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:5px;
+  padding:1px 6px;
+  background:#161619;
+}
+
+.trust{
+  margin-top:44px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  color:var(--muted);
+  font-size:13.5px;
+}
+.avatars{display:flex;}
+.avatars span{
+  width:30px;height:30px;
+  border-radius:50%;
+  border:1.5px solid var(--bg);
+  margin-left:-9px;
+  display:grid;place-items:center;
+  font-size:11px;font-weight:600;color:#1a1206;
+}
+.avatars span:first-child{margin-left:0;}
+.avatars span:nth-child(1){background:#F59E42;}
+.avatars span:nth-child(2){background:#C6D2CE;color:#16201d;}
+.avatars span:nth-child(3){background:#D9A7C9;color:#2a1622;}
+.avatars span:nth-child(4){background:#8FA9C9;color:#0f1a26;}
+
+/* right panel — CSS "terminal / product" placeholder */
+.panel{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#151519;
+  overflow:hidden;
+}
+.panel__bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:13px 16px;
+  border-bottom:1px solid var(--line);
+}
+.panel__bar i{
+  width:9px;height:9px;border-radius:50%;
+  background:#2c2c33;
+  display:block;
+}
+.panel__bar span{
+  margin-left:8px;
+  font-size:12.5px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.panel__body{
+  padding:20px 20px 24px;
+  font-family:var(--sans);
+  font-size:13.5px;
+  line-height:1.9;
+}
+.ln{display:flex;gap:14px;}
+.ln .n{color:#4a4a52;width:16px;text-align:right;flex:none;font-variant-numeric:tabular-nums;}
+.ln .c{color:#c9c9d1;}
+.tk-key{color:var(--accent);}
+.tk-str{color:#9DB4A4;}
+.tk-com{color:#5a5a63;font-style:italic;}
+.tk-fn{color:#C6C0DB;}
+
+.panel__foot{
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+.stat{
+  padding:18px 20px;
+  border-right:1px solid var(--line);
+}
+.stat:last-child{border-right:none;}
+.stat b{
+  display:block;
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:24px;
+  letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;
+}
+.stat small{
+  display:block;
+  margin-top:3px;
+  font-size:11.5px;
+  color:var(--muted);
+  letter-spacing:.02em;
+}
+.stat b .u{color:var(--accent);}
+
+@media(max-width:640px){
+  .hero{min-height:0;}
+  .hero__inner{padding:22px 22px 44px;}
+  .rail{padding-bottom:48px;}
+  .rail nav{display:none;}
+  .grid{grid-template-columns:1fr;gap:40px;}
+  .title{font-size:44px;max-width:none;}
+  .subhead{font-size:16px;margin-top:20px;}
+  .cta{margin-top:30px;}
+  .btn{flex:1 1 auto;justify-content:center;}
+  .trust{margin-top:34px;flex-wrap:wrap;}
+  .panel__foot{grid-template-columns:1fr 1fr;}
+  .stat:nth-child(2){border-right:none;}
+  .stat:last-child{grid-column:1/-1;border-top:1px solid var(--line);}
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero__inner">
+
+    <div class="rail">
+      <div class="brand">
+        <span class="brand__mark"></span>
+        Ledgerframe
+      </div>
+      <nav>
+        <a href="#">Primitives</a>
+        <a href="#">Pricing</a>
+        <a href="#">Changelog</a>
+        <a href="#">Docs</a>
+      </nav>
+      <span class="rail__ver">v2.4 — shipping</span>
+    </div>
+
+    <div class="grid">
+
+      <div class="col">
+        <span class="eyebrow"><span class="dot"></span>Now in private beta</span>
+        <h1 class="title">Reconcile a million rows before <em>your coffee</em> gets cold.</h1>
+        <p class="subhead">Ledgerframe is a typed ledger engine for finance teams who are done exporting to spreadsheets. Deterministic close, audit trails you can diff, and reconciliation that runs in the same second you hit enter.</p>
+
+        <div class="cta">
+          <a href="#" class="btn btn--primary">Request an invite</a>
+          <a href="#" class="btn btn--ghost">Read the spec <kbd>D</kbd></a>
+        </div>
+
+        <div class="trust">
+          <div class="avatars">
+            <span>NK</span><span>RA</span><span>TS</span><span>MØ</span>
+          </div>
+          Trusted by 14 finance teams — from seed-stage to Series C.
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="panel">
+          <div class="panel__bar">
+            <i></i><i></i><i></i>
+            <span>close.ledger — main</span>
+          </div>
+          <div class="panel__body">
+            <div class="ln"><span class="n">1</span><span class="c"><span class="tk-com"># close the June books</span></span></div>
+            <div class="ln"><span class="n">2</span><span class="c"><span class="tk-key">match</span> invoices <span class="tk-key">to</span> payments</span></div>
+            <div class="ln"><span class="n">3</span><span class="c">&nbsp;&nbsp;<span class="tk-key">where</span> delta &lt; <span class="tk-str">0.01</span></span></div>
+            <div class="ln"><span class="n">4</span><span class="c"><span class="tk-fn">reconcile</span>() <span class="tk-com">→ 998,412 ok</span></span></div>
+            <div class="ln"><span class="n">5</span><span class="c"><span class="tk-key">flag</span> exceptions <span class="tk-str">"review"</span></span></div>
+          </div>
+          <div class="panel__foot">
+            <div class="stat">
+              <b>0.9<span class="u">s</span></b>
+              <small>Full close</small>
+            </div>
+            <div class="stat">
+              <b>99.4<span class="u">%</span></b>
+              <small>Auto-matched</small>
+            </div>
+            <div class="stat">
+              <b>1.2<span class="u">M</span></b>
+              <small>Rows / run</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

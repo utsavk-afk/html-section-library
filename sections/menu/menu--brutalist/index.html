@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!-- ===== MENU — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services Menu — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --accent-2:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.menu-wrap{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:64px 40px 72px;
+  width:100%;
+  -webkit-font-smoothing:antialiased;
+}
+
+.menu-inner{
+  max-width:1160px;
+  margin:0 auto;
+}
+
+/* ---- HEADER ---- */
+.menu-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  border-bottom:4px solid var(--line);
+  padding-bottom:22px;
+  margin-bottom:0;
+}
+.menu-head-left{max-width:640px;}
+.menu-kicker{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  display:inline-block;
+  background:var(--accent);
+  border:2px solid var(--line);
+  padding:5px 10px 4px;
+  box-shadow:4px 4px 0 var(--ink);
+  margin-bottom:20px;
+}
+.menu-title{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(38px,6vw,74px);
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.menu-title em{
+  font-style:normal;
+  color:var(--bg);
+  background:var(--ink);
+  padding:0 8px;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+.menu-head-right{
+  text-align:right;
+  flex-shrink:0;
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.7;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  padding-bottom:6px;
+}
+.menu-head-right b{color:var(--ink);display:block;font-size:13px;}
+
+/* ---- LIST ---- */
+.menu-list{
+  border-top:4px solid var(--line);
+  margin-top:-4px;
+}
+.menu-row{
+  display:grid;
+  grid-template-columns:64px 1fr 200px;
+  align-items:center;
+  gap:24px;
+  padding:26px 4px 24px;
+  border-bottom:2px solid var(--line);
+  position:relative;
+  transition:background .12s linear;
+}
+.menu-row:hover{background:var(--accent);}
+.menu-row:hover .row-price{background:var(--ink);color:var(--accent);}
+
+.row-num{
+  font-family:var(--mono);
+  font-size:14px;
+  font-weight:700;
+  color:var(--muted);
+  align-self:start;
+  padding-top:4px;
+}
+.menu-row:hover .row-num{color:var(--ink);}
+
+.row-body{min-width:0;}
+.row-name{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:clamp(20px,2.4vw,27px);
+  line-height:1.02;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+  margin-bottom:8px;
+}
+.row-tag{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  border:2px solid var(--line);
+  padding:2px 7px 1px;
+  margin-left:10px;
+  vertical-align:3px;
+  white-space:nowrap;
+}
+.row-tag.hot{background:var(--accent-2);color:#fff;border-color:var(--accent-2);}
+.row-desc{
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:15px;
+  line-height:1.45;
+  color:var(--muted);
+  max-width:560px;
+}
+.menu-row:hover .row-desc{color:#2a2a26;}
+
+.row-price{
+  justify-self:end;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:20px;
+  border:3px solid var(--line);
+  background:var(--bg);
+  padding:11px 16px 9px;
+  box-shadow:5px 5px 0 var(--ink);
+  white-space:nowrap;
+  text-align:center;
+  min-width:150px;
+}
+.row-price small{
+  display:block;
+  font-size:10px;
+  font-weight:400;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:2px;
+}
+.menu-row:hover .row-price small{color:var(--accent);}
+
+/* accent focal row */
+.menu-row.feature{background:var(--ink);}
+.menu-row.feature .row-num{color:var(--accent);}
+.menu-row.feature .row-name{color:var(--bg);}
+.menu-row.feature .row-desc{color:#c9c9c2;}
+.menu-row.feature .row-tag{color:var(--ink);background:var(--accent);border-color:var(--accent);}
+.menu-row.feature .row-price{background:var(--accent);border-color:var(--accent);box-shadow:5px 5px 0 var(--accent-2);}
+.menu-row.feature .row-price small{color:#3a3a1a;}
+.menu-row.feature:hover{background:var(--ink);}
+.menu-row.feature:hover .row-price{color:var(--ink);background:var(--accent);}
+.menu-row.feature:hover .row-num{color:var(--accent);}
+
+/* ---- FOOTER ---- */
+.menu-foot{
+  margin-top:34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.menu-note{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  line-height:1.6;
+  max-width:440px;
+}
+.menu-note span{color:var(--accent-2);font-weight:700;}
+.menu-cta{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  text-decoration:none;
+  color:var(--ink);
+  background:var(--accent);
+  border:3px solid var(--line);
+  padding:15px 26px 13px;
+  box-shadow:6px 6px 0 var(--ink);
+  transition:transform .1s ease,box-shadow .1s ease;
+  display:inline-block;
+}
+.menu-cta:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink);}
+.menu-cta:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink);}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:640px){
+  .menu-wrap{padding:40px 20px 48px;}
+  .menu-head{flex-direction:column;align-items:flex-start;gap:18px;}
+  .menu-head-right{text-align:left;}
+  .menu-row{
+    grid-template-columns:40px 1fr;
+    gap:14px 12px;
+    padding:20px 2px;
+  }
+  .row-price{
+    grid-column:1 / -1;
+    justify-self:start;
+    margin-left:52px;
+    min-width:0;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .menu-row.feature .row-price{box-shadow:4px 4px 0 var(--accent-2);}
+  .row-tag{display:inline-block;margin-left:0;margin-top:6px;vertical-align:0;}
+  .row-name{margin-bottom:6px;}
+  .menu-foot{flex-direction:column;align-items:flex-start;}
+  .menu-cta{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+<section class="menu-wrap">
+  <div class="menu-inner">
+
+    <header class="menu-head">
+      <div class="menu-head-left">
+        <span class="menu-kicker">Rate Card / 2026</span>
+        <h1 class="menu-title">STUDIO<br>SERVICES &amp;<br><em>DAY RATES</em></h1>
+      </div>
+      <div class="menu-head-right">
+        <b>NORTH LOOP WORKSHOP</b>
+        Est. 2019 — Minneapolis<br>
+        Booking min. 2 weeks out<br>
+        Prices ex. tax &amp; materials
+      </div>
+    </header>
+
+    <div class="menu-list">
+
+      <div class="menu-row">
+        <div class="row-num">01</div>
+        <div class="row-body">
+          <div class="row-name">Brand Identity Sprint<span class="row-tag">2 wk</span></div>
+          <p class="row-desc">Logo system, type scale, color tokens and a one-page usage sheet. You leave with editable source files, not a locked PDF.</p>
+        </div>
+        <div class="row-price">$4,800<small>fixed fee</small></div>
+      </div>
+
+      <div class="menu-row feature">
+        <div class="row-num">02</div>
+        <div class="row-body">
+          <div class="row-name">Full Site Build<span class="row-tag hot">Popular</span></div>
+          <p class="row-desc">Hand-coded, no page builder. Up to 8 sections, responsive down to 320px, wired to your CMS and shipped live in three weeks.</p>
+        </div>
+        <div class="row-price">$9,200<small>from — scoped</small></div>
+      </div>
+
+      <div class="menu-row">
+        <div class="row-num">03</div>
+        <div class="row-body">
+          <div class="row-name">Motion &amp; Reels<span class="row-tag">per set</span></div>
+          <p class="row-desc">Six vertical cut-downs from your footage with kinetic type and captions. Turnaround 5 working days, two revision rounds.</p>
+        </div>
+        <div class="row-price">$1,650<small>pack of 6</small></div>
+      </div>
+
+      <div class="menu-row">
+        <div class="row-num">04</div>
+        <div class="row-body">
+          <div class="row-name">Copy &amp; Naming<span class="row-tag">a la carte</span></div>
+          <p class="row-desc">Names, taglines and page copy that reads like a human wrote it. Sold by the deliverable, no vague retainers.</p>
+        </div>
+        <div class="row-price">$980<small>per project</small></div>
+      </div>
+
+      <div class="menu-row">
+        <div class="row-num">05</div>
+        <div class="row-body">
+          <div class="row-name">Design On Retainer<span class="row-tag">monthly</span></div>
+          <p class="row-desc">One senior designer, ~30 hours a month, one active request at a time. Cancel with 14 days notice, no lock-in.</p>
+        </div>
+        <div class="row-price">$3,400<small>/ month</small></div>
+      </div>
+
+    </div>
+
+    <footer class="menu-foot">
+      <p class="menu-note"><span>Note —</span> 50% deposit books the slot. Rush work inside 5 days adds a flat 20%. Rates hold through Dec 2026.</p>
+      <a href="#book" class="menu-cta">Book A Slot →</a>
+    </footer>
+
+  </div>
+</section>
+</body>
+</html>

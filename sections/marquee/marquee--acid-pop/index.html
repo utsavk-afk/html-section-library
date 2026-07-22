@@ -1,0 +1,316 @@
+<!doctype html>
+<!-- ===== MARQUEE — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marquee — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,900&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F6F6F1;
+  --muted:#8A8A82;
+  --line:#242422;
+  --accent:#C7F13B;      /* acid lime */
+  --accent-2:#FF4D9D;    /* hot magenta */
+  --serif:"Archivo Narrow",sans-serif;
+  --sans:"Archivo",sans-serif;
+}
+
+.acid-marquee{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:84px 0 96px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* faint corner tag, asymmetric focal anchor */
+.acid-marquee .am-tag{
+  position:absolute;
+  top:30px;left:48px;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--serif);
+  font-size:13px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.acid-marquee .am-tag::before{
+  content:"";
+  width:9px;height:9px;border-radius:50%;
+  background:var(--accent);
+}
+
+/* heading block — offset left, not centered */
+.acid-marquee .am-head{
+  max-width:1440px;
+  margin:0 auto;
+  padding:44px 48px 10px;
+}
+.acid-marquee .am-kicker{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--accent-2);
+  margin-bottom:14px;
+}
+.acid-marquee h2{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(40px,7vw,104px);
+  line-height:.9;
+  letter-spacing:-.03em;
+  max-width:14ch;
+  text-transform:uppercase;
+}
+.acid-marquee h2 em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+/* ============ MARQUEE BANDS ============ */
+.am-band{
+  position:relative;
+  display:flex;
+  width:100%;
+  overflow:hidden;
+  border-top:2px solid var(--line);
+  border-bottom:2px solid var(--line);
+  padding:0;
+  user-select:none;
+}
+.am-band + .am-band{margin-top:-2px;}
+
+.am-track{
+  display:flex;
+  flex:0 0 auto;
+  align-items:center;
+  white-space:nowrap;
+  will-change:transform;
+}
+
+/* band 1 — big lime words, scroll left */
+.am-band--one{
+  background:var(--bg);
+  transform:rotate(-1.4deg) scale(1.04);
+  margin:56px 0 0;
+  z-index:2;
+}
+.am-band--one .am-track{
+  animation:am-scroll-left 26s linear infinite;
+}
+.am-item{
+  display:inline-flex;
+  align-items:center;
+  gap:26px;
+  padding:22px 30px;
+  font-weight:900;
+  font-size:clamp(44px,6.4vw,92px);
+  line-height:1;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+}
+.am-item .dot{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--accent);
+  flex:0 0 auto;
+}
+.am-item.alt{color:var(--accent);}
+.am-item.alt .dot{background:var(--ink);}
+
+/* band 2 — magenta pill band, scroll right, on lime slab */
+.am-band--two{
+  background:var(--accent);
+  border-color:var(--bg);
+  transform:rotate(1.1deg);
+  margin:22px 0;
+  z-index:3;
+}
+.am-band--two .am-track{
+  animation:am-scroll-right 22s linear infinite;
+  padding:18px 0;
+}
+.am-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin:0 12px;
+  padding:14px 30px;
+  background:var(--bg);
+  color:var(--accent);
+  border-radius:999px;
+  font-weight:800;
+  font-size:clamp(18px,2vw,26px);
+  letter-spacing:.01em;
+  text-transform:uppercase;
+}
+.am-pill.mag{
+  background:var(--accent-2);
+  color:var(--bg);
+}
+.am-pill .arrow{font-size:1.1em;line-height:0;}
+
+/* band 3 — outline ghost text, slow, scroll left */
+.am-band--three{
+  border-color:var(--line);
+  transform:rotate(-.6deg);
+  z-index:1;
+}
+.am-band--three .am-track{
+  animation:am-scroll-left 40s linear infinite;
+}
+.am-ghost{
+  padding:16px 34px;
+  font-weight:900;
+  font-size:clamp(38px,5vw,74px);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  color:transparent;
+  -webkit-text-stroke:2px var(--muted);
+  text-stroke:2px var(--muted);
+}
+.am-ghost.hot{-webkit-text-stroke-color:var(--accent-2);text-stroke:2px var(--accent-2);}
+
+@keyframes am-scroll-left{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@keyframes am-scroll-right{
+  from{transform:translateX(-50%);}
+  to{transform:translateX(0);}
+}
+
+/* footer strip under bands */
+.am-foot{
+  max-width:1440px;
+  margin:52px auto 0;
+  padding:0 48px;
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.am-foot p{
+  font-family:var(--serif);
+  font-size:16px;
+  letter-spacing:.02em;
+  color:var(--muted);
+  max-width:40ch;
+}
+.am-foot .cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent-2);
+  color:var(--bg);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:15px 26px;
+  border-radius:6px;
+  text-decoration:none;
+}
+.am-foot .cta:hover{background:var(--accent);}
+
+@media (prefers-reduced-motion:reduce){
+  .am-track{animation:none !important;}
+}
+
+@media (max-width:640px){
+  .acid-marquee{padding:64px 0 72px;}
+  .acid-marquee .am-tag{left:22px;top:22px;font-size:11px;}
+  .acid-marquee .am-head{padding:40px 22px 6px;}
+  .am-band--one{margin-top:40px;transform:rotate(-2.2deg) scale(1.06);}
+  .am-item{gap:16px;padding:16px 18px;}
+  .am-item .dot{width:12px;height:12px;}
+  .am-band--two{transform:rotate(1.6deg);}
+  .am-pill{margin:0 7px;padding:11px 20px;}
+  .am-foot{padding:0 22px;margin-top:40px;}
+}
+</style>
+</head>
+<body>
+
+<section class="acid-marquee" aria-label="Featured tools marquee">
+  <span class="am-tag">Live feed · shipped this week</span>
+
+  <div class="am-head">
+    <p class="am-kicker">Drop it in · run it · ship it</p>
+    <h2>Copy the block. <em>Paste it.</em> Done in 30 seconds.</h2>
+  </div>
+
+  <!-- BAND 1 : oversized words -->
+  <div class="am-band am-band--one" aria-hidden="true">
+    <div class="am-track">
+      <span class="am-item">Hero<span class="dot"></span></span>
+      <span class="am-item alt">Pricing<span class="dot"></span></span>
+      <span class="am-item">Marquee<span class="dot"></span></span>
+      <span class="am-item alt">Footer<span class="dot"></span></span>
+      <span class="am-item">Testimonials<span class="dot"></span></span>
+      <span class="am-item alt">FAQ<span class="dot"></span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="am-item">Hero<span class="dot"></span></span>
+      <span class="am-item alt">Pricing<span class="dot"></span></span>
+      <span class="am-item">Marquee<span class="dot"></span></span>
+      <span class="am-item alt">Footer<span class="dot"></span></span>
+      <span class="am-item">Testimonials<span class="dot"></span></span>
+      <span class="am-item alt">FAQ<span class="dot"></span></span>
+    </div>
+  </div>
+
+  <!-- BAND 2 : pill band on lime slab -->
+  <div class="am-band am-band--two" aria-hidden="true">
+    <div class="am-track">
+      <span class="am-pill">No build step</span>
+      <span class="am-pill mag">Zero dependencies <span class="arrow">→</span></span>
+      <span class="am-pill">Single HTML file</span>
+      <span class="am-pill mag">CSS shapes only</span>
+      <span class="am-pill">Fully responsive</span>
+      <span class="am-pill mag">MIT license <span class="arrow">→</span></span>
+      <!-- duplicate -->
+      <span class="am-pill">No build step</span>
+      <span class="am-pill mag">Zero dependencies <span class="arrow">→</span></span>
+      <span class="am-pill">Single HTML file</span>
+      <span class="am-pill mag">CSS shapes only</span>
+      <span class="am-pill">Fully responsive</span>
+      <span class="am-pill mag">MIT license <span class="arrow">→</span></span>
+    </div>
+  </div>
+
+  <!-- BAND 3 : outline ghost words -->
+  <div class="am-band am-band--three" aria-hidden="true">
+    <div class="am-track">
+      <span class="am-ghost">Paste into Claude Code</span>
+      <span class="am-ghost hot">★</span>
+      <span class="am-ghost">Ship faster</span>
+      <span class="am-ghost hot">★</span>
+      <span class="am-ghost">No sign-up wall</span>
+      <span class="am-ghost hot">★</span>
+      <!-- duplicate -->
+      <span class="am-ghost">Paste into Claude Code</span>
+      <span class="am-ghost hot">★</span>
+      <span class="am-ghost">Ship faster</span>
+      <span class="am-ghost hot">★</span>
+      <span class="am-ghost">No sign-up wall</span>
+      <span class="am-ghost hot">★</span>
+    </div>
+  </div>
+
+  <div class="am-foot">
+    <p>Every section in the library is one flat file — real copy, real spacing, no framework tax. Grab what you need and keep moving.</p>
+    <a class="cta" href="#browse">Browse all 48 blocks →</a>
+  </div>
+</section>
+
+</body>
+</html>

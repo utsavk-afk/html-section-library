@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<!-- ===== FEATURE-CAROUSEL — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Carousel — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e1;
+  --line-soft:#f0efec;
+  --accent:#C0492B;
+  --accent-wash:#faf1ee;
+  --bg:#ffffff;
+  --panel:#fbfaf9;
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --r-sm:4px;
+  --r-md:10px;
+  --r-lg:16px;
+}
+
+.fc{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  padding:88px 0 96px;
+  -webkit-font-smoothing:antialiased;
+}
+.fc__wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 40px;
+}
+
+/* header — left aligned, asymmetric */
+.fc__head{
+  max-width:600px;
+  margin-bottom:44px;
+}
+.fc__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.fc__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+.fc__title{
+  font-size:38px;
+  line-height:1.12;
+  font-weight:600;
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.fc__title em{
+  font-style:normal;
+  color:var(--muted);
+}
+.fc__lede{
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:480px;
+}
+
+/* radios drive everything, no JS */
+.fc input[type="radio"]{position:absolute;opacity:0;pointer-events:none;width:0;height:0;}
+
+/* tab strip */
+.fc__tabs{
+  display:flex;
+  gap:0;
+  border-bottom:1px solid var(--line);
+  margin-bottom:2px;
+  flex-wrap:wrap;
+}
+.fc__tab{
+  cursor:pointer;
+  padding:14px 26px 16px 2px;
+  margin-right:34px;
+  display:flex;
+  align-items:baseline;
+  gap:11px;
+  position:relative;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;
+  transition:border-color .18s ease;
+}
+.fc__tab-num{
+  font-size:11px;
+  font-weight:600;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+  transition:color .18s ease;
+}
+.fc__tab-label{
+  font-size:15px;
+  font-weight:500;
+  color:var(--muted);
+  letter-spacing:-.01em;
+  transition:color .18s ease;
+}
+.fc__tab:hover .fc__tab-label{color:var(--ink);}
+
+/* stage + panels */
+.fc__stage{position:relative;}
+.panel{
+  display:none;
+  grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);
+  gap:0;
+  border:1px solid var(--line);
+  border-top:none;
+  border-radius:0 0 var(--r-lg) var(--r-lg);
+  overflow:hidden;
+}
+.panel__text{
+  padding:44px 46px 46px;
+  display:flex;
+  flex-direction:column;
+}
+.panel__kicker{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.05em;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+.panel__h{
+  font-size:25px;
+  line-height:1.22;
+  font-weight:600;
+  letter-spacing:-.017em;
+  margin-bottom:15px;
+}
+.panel__p{
+  font-size:15px;
+  line-height:1.62;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.panel__list{
+  list-style:none;
+  margin-top:auto;
+  border-top:1px solid var(--line-soft);
+  padding-top:22px;
+}
+.panel__list li{
+  display:flex;
+  gap:12px;
+  align-items:baseline;
+  font-size:14px;
+  line-height:1.5;
+  padding:9px 0;
+}
+.panel__list li + li{border-top:1px solid var(--line-soft);}
+.panel__list b{font-weight:600;color:var(--ink);}
+.panel__list span{color:var(--muted);}
+.tick{
+  flex:0 0 auto;
+  width:16px;height:16px;
+  border-radius:50%;
+  background:var(--accent-wash);
+  position:relative;
+  top:3px;
+}
+.tick::after{
+  content:"";
+  position:absolute;
+  left:5px;top:4px;
+  width:4px;height:7px;
+  border:solid var(--accent);
+  border-width:0 1.5px 1.5px 0;
+  transform:rotate(42deg);
+}
+
+/* visual side */
+.panel__vis{
+  background:var(--panel);
+  border-left:1px solid var(--line);
+  padding:38px 40px;
+  display:flex;
+  flex-direction:column;
+  min-height:376px;
+  position:relative;
+}
+.vis__bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.vis__dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+  margin-right:7px;
+  vertical-align:middle;
+}
+.vis__tag{
+  font-size:11px;font-weight:600;
+  letter-spacing:.03em;
+  color:var(--muted);
+  padding:4px 10px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#fff;
+}
+
+/* VIS 1 — bar chart / deploy volume */
+.chart{
+  display:flex;
+  align-items:flex-end;
+  gap:14px;
+  height:170px;
+  padding-bottom:2px;
+  border-bottom:1px solid var(--line);
+  margin-top:auto;
+}
+.chart .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;}
+.chart .col span{
+  display:block;
+  border-radius:var(--r-sm) var(--r-sm) 0 0;
+  background:#e4e1dd;
+}
+.chart .col em{
+  font-style:normal;
+  font-size:11px;
+  text-align:center;
+  color:var(--muted);
+  margin-top:9px;
+}
+.chart .col.on span{background:var(--accent);}
+.chart .col.on span.hl{background:var(--accent);}
+
+/* VIS 2 — board columns */
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;}
+.board .lane{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:12px 12px 14px;}
+.board .lane h5{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:11px;display:flex;justify-content:space-between;}
+.board .lane h5 i{font-style:normal;color:#bdb9b3;font-weight:600;}
+.card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-sm);padding:9px 10px;margin-bottom:8px;}
+.card:last-child{margin-bottom:0;}
+.card .t{font-size:12px;font-weight:500;color:var(--ink);line-height:1.35;margin-bottom:8px;}
+.card .m{height:3px;border-radius:2px;background:#e4e1dd;width:70%;}
+.card.acc{border-color:#eecabf;background:var(--accent-wash);}
+.card.acc .m{background:var(--accent);}
+
+/* VIS 3 — timeline */
+.tl{margin-top:20px;display:flex;flex-direction:column;gap:0;}
+.tl .row{display:grid;grid-template-columns:82px 1fr;align-items:center;gap:14px;padding:11px 0;border-top:1px solid var(--line-soft);}
+.tl .row:first-child{border-top:none;}
+.tl .lab{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
+.tl .track{height:9px;border-radius:5px;background:#e4e1dd;position:relative;}
+.tl .track b{position:absolute;top:0;bottom:0;border-radius:5px;background:#d3cfc9;}
+.tl .track b.on{background:var(--accent);}
+
+/* VIS 4 — alert stream */
+.stream{margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+.alert{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:13px 15px;}
+.alert .ic{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:var(--line-soft);position:relative;}
+.alert.live .ic{background:var(--accent-wash);}
+.alert.live .ic::after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--accent);}
+.alert.mut .ic::after{content:"";position:absolute;inset:9px;border-radius:50%;background:#c9c5bf;}
+.alert .body .t{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px;}
+.alert .body .s{font-size:12px;color:var(--muted);}
+.alert .time{margin-left:auto;font-size:11px;color:#b5b1ab;white-space:nowrap;padding-left:8px;}
+
+/* ---- checked states ---- */
+#fc-1:checked ~ .fc__tabs label[for="fc-1"],
+#fc-2:checked ~ .fc__tabs label[for="fc-2"],
+#fc-3:checked ~ .fc__tabs label[for="fc-3"],
+#fc-4:checked ~ .fc__tabs label[for="fc-4"]{border-bottom-color:var(--accent);}
+#fc-1:checked ~ .fc__tabs label[for="fc-1"] .fc__tab-label,
+#fc-2:checked ~ .fc__tabs label[for="fc-2"] .fc__tab-label,
+#fc-3:checked ~ .fc__tabs label[for="fc-3"] .fc__tab-label,
+#fc-4:checked ~ .fc__tabs label[for="fc-4"] .fc__tab-label{color:var(--ink);}
+#fc-1:checked ~ .fc__tabs label[for="fc-1"] .fc__tab-num,
+#fc-2:checked ~ .fc__tabs label[for="fc-2"] .fc__tab-num,
+#fc-3:checked ~ .fc__tabs label[for="fc-3"] .fc__tab-num,
+#fc-4:checked ~ .fc__tabs label[for="fc-4"] .fc__tab-num{color:var(--accent);}
+
+#fc-1:checked ~ .fc__stage .panel--1,
+#fc-2:checked ~ .fc__stage .panel--2,
+#fc-3:checked ~ .fc__stage .panel--3,
+#fc-4:checked ~ .fc__stage .panel--4{display:grid;}
+
+.fc__tab:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+
+@media(max-width:640px){
+  .fc{padding:56px 0 62px;}
+  .fc__wrap{padding:0 22px;}
+  .fc__title{font-size:29px;}
+  .fc__tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .fc__tabs::-webkit-scrollbar{display:none;}
+  .fc__tab{white-space:nowrap;margin-right:22px;padding-right:6px;}
+  .panel{grid-template-columns:1fr;border-radius:0 0 var(--r-md) var(--r-md);}
+  .panel__text{padding:32px 26px 30px;}
+  .panel__h{font-size:21px;}
+  .panel__vis{border-left:none;border-top:1px solid var(--line);padding:30px 26px;min-height:0;}
+  .board{grid-template-columns:1fr 1fr;}
+  .board .lane:last-child{display:none;}
+  .chart{height:130px;gap:9px;}
+}
+</style>
+</head>
+<body>
+<section class="fc" aria-label="Feature overview">
+  <div class="fc__wrap">
+
+    <div class="fc__head">
+      <span class="fc__eyebrow">The Cadence platform</span>
+      <h2 class="fc__title">Ship on Fridays.<br><em>Sleep on weekends.</em></h2>
+      <p class="fc__lede">Every release, from the first canary to the all-clear, runs through one control plane. Pick a capability to see how it fits your pipeline.</p>
+    </div>
+
+    <input type="radio" name="fc" id="fc-1" checked>
+    <input type="radio" name="fc" id="fc-2">
+    <input type="radio" name="fc" id="fc-3">
+    <input type="radio" name="fc" id="fc-4">
+
+    <div class="fc__tabs" role="tablist">
+      <label class="fc__tab" for="fc-1" tabindex="0"><span class="fc__tab-num">01</span><span class="fc__tab-label">Rollouts</span></label>
+      <label class="fc__tab" for="fc-2" tabindex="0"><span class="fc__tab-num">02</span><span class="fc__tab-label">Release board</span></label>
+      <label class="fc__tab" for="fc-3" tabindex="0"><span class="fc__tab-num">03</span><span class="fc__tab-label">Timeline</span></label>
+      <label class="fc__tab" for="fc-4" tabindex="0"><span class="fc__tab-num">04</span><span class="fc__tab-label">Signals</span></label>
+    </div>
+
+    <div class="fc__stage">
+
+      <!-- PANEL 1 -->
+      <div class="panel panel--1" role="tabpanel">
+        <div class="panel__text">
+          <span class="panel__kicker">Progressive delivery</span>
+          <h3 class="panel__h">Roll out to 2% of traffic, then let the metrics decide the rest.</h3>
+          <p class="panel__p">Cadence promotes a build from canary to full fleet only when error rate, latency, and saturation stay inside the budget you set. If a gate trips, it rolls back before a human opens the dashboard.</p>
+          <ul class="panel__list">
+            <li><span class="tick"></span><span><b>Auto-halt</b> the instant p95 drifts past 400ms</span></li>
+            <li><span class="tick"></span><span><b>Blast radius</b> capped per region and per cohort</span></li>
+          </ul>
+        </div>
+        <div class="panel__vis">
+          <div class="vis__bar"><span><span class="vis__dot"></span>Deploys this week</span><span class="vis__tag">v4.19 · live</span></div>
+          <div class="chart">
+            <div class="col"><span style="height:44%"></span><em>Mon</em></div>
+            <div class="col"><span style="height:70%"></span><em>Tue</em></div>
+            <div class="col"><span style="height:38%"></span><em>Wed</em></div>
+            <div class="col on"><span class="hl" style="height:92%"></span><em>Thu</em></div>
+            <div class="col"><span style="height:58%"></span><em>Fri</em></div>
+            <div class="col"><span style="height:26%"></span><em>Sat</em></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 2 -->
+      <div class="panel panel--2" role="tabpanel">
+        <div class="panel__text">
+          <span class="panel__kicker">One shared view</span>
+          <h3 class="panel__h">The whole release, from backlog to production, on a single board.</h3>
+          <p class="panel__p">Drag a change from Staged to Shipping and Cadence wires up the checks, notifies the on-call owner, and stamps the changelog. No spreadsheet, no “who’s deploying?” in the channel.</p>
+          <ul class="panel__list">
+            <li><span class="tick"></span><span><b>Ownership</b> attached to every card automatically</span></li>
+            <li><span class="tick"></span><span><b>Freeze windows</b> respected without a manual hold</span></li>
+          </ul>
+        </div>
+        <div class="panel__vis">
+          <div class="vis__bar"><span><span class="vis__dot"></span>Release board</span><span class="vis__tag">14 open</span></div>
+          <div class="board">
+            <div class="lane">
+              <h5>Staged <i>5</i></h5>
+              <div class="card"><div class="t">Cache key rewrite</div><div class="m"></div></div>
+              <div class="card"><div class="t">SSO token refresh</div><div class="m"></div></div>
+            </div>
+            <div class="lane">
+              <h5>Shipping <i>2</i></h5>
+              <div class="card acc"><div class="t">Billing v4.19</div><div class="m"></div></div>
+              <div class="card"><div class="t">Search reranker</div><div class="m"></div></div>
+            </div>
+            <div class="lane">
+              <h5>Done <i>7</i></h5>
+              <div class="card"><div class="t">Webhook retries</div><div class="m"></div></div>
+              <div class="card"><div class="t">CSV export fix</div><div class="m"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 3 -->
+      <div class="panel panel--3" role="tabpanel">
+        <div class="panel__text">
+          <span class="panel__kicker">Full audit trail</span>
+          <h3 class="panel__h">Replay any incident down to the exact commit and the exact minute.</h3>
+          <p class="panel__p">Every gate, promotion, and rollback lands on one timeline you can scrub. When a customer asks what changed at 09:14, you answer in seconds instead of grepping five log tabs.</p>
+          <ul class="panel__list">
+            <li><span class="tick"></span><span><b>Immutable</b> record kept for 400 days</span></li>
+            <li><span class="tick"></span><span><b>Export</b> a signed report straight to your ticket</span></li>
+          </ul>
+        </div>
+        <div class="panel__vis">
+          <div class="vis__bar"><span><span class="vis__dot"></span>Deploy timeline</span><span class="vis__tag">Jul 22</span></div>
+          <div class="tl">
+            <div class="row"><span class="lab">09:02</span><div class="track"><b style="left:0;width:34%"></b></div></div>
+            <div class="row"><span class="lab">09:08</span><div class="track"><b style="left:12%;width:52%"></b></div></div>
+            <div class="row"><span class="lab">09:14</span><div class="track"><b class="on" style="left:30%;width:46%"></b></div></div>
+            <div class="row"><span class="lab">09:21</span><div class="track"><b style="left:48%;width:40%"></b></div></div>
+            <div class="row"><span class="lab">09:30</span><div class="track"><b style="left:60%;width:34%"></b></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 4 -->
+      <div class="panel panel--4" role="tabpanel">
+        <div class="panel__text">
+          <span class="panel__kicker">Noise-free alerting</span>
+          <h3 class="panel__h">One page for the signal that matters. Everything else stays quiet.</h3>
+          <p class="panel__p">Cadence correlates the deploy that caused the spike, so the on-call engineer gets one alert with the culprit already named — not nine duplicate pages from every downstream service.</p>
+          <ul class="panel__list">
+            <li><span class="tick"></span><span><b>Root cause</b> linked to the triggering release</span></li>
+            <li><span class="tick"></span><span><b>Auto-resolve</b> once the rollback clears the budget</span></li>
+          </ul>
+        </div>
+        <div class="panel__vis">
+          <div class="vis__bar"><span><span class="vis__dot"></span>Signals</span><span class="vis__tag">1 active</span></div>
+          <div class="stream">
+            <div class="alert live"><span class="ic"></span><div class="body"><div class="t">Latency budget exceeded · checkout</div><div class="s">Traced to billing v4.19 — rollback armed</div></div><span class="time">now</span></div>
+            <div class="alert mut"><span class="ic"></span><div class="body"><div class="t">Canary promoted · search-api</div><div class="s">All gates green across 3 regions</div></div><span class="time">6m</span></div>
+            <div class="alert mut"><span class="ic"></span><div class="body"><div class="t">Freeze window opened · payments</div><div class="s">Scheduled hold until 14:00 UTC</div></div><span class="time">22m</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

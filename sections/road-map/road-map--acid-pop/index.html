@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!-- ===== ROAD-MAP — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Expanded:wght@700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --mute:#8C8C82;
+  --line:#242422;
+  --card:#141412;
+  --card2:#111110;
+  --shadow-hard:6px 6px 0 #000;
+  --font:'Archivo',system-ui,sans-serif;
+  --exp:'Archivo Expanded','Archivo',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.rm{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:64px 56px 72px;
+  position:relative;
+}
+
+/* ---- header ---- */
+.rm__top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+  margin-bottom:48px;
+}
+.rm__head{max-width:760px;}
+.rm__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--lime);
+  padding:7px 14px 6px;
+  border-radius:999px;
+  margin-bottom:22px;
+}
+.rm__kicker span{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--magenta);
+  display:inline-block;
+}
+.rm__title{
+  font-family:var(--exp);
+  font-weight:900;
+  font-size:clamp(44px,6.4vw,92px);
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.rm__title em{
+  font-style:normal;
+  color:var(--magenta);
+}
+.rm__sub{
+  margin-top:20px;
+  font-size:17px;
+  line-height:1.5;
+  color:var(--mute);
+  max-width:520px;
+}
+.rm__meta{
+  flex-shrink:0;
+  text-align:right;
+  border-left:2px solid var(--line);
+  padding-left:22px;
+}
+.rm__meta b{
+  display:block;
+  font-family:var(--exp);
+  font-weight:900;
+  font-size:56px;
+  line-height:1;
+  color:var(--lime);
+}
+.rm__meta small{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--mute);
+}
+
+/* ---- columns ---- */
+.rm__grid{
+  display:grid;
+  grid-template-columns:1fr 1.12fr 1fr;
+  gap:20px;
+  align-items:start;
+}
+.col{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px 18px 22px;
+  background:var(--card2);
+}
+.col--live{
+  border-color:var(--lime);
+  background:var(--card);
+  box-shadow:var(--shadow-hard);
+  transform:translateY(-8px);
+}
+.col__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+  padding-bottom:14px;
+  border-bottom:1px dashed var(--line);
+}
+.col__label{
+  font-family:var(--exp);
+  font-weight:800;
+  font-size:19px;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+}
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  padding:5px 10px 4px;
+  border-radius:999px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.tag--shipped{background:#22271a;color:var(--lime);border:1px solid #3a441f;}
+.tag--live{background:var(--lime);color:var(--bg);}
+.tag--next{background:#2a1620;color:var(--magenta);border:1px solid #4a2233;}
+
+/* ---- item cards ---- */
+.item{
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:15px 15px 16px;
+  margin-bottom:12px;
+  background:var(--bg);
+}
+.item:last-child{margin-bottom:0;}
+.item__row{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:7px;
+}
+.item__name{
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:-.01em;
+}
+.item__id{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--mute);
+  flex-shrink:0;
+}
+.item__desc{
+  font-size:13.5px;
+  line-height:1.45;
+  color:var(--mute);
+}
+
+/* shipped variant: checked */
+.item--done .item__name::before{
+  content:"✓";
+  color:var(--lime);
+  font-weight:900;
+  margin-right:7px;
+}
+
+/* live: progress bars */
+.item--wip{
+  border-color:#333;
+  background:#0e0e0c;
+}
+.bar{
+  margin-top:11px;
+  height:8px;
+  border-radius:999px;
+  background:#26261f;
+  overflow:hidden;
+}
+.bar i{
+  display:block;
+  height:100%;
+  background:var(--lime);
+  border-radius:999px;
+}
+.item--wip.hot .bar i{background:var(--magenta);}
+.pct{
+  float:right;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  color:var(--ink);
+}
+.pct.hot{color:var(--magenta);}
+
+/* next: dashed / eta */
+.item--soon{
+  border-style:dashed;
+  border-color:#2e2e28;
+  background:transparent;
+}
+.eta{
+  display:inline-block;
+  margin-top:10px;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.05em;
+  color:var(--magenta);
+  border:1px solid #3a2130;
+  padding:3px 9px 2px;
+  border-radius:6px;
+}
+
+/* footer strip */
+.rm__foot{
+  margin-top:40px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  border-top:1px solid var(--line);
+  padding-top:26px;
+}
+.rm__foot p{
+  font-size:14px;
+  color:var(--mute);
+  max-width:520px;
+  line-height:1.5;
+}
+.rm__foot p b{color:var(--ink);}
+.cta{
+  margin-left:auto;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--exp);
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+  color:var(--bg);
+  background:var(--lime);
+  border:none;
+  padding:15px 26px;
+  border-radius:999px;
+  cursor:pointer;
+  box-shadow:var(--shadow-hard);
+  text-decoration:none;
+}
+.cta:hover{background:var(--magenta);color:var(--ink);}
+.cta span{font-size:18px;line-height:1;}
+
+@media(max-width:640px){
+  .rm{padding:40px 20px 48px;}
+  .rm__top{margin-bottom:34px;}
+  .rm__meta{text-align:left;border-left:none;border-top:2px solid var(--line);padding-left:0;padding-top:14px;}
+  .rm__meta b{font-size:44px;}
+  .rm__grid{grid-template-columns:1fr;gap:16px;}
+  .col--live{transform:none;}
+  .rm__foot{gap:16px;}
+  .cta{margin-left:0;width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+<section class="rm">
+  <div class="rm__top">
+    <div class="rm__head">
+      <span class="rm__kicker"><span></span>Public build log · Q3 2026</span>
+      <h1 class="rm__title">Where <em>Relay</em><br>is headed next.</h1>
+      <p class="rm__sub">Every line we ship, break, and queue up — no vanity dates, no vaporware. Updated the moment a branch merges to main.</p>
+    </div>
+    <div class="rm__meta">
+      <b>41</b>
+      <small>features live // 9 in flight</small>
+    </div>
+  </div>
+
+  <div class="rm__grid">
+
+    <!-- SHIPPED -->
+    <div class="col">
+      <div class="col__head">
+        <span class="col__label">Shipped</span>
+        <span class="tag tag--shipped">Live · v3.4</span>
+      </div>
+
+      <div class="item item--done">
+        <div class="item__row">
+          <span class="item__name">Offline draft sync</span>
+          <span class="item__id">#PR-882</span>
+        </div>
+        <p class="item__desc">Edits queue locally and reconcile on reconnect — no more lost paragraphs on flaky Wi-Fi.</p>
+      </div>
+
+      <div class="item item--done">
+        <div class="item__row">
+          <span class="item__name">Keyboard command bar</span>
+          <span class="item__id">#PR-859</span>
+        </div>
+        <p class="item__desc">Hit ⌘K to jump, assign, or ship anything without touching the mouse.</p>
+      </div>
+
+      <div class="item item--done">
+        <div class="item__row">
+          <span class="item__name">SOC 2 Type II</span>
+          <span class="item__id">#OPS-40</span>
+        </div>
+        <p class="item__desc">Audit closed, report available on request for every workspace on Team and up.</p>
+      </div>
+    </div>
+
+    <!-- IN PROGRESS -->
+    <div class="col col--live">
+      <div class="col__head">
+        <span class="col__label">In progress</span>
+        <span class="tag tag--live">Building now</span>
+      </div>
+
+      <div class="item item--wip">
+        <div class="item__row">
+          <span class="item__name">Realtime cursors</span>
+          <span class="item__id">#PR-901</span>
+        </div>
+        <p class="item__desc">See who's typing where, live, with named presence dots across shared docs.</p>
+        <div class="bar"><i style="width:78%"></i></div>
+        <span class="pct">78%</span>
+      </div>
+
+      <div class="item item--wip hot">
+        <div class="item__row">
+          <span class="item__name">Automations engine</span>
+          <span class="item__id">#PR-914</span>
+        </div>
+        <p class="item__desc">Trigger-based rules: when a task moves to Done, ping Slack and close the linked issue.</p>
+        <div class="bar"><i style="width:44%"></i></div>
+        <span class="pct hot">44%</span>
+      </div>
+
+      <div class="item item--wip">
+        <div class="item__row">
+          <span class="item__name">Export to PDF + Notion</span>
+          <span class="item__id">#PR-897</span>
+        </div>
+        <p class="item__desc">One-click structured export that keeps headings, tables, and threads intact.</p>
+        <div class="bar"><i style="width:61%"></i></div>
+        <span class="pct">61%</span>
+      </div>
+    </div>
+
+    <!-- NEXT -->
+    <div class="col">
+      <div class="col__head">
+        <span class="col__label">Next up</span>
+        <span class="tag tag--next">Backlog</span>
+      </div>
+
+      <div class="item item--soon">
+        <div class="item__row">
+          <span class="item__name">Mobile app (iOS)</span>
+          <span class="item__id">#PLAN-12</span>
+        </div>
+        <p class="item__desc">Native reader + quick-capture, TestFlight first. Android follows one sprint behind.</p>
+        <span class="eta">ETA · Sep 2026</span>
+      </div>
+
+      <div class="item item--soon">
+        <div class="item__row">
+          <span class="item__name">Public API v2</span>
+          <span class="item__id">#PLAN-15</span>
+        </div>
+        <p class="item__desc">REST + webhooks, scoped tokens, and a rate limit you can actually read.</p>
+        <span class="eta">ETA · Oct 2026</span>
+      </div>
+
+      <div class="item item--soon">
+        <div class="item__row">
+          <span class="item__name">Self-host bundle</span>
+          <span class="item__id">#PLAN-19</span>
+        </div>
+        <p class="item__desc">Docker Compose + Postgres for teams that keep data behind their own firewall.</p>
+        <span class="eta">Exploring</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rm__foot">
+    <p><b>Vote on what ships next.</b> Backlog order is set by workspace owners every two weeks — the loudest requests jump the queue.</p>
+    <a href="#" class="cta">Request a feature <span>→</span></a>
+  </div>
+</section>
+</body>
+</html>

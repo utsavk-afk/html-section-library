@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!-- ===== MANIFESTO — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifesto — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --grot:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--grot);
+  -webkit-font-smoothing:antialiased;
+}
+
+.manifesto{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:64px 56px 72px;
+  position:relative;
+  /* faint visible grid */
+  background-image:
+    linear-gradient(to right,rgba(17,17,17,.05) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(17,17,17,.05) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+/* ---- top bar ---- */
+.mf-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border-bottom:var(--border);
+  padding-bottom:16px;
+  flex-wrap:wrap;
+}
+.mf-tag{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 12px;
+}
+.mf-meta{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+.mf-meta b{color:var(--red);}
+
+/* ---- headline block ---- */
+.mf-head{
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:40px;
+  align-items:end;
+  margin-top:44px;
+}
+.mf-title{
+  font-family:var(--grot);
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:.9;
+  letter-spacing:-.02em;
+  font-size:clamp(44px,7.4vw,108px);
+}
+.mf-title .hl{
+  background:var(--acid);
+  box-shadow:var(--shadow-sm);
+  padding:0 .08em;
+  display:inline-block;
+  transform:rotate(-1.2deg);
+}
+.mf-title .strike{
+  color:var(--red);
+  text-decoration:line-through;
+  text-decoration-thickness:6px;
+}
+.mf-lead{
+  font-family:var(--mono);
+  font-size:15px;
+  line-height:1.55;
+  border-left:6px solid var(--red);
+  padding:4px 0 4px 18px;
+  align-self:end;
+}
+
+/* ---- principles list ---- */
+.mf-list{
+  margin-top:56px;
+  border-top:var(--border);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.mf-item{
+  border-bottom:var(--border);
+  padding:26px 30px 26px 0;
+  display:flex;
+  gap:22px;
+  align-items:flex-start;
+}
+.mf-item:nth-child(odd){
+  border-right:var(--border);
+  padding-right:40px;
+}
+.mf-item:nth-child(even){
+  padding-left:40px;
+}
+.mf-num{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:15px;
+  line-height:1;
+  background:var(--ink);
+  color:var(--white);
+  padding:8px 10px;
+  flex:0 0 auto;
+  min-width:46px;
+  text-align:center;
+}
+.mf-item:nth-child(3) .mf-num{background:var(--red);}
+.mf-item:nth-child(6) .mf-num{background:var(--ink);color:var(--acid);}
+.mf-body h3{
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:20px;
+  letter-spacing:-.01em;
+  line-height:1.05;
+  margin-bottom:8px;
+}
+.mf-body p{
+  font-family:var(--mono);
+  font-size:13.5px;
+  line-height:1.5;
+  color:#2a2a2a;
+}
+
+/* ---- closing strip ---- */
+.mf-foot{
+  margin-top:44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  background:var(--acid);
+  border:var(--border);
+  box-shadow:var(--shadow);
+  padding:22px 28px;
+  flex-wrap:wrap;
+}
+.mf-foot .sign{
+  font-weight:900;
+  text-transform:uppercase;
+  font-size:clamp(20px,2.6vw,30px);
+  line-height:.95;
+  letter-spacing:-.01em;
+}
+.mf-foot .sign small{
+  display:block;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.1em;
+  margin-top:6px;
+}
+.mf-btn{
+  font-family:var(--mono);
+  font-weight:700;
+  text-transform:uppercase;
+  font-size:14px;
+  letter-spacing:.08em;
+  background:var(--ink);
+  color:var(--paper);
+  border:var(--border);
+  box-shadow:var(--shadow-sm);
+  padding:16px 24px;
+  cursor:pointer;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:transform .08s,box-shadow .08s;
+}
+.mf-btn:hover{
+  transform:translate(4px,4px);
+  box-shadow:0 0 0 var(--ink);
+}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .manifesto{padding:36px 20px 44px;background-size:32px 32px;}
+  .mf-head{grid-template-columns:1fr;gap:24px;margin-top:32px;}
+  .mf-lead{align-self:auto;}
+  .mf-list{grid-template-columns:1fr;margin-top:40px;}
+  .mf-item,
+  .mf-item:nth-child(odd),
+  .mf-item:nth-child(even){
+    border-right:0;
+    padding:22px 0;
+  }
+  .mf-foot{flex-direction:column;align-items:flex-start;}
+  .mf-btn{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+<section class="manifesto">
+
+  <div class="mf-top">
+    <span class="mf-tag">// The House Rules</span>
+    <span class="mf-meta">Ships&nbsp;fast&nbsp;shop &nbsp;·&nbsp; Draft&nbsp;<b>07</b>&nbsp;/&nbsp;No&nbsp;apologies</span>
+  </div>
+
+  <div class="mf-head">
+    <h2 class="mf-title">
+      We don't <span class="strike">pivot.</span><br>
+      We <span class="hl">build</span> the thing.
+    </h2>
+    <p class="mf-lead">
+      Seven beliefs we refuse to negotiate. Print them. Tape them to the wall.
+      If a decision breaks one of these, the decision is wrong — not the rule.
+    </p>
+  </div>
+
+  <div class="mf-list">
+    <div class="mf-item">
+      <span class="mf-num">01</span>
+      <div class="mf-body">
+        <h3>Ship it Friday</h3>
+        <p>A rough thing in real hands beats a perfect thing in a slide deck. Deadlines are features. Momentum is a moat.</p>
+      </div>
+    </div>
+    <div class="mf-item">
+      <span class="mf-num">02</span>
+      <div class="mf-body">
+        <h3>Opinions have owners</h3>
+        <p>Every call gets a name attached. No committees, no "we decided." If you can't sign it, don't say it.</p>
+      </div>
+    </div>
+    <div class="mf-item">
+      <span class="mf-num">03</span>
+      <div class="mf-body">
+        <h3>Boring tech, loud results</h3>
+        <p>We pick the tool that's still here in five years, not the one trending this week. Novelty is a tax we don't pay.</p>
+      </div>
+    </div>
+    <div class="mf-item">
+      <span class="mf-num">04</span>
+      <div class="mf-body">
+        <h3>Cut the meeting</h3>
+        <p>If it could've been a paragraph, it should've been. Async by default. Time is the only thing we can't refund.</p>
+      </div>
+    </div>
+    <div class="mf-item">
+      <span class="mf-num">05</span>
+      <div class="mf-body">
+        <h3>Say the hard thing</h3>
+        <p>Kind is not the same as nice. We give the note early, in plain words, to your face — never behind your back.</p>
+      </div>
+    </div>
+    <div class="mf-item">
+      <span class="mf-num">06</span>
+      <div class="mf-body">
+        <h3>Own the mess</h3>
+        <p>You broke it, you name it, you fix it in daylight. Blame is expensive. A clean post-mortem is free.</p>
+      </div>
+    </div>
+    <div class="mf-item">
+      <span class="mf-num">07</span>
+      <div class="mf-body">
+        <h3>Delight is non-optional</h3>
+        <p>The last 5% is the whole product. Polish the corners nobody asked about. Someone always notices.</p>
+      </div>
+    </div>
+    <div class="mf-item">
+      <span class="mf-num">✕</span>
+      <div class="mf-body">
+        <h3 style="color:var(--red)">And one rule to break them</h3>
+        <p>When a rule stops serving the work, rewrite it out loud. Dogma is just a habit that forgot its reason.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mf-foot">
+    <div class="sign">
+      Signed, everyone who stays past launch.
+      <small>Rev. 2026 · Amend it or live by it</small>
+    </div>
+    <a href="#" class="mf-btn">Copy the manifesto →</a>
+  </div>
+
+</section>
+</body>
+</html>

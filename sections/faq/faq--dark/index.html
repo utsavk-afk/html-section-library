@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!-- ===== FAQ — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --accent:#F59E42;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+.faq-luxe{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 40px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.faq-luxe__inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:96px;
+  align-items:start;
+}
+
+/* --- Left rail: the focal point, sticky, asymmetric --- */
+.faq-luxe__aside{
+  position:sticky;
+  top:112px;
+}
+.faq-luxe__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.faq-luxe__eyebrow::before{
+  content:"";
+  width:24px;
+  height:1px;
+  background:var(--accent);
+}
+.faq-luxe__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:44px;
+  line-height:1.06;
+  letter-spacing:-0.015em;
+}
+.faq-luxe__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.faq-luxe__lede{
+  margin-top:22px;
+  color:var(--muted);
+  font-size:15.5px;
+  line-height:1.62;
+  max-width:34ch;
+}
+.faq-luxe__contact{
+  margin-top:34px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  font-size:14.5px;
+  color:var(--muted);
+  line-height:1.6;
+}
+.faq-luxe__contact a{
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--accent);
+  padding-bottom:1px;
+  transition:color .2s ease;
+}
+.faq-luxe__contact a:hover{ color:var(--accent); }
+
+/* --- Right column: accordion --- */
+.faq-luxe__list{
+  border-top:1px solid var(--line);
+}
+.faq-luxe__item{
+  border-bottom:1px solid var(--line);
+}
+.faq-luxe__q{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:baseline;
+  gap:20px;
+  padding:26px 4px 26px 0;
+  font-size:18px;
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:-0.006em;
+  transition:color .2s ease;
+}
+.faq-luxe__q::-webkit-details-marker{ display:none; }
+.faq-luxe__q:hover{ color:var(--accent); }
+
+.faq-luxe__num{
+  font-family:var(--serif);
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted);
+  min-width:26px;
+  flex:0 0 auto;
+  padding-top:3px;
+  font-variant-numeric:tabular-nums;
+}
+.faq-luxe__qtext{ flex:1 1 auto; line-height:1.4; }
+
+/* +/- marker built with CSS shapes */
+.faq-luxe__mark{
+  flex:0 0 auto;
+  position:relative;
+  width:16px;
+  height:16px;
+  margin-top:5px;
+  transition:transform .25s ease;
+}
+.faq-luxe__mark::before,
+.faq-luxe__mark::after{
+  content:"";
+  position:absolute;
+  background:var(--accent);
+  border-radius:1px;
+}
+.faq-luxe__mark::before{ /* horizontal */
+  top:50%; left:0; right:0; height:1.5px; transform:translateY(-50%);
+}
+.faq-luxe__mark::after{ /* vertical, hides when open */
+  left:50%; top:0; bottom:0; width:1.5px; transform:translateX(-50%);
+  transition:opacity .2s ease;
+}
+.faq-luxe__item[open] .faq-luxe__mark::after{ opacity:0; }
+.faq-luxe__item[open] .faq-luxe__mark{ transform:rotate(180deg); }
+
+.faq-luxe__a{
+  padding:0 46px 30px 46px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.68;
+  max-width:60ch;
+}
+.faq-luxe__a strong{
+  color:var(--ink);
+  font-weight:500;
+}
+
+@media (max-width:640px){
+  .faq-luxe{ padding:64px 22px; }
+  .faq-luxe__inner{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .faq-luxe__aside{ position:static; top:auto; }
+  .faq-luxe__title{ font-size:34px; }
+  .faq-luxe__lede{ max-width:none; }
+  .faq-luxe__q{ font-size:16.5px; gap:14px; }
+  .faq-luxe__a{ padding:0 0 26px 46px; }
+}
+</style>
+</head>
+<body>
+
+<section class="faq-luxe">
+  <div class="faq-luxe__inner">
+
+    <aside class="faq-luxe__aside">
+      <span class="faq-luxe__eyebrow">Before you paste</span>
+      <h2 class="faq-luxe__title">Questions,<br><em>answered</em> plainly.</h2>
+      <p class="faq-luxe__lede">Everything teams ask before dropping these sections into a Claude Code project. If your question isn't here, the source is right there to read.</p>
+      <p class="faq-luxe__contact">Still stuck on something?<br>Write to <a href="mailto:library@copy-paste.dev">library@copy-paste.dev</a> and we usually reply within a day.</p>
+    </aside>
+
+    <div class="faq-luxe__list">
+
+      <details class="faq-luxe__item" open>
+        <summary class="faq-luxe__q">
+          <span class="faq-luxe__num">01</span>
+          <span class="faq-luxe__qtext">Is the library actually free, or is there a paid tier waiting?</span>
+          <span class="faq-luxe__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-luxe__a">
+          <strong>All of it is free, MIT-licensed, forever.</strong> Every section is a single self-contained HTML file with no build step and no external JavaScript. Copy the markup, paste it into your project, ship it commercially — no attribution required, though a star never hurts.
+        </div>
+      </details>
+
+      <details class="faq-luxe__item">
+        <summary class="faq-luxe__q">
+          <span class="faq-luxe__num">02</span>
+          <span class="faq-luxe__qtext">Do I need Tailwind, React, or a bundler to use these?</span>
+          <span class="faq-luxe__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-luxe__a">
+          No. Each file ships with a <strong>:root token block and plain component CSS</strong> in a single &lt;style&gt; tag. The only external dependency is a Google Fonts &lt;link&gt;, which you can swap for a system stack in one line. Drop it into vanilla HTML, Astro, Next, Rails — anything that renders markup.
+        </div>
+      </details>
+
+      <details class="faq-luxe__item">
+        <summary class="faq-luxe__q">
+          <span class="faq-luxe__num">03</span>
+          <span class="faq-luxe__qtext">How do I recolor a section to match my brand?</span>
+          <span class="faq-luxe__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-luxe__a">
+          Edit the seven custom properties at the top of the file — <strong>--bg, --ink, --muted, --line, --accent</strong> plus the two font variables. Every color in the section references those tokens, so one accent change cascades through borders, markers, and hover states without touching the rest of the CSS.
+        </div>
+      </details>
+
+      <details class="faq-luxe__item">
+        <summary class="faq-luxe__q">
+          <span class="faq-luxe__num">04</span>
+          <span class="faq-luxe__qtext">Are the components accessible and keyboard-friendly?</span>
+          <span class="faq-luxe__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-luxe__a">
+          This FAQ is built on native <strong>&lt;details&gt;/&lt;summary&gt;</strong> elements, so it toggles with Enter or Space, exposes correct expanded state to screen readers, and works with JavaScript disabled. Across the library we lean on semantic HTML first and add ARIA only where the platform can't carry it.
+        </div>
+      </details>
+
+      <details class="faq-luxe__item">
+        <summary class="faq-luxe__q">
+          <span class="faq-luxe__num">05</span>
+          <span class="faq-luxe__qtext">Will Claude Code understand a section if I paste it in raw?</span>
+          <span class="faq-luxe__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-luxe__a">
+          Yes — that's the whole point. Files are small, flat, and heavily class-named (<strong>block__element</strong> convention), so an agent can read the structure, rename tokens, or splice two sections together without guessing. Paste the file and describe the change in plain English.
+        </div>
+      </details>
+
+      <details class="faq-luxe__item">
+        <summary class="faq-luxe__q">
+          <span class="faq-luxe__num">06</span>
+          <span class="faq-luxe__qtext">Can I mix this dark section with a light-themed page?</span>
+          <span class="faq-luxe__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-luxe__a">
+          Absolutely. Because each section scopes its variables and background to its own root class, dropping a dark FAQ beneath a light hero just works — no bleed, no reset collisions. For a full light variant, override the five color tokens or grab the <strong>faq--light</strong> file from the same folder.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

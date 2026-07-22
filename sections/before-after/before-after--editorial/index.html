@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!-- ===== BEFORE-AFTER — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before / After — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#726C63;
+  --line:#E0DCD3;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+.ba{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px 64px 104px;
+  max-width:1440px;
+  margin:0 auto;
+  -webkit-font-smoothing:antialiased;
+}
+
+.ba__label{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:22px;
+}
+
+/* Asymmetric header — heading left-heavy, note pushed right */
+.ba__head{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:56px;
+  align-items:end;
+  padding-bottom:44px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:0;
+}
+.ba__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(36px,4.4vw,60px);
+  line-height:1.02;
+  letter-spacing:-.01em;
+  max-width:14ch;
+}
+.ba__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.ba__note{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.65;
+  padding-bottom:8px;
+}
+.ba__note b{ color:var(--ink); font-weight:600; }
+
+/* Two columns share a hairline spine */
+.ba__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.ba__col{
+  padding:52px 52px 44px;
+}
+.ba__col--before{
+  border-right:1px solid var(--line);
+  padding-left:0;
+}
+.ba__col--after{
+  padding-right:0;
+  position:relative;
+}
+
+.ba__tag{
+  display:inline-flex;
+  align-items:baseline;
+  gap:10px;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:20px;
+}
+.ba__tag span{ color:var(--muted); }
+.ba__num{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  letter-spacing:0;
+  text-transform:none;
+}
+.ba__col--before .ba__num{ color:var(--muted); }
+.ba__col--after .ba__num{ color:var(--accent); }
+
+.ba__lead{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:26px;
+  line-height:1.28;
+  letter-spacing:-.005em;
+  margin-bottom:28px;
+  max-width:22ch;
+}
+.ba__col--before .ba__lead{ color:var(--muted); }
+.ba__col--after .ba__lead em{ font-style:italic; color:var(--accent); }
+
+/* Item list */
+.ba__list{ list-style:none; }
+.ba__item{
+  display:flex;
+  gap:16px;
+  padding:16px 0;
+  border-top:1px solid var(--line);
+  font-size:15px;
+  line-height:1.55;
+}
+.ba__item:last-child{ border-bottom:1px solid var(--line); }
+
+.ba__mark{
+  flex:0 0 auto;
+  width:18px;
+  height:18px;
+  margin-top:2px;
+}
+/* Before: faint dash / crossed feel */
+.ba__col--before .ba__item{ color:var(--muted); }
+.ba__col--before .ba__item .ba__marktext{ text-decoration:line-through; text-decoration-color:var(--line); }
+.ba__col--after .ba__item{ color:var(--ink); }
+
+.ba__itemtitle{
+  font-weight:600;
+  display:block;
+  margin-bottom:2px;
+}
+.ba__col--before .ba__itemtitle{ color:#8a847a; }
+
+/* Metric footer per column */
+.ba__metric{
+  margin-top:34px;
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+}
+.ba__mval{
+  font-family:var(--serif);
+  font-size:44px;
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.ba__col--before .ba__mval{ color:#b6b0a6; font-weight:400; }
+.ba__col--after .ba__mval{ color:var(--accent); font-weight:500; }
+.ba__mtext{
+  font-size:13px;
+  line-height:1.4;
+  color:var(--muted);
+  max-width:16ch;
+}
+
+@media(max-width:640px){
+  .ba{ padding:56px 22px 64px; }
+  .ba__head{ grid-template-columns:1fr; gap:24px; align-items:start; }
+  .ba__note{ padding-bottom:0; }
+  .ba__grid{ grid-template-columns:1fr; }
+  .ba__col{ padding:40px 0 8px; }
+  .ba__col--before{ border-right:none; border-bottom:1px solid var(--line); padding-bottom:40px; }
+  .ba__col--after{ padding-right:0; }
+  .ba__lead{ font-size:23px; }
+  .ba__mval{ font-size:38px; }
+}
+</style>
+</head>
+<body>
+<section class="ba">
+  <p class="ba__label">The Handoff, Rewritten</p>
+
+  <div class="ba__head">
+    <h2 class="ba__title">Same brief.<br>A <em>different</em> Tuesday morning.</h2>
+    <p class="ba__note">We took one real onboarding flow and ran it two ways. The work didn't change &mdash; <b>the friction did.</b> Here is the before, and here is what replaced it.</p>
+  </div>
+
+  <div class="ba__grid">
+    <!-- BEFORE -->
+    <div class="ba__col ba__col--before">
+      <p class="ba__tag"><span class="ba__num">01 &nbsp;/&nbsp; Before</span><span>The old way</span></p>
+      <p class="ba__lead">A ticket sits in three inboxes and nobody owns the reply.</p>
+      <ul class="ba__list">
+        <li class="ba__item">
+          <svg class="ba__mark" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line x1="4" y1="9" x2="14" y2="9" stroke="#C9C3B8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="ba__marktext"><span class="ba__itemtitle">Six tools, one context</span>The account manager pastes the same summary into Slack, the CRM, and a doc.</span>
+        </li>
+        <li class="ba__item">
+          <svg class="ba__mark" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line x1="4" y1="9" x2="14" y2="9" stroke="#C9C3B8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="ba__marktext"><span class="ba__itemtitle">Approvals by memory</span>Someone has to remember who signs off &mdash; usually after it ships.</span>
+        </li>
+        <li class="ba__item">
+          <svg class="ba__mark" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line x1="4" y1="9" x2="14" y2="9" stroke="#C9C3B8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="ba__marktext"><span class="ba__itemtitle">Status is a meeting</span>The only way to know where things stand is to interrupt three people.</span>
+        </li>
+      </ul>
+      <div class="ba__metric">
+        <span class="ba__mval">9 days</span>
+        <span class="ba__mtext">median time from kickoff to first live page</span>
+      </div>
+    </div>
+
+    <!-- AFTER -->
+    <div class="ba__col ba__col--after">
+      <p class="ba__tag"><span class="ba__num">02 &nbsp;/&nbsp; After</span><span>The new way</span></p>
+      <p class="ba__lead">One thread. One owner. The next step is <em>already assigned.</em></p>
+      <ul class="ba__list">
+        <li class="ba__item">
+          <svg class="ba__mark" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M4 9.4l3.2 3.2L14 5.6" stroke="#B4472B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span><span class="ba__itemtitle">Context travels with the work</span>The summary is written once and every tool reads from it, not copies of it.</span>
+        </li>
+        <li class="ba__item">
+          <svg class="ba__mark" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M4 9.4l3.2 3.2L14 5.6" stroke="#B4472B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span><span class="ba__itemtitle">Approvals are a step, not a hunt</span>The right reviewer is named before the draft exists, and pinged when it's ready.</span>
+        </li>
+        <li class="ba__item">
+          <svg class="ba__mark" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M4 9.4l3.2 3.2L14 5.6" stroke="#B4472B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span><span class="ba__itemtitle">Status answers itself</span>Anyone can open the thread and see the stage, the owner, and the blocker.</span>
+        </li>
+      </ul>
+      <div class="ba__metric">
+        <span class="ba__mval">2 days</span>
+        <span class="ba__mtext">median time from kickoff to first live page</span>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

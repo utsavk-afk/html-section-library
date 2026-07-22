@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- ===== HIGHLIGHTS — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highlights — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6E6A61;
+  --line:#E4E1D8;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+.hl{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 64px 120px;
+  width:100%;
+}
+
+.hl__wrap{
+  max-width:1180px;
+  margin:0 auto;
+}
+
+/* ---- header : asymmetric, left-weighted ---- */
+.hl__head{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:56px;
+  align-items:end;
+  padding-bottom:52px;
+  border-bottom:1px solid var(--line);
+}
+
+.hl__label{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:22px;
+}
+.hl__label::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--accent);
+}
+
+.hl__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:44px;
+  line-height:1.08;
+  letter-spacing:-.01em;
+  max-width:16ch;
+}
+.hl__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.hl__lede{
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.6;
+  color:var(--muted);
+  font-weight:400;
+  padding-bottom:6px;
+}
+
+/* ---- highlights row ---- */
+.hl__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-top:0;
+}
+
+.hl__item{
+  padding:44px 32px 44px 0;
+  border-right:1px solid var(--line);
+  position:relative;
+}
+.hl__item:first-child{padding-left:0;}
+.hl__item:last-child{border-right:none;padding-right:0;}
+/* vary spacing/rhythm: nudge alternating items down for asymmetry */
+.hl__item:nth-child(2){padding-top:64px;}
+.hl__item:nth-child(4){padding-top:64px;}
+
+.hl__mark{
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent);
+  margin-bottom:26px;
+}
+.hl__mark svg{display:block;}
+
+.hl__num{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:.02em;
+  position:absolute;
+  top:44px;
+  right:32px;
+}
+.hl__item:nth-child(2) .hl__num,
+.hl__item:nth-child(4) .hl__num{top:64px;}
+.hl__item:last-child .hl__num{right:0;}
+
+.hl__h{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:20px;
+  line-height:1.25;
+  letter-spacing:-.005em;
+  margin-bottom:12px;
+  max-width:14ch;
+}
+
+.hl__p{
+  font-size:14px;
+  line-height:1.62;
+  color:var(--muted);
+  max-width:26ch;
+}
+
+/* ---- footer note ---- */
+.hl__foot{
+  margin-top:56px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+}
+.hl__dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent);
+  flex:none;
+}
+
+@media(max-width:640px){
+  .hl{padding:72px 24px 80px;}
+  .hl__head{
+    grid-template-columns:1fr;
+    gap:26px;
+    padding-bottom:38px;
+  }
+  .hl__title{font-size:32px;}
+  .hl__grid{grid-template-columns:1fr;}
+  .hl__item{
+    padding:32px 0;
+    border-right:none;
+    border-bottom:1px solid var(--line);
+  }
+  .hl__item:nth-child(2),
+  .hl__item:nth-child(4){padding-top:32px;}
+  .hl__item:last-child{border-bottom:none;}
+  .hl__num,
+  .hl__item:nth-child(2) .hl__num,
+  .hl__item:nth-child(4) .hl__num{top:32px;right:0;}
+  .hl__p,.hl__h{max-width:none;}
+}
+</style>
+</head>
+<body>
+<section class="hl">
+  <div class="hl__wrap">
+
+    <header class="hl__head">
+      <div>
+        <p class="hl__label">Why teams keep it</p>
+        <h2 class="hl__title">Sections that read like <em>print</em>, not like a template.</h2>
+      </div>
+      <p class="hl__lede">Every block ships as one flat HTML file. Drop it into Claude Code, keep the parts you like, rename a token, move on.</p>
+    </header>
+
+    <div class="hl__grid">
+
+      <article class="hl__item">
+        <div class="hl__mark" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="4.5" y="6.5" width="23" height="19" rx="1.5"/>
+            <path d="M4.5 11.5h23M9 3v4M23 3v4"/>
+          </svg>
+        </div>
+        <span class="hl__num">01</span>
+        <h3 class="hl__h">One file, zero build</h3>
+        <p class="hl__p">No bundler, no npm install, no config. Copy the markup and the styles come with it.</p>
+      </article>
+
+      <article class="hl__item">
+        <div class="hl__mark" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M16 3.5v25M3.5 16h25" stroke-width="1.2" opacity=".45"/>
+            <circle cx="16" cy="16" r="6.5"/>
+            <circle cx="16" cy="16" r="1.6" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <span class="hl__num">02</span>
+        <h3 class="hl__h">Tokens up top</h3>
+        <p class="hl__p">A single :root block holds colour, type and rhythm. Recolour the whole section in four lines.</p>
+      </article>
+
+      <article class="hl__item">
+        <div class="hl__mark" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M6 26V6M6 26h20M9 22l6-8 4 5 5-9"/>
+          </svg>
+        </div>
+        <span class="hl__num">03</span>
+        <h3 class="hl__h">Responsive already</h3>
+        <p class="hl__p">A tested mobile breakpoint sits in the stylesheet, so it holds shape from 320px up.</p>
+      </article>
+
+      <article class="hl__item">
+        <div class="hl__mark" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M16 3.5l3.6 7.6 8.4 1.1-6.1 5.7 1.6 8.3L16 23.3l-7.5 4-1.6-8.3L.8 12.2l8.4-1.1z"/>
+          </svg>
+        </div>
+        <span class="hl__num">04</span>
+        <h3 class="hl__h">No stock-photo slop</h3>
+        <p class="hl__p">CSS shapes and inline SVG only. Nothing to license, nothing to phone home for.</p>
+      </article>
+
+    </div>
+
+    <div class="hl__foot">
+      <span class="hl__dot" aria-hidden="true"></span>
+      Free &middot; Public domain &middot; No attribution required
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!-- ===== SCREENSHOTS — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screenshots — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e5e2;
+  --accent:#C0492B;
+  --serif:"Inter",sans-serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+
+.showcase{
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 80px 104px;
+}
+
+/* ---- top rule + kicker ---- */
+.showcase__meta{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+.showcase__kicker{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.showcase__ver{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.04em;
+}
+
+/* ---- asymmetric two-column body ---- */
+.showcase__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 340px;
+  gap:64px;
+  align-items:start;
+  margin-top:56px;
+}
+
+/* ===== the app UI panel (CSS-drawn) ===== */
+.panel{
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  background:#fbfbfa;
+  box-shadow:0 1px 0 rgba(20,20,20,.02),0 30px 60px -34px rgba(20,20,20,.24);
+}
+.panel__bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:13px 16px;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.dot{width:11px;height:11px;border-radius:50%;background:#e2e0dc;}
+.dot--live{background:var(--accent);}
+.panel__url{
+  margin-left:12px;
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.02em;
+  padding:4px 12px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#fafafa;
+}
+.panel__body{
+  display:grid;
+  grid-template-columns:186px minmax(0,1fr);
+  min-height:400px;
+}
+
+/* sidebar */
+.side{
+  border-right:1px solid var(--line);
+  padding:20px 16px;
+  background:#fff;
+}
+.side__brand{
+  display:flex;align-items:center;gap:9px;
+  font-weight:700;font-size:14px;letter-spacing:-.01em;
+  margin-bottom:24px;
+}
+.side__mark{
+  width:22px;height:22px;border-radius:6px;
+  background:var(--ink);
+  position:relative;flex:none;
+}
+.side__mark::after{
+  content:"";position:absolute;inset:6px;
+  border-radius:2px;background:var(--accent);
+}
+.nav{list-style:none;display:flex;flex-direction:column;gap:2px;}
+.nav li{
+  font-size:13px;color:var(--muted);
+  padding:8px 10px;border-radius:6px;
+  display:flex;align-items:center;gap:9px;
+}
+.nav li.is-active{color:var(--ink);font-weight:600;background:#f4f2ef;}
+.nav .glyph{width:14px;height:14px;border-radius:3px;border:1.5px solid currentColor;flex:none;opacity:.55;}
+.nav li.is-active .glyph{opacity:1;border-color:var(--accent);}
+.side__foot{
+  margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:9px;
+}
+.side__ava{
+  width:26px;height:26px;border-radius:50%;flex:none;
+  background:var(--accent);color:#fff;
+  font-size:11px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+}
+.side__who{font-size:12px;line-height:1.3;}
+.side__who b{display:block;font-weight:600;}
+.side__who span{color:var(--muted);}
+
+/* main canvas */
+.canvas{padding:22px 24px;}
+.canvas__head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:20px;
+}
+.canvas__title{font-size:16px;font-weight:600;letter-spacing:-.01em;}
+.canvas__title span{color:var(--muted);font-weight:400;font-size:13px;margin-left:8px;}
+.canvas__btn{
+  font-size:12px;font-weight:600;color:#fff;background:var(--ink);
+  padding:7px 14px;border-radius:6px;
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+.stat{border:1px solid var(--line);border-radius:8px;padding:14px 15px;background:#fff;}
+.stat__k{font-size:11px;color:var(--muted);letter-spacing:.03em;}
+.stat__v{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-top:6px;}
+.stat__d{font-size:11px;font-weight:600;margin-top:4px;color:#2f8f5b;}
+.stat__d.down{color:var(--accent);}
+
+/* chart */
+.chart{
+  border:1px solid var(--line);border-radius:8px;background:#fff;
+  padding:16px 16px 12px;
+}
+.chart__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.chart__lbl{font-size:12px;font-weight:600;}
+.chart__leg{font-size:11px;color:var(--muted);display:flex;gap:12px;}
+.chart__leg i{font-style:normal;display:inline-flex;align-items:center;gap:5px;}
+.chart__leg i::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--ink);}
+.chart__leg i.acc::before{background:var(--accent);}
+.bars{display:flex;align-items:flex-end;gap:14px;height:118px;padding-top:6px;}
+.barcol{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;height:100%;}
+.bar{width:100%;border-radius:3px 3px 0 0;background:#dedbd6;}
+.bar.hi{background:var(--accent);}
+.barcol span{font-size:10px;color:var(--muted);text-align:center;}
+
+/* ---- right rail: caption + callouts ---- */
+.rail__cap{
+  font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;
+}
+.rail h2{
+  font-size:30px;line-height:1.14;letter-spacing:-.025em;font-weight:700;
+  margin-bottom:14px;
+}
+.rail h2 em{font-style:normal;color:var(--accent);}
+.rail p.lede{font-size:15px;color:var(--muted);line-height:1.6;margin-bottom:34px;}
+
+.callouts{list-style:none;display:flex;flex-direction:column;}
+.callout{
+  display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--line);
+}
+.callout:last-child{border-bottom:1px solid var(--line);}
+.callout__n{
+  font-size:12px;font-weight:700;color:var(--accent);
+  padding-top:2px;font-variant-numeric:tabular-nums;flex:none;width:22px;
+}
+.callout__t{font-size:14px;font-weight:600;margin-bottom:4px;letter-spacing:-.01em;}
+.callout__x{font-size:13px;color:var(--muted);line-height:1.55;}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .showcase{padding:56px 22px 64px;}
+  .showcase__grid{grid-template-columns:1fr;gap:40px;margin-top:36px;}
+  .rail{order:-1;}
+  .rail h2{font-size:26px;}
+  .rail p.lede{margin-bottom:22px;}
+  .panel__body{grid-template-columns:1fr;}
+  .side{display:none;}
+  .stats{grid-template-columns:1fr;}
+  .stat{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+  .stat__v{margin-top:0;}
+  .stat__d{margin-top:0;}
+  .bars{gap:8px;}
+  .barcol span{font-size:9px;}
+}
+</style>
+</head>
+<body>
+<section class="showcase">
+  <div class="showcase__meta">
+    <span class="showcase__kicker">Inside the product</span>
+    <span class="showcase__ver">v3.1 · Retention dashboard</span>
+  </div>
+
+  <div class="showcase__grid">
+
+    <!-- ===== app UI panel ===== -->
+    <figure class="panel" aria-label="Product screenshot of the Ledgerloop retention dashboard">
+      <div class="panel__bar">
+        <span class="dot dot--live"></span><span class="dot"></span><span class="dot"></span>
+        <span class="panel__url">app.ledgerloop.io / cohorts</span>
+      </div>
+      <div class="panel__body">
+        <aside class="side">
+          <div class="side__brand"><span class="side__mark"></span>Ledgerloop</div>
+          <ul class="nav">
+            <li><span class="glyph"></span>Overview</li>
+            <li class="is-active"><span class="glyph"></span>Cohorts</li>
+            <li><span class="glyph"></span>Revenue</li>
+            <li><span class="glyph"></span>Segments</li>
+            <li><span class="glyph"></span>Exports</li>
+          </ul>
+          <div class="side__foot">
+            <span class="side__ava">DR</span>
+            <span class="side__who"><b>Dana Reyes</b><span>Growth team</span></span>
+          </div>
+        </aside>
+
+        <div class="canvas">
+          <div class="canvas__head">
+            <div class="canvas__title">Weekly retention<span>Jun 2 – Jul 21</span></div>
+            <span class="canvas__btn">Add filter</span>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat__k">Active accounts</div>
+              <div class="stat__v">12,480</div>
+              <div class="stat__d">▲ 6.2%</div>
+            </div>
+            <div class="stat">
+              <div class="stat__k">Week-4 retention</div>
+              <div class="stat__v">41.7%</div>
+              <div class="stat__d">▲ 3.1 pts</div>
+            </div>
+            <div class="stat">
+              <div class="stat__k">Churn risk</div>
+              <div class="stat__v">318</div>
+              <div class="stat__d down">▼ 1.4%</div>
+            </div>
+          </div>
+
+          <div class="chart">
+            <div class="chart__top">
+              <span class="chart__lbl">Retained accounts by week</span>
+              <span class="chart__leg">
+                <i>Prior</i><i class="acc">Current</i>
+              </span>
+            </div>
+            <div class="bars">
+              <div class="barcol"><span class="bar" style="height:44%"></span><span>W1</span></div>
+              <div class="barcol"><span class="bar hi" style="height:66%"></span><span>W2</span></div>
+              <div class="barcol"><span class="bar" style="height:52%"></span><span>W3</span></div>
+              <div class="barcol"><span class="bar hi" style="height:81%"></span><span>W4</span></div>
+              <div class="barcol"><span class="bar" style="height:58%"></span><span>W5</span></div>
+              <div class="barcol"><span class="bar hi" style="height:72%"></span><span>W6</span></div>
+              <div class="barcol"><span class="bar" style="height:64%"></span><span>W7</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ===== caption + callouts ===== -->
+    <div class="rail">
+      <div class="rail__cap">The cohorts view</div>
+      <h2>See who stays, and <em>who slips away</em>, in one screen.</h2>
+      <p class="lede">No SQL, no export-and-pray. Every cohort recomputes the moment new events land, so the number you show the board is the number that's true right now.</p>
+
+      <ul class="callouts">
+        <li class="callout">
+          <span class="callout__n">01</span>
+          <div>
+            <div class="callout__t">Live to the last event</div>
+            <p class="callout__x">Ingest lag under 90 seconds. What you see is what fired, not last night's snapshot.</p>
+          </div>
+        </li>
+        <li class="callout">
+          <span class="callout__n">02</span>
+          <div>
+            <div class="callout__t">Filter without breaking flow</div>
+            <p class="callout__x">Stack plan, region, and signup source in place. The chart redraws; the URL stays shareable.</p>
+          </div>
+        </li>
+        <li class="callout">
+          <span class="callout__n">03</span>
+          <div>
+            <div class="callout__t">Churn risk, flagged early</div>
+            <p class="callout__x">Accounts trending toward silence surface here before they cancel, with a reason attached.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

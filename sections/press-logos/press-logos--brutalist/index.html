@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!-- ===== press-logos — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>As Featured In — Press Logos (Brutalist)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+
+  :root{
+    --paper:#FAFAF7;
+    --ink:#111111;
+    --acid:#FFE500;
+    --red:#FF3B21;
+    --line:3px;
+    --shadow:6px 6px 0 var(--ink);
+    --sans:"Archivo",system-ui,sans-serif;
+    --mono:"Space Mono",ui-monospace,monospace;
+  }
+
+  .pl-wrap{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    width:100%;
+    padding:88px 40px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .pl-inner{
+    width:100%;
+    max-width:1440px;
+    position:relative;
+  }
+
+  /* top label bar — asymmetric, pushed left */
+  .pl-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+    border-bottom:var(--line) solid var(--ink);
+    padding-bottom:20px;
+    margin-bottom:44px;
+  }
+
+  .pl-label{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    background:var(--acid);
+    border:var(--line) solid var(--ink);
+    box-shadow:var(--shadow);
+    padding:10px 16px;
+  }
+  .pl-label .dot{
+    width:11px;height:11px;
+    background:var(--red);
+    border:2px solid var(--ink);
+    display:inline-block;
+  }
+
+  .pl-meta{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    opacity:.72;
+    text-align:right;
+    line-height:1.5;
+  }
+  .pl-meta b{color:var(--red);}
+
+  /* logo grid — 3 across desktop, hard borders, varied cells */
+  .pl-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:var(--line) solid var(--ink);
+    background:var(--ink);
+    gap:var(--line);
+  }
+
+  .pl-cell{
+    background:var(--paper);
+    min-height:150px;
+    padding:26px 30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+    transition:background .12s ease;
+  }
+  .pl-cell:hover{background:var(--acid);}
+
+  /* index tag top-left, mono */
+  .pl-idx{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    color:var(--ink);
+    opacity:.55;
+  }
+
+  .pl-mark{
+    display:flex;
+    align-items:center;
+    min-height:44px;
+  }
+  .pl-mark svg{display:block;height:auto;}
+
+  .pl-quote{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    line-height:1.45;
+    color:var(--ink);
+    opacity:.7;
+  }
+
+  /* accent cell: acid by default, one focal point */
+  .pl-cell--accent{background:var(--acid);}
+  .pl-cell--accent:hover{background:var(--paper);}
+  .pl-cell--accent .pl-quote{opacity:.85;}
+
+  /* wordmark styling shared */
+  .wm{font-family:var(--sans);color:var(--ink);}
+
+  /* footer strip */
+  .pl-foot{
+    margin-top:36px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .pl-foot .bar{
+    height:14px;width:52px;
+    background:var(--ink);
+    display:inline-block;
+  }
+  .pl-foot .bar.red{background:var(--red);}
+  .pl-foot .bar.acid{background:var(--acid);border:2px solid var(--ink);width:26px;}
+  .pl-foot span{opacity:.72;}
+
+  @media(max-width:640px){
+    .pl-wrap{padding:52px 18px;}
+    .pl-head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:30px;}
+    .pl-meta{text-align:left;}
+    .pl-grid{grid-template-columns:1fr;}
+    .pl-cell{min-height:118px;padding:20px 22px;}
+    .pl-foot{gap:12px;}
+  }
+</style>
+</head>
+<body>
+<section class="pl-wrap">
+  <div class="pl-inner">
+
+    <div class="pl-head">
+      <span class="pl-label"><span class="dot"></span>As Featured In</span>
+      <div class="pl-meta">Coverage Index / 2021&ndash;2026<br><b>6</b> Outlets &middot; <b>41</b> Mentions</div>
+    </div>
+
+    <div class="pl-grid">
+
+      <!-- 01 -->
+      <div class="pl-cell">
+        <span class="pl-idx">[ 01 ]</span>
+        <div class="pl-mark">
+          <svg width="150" height="30" viewBox="0 0 150 30" role="img" aria-label="THE LEDGER">
+            <text x="0" y="23" class="wm" font-size="24" font-weight="900" letter-spacing="-0.5">THE</text>
+            <text x="52" y="23" class="wm" font-size="24" font-weight="500" font-style="italic" letter-spacing="0.5">Ledger</text>
+          </svg>
+        </div>
+        <span class="pl-quote">"Rebuilt the category from scratch."</span>
+      </div>
+
+      <!-- 02 accent -->
+      <div class="pl-cell pl-cell--accent">
+        <span class="pl-idx">[ 02 ]</span>
+        <div class="pl-mark">
+          <svg width="140" height="30" viewBox="0 0 140 30" role="img" aria-label="WIRED PIXEL">
+            <rect x="0" y="4" width="18" height="18" fill="#111"></rect>
+            <text x="26" y="22" class="wm" font-size="22" font-weight="900" letter-spacing="1">PIXEL/OS</text>
+          </svg>
+        </div>
+        <span class="pl-quote">Editor's Pick &mdash; Tools Desk</span>
+      </div>
+
+      <!-- 03 -->
+      <div class="pl-cell">
+        <span class="pl-idx">[ 03 ]</span>
+        <div class="pl-mark">
+          <svg width="150" height="30" viewBox="0 0 150 30" role="img" aria-label="FOUNDRY REVIEW">
+            <text x="0" y="23" class="wm" font-size="23" font-weight="800" letter-spacing="-0.3">FOUNDRY</text>
+            <rect x="118" y="5" width="4" height="18" fill="#FF3B21"></rect>
+            <text x="127" y="14" class="wm" font-family="Space Mono, monospace" font-size="8" font-weight="700">RE</text>
+            <text x="127" y="23" class="wm" font-family="Space Mono, monospace" font-size="8" font-weight="700">VW</text>
+          </svg>
+        </div>
+        <span class="pl-quote">"A blueprint worth stealing."</span>
+      </div>
+
+      <!-- 04 -->
+      <div class="pl-cell">
+        <span class="pl-idx">[ 04 ]</span>
+        <div class="pl-mark">
+          <svg width="150" height="30" viewBox="0 0 150 30" role="img" aria-label="NORTHBOUND">
+            <text x="0" y="23" class="wm" font-size="21" font-weight="700" letter-spacing="2">NORTHBOUND</text>
+            <line x1="0" y1="27" x2="150" y2="27" stroke="#111" stroke-width="2"></line>
+          </svg>
+        </div>
+        <span class="pl-quote">Quarterly &middot; Print Feature</span>
+      </div>
+
+      <!-- 05 -->
+      <div class="pl-cell">
+        <span class="pl-idx">[ 05 ]</span>
+        <div class="pl-mark">
+          <svg width="150" height="30" viewBox="0 0 150 30" role="img" aria-label="SIGNAL WEEKLY">
+            <circle cx="10" cy="14" r="9" fill="none" stroke="#111" stroke-width="3"></circle>
+            <circle cx="10" cy="14" r="3" fill="#FF3B21"></circle>
+            <text x="26" y="22" class="wm" font-size="22" font-weight="800" letter-spacing="0.5">SIGNAL</text>
+            <text x="112" y="22" class="wm" font-family="Space Mono, monospace" font-size="10" font-weight="700">/WK</text>
+          </svg>
+        </div>
+        <span class="pl-quote">"Most-shared story of Q2."</span>
+      </div>
+
+      <!-- 06 accent-mono -->
+      <div class="pl-cell">
+        <span class="pl-idx">[ 06 ]</span>
+        <div class="pl-mark">
+          <svg width="150" height="30" viewBox="0 0 150 30" role="img" aria-label="THE STANDARD DISPATCH">
+            <text x="0" y="14" class="wm" font-family="Space Mono, monospace" font-size="9" font-weight="700" letter-spacing="3">THE STANDARD</text>
+            <text x="0" y="28" class="wm" font-size="19" font-weight="900" letter-spacing="-0.4">DISPATCH.</text>
+          </svg>
+        </div>
+        <span class="pl-quote">Business &amp; Tech Section</span>
+      </div>
+
+    </div>
+
+    <div class="pl-foot">
+      <span class="bar"></span>
+      <span class="bar red"></span>
+      <span class="bar acid"></span>
+      <span>Verified press &mdash; links on request</span>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

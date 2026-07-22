@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!-- ===== NEWSLETTER — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F5F5F0;
+  --muted:#8A8A82;
+  --line:#242420;
+  --accent:#C7F13B;      /* lime — primary */
+  --accent-2:#FF4D9D;    /* magenta — secondary */
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.nl{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  padding:96px 0 104px;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255,77,157,.10), transparent 34%),
+    var(--bg);
+}
+
+/* ticker strip across the very top */
+.nl__ticker{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:42px;
+  background:var(--accent);
+  color:#0A0A0A;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  white-space:nowrap;
+  border-bottom:3px solid #0A0A0A;
+}
+.nl__ticker span{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:0 26px;
+}
+.nl__ticker span::before{content:"◆";margin-right:26px;color:var(--accent-2);}
+
+.nl__wrap{
+  max-width:1440px;
+  margin:0 auto;
+  padding:56px 72px 0;
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:72px;
+  align-items:end;
+}
+
+/* LEFT — the loud focal column */
+.nl__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--accent-2);
+  margin-bottom:26px;
+}
+.nl__eyebrow b{
+  background:var(--accent-2);
+  color:#0A0A0A;
+  padding:4px 9px;
+  border-radius:100px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.nl__head{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(52px,7.6vw,116px);
+  line-height:.86;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+}
+.nl__head em{
+  font-style:italic;
+  color:var(--accent);
+}
+.nl__head .mark{
+  position:relative;
+  display:inline-block;
+  color:#0A0A0A;
+  background:var(--accent);
+  padding:0 .1em;
+  transform:rotate(-1.5deg);
+}
+
+.nl__promise{
+  margin-top:30px;
+  max-width:520px;
+  font-size:19px;
+  line-height:1.5;
+  color:var(--muted);
+  font-weight:500;
+}
+.nl__promise strong{color:var(--ink);font-weight:700;}
+
+/* RIGHT — signup card, offset & tilted */
+.nl__card{
+  position:relative;
+  background:#111110;
+  border:2px solid var(--line);
+  border-radius:26px;
+  padding:38px 36px 34px;
+  box-shadow:14px 14px 0 var(--accent-2);
+  margin-bottom:6px;
+}
+.nl__badge{
+  position:absolute;
+  top:-18px;left:32px;
+  background:var(--accent);
+  color:#0A0A0A;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:7px 15px;
+  border-radius:100px;
+  transform:rotate(-2deg);
+}
+
+.nl__cardlabel{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.nl__cardlabel span{color:var(--accent);}
+
+.nl__form{display:flex;flex-direction:column;gap:14px;}
+.nl__input{
+  width:100%;
+  background:#0A0A0A;
+  border:2px solid var(--line);
+  border-radius:100px;
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:600;
+  padding:17px 22px;
+  outline:none;
+  transition:border-color .15s ease;
+}
+.nl__input::placeholder{color:#5f5f58;font-weight:500;}
+.nl__input:focus{border-color:var(--accent);}
+
+.nl__btn{
+  cursor:pointer;
+  border:none;
+  background:var(--accent);
+  color:#0A0A0A;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:17px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  padding:18px 24px;
+  border-radius:100px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:transform .12s ease, background .15s ease;
+}
+.nl__btn:hover{background:#d7ff54;transform:translateY(-2px);}
+.nl__btn:active{transform:translateY(0);}
+.nl__btn svg{width:18px;height:18px;}
+
+.nl__reassure{
+  margin-top:16px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+}
+.nl__reassure .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(199,241,59,.14);
+  flex:none;
+}
+
+.nl__proof{
+  margin-top:26px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.nl__avatars{display:flex;}
+.nl__av{
+  width:34px;height:34px;
+  border-radius:50%;
+  border:2px solid #111110;
+  margin-left:-10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:13px;
+  color:#0A0A0A;
+}
+.nl__av:first-child{margin-left:0;}
+.nl__av.a{background:var(--accent);}
+.nl__av.b{background:var(--accent-2);}
+.nl__av.c{background:#F5F5F0;}
+.nl__av.d{background:var(--accent);}
+.nl__proof p{font-size:13.5px;font-weight:600;color:var(--muted);line-height:1.35;}
+.nl__proof b{color:var(--ink);}
+
+@media(max-width:640px){
+  .nl{padding:70px 0 76px;}
+  .nl__ticker{height:36px;}
+  .nl__ticker span{font-size:11px;}
+  .nl__wrap{
+    grid-template-columns:1fr;
+    gap:44px;
+    padding:44px 22px 0;
+    align-items:start;
+  }
+  .nl__head{font-size:clamp(46px,15vw,74px);}
+  .nl__promise{font-size:17px;margin-top:22px;}
+  .nl__card{box-shadow:8px 8px 0 var(--accent-2);padding:34px 24px 30px;}
+  .nl__badge{left:22px;}
+}
+</style>
+</head>
+<body>
+
+<section class="nl" aria-label="Newsletter signup">
+  <div class="nl__ticker" aria-hidden="true">
+    <span>Thursday drop</span><span>No fluff, ever</span><span>4-minute read</span><span>27,400 builders</span><span>Thursday drop</span><span>No fluff, ever</span><span>4-minute read</span><span>27,400 builders</span>
+  </div>
+
+  <div class="nl__wrap">
+    <div class="nl__left">
+      <span class="nl__eyebrow"><b>Free</b> The Wednesday Wire</span>
+      <h2 class="nl__head">
+        Ship <em>smarter</em><br>
+        every <span class="mark">Thursday</span>
+      </h2>
+      <p class="nl__promise">
+        One email. Three ideas you can actually use before lunch —
+        <strong>a build teardown, a tool worth stealing, and one metric that moved.</strong>
+        Written for people who close tabs, not open more.
+      </p>
+    </div>
+
+    <div class="nl__right">
+      <div class="nl__card">
+        <span class="nl__badge">Issue #148 is live</span>
+        <p class="nl__cardlabel">Grab the next drop <span>→</span></p>
+        <form class="nl__form" onsubmit="return false">
+          <input class="nl__input" type="email" placeholder="you@yourdomain.com" aria-label="Email address" required>
+          <button class="nl__btn" type="submit">
+            Send it my way
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="#0A0A0A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+        <p class="nl__reassure"><span class="dot"></span> One send a week. Unsubscribe in one click. Never sold.</p>
+
+        <div class="nl__proof">
+          <div class="nl__avatars" aria-hidden="true">
+            <span class="nl__av a">R</span>
+            <span class="nl__av b">K</span>
+            <span class="nl__av c">M</span>
+            <span class="nl__av d">J</span>
+          </div>
+          <p>Joined by <b>27,400+ builders</b> from Figma, Linear &amp; Vercel</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

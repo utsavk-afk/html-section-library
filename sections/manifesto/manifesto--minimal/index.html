@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!-- ===== MANIFESTO — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manifesto — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+
+  :root{
+    --ink:#141414;
+    --muted:#737373;
+    --line:#e5e3df;
+    --line-strong:#141414;
+    --accent:#C0492B;
+    --bg:#ffffff;
+    --maxw:1200px;
+    --font:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+
+  .mf{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font);
+    padding:104px 48px 112px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mf__inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+
+  /* eyebrow */
+  .mf__kicker{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:40px;
+  }
+  .mf__kicker::before{
+    content:"";
+    width:34px;
+    height:2px;
+    background:var(--accent);
+  }
+
+  /* headline — the POV, one focal point, off to the left */
+  .mf__statement{
+    max-width:920px;
+    font-size:clamp(34px,5.4vw,64px);
+    font-weight:600;
+    line-height:1.06;
+    letter-spacing:-.025em;
+    margin-bottom:22px;
+  }
+  .mf__statement em{
+    font-style:normal;
+    color:var(--accent);
+  }
+  .mf__statement .strike{
+    color:var(--muted);
+    text-decoration:line-through;
+    text-decoration-color:var(--line);
+    text-decoration-thickness:2px;
+  }
+  .mf__sub{
+    max-width:560px;
+    font-size:17px;
+    line-height:1.6;
+    color:var(--muted);
+    margin-bottom:72px;
+  }
+  .mf__sub b{
+    color:var(--ink);
+    font-weight:500;
+  }
+
+  /* principles — asymmetric numbered list, not a uniform grid */
+  .mf__list{
+    border-top:1px solid var(--line-strong);
+  }
+  .mf__item{
+    display:grid;
+    grid-template-columns:88px 1fr;
+    gap:0 32px;
+    padding:32px 0 30px;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .mf__item:last-child{border-bottom:none;}
+  .mf__num{
+    font-size:14px;
+    font-weight:600;
+    color:var(--accent);
+    letter-spacing:.04em;
+    font-variant-numeric:tabular-nums;
+    padding-top:5px;
+  }
+  .mf__body{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:8px 56px;
+    align-items:baseline;
+  }
+  .mf__claim{
+    font-size:clamp(21px,2.1vw,26px);
+    font-weight:600;
+    line-height:1.22;
+    letter-spacing:-.015em;
+  }
+  .mf__note{
+    font-size:15px;
+    line-height:1.62;
+    color:var(--muted);
+  }
+
+  /* signature row */
+  .mf__foot{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:56px;
+  }
+  .mf__mark{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--ink);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:700;letter-spacing:.02em;
+    flex:0 0 auto;
+  }
+  .mf__sig{
+    font-size:14px;
+    line-height:1.5;
+    color:var(--muted);
+  }
+  .mf__sig strong{color:var(--ink);font-weight:600;}
+
+  @media (max-width:640px){
+    .mf{padding:64px 22px 76px;}
+    .mf__kicker{margin-bottom:28px;}
+    .mf__statement{font-size:33px;line-height:1.08;margin-bottom:18px;}
+    .mf__sub{margin-bottom:48px;font-size:16px;}
+    .mf__item{grid-template-columns:44px 1fr;gap:0 16px;padding:26px 0 24px;}
+    .mf__num{padding-top:3px;}
+    .mf__body{grid-template-columns:1fr;gap:10px;}
+    .mf__foot{margin-top:40px;}
+  }
+</style>
+</head>
+<body>
+  <section class="mf">
+    <div class="mf__inner">
+
+      <p class="mf__kicker">How we build — no exceptions</p>
+
+      <h1 class="mf__statement">
+        Speed isn't a feature you add later. It's a decision you make on
+        <span class="strike">day forty</span> <em>day one</em>.
+      </h1>
+      <p class="mf__sub">
+        We've shipped enough software to know where the rot starts. So we wrote
+        it down — <b>five things we refuse to negotiate</b>, even when the
+        deadline says otherwise.
+      </p>
+
+      <div class="mf__list">
+
+        <div class="mf__item">
+          <div class="mf__num">01</div>
+          <div class="mf__body">
+            <div class="mf__claim">Ship the boring version first.</div>
+            <div class="mf__note">
+              The clever abstraction can wait. Working code that a teammate can
+              read at 2am is worth more than an elegant one nobody dares touch.
+            </div>
+          </div>
+        </div>
+
+        <div class="mf__item">
+          <div class="mf__num">02</div>
+          <div class="mf__body">
+            <div class="mf__claim">A slow page is a broken page.</div>
+            <div class="mf__note">
+              We don't file performance under "polish." If it makes someone
+              wait, it isn't finished — no matter how good it looks.
+            </div>
+          </div>
+        </div>
+
+        <div class="mf__item">
+          <div class="mf__num">03</div>
+          <div class="mf__body">
+            <div class="mf__claim">Defaults are a promise.</div>
+            <div class="mf__note">
+              Whatever the tool does out of the box is what most people will
+              live with forever. So we sweat the default more than the setting.
+            </div>
+          </div>
+        </div>
+
+        <div class="mf__item">
+          <div class="mf__num">04</div>
+          <div class="mf__body">
+            <div class="mf__claim">Delete before you add.</div>
+            <div class="mf__note">
+              Every feature is a tax someone pays later. The best pull request
+              of the quarter usually has a red diff, not a green one.
+            </div>
+          </div>
+        </div>
+
+        <div class="mf__item">
+          <div class="mf__num">05</div>
+          <div class="mf__body">
+            <div class="mf__claim">Say the hard thing early.</div>
+            <div class="mf__note">
+              Bad news doesn't age well. We'd rather lose an argument in week one
+              than lose a launch in week nine.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mf__foot">
+        <div class="mf__mark">NS</div>
+        <p class="mf__sig">
+          <strong>North Slope Engineering</strong><br />
+          Written once. Argued about often. Still true.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

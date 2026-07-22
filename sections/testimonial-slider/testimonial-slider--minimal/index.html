@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!-- ===== TESTIMONIAL-SLIDER — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Slider — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --white:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --accent:#C0492B;
+  --line:#e7e5e3;
+  --line-soft:#f1efed;
+  --peek:#fbfaf9;
+  --maxw:1440px;
+  --pad:clamp(20px,6vw,120px);
+  --r-sm:4px;
+  --r-md:10px;
+}
+
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:var(--white);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.ts{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:clamp(64px,9vw,120px) var(--pad);
+}
+
+/* eyebrow / section head — left aligned, asymmetric */
+.ts__head{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+  margin-bottom:clamp(40px,5vw,64px);
+}
+.ts__kicker{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  white-space:nowrap;
+}
+.ts__rule{
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
+.ts__count{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.05em;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+/* main grid: big quote left (focal), peek right */
+.ts__stage{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:clamp(32px,5vw,72px);
+  align-items:end;
+}
+
+/* featured quote */
+.ts__quote{
+  position:relative;
+}
+.ts__mark{
+  font-size:64px;
+  line-height:.6;
+  font-weight:700;
+  color:var(--accent);
+  display:block;
+  margin-bottom:20px;
+}
+.ts__text{
+  font-size:clamp(22px,3vw,34px);
+  line-height:1.32;
+  font-weight:500;
+  letter-spacing:-.015em;
+  color:var(--ink);
+  max-width:22ch;
+}
+.ts__text b{
+  font-weight:600;
+  color:var(--accent);
+}
+
+/* attribution */
+.ts__attrib{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:clamp(32px,4vw,44px);
+}
+.ts__avatar{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  font-weight:600;
+  color:var(--white);
+  background:var(--ink);
+  flex-shrink:0;
+  letter-spacing:.02em;
+}
+.ts__who{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+}
+.ts__name{
+  font-size:15px;
+  font-weight:600;
+  color:var(--ink);
+}
+.ts__role{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* peek of the next testimonial */
+.ts__peek{
+  border-left:1px solid var(--line);
+  padding:22px 0 6px 26px;
+  position:relative;
+}
+.ts__peek::before{
+  content:"NEXT";
+  position:absolute;
+  top:0;
+  left:26px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.16em;
+  color:var(--accent);
+}
+.ts__peek-text{
+  margin-top:18px;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--muted);
+  /* faded so it reads as a preview */
+  -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);
+  mask-image:linear-gradient(180deg,#000 55%,transparent);
+}
+.ts__peek-who{
+  margin-top:16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.ts__peek-avatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:600;
+  color:var(--ink);
+  background:var(--line-soft);
+  border:1px solid var(--line);
+  flex-shrink:0;
+}
+.ts__peek-name{
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+}
+
+/* controls: arrows + dots (static / decorative) */
+.ts__controls{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  margin-top:clamp(48px,6vw,72px);
+}
+.ts__arrows{
+  display:flex;
+  gap:10px;
+}
+.ts__arrow{
+  width:46px;
+  height:46px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:var(--white);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:border-color .18s ease,background .18s ease,color .18s ease;
+  color:var(--ink);
+}
+.ts__arrow svg{width:16px;height:16px;}
+.ts__arrow:hover{
+  border-color:var(--ink);
+}
+.ts__arrow--active{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:var(--white);
+}
+.ts__arrow--active:hover{
+  border-color:var(--accent);
+  background:var(--accent);
+}
+
+.ts__dots{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.ts__dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--line);
+  cursor:pointer;
+  transition:background .18s ease;
+}
+.ts__dot:hover{background:#c9c6c3;}
+.ts__dot--active{
+  width:26px;
+  border-radius:4px;
+  background:var(--accent);
+}
+
+@media(max-width:640px){
+  .ts__stage{
+    grid-template-columns:1fr;
+    gap:36px;
+    align-items:start;
+  }
+  .ts__text{max-width:none;}
+  .ts__peek{
+    border-left:none;
+    border-top:1px solid var(--line);
+    padding:22px 0 0 0;
+  }
+  .ts__peek::before{left:0;}
+  .ts__controls{
+    flex-direction:row;
+    justify-content:space-between;
+    gap:16px;
+    margin-top:40px;
+  }
+  .ts__head{gap:12px;}
+}
+</style>
+</head>
+<body>
+<section class="ts" aria-label="Customer testimonials">
+  <div class="ts__head">
+    <span class="ts__kicker">What teams say</span>
+    <span class="ts__rule"></span>
+    <span class="ts__count">02 / 06</span>
+  </div>
+
+  <div class="ts__stage">
+    <!-- Featured quote (focal point) -->
+    <figure class="ts__quote">
+      <span class="ts__mark" aria-hidden="true">&ldquo;</span>
+      <blockquote class="ts__text">
+        We migrated 14 internal tools onto Northbank in a single quarter. The part that surprised us wasn&rsquo;t the speed &mdash; it was that <b>nobody filed a support ticket</b> in the first two weeks.
+      </blockquote>
+      <figcaption class="ts__attrib">
+        <span class="ts__avatar" aria-hidden="true">MR</span>
+        <span class="ts__who">
+          <span class="ts__name">Marisol Reyes</span>
+          <span class="ts__role">VP Engineering, Cadence Freight</span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <!-- Peek of the next testimonial -->
+    <aside class="ts__peek" aria-hidden="true">
+      <p class="ts__peek-text">
+        I&rsquo;ve rolled out a lot of dashboards that got ignored. This one my finance team actually opens on Monday mornings before I ask them to&hellip;
+      </p>
+      <div class="ts__peek-who">
+        <span class="ts__peek-avatar">DO</span>
+        <span class="ts__peek-name">Devin Okonkwo</span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ts__controls">
+    <div class="ts__arrows">
+      <button class="ts__arrow" aria-label="Previous testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </button>
+      <button class="ts__arrow ts__arrow--active" aria-label="Next testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+    <div class="ts__dots" role="tablist" aria-label="Testimonial navigation">
+      <span class="ts__dot" aria-label="Testimonial 1"></span>
+      <span class="ts__dot ts__dot--active" aria-label="Testimonial 2, current"></span>
+      <span class="ts__dot" aria-label="Testimonial 3"></span>
+      <span class="ts__dot" aria-label="Testimonial 4"></span>
+      <span class="ts__dot" aria-label="Testimonial 5"></span>
+      <span class="ts__dot" aria-label="Testimonial 6"></span>
+    </div>
+  </div>
+</section>
+</body>
+</html>

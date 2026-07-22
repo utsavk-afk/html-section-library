@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyebrow + Lead — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== EYEBROW-TEXT — EDITORIAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --muted:#6C665C;
+  --hair:#DAD6CC;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.opener{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:112px 80px 120px;
+}
+
+.opener__grid{
+  display:grid;
+  grid-template-columns:minmax(0,0.9fr) minmax(0,1.6fr);
+  gap:0 72px;
+  align-items:start;
+}
+
+/* --- left rail: index + eyebrow --- */
+.rail{
+  padding-top:10px;
+  position:relative;
+}
+.rail__no{
+  font-family:var(--serif);
+  font-size:15px;
+  font-weight:500;
+  color:var(--accent);
+  letter-spacing:.02em;
+}
+.rail__eyebrow{
+  margin-top:26px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.rail__eyebrow .tick{
+  width:36px;
+  height:1px;
+  background:var(--accent);
+  flex:none;
+}
+.rail__eyebrow span{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+.rail__meta{
+  margin-top:40px;
+  padding-top:22px;
+  border-top:1px solid var(--hair);
+  max-width:230px;
+}
+.rail__meta p{
+  font-size:13.5px;
+  line-height:1.7;
+  color:var(--muted);
+}
+.rail__meta em{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink);
+}
+
+/* --- right: lead statement --- */
+.lead{
+  position:relative;
+}
+.lead__head{
+  font-family:var(--serif);
+  font-weight:400;
+  font-optical-sizing:auto;
+  font-size:clamp(2.6rem,4.4vw,4.35rem);
+  line-height:1.06;
+  letter-spacing:-0.015em;
+  color:var(--ink);
+  max-width:16ch;
+}
+.lead__head .em{
+  font-style:italic;
+  color:var(--accent);
+}
+.lead__head .soft{
+  color:var(--muted);
+}
+.lead__foot{
+  margin-top:46px;
+  display:flex;
+  align-items:baseline;
+  gap:22px;
+  flex-wrap:wrap;
+}
+.lead__foot .num{
+  font-family:var(--serif);
+  font-size:30px;
+  font-weight:600;
+  color:var(--ink);
+  line-height:1;
+}
+.lead__foot .num small{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:500;
+  color:var(--muted);
+  letter-spacing:.02em;
+  display:block;
+  margin-top:8px;
+}
+.lead__foot .div{
+  width:1px;
+  height:40px;
+  background:var(--hair);
+  align-self:center;
+}
+.lead__foot .note{
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:34ch;
+}
+
+@media(max-width:640px){
+  .opener{padding:64px 24px 72px;}
+  .opener__grid{
+    grid-template-columns:1fr;
+    gap:36px 0;
+  }
+  .rail__meta{max-width:none;}
+  .lead__head{font-size:clamp(2.1rem,9vw,2.8rem);max-width:none;}
+  .lead__foot{gap:16px;}
+  .lead__foot .div{display:none;}
+}
+</style>
+</head>
+<body>
+<section class="opener">
+  <div class="opener__grid">
+
+    <aside class="rail">
+      <div class="rail__no">— 02 / Field Notes</div>
+      <div class="rail__eyebrow">
+        <span class="tick"></span>
+        <span>Why We Rebuilt</span>
+      </div>
+      <div class="rail__meta">
+        <p>A short account of the decisions behind the 2026 platform, written for the people who <em>actually use it</em> — not the ones who approved the budget.</p>
+      </div>
+    </aside>
+
+    <div class="lead">
+      <h2 class="lead__head">
+        We stopped shipping features nobody asked for and started <span class="em">removing the ones</span> that quietly slowed everyone <span class="soft">down.</span>
+      </h2>
+      <div class="lead__foot">
+        <div class="num">14<small>screens retired</small></div>
+        <div class="div"></div>
+        <div class="num">1<small>question we kept asking</small></div>
+        <div class="div"></div>
+        <p class="note">Does this earn the attention it takes? If the honest answer was no, it left the release.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

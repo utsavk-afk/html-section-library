@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!-- ===== pricing-slider — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Slider — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+
+  :root{
+    --ink:#0A0A0A;
+    --ink-2:#161616;
+    --paper:#F4F4EF;
+    --lime:#C7F13B;
+    --magenta:#FF4D9D;
+    --line:#2A2A2A;
+    --muted:#8C8C8C;
+    --font:'Archivo',system-ui,sans-serif;
+  }
+
+  .ap-section{
+    background:var(--ink);
+    color:#fff;
+    font-family:var(--font);
+    padding:72px 40px 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .ap-wrap{
+    max-width:1440px;
+    margin:0 auto;
+    position:relative;
+  }
+
+  /* decorative offset blocks — asymmetric, flat */
+  .ap-wrap::before{
+    content:"";
+    position:absolute;
+    top:-60px;right:-40px;
+    width:220px;height:220px;
+    background:var(--magenta);
+    transform:rotate(12deg);
+    opacity:.14;
+    z-index:0;
+  }
+
+  .ap-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--lime);
+    color:var(--ink);
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    padding:8px 16px;
+    border-radius:100px;
+    position:relative;
+    z-index:1;
+  }
+  .ap-eyebrow span{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--ink);
+  }
+
+  .ap-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:start;
+    margin-top:28px;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ---------- LEFT: headline + slider ---------- */
+  .ap-head{
+    font-weight:900;
+    font-size:clamp(42px,6vw,84px);
+    line-height:.92;
+    letter-spacing:-.03em;
+    text-transform:uppercase;
+  }
+  .ap-head em{
+    font-style:normal;
+    color:var(--lime);
+  }
+  .ap-head .mag{color:var(--magenta);}
+  .ap-sub{
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.5;
+    max-width:440px;
+    margin-top:20px;
+    font-weight:400;
+  }
+
+  .ap-slider-card{
+    margin-top:40px;
+    background:var(--ink-2);
+    border:2px solid var(--line);
+    border-radius:20px;
+    padding:30px 30px 34px;
+  }
+  .ap-slabel{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:22px;
+  }
+  .ap-slabel .k{
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:800;
+  }
+  .ap-slabel .v{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:-.02em;
+  }
+  .ap-slabel .v b{color:var(--lime);}
+
+  /* static track */
+  .ap-track{
+    position:relative;
+    height:16px;
+    background:#0A0A0A;
+    border:2px solid var(--line);
+    border-radius:100px;
+  }
+  .ap-fill{
+    position:absolute;
+    top:-2px;left:-2px;
+    height:16px;
+    width:62%;
+    background:var(--magenta);
+    border-radius:100px;
+    border:2px solid var(--magenta);
+  }
+  .ap-knob{
+    position:absolute;
+    top:50%;left:62%;
+    transform:translate(-50%,-50%);
+    width:34px;height:34px;
+    background:var(--lime);
+    border:4px solid var(--ink);
+    border-radius:50%;
+    box-shadow:0 0 0 2px var(--lime);
+    z-index:2;
+  }
+  .ap-ticks{
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+  }
+  .ap-tick{
+    font-size:13px;
+    font-weight:800;
+    color:var(--muted);
+    padding:4px 0;
+    cursor:default;
+  }
+  .ap-tick.on{color:#fff;}
+  .ap-tick.on::after{
+    content:"";
+    display:block;
+    height:3px;
+    background:var(--lime);
+    margin-top:6px;
+    border-radius:2px;
+  }
+
+  .ap-metrics{
+    display:flex;
+    gap:14px;
+    margin-top:26px;
+    flex-wrap:wrap;
+  }
+  .ap-metric{
+    flex:1;
+    min-width:130px;
+    background:#0A0A0A;
+    border:2px solid var(--line);
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .ap-metric .n{
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:-.02em;
+  }
+  .ap-metric .l{
+    font-size:12px;
+    color:var(--muted);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin-top:4px;
+  }
+  .ap-metric.hi{border-color:var(--magenta);}
+  .ap-metric.hi .n{color:var(--magenta);}
+
+  /* ---------- RIGHT: price card ---------- */
+  .ap-price{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:24px;
+    padding:34px 32px 32px;
+    position:relative;
+    box-shadow:14px 14px 0 var(--lime);
+  }
+  .ap-plan-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+  }
+  .ap-plan-name{
+    font-size:22px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-.01em;
+  }
+  .ap-plan-tag{
+    background:var(--magenta);
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border-radius:100px;
+  }
+  .ap-amount{
+    display:flex;
+    align-items:baseline;
+    gap:4px;
+    margin:6px 0 4px;
+  }
+  .ap-amount .cur{font-size:34px;font-weight:900;}
+  .ap-amount .big{font-size:80px;font-weight:900;line-height:.9;letter-spacing:-.04em;}
+  .ap-amount .per{font-size:16px;font-weight:700;color:#555;margin-left:2px;}
+  .ap-billed{
+    font-size:14px;
+    color:#555;
+    font-weight:600;
+    margin-bottom:22px;
+  }
+  .ap-billed b{color:var(--ink);}
+
+  .ap-feats{
+    list-style:none;
+    border-top:2px solid #DEDED6;
+    padding-top:18px;
+  }
+  .ap-feats li{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    font-size:15px;
+    font-weight:600;
+    padding:8px 0;
+  }
+  .ap-feats svg{flex:none;margin-top:1px;}
+  .ap-feats li.dim{color:#9a9a92;font-weight:500;}
+
+  .ap-cta{
+    display:block;
+    width:100%;
+    text-align:center;
+    background:var(--ink);
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    padding:18px;
+    border-radius:100px;
+    text-decoration:none;
+    margin-top:22px;
+    border:2px solid var(--ink);
+    transition:transform .12s ease;
+  }
+  .ap-cta:hover{transform:translateY(-2px);}
+  .ap-note{
+    text-align:center;
+    font-size:13px;
+    color:#666;
+    font-weight:600;
+    margin-top:14px;
+  }
+
+  @media(max-width:640px){
+    .ap-section{padding:48px 20px 56px;}
+    .ap-grid{grid-template-columns:1fr;gap:36px;}
+    .ap-head{font-size:44px;}
+    .ap-slider-card{padding:24px 20px 26px;}
+    .ap-price{box-shadow:8px 8px 0 var(--lime);padding:28px 22px 26px;}
+    .ap-amount .big{font-size:64px;}
+    .ap-wrap::before{width:140px;height:140px;top:-30px;right:-30px;}
+    .ap-metric{min-width:100%;}
+  }
+</style>
+</head>
+<body>
+<section class="ap-section">
+  <div class="ap-wrap">
+    <div class="ap-eyebrow"><span></span>Usage-based pricing</div>
+
+    <div class="ap-grid">
+      <!-- LEFT -->
+      <div class="ap-left">
+        <h2 class="ap-head">Pay for the<br>API calls you<br><em>actually</em> <span class="mag">ship.</span></h2>
+        <p class="ap-sub">Drag the slider to your monthly request volume. No seats, no overage traps — the plan and the price update to match the traffic you send.</p>
+
+        <div class="ap-slider-card">
+          <div class="ap-slabel">
+            <div class="k">Monthly requests</div>
+            <div class="v"><b>2.4M</b> / mo</div>
+          </div>
+
+          <div class="ap-track">
+            <div class="ap-fill"></div>
+            <div class="ap-knob"></div>
+          </div>
+
+          <div class="ap-ticks">
+            <div class="ap-tick">100K</div>
+            <div class="ap-tick">500K</div>
+            <div class="ap-tick on">2.4M</div>
+            <div class="ap-tick">10M</div>
+            <div class="ap-tick">50M+</div>
+          </div>
+
+          <div class="ap-metrics">
+            <div class="ap-metric hi">
+              <div class="n">$0.31</div>
+              <div class="l">per 1K calls</div>
+            </div>
+            <div class="ap-metric">
+              <div class="n">40ms</div>
+              <div class="l">p95 latency</div>
+            </div>
+            <div class="ap-metric">
+              <div class="n">99.98%</div>
+              <div class="l">uptime SLA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <aside class="ap-price">
+        <div class="ap-plan-row">
+          <div class="ap-plan-name">Scale</div>
+          <div class="ap-plan-tag">Best for 2.4M</div>
+        </div>
+
+        <div class="ap-amount">
+          <span class="cur">$</span>
+          <span class="big">744</span>
+          <span class="per">/mo</span>
+        </div>
+        <div class="ap-billed">Billed monthly · <b>flat until you cross 5M</b></div>
+
+        <ul class="ap-feats">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#C7F13B"/><path d="M5.5 10.5l3 3 6-7" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            2.4M requests included, then $0.31/1K
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#C7F13B"/><path d="M5.5 10.5l3 3 6-7" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Global edge routing across 14 regions
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#C7F13B"/><path d="M5.5 10.5l3 3 6-7" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Real-time usage alerts &amp; spend caps
+          </li>
+          <li class="dim">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#DEDED6"/><path d="M6.5 10h7" stroke="#9a9a92" stroke-width="2.4" stroke-linecap="round"/></svg>
+            Dedicated infra — unlocks at 10M
+          </li>
+        </ul>
+
+        <a href="#start" class="ap-cta">Start on Scale →</a>
+        <p class="ap-note">14-day trial · cancel any time, no card lock-in</p>
+      </aside>
+    </div>
+  </div>
+</section>
+</body>
+</html>

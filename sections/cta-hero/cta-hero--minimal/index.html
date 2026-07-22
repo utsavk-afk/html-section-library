@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- ===== cta-hero — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Hero — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --paper:#ffffff;
+  --accent:#C0492B;
+  --accent-ink:#9d3a20;
+  --hair:#e7e5e3;
+  --hair-soft:#f2f0ee;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --maxw:1440px;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ---- section shell ---- */
+.cta-hero{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:120px 72px 128px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* faint accent index mark, top-left, sets an asymmetric anchor */
+.cta-hero__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:44px;
+}
+.cta-hero__eyebrow::before{
+  content:"";
+  width:34px;
+  height:2px;
+  background:var(--accent);
+}
+
+/* headline block sits left, asymmetric — not centered */
+.cta-hero__head{
+  max-width:940px;
+}
+.cta-hero__title{
+  font-size:clamp(48px,7.2vw,104px);
+  line-height:.98;
+  letter-spacing:-.035em;
+  font-weight:800;
+  color:var(--ink);
+}
+.cta-hero__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+/* thin period-style accent, keeps the one-accent rule */
+.cta-hero__title .dot{
+  color:var(--accent);
+}
+
+/* supporting line + action share a baseline row, offset right of nothing */
+.cta-hero__row{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:40px;
+  margin-top:56px;
+  padding-top:40px;
+  border-top:1px solid var(--hair);
+  max-width:1140px;
+}
+
+.cta-hero__support{
+  max-width:440px;
+}
+.cta-hero__support p{
+  font-size:19px;
+  line-height:1.55;
+  color:var(--muted);
+  font-weight:400;
+}
+.cta-hero__support strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+.cta-hero__actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  text-decoration:none;
+  cursor:pointer;
+  border:none;
+}
+.btn--primary{
+  background:var(--accent);
+  color:#fff;
+  padding:17px 30px;
+  border-radius:10px;
+  box-shadow:0 12px 26px -14px rgba(192,73,43,.75);
+  transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.btn--primary:hover{
+  background:var(--accent-ink);
+  transform:translateY(-1px);
+  box-shadow:0 16px 30px -14px rgba(192,73,43,.85);
+}
+.btn--primary svg{transition:transform .18s ease;}
+.btn--primary:hover svg{transform:translateX(3px);}
+
+.btn--ghost{
+  color:var(--ink);
+  padding:17px 6px;
+  border-radius:6px;
+  border-bottom:1px solid transparent;
+  transition:color .18s ease, border-color .18s ease;
+}
+.btn--ghost:hover{
+  color:var(--accent);
+  border-bottom-color:var(--accent);
+}
+
+/* small reassurance line under actions */
+.cta-hero__note{
+  margin-top:16px;
+  font-size:13.5px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.cta-hero__note b{color:var(--ink);font-weight:600;}
+.cta-hero__note .sep{width:3px;height:3px;border-radius:50%;background:var(--hair);}
+
+/* oversized ghost numeral, bottom-right — the one decorative focal weight */
+.cta-hero__mark{
+  position:absolute;
+  right:-8px;
+  bottom:-46px;
+  font-size:340px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-.06em;
+  color:var(--hair-soft);
+  z-index:-1;
+  user-select:none;
+  pointer-events:none;
+}
+
+/* faint hairline grid ticks along the left edge for texture */
+.cta-hero__ticks{
+  position:absolute;
+  left:0;
+  top:120px;
+  bottom:120px;
+  width:1px;
+  background:var(--hair);
+}
+.cta-hero__ticks::before,
+.cta-hero__ticks::after{
+  content:"";
+  position:absolute;
+  left:-3px;
+  width:7px;
+  height:1px;
+  background:var(--accent);
+}
+.cta-hero__ticks::before{top:0;}
+.cta-hero__ticks::after{bottom:0;}
+
+@media(max-width:640px){
+  .cta-hero{padding:72px 24px 88px;}
+  .cta-hero__eyebrow{margin-bottom:28px;}
+  .cta-hero__title{font-size:clamp(40px,12vw,60px);}
+  .cta-hero__row{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:28px;
+    margin-top:40px;
+  }
+  .cta-hero__actions{width:100%;}
+  .btn--primary{flex:1;justify-content:center;padding:16px 24px;}
+  .cta-hero__mark{font-size:180px;bottom:-24px;right:-4px;}
+  .cta-hero__ticks{display:none;}
+}
+</style>
+</head>
+<body>
+<section class="cta-hero" aria-labelledby="cta-title">
+  <span class="cta-hero__ticks" aria-hidden="true"></span>
+
+  <p class="cta-hero__eyebrow">Onboarding closes Friday</p>
+
+  <div class="cta-hero__head">
+    <h1 class="cta-hero__title" id="cta-title">
+      Ship your first<br>
+      audit in <em>a single</em><br>
+      afternoon<span class="dot">.</span>
+    </h1>
+  </div>
+
+  <div class="cta-hero__row">
+    <div class="cta-hero__support">
+      <p><strong>No sales call, no credit card.</strong> Connect a domain, run the crawl, and you'll have a prioritized fix list before your coffee goes cold.</p>
+    </div>
+
+    <div>
+      <div class="cta-hero__actions">
+        <a class="btn btn--primary" href="#start">
+          Start the free audit
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2.5 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn btn--ghost" href="#tour">See a sample report</a>
+      </div>
+      <p class="cta-hero__note">
+        <b>2,140 sites</b> crawled this week
+        <span class="sep" aria-hidden="true"></span>
+        Setup takes about 90 seconds
+      </p>
+    </div>
+  </div>
+
+  <span class="cta-hero__mark" aria-hidden="true">01</span>
+</section>
+</body>
+</html>

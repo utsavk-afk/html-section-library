@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- ===== FOOTER — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EC;
+  --muted:#8A8A82;
+  --line:#242422;
+  --accent:#C7F13B;      /* lime primary */
+  --accent-2:#FF4D9D;    /* magenta secondary */
+  --serif:'Archivo Expanded','Archivo',system-ui,sans-serif;
+  --sans:'Archivo',system-ui,-apple-system,sans-serif;
+}
+
+html{-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+
+.acid-footer{
+  position:relative;
+  width:100%;
+  background:var(--bg);
+  border-top:1px solid var(--line);
+  overflow:hidden;
+  padding:72px 56px 40px;
+}
+
+/* ---- top band: giant wordmark + newsletter, asymmetric ---- */
+.af-top{
+  display:grid;
+  grid-template-columns:1.35fr 0.9fr;
+  gap:64px;
+  align-items:end;
+  max-width:1440px;
+  margin:0 auto;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+}
+
+.af-brand{max-width:720px;}
+.af-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--accent);
+  padding:6px 12px 5px;
+  border-radius:100px;
+  margin-bottom:22px;
+}
+.af-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--bg);}
+
+.af-wordmark{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(56px,9vw,132px);
+  line-height:0.82;
+  letter-spacing:-0.04em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+.af-wordmark em{font-style:normal;color:var(--accent);}
+.af-wordmark .pink{color:var(--accent-2);}
+
+.af-tag{
+  margin-top:22px;
+  font-size:16px;
+  line-height:1.5;
+  font-weight:500;
+  color:var(--muted);
+  max-width:440px;
+}
+
+/* newsletter */
+.af-news{
+  background:#111110;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:26px 26px 24px;
+}
+.af-news h3{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:22px;
+  letter-spacing:-0.02em;
+  line-height:1;
+  margin-bottom:8px;
+}
+.af-news p{font-size:13.5px;color:var(--muted);line-height:1.45;margin-bottom:18px;}
+.af-form{display:flex;gap:8px;}
+.af-form input{
+  flex:1;
+  min-width:0;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:100px;
+  padding:13px 18px;
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:500;
+  outline:none;
+  transition:border-color .18s ease;
+}
+.af-form input::placeholder{color:#5f5f58;}
+.af-form input:focus{border-color:var(--accent);}
+.af-btn{
+  flex:0 0 auto;
+  background:var(--accent);
+  color:var(--bg);
+  border:none;
+  border-radius:100px;
+  padding:0 24px;
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:0.01em;
+  cursor:pointer;
+  transition:transform .12s ease,background .18s ease;
+}
+.af-btn:hover{background:var(--accent-2);color:var(--ink);transform:translateY(-1px);}
+.af-news .micro{margin-top:12px;font-size:11.5px;color:#5f5f58;letter-spacing:.02em;}
+
+/* ---- link columns ---- */
+.af-cols{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+  max-width:1440px;
+  margin:44px auto 0;
+  padding-bottom:48px;
+}
+.af-col h4{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:18px;
+}
+.af-col:nth-child(3) h4{color:var(--accent-2);}
+.af-col ul{list-style:none;}
+.af-col li{margin-bottom:11px;}
+.af-col a{
+  color:var(--ink);
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  transition:color .16s ease;
+}
+.af-col a:hover{color:var(--accent);}
+.af-col:nth-child(3) a:hover{color:var(--accent-2);}
+.af-col a .tag{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--accent-2);
+  border-radius:4px;
+  padding:2px 5px;
+}
+
+/* ---- fine print row ---- */
+.af-fine{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  max-width:1440px;
+  margin:0 auto;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  flex-wrap:wrap;
+}
+.af-fine .legal{
+  font-size:12.5px;
+  color:var(--muted);
+  font-weight:500;
+  letter-spacing:.01em;
+}
+.af-fine .legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);}
+.af-fine .legal a:hover{color:var(--ink);border-color:var(--accent);}
+.af-social{display:flex;gap:9px;}
+.af-social a{
+  width:38px;height:38px;
+  display:grid;place-items:center;
+  border:1px solid var(--line);
+  border-radius:50%;
+  color:var(--ink);
+  transition:background .16s ease,color .16s ease,border-color .16s ease;
+}
+.af-social a:hover{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+.af-social svg{width:16px;height:16px;display:block;}
+
+.af-status{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:600;color:var(--muted);
+}
+.af-status .pulse{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 0 rgba(199,241,59,.6);
+  animation:af-pulse 2s infinite;
+}
+@keyframes af-pulse{
+  0%{box-shadow:0 0 0 0 rgba(199,241,59,.5);}
+  70%{box-shadow:0 0 0 7px rgba(199,241,59,0);}
+  100%{box-shadow:0 0 0 0 rgba(199,241,59,0);}
+}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .acid-footer{padding:48px 22px 32px;}
+  .af-top{grid-template-columns:1fr;gap:36px;padding-bottom:38px;}
+  .af-wordmark{font-size:clamp(48px,17vw,80px);}
+  .af-cols{grid-template-columns:1fr 1fr;gap:30px 20px;margin-top:34px;padding-bottom:34px;}
+  .af-fine{flex-direction:column;align-items:flex-start;gap:18px;}
+  .af-form{flex-wrap:wrap;}
+  .af-form input{flex:1 0 100%;}
+  .af-btn{flex:1 0 100%;padding:13px 24px;}
+}
+</style>
+</head>
+<body>
+
+<footer class="acid-footer">
+
+  <div class="af-top">
+    <div class="af-brand">
+      <span class="af-eyebrow"><span class="dot"></span>Ship it loud</span>
+      <div class="af-wordmark">VOLT<em>WORKS</em><span class="pink">.</span></div>
+      <p class="af-tag">The paste-in component kit for people who build fast and hate empty states. 240+ blocks, zero build step, one lime accent.</p>
+    </div>
+
+    <div class="af-news">
+      <h3>Get the drop list</h3>
+      <p>New sections every Thursday. No digest sludge — just what shipped.</p>
+      <form class="af-form" onsubmit="return false">
+        <input type="email" placeholder="you@studio.co" aria-label="Email address">
+        <button class="af-btn" type="submit">Join</button>
+      </form>
+      <div class="micro">4,120 builders on the list. Unsubscribe in one click.</div>
+    </div>
+  </div>
+
+  <div class="af-cols">
+    <div class="af-col">
+      <h4>Library</h4>
+      <ul>
+        <li><a href="#">Hero sections</a></li>
+        <li><a href="#">Pricing tables</a></li>
+        <li><a href="#">Footers <span class="tag">New</span></a></li>
+        <li><a href="#">Testimonial walls</a></li>
+        <li><a href="#">Empty states</a></li>
+      </ul>
+    </div>
+    <div class="af-col">
+      <h4>Build</h4>
+      <ul>
+        <li><a href="#">Copy-paste guide</a></li>
+        <li><a href="#">Token system</a></li>
+        <li><a href="#">Claude Code recipe</a></li>
+        <li><a href="#">Figma export</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="af-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="#">Who made this</a></li>
+        <li><a href="#">Work with us <span class="tag">Hiring</span></a></li>
+        <li><a href="#">Submit a block</a></li>
+        <li><a href="#">Press kit</a></li>
+        <li><a href="#">Say hi</a></li>
+      </ul>
+    </div>
+    <div class="af-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">License (MIT)</a></li>
+        <li><a href="#">Terms of use</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Cookie choices</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="af-fine">
+    <div class="legal">
+      © 2026 Voltworks Labs. Free forever, remix hard. Built in Berlin &amp; on the train.
+      <a href="#">Status</a>
+    </div>
+
+    <div class="af-social" aria-label="Social links">
+      <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.18c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+      <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.83L1.25 2.25h6.82l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.04l12.04 15.64Z"/></svg></a>
+      <a href="#" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.32 4.57A19.8 19.8 0 0 0 15.4 3l-.24.5a15 15 0 0 0-6.32 0L8.6 3a19.8 19.8 0 0 0-4.92 1.57C1.35 8.09.72 11.5 1.04 14.87a19.9 19.9 0 0 0 6.06 3.08l.49-.68a12.4 12.4 0 0 1-1.94-.94l.15-.11c3.9 1.83 8.12 1.83 12 0l.15.11c-.6.36-1.25.68-1.94.94l.49.68a19.9 19.9 0 0 0 6.06-3.08c.4-3.94-.63-7.32-2.68-10.3ZM8.5 12.9c-.95 0-1.73-.88-1.73-1.96 0-1.07.76-1.96 1.73-1.96s1.75.89 1.73 1.96c0 1.08-.77 1.96-1.73 1.96Zm7 0c-.95 0-1.73-.88-1.73-1.96 0-1.07.76-1.96 1.73-1.96s1.75.89 1.73 1.96c0 1.08-.77 1.96-1.73 1.96Z"/></svg></a>
+      <a href="#" aria-label="RSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h-2.5A6.5 6.5 0 0 0 4 13.5V11Zm0-5a14 14 0 0 1 14 14h-2.5A11.5 11.5 0 0 0 4 8.5V6Zm2 11.5a2 2 0 1 1 0-.01Z"/></svg></a>
+    </div>
+
+    <div class="af-status"><span class="pulse"></span>All systems shipping</div>
+  </div>
+
+</footer>
+
+</body>
+</html>

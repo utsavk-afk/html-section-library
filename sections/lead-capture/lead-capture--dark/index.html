@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Capture — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== LEAD-CAPTURE — DARK/LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-2:#17171c;
+  --panel:#1a1a20;
+  --line:#2a2a32;
+  --line-2:#34343e;
+  --off:#F4F4F5;
+  --muted:#A1A1AA;
+  --muted-2:#71717a;
+  --amber:#F59E42;
+  --amber-deep:#e2842a;
+  --radius-s:8px;
+  --radius-m:14px;
+  --radius-l:22px;
+  --font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--off);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+.lc-section{
+  width:100%;
+  background:
+    radial-gradient(120% 90% at 88% 8%, rgba(245,158,66,0.07), transparent 55%),
+    var(--ink);
+  padding:96px 32px;
+  display:flex;
+  justify-content:center;
+  position:relative;
+}
+.lc-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  opacity:0.14;
+  -webkit-mask-image:radial-gradient(80% 60% at 85% 20%,#000,transparent 70%);
+  mask-image:radial-gradient(80% 60% at 85% 20%,#000,transparent 70%);
+  pointer-events:none;
+}
+
+.lc-wrap{
+  width:100%;
+  max-width:1140px;
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:56px;
+  align-items:center;
+}
+
+/* ---- Left: focal content ---- */
+.lc-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12.5px;
+  font-weight:500;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:6px 13px 6px 11px;
+  border:1px solid var(--line-2);
+  border-radius:999px;
+  background:var(--ink-2);
+}
+.lc-eyebrow .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 0 3px rgba(245,158,66,0.18);
+}
+
+.lc-title{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(38px,5vw,60px);
+  line-height:1.03;
+  letter-spacing:-0.015em;
+  margin:26px 0 0;
+}
+.lc-title em{
+  font-style:italic;
+  color:var(--amber);
+}
+
+.lc-sub{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.6;
+  max-width:440px;
+  margin-top:20px;
+}
+
+.lc-perks{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 22px;
+  margin-top:26px;
+}
+.lc-perks li{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:14px;
+  color:var(--muted);
+}
+.lc-perks svg{flex-shrink:0;}
+
+/* ---- Right: capture panel ---- */
+.lc-panel{
+  background:linear-gradient(180deg,var(--panel),var(--ink-2));
+  border:1px solid var(--line);
+  border-radius:var(--radius-l);
+  padding:30px 30px 26px;
+  box-shadow:0 24px 60px -30px rgba(0,0,0,0.8);
+}
+.lc-panel-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+}
+.lc-panel-title{
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+.lc-batch{
+  font-size:12px;
+  color:var(--amber);
+  font-weight:500;
+}
+
+.lc-form{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.lc-field{
+  position:relative;
+}
+.lc-input{
+  width:100%;
+  background:var(--ink);
+  border:1px solid var(--line-2);
+  border-radius:var(--radius-m);
+  color:var(--off);
+  font-family:inherit;
+  font-size:15px;
+  padding:15px 16px;
+  outline:none;
+  transition:border-color .18s ease, box-shadow .18s ease;
+}
+.lc-input::placeholder{color:var(--muted-2);}
+.lc-input:focus{
+  border-color:var(--amber);
+  box-shadow:0 0 0 3px rgba(245,158,66,0.15);
+}
+.lc-btn{
+  appearance:none;
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:15px;
+  font-weight:600;
+  color:#1a1206;
+  background:var(--amber);
+  border-radius:var(--radius-m);
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:background .16s ease, transform .1s ease;
+}
+.lc-btn:hover{background:var(--amber-deep);}
+.lc-btn:active{transform:translateY(1px);}
+.lc-fine{
+  font-size:12px;
+  color:var(--muted-2);
+  margin-top:2px;
+  line-height:1.5;
+}
+.lc-fine a{color:var(--muted);text-decoration:underline;text-underline-offset:2px;}
+
+/* ---- Live count ---- */
+.lc-count{
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.lc-avatars{
+  display:flex;
+}
+.lc-avatars .av{
+  width:32px;height:32px;
+  border-radius:50%;
+  border:2px solid var(--panel);
+  margin-left:-9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:600;
+  color:#15151a;
+}
+.lc-avatars .av:first-child{margin-left:0;}
+.av.a1{background:linear-gradient(135deg,#f6b45a,#e2842a);}
+.av.a2{background:linear-gradient(135deg,#c8cbd2,#9a9ea8);}
+.av.a3{background:linear-gradient(135deg,#8fb8a8,#5f8f7c);}
+.av.a4{background:linear-gradient(135deg,#b9a0d8,#8a6fb0);}
+.av.more{background:var(--line-2);color:var(--muted);font-size:11px;}
+
+.lc-count-text{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.4;
+}
+.lc-count-num{
+  color:var(--off);
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+}
+.lc-live{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:2px;
+  font-size:12px;
+  color:var(--muted-2);
+}
+.lc-live .pulse{
+  width:6px;height:6px;border-radius:50%;
+  background:#5ecb8a;
+  box-shadow:0 0 0 0 rgba(94,203,138,0.6);
+  animation:lcpulse 2.2s infinite;
+}
+@keyframes lcpulse{
+  0%{box-shadow:0 0 0 0 rgba(94,203,138,0.55);}
+  70%{box-shadow:0 0 0 7px rgba(94,203,138,0);}
+  100%{box-shadow:0 0 0 0 rgba(94,203,138,0);}
+}
+
+@media(max-width:640px){
+  .lc-section{padding:60px 20px;}
+  .lc-wrap{grid-template-columns:1fr;gap:36px;}
+  .lc-sub{max-width:none;}
+  .lc-title{font-size:clamp(32px,9vw,44px);}
+  .lc-panel{padding:24px 22px 22px;}
+}
+</style>
+</head>
+<body>
+<section class="lc-section">
+  <div class="lc-wrap">
+
+    <div class="lc-lead">
+      <span class="lc-eyebrow"><span class="dot"></span>Private beta · Cohort 04</span>
+      <h1 class="lc-title">The pricing desk<br>traders keep <em>off the record.</em></h1>
+      <p class="lc-sub">Ledgerline turns raw market feeds into a single clean signal — spreads, drift, and exposure in one view. We open 40 seats every two weeks. This is the list.</p>
+      <ul class="lc-perks">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.3 8.4l2.7 2.7 6.7-6.9" stroke="#F59E42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          No card required
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.3 8.4l2.7 2.7 6.7-6.9" stroke="#F59E42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Founding-member rate locked for life
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.3 8.4l2.7 2.7 6.7-6.9" stroke="#F59E42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          One email when your seat is ready
+        </li>
+      </ul>
+    </div>
+
+    <div class="lc-panel">
+      <div class="lc-panel-head">
+        <span class="lc-panel-title">Claim your seat</span>
+        <span class="lc-batch">6 left in Cohort 04</span>
+      </div>
+
+      <form class="lc-form" onsubmit="return false;">
+        <div class="lc-field">
+          <input class="lc-input" type="email" placeholder="you@desk.com" aria-label="Email address" autocomplete="email">
+        </div>
+        <button class="lc-btn" type="submit">
+          Reserve my seat
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="#1a1206" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="lc-fine">We send one confirmation and nothing else until your seat opens. <a href="#">Unsubscribe</a> anytime.</p>
+      </form>
+
+      <div class="lc-count">
+        <div class="lc-avatars">
+          <span class="av a1">RK</span>
+          <span class="av a2">MØ</span>
+          <span class="av a3">TS</span>
+          <span class="av a4">JD</span>
+          <span class="av more">+</span>
+        </div>
+        <div>
+          <div class="lc-count-text"><span class="lc-count-num" id="lcCount">2,847</span> traders already on the list</div>
+          <span class="lc-live"><span class="pulse"></span>19 joined in the last hour</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var el=document.getElementById('lcCount');
+  if(!el)return;
+  var n=2847;
+  setInterval(function(){
+    if(Math.random()<0.55){
+      n+=1;
+      el.textContent=n.toLocaleString('en-US');
+    }
+  },3400);
+})();
+</script>
+</body>
+</html>

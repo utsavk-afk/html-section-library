@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!-- ===== FEATURE-SPLIT — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Split — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opt@1,7..72,400;0,7..72,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e8e6e2;
+  --accent:#c0492b;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Inter',-apple-system,'Helvetica Neue',sans-serif;
+}
+
+.fs-wrap{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  padding:112px 0;
+}
+
+.fs-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 40px;
+}
+
+/* eyebrow above whole block */
+.fs-eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+.fs-eyebrow .num{
+  color:var(--accent);
+  font-variant-numeric:tabular-nums;
+}
+.fs-eyebrow .bar{
+  width:28px;
+  height:1px;
+  background:var(--accent);
+}
+
+.fs-lead{
+  font-family:var(--serif);
+  font-size:34px;
+  line-height:1.18;
+  letter-spacing:-.015em;
+  max-width:620px;
+  margin-bottom:80px;
+}
+.fs-lead em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+/* the split row */
+.fs-split{
+  display:grid;
+  grid-template-columns:0.92fr 1.08fr;
+  gap:88px;
+  align-items:center;
+}
+
+/* --- copy column --- */
+.fs-copy{padding-top:6px;}
+
+.fs-kicker{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+
+.fs-h2{
+  font-family:var(--serif);
+  font-size:40px;
+  line-height:1.1;
+  letter-spacing:-.02em;
+  font-weight:500;
+  margin-bottom:22px;
+}
+
+.fs-body{
+  font-size:16px;
+  line-height:1.65;
+  color:var(--muted);
+  max-width:440px;
+  margin-bottom:32px;
+}
+
+.fs-list{list-style:none;}
+.fs-list li{
+  display:flex;
+  gap:14px;
+  padding:16px 0;
+  border-top:1px solid var(--line);
+  font-size:15px;
+  line-height:1.5;
+}
+.fs-list li:last-child{border-bottom:1px solid var(--line);}
+.fs-list .k{
+  flex:0 0 auto;
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:600;
+  color:var(--accent);
+  font-variant-numeric:tabular-nums;
+  padding-top:2px;
+  width:26px;
+}
+.fs-list .t{color:var(--ink);}
+.fs-list .t span{
+  display:block;
+  color:var(--muted);
+  font-size:13.5px;
+  margin-top:3px;
+}
+
+.fs-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:36px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  padding-bottom:4px;
+  border-bottom:1px solid var(--ink);
+  transition:gap .2s ease,border-color .2s ease;
+}
+.fs-cta:hover{gap:16px;border-color:var(--accent);color:var(--accent);}
+.fs-cta svg{display:block;}
+
+/* --- visual column --- */
+.fs-visual{
+  position:relative;
+}
+
+.fs-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fcfbfa;
+  padding:28px 28px 34px;
+  overflow:hidden;
+}
+/* faint corner tick — the one intentional off-grid accent */
+.fs-card::before{
+  content:"";
+  position:absolute;
+  top:22px;right:22px;
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--accent);
+}
+
+.fs-card-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:26px;
+}
+.fs-card-head .label{
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.fs-card-head .val{
+  font-family:var(--serif);
+  font-size:26px;
+  letter-spacing:-.01em;
+}
+
+/* bar chart, CSS only */
+.fs-chart{
+  display:flex;
+  align-items:flex-end;
+  gap:14px;
+  height:172px;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:22px;
+}
+.fs-bar{
+  flex:1;
+  position:relative;
+  border-radius:5px 5px 0 0;
+  background:#e7e4df;
+}
+.fs-bar.hi{background:var(--accent);}
+.fs-bar .cap{
+  position:absolute;
+  bottom:-24px;left:0;right:0;
+  text-align:center;
+  font-size:11px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+/* legend rows */
+.fs-legend{display:grid;gap:12px;}
+.fs-legend .row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13px;
+}
+.fs-legend .row .name{display:flex;align-items:center;gap:9px;color:var(--ink);}
+.fs-legend .dot{width:8px;height:8px;border-radius:2px;background:#cfcbc4;}
+.fs-legend .dot.a{background:var(--accent);}
+.fs-legend .row .n{color:var(--muted);font-variant-numeric:tabular-nums;}
+
+/* floating annotation chip, asymmetric */
+.fs-chip{
+  position:absolute;
+  left:-18px;
+  bottom:40px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px 15px;
+  box-shadow:0 8px 24px rgba(20,20,20,.06);
+  max-width:186px;
+}
+.fs-chip .big{
+  font-family:var(--serif);
+  font-size:22px;
+  letter-spacing:-.01em;
+  color:var(--accent);
+}
+.fs-chip .sm{
+  font-size:12px;
+  line-height:1.4;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+@media(max-width:640px){
+  .fs-wrap{padding:64px 0;}
+  .fs-inner{padding:0 22px;}
+  .fs-lead{font-size:25px;margin-bottom:48px;}
+  .fs-split{grid-template-columns:1fr;gap:52px;}
+  .fs-h2{font-size:29px;}
+  .fs-chip{left:auto;right:14px;bottom:-16px;}
+  .fs-card{padding:24px 22px 30px;}
+}
+</style>
+</head>
+<body>
+<section class="fs-wrap">
+  <div class="fs-inner">
+
+    <div class="fs-eyebrow"><span class="bar"></span><span class="num">02</span><span>What you get</span></div>
+    <h2 class="fs-lead">Every reply ships with the <em>numbers behind it</em> — not a summary you have to take on faith.</h2>
+
+    <div class="fs-split">
+
+      <!-- COPY -->
+      <div class="fs-copy">
+        <div class="fs-kicker">Traceable output</div>
+        <h3 class="fs-h2">Drop it in, read the receipts</h3>
+        <p class="fs-body">Paste the block into Claude Code and it renders a live breakdown from your own file. No hosted dashboard, no account, no data leaving the machine — the chart is plain CSS the model fills in.</p>
+
+        <ul class="fs-list">
+          <li><span class="k">01</span><span class="t">Reads the raw counts<span>Pulls values straight from the JSON you point it at</span></span></li>
+          <li><span class="k">02</span><span class="t">Flags the outlier bar<span>Highlights the week that moved before you ask</span></span></li>
+          <li><span class="k">03</span><span class="t">Stays copy-paste clean<span>One file, zero build step, works offline</span></span></li>
+        </ul>
+
+        <a class="fs-cta" href="#">Copy the block
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- VISUAL -->
+      <div class="fs-visual">
+        <div class="fs-card">
+          <div class="fs-card-head">
+            <span class="label">Replies parsed / week</span>
+            <span class="val">1,284</span>
+          </div>
+
+          <div class="fs-chart">
+            <div class="fs-bar" style="height:38%"><span class="cap">Mar</span></div>
+            <div class="fs-bar" style="height:54%"><span class="cap">Apr</span></div>
+            <div class="fs-bar" style="height:47%"><span class="cap">May</span></div>
+            <div class="fs-bar hi" style="height:88%"><span class="cap">Jun</span></div>
+            <div class="fs-bar" style="height:63%"><span class="cap">Jul</span></div>
+          </div>
+
+          <div class="fs-legend">
+            <div class="row"><span class="name"><span class="dot a"></span>Resolved on first pass</span><span class="n">72%</span></div>
+            <div class="row"><span class="name"><span class="dot"></span>Escalated to a human</span><span class="n">19%</span></div>
+            <div class="row"><span class="name"><span class="dot"></span>Still open</span><span class="n">9%</span></div>
+          </div>
+        </div>
+
+        <div class="fs-chip">
+          <div class="big">+41%</div>
+          <div class="sm">Jun jump, traced to the routing change on the 3rd</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!-- ===== INFOGRAPHICS — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where The Hours Go — Acid Pop Infographic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --paper:#F4F4EC;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --white:#FFFFFF;
+  --dim:#8A8A82;
+  --line:#242422;
+  --card:#131311;
+  --font:'Archivo',system-ui,sans-serif;
+  --exp:'Archivo Expanded','Archivo',sans-serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--white);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.sec{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:90px 64px 96px;
+  position:relative;
+}
+
+/* top eyebrow row */
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:26px;
+  flex-wrap:wrap;
+}
+.tag{
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:7px 15px;
+  border-radius:100px;
+}
+.tag--lime{background:var(--lime);color:var(--ink);}
+.tag--out{border:2px solid var(--line);color:var(--dim);}
+.tag--dot{color:var(--magenta);font-weight:800;font-size:12px;letter-spacing:.05em;}
+
+/* headline */
+.head{
+  font-family:var(--exp);
+  font-weight:900;
+  line-height:.9;
+  letter-spacing:-.02em;
+  font-size:clamp(44px,6.6vw,104px);
+  text-transform:uppercase;
+  max-width:15ch;
+}
+.head em{font-style:normal;color:var(--lime);}
+.head .mg{
+  display:inline-block;
+  color:var(--ink);
+  background:var(--magenta);
+  padding:0 .12em;
+  transform:rotate(-1.5deg);
+}
+.sub{
+  margin-top:22px;
+  max-width:46ch;
+  color:var(--dim);
+  font-size:16px;
+  font-weight:600;
+  line-height:1.5;
+}
+.sub b{color:var(--white);font-weight:800;}
+
+/* main grid: chart left, callouts right */
+.grid{
+  margin-top:56px;
+  display:grid;
+  grid-template-columns:1.4fr .85fr;
+  gap:56px;
+  align-items:end;
+}
+
+/* ---- BAR CHART (CSS only) ---- */
+.chart{
+  position:relative;
+  border-top:2px solid var(--line);
+  padding-top:34px;
+}
+.axis-note{
+  position:absolute;
+  top:-14px;right:0;
+  font-size:11px;font-weight:800;letter-spacing:.12em;
+  color:var(--dim);text-transform:uppercase;
+}
+.bars{
+  display:flex;
+  align-items:flex-end;
+  gap:clamp(14px,2.4vw,34px);
+  height:320px;
+}
+.bar{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  height:100%;
+  min-width:0;
+}
+.bar .val{
+  font-family:var(--exp);
+  font-weight:900;
+  font-size:clamp(22px,2.4vw,34px);
+  line-height:1;
+  margin-bottom:10px;
+}
+.bar .col{
+  width:100%;
+  border-radius:12px 12px 0 0;
+  position:relative;
+  border:2px solid var(--ink);
+}
+.bar .lab{
+  margin-top:12px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--dim);
+  line-height:1.25;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+}
+.bar.b1 .col{height:86%;background:var(--lime);}
+.bar.b1 .val{color:var(--lime);}
+.bar.b2 .col{height:54%;background:repeating-linear-gradient(-45deg,var(--magenta) 0 9px,#e5387f 9px 18px);}
+.bar.b2 .val{color:var(--magenta);}
+.bar.b3 .col{height:38%;background:var(--white);}
+.bar.b4 .col{height:22%;background:var(--line);border-color:var(--line);}
+.bar.b4 .val{color:var(--dim);}
+.bar.b4 .col{border:2px dashed #3a3a36;background:#1c1c1a;}
+
+/* highlight flag on tallest bar */
+.flag{
+  position:absolute;
+  top:-30px;left:50%;
+  transform:translateX(-50%) rotate(-3deg);
+  background:var(--ink);
+  border:2px solid var(--lime);
+  color:var(--lime);
+  font-size:10px;font-weight:900;letter-spacing:.1em;
+  padding:4px 9px;border-radius:100px;
+  white-space:nowrap;
+}
+
+/* ---- RIGHT CALLOUTS ---- */
+.callouts{display:flex;flex-direction:column;gap:18px;}
+.stat{
+  border:2px solid var(--line);
+  border-radius:18px;
+  padding:22px 22px 20px;
+  position:relative;
+}
+.stat--hero{
+  background:var(--lime);
+  color:var(--ink);
+  border-color:var(--lime);
+  transform:rotate(.6deg);
+}
+.stat .big{
+  font-family:var(--exp);
+  font-weight:900;
+  font-size:clamp(40px,4.4vw,60px);
+  line-height:.86;
+  letter-spacing:-.02em;
+}
+.stat--hero .big{color:var(--ink);}
+.stat .cap{
+  margin-top:10px;
+  font-size:13px;font-weight:700;line-height:1.35;
+}
+.stat--hero .cap{color:#153300;}
+.stat--dark .cap{color:var(--dim);}
+.stat--dark .big{color:var(--white);}
+.stat--dark .big u{text-decoration:none;color:var(--magenta);}
+.pin{
+  position:absolute;top:16px;right:18px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--magenta);border:2px solid var(--ink);
+}
+.stat--dark .pin{border-color:var(--card);}
+
+/* footer strip */
+.foot{
+  margin-top:52px;
+  border-top:2px solid var(--line);
+  padding-top:20px;
+  display:flex;align-items:center;gap:18px;
+  flex-wrap:wrap;
+  font-size:12px;font-weight:700;letter-spacing:.03em;
+  color:var(--dim);
+}
+.foot .src{color:var(--white);}
+.foot .chip{
+  margin-left:auto;
+  background:var(--magenta);color:var(--ink);
+  font-weight:900;letter-spacing:.06em;
+  padding:9px 18px;border-radius:100px;
+  text-transform:uppercase;font-size:12px;
+}
+
+@media(max-width:640px){
+  .sec{padding:56px 22px 60px;}
+  .grid{grid-template-columns:1fr;gap:40px;margin-top:40px;}
+  .bars{height:230px;gap:10px;}
+  .bar .lab{font-size:10px;}
+  .flag{font-size:9px;top:-26px;}
+  .head{font-size:40px;}
+  .foot .chip{margin-left:0;}
+}
+</style>
+</head>
+<body>
+<section class="sec">
+
+  <div class="eyebrow">
+    <span class="tag tag--lime">Dev Time Report '26</span>
+    <span class="tag tag--out">n = 2,140 engineers</span>
+    <span class="tag--dot">● LIVE SAMPLE</span>
+  </div>
+
+  <h1 class="head">Where the <em>40-hour</em> week <span class="mg">actually</span> goes.</h1>
+  <p class="sub">We logged a full work week across mid-size product teams. Only <b>one</b> slice was writing new code. The rest? Everything <b>around</b> the code.</p>
+
+  <div class="grid">
+
+    <!-- BAR CHART -->
+    <div class="chart">
+      <span class="axis-note">avg hrs / week</span>
+      <div class="bars">
+        <div class="bar b1">
+          <span class="val">14.2</span>
+          <div class="col"><span class="flag">↑ BIGGEST DRAIN</span></div>
+          <span class="lab">Meetings &amp;<br>context switching</span>
+        </div>
+        <div class="bar b2">
+          <span class="val">9.0</span>
+          <div class="col"></div>
+          <span class="lab">Debugging &amp;<br>reading old code</span>
+        </div>
+        <div class="bar b3">
+          <span class="val">6.3</span>
+          <div class="col"></div>
+          <span class="lab">Writing<br>new code</span>
+        </div>
+        <div class="bar b4">
+          <span class="val">3.7</span>
+          <div class="col"></div>
+          <span class="lab">Reviews &amp;<br>waiting on CI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALLOUTS -->
+    <div class="callouts">
+      <div class="stat stat--hero">
+        <div class="big">16%</div>
+        <div class="cap">of the week is spent shipping actual new features. The other 84% is friction.</div>
+      </div>
+      <div class="stat stat--dark">
+        <span class="pin"></span>
+        <div class="big"><u>2.3×</u></div>
+        <div class="cap">more time lost to context-switching than the industry assumed in 2024.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span class="src">SOURCE:</span>
+    <span>Internal telemetry + self-reported diaries, Jan–Jun 2026.</span>
+    <span class="chip">Cut the 84% →</span>
+  </div>
+
+</section>
+</body>
+</html>

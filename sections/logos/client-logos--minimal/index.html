@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!-- ===== client-logos — minimal: hairline-ruled "trusted by" strip, muted wordmark lockups, one indigo accent tick ===== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Logos — Minimal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    :root{
+      --bg:#ffffff;
+      --ink:#14161a;
+      --muted:#8b9099;
+      --logo:#6c727c;
+      --line:#e8e9ec;
+      --accent:#4a4de6;
+      --sans:'Inter', system-ui, -apple-system, sans-serif;
+      --maxw:1160px;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .logos{
+      width:100%;
+      padding:88px 40px 92px;
+    }
+
+    .logos__inner{
+      max-width:var(--maxw);
+      margin:0 auto;
+    }
+
+    /* Header row — asymmetric: label left, note right */
+    .logos__head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:32px;
+      padding-bottom:34px;
+    }
+
+    .logos__label{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .logos__tick{
+      width:18px;
+      height:2px;
+      background:var(--accent);
+      display:inline-block;
+    }
+
+    .logos__note{
+      font-size:13px;
+      color:var(--muted);
+      max-width:360px;
+      text-align:right;
+      line-height:1.5;
+    }
+
+    .logos__note b{
+      color:var(--ink);
+      font-weight:600;
+    }
+
+    /* Divider */
+    .logos__rule{
+      height:1px;
+      width:100%;
+      background:var(--line);
+    }
+
+    /* Logo row */
+    .logos__row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding-top:40px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      color:var(--logo);
+      opacity:.85;
+      transition:opacity .2s ease, color .2s ease;
+    }
+
+    .brand:hover{
+      opacity:1;
+      color:var(--ink);
+    }
+
+    .brand svg{
+      display:block;
+      flex:none;
+    }
+
+    .brand__name{
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:-.01em;
+      white-space:nowrap;
+    }
+
+    /* deliberate weight/size variation across marks */
+    .brand--light .brand__name{font-weight:500;}
+    .brand--wide .brand__name{letter-spacing:.02em;}
+    .brand--caps .brand__name{
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .brand--serifish .brand__name{
+      font-size:19px;
+      font-weight:700;
+    }
+
+    @media (max-width:640px){
+      .logos{padding:56px 22px 60px;}
+      .logos__head{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+      }
+      .logos__note{
+        text-align:left;
+        max-width:none;
+      }
+      .logos__row{
+        gap:22px 30px;
+        padding-top:30px;
+      }
+      .brand__name{font-size:16px;}
+    }
+  </style>
+</head>
+<body>
+  <section class="logos" aria-label="Trusted by">
+    <div class="logos__inner">
+
+      <div class="logos__head">
+        <span class="logos__label">
+          <span class="logos__tick" aria-hidden="true"></span>
+          Trusted by product teams
+        </span>
+        <p class="logos__note">
+          Over <b>2,400 teams</b> ship on the same infrastructure — from seed-stage tools to public companies.
+        </p>
+      </div>
+
+      <div class="logos__rule" aria-hidden="true"></div>
+
+      <div class="logos__row">
+
+        <!-- Northwind — chevron mark -->
+        <span class="brand brand--wide" role="img" aria-label="Northwind">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M2 15L8 4l4 7 2-3 2 7H2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          <span class="brand__name">Northwind</span>
+        </span>
+
+        <!-- Cobalt — ring mark -->
+        <span class="brand brand--light" role="img" aria-label="Cobalt">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="10" cy="10" r="2.4" fill="currentColor"/>
+          </svg>
+          <span class="brand__name">Cobalt</span>
+        </span>
+
+        <!-- FIELDNOTE — bracket mark, caps -->
+        <span class="brand brand--caps" role="img" aria-label="Fieldnote">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M6 3H3v12h3M12 3h3v12h-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span class="brand__name">Fieldnote</span>
+        </span>
+
+        <!-- Meridian — slash mark, serif-ish weight -->
+        <span class="brand brand--serifish" role="img" aria-label="Meridian">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 16L16 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M4 10h5M11 10h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span class="brand__name">Meridian</span>
+        </span>
+
+        <!-- Havenpay — rounded stack mark -->
+        <span class="brand" role="img" aria-label="Havenpay">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="14" height="4" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <rect x="3" y="11" width="9" height="4" rx="2" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+          <span class="brand__name">Havenpay</span>
+        </span>
+
+        <!-- Quorum — dot triad mark, light -->
+        <span class="brand brand--light" role="img" aria-label="Quorum">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="6" cy="7" r="2.1" fill="currentColor"/>
+            <circle cx="13" cy="7" r="2.1" fill="currentColor"/>
+            <circle cx="9.5" cy="13" r="2.1" fill="currentColor"/>
+          </svg>
+          <span class="brand__name">Quorum</span>
+        </span>
+
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

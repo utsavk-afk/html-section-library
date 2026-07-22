@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showreel — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+/* ===== SHOWREEL — DARK / LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-2:#17171c;
+  --panel:#1b1b21;
+  --off:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --line:rgba(244,244,245,.10);
+  --line-strong:rgba(244,244,245,.18);
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+.reel{
+  background:var(--ink);
+  color:var(--off);
+  font-family:var(--sans);
+  padding:96px 40px 104px;
+  position:relative;
+  overflow:hidden;
+}
+/* faint vertical film-sprocket rhythm on the far left, not centered */
+.reel::before{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;width:34px;
+  background:
+    repeating-linear-gradient(to bottom,
+      transparent 0 26px,
+      rgba(244,244,245,.05) 26px 40px);
+  border-right:1px solid var(--line);
+  pointer-events:none;
+}
+.reel__inner{
+  max-width:1440px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:56px;
+  align-items:end;
+}
+
+/* ---- eyebrow row ---- */
+.reel__kicker{
+  grid-column:1 / -1;
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:8px;
+}
+.reel__kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;}
+.reel__kicker .lbl{
+  font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+}
+.reel__kicker .rule{flex:1;height:1px;background:var(--line);}
+.reel__kicker .yr{font-size:12px;letter-spacing:.18em;color:var(--muted);}
+
+/* ---- the big cinematic visual ---- */
+.stage{
+  position:relative;
+  aspect-ratio:16/9;
+  border:1px solid var(--line-strong);
+  border-radius:14px;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 140% at 78% 18%, #2a2118 0%, transparent 46%),
+    radial-gradient(90% 120% at 12% 96%, #141a20 0%, transparent 50%),
+    linear-gradient(150deg,#191a1f 0%,#111116 60%,#0d0d11 100%);
+  isolation:isolate;
+}
+/* soft horizon light-shaft — cinematic, off-center */
+.stage__shaft{
+  position:absolute;inset:0;
+  background:linear-gradient(112deg,transparent 40%,rgba(245,158,66,.10) 58%,transparent 74%);
+  mix-blend-mode:screen;
+}
+/* scan / film-grain texture via repeating lines, very subtle */
+.stage__grain{
+  position:absolute;inset:0;opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+/* letterbox bars top+bottom for that widescreen frame */
+.stage__bar{position:absolute;left:0;right:0;height:22px;background:#0b0b0e;}
+.stage__bar--t{top:0;border-bottom:1px solid var(--line);}
+.stage__bar--b{bottom:0;border-top:1px solid var(--line);}
+
+/* timecode chip */
+.stage__tc{
+  position:absolute;top:34px;right:22px;z-index:3;
+  font-size:11px;letter-spacing:.14em;color:var(--muted);
+  border:1px solid var(--line);border-radius:5px;
+  padding:5px 9px;background:rgba(11,11,14,.55);
+  display:flex;align-items:center;gap:8px;
+}
+.stage__tc b{color:var(--amber);font-weight:500;}
+.stage__rec{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+
+/* play button — the focal point, placed lower-left not center */
+.play{
+  position:absolute;left:40px;bottom:52px;z-index:4;
+  display:flex;align-items:center;gap:18px;
+  background:none;border:none;cursor:pointer;color:var(--off);
+  font-family:inherit;text-align:left;
+}
+.play__ring{
+  width:84px;height:84px;border-radius:50%;flex:none;
+  border:1px solid var(--amber);
+  background:rgba(245,158,66,.08);
+  display:grid;place-items:center;
+  transition:background .25s ease,transform .25s ease;
+}
+.play__ring::after{
+  content:"";
+  width:0;height:0;margin-left:5px;
+  border-style:solid;
+  border-width:13px 0 13px 22px;
+  border-color:transparent transparent transparent var(--amber);
+}
+.play:hover .play__ring{background:rgba(245,158,66,.16);transform:scale(1.04);}
+.play__txt small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.play__txt span{font-size:17px;font-weight:500;}
+.play__txt em{color:var(--amber);font-style:normal;}
+
+/* runtime badge bottom-right of stage */
+.stage__run{
+  position:absolute;right:24px;bottom:34px;z-index:3;
+  font-size:12px;color:var(--muted);letter-spacing:.1em;
+}
+.stage__run b{color:var(--off);font-weight:500;}
+
+/* ---- right column: title + line + meta ---- */
+.copy{padding-bottom:6px;}
+.copy h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,4.4vw,60px);
+  line-height:1.02;
+  letter-spacing:-.01em;
+  margin-bottom:22px;
+}
+.copy h2 i{font-style:italic;color:var(--amber);}
+.copy p{
+  color:var(--muted);
+  font-size:16px;line-height:1.6;
+  max-width:34ch;
+  margin-bottom:34px;
+}
+.meta{
+  display:flex;flex-wrap:wrap;gap:0;
+  border-top:1px solid var(--line);
+}
+.meta div{
+  padding:16px 26px 4px 0;margin-right:26px;
+  border-right:1px solid var(--line);
+}
+.meta div:last-child{border-right:none;margin-right:0;}
+.meta dt{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.meta dd{font-size:22px;font-family:var(--serif);}
+.meta dd small{font-size:12px;font-family:var(--sans);color:var(--muted);letter-spacing:.04em;}
+
+@media(max-width:640px){
+  .reel{padding:64px 22px 72px;}
+  .reel::before{width:22px;}
+  .reel__inner{grid-template-columns:1fr;gap:34px;align-items:stretch;}
+  .play{left:22px;bottom:28px;gap:13px;}
+  .play__ring{width:64px;height:64px;}
+  .play__ring::after{border-width:10px 0 10px 17px;}
+  .play__txt span{font-size:15px;}
+  .stage__run{bottom:26px;right:16px;font-size:11px;}
+  .copy p{max-width:none;}
+  .meta div{padding:14px 18px 4px 0;margin-right:18px;}
+}
+</style>
+</head>
+<body>
+<section class="reel" aria-label="Showreel">
+  <div class="reel__inner">
+
+    <div class="reel__kicker">
+      <span class="dot"></span>
+      <span class="lbl">Studio Reel — Vol. 04</span>
+      <span class="rule"></span>
+      <span class="yr">Selected work · 2023 – 2026</span>
+    </div>
+
+    <!-- big cinematic visual -->
+    <div class="stage">
+      <div class="stage__shaft"></div>
+      <div class="stage__grain"></div>
+      <div class="stage__bar stage__bar--t"></div>
+      <div class="stage__bar stage__bar--b"></div>
+
+      <div class="stage__tc"><span class="stage__rec"></span> <b>REC</b> 00:00:47:12</div>
+
+      <button class="play" type="button" aria-label="Play the 2026 showreel">
+        <span class="play__ring" aria-hidden="true"></span>
+        <span class="play__txt">
+          <small>Play showreel</small>
+          <span>Two minutes, <em>fourteen builds</em></span>
+        </span>
+      </button>
+
+      <div class="stage__run"><b>02:11</b> · 4K · Sound on</div>
+    </div>
+
+    <!-- title + line + meta -->
+    <div class="copy">
+      <h2>Everything we shipped, <i>cut to the beat.</i></h2>
+      <p>A close-up on the launches, motion systems and product films that came out of the studio this season — no captions, just the work moving.</p>
+      <dl class="meta">
+        <div>
+          <dt>Projects</dt>
+          <dd>14 <small>featured</small></dd>
+        </div>
+        <div>
+          <dt>Format</dt>
+          <dd>16:9 <small>4K / 24fps</small></dd>
+        </div>
+        <div>
+          <dt>Scored by</dt>
+          <dd>Halden</dd>
+        </div>
+      </dl>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

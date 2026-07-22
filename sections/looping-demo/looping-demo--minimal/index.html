@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Looping Demo — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== LOOPING-DEMO — MINIMAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e0;
+  --line-soft:#efeeeb;
+  --paper:#ffffff;
+  --panel:#fbfaf9;
+  --accent:#C0492B;
+  --accent-tint:rgba(192,73,43,0.10);
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:16px;
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.demo{
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 64px 104px;
+  display:grid;
+  grid-template-columns:minmax(340px,1fr) minmax(480px,1.35fr);
+  gap:88px;
+  align-items:center;
+}
+
+/* ---- left: copy column ---- */
+.demo__intro{max-width:440px;}
+.demo__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.demo__eyebrow::before{
+  content:"";
+  width:22px;height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+.demo__title{
+  font-size:38px;
+  line-height:1.12;
+  font-weight:700;
+  letter-spacing:-0.02em;
+  margin-bottom:18px;
+}
+.demo__title em{font-style:normal;color:var(--accent);}
+.demo__lead{
+  font-size:16.5px;
+  color:var(--muted);
+  margin-bottom:40px;
+  max-width:400px;
+}
+
+.demo__notes{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  border-top:1px solid var(--line);
+}
+.note{
+  display:flex;
+  gap:16px;
+  padding:20px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.note__num{
+  font-size:13px;
+  font-weight:600;
+  color:var(--accent);
+  min-width:26px;
+  padding-top:2px;
+}
+.note__body h3{
+  font-size:15.5px;
+  font-weight:600;
+  margin-bottom:5px;
+}
+.note__body p{
+  font-size:14px;
+  color:var(--muted);
+  max-width:300px;
+}
+
+/* ---- right: UI frame ---- */
+.stage{
+  position:relative;
+  width:100%;
+}
+.caption{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:16px;
+  padding-left:2px;
+}
+.caption .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 0 var(--accent-tint);
+  animation:pulse 2.6s ease-out infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(192,73,43,0.28);}
+  70%{box-shadow:0 0 0 8px rgba(192,73,43,0);}
+  100%{box-shadow:0 0 0 0 rgba(192,73,43,0);}
+}
+
+.frame{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  box-shadow:0 1px 2px rgba(20,20,20,0.03),0 18px 40px -24px rgba(20,20,20,0.18);
+  overflow:hidden;
+}
+.frame__bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:13px 16px;
+  border-bottom:1px solid var(--line-soft);
+  background:var(--panel);
+}
+.frame__bar .tl{width:9px;height:9px;border-radius:50%;background:#dcdad6;}
+.frame__url{
+  margin-left:12px;
+  font-size:12px;
+  color:var(--muted);
+  background:var(--paper);
+  border:1px solid var(--line-soft);
+  border-radius:var(--r-sm);
+  padding:4px 12px;
+  flex:1;
+  max-width:280px;
+}
+.frame__url b{color:var(--ink);font-weight:500;}
+
+.frame__body{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  min-height:352px;
+}
+
+/* sidebar */
+.side{
+  border-right:1px solid var(--line-soft);
+  padding:18px 14px;
+  background:var(--panel);
+}
+.side__label{
+  font-size:10.5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:0 8px;
+  margin-bottom:12px;
+}
+.side__item{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 8px;
+  border-radius:var(--r-sm);
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:2px;
+}
+.side__item svg{width:14px;height:14px;flex:none;}
+.side__item.is-active{
+  background:var(--paper);
+  color:var(--ink);
+  font-weight:500;
+  box-shadow:inset 0 0 0 1px var(--line-soft);
+}
+.side__item.is-active svg{color:var(--accent);}
+
+/* main pane */
+.pane{
+  padding:22px 26px;
+  position:relative;
+}
+.pane__head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+.pane__head h4{font-size:16px;font-weight:600;}
+.pane__head span{font-size:12px;color:var(--muted);}
+
+/* animated bar chart */
+.chart{
+  display:flex;
+  align-items:flex-end;
+  gap:16px;
+  height:132px;
+  padding:0 4px 10px;
+  border-bottom:1px solid var(--line-soft);
+  margin-bottom:22px;
+}
+.bar{
+  flex:1;
+  background:var(--line);
+  border-radius:4px 4px 2px 2px;
+  transform-origin:bottom;
+  animation:grow 5.5s cubic-bezier(.4,0,.2,1) infinite;
+  min-height:6px;
+}
+.bar.hot{
+  background:var(--accent);
+}
+.bar:nth-child(1){animation-delay:0s;}
+.bar:nth-child(2){animation-delay:.18s;}
+.bar:nth-child(3){animation-delay:.36s;}
+.bar:nth-child(4){animation-delay:.54s;}
+.bar:nth-child(5){animation-delay:.72s;}
+.bar:nth-child(6){animation-delay:.90s;}
+.bar:nth-child(7){animation-delay:1.08s;}
+
+@keyframes grow{
+  0%   {transform:scaleY(0.16);}
+  12%  {transform:scaleY(var(--h,0.5));}
+  70%  {transform:scaleY(var(--h,0.5));}
+  86%  {transform:scaleY(0.16);}
+  100% {transform:scaleY(0.16);}
+}
+
+/* rows list with sweeping highlight */
+.rows{display:flex;flex-direction:column;gap:0;}
+.row{
+  display:grid;
+  grid-template-columns:26px 1fr auto auto;
+  align-items:center;
+  gap:14px;
+  padding:11px 6px;
+  border-top:1px solid var(--line-soft);
+  font-size:13px;
+}
+.row:first-child{border-top:none;}
+.row .av{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:600;color:#fff;
+}
+.row .nm{color:var(--ink);font-weight:500;}
+.row .mt{color:var(--muted);font-size:12px;}
+.row .pct{
+  font-variant-numeric:tabular-nums;
+  font-weight:600;
+  font-size:12.5px;
+}
+.row .pct.up{color:var(--accent);}
+
+/* moving scan line over the pane */
+.scan{
+  position:absolute;
+  left:26px;right:26px;
+  height:34px;
+  border-radius:8px;
+  background:var(--accent-tint);
+  pointer-events:none;
+  top:0;
+  opacity:0;
+  animation:scan 5.5s cubic-bezier(.5,0,.5,1) infinite;
+}
+@keyframes scan{
+  0%,8%   {opacity:0;transform:translateY(196px);}
+  14%     {opacity:1;transform:translateY(196px);}
+  40%     {opacity:1;transform:translateY(238px);}
+  62%     {opacity:1;transform:translateY(280px);}
+  70%     {opacity:0;transform:translateY(280px);}
+  100%    {opacity:0;transform:translateY(196px);}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .bar,.scan,.caption .dot{animation:none;}
+  .bar{transform:scaleY(var(--h,0.5));}
+  .scan{display:none;}
+}
+
+/* ---- responsive ---- */
+@media (max-width:960px){
+  .demo{
+    grid-template-columns:1fr;
+    gap:48px;
+    padding:72px 40px 80px;
+  }
+  .demo__intro{max-width:none;}
+}
+@media (max-width:640px){
+  .demo{padding:52px 22px 60px;gap:38px;}
+  .demo__title{font-size:29px;}
+  .demo__lead{font-size:15px;margin-bottom:30px;}
+  .frame__body{grid-template-columns:1fr;min-height:0;}
+  .side{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    border-right:none;
+    border-bottom:1px solid var(--line-soft);
+    padding:12px;
+  }
+  .side__label{display:none;}
+  .side__item{margin-bottom:0;white-space:nowrap;padding:7px 11px;}
+  .side__item span{display:inline;}
+  .pane{padding:18px 16px;}
+  .frame__url{display:none;}
+  .row{grid-template-columns:24px 1fr auto;}
+  .row .mt{display:none;}
+  .scan{left:16px;right:16px;}
+}
+</style>
+</head>
+<body>
+<section class="demo">
+  <div class="demo__intro">
+    <span class="demo__eyebrow">Live product</span>
+    <h1 class="demo__title">Watch retention rebuild itself, <em>cohort by cohort.</em></h1>
+    <p class="demo__lead">Meridian recalculates every account's health score the moment a usage event lands — no nightly batch, no stale dashboard. This is the actual panel, looping in real time.</p>
+
+    <div class="demo__notes">
+      <div class="note">
+        <span class="note__num">01</span>
+        <div class="note__body">
+          <h3>Streaming recompute</h3>
+          <p>Scores refresh on write, so a churn risk surfaces in seconds instead of the next morning.</p>
+        </div>
+      </div>
+      <div class="note">
+        <span class="note__num">02</span>
+        <div class="note__body">
+          <h3>Signal, not noise</h3>
+          <p>Only accounts crossing a threshold get flagged — the scan you see marks who your team should call today.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <p class="caption"><span class="dot"></span> Recorded from the Accounts panel · updates every 4s</p>
+
+    <div class="frame">
+      <div class="frame__bar">
+        <span class="tl"></span><span class="tl"></span><span class="tl"></span>
+        <span class="frame__url">app.meridian.io / <b>accounts</b></span>
+      </div>
+
+      <div class="frame__body">
+        <nav class="side">
+          <p class="side__label">Workspace</p>
+          <div class="side__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            <span>Overview</span>
+          </div>
+          <div class="side__item is-active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+            <span>Accounts</span>
+          </div>
+          <div class="side__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+            <span>Cohorts</span>
+          </div>
+          <div class="side__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Signals</span>
+          </div>
+        </nav>
+
+        <div class="pane">
+          <div class="scan"></div>
+          <div class="pane__head">
+            <h4>Health by cohort</h4>
+            <span>last 7 days</span>
+          </div>
+
+          <div class="chart">
+            <div class="bar" style="--h:0.42"></div>
+            <div class="bar" style="--h:0.66"></div>
+            <div class="bar" style="--h:0.31"></div>
+            <div class="bar hot" style="--h:0.92"></div>
+            <div class="bar" style="--h:0.58"></div>
+            <div class="bar" style="--h:0.74"></div>
+            <div class="bar" style="--h:0.5"></div>
+          </div>
+
+          <div class="rows">
+            <div class="row">
+              <span class="av" style="background:#3f3f46">NV</span>
+              <span class="nm">Northvale Labs</span>
+              <span class="mt">Enterprise</span>
+              <span class="pct up">+18%</span>
+            </div>
+            <div class="row">
+              <span class="av" style="background:#C0492B">KT</span>
+              <span class="nm">Kettle &amp; Co.</span>
+              <span class="mt">Growth</span>
+              <span class="pct up">+11%</span>
+            </div>
+            <div class="row">
+              <span class="av" style="background:#525252">OR</span>
+              <span class="nm">Orbit Freight</span>
+              <span class="mt">Starter</span>
+              <span class="pct">−4%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

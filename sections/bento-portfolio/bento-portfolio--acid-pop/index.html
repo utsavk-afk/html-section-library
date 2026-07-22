@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!-- ===== BENTO-PORTFOLIO — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selected Work — Bento Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Archivo+Expanded:wght@800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#0A0A0A;
+  --paper:#F4F4EC;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:#1E1E1E;
+  --grey:#6B6B62;
+  --card:#141414;
+  --font-disp:'Archivo Expanded','Archivo',sans-serif;
+  --font:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--bg);
+  color:var(--paper);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.pf{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:72px 40px 88px;
+}
+
+/* ---- header row ---- */
+.pf__top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-bottom:38px;
+}
+.pf__eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--lime);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:16px;
+}
+.pf__eyebrow::before{
+  content:"";
+  width:26px;height:8px;
+  background:var(--magenta);
+  border-radius:20px;
+}
+.pf__h{
+  font-family:var(--font-disp);
+  font-weight:900;
+  font-size:clamp(44px,6.4vw,108px);
+  line-height:.86;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.pf__h em{
+  font-style:normal;
+  color:var(--lime);
+}
+.pf__meta{
+  max-width:290px;
+  text-align:right;
+}
+.pf__meta p{
+  font-size:15px;
+  line-height:1.5;
+  color:#B8B8AE;
+  margin-bottom:16px;
+}
+.pf__pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--lime);
+  color:var(--ink);
+  font-weight:800;
+  font-size:14px;
+  padding:11px 20px;
+  border-radius:40px;
+  text-decoration:none;
+  letter-spacing:-.01em;
+}
+.pf__pill span{font-size:17px;line-height:1;}
+
+/* ---- bento grid ---- */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:172px;
+  gap:14px;
+}
+.tile{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  text-decoration:none;
+  color:var(--paper);
+  border:1px solid var(--line);
+  background:var(--card);
+  transition:transform .18s ease;
+}
+.tile:hover{transform:translate(-2px,-3px);}
+
+/* sizes */
+.t--wide{grid-column:span 2;}
+.t--tall{grid-row:span 2;}
+.t--big{grid-column:span 2;grid-row:span 2;}
+
+.tile__no{
+  position:absolute;
+  top:20px;left:22px;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.1em;
+  color:var(--paper);
+  opacity:.85;
+  z-index:3;
+}
+.tile__tags{
+  position:absolute;
+  top:18px;right:18px;
+  display:flex;gap:6px;
+  z-index:3;
+}
+.chip{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:5px 9px;
+  border-radius:30px;
+  background:rgba(10,10,10,.5);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:none;
+}
+.tile__body{position:relative;z-index:3;}
+.tile__t{
+  font-family:var(--font-disp);
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:.9;
+  letter-spacing:-.01em;
+}
+.t--big .tile__t{font-size:clamp(30px,3vw,46px);}
+.t--wide .tile__t{font-size:26px;}
+.t--tall .tile__t{font-size:24px;}
+.tile__t{font-size:21px;}
+.tile__sub{
+  font-family:var(--mono);
+  font-size:12px;
+  color:rgba(244,244,236,.72);
+  margin-top:9px;
+}
+
+/* ---- CSS thumbnails (per tile) ---- */
+.thumb{position:absolute;inset:0;z-index:1;}
+.thumb::after{
+  content:"";position:absolute;inset:0;z-index:2;
+  background:linear-gradient(180deg,rgba(10,10,10,0) 34%,rgba(10,10,10,.82) 100%);
+}
+
+/* 01 — magenta arc / big */
+.th-arc{background:var(--magenta);}
+.th-arc::before{
+  content:"";position:absolute;
+  right:-90px;top:-70px;
+  width:320px;height:320px;
+  border:38px solid var(--lime);
+  border-radius:50%;
+}
+.th-arc .dot{
+  position:absolute;left:34px;bottom:96px;
+  width:66px;height:66px;border-radius:50%;
+  background:var(--ink);
+}
+
+/* 02 — lime stripes / wide */
+.th-stripe{
+  background:var(--lime);
+  background-image:repeating-linear-gradient(115deg,var(--ink) 0 8px,transparent 8px 34px);
+}
+
+/* 03 — grid dots / tall */
+.th-grid{
+  background:#171717;
+  background-image:radial-gradient(var(--magenta) 2.4px,transparent 2.6px);
+  background-size:20px 20px;
+  background-position:6px 6px;
+}
+.th-grid .bar{
+  position:absolute;left:0;right:0;bottom:0;height:44%;
+  background:var(--magenta);
+  clip-path:polygon(0 62%,22% 40%,44% 55%,66% 20%,100% 42%,100% 100%,0 100%);
+  opacity:.9;
+}
+
+/* 04 — split block */
+.th-split{background:var(--ink);}
+.th-split::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(135deg,var(--lime) 0 50%,transparent 50%),
+    linear-gradient(-45deg,var(--magenta) 0 34%,transparent 34%);
+}
+
+/* 05 — concentric magenta */
+.th-ring{background:#101010;}
+.th-ring::before{
+  content:"";position:absolute;left:50%;top:50%;
+  width:150px;height:150px;transform:translate(-50%,-40%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle,transparent 0 22px,var(--lime) 22px 34px,transparent 34px 52px,var(--magenta) 52px 66px,transparent 66px);
+}
+
+/* 06 — type block wide */
+.th-type{background:var(--magenta);}
+.th-type .glyph{
+  position:absolute;left:-6px;top:-30px;
+  font-family:var(--font-disp);font-weight:900;
+  font-size:180px;line-height:1;color:var(--ink);
+  opacity:.18;
+}
+
+/* 07 — lime zigzag tall */
+.th-zig{background:var(--lime);}
+.th-zig::before{
+  content:"";position:absolute;inset:0;
+  background:
+    conic-gradient(from 45deg at 50% 50%,var(--ink) 0 25%,transparent 0 50%,var(--ink) 0 75%,transparent 0);
+  background-size:46px 46px;
+  opacity:.9;
+}
+
+.thumb .plus{
+  position:absolute;left:22px;bottom:22px;z-index:2;
+  width:30px;height:30px;
+}
+.plus::before,.plus::after{
+  content:"";position:absolute;background:var(--paper);
+}
+.plus::before{left:13px;top:0;width:4px;height:30px;}
+.plus::after{top:13px;left:0;height:4px;width:30px;}
+
+/* accent underline on hover */
+.tile__t u{
+  text-decoration:none;
+  box-shadow:inset 0 -0.12em 0 var(--magenta);
+}
+
+/* footer strip */
+.pf__strip{
+  margin-top:34px;
+  border-top:1px solid var(--line);
+  padding-top:18px;
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--grey);
+}
+.pf__strip b{color:var(--paper);font-weight:700;}
+.pf__strip .dot{color:var(--lime);}
+
+@media(max-width:640px){
+  .pf{padding:48px 20px 60px;}
+  .pf__top{flex-direction:column;align-items:flex-start;margin-bottom:28px;}
+  .pf__meta{text-align:left;max-width:none;}
+  .bento{
+    grid-template-columns:repeat(2,1fr);
+    grid-auto-rows:150px;
+    gap:10px;
+  }
+  .t--wide{grid-column:span 2;}
+  .t--big{grid-column:span 2;grid-row:span 2;}
+  .t--tall{grid-column:span 1;grid-row:span 2;}
+  .t--big .tile__t{font-size:32px;}
+  .th-type .glyph{font-size:130px;}
+}
+</style>
+</head>
+<body>
+<section class="pf" aria-label="Selected work">
+  <div class="pf__top">
+    <div>
+      <div class="pf__eyebrow">Studio Voltmark — 2021 → 2026</div>
+      <h1 class="pf__h">Selected<br><em>Work</em></h1>
+    </div>
+    <div class="pf__meta">
+      <p>Nineteen builds shipped for challenger brands. Below: the seven we still argue about in the studio.</p>
+      <a href="#" class="pf__pill">Full index <span>&rarr;</span></a>
+    </div>
+  </div>
+
+  <div class="bento">
+
+    <!-- 01 big -->
+    <a href="#" class="tile t--big">
+      <span class="thumb th-arc"><span class="dot"></span></span>
+      <span class="tile__no">01 / 07</span>
+      <span class="tile__tags"><span class="chip">Brand</span><span class="chip">Motion</span></span>
+      <span class="tile__body">
+        <span class="tile__t">Hurl <u>Athletics</u><br>Rebrand</span>
+        <span class="tile__sub">Identity + kit design — 340% pre-order lift</span>
+      </span>
+      <span class="plus"></span>
+    </a>
+
+    <!-- 02 wide -->
+    <a href="#" class="tile t--wide">
+      <span class="thumb th-stripe"></span>
+      <span class="tile__no" style="color:#0A0A0A;opacity:.9">02 / 07</span>
+      <span class="tile__tags"><span class="chip" style="background:rgba(10,10,10,.72)">Web</span></span>
+      <span class="tile__body">
+        <span class="tile__t" style="color:#0A0A0A">Nocturn Coffee<br>Storefront</span>
+        <span class="tile__sub" style="color:rgba(10,10,10,.7)">Headless Shopify — 0.4s LCP</span>
+      </span>
+    </a>
+
+    <!-- 03 tall -->
+    <a href="#" class="tile t--tall">
+      <span class="thumb th-grid"><span class="bar"></span></span>
+      <span class="tile__no">03 / 07</span>
+      <span class="tile__tags"><span class="chip">Data Viz</span></span>
+      <span class="tile__body">
+        <span class="tile__t">Fathom<br>Dashboard</span>
+        <span class="tile__sub">Real-time analytics for a 40-person desk</span>
+      </span>
+      <span class="plus"></span>
+    </a>
+
+    <!-- 04 small -->
+    <a href="#" class="tile">
+      <span class="thumb th-split"></span>
+      <span class="tile__no">04</span>
+      <span class="tile__body">
+        <span class="tile__t" style="font-size:19px">Pylon OS</span>
+        <span class="tile__sub">Design system</span>
+      </span>
+    </a>
+
+    <!-- 05 small -->
+    <a href="#" class="tile">
+      <span class="thumb th-ring"></span>
+      <span class="tile__no">05</span>
+      <span class="tile__tags"><span class="chip">3D</span></span>
+      <span class="tile__body">
+        <span class="tile__t" style="font-size:19px">Loop Audio</span>
+        <span class="tile__sub">Product film</span>
+      </span>
+    </a>
+
+    <!-- 06 wide -->
+    <a href="#" class="tile t--wide">
+      <span class="thumb th-type"><span class="glyph">V</span></span>
+      <span class="tile__no" style="color:#0A0A0A">06 / 07</span>
+      <span class="tile__tags"><span class="chip" style="background:rgba(10,10,10,.72)">Editorial</span><span class="chip" style="background:rgba(10,10,10,.72)">Type</span></span>
+      <span class="tile__body">
+        <span class="tile__t" style="color:#0A0A0A">Voltage<br>Quarterly</span>
+        <span class="tile__sub" style="color:rgba(10,10,10,.72)">Print + web zine, 4 issues shipped</span>
+      </span>
+    </a>
+
+    <!-- 07 tall -->
+    <a href="#" class="tile t--tall">
+      <span class="thumb th-zig"></span>
+      <span class="tile__no" style="color:#0A0A0A;opacity:.9">07 / 07</span>
+      <span class="tile__tags"><span class="chip" style="background:rgba(10,10,10,.72)">Campaign</span></span>
+      <span class="tile__body">
+        <span class="tile__t" style="color:#0A0A0A">Static<br>Festival</span>
+        <span class="tile__sub" style="color:rgba(10,10,10,.72)">OOH + social — 11k tickets, sold out</span>
+      </span>
+    </a>
+
+  </div>
+
+  <div class="pf__strip">
+    <span><b>19</b> projects shipped</span>
+    <span class="dot">/</span>
+    <span><b>7</b> awards</span>
+    <span class="dot">/</span>
+    <span>Booking Q4 <b>2026</b></span>
+    <span class="dot">/</span>
+    <span>hello@voltmark.studio</span>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!-- ===== FAQ-ACCORDION — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --line:rgba(244,244,245,.09);
+  --line-strong:rgba(244,244,245,.16);
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --radius:14px;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.faq{
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 64px 116px;
+  position:relative;
+}
+
+/* soft off-axis glowless amber trace, top-right */
+.faq::before{
+  content:"";
+  position:absolute;
+  top:70px;right:6%;
+  width:220px;height:220px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  opacity:.5;
+  pointer-events:none;
+}
+.faq::after{
+  content:"";
+  position:absolute;
+  top:150px;right:calc(6% + 96px);
+  width:8px;height:8px;
+  background:var(--amber);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.faq__inner{
+  display:grid;
+  grid-template-columns:0.82fr 1.18fr;
+  gap:72px;
+  align-items:start;
+}
+
+/* ---- left rail : the single focal point ---- */
+.faq__lead{
+  position:sticky;
+  top:56px;
+}
+.faq__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.faq__eyebrow::before{
+  content:"";
+  width:22px;height:1px;
+  background:var(--amber);
+}
+.faq__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:44px;
+  line-height:1.06;
+  letter-spacing:-.01em;
+  margin-bottom:20px;
+}
+.faq__title em{
+  font-style:italic;
+  color:var(--amber);
+}
+.faq__sub{
+  color:var(--muted);
+  font-size:15.5px;
+  line-height:1.6;
+  max-width:34ch;
+  margin-bottom:34px;
+}
+.faq__contact{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 20px;
+  border:1px solid var(--line-strong);
+  border-radius:999px;
+  color:var(--ink);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  transition:border-color .2s ease, transform .2s ease;
+}
+.faq__contact:hover{
+  border-color:var(--amber);
+  transform:translateY(-1px);
+}
+.faq__contact span{
+  color:var(--amber);
+  font-size:17px;
+  line-height:1;
+}
+
+/* ---- right : accordion, hairline rows ---- */
+.faq__list{
+  border-top:1px solid var(--line);
+}
+.q{
+  border-bottom:1px solid var(--line);
+}
+.q > summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:flex-start;
+  gap:22px;
+  padding:26px 4px 26px 0;
+  user-select:none;
+}
+.q > summary::-webkit-details-marker{display:none;}
+
+.q__num{
+  font-family:var(--serif);
+  font-size:14px;
+  color:var(--muted);
+  padding-top:3px;
+  min-width:26px;
+  transition:color .2s ease;
+}
+.q__q{
+  flex:1;
+  font-size:18.5px;
+  font-weight:500;
+  line-height:1.4;
+  letter-spacing:-.005em;
+  transition:color .2s ease;
+}
+.q__mark{
+  position:relative;
+  width:20px;height:20px;
+  flex-shrink:0;
+  margin-top:3px;
+}
+.q__mark::before,
+.q__mark::after{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  background:var(--muted);
+  transition:transform .28s cubic-bezier(.4,0,.2,1), background .2s ease;
+}
+.q__mark::before{ /* horizontal */
+  width:14px;height:1.5px;
+  transform:translate(-50%,-50%);
+}
+.q__mark::after{ /* vertical */
+  width:1.5px;height:14px;
+  transform:translate(-50%,-50%);
+}
+.q[open] .q__mark::after{
+  transform:translate(-50%,-50%) rotate(90deg) scaleY(0);
+}
+.q[open] .q__mark::before,
+.q[open] .q__mark::after{
+  background:var(--amber);
+}
+.q[open] .q__num{color:var(--amber);}
+.q:hover .q__q{color:#fff;}
+
+.q__a{
+  overflow:hidden;
+  padding:0 62px 4px 48px;
+}
+.q__a p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.68;
+  padding-bottom:26px;
+  max-width:60ch;
+}
+.q__a a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--amber);}
+
+/* reveal animation */
+.q[open] .q__a{
+  animation:reveal .34s ease both;
+}
+@keyframes reveal{
+  from{opacity:0;transform:translateY(-6px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .faq{padding:60px 22px 74px;}
+  .faq::before,.faq::after{display:none;}
+  .faq__inner{grid-template-columns:1fr;gap:40px;}
+  .faq__lead{position:static;}
+  .faq__title{font-size:33px;}
+  .faq__sub{max-width:none;margin-bottom:26px;}
+  .q > summary{gap:16px;padding:22px 2px;}
+  .q__q{font-size:16.5px;}
+  .q__num{display:none;}
+  .q__a{padding:0 8px 2px 0;}
+}
+</style>
+</head>
+<body>
+<section class="faq" aria-labelledby="faq-title">
+  <div class="faq__inner">
+
+    <div class="faq__lead">
+      <span class="faq__eyebrow">Support &amp; onboarding</span>
+      <h2 class="faq__title" id="faq-title">Questions,<br>answered <em>plainly</em>.</h2>
+      <p class="faq__sub">Everything teams ask before moving their production workloads onto Halden. Still stuck? A real engineer replies, usually within the hour.</p>
+      <a class="faq__contact" href="mailto:onboarding@halden.dev">Talk to an engineer <span>&rarr;</span></a>
+    </div>
+
+    <div class="faq__list">
+
+      <details class="q" open>
+        <summary>
+          <span class="q__num">01</span>
+          <span class="q__q">How long does migrating an existing project actually take?</span>
+          <span class="q__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="q__a">
+          <p>Most teams are running in production within a single afternoon. Our CLI reads your current config, generates the Halden equivalent, and flags anything it can&rsquo;t map automatically so you review it once instead of debugging it later. A monorepo with a dozen services typically lands in under two hours.</p>
+        </div>
+      </details>
+
+      <details class="q">
+        <summary>
+          <span class="q__num">02</span>
+          <span class="q__q">What happens to my data if I decide to cancel?</span>
+          <span class="q__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="q__a">
+          <p>You keep it. Export the full dataset as newline-delimited JSON or Parquet at any time, no support ticket required. After cancellation we retain a cold copy for 30 days in case you change your mind, then it&rsquo;s permanently purged and we send you a signed deletion receipt.</p>
+        </div>
+      </details>
+
+      <details class="q">
+        <summary>
+          <span class="q__num">03</span>
+          <span class="q__q">Do you charge per seat, or by usage?</span>
+          <span class="q__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="q__a">
+          <p>By usage — measured in compute-seconds and egress, billed to the cent. Invite your whole team, contractors and all, at no extra cost. We&rsquo;d rather you add reviewers than share one login. See the <a href="#pricing">pricing breakdown</a> for the exact per-unit rates.</p>
+        </div>
+      </details>
+
+      <details class="q">
+        <summary>
+          <span class="q__num">04</span>
+          <span class="q__q">Is there a hard limit on requests during a traffic spike?</span>
+          <span class="q__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="q__a">
+          <p>No throttling ceiling on paid plans. Capacity scales automatically and we alert you the moment a spike pushes you into a new billing tier, so a viral launch never gets silently rate-limited. If you&rsquo;re expecting a known event, tell us and we&rsquo;ll pre-warm the region.</p>
+        </div>
+      </details>
+
+      <details class="q">
+        <summary>
+          <span class="q__num">05</span>
+          <span class="q__q">Which regions and compliance standards do you cover?</span>
+          <span class="q__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="q__a">
+          <p>Eleven regions across North America, the EU, and APAC, with data residency pinning so records never leave the jurisdiction you choose. We&rsquo;re SOC 2 Type II and ISO 27001 certified; HIPAA and GDPR data-processing addenda are available on request for Business and Enterprise accounts.</p>
+        </div>
+      </details>
+
+      <details class="q">
+        <summary>
+          <span class="q__num">06</span>
+          <span class="q__q">Can I try it before putting a card on file?</span>
+          <span class="q__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="q__a">
+          <p>Yes. The developer tier is free forever — no card, no trial countdown, no feature crippling. It covers roughly 50,000 requests a month, which is enough to ship a small side project and never pay a cent. You only reach for a card when your traffic genuinely outgrows it.</p>
+        </div>
+      </details>
+
+      <details class="q">
+        <summary>
+          <span class="q__num">07</span>
+          <span class="q__q">How do you handle incidents at 3 a.m.?</span>
+          <span class="q__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="q__a">
+          <p>A human on-call engineer, not a chatbot, is paged for every Sev-1. Our public status page updates in real time, and Business accounts get a direct Slack channel with our platform team. Post-incident we publish a full write-up within five business days — root cause included, no marketing gloss.</p>
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!-- ===== FAMOUS-QUOTE — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Famous Quote — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+
+  :root{
+    --ink:#0A0A0A;
+    --ink-soft:#171717;
+    --paper:#F4F4F0;
+    --lime:#C7F13B;
+    --magenta:#FF4D9D;
+    --mute:#8A8A82;
+    --line:rgba(244,244,240,.14);
+    --font:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- section shell ---- */
+  .qt{
+    position:relative;
+    width:100%;
+    max-width:1440px;
+    margin:0 auto;
+    padding:110px clamp(24px,7vw,120px) 96px;
+    overflow:hidden;
+  }
+
+  /* huge ghost quote mark — the focal anchor, pinned off-grid */
+  .qt__mark{
+    position:absolute;
+    top:-44px;
+    left:clamp(8px,4vw,64px);
+    font-size:clamp(280px,42vw,560px);
+    line-height:.7;
+    font-weight:900;
+    color:var(--ink-soft);
+    letter-spacing:-.04em;
+    pointer-events:none;
+    user-select:none;
+    z-index:0;
+  }
+
+  /* eyebrow row — off to the right, breaks the symmetry */
+  .qt__eyebrow{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:38px;
+  }
+  .qt__pill{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:var(--lime);
+    color:var(--ink);
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    padding:9px 18px;
+    border-radius:999px;
+  }
+  .qt__pill span{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--ink);
+    display:inline-block;
+  }
+  .qt__eyebrow small{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--mute);
+  }
+
+  /* the statement */
+  .qt__body{
+    position:relative;
+    z-index:2;
+    max-width:1080px;
+  }
+  .qt__quote{
+    font-weight:800;
+    font-size:clamp(38px,6.4vw,92px);
+    line-height:1.02;
+    letter-spacing:-.03em;
+    text-wrap:balance;
+  }
+  .qt__quote em{
+    font-style:normal;
+    color:var(--lime);
+  }
+  .qt__quote .mg{
+    color:var(--magenta);
+  }
+  /* magenta underline swipe on one phrase */
+  .qt__swipe{
+    position:relative;
+    white-space:nowrap;
+  }
+  .qt__swipe::after{
+    content:"";
+    position:absolute;
+    left:-2px;right:-2px;
+    bottom:.08em;
+    height:.14em;
+    background:var(--magenta);
+    z-index:-1;
+    border-radius:2px;
+  }
+
+  /* attribution row — asymmetric, avatar left, meta stacked */
+  .qt__attr{
+    position:relative;
+    z-index:2;
+    margin-top:56px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .qt__avatar{
+    flex:0 0 auto;
+    width:66px;height:66px;
+    border-radius:18px;
+    background:var(--magenta);
+    color:var(--ink);
+    font-weight:900;
+    font-size:26px;
+    letter-spacing:-.02em;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transform:rotate(-4deg);
+  }
+  .qt__who{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .qt__name{
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-.01em;
+  }
+  .qt__role{
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:.02em;
+    color:var(--mute);
+  }
+  .qt__role b{color:var(--lime);font-weight:700;}
+
+  /* trailing rule pushed to far right for balance */
+  .qt__rule{
+    flex:1 1 120px;
+    min-width:60px;
+    height:2px;
+    background:var(--line);
+    margin-left:8px;
+  }
+  .qt__cite{
+    flex:0 0 auto;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--mute);
+  }
+
+  @media(max-width:640px){
+    .qt{padding:76px 22px 64px;}
+    .qt__mark{font-size:230px;top:-14px;left:0;}
+    .qt__eyebrow{margin-bottom:26px;flex-wrap:wrap;gap:10px;}
+    .qt__quote{font-size:clamp(30px,9vw,44px);line-height:1.04;}
+    .qt__swipe{white-space:normal;}
+    .qt__attr{margin-top:40px;gap:16px;}
+    .qt__avatar{width:56px;height:56px;font-size:22px;}
+    .qt__rule{display:none;}
+    .qt__cite{flex-basis:100%;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="qt" aria-label="Featured quote">
+    <div class="qt__mark" aria-hidden="true">&ldquo;</div>
+
+    <div class="qt__eyebrow">
+      <span class="qt__pill"><span></span>On Shipping</span>
+      <small>Field Notes / No. 07</small>
+    </div>
+
+    <div class="qt__body">
+      <blockquote class="qt__quote">
+        We stopped waiting for the <em>perfect</em> launch. We shipped the ugly version on a Tuesday &mdash; and <span class="qt__swipe">learned more in six days</span> <span class="mg">than in six months of&nbsp;planning.</span>
+      </blockquote>
+    </div>
+
+    <figcaption class="qt__attr">
+      <div class="qt__avatar" aria-hidden="true">RD</div>
+      <div class="qt__who">
+        <span class="qt__name">Rina Delgado</span>
+        <span class="qt__role">Head of Product &nbsp;<b>&middot;&nbsp; Northlight Labs</b></span>
+      </div>
+      <div class="qt__rule" aria-hidden="true"></div>
+      <div class="qt__cite">Interview &mdash; 2026</div>
+    </figcaption>
+  </section>
+
+</body>
+</html>

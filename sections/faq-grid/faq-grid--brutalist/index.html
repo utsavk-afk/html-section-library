@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<!-- ===== FAQ-GRID — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Grid — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:#111111;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.faqbx{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:72px 48px 84px;
+  position:relative;
+}
+
+/* thin ruled top border for the whole section */
+.faqbx::before{
+  content:"";
+  position:absolute;
+  top:0;left:48px;right:48px;
+  height:3px;
+  background:var(--ink);
+}
+
+/* ---- HEADER : asymmetric, not centered ---- */
+.faqbx__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+  margin-bottom:48px;
+}
+.faqbx__lead{max-width:640px}
+.faqbx__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 12px;
+  margin-bottom:20px;
+}
+.faqbx__tag span{
+  width:8px;height:8px;background:var(--acid);display:inline-block;
+}
+.faqbx__title{
+  font-size:clamp(38px,6vw,72px);
+  font-weight:900;
+  line-height:.92;
+  text-transform:uppercase;
+  letter-spacing:-1.5px;
+}
+.faqbx__title em{
+  font-style:normal;
+  background:var(--acid);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.faqbx__sub{
+  font-family:var(--mono);
+  font-size:14px;
+  line-height:1.5;
+  margin-top:18px;
+  max-width:440px;
+}
+.faqbx__cta{
+  flex-shrink:0;
+  border:var(--border);
+  background:var(--red);
+  color:var(--white);
+  box-shadow:var(--shadow);
+  padding:18px 22px;
+  min-width:220px;
+}
+.faqbx__cta b{
+  display:block;
+  font-size:12px;
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:700;
+  margin-bottom:8px;
+  opacity:.9;
+}
+.faqbx__cta a{
+  color:var(--white);
+  text-decoration:none;
+  font-weight:800;
+  font-size:20px;
+  text-transform:uppercase;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.faqbx__cta a::after{content:"→";font-size:22px}
+
+/* ---- GRID : masonry-ish via columns to avoid uniform card look ---- */
+.faqbx__grid{
+  columns:2;
+  column-gap:24px;
+}
+.qa{
+  break-inside:avoid;
+  border:var(--border);
+  background:var(--white);
+  padding:22px 22px 24px;
+  margin-bottom:24px;
+  box-shadow:var(--shadow-sm);
+  position:relative;
+}
+/* vary the blocks — NOT identical uniform cards */
+.qa--big{
+  background:var(--ink);
+  color:var(--paper);
+  box-shadow:var(--shadow-red);
+}
+.qa--acid{
+  background:var(--acid);
+  box-shadow:var(--shadow);
+}
+.qa--tall{padding-bottom:34px}
+
+.qa__num{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  opacity:.55;
+  display:block;
+  margin-bottom:10px;
+}
+.qa--big .qa__num{color:var(--acid);opacity:1}
+
+.qa__q{
+  font-size:19px;
+  font-weight:800;
+  line-height:1.15;
+  text-transform:uppercase;
+  letter-spacing:-.3px;
+  margin-bottom:12px;
+  padding-bottom:12px;
+  border-bottom:2px solid currentColor;
+}
+.qa--big .qa__q{font-size:23px}
+
+.qa__a{
+  font-family:var(--mono);
+  font-size:13.5px;
+  line-height:1.6;
+}
+.qa__a strong{
+  background:var(--acid);
+  color:var(--ink);
+  padding:0 3px;
+  font-weight:700;
+}
+.qa--acid .qa__a strong{background:var(--ink);color:var(--acid)}
+.qa__a code{
+  background:var(--ink);
+  color:var(--acid);
+  padding:2px 5px;
+  font-weight:700;
+}
+.qa--big .qa__a code{background:var(--acid);color:var(--ink)}
+
+.qa__pill{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  border:2px solid currentColor;
+  padding:3px 8px;
+  margin-top:14px;
+}
+.qa--big .qa__pill{border-color:var(--acid);color:var(--acid)}
+
+/* ---- FOOTER STRIP ---- */
+.faqbx__foot{
+  margin-top:8px;
+  border:var(--border);
+  background:var(--acid);
+  box-shadow:var(--shadow);
+  padding:18px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.faqbx__foot p{
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:16px;
+  letter-spacing:-.3px;
+}
+.faqbx__foot span{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+}
+.faqbx__foot a{
+  background:var(--ink);
+  color:var(--acid);
+  text-decoration:none;
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:13px;
+  font-family:var(--mono);
+  padding:12px 18px;
+  border:2px solid var(--ink);
+  white-space:nowrap;
+}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:640px){
+  .faqbx{padding:48px 20px 56px}
+  .faqbx::before{left:20px;right:20px}
+  .faqbx__head{flex-direction:column;align-items:stretch;gap:24px}
+  .faqbx__cta{min-width:0}
+  .faqbx__grid{columns:1}
+  .qa{margin-bottom:20px}
+  .faqbx__title{font-size:40px}
+  .faqbx__foot{flex-direction:column;align-items:stretch}
+  .faqbx__foot a{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<section class="faqbx" aria-label="Frequently asked questions">
+  <div class="faqbx__head">
+    <div class="faqbx__lead">
+      <span class="faqbx__tag"><span></span>Questions / Answered</span>
+      <h2 class="faqbx__title">No Fluff.<br>Just <em>Answers.</em></h2>
+      <p class="faqbx__sub">Everything teams ask before dropping COPYDECK into a repo. Read it once. Ship it forever.</p>
+    </div>
+    <div class="faqbx__cta">
+      <b>Still stuck?</b>
+      <a href="#contact">Ask a human</a>
+    </div>
+  </div>
+
+  <div class="faqbx__grid">
+
+    <div class="qa qa--big qa--tall">
+      <span class="qa__num">Q.01</span>
+      <h3 class="qa__q">Is the library actually free?</h3>
+      <p class="qa__a">Yes. Every section is <strong>MIT-licensed</strong>. Copy the file, paste it into your project, ship it to production. No attribution required, no signup wall, no "free for personal use" trap. Use it for client work and keep the invoice.</p>
+      <span class="qa__pill">MIT · No Catch</span>
+    </div>
+
+    <div class="qa">
+      <span class="qa__num">Q.02</span>
+      <h3 class="qa__q">Do I need a build step?</h3>
+      <p class="qa__a">Never. Each section is a single self-contained <code>index.html</code> — no npm, no Webpack, no Tailwind config. The only external call is Google Fonts.</p>
+    </div>
+
+    <div class="qa qa--acid">
+      <span class="qa__num">Q.03</span>
+      <h3 class="qa__q">Will it work in Claude Code?</h3>
+      <p class="qa__a">Built for it. Drop a section into your prompt, say <strong>"match this style"</strong>, and the model has a full working reference to extend — tokens, CSS, and markup all in one paste.</p>
+    </div>
+
+    <div class="qa">
+      <span class="qa__num">Q.04</span>
+      <h3 class="qa__q">How do I change the colors?</h3>
+      <p class="qa__a">Edit the <code>:root{}</code> block at the top. Swap <code>--acid</code> and every accent updates at once. All tokens live in one place on purpose.</p>
+    </div>
+
+    <div class="qa qa--tall">
+      <span class="qa__num">Q.05</span>
+      <h3 class="qa__q">Is it responsive out of the box?</h3>
+      <p class="qa__a">Yep. Every section ships with a <code>@media(max-width:640px)</code> breakpoint tested down to 320px. Nothing overflows horizontally — the two-column grid collapses to one on mobile automatically.</p>
+      <span class="qa__pill">320px → 1440px</span>
+    </div>
+
+    <div class="qa">
+      <span class="qa__num">Q.06</span>
+      <h3 class="qa__q">Can I mix sections from different styles?</h3>
+      <p class="qa__a">You can, but expect visual whiplash. Brutalist next to soft-minimal reads like two sites. Pick one lane per page for a clean result.</p>
+    </div>
+
+    <div class="qa qa--acid">
+      <span class="qa__num">Q.07</span>
+      <h3 class="qa__q">What about accessibility?</h3>
+      <p class="qa__a">Semantic landmarks, real heading order, and <strong>AA contrast</strong> on text. The high-contrast brutalist palette helps — black on acid-yellow clears WCAG with room to spare.</p>
+    </div>
+
+    <div class="qa">
+      <span class="qa__num">Q.08</span>
+      <h3 class="qa__q">How often do new sections land?</h3>
+      <p class="qa__a">Weekly-ish. New types get added as they're battle-tested on real builds — no filler drops just to pad the count.</p>
+    </div>
+
+  </div>
+
+  <div class="faqbx__foot">
+    <div>
+      <p>Didn't find your question?</p>
+      <span>Open an issue → we answer within 48h.</span>
+    </div>
+    <a href="#issues">File a question ↗</a>
+  </div>
+</section>
+
+</body>
+</html>

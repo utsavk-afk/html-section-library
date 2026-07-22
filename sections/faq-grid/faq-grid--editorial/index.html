@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Grid — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== FAQ-GRID — EDITORIAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-soft:#514E47;
+  --ink-faint:#8B8579;
+  --accent:#B4472B;
+  --hair:#E1DED5;
+  --hair-strong:#CFCBBF;
+  --panel:#F4F2EB;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.faqx{
+  background:var(--light);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px 40px 104px;
+  width:100%;
+}
+.faqx__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ---- header: asymmetric, left-weighted ---- */
+.faqx__head{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--hair-strong);
+  margin-bottom:56px;
+}
+.faqx__label{
+  font-size:11px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:22px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.faqx__label::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+.faqx__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(34px,4.6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  max-width:12ch;
+}
+.faqx__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.faqx__intro{
+  font-size:15px;
+  line-height:1.62;
+  color:var(--ink-soft);
+  max-width:36ch;
+  padding-bottom:6px;
+}
+.faqx__intro a{
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--accent);
+  padding-bottom:1px;
+  font-weight:500;
+}
+
+/* ---- the grid: 2 columns, hairline divided, varied ---- */
+.faqx__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:64px;
+}
+.faqx__col{
+  display:flex;
+  flex-direction:column;
+}
+.faqx__item{
+  padding:34px 0;
+  border-top:1px solid var(--hair);
+}
+.faqx__col:first-child .faqx__item:first-child,
+.faqx__col:last-child .faqx__item:first-child{
+  border-top:none;
+  padding-top:6px;
+}
+.faqx__q{
+  display:flex;
+  gap:16px;
+  align-items:baseline;
+  margin-bottom:14px;
+}
+.faqx__num{
+  font-family:var(--serif);
+  font-size:13px;
+  color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;
+  padding-top:3px;
+  min-width:24px;
+  letter-spacing:.02em;
+}
+.faqx__q h3{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:21px;
+  line-height:1.22;
+  letter-spacing:-.01em;
+  color:var(--ink);
+}
+.faqx__a{
+  font-size:14.5px;
+  line-height:1.66;
+  color:var(--ink-soft);
+  padding-left:40px;
+  max-width:44ch;
+}
+.faqx__a strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* one item gets emphasis — a warm panel, breaks the uniformity */
+.faqx__item--feature{
+  background:var(--panel);
+  border-top:none;
+  border-radius:3px;
+  padding:30px 32px 32px;
+  margin:12px 0 8px;
+}
+.faqx__item--feature .faqx__a{
+  padding-left:40px;
+}
+.faqx__item--feature .faqx__pin{
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  padding-left:40px;
+  margin-top:14px;
+  display:block;
+}
+
+/* ---- footer note ---- */
+.faqx__foot{
+  margin-top:56px;
+  padding-top:28px;
+  border-top:1px solid var(--hair-strong);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.faqx__foot p{
+  font-size:14px;
+  color:var(--ink-soft);
+  line-height:1.5;
+}
+.faqx__foot p em{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink);
+}
+.faqx__cta{
+  font-size:13px;
+  letter-spacing:.02em;
+  font-weight:500;
+  color:var(--light);
+  background:var(--ink);
+  text-decoration:none;
+  padding:13px 26px;
+  border-radius:2px;
+  white-space:nowrap;
+  transition:background .18s ease;
+}
+.faqx__cta:hover{background:var(--accent);}
+
+@media(max-width:640px){
+  .faqx{padding:64px 22px 72px;}
+  .faqx__head{
+    grid-template-columns:1fr;
+    gap:24px;
+    margin-bottom:38px;
+    padding-bottom:30px;
+  }
+  .faqx__grid{
+    grid-template-columns:1fr;
+    column-gap:0;
+  }
+  .faqx__col:last-child .faqx__item:first-child{
+    border-top:1px solid var(--hair);
+    padding-top:34px;
+  }
+  .faqx__title{font-size:36px;}
+  .faqx__a,.faqx__item--feature .faqx__a,.faqx__item--feature .faqx__pin{padding-left:40px;}
+  .faqx__foot{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<section class="faqx">
+  <div class="faqx__inner">
+
+    <header class="faqx__head">
+      <div>
+        <span class="faqx__label">Before you ask</span>
+        <h1 class="faqx__title">Questions we hear <em>most weeks</em></h1>
+      </div>
+      <p class="faqx__intro">The honest answers we give on discovery calls — pricing, timelines, and what actually happens after you sign. Still curious? <a href="#contact">Write to us directly.</a></p>
+    </header>
+
+    <div class="faqx__grid">
+
+      <!-- Column A -->
+      <div class="faqx__col">
+        <div class="faqx__item">
+          <div class="faqx__q">
+            <span class="faqx__num">01</span>
+            <h3>How long until we see the first draft?</h3>
+          </div>
+          <p class="faqx__a">Ten business days from kickoff. You get a full first pass — not a mood board — so there's something real to react to. Two rounds of revision are built into every engagement.</p>
+        </div>
+
+        <div class="faqx__item">
+          <div class="faqx__q">
+            <span class="faqx__num">02</span>
+            <h3>Do you work with our existing brand guidelines?</h3>
+          </div>
+          <p class="faqx__a">Always. We treat your guidelines as the constraint, not the enemy. If something in them is quietly hurting conversion, we'll flag it — with evidence — and let you decide.</p>
+        </div>
+
+        <div class="faqx__item faqx__item--feature">
+          <div class="faqx__q">
+            <span class="faqx__num">03</span>
+            <h3>Who owns the work when we're done?</h3>
+          </div>
+          <p class="faqx__a">You do — <strong>files, fonts, and full source</strong>. On final invoice we hand over an editable package and a short walkthrough video. No license leash, no vendor lock-in, ever.</p>
+          <span class="faqx__pin">The question we're proudest to answer</span>
+        </div>
+      </div>
+
+      <!-- Column B -->
+      <div class="faqx__col">
+        <div class="faqx__item">
+          <div class="faqx__q">
+            <span class="faqx__num">04</span>
+            <h3>What does a project actually cost?</h3>
+          </div>
+          <p class="faqx__a">Most land between <strong>$6k and $18k</strong> depending on page count and how much copy we write versus adapt. You'll get a fixed quote before anything starts — no surprise hourly creep.</p>
+        </div>
+
+        <div class="faqx__item">
+          <div class="faqx__q">
+            <span class="faqx__num">05</span>
+            <h3>Can you plug into our developers?</h3>
+          </div>
+          <p class="faqx__a">Yes — we ship clean, semantic markup and annotated specs your team can build against. We'll join two standups a week if that keeps the handoff tight.</p>
+        </div>
+
+        <div class="faqx__item">
+          <div class="faqx__q">
+            <span class="faqx__num">06</span>
+            <h3>What if we need to pause halfway?</h3>
+          </div>
+          <p class="faqx__a">Life happens. Pause for up to 60 days at no charge and we hold your slot. Anything already delivered is yours to keep, whatever you decide next.</p>
+        </div>
+
+        <div class="faqx__item">
+          <div class="faqx__q">
+            <span class="faqx__num">07</span>
+            <h3>Do you offer ongoing support?</h3>
+          </div>
+          <p class="faqx__a">A monthly retainer covers tweaks, new sections, and quarterly performance reviews — optional, month-to-month, cancel with two weeks' notice.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="faqx__foot">
+      <p>Didn't find it here? <em>The strange, specific question is usually the good one.</em></p>
+      <a href="#contact" class="faqx__cta">Ask us anything</a>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

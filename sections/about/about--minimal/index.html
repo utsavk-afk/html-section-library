@@ -1,0 +1,295 @@
+/* ===== ABOUT — MINIMAL ===== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --ink: #141414;
+    --muted: #737373;
+    --line: #e6e4e0;
+    --accent: #c0492b;
+    --serif: "Inter", system-ui, sans-serif;
+    --sans: "Inter", system-ui, sans-serif;
+  }
+
+  .about {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    padding: 132px 48px 120px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about__inner {
+    width: 100%;
+    max-width: 1180px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    column-gap: 96px;
+  }
+
+  /* ---- left: story column ---- */
+  .about__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 40px;
+  }
+  .about__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .about__lead {
+    font-size: 33px;
+    line-height: 1.34;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    max-width: 620px;
+  }
+  .about__lead .mark {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .about__rule {
+    width: 100%;
+    height: 1px;
+    background: var(--line);
+    margin: 52px 0 40px;
+  }
+
+  .about__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 56px;
+    row-gap: 22px;
+    max-width: 640px;
+  }
+  .about__body p {
+    font-size: 15.5px;
+    line-height: 1.66;
+    color: var(--muted);
+  }
+  .about__body p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .about__sign {
+    margin-top: 46px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .about__sign .name {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .about__sign .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--line);
+  }
+
+  /* ---- right: stat panel (the focal asymmetry) ---- */
+  .about__aside {
+    position: relative;
+    padding-top: 8px;
+  }
+  .about__panel {
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--accent);
+    border-radius: 3px;
+    padding: 34px 32px 30px;
+  }
+  .about__stat + .about__stat {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+  }
+  .about__figure {
+    font-size: 52px;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+  .about__figure .unit {
+    font-size: 26px;
+    color: var(--accent);
+    margin-left: 2px;
+    vertical-align: baseline;
+  }
+  .about__label {
+    margin-top: 12px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  /* small csv-visual: a simple bar to break the type-only rhythm */
+  .about__meter {
+    margin-top: 28px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+  .about__meter-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .about__meter-head b {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .about__track {
+    height: 6px;
+    background: #f1efec;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .about__fill {
+    height: 100%;
+    width: 84%;
+    background: var(--accent);
+    border-radius: 20px;
+  }
+
+  .about__note {
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: var(--muted);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .about__note::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 4px; bottom: 4px;
+    width: 2px;
+    background: var(--line);
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 640px) {
+    .about { padding: 76px 22px 78px; }
+    .about__inner {
+      grid-template-columns: 1fr;
+      row-gap: 44px;
+    }
+    .about__lead { font-size: 25px; }
+    .about__eyebrow { margin-bottom: 28px; }
+    .about__rule { margin: 38px 0 30px; }
+    .about__body {
+      grid-template-columns: 1fr;
+      row-gap: 16px;
+    }
+    .about__figure { font-size: 44px; }
+    .about__sign { margin-top: 34px; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+  <section class="about">
+    <div class="about__inner">
+
+      <!-- STORY -->
+      <div class="about__story">
+        <p class="about__eyebrow">Our story</p>
+
+        <h2 class="about__lead">
+          We started Fieldnote because good research kept dying in slide
+          decks nobody reopened. So we built a studio around one stubborn
+          idea: <span class="mark">the work is only finished when a
+          customer feels it.</span>
+        </h2>
+
+        <div class="about__rule" aria-hidden="true"></div>
+
+        <div class="about__body">
+          <p>
+            In 2019 we were three people sharing one desk in Porto,
+            redrawing a checkout flow for the fourth time. The client
+            shipped it. Sales moved. <strong>That loop — draw, ship,
+            watch, redraw — became the whole company.</strong>
+          </p>
+          <p>
+            We stayed small on purpose. No account layers, no handoff
+            theater. The person who sketches your interface is the person
+            who answers your Thursday email and sits in your launch call.
+          </p>
+        </div>
+
+        <div class="about__sign">
+          <span class="name">Marta Rün</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span>Founder &amp; Principal Designer</span>
+        </div>
+      </div>
+
+      <!-- STAT PANEL (focal point) -->
+      <aside class="about__aside">
+        <div class="about__panel">
+          <div class="about__stat">
+            <div class="about__figure">61<span class="unit">%</span></div>
+            <p class="about__label">
+              Median lift in trial-to-paid conversion across the last
+              14 product engagements.
+            </p>
+          </div>
+
+          <div class="about__stat">
+            <div class="about__figure">7<span class="unit">yrs</span></div>
+            <p class="about__label">
+              Average length of a client relationship. We&rsquo;d rather
+              go deep than go wide.
+            </p>
+          </div>
+
+          <div class="about__meter">
+            <div class="about__meter-head">
+              <b>Repeat &amp; referral work</b>
+              <span>84%</span>
+            </div>
+            <div class="about__track" aria-hidden="true">
+              <div class="about__fill"></div>
+            </div>
+            <p class="about__note">
+              Most new projects come from someone we&rsquo;ve already
+              shipped with.
+            </p>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+</body>
+</html>

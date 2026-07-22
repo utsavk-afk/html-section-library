@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<!-- ===== BENTO-PORTFOLIO — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selected Work — Editorial Bento Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-70:#4A4843;
+  --ink-45:#87847B;
+  --accent:#B4472B;
+  --accent-soft:#D98A6F;
+  --line:#DEDCD3;
+  --line-strong:#C9C6BB;
+  --paper:#F5F3EC;
+  --paper-2:#EFEBDF;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.portfolio{
+  max-width:1440px;
+  margin:0 auto;
+  padding:80px 64px 92px;
+}
+
+/* ---- header ---- */
+.pf-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--line-strong);
+  margin-bottom:44px;
+}
+.pf-label{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.pf-label::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+.pf-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.02;
+  letter-spacing:-.015em;
+  max-width:15ch;
+}
+.pf-title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.pf-meta{
+  text-align:right;
+  flex-shrink:0;
+  padding-bottom:6px;
+}
+.pf-meta .yr{
+  font-family:var(--serif);
+  font-size:15px;
+  color:var(--ink-70);
+  font-style:italic;
+}
+.pf-meta .cnt{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-45);
+  margin-top:6px;
+}
+
+/* ---- grid ---- */
+.pf-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:132px;
+  gap:18px;
+}
+
+.tile{
+  position:relative;
+  border:1px solid var(--line);
+  background:var(--paper);
+  border-radius:4px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .3s ease, transform .3s ease;
+}
+.tile:hover{ border-color:var(--line-strong); transform:translateY(-2px); }
+.tile:hover .thumb{ transform:scale(1.015); }
+
+/* sizes */
+.t-hero{ grid-column:span 2; grid-row:span 3; }
+.t-tall{ grid-column:span 1; grid-row:span 3; }
+.t-wide{ grid-column:span 2; grid-row:span 2; }
+.t-sm  { grid-column:span 1; grid-row:span 2; }
+.t-mini{ grid-column:span 1; grid-row:span 2; }
+
+.thumb{
+  position:relative;
+  flex:1;
+  overflow:hidden;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.tile-body{
+  padding:16px 18px 17px;
+  border-top:1px solid var(--line);
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.t-hero .tile-body{ padding:22px 24px 24px; }
+
+.tile-idx{
+  position:absolute;
+  top:14px;
+  left:16px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14px;
+  color:var(--ink-45);
+  z-index:2;
+}
+.tile-cat{
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-45);
+  font-weight:600;
+}
+.tile-name{
+  font-family:var(--serif);
+  font-weight:400;
+  letter-spacing:-.01em;
+  line-height:1.12;
+  font-size:19px;
+}
+.t-hero .tile-name{ font-size:30px; }
+.t-wide .tile-name{ font-size:22px; }
+.tile-name em{ font-style:italic; }
+.tile-desc{
+  font-size:13px;
+  color:var(--ink-70);
+  line-height:1.5;
+  max-width:34ch;
+}
+.tile-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:2px;
+}
+.tag{
+  font-size:11px;
+  color:var(--ink-70);
+  border:1px solid var(--line-strong);
+  padding:3px 9px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+.tag.hot{ color:var(--accent); border-color:var(--accent-soft); }
+
+.tile-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:2px;
+}
+.tile-arrow{
+  font-size:13px;
+  color:var(--accent);
+  font-weight:600;
+  letter-spacing:.02em;
+}
+
+/* ---------- CSS-drawn thumbnails ---------- */
+/* Hero: editorial poster with big letterform + rule */
+.th-hero{
+  background:
+    radial-gradient(120% 90% at 82% 8%, rgba(180,71,43,.14), transparent 60%),
+    linear-gradient(180deg,#26241F 0%,#1B1A17 100%);
+}
+.th-hero .glyph{
+  position:absolute;
+  left:24px; bottom:-30px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:220px;
+  line-height:1;
+  color:#F3EEE4;
+  letter-spacing:-.04em;
+}
+.th-hero .swatch{
+  position:absolute; top:22px; right:22px;
+  display:flex; gap:8px;
+}
+.th-hero .swatch i{ width:26px; height:26px; border-radius:50%; display:block; }
+.th-hero .swatch i:nth-child(1){ background:var(--accent); }
+.th-hero .swatch i:nth-child(2){ background:#E4D9C4; }
+.th-hero .swatch i:nth-child(3){ background:#6E7E6A; }
+.th-hero .rule{
+  position:absolute; left:24px; right:24px; top:96px; height:1px;
+  background:rgba(243,238,228,.28);
+}
+.th-hero .kick{
+  position:absolute; left:24px; top:26px;
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(243,238,228,.7);
+}
+
+/* Tall: stacked spec bars / index */
+.th-tall{ background:var(--paper-2); }
+.th-tall .bars{ position:absolute; inset:22px; display:flex; flex-direction:column; justify-content:flex-end; gap:9px; }
+.th-tall .bars span{ height:10px; background:var(--ink); opacity:.14; border-radius:2px; }
+.th-tall .bars span:nth-child(1){ width:38%; }
+.th-tall .bars span:nth-child(2){ width:64%; }
+.th-tall .bars span:nth-child(3){ width:52%; background:var(--accent); opacity:.85; }
+.th-tall .bars span:nth-child(4){ width:80%; }
+.th-tall .bars span:nth-child(5){ width:46%; }
+.th-tall .disc{
+  position:absolute; top:20px; left:20px;
+  width:46px; height:46px; border-radius:50%;
+  border:1px solid var(--ink); opacity:.3;
+}
+.th-tall .disc::after{
+  content:""; position:absolute; inset:12px; border-radius:50%;
+  background:var(--accent); opacity:.75;
+}
+
+/* Wide: horizon / data ridge */
+.th-wide{ background:linear-gradient(180deg,#F7F4EC 0%,#EDE7D8 100%); }
+.th-wide .ridge{
+  position:absolute; left:0; right:0; bottom:0; height:64%;
+  background:
+    linear-gradient(180deg, rgba(180,71,43,.10), rgba(180,71,43,.02)),
+    repeating-linear-gradient(90deg, rgba(27,26,23,.10) 0 1px, transparent 1px 34px);
+  clip-path:polygon(0 62%,14% 40%,28% 55%,44% 22%,60% 46%,74% 30%,88% 52%,100% 34%,100% 100%,0 100%);
+}
+.th-wide .dot{
+  position:absolute; top:44%; left:44%;
+  width:9px;height:9px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 4px rgba(180,71,43,.18);
+}
+
+/* Small: type stack */
+.th-type{ background:var(--bg); }
+.th-type .lines{ position:absolute; inset:20px; display:flex; flex-direction:column; gap:7px; justify-content:center; }
+.th-type .lines b{ font-family:var(--serif); display:block; }
+.th-type .lines .a{ font-size:13px; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-45); font-weight:400; }
+.th-type .lines .b{ font-size:30px; font-style:italic; color:var(--ink); font-weight:500; line-height:1; }
+.th-type .lines .c{ font-size:11px; color:var(--ink-45); font-family:var(--sans); letter-spacing:.05em; }
+
+/* Mini: concentric */
+.th-mini{ background:#26241F; }
+.th-mini .rings{ position:absolute; inset:0; }
+.th-mini .rings::before,.th-mini .rings::after{
+  content:""; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  border-radius:50%; border:1px solid rgba(243,238,228,.35);
+}
+.th-mini .rings::before{ width:52px; height:52px; }
+.th-mini .rings::after{ width:92px; height:92px; }
+.th-mini .core{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:20px;height:20px;border-radius:50%;background:var(--accent-soft);
+}
+
+/* Small-b: grid dots */
+.th-grid{ background:var(--paper); }
+.th-grid .g{
+  position:absolute; inset:20px;
+  background-image:radial-gradient(var(--line-strong) 1.4px, transparent 1.5px);
+  background-size:16px 16px;
+}
+.th-grid .mark{
+  position:absolute; right:22px; bottom:20px;
+  width:34px; height:34px; border-radius:3px;
+  background:var(--accent); transform:rotate(8deg);
+}
+
+@media(max-width:960px){
+  .portfolio{ padding:60px 40px 72px; }
+  .pf-title{ font-size:40px; }
+  .pf-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; }
+  .t-hero{ grid-column:span 2; grid-row:span 3; }
+  .t-tall{ grid-column:span 1; grid-row:span 3; }
+  .t-wide{ grid-column:span 2; grid-row:span 2; }
+}
+
+@media(max-width:640px){
+  .portfolio{ padding:44px 20px 56px; }
+  .pf-head{ flex-direction:column; align-items:flex-start; gap:22px; margin-bottom:32px; }
+  .pf-title{ font-size:33px; }
+  .pf-meta{ text-align:left; }
+  .pf-grid{ grid-template-columns:1fr; grid-auto-rows:auto; gap:14px; }
+  .t-hero,.t-tall,.t-wide,.t-sm,.t-mini{ grid-column:span 1; grid-row:auto; }
+  .thumb{ min-height:170px; }
+  .t-hero .thumb{ min-height:230px; }
+  .th-hero .glyph{ font-size:150px; }
+}
+</style>
+</head>
+<body>
+<section class="portfolio" aria-label="Selected work">
+  <header class="pf-head">
+    <div>
+      <div class="pf-label">Selected Work · 2021–2026</div>
+      <h2 class="pf-title">Twenty-one projects, <em>one</em> stubborn idea about clarity.</h2>
+    </div>
+    <div class="pf-meta">
+      <div class="yr">Studio Merrow &amp; Fen</div>
+      <div class="cnt">Brand · Editorial · Interface</div>
+    </div>
+  </header>
+
+  <div class="pf-grid">
+
+    <!-- HERO -->
+    <a class="tile t-hero" href="#">
+      <div class="thumb th-hero">
+        <span class="tile-idx" style="color:rgba(243,238,228,.6)">01</span>
+        <span class="kick">Flagship · Identity</span>
+        <span class="rule"></span>
+        <span class="swatch"><i></i><i></i><i></i></span>
+        <span class="glyph">Ø</span>
+      </div>
+      <div class="tile-body">
+        <span class="tile-cat">Brand system &nbsp;/&nbsp; 2025</span>
+        <h3 class="tile-name">Ostro Coffee — a wordmark that <em>pours</em>.</h3>
+        <p class="tile-desc">Full rebrand for a 14-shop roaster: custom Fraunces-based logotype, a warm three-tone palette, and packaging that ships in six SKUs across two continents.</p>
+        <div class="tile-tags">
+          <span class="tag hot">Identity</span>
+          <span class="tag">Packaging</span>
+          <span class="tag">Type design</span>
+          <span class="tag">Art direction</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- TALL -->
+    <a class="tile t-tall" href="#">
+      <div class="thumb th-tall">
+        <span class="tile-idx">02</span>
+        <span class="disc"></span>
+        <span class="bars"><span></span><span></span><span></span><span></span><span></span></span>
+      </div>
+      <div class="tile-body">
+        <span class="tile-cat">Data / Report</span>
+        <h3 class="tile-name">The Slow Water <em>Atlas</em></h3>
+        <div class="tile-tags"><span class="tag">Editorial</span><span class="tag">Charts</span></div>
+      </div>
+    </a>
+
+    <!-- WIDE -->
+    <a class="tile t-wide" href="#">
+      <div class="thumb th-wide">
+        <span class="tile-idx">03</span>
+        <span class="dot"></span>
+        <span class="ridge"></span>
+      </div>
+      <div class="tile-body">
+        <span class="tile-cat">Interface &nbsp;/&nbsp; 2024</span>
+        <h3 class="tile-name">Tern — a dashboard for tidal-energy operators.</h3>
+        <div class="tile-foot">
+          <div class="tile-tags"><span class="tag hot">Product UI</span><span class="tag">Design system</span></div>
+          <span class="tile-arrow">View →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- SMALL b (grid) -->
+    <a class="tile t-sm" href="#">
+      <div class="thumb th-grid">
+        <span class="tile-idx">04</span>
+        <span class="g"></span>
+        <span class="mark"></span>
+      </div>
+      <div class="tile-body">
+        <span class="tile-cat">Poster series</span>
+        <h3 class="tile-name">Grid, <em>interrupted</em></h3>
+      </div>
+    </a>
+
+    <!-- MINI -->
+    <a class="tile t-mini" href="#">
+      <div class="thumb th-mini">
+        <span class="tile-idx" style="color:rgba(243,238,228,.6)">05</span>
+        <span class="rings"></span>
+        <span class="core"></span>
+      </div>
+      <div class="tile-body">
+        <span class="tile-cat">Motion / Logo</span>
+        <h3 class="tile-name">Halo Records sting</h3>
+      </div>
+    </a>
+
+    <!-- SMALL type -->
+    <a class="tile t-sm" href="#">
+      <div class="thumb th-type">
+        <span class="tile-idx">06</span>
+        <span class="lines">
+          <b class="a">Field notes</b>
+          <b class="b">Marginalia</b>
+          <b class="c">A quarterly reading journal, set in metal.</b>
+        </span>
+      </div>
+      <div class="tile-body">
+        <span class="tile-cat">Editorial &nbsp;/&nbsp; 2023</span>
+        <h3 class="tile-name">Marginalia, Issue 04</h3>
+        <div class="tile-tags"><span class="tag">Print</span><span class="tag">Layout</span></div>
+      </div>
+    </a>
+
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Hero — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== CTA-HERO — DARK / LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-2:#17171c;
+  --off:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --amber-deep:#e08a2f;
+  --line:#2a2a31;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{background:var(--ink);color:var(--off);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+
+.cta-hero{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:720px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 88% 8%, rgba(245,158,66,0.10), transparent 55%),
+    var(--ink);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+/* faint engraved grid, no glow */
+.cta-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size:96px 96px;
+  mask-image:linear-gradient(105deg, #000 0%, #000 42%, transparent 78%);
+  -webkit-mask-image:linear-gradient(105deg, #000 0%, #000 42%, transparent 78%);
+  pointer-events:none;
+}
+
+.cta-hero__inner{
+  position:relative;
+  z-index:2;
+  width:100%;
+  padding:96px clamp(28px,6vw,112px);
+  display:grid;
+  grid-template-columns:minmax(0,7fr) minmax(0,4fr);
+  gap:56px;
+  align-items:center;
+}
+
+/* ---- left: focal point ---- */
+.cta-hero__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:30px;
+}
+.cta-hero__eyebrow .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 0 4px rgba(245,158,66,0.14);
+}
+
+.cta-hero__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(44px,6.6vw,92px);
+  line-height:0.98;
+  letter-spacing:-0.02em;
+  max-width:15ch;
+}
+.cta-hero__title em{
+  font-style:italic;
+  color:var(--amber);
+}
+
+.cta-hero__actions{
+  margin-top:44px;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+
+.cta-hero__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--amber);
+  color:#1a1206;
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:0.01em;
+  padding:17px 30px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .18s ease, transform .18s ease;
+}
+.cta-hero__btn svg{transition:transform .18s ease;}
+.cta-hero__btn:hover{background:var(--amber-deep);transform:translateY(-1px);}
+.cta-hero__btn:hover svg{transform:translateX(4px);}
+
+.cta-hero__ghost{
+  font-size:15px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  padding-bottom:3px;
+  transition:color .18s ease,border-color .18s ease;
+}
+.cta-hero__ghost:hover{color:var(--off);border-color:var(--muted);}
+
+.cta-hero__support{
+  margin-top:34px;
+  font-size:15px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:44ch;
+}
+.cta-hero__support strong{color:var(--off);font-weight:600;}
+
+/* ---- right: asymmetric proof panel ---- */
+.cta-hero__aside{
+  justify-self:end;
+  width:100%;
+  max-width:340px;
+}
+.panel{
+  background:var(--ink-2);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:26px 26px 22px;
+}
+.panel__label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.panel__stat{
+  font-family:var(--serif);
+  font-size:52px;
+  line-height:1;
+  margin:14px 0 6px;
+  letter-spacing:-0.02em;
+}
+.panel__stat span{color:var(--amber);}
+.panel__note{font-size:13.5px;color:var(--muted);line-height:1.5;}
+
+.roster{
+  display:flex;
+  align-items:center;
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+.roster__avatars{display:flex;}
+.avatar{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:600;color:#1a1206;
+  border:2px solid var(--ink-2);
+  margin-left:-10px;
+}
+.avatar:first-child{margin-left:0;}
+.avatar--a{background:#F59E42;}
+.avatar--b{background:#d7d7db;color:#1a1a1f;}
+.avatar--c{background:#8a8a93;color:#0f0f12;}
+.avatar--d{background:#3a3a42;color:#F4F4F5;font-size:12px;}
+.roster__txt{font-size:13px;color:var(--muted);margin-left:14px;line-height:1.4;}
+.roster__txt b{color:var(--off);font-weight:600;}
+
+@media (max-width:960px){
+  .cta-hero__inner{grid-template-columns:1fr;gap:44px;}
+  .cta-hero__aside{justify-self:start;max-width:380px;}
+}
+
+@media (max-width:640px){
+  .cta-hero{min-height:0;}
+  .cta-hero__inner{padding:64px 24px 56px;gap:36px;}
+  .cta-hero__eyebrow{margin-bottom:22px;}
+  .cta-hero__actions{gap:16px;margin-top:34px;}
+  .cta-hero__btn{width:100%;justify-content:center;}
+  .cta-hero__ghost{margin:0 auto;}
+  .cta-hero__aside{max-width:100%;}
+  .cta-hero::before{background-size:64px 64px;}
+}
+</style>
+</head>
+<body>
+
+<section class="cta-hero">
+  <div class="cta-hero__inner">
+
+    <div class="cta-hero__main">
+      <span class="cta-hero__eyebrow"><span class="dot"></span>Onboarding closes Friday</span>
+
+      <h1 class="cta-hero__title">Ship the redesign your board <em>keeps asking about.</em></h1>
+
+      <div class="cta-hero__actions">
+        <a class="cta-hero__btn" href="#book">
+          Book a build slot
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 8h11M9 4l4 4-4 4" stroke="#1a1206" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="cta-hero__ghost" href="#work">See recent work</a>
+      </div>
+
+      <p class="cta-hero__support">We take <strong>two builds a month</strong>. Fixed scope, fixed price, first draft in your inbox within ten working days.</p>
+    </div>
+
+    <aside class="cta-hero__aside">
+      <div class="panel">
+        <div class="panel__label">Delivery, last quarter</div>
+        <div class="panel__stat">11<span>d</span></div>
+        <p class="panel__note">Median days from kickoff to first shippable draft across 18 engagements.</p>
+
+        <div class="roster">
+          <div class="roster__avatars">
+            <span class="avatar avatar--a">RK</span>
+            <span class="avatar avatar--b">MО</span>
+            <span class="avatar avatar--c">JT</span>
+            <span class="avatar avatar--d">+9</span>
+          </div>
+          <p class="roster__txt"><b>12 teams</b> in the queue<br>this cycle</p>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!-- ===== PRICING-TABLE — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e5e3;
+  --accent:#c0492b;
+  --serif:'Inter',sans-serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.pt-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px 48px 104px;
+  -webkit-font-smoothing:antialiased;
+}
+.pt-wrap{max-width:1120px;margin:0 auto;}
+
+/* header — left aligned, asymmetric with badge on the right */
+.pt-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+  flex-wrap:wrap;
+}
+.pt-eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.pt-title{
+  font-size:40px;
+  font-weight:700;
+  line-height:1.08;
+  letter-spacing:-.02em;
+  max-width:15ch;
+}
+.pt-sub{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.6;
+  max-width:34ch;
+  padding-bottom:4px;
+}
+
+/* table */
+.pt-table{width:100%;border-collapse:collapse;margin-top:8px;}
+
+.pt-table thead th{
+  text-align:left;
+  vertical-align:bottom;
+  padding:36px 22px 24px;
+}
+.pt-table thead th.pt-featcol{width:34%;}
+
+.pt-plan-name{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:var(--ink);
+  margin-bottom:14px;
+}
+.pt-price{
+  font-size:34px;
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1;
+}
+.pt-price span{
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  letter-spacing:0;
+}
+.pt-plan-desc{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+  margin-top:12px;
+  max-width:20ch;
+}
+.pt-cta{
+  display:inline-block;
+  margin-top:20px;
+  font-size:13px;
+  font-weight:600;
+  padding:9px 16px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  color:var(--ink);
+  text-decoration:none;
+  transition:border-color .15s,color .15s;
+}
+.pt-cta:hover{border-color:var(--ink);}
+
+/* highlighted plan column */
+.pt-featured .pt-cta{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+.pt-featured .pt-cta:hover{background:#a53e24;border-color:#a53e24;}
+.pt-tag{
+  display:inline-block;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:14px;
+  vertical-align:middle;
+}
+/* the featured column gets a subtle full-height tint via cells */
+.pt-featcell{background:#faf4f2;}
+thead th.pt-featcell{border-radius:12px 12px 0 0;}
+
+/* feature rows */
+.pt-group td{
+  padding:30px 22px 12px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.pt-table tbody td{
+  border-top:1px solid var(--line);
+  padding:16px 22px;
+  font-size:14.5px;
+  vertical-align:middle;
+}
+.pt-feat{color:var(--ink);font-weight:500;}
+.pt-feat small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:3px;}
+.pt-cell{color:var(--ink);}
+.pt-note{color:var(--muted);font-size:13.5px;}
+
+/* marks */
+.pt-check{color:var(--accent);}
+.pt-dash{color:#c9c6c3;}
+.pt-mark{width:17px;height:17px;display:inline-block;vertical-align:-3px;}
+
+/* group header spacing exceptions */
+.pt-group.first td{padding-top:38px;}
+
+.pt-foot{
+  margin-top:36px;
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  gap:8px;
+  align-items:baseline;
+}
+.pt-foot b{color:var(--ink);font-weight:600;}
+
+@media(max-width:640px){
+  .pt-section{padding:56px 20px 72px;}
+  .pt-head{flex-direction:column;align-items:flex-start;gap:20px;padding-bottom:36px;}
+  .pt-title{font-size:29px;}
+  .pt-sub{padding-bottom:0;}
+
+  /* collapse to stacked cards: hide feature column header, show plan cards */
+  .pt-table,.pt-table thead,.pt-table tbody,.pt-table tr,.pt-table th,.pt-table td{display:block;}
+  .pt-table thead{display:none;}
+  .pt-group td{padding:26px 0 10px;}
+  .pt-table tbody td{border-top:none;padding:0;}
+  .pt-table tbody tr:not(.pt-group){
+    display:grid;
+    grid-template-columns:1fr auto auto auto;
+    gap:10px;
+    align-items:center;
+    padding:13px 0;
+    border-top:1px solid var(--line);
+  }
+  .pt-featcell{background:transparent;}
+  .pt-feat small{display:none;}
+  .pt-cell,.pt-note{text-align:center;font-size:13px;}
+  .pt-mark{width:15px;height:15px;}
+}
+</style>
+</head>
+<body>
+<section class="pt-section">
+  <div class="pt-wrap">
+
+    <div class="pt-head">
+      <div>
+        <div class="pt-eyebrow">Plans &amp; pricing</div>
+        <h2 class="pt-title">Ship faster with the plan that fits your team.</h2>
+      </div>
+      <p class="pt-sub">Every plan includes unlimited projects and version history. Switch or cancel anytime — no lock-in, prorated to the day.</p>
+    </div>
+
+    <table class="pt-table">
+      <thead>
+        <tr>
+          <th class="pt-featcol"></th>
+          <th>
+            <div class="pt-plan-name">Solo</div>
+            <div class="pt-price">$0<span> /mo</span></div>
+            <div class="pt-plan-desc">For side projects and evaluating the tools.</div>
+            <a href="#" class="pt-cta">Start free</a>
+          </th>
+          <th class="pt-featured pt-featcell">
+            <span class="pt-tag">Most picked</span>
+            <div class="pt-plan-name">Studio</div>
+            <div class="pt-price">$24<span> /mo</span></div>
+            <div class="pt-plan-desc">For working teams that ship every week.</div>
+            <a href="#" class="pt-cta">Choose Studio</a>
+          </th>
+          <th>
+            <div class="pt-plan-name">Scale</div>
+            <div class="pt-price">$79<span> /mo</span></div>
+            <div class="pt-plan-desc">For orgs needing controls and support.</div>
+            <a href="#" class="pt-cta">Talk to sales</a>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="pt-group first"><td>Core</td><td></td><td class="pt-featcell"></td><td></td></tr>
+
+        <tr>
+          <td class="pt-feat">Active seats<small>People building at the same time</small></td>
+          <td class="pt-cell pt-note">1</td>
+          <td class="pt-cell pt-featcell pt-note">Up to 8</td>
+          <td class="pt-cell pt-note">Unlimited</td>
+        </tr>
+        <tr>
+          <td class="pt-feat">Projects</td>
+          <td class="pt-cell pt-note">3</td>
+          <td class="pt-cell pt-featcell pt-note">Unlimited</td>
+          <td class="pt-cell pt-note">Unlimited</td>
+        </tr>
+        <tr>
+          <td class="pt-feat">Version history</td>
+          <td class="pt-cell pt-note">7 days</td>
+          <td class="pt-cell pt-featcell pt-note">90 days</td>
+          <td class="pt-cell pt-note">Forever</td>
+        </tr>
+
+        <tr class="pt-group"><td>Collaboration</td><td></td><td class="pt-featcell"></td><td></td></tr>
+
+        <tr>
+          <td class="pt-feat">Real-time comments</td>
+          <td class="pt-cell">
+            <svg class="pt-mark pt-check" viewBox="0 0 16 16" fill="none" aria-label="Included"><path d="M3 8.5l3.2 3.2L13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </td>
+          <td class="pt-cell pt-featcell">
+            <svg class="pt-mark pt-check" viewBox="0 0 16 16" fill="none" aria-label="Included"><path d="M3 8.5l3.2 3.2L13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </td>
+          <td class="pt-cell">
+            <svg class="pt-mark pt-check" viewBox="0 0 16 16" fill="none" aria-label="Included"><path d="M3 8.5l3.2 3.2L13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </td>
+        </tr>
+        <tr>
+          <td class="pt-feat">Shared component library</td>
+          <td class="pt-cell">
+            <svg class="pt-mark pt-dash" viewBox="0 0 16 16" fill="none" aria-label="Not included"><path d="M4 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </td>
+          <td class="pt-cell pt-featcell">
+            <svg class="pt-mark pt-check" viewBox="0 0 16 16" fill="none" aria-label="Included"><path d="M3 8.5l3.2 3.2L13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </td>
+          <td class="pt-cell">
+            <svg class="pt-mark pt-check" viewBox="0 0 16 16" fill="none" aria-label="Included"><path d="M3 8.5l3.2 3.2L13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </td>
+        </tr>
+        <tr>
+          <td class="pt-feat">Guest reviewers</td>
+          <td class="pt-cell pt-note">2</td>
+          <td class="pt-cell pt-featcell pt-note">25</td>
+          <td class="pt-cell pt-note">Unlimited</td>
+        </tr>
+
+        <tr class="pt-group"><td>Security &amp; support</td><td></td><td class="pt-featcell"></td><td></td></tr>
+
+        <tr>
+          <td class="pt-feat">SSO &amp; SAML</td>
+          <td class="pt-cell">
+            <svg class="pt-mark pt-dash" viewBox="0 0 16 16" fill="none" aria-label="Not included"><path d="M4 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </td>
+          <td class="pt-cell pt-featcell">
+            <svg class="pt-mark pt-dash" viewBox="0 0 16 16" fill="none" aria-label="Not included"><path d="M4 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </td>
+          <td class="pt-cell">
+            <svg class="pt-mark pt-check" viewBox="0 0 16 16" fill="none" aria-label="Included"><path d="M3 8.5l3.2 3.2L13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </td>
+        </tr>
+        <tr>
+          <td class="pt-feat">Priority support<small>Response time SLA</small></td>
+          <td class="pt-cell pt-note">Community</td>
+          <td class="pt-cell pt-featcell pt-note">Within 24h</td>
+          <td class="pt-cell pt-note">Within 2h</td>
+        </tr>
+        <tr>
+          <td class="pt-feat">Audit log export</td>
+          <td class="pt-cell">
+            <svg class="pt-mark pt-dash" viewBox="0 0 16 16" fill="none" aria-label="Not included"><path d="M4 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </td>
+          <td class="pt-cell pt-featcell">
+            <svg class="pt-mark pt-check" viewBox="0 0 16 16" fill="none" aria-label="Included"><path d="M3 8.5l3.2 3.2L13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </td>
+          <td class="pt-cell">
+            <svg class="pt-mark pt-check" viewBox="0 0 16 16" fill="none" aria-label="Included"><path d="M3 8.5l3.2 3.2L13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pt-foot">
+      <b>Nonprofit or student?</b>
+      <span>Studio is free for verified accounts — email billing@example.com.</span>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

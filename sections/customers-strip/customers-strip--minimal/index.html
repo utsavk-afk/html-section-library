@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customers Strip — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CUSTOMERS-STRIP — MINIMAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e5e2;
+  --bg:#ffffff;
+  --accent:#C0492B;
+  --avatar-ring:#ffffff;
+  --a1:#2f3e46;
+  --a2:#4b5d67;
+  --a3:#6b4f3a;
+  --a4:#3c5148;
+  --a5:#5a4a63;
+  --a6:#7a4b4b;
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --maxw:1180px;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+
+.cs-section{
+  width:100%;
+  padding:104px 40px;
+  display:flex;
+  justify-content:center;
+  background:
+    linear-gradient(180deg,#fbfaf9 0%,#ffffff 60%);
+}
+
+.cs-wrap{
+  width:100%;
+  max-width:var(--maxw);
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:72px;
+  align-items:center;
+}
+
+/* Left column — the focal point, left-aligned */
+.cs-lead{
+  max-width:520px;
+}
+
+.cs-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.cs-eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+
+.cs-title{
+  font-size:34px;
+  line-height:1.18;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  margin-bottom:16px;
+}
+.cs-title em{
+  font-style:normal;
+  color:var(--accent);
+}
+
+.cs-sub{
+  font-size:15.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:440px;
+}
+
+/* Right column — the social proof cluster */
+.cs-proof{
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+  padding:34px 34px 32px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+  box-shadow:0 1px 0 rgba(20,20,20,.03),0 18px 40px -28px rgba(20,20,20,.18);
+}
+
+/* Avatar row — overlapping */
+.cs-avatars{
+  display:flex;
+  align-items:center;
+}
+.cs-avatar{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.01em;
+  border:2.5px solid var(--avatar-ring);
+  margin-left:-12px;
+  box-shadow:0 2px 6px -2px rgba(20,20,20,.25);
+  transition:transform .18s ease;
+}
+.cs-avatar:first-child{margin-left:0;}
+.cs-avatar:hover{transform:translateY(-3px);}
+.cs-avatar.a1{background:var(--a1);}
+.cs-avatar.a2{background:var(--a2);}
+.cs-avatar.a3{background:var(--a3);}
+.cs-avatar.a4{background:var(--a4);}
+.cs-avatar.a5{background:var(--a5);}
+.cs-avatar.a6{background:var(--a6);}
+.cs-avatar.more{
+  background:#f3f1ee;
+  color:var(--ink);
+  font-size:12px;
+  border-color:var(--avatar-ring);
+  box-shadow:none;
+}
+
+.cs-join{
+  font-size:15px;
+  line-height:1.45;
+  color:var(--ink);
+  font-weight:500;
+}
+.cs-join strong{
+  font-weight:700;
+}
+.cs-join span{
+  color:var(--muted);
+  font-weight:400;
+}
+
+/* Rating — small, understated */
+.cs-rating{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+}
+.cs-stars{
+  display:inline-flex;
+  gap:2px;
+}
+.cs-stars svg{
+  width:15px;
+  height:15px;
+  display:block;
+}
+.cs-rating-text{
+  font-size:13.5px;
+  color:var(--muted);
+}
+.cs-rating-text b{
+  color:var(--ink);
+  font-weight:600;
+}
+.cs-rating-src{
+  margin-left:auto;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:500;
+  letter-spacing:.01em;
+}
+
+@media(max-width:640px){
+  .cs-section{padding:64px 22px;}
+  .cs-wrap{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
+  .cs-title{font-size:27px;}
+  .cs-proof{padding:26px 22px 24px;}
+  .cs-rating-src{display:none;}
+  .cs-avatar{width:42px;height:42px;font-size:13px;margin-left:-11px;}
+}
+</style>
+</head>
+<body>
+<section class="cs-section">
+  <div class="cs-wrap">
+
+    <div class="cs-lead">
+      <span class="cs-eyebrow">Trusted in production</span>
+      <h2 class="cs-title">The teams shipping faster already <em>run on Meridian.</em></h2>
+      <p class="cs-sub">From two-person startups to platform teams at 400-seat companies — Meridian handles the deploy pipeline so engineers can stay in the editor, not the dashboard.</p>
+    </div>
+
+    <div class="cs-proof">
+      <div class="cs-avatars" aria-label="Customer avatars">
+        <div class="cs-avatar a1" title="Priya Nair">PN</div>
+        <div class="cs-avatar a2" title="Diego Alvarez">DA</div>
+        <div class="cs-avatar a3" title="Kenji Watanabe">KW</div>
+        <div class="cs-avatar a4" title="Fatima Hassan">FH</div>
+        <div class="cs-avatar a5" title="Lars Bergström">LB</div>
+        <div class="cs-avatar a6" title="Rebecca Cole">RC</div>
+        <div class="cs-avatar more" title="and thousands more">+2.9k</div>
+      </div>
+
+      <p class="cs-join">Join <strong>3,140+ engineering teams</strong> <span>who moved their deploys to Meridian this year.</span></p>
+
+      <div class="cs-rating">
+        <span class="cs-stars" aria-label="Rated 4.9 out of 5">
+          <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+          <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+          <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+          <svg viewBox="0 0 20 20" fill="#C0492B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+          <svg viewBox="0 0 20 20"><defs><linearGradient id="half"><stop offset="90%" stop-color="#C0492B"/><stop offset="90%" stop-color="#e7e0dc"/></linearGradient></defs><path fill="url(#half)" d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+        </span>
+        <span class="cs-rating-text"><b>4.9 / 5</b> from 1,208 verified reviews</span>
+        <span class="cs-rating-src">G2 · Fall 2025</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

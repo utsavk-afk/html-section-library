@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Grid — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== FAQ-GRID — MINIMAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e5e2;
+  --line-soft:#f0efec;
+  --bg:#ffffff;
+  --accent:#c0492b;
+  --accent-tint:#faf1ee;
+  --maxw:1200px;
+  --r-sm:6px;
+  --r-md:12px;
+  --sp:clamp(20px,4vw,40px);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  line-height:1.6;
+}
+
+.faq{
+  width:100%;
+  padding:clamp(56px,8vw,104px) var(--sp);
+}
+.faq__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* Header — left-aligned, asymmetric */
+.faq__head{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);
+  gap:clamp(24px,4vw,64px);
+  align-items:end;
+  padding-bottom:clamp(36px,5vw,60px);
+  border-bottom:1px solid var(--line);
+  margin-bottom:clamp(36px,5vw,60px);
+}
+.faq__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.faq__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1.5px;
+  background:var(--accent);
+  display:inline-block;
+}
+.faq__title{
+  font-size:clamp(28px,4.4vw,46px);
+  font-weight:600;
+  letter-spacing:-.02em;
+  line-height:1.08;
+  max-width:16ch;
+}
+.faq__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+.faq__aside{
+  padding-bottom:6px;
+}
+.faq__aside p{
+  color:var(--muted);
+  font-size:15px;
+  max-width:34ch;
+  margin-bottom:18px;
+}
+.faq__contact{
+  display:inline-flex;
+  align-items:baseline;
+  gap:7px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1.5px solid var(--ink);
+  padding-bottom:2px;
+  transition:color .15s ease,border-color .15s ease;
+}
+.faq__contact span{color:var(--muted);font-weight:450;}
+.faq__contact:hover{color:var(--accent);border-color:var(--accent);}
+.faq__contact:hover span{color:var(--accent);}
+
+/* Grid — deliberately not uniform cards */
+.faq__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:clamp(40px,6vw,88px);
+  row-gap:0;
+}
+.faq__col{
+  display:flex;
+  flex-direction:column;
+}
+
+.qa{
+  padding:26px 0;
+  border-top:1px solid var(--line-soft);
+}
+.qa:first-child{border-top:none;}
+.qa__num{
+  font-size:12px;
+  font-weight:600;
+  color:var(--muted);
+  letter-spacing:.05em;
+  font-variant-numeric:tabular-nums;
+  margin-bottom:10px;
+  display:block;
+}
+.qa__q{
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  line-height:1.35;
+  margin-bottom:9px;
+}
+.qa__a{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.62;
+  max-width:44ch;
+}
+.qa__a a{
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  transition:border-color .15s ease;
+}
+.qa__a a:hover{border-color:var(--accent);color:var(--accent);}
+
+/* One focal, elevated card breaks the rhythm */
+.qa--featured{
+  background:var(--accent-tint);
+  border:1px solid #f2ddd6;
+  border-top:1px solid #f2ddd6;
+  border-radius:var(--r-md);
+  padding:26px 24px;
+  margin:20px 0;
+}
+.qa--featured .qa__num{color:var(--accent);}
+.qa--featured .qa__tag{
+  display:inline-block;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  background:#fff;
+  border:1px solid #f2ddd6;
+  border-radius:100px;
+  padding:3px 10px;
+  margin-top:14px;
+}
+
+@media (max-width:640px){
+  .faq__head{
+    grid-template-columns:1fr;
+    gap:22px;
+    align-items:start;
+  }
+  .faq__grid{
+    grid-template-columns:1fr;
+    column-gap:0;
+  }
+  .faq__title{max-width:none;}
+  .qa--featured{margin:16px 0;}
+  /* keep continuous hairline rhythm on single column */
+  .faq__col:nth-child(2) .qa:first-child{border-top:1px solid var(--line-soft);}
+}
+</style>
+</head>
+<body>
+<section class="faq" aria-labelledby="faq-title">
+  <div class="faq__inner">
+
+    <div class="faq__head">
+      <div>
+        <span class="faq__eyebrow">Questions, answered</span>
+        <h2 class="faq__title" id="faq-title">Everything teams ask before they <em>move a workspace over</em>.</h2>
+      </div>
+      <div class="faq__aside">
+        <p>Straight answers on billing, migration, security, and what happens when you outgrow a plan. No sales calls required.</p>
+        <a class="faq__contact" href="mailto:support@example.com">Still stuck? Email support <span>&mdash; replies in ~2h</span></a>
+      </div>
+    </div>
+
+    <div class="faq__grid">
+
+      <!-- Column one -->
+      <div class="faq__col">
+
+        <div class="qa">
+          <span class="qa__num">01</span>
+          <h3 class="qa__q">How long does migrating from Notion or Airtable actually take?</h3>
+          <p class="qa__a">Most teams under 40 seats are fully moved in a single afternoon. Our importer maps your existing fields, keeps comment history intact, and runs a dry-run first so nothing overwrites live data.</p>
+        </div>
+
+        <div class="qa">
+          <span class="qa__num">02</span>
+          <h3 class="qa__q">What counts as a &ldquo;seat&rdquo; on a paid plan?</h3>
+          <p class="qa__a">Anyone who creates or edits. Viewers, clients, and guests you share a board with are always free &mdash; you&rsquo;re only billed for the people doing the building.</p>
+        </div>
+
+        <div class="qa qa--featured">
+          <span class="qa__num">03</span>
+          <h3 class="qa__q">Is my data used to train any AI models?</h3>
+          <p class="qa__a">No. Customer content is never used for training, and the assistant runs on an isolated tenant. You can disable AI features entirely from the admin panel with one toggle.</p>
+          <span class="qa__tag">Most asked</span>
+        </div>
+
+        <div class="qa">
+          <span class="qa__num">04</span>
+          <h3 class="qa__q">Can I export everything if we decide to leave?</h3>
+          <p class="qa__a">Yes, no lock-in. Export any workspace to Markdown, CSV, or JSON at any time, or pull it live through the <a href="#">public API</a>. Deleted accounts are purged within 30 days.</p>
+        </div>
+
+      </div>
+
+      <!-- Column two -->
+      <div class="faq__col">
+
+        <div class="qa">
+          <span class="qa__num">05</span>
+          <h3 class="qa__q">Do you offer a discount for nonprofits or students?</h3>
+          <p class="qa__a">Registered nonprofits get 50% off any tier, and verified students get the Pro plan free for a year. Send proof to billing and we&rsquo;ll apply it the same day.</p>
+        </div>
+
+        <div class="qa">
+          <span class="qa__num">06</span>
+          <h3 class="qa__q">What happens when I hit my plan&rsquo;s limits mid-month?</h3>
+          <p class="qa__a">Nothing breaks. You keep read and write access; we just email an admin and pause new seat invites until you upgrade. No surprise overage charges, ever.</p>
+        </div>
+
+        <div class="qa">
+          <span class="qa__num">07</span>
+          <h3 class="qa__q">Which SSO and compliance standards do you support?</h3>
+          <p class="qa__a">SAML and SCIM ship on the Business plan, with Okta, Google, and Entra tested. We&rsquo;re SOC 2 Type II certified &mdash; the report is available under NDA.</p>
+        </div>
+
+        <div class="qa">
+          <span class="qa__num">08</span>
+          <h3 class="qa__q">Can I try it before putting in a card?</h3>
+          <p class="qa__a">The 14-day trial needs no card and includes every Pro feature. If you need longer to get buy-in, ask and we&rsquo;ll extend it &mdash; that&rsquo;s a normal request, not a favor.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

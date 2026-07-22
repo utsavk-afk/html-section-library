@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<!-- ===== SHOWREEL — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showreel — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+
+  :root{
+    --light:#FCFCFA;
+    --ink:#1B1A17;
+    --accent:#B4472B;
+    --muted:#6E6A61;
+    --hairline:#D8D4CA;
+    --paper:#F2EFE8;
+    --stage:#141310;
+    --stage-2:#211E18;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+
+  .showreel{
+    background:var(--light);
+    color:var(--ink);
+    font-family:var(--sans);
+    width:100%;
+    padding:72px clamp(20px,5vw,80px) 76px;
+  }
+  .showreel__inner{
+    max-width:1440px;
+    margin:0 auto;
+  }
+
+  /* --- top rail: label + counter --- */
+  .showreel__rail{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+    border-bottom:1px solid var(--hairline);
+    padding-bottom:18px;
+  }
+  .showreel__eyebrow{
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .showreel__eyebrow::before{
+    content:"";
+    width:26px;
+    height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+  .showreel__counter{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:14px;
+    color:var(--muted);
+  }
+  .showreel__counter b{
+    color:var(--ink);
+    font-style:normal;
+    font-weight:600;
+  }
+
+  /* --- main grid: asymmetric --- */
+  .showreel__grid{
+    display:grid;
+    grid-template-columns:1.55fr 1fr;
+    gap:clamp(28px,4vw,64px);
+    align-items:end;
+    padding-top:40px;
+  }
+
+  /* --- the cinematic stage --- */
+  .stage{
+    position:relative;
+    aspect-ratio:16/9;
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--stage);
+    box-shadow:0 30px 60px -30px rgba(27,26,23,.55);
+    isolation:isolate;
+  }
+  /* layered lighting — warm key light, no purple/cyan */
+  .stage__bg{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(120% 90% at 22% 18%, rgba(180,71,43,.42) 0%, rgba(180,71,43,0) 46%),
+      radial-gradient(90% 120% at 88% 92%, rgba(214,183,140,.20) 0%, rgba(214,183,140,0) 50%),
+      linear-gradient(160deg, var(--stage-2) 0%, var(--stage) 62%, #0C0B09 100%);
+  }
+  /* faint film-frame ruled lines */
+  .stage__lines{
+    position:absolute;
+    inset:0;
+    background-image:linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size:100% 46px;
+    mix-blend-mode:overlay;
+    opacity:.6;
+  }
+  /* sprocket strip on the left edge */
+  .stage__sprockets{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    width:26px;
+    background:rgba(0,0,0,.35);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    padding:14px 0;
+    border-right:1px solid rgba(255,255,255,.06);
+  }
+  .stage__sprockets span{
+    width:9px;
+    height:13px;
+    border-radius:2px;
+    background:rgba(252,252,250,.16);
+  }
+  .stage__grain{
+    position:absolute;
+    inset:0;
+    opacity:.14;
+    mix-blend-mode:screen;
+    background-image:
+      radial-gradient(circle at 15% 40%, rgba(255,255,255,.9) 0, transparent 1px),
+      radial-gradient(circle at 62% 22%, rgba(255,255,255,.7) 0, transparent 1px),
+      radial-gradient(circle at 84% 68%, rgba(255,255,255,.8) 0, transparent 1px),
+      radial-gradient(circle at 38% 82%, rgba(255,255,255,.6) 0, transparent 1px),
+      radial-gradient(circle at 72% 48%, rgba(255,255,255,.7) 0, transparent 1px);
+    background-size:180px 180px,140px 140px,220px 220px,160px 160px,120px 120px;
+  }
+  /* vignette */
+  .stage::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    box-shadow:inset 0 0 130px 20px rgba(0,0,0,.55);
+    pointer-events:none;
+    z-index:3;
+  }
+
+  /* --- play control — the single focal point --- */
+  .stage__play{
+    position:absolute;
+    left:clamp(48px,8%,96px);
+    top:50%;
+    transform:translateY(-50%);
+    z-index:4;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    color:var(--light);
+    text-align:left;
+    font-family:inherit;
+    padding:0;
+  }
+  .stage__disc{
+    position:relative;
+    width:78px;
+    height:78px;
+    flex:0 0 auto;
+    border-radius:50%;
+    background:var(--accent);
+    display:grid;
+    place-items:center;
+    box-shadow:0 14px 30px -8px rgba(180,71,43,.7);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), background .3s;
+  }
+  .stage__disc::before{
+    content:"";
+    position:absolute;
+    inset:-14px;
+    border-radius:50%;
+    border:1px solid rgba(252,252,250,.4);
+    transition:inset .4s ease, opacity .4s;
+  }
+  .stage__disc svg{
+    width:26px;
+    height:26px;
+    margin-left:4px;
+    display:block;
+  }
+  .stage__playmeta{
+    line-height:1.3;
+  }
+  .stage__playmeta .lbl{
+    display:block;
+    font-size:10px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:rgba(252,252,250,.72);
+    font-weight:600;
+  }
+  .stage__playmeta .run{
+    display:block;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:19px;
+    margin-top:3px;
+  }
+  .stage__play:hover .stage__disc{
+    transform:scale(1.06);
+    background:#C9502F;
+  }
+  .stage__play:hover .stage__disc::before{
+    inset:-20px;
+    opacity:.5;
+  }
+  .stage__play:focus-visible{
+    outline:2px solid var(--light);
+    outline-offset:6px;
+    border-radius:6px;
+  }
+
+  /* timecode chips bottom-right of stage */
+  .stage__timecode{
+    position:absolute;
+    right:16px;
+    bottom:14px;
+    z-index:4;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:11px;
+    letter-spacing:.14em;
+    color:rgba(252,252,250,.82);
+    font-variant-numeric:tabular-nums;
+  }
+  .stage__rec{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 0 rgba(180,71,43,.6);
+    animation:rec 2.4s infinite;
+  }
+  @keyframes rec{
+    0%{box-shadow:0 0 0 0 rgba(180,71,43,.55);}
+    70%{box-shadow:0 0 0 7px rgba(180,71,43,0);}
+    100%{box-shadow:0 0 0 0 rgba(180,71,43,0);}
+  }
+
+  /* --- text column --- */
+  .copy{
+    padding-bottom:8px;
+  }
+  .copy__kicker{
+    font-size:11px;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:600;
+  }
+  .copy__title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(38px,4.4vw,62px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin:18px 0 22px;
+  }
+  .copy__title em{
+    font-style:italic;
+    color:var(--accent);
+  }
+  .copy__line{
+    font-size:16px;
+    line-height:1.6;
+    color:#3B3931;
+    max-width:38ch;
+  }
+  .copy__line .drop{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ink);
+  }
+  .copy__actions{
+    margin-top:30px;
+    display:flex;
+    align-items:center;
+    gap:26px;
+    flex-wrap:wrap;
+  }
+  .copy__cta{
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--ink);
+    text-decoration:none;
+    padding-bottom:6px;
+    border-bottom:2px solid var(--accent);
+    transition:color .25s;
+  }
+  .copy__cta:hover{color:var(--accent);}
+  .copy__note{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:14px;
+    color:var(--muted);
+  }
+
+  /* --- chapter strip under everything --- */
+  .chapters{
+    margin-top:44px;
+    border-top:1px solid var(--hairline);
+    padding-top:20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--hairline);
+  }
+  .chapter{
+    background:var(--light);
+    padding:6px 22px 6px 0;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  .chapter:first-child{padding-left:0;}
+  .chapter__no{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:13px;
+    color:var(--accent);
+  }
+  .chapter__name{
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .chapter__time{
+    font-size:12px;
+    color:var(--muted);
+    font-variant-numeric:tabular-nums;
+    letter-spacing:.06em;
+  }
+
+  /* --- responsive --- */
+  @media(max-width:640px){
+    .showreel{padding:48px 20px 52px;}
+    .showreel__rail{flex-direction:column;align-items:flex-start;gap:8px;}
+    .showreel__grid{
+      grid-template-columns:1fr;
+      gap:30px;
+      padding-top:28px;
+      align-items:stretch;
+    }
+    .stage__play{left:22px;gap:14px;}
+    .stage__disc{width:60px;height:60px;}
+    .stage__disc svg{width:20px;height:20px;}
+    .stage__playmeta .run{font-size:16px;}
+    .copy__line{max-width:none;}
+    .chapters{
+      grid-template-columns:1fr 1fr;
+      gap:1px;
+    }
+    .chapter{padding:12px 16px;}
+    .chapter:first-child{padding-left:16px;}
+  }
+</style>
+</head>
+<body>
+<section class="showreel" aria-label="Studio showreel">
+  <div class="showreel__inner">
+
+    <div class="showreel__rail">
+      <span class="showreel__eyebrow">Selected Work · 2021–2026</span>
+      <span class="showreel__counter"><b>17</b> films &nbsp;/&nbsp; one reel</span>
+    </div>
+
+    <div class="showreel__grid">
+
+      <!-- cinematic stage -->
+      <figure class="stage">
+        <div class="stage__bg"></div>
+        <div class="stage__lines"></div>
+        <div class="stage__grain"></div>
+        <div class="stage__sprockets" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <button class="stage__play" type="button" aria-label="Play the 2026 showreel">
+          <span class="stage__disc" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5v15l13-7.5z"/></svg>
+          </span>
+          <span class="stage__playmeta">
+            <span class="lbl">Play the reel</span>
+            <span class="run">2 min 48 sec</span>
+          </span>
+        </button>
+
+        <figcaption class="stage__timecode">
+          <span class="stage__rec" aria-hidden="true"></span>
+          REEL_2026 · 00:00 / 02:48
+        </figcaption>
+      </figure>
+
+      <!-- text -->
+      <div class="copy">
+        <p class="copy__kicker">Hall &amp; Meridian — Motion Studio</p>
+        <h2 class="copy__title">Frames that<br><em>stay with you</em> long<br>after the cut.</h2>
+        <p class="copy__line">
+          Two minutes, forty-eight seconds of the work we are proudest of —
+          brand films, title sequences and a <span class="drop">very stubborn</span>
+          car commercial shot at dawn on the Bonneville flats.
+        </p>
+        <div class="copy__actions">
+          <a href="#" class="copy__cta">Book a screening</a>
+          <span class="copy__note">Best with sound on.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- chapter markers -->
+    <div class="chapters">
+      <div class="chapter">
+        <span class="chapter__no">Ch. 01</span>
+        <span class="chapter__name">Bonneville, at dawn</span>
+        <span class="chapter__time">00:00 — 00:41</span>
+      </div>
+      <div class="chapter">
+        <span class="chapter__no">Ch. 02</span>
+        <span class="chapter__name">The Meridian titles</span>
+        <span class="chapter__time">00:41 — 01:19</span>
+      </div>
+      <div class="chapter">
+        <span class="chapter__no">Ch. 03</span>
+        <span class="chapter__name">Analog / grain study</span>
+        <span class="chapter__time">01:19 — 02:07</span>
+      </div>
+      <div class="chapter">
+        <span class="chapter__no">Ch. 04</span>
+        <span class="chapter__name">Closing lockup</span>
+        <span class="chapter__time">02:07 — 02:48</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

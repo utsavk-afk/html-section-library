@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!-- ===== AVATAR-STACK — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Stack — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F5F5F0;
+  --muted:#9A9A92;
+  --line:#242424;
+  --accent:#C7F13B;      /* acid lime */
+  --accent-2:#FF4D9D;    /* hot magenta */
+  --serif:'Archivo',system-ui,sans-serif;
+  --sans:'Archivo',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.proof{
+  position:relative;
+  width:100%;
+  min-height:640px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  padding:96px 64px;
+  background:
+    radial-gradient(circle at 88% 20%, rgba(255,77,157,0.10), transparent 42%),
+    var(--bg);
+}
+
+/* big flat off-canvas type slab for texture, no glow */
+.proof__ghost{
+  position:absolute;
+  right:-4%;
+  bottom:-14%;
+  font-weight:900;
+  font-size:clamp(160px,26vw,420px);
+  line-height:.78;
+  letter-spacing:-.05em;
+  color:transparent;
+  -webkit-text-stroke:2px var(--line);
+  pointer-events:none;
+  user-select:none;
+  white-space:nowrap;
+}
+
+.proof__inner{
+  position:relative;
+  z-index:2;
+  max-width:1180px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:72px;
+  align-items:center;
+}
+
+/* ---- LEFT: focal proof block ---- */
+.proof__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:var(--accent);
+  color:#0A0A0A;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:9px 16px 8px;
+  border-radius:999px;
+  margin-bottom:26px;
+}
+.proof__tag i{
+  width:8px;height:8px;border-radius:50%;
+  background:#0A0A0A;
+  display:inline-block;
+}
+
+.proof__head{
+  font-weight:900;
+  font-size:clamp(44px,6.2vw,88px);
+  line-height:.92;
+  letter-spacing:-.035em;
+  margin-bottom:22px;
+}
+.proof__head em{
+  font-style:normal;
+  color:var(--accent-2);
+}
+.proof__head .u{
+  color:var(--accent);
+}
+
+.proof__sub{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.5;
+  max-width:440px;
+}
+.proof__sub b{color:var(--ink);font-weight:700;}
+
+/* ---- RIGHT: avatar cluster card ---- */
+.cluster{
+  border:2px solid var(--line);
+  border-radius:26px;
+  padding:34px 34px 30px;
+  background:#0E0E0E;
+}
+
+.avatars{
+  display:flex;
+  align-items:center;
+  margin-bottom:24px;
+}
+.av{
+  width:64px;height:64px;
+  border-radius:50%;
+  margin-left:-18px;
+  border:3px solid #0E0E0E;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:22px;
+  letter-spacing:-.02em;
+  color:#0A0A0A;
+  flex:0 0 auto;
+  position:relative;
+}
+.av:first-child{margin-left:0;}
+.av:nth-child(1){background:var(--accent);z-index:7;}
+.av:nth-child(2){background:var(--accent-2);color:#0A0A0A;z-index:6;}
+.av:nth-child(3){background:#F5F5F0;z-index:5;}
+.av:nth-child(4){background:var(--accent);z-index:4;}
+.av:nth-child(5){background:var(--accent-2);z-index:3;}
+.av--more{
+  background:#1C1C1C;
+  color:var(--accent);
+  font-size:16px;
+  z-index:2;
+  border-color:#0E0E0E;
+}
+
+.count{
+  font-weight:900;
+  font-size:clamp(30px,4vw,42px);
+  line-height:1;
+  letter-spacing:-.03em;
+  margin-bottom:6px;
+}
+.count span{color:var(--accent);}
+
+.count-note{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.4;
+  margin-bottom:22px;
+}
+
+.rating{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-top:20px;
+  border-top:2px solid var(--line);
+}
+.stars{display:flex;gap:3px;}
+.stars svg{width:22px;height:22px;display:block;}
+.rating__num{font-weight:900;font-size:19px;letter-spacing:-.02em;}
+.rating__src{color:var(--muted);font-size:13px;font-weight:600;}
+.rating__src strong{color:var(--ink);}
+
+/* ---------- responsive ---------- */
+@media(max-width:640px){
+  .proof{padding:60px 24px;min-height:0;}
+  .proof__inner{grid-template-columns:1fr;gap:38px;}
+  .proof__ghost{font-size:200px;bottom:-6%;right:-20%;opacity:.6;}
+  .proof__head{font-size:clamp(40px,13vw,60px);}
+  .av{width:52px;height:52px;font-size:18px;margin-left:-16px;}
+  .cluster{padding:28px 24px 26px;}
+}
+</style>
+</head>
+<body>
+
+<section class="proof" aria-label="Social proof">
+  <div class="proof__ghost" aria-hidden="true">CREW</div>
+
+  <div class="proof__inner">
+
+    <!-- FOCAL: headline -->
+    <div class="proof__lead">
+      <span class="proof__tag"><i></i>Shipping with us since 2021</span>
+      <h2 class="proof__head">
+        You'd be in <em>loud</em><br>
+        company. <span class="u">Real</span> loud.
+      </h2>
+      <p class="proof__sub">
+        From two-person indie studios to <b>Series-B build teams</b>,
+        crews plug this straight into Claude Code and stop
+        re-writing the same boilerplate every sprint.
+      </p>
+    </div>
+
+    <!-- avatar cluster card -->
+    <aside class="cluster">
+      <div class="avatars" aria-hidden="true">
+        <span class="av">MK</span>
+        <span class="av">JR</span>
+        <span class="av">AØ</span>
+        <span class="av">TS</span>
+        <span class="av">DL</span>
+        <span class="av av--more">+3k</span>
+      </div>
+
+      <div class="count">Join <span>3,140+</span> teams</div>
+      <p class="count-note">already copy-pasting from the library this month.</p>
+
+      <div class="rating">
+        <span class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.86-5-4.87 7.1-1.01z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.86-5-4.87 7.1-1.01z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.86-5-4.87 7.1-1.01z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.86-5-4.87 7.1-1.01z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.86-5-4.87 7.1-1.01z"/></svg>
+        </span>
+        <span class="rating__num">4.9</span>
+        <span class="rating__src">from <strong>612 reviews</strong></span>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+</body>
+</html>

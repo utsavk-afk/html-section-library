@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!-- ===== ROAD-MAP — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-70:#4A4842;
+  --ink-45:#807C72;
+  --accent:#B4472B;
+  --accent-soft:#E9D9CF;
+  --hair:#D9D6CE;
+  --hair-soft:#E7E4DC;
+  --panel:#F5F3EE;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.label{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--ink-45);
+}
+
+.rm{
+  max-width:1440px;
+  margin:0 auto;
+  padding:88px 72px 96px;
+}
+
+/* ---- header row: asymmetric, one focal point ---- */
+.rm__head{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:36px;
+  border-bottom:1px solid var(--hair);
+}
+.rm__eyebrow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:22px;
+}
+.rm__eyebrow::after{
+  content:"";
+  height:1px;
+  width:64px;
+  background:var(--accent);
+}
+.rm__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,4.6vw,64px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+}
+.rm__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.rm__lede{
+  font-size:15px;
+  color:var(--ink-70);
+  max-width:34ch;
+  padding-bottom:8px;
+}
+.rm__lede b{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* ---- the three columns ---- */
+.rm__cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  margin-top:8px;
+}
+.col{
+  padding:38px 34px 20px 0;
+  border-right:1px solid var(--hair-soft);
+}
+.col:nth-child(2){padding-left:34px;}
+.col:nth-child(3){padding-left:34px;border-right:none;}
+
+.col__head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  padding-bottom:24px;
+  margin-bottom:8px;
+}
+.col__name{
+  font-family:var(--serif);
+  font-size:21px;
+  font-weight:500;
+}
+.col__count{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--ink-45);
+}
+
+/* status dot glyphs */
+.dot{
+  display:inline-block;
+  width:9px;height:9px;
+  border-radius:50%;
+  margin-right:9px;
+  vertical-align:middle;
+  position:relative;
+  top:-1px;
+}
+.dot--done{background:var(--accent);}
+.dot--prog{
+  background:var(--bg);
+  border:1.5px solid var(--accent);
+}
+.dot--next{
+  background:var(--bg);
+  border:1.5px dashed var(--ink-45);
+}
+
+/* item cards — varied elevation/radius per column */
+.item{
+  padding:18px 0;
+  border-top:1px solid var(--hair-soft);
+}
+.item:first-of-type{border-top:none;}
+.item__tag{
+  display:inline-block;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-45);
+  margin-bottom:9px;
+}
+.item__title{
+  font-family:var(--serif);
+  font-size:17px;
+  font-weight:500;
+  line-height:1.25;
+  margin-bottom:7px;
+}
+.item__desc{
+  font-size:13.5px;
+  color:var(--ink-70);
+  line-height:1.5;
+}
+.item__meta{
+  margin-top:12px;
+  font-size:11px;
+  letter-spacing:.04em;
+  color:var(--ink-45);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.item__meta .bar{
+  flex:1;
+  height:2px;
+  background:var(--hair);
+  position:relative;
+  overflow:hidden;
+  border-radius:2px;
+  max-width:120px;
+}
+.item__meta .bar i{
+  position:absolute;inset:0;
+  background:var(--accent);
+  border-radius:2px;
+}
+
+/* SHIPPED column gets a soft filled treatment on first card */
+.col--shipped .item:first-of-type{
+  background:var(--panel);
+  border-radius:3px;
+  padding:20px 18px;
+  margin-bottom:6px;
+}
+.col--shipped .item:first-of-type .item__tag{color:var(--accent);}
+
+/* IN PROGRESS focal card — the one intentional accent block */
+.col--prog{
+  background:var(--ink);
+  color:var(--bg);
+  border-radius:5px;
+  padding:38px 30px 26px 30px;
+  border-right:none;
+}
+.col--prog .col__name{color:var(--bg);}
+.col--prog .col__count{color:#9E9A90;}
+.col--prog .label{color:#9E9A90;}
+.col--prog .item{border-top-color:rgba(255,255,255,.11);}
+.col--prog .item__title{color:var(--bg);}
+.col--prog .item__desc{color:#C8C4BA;}
+.col--prog .item__meta{color:#9E9A90;}
+.col--prog .item__meta .bar{background:rgba(255,255,255,.18);}
+.col--prog .dot--prog{background:var(--ink);border-color:var(--accent);}
+
+/* footer strip */
+.rm__foot{
+  margin-top:44px;
+  padding-top:26px;
+  border-top:1px solid var(--hair);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.rm__foot p{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--ink-70);
+}
+.rm__foot p span{color:var(--accent);font-style:normal;font-weight:600;}
+.rm__cta{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1.5px solid var(--accent);
+  padding-bottom:3px;
+  white-space:nowrap;
+}
+
+@media(max-width:640px){
+  .rm{padding:56px 24px 64px;}
+  .rm__head{grid-template-columns:1fr;gap:22px;align-items:start;}
+  .rm__lede{max-width:none;padding-bottom:0;}
+  .rm__cols{grid-template-columns:1fr;}
+  .col{
+    padding:30px 0 8px;
+    border-right:none;
+    border-top:1px solid var(--hair);
+  }
+  .col:nth-child(2),.col:nth-child(3){padding-left:0;}
+  .col--prog{padding:30px 22px 22px;border-top:none;margin:8px 0;}
+  .item__meta .bar{max-width:none;}
+}
+</style>
+</head>
+<body>
+<section class="rm" aria-label="Product roadmap">
+
+  <div class="rm__head">
+    <div>
+      <div class="rm__eyebrow"><span class="label">Roadmap · Q3 → Q4 2026</span></div>
+      <h2 class="rm__title">What we've built,<br>what's on the <em>bench</em>,<br>and what comes next.</h2>
+    </div>
+    <p class="rm__lede">A working record, updated the day things move. <b>No vanity dates</b> — an item leaves a column only when it earns the next one.</p>
+  </div>
+
+  <div class="rm__cols">
+
+    <!-- SHIPPED -->
+    <div class="col col--shipped">
+      <div class="col__head">
+        <span class="col__name"><span class="dot dot--done"></span>Shipped</span>
+        <span class="col__count">04</span>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">Core · v3.2</span>
+        <h3 class="item__title">Inline diff review in the editor</h3>
+        <p class="item__desc">Accept or reject a suggested edit hunk-by-hunk without leaving the file you're reading.</p>
+        <div class="item__meta">Released Jun 18 · 2,140 installs</div>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">Performance</span>
+        <h3 class="item__title">Cold-start cut to 340ms</h3>
+        <p class="item__desc">Lazy-loaded the token index; first keystroke now beats the old splash screen.</p>
+        <div class="item__meta">Released May 30</div>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">Import</span>
+        <h3 class="item__title">Paste-from-Figma frames</h3>
+        <p class="item__desc">Drop a frame URL, get clean semantic markup with your tokens already wired.</p>
+        <div class="item__meta">Released May 09</div>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">API</span>
+        <h3 class="item__title">Webhook retries with backoff</h3>
+        <p class="item__desc">Failed deliveries now retry six times over an hour before they page you.</p>
+        <div class="item__meta">Released Apr 22</div>
+      </div>
+    </div>
+
+    <!-- IN PROGRESS (focal) -->
+    <div class="col col--prog">
+      <div class="col__head">
+        <span class="col__name"><span class="dot dot--prog"></span>In progress</span>
+        <span class="col__count">03</span>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">In dogfood</span>
+        <h3 class="item__title">Multi-file refactor preview</h3>
+        <p class="item__desc">See every touched file's before/after in one pane before you commit the change.</p>
+        <div class="item__meta"><span>72%</span><span class="bar"><i style="width:72%"></i></span>ETA early Aug</div>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">Beta flag</span>
+        <h3 class="item__title">Offline token cache</h3>
+        <p class="item__desc">Keep working on the train; sync the queue when the connection comes back.</p>
+        <div class="item__meta"><span>45%</span><span class="bar"><i style="width:45%"></i></span>ETA late Aug</div>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">Design review</span>
+        <h3 class="item__title">Keyboard-only command palette</h3>
+        <p class="item__desc">Every action reachable in two keystrokes, with fuzzy scoring you can retrain.</p>
+        <div class="item__meta"><span>28%</span><span class="bar"><i style="width:28%"></i></span>ETA Sept</div>
+      </div>
+    </div>
+
+    <!-- NEXT -->
+    <div class="col">
+      <div class="col__head">
+        <span class="col__name"><span class="dot dot--next"></span>Next</span>
+        <span class="col__count">03</span>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">Under consideration</span>
+        <h3 class="item__title">Shared team snippets</h3>
+        <p class="item__desc">Publish a snippet once; the whole workspace gets it in their palette.</p>
+        <div class="item__meta">Scoping · gathering votes</div>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">Requested 214×</span>
+        <h3 class="item__title">Self-hosted runner</h3>
+        <p class="item__desc">Run the index on your own box so source never leaves the network.</p>
+        <div class="item__meta">Needs a security review first</div>
+      </div>
+
+      <div class="item">
+        <span class="item__tag">Exploring</span>
+        <h3 class="item__title">Native mobile companion</h3>
+        <p class="item__desc">Read reviews and approve edits from a phone while the build runs.</p>
+        <div class="item__meta">No timeline yet — honest about it</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rm__foot">
+    <p>Something missing? <span>Tell us</span> — the loudest gaps get pulled forward.</p>
+    <a class="rm__cta" href="#">Request a feature →</a>
+  </div>
+
+</section>
+</body>
+</html>

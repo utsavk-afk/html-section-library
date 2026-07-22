@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- ===== BENTO-FEATURES — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bento Features — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:"Archivo",sans-serif;
+  --sans:"Archivo",sans-serif;
+  --mono:"Space Mono",monospace;
+}
+
+.bento{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 48px 88px;
+  min-height:760px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* faint visible grid backing */
+.bento::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(to right,rgba(17,17,17,.045) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(17,17,17,.045) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+
+.bento__inner{
+  max-width:1200px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+
+/* header row — asymmetric, left-heavy */
+.bento__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  margin-bottom:40px;
+  flex-wrap:wrap;
+}
+.bento__eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--bg);
+  padding:6px 12px;
+  display:inline-block;
+  margin-bottom:18px;
+}
+.bento__title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(34px,5vw,58px);
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  max-width:16ch;
+}
+.bento__title span{
+  background:var(--accent);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.bento__meta{
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.7;
+  text-transform:uppercase;
+  text-align:right;
+  border-left:3px solid var(--ink);
+  padding-left:14px;
+  color:var(--muted);
+}
+.bento__meta b{color:var(--ink);}
+
+/* the grid — 4 cols, varied row heights */
+.bento__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:172px;
+  gap:20px;
+}
+
+.tile{
+  border:3px solid var(--line);
+  background:#fff;
+  box-shadow:6px 6px 0 var(--ink);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.tile:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:8px 8px 0 var(--ink);
+}
+
+.tile__idx{
+  position:absolute;
+  top:14px;
+  right:16px;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  color:var(--muted);
+}
+.tile__glyph{
+  width:44px;height:44px;
+  border:2.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:auto;
+  background:var(--bg);
+}
+.tile__glyph svg{display:block;}
+.tile__h{
+  font-family:var(--serif);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+  line-height:1;
+  margin-top:16px;
+}
+.tile__p{
+  font-size:13.5px;
+  line-height:1.4;
+  color:var(--muted);
+  margin-top:8px;
+  max-width:34ch;
+}
+.tile__tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-top:12px;
+  color:var(--ink);
+}
+
+/* ---- FOCAL 2x2 tile ---- */
+.tile--hero{
+  grid-column:span 2;
+  grid-row:span 2;
+  background:var(--accent);
+  box-shadow:8px 8px 0 var(--ink);
+}
+.tile--hero .tile__glyph{background:#fff;border-width:3px;width:58px;height:58px;}
+.tile--hero .tile__h{font-size:34px;margin-top:22px;}
+.tile--hero .tile__p{color:var(--ink);font-size:15px;max-width:32ch;font-weight:500;}
+.tile--hero .tile__idx{color:var(--ink);}
+.tile--hero .tile__cta{
+  margin-top:20px;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:12px;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--accent);
+  padding:9px 14px;
+  align-self:flex-start;
+  border:2px solid var(--ink);
+}
+
+/* ---- wide 2x1 tile (red accent) ---- */
+.tile--wide{
+  grid-column:span 2;
+  background:var(--ink);
+  color:#fff;
+  box-shadow:6px 6px 0 var(--red);
+}
+.tile--wide .tile__glyph{border-color:#fff;background:var(--ink);}
+.tile--wide .tile__h{font-size:22px;}
+.tile--wide .tile__p{color:#c9c9c4;}
+.tile--wide .tile__idx{color:#6f6f68;}
+.tile--wide .tile__tag{color:var(--accent);}
+
+.tile__h{font-size:19px;}
+
+@media(max-width:640px){
+  .bento{padding:44px 20px 56px;}
+  .bento__head{flex-direction:column;align-items:flex-start;gap:20px;}
+  .bento__meta{text-align:left;border-left:none;border-top:3px solid var(--ink);padding-left:0;padding-top:12px;}
+  .bento__grid{grid-template-columns:1fr;grid-auto-rows:auto;gap:16px;}
+  .tile{box-shadow:5px 5px 0 var(--ink);min-height:150px;}
+  .tile--hero,.tile--wide{grid-column:span 1;grid-row:span 1;}
+  .tile--wide{box-shadow:5px 5px 0 var(--red);}
+  .tile--hero .tile__h{font-size:28px;}
+}
+</style>
+</head>
+<body>
+<section class="bento">
+  <div class="bento__inner">
+
+    <div class="bento__head">
+      <div>
+        <span class="bento__eyebrow">// System_Modules v4.2</span>
+        <h1 class="bento__title">Everything ships in <span>one paste</span>.</h1>
+      </div>
+      <div class="bento__meta">
+        <b>14 modules</b> / zero deps<br>
+        MIT license<br>
+        Updated 22.07.2026
+      </div>
+    </div>
+
+    <div class="bento__grid">
+
+      <!-- FOCAL 2x2 -->
+      <article class="tile tile--hero">
+        <span class="tile__idx">01</span>
+        <div class="tile__glyph">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="square">
+            <path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/>
+          </svg>
+        </div>
+        <h2 class="tile__h">Drop-in blocks that never phone home</h2>
+        <p class="tile__p">Copy the markup, paste into Claude Code, ship. No CDN, no build step, no telemetry watching over your shoulder.</p>
+        <span class="tile__cta">Grab the library →</span>
+      </article>
+
+      <!-- 1x1 -->
+      <article class="tile">
+        <span class="tile__idx">02</span>
+        <div class="tile__glyph">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="square">
+            <path d="M13 2 3 14h7l-1 8 10-12h-7z"/>
+          </svg>
+        </div>
+        <h3 class="tile__h">One-file output</h3>
+        <p class="tile__p">Each section is a single self-contained HTML file. No folders to untangle.</p>
+      </article>
+
+      <!-- 1x1 -->
+      <article class="tile">
+        <span class="tile__idx">03</span>
+        <div class="tile__glyph">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="square">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+          </svg>
+        </div>
+        <h3 class="tile__h">Loads in 40ms</h3>
+        <p class="tile__p">CSS shapes and inline SVG only. Fonts are the sole request.</p>
+      </article>
+
+      <!-- WIDE 2x1 (red) -->
+      <article class="tile tile--wide">
+        <span class="tile__idx">04</span>
+        <div class="tile__glyph">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="square">
+            <path d="M4 12h16M4 6h16M4 18h10"/>
+          </svg>
+        </div>
+        <h3 class="tile__h">Token block on top of every file</h3>
+        <p class="tile__p">Swap five CSS variables — colors, fonts, borders — and the whole section rebrands in one edit.</p>
+        <span class="tile__tag">--bg / --ink / --accent</span>
+      </article>
+
+      <!-- 1x1 -->
+      <article class="tile">
+        <span class="tile__idx">05</span>
+        <div class="tile__glyph">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="square">
+            <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/>
+          </svg>
+        </div>
+        <h3 class="tile__h">No tracking</h3>
+        <p class="tile__p">Zero third-party scripts. What you paste is all that runs.</p>
+      </article>
+
+      <!-- 1x1 -->
+      <article class="tile">
+        <span class="tile__idx">06</span>
+        <div class="tile__glyph">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="square">
+            <path d="M4 5h16v14H4z"/><path d="M4 5l8 7 8-7"/>
+          </svg>
+        </div>
+        <h3 class="tile__h">Real copy</h3>
+        <p class="tile__p">Every tile ships specific placeholder text. Never lorem ipsum.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

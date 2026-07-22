@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- ===== ABOUT — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A52;
+  --line:#111111;
+  --accent:#FFE500;
+  --accent-2:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.ab{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:80px 56px 88px;
+  border-bottom:4px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+
+/* faint grid backdrop */
+.ab::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right,rgba(17,17,17,.05) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(17,17,17,.05) 1px,transparent 1px);
+  background-size:56px 56px;
+  pointer-events:none;
+}
+
+.ab__inner{
+  max-width:1440px;
+  margin:0 auto;
+  position:relative;
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:0;
+  align-items:stretch;
+}
+
+/* ---- eyebrow / kicker ---- */
+.ab__tag{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  display:inline-block;
+  background:var(--ink);
+  color:var(--bg);
+  padding:7px 14px;
+  margin-bottom:34px;
+}
+.ab__tag span{color:var(--accent);}
+
+/* ---- LEFT: story ---- */
+.ab__left{
+  padding-right:64px;
+  border-right:4px solid var(--line);
+  padding-bottom:8px;
+}
+
+.ab__title{
+  font-family:var(--serif);
+  font-weight:900;
+  text-transform:uppercase;
+  font-size:clamp(38px,4.4vw,66px);
+  line-height:.96;
+  letter-spacing:-.01em;
+  margin-bottom:30px;
+}
+.ab__title mark{
+  background:var(--accent);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+.ab__lead{
+  font-size:19px;
+  line-height:1.5;
+  max-width:52ch;
+  color:var(--ink);
+  margin-bottom:26px;
+  font-weight:500;
+}
+
+/* emphasis line — the focal statement */
+.ab__emph{
+  font-family:var(--serif);
+  font-weight:700;
+  text-transform:uppercase;
+  font-size:clamp(20px,2vw,28px);
+  line-height:1.12;
+  letter-spacing:-.005em;
+  border-left:8px solid var(--accent-2);
+  padding:2px 0 2px 22px;
+  max-width:34ch;
+  margin-bottom:34px;
+}
+
+.ab__meta{
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--muted);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  border-top:2px solid var(--line);
+  padding-top:18px;
+}
+.ab__meta b{color:var(--ink);font-weight:700;}
+
+/* ---- RIGHT: stat / visual column ---- */
+.ab__right{
+  padding-left:48px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  justify-content:flex-start;
+  padding-top:4px;
+}
+
+/* the big stat block — offset shadow */
+.ab__stat{
+  background:var(--accent);
+  border:3px solid var(--line);
+  box-shadow:8px 8px 0 var(--ink);
+  padding:26px 24px 22px;
+  position:relative;
+}
+.ab__stat-num{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(58px,6.4vw,88px);
+  line-height:.85;
+  letter-spacing:-.03em;
+}
+.ab__stat-num sup{
+  font-size:.34em;
+  vertical-align:top;
+  font-weight:700;
+}
+.ab__stat-label{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-top:12px;
+  line-height:1.4;
+  border-top:2px solid var(--ink);
+  padding-top:10px;
+}
+
+/* secondary chip stats */
+.ab__chips{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.ab__chip{
+  border:3px solid var(--line);
+  background:var(--bg);
+  padding:14px 14px 12px;
+}
+.ab__chip:first-child{box-shadow:5px 5px 0 var(--accent-2);}
+.ab__chip:last-child{box-shadow:5px 5px 0 var(--ink);}
+.ab__chip-num{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:30px;
+  line-height:1;
+}
+.ab__chip-label{
+  font-family:var(--mono);
+  font-size:10.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-top:8px;
+  line-height:1.35;
+}
+
+/* signature stripe / raw detail */
+.ab__stripe{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--bg);
+  padding:11px 14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.ab__stripe span{color:var(--accent);}
+.ab__dot{
+  width:11px;height:11px;
+  background:var(--accent-2);
+  border:2px solid var(--bg);
+  display:inline-block;
+  flex:none;
+}
+
+@media(max-width:640px){
+  .ab{padding:52px 22px 60px;}
+  .ab::before{background-size:32px 32px;}
+  .ab__inner{grid-template-columns:1fr;}
+  .ab__left{
+    border-right:none;
+    border-bottom:4px solid var(--line);
+    padding-right:0;
+    padding-bottom:36px;
+    margin-bottom:36px;
+  }
+  .ab__right{padding-left:0;padding-top:0;}
+  .ab__emph{max-width:none;}
+  .ab__stat-num{font-size:clamp(52px,20vw,80px);}
+}
+</style>
+</head>
+<body>
+
+<section class="ab" aria-labelledby="ab-title">
+  <div class="ab__inner">
+
+    <!-- LEFT: mission / story -->
+    <div class="ab__left">
+      <span class="ab__tag">EST. 2019 / FILE&nbsp;<span>#0042</span></span>
+
+      <h2 class="ab__title" id="ab-title">
+        We ship <mark>raw</mark> code<br>for people who hate<br>waiting on a build.
+      </h2>
+
+      <p class="ab__lead">
+        Blockyard started as two engineers frustrated that every "starter kit" came
+        with 400 dependencies and a config file longer than the actual app. So we
+        deleted all of it. What's left is what you drop straight into Claude Code:
+        no bundler, no framework tax, no npm install at 2am.
+      </p>
+
+      <p class="ab__emph">
+        If it needs a build step to render a paragraph, it's already broken.
+      </p>
+
+      <div class="ab__meta">
+        <span><b>SINCE</b> 2019</span>
+        <span><b>BUILT IN</b> Austin, TX</span>
+        <span><b>STACK</b> HTML · CSS · zero deps</span>
+        <span><b>LICENSE</b> MIT — steal it</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: stat + visual -->
+    <div class="ab__right">
+      <div class="ab__stat">
+        <div class="ab__stat-num">0<sup>KB</sup></div>
+        <div class="ab__stat-label">JavaScript shipped per section.<br>Copy, paste, done.</div>
+      </div>
+
+      <div class="ab__chips">
+        <div class="ab__chip">
+          <div class="ab__chip-num">128</div>
+          <div class="ab__chip-label">Sections in the library</div>
+        </div>
+        <div class="ab__chip">
+          <div class="ab__chip-num">1&nbsp;file</div>
+          <div class="ab__chip-label">Everything self-contained</div>
+        </div>
+      </div>
+
+      <div class="ab__stripe">
+        <span>&gt;&gt;</span>
+        <span aria-hidden="true">NO_BUILD_STEP.TXT</span>
+        <span class="ab__dot"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

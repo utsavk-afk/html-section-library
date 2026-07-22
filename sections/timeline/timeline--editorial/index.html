@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- ===== TIMELINE — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#7C776C;
+  --line:#E4E0D6;
+  --accent:#B4472B;
+  --serif:'Fraunces', Georgia, serif;
+  --sans:'Inter', system-ui, sans-serif;
+}
+
+.tl-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:120px 48px 128px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.tl-wrap{
+  max-width:1180px;
+  margin:0 auto;
+}
+
+/* ---- Header: asymmetric, left-weighted ---- */
+.tl-head{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:56px;
+  align-items:end;
+  padding-bottom:72px;
+  border-bottom:1px solid var(--line);
+}
+
+.tl-eyebrow{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:26px;
+}
+.tl-eyebrow::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--accent);
+}
+
+.tl-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.06;
+  letter-spacing:-0.015em;
+  max-width:15ch;
+}
+.tl-title em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.tl-lede{
+  font-size:16px;
+  line-height:1.65;
+  color:var(--muted);
+  max-width:34ch;
+  padding-bottom:6px;
+}
+
+/* ---- Timeline: horizontal spine ---- */
+.tl-track{
+  position:relative;
+  margin-top:88px;
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:0;
+}
+
+/* the connecting hairline */
+.tl-track::before{
+  content:"";
+  position:absolute;
+  top:7px;
+  left:0;
+  right:0;
+  height:1px;
+  background:var(--line);
+}
+
+.tl-item{
+  position:relative;
+  padding:0 26px 0 0;
+}
+
+/* node */
+.tl-node{
+  position:relative;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--bg);
+  border:1px solid var(--ink);
+  margin-bottom:34px;
+  z-index:2;
+}
+.tl-item--now .tl-node{
+  background:var(--accent);
+  border-color:var(--accent);
+  box-shadow:0 0 0 5px rgba(180,71,43,0.12);
+}
+
+.tl-year{
+  font-family:var(--serif);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:16px;
+}
+
+.tl-h{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:500;
+  line-height:1.18;
+  letter-spacing:-0.01em;
+  margin-bottom:14px;
+}
+.tl-h em{ font-style:italic; }
+
+.tl-copy{
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:26ch;
+}
+
+.tl-tag{
+  display:inline-block;
+  margin-top:20px;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding-top:12px;
+  border-top:1px solid var(--line);
+}
+.tl-item--now .tl-tag{ color:var(--accent); }
+
+/* ---- Footer note ---- */
+.tl-foot{
+  margin-top:92px;
+  padding-top:30px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:24px;
+}
+.tl-foot p{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:16px;
+  color:var(--ink);
+  max-width:44ch;
+}
+.tl-foot span{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+/* ---- Responsive ---- */
+@media(max-width:640px){
+  .tl-section{ padding:72px 24px 80px; }
+
+  .tl-head{
+    grid-template-columns:1fr;
+    gap:28px;
+    padding-bottom:44px;
+  }
+  .tl-title{ font-size:36px; }
+  .tl-lede{ max-width:none; }
+
+  .tl-track{
+    grid-template-columns:1fr;
+    margin-top:52px;
+    row-gap:44px;
+  }
+  /* vertical spine on mobile */
+  .tl-track::before{
+    top:0;
+    bottom:0;
+    left:6px;
+    right:auto;
+    width:1px;
+    height:auto;
+  }
+  .tl-item{
+    padding:0 0 0 38px;
+  }
+  .tl-node{
+    position:absolute;
+    left:0;
+    top:4px;
+    margin-bottom:0;
+  }
+  .tl-copy{ max-width:none; }
+
+  .tl-foot{
+    flex-direction:column;
+    gap:16px;
+    margin-top:60px;
+  }
+}
+</style>
+</head>
+<body>
+<section class="tl-section">
+  <div class="tl-wrap">
+
+    <header class="tl-head">
+      <div>
+        <div class="tl-eyebrow">The Long Way Here</div>
+        <h1 class="tl-title">A workshop that grew up <em>one honest revision</em> at a time.</h1>
+      </div>
+      <p class="tl-lede">No overnight story. Just five moments where the shop changed shape, told in the order they actually happened.</p>
+    </header>
+
+    <div class="tl-track">
+
+      <article class="tl-item">
+        <div class="tl-node"></div>
+        <div class="tl-year">2011</div>
+        <h2 class="tl-h">Two benches, <em>one</em> back room</h2>
+        <p class="tl-copy">Started binding notebooks for friends after hours, using leather offcuts from a shoemaker down the street.</p>
+        <span class="tl-tag">The beginning</span>
+      </article>
+
+      <article class="tl-item">
+        <div class="tl-node"></div>
+        <div class="tl-year">2015</div>
+        <h2 class="tl-h">First storefront on Ash Lane</h2>
+        <p class="tl-copy">Traded the back room for a corner shop with real windows. Sold out the opening run in nine days.</p>
+        <span class="tl-tag">Signed the lease</span>
+      </article>
+
+      <article class="tl-item">
+        <div class="tl-node"></div>
+        <div class="tl-year">2018</div>
+        <h2 class="tl-h">The <em>refillable</em> ledger</h2>
+        <p class="tl-copy">Redesigned every cover to be re-stitched, not replaced. Repairs quietly became a third of the business.</p>
+        <span class="tl-tag">Our turning point</span>
+      </article>
+
+      <article class="tl-item">
+        <div class="tl-node"></div>
+        <div class="tl-year">2022</div>
+        <h2 class="tl-h">Apprentices, not hires</h2>
+        <p class="tl-copy">Opened a two-year bench program. Four makers trained; three still cut leather beside us today.</p>
+        <span class="tl-tag">Passing it on</span>
+      </article>
+
+      <article class="tl-item tl-item--now">
+        <div class="tl-node"></div>
+        <div class="tl-year">Now — 2026</div>
+        <h2 class="tl-h">Bound in <em>eleven</em> countries</h2>
+        <p class="tl-copy">Same benches, same stitch. The only thing that scaled was the number of hands we ship to.</p>
+        <span class="tl-tag">Where we are</span>
+      </article>
+
+    </div>
+
+    <footer class="tl-foot">
+      <p>Every date above was a decision we could have skipped — and didn't.</p>
+      <span>Est. 2011 · Ledger &amp; Awl</span>
+    </footer>
+
+  </div>
+</section>
+</body>
+</html>

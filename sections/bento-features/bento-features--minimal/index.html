@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!-- ===== BENTO-FEATURES — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bento Features — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e5e2;
+  --accent:#c0492b;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+.bf-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:104px 40px 112px;
+  -webkit-font-smoothing:antialiased;
+}
+.bf-wrap{max-width:1180px;margin:0 auto;}
+
+/* ---- header, left-aligned, asymmetric ---- */
+.bf-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:48px;
+  padding-bottom:40px;
+  margin-bottom:44px;
+  border-bottom:1px solid var(--line);
+}
+.bf-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.bf-eyebrow::before{
+  content:"";
+  width:22px;height:1px;
+  background:var(--accent);
+}
+.bf-title{
+  font-size:40px;
+  line-height:1.08;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  max-width:16ch;
+}
+.bf-title em{font-style:normal;color:var(--muted);}
+.bf-lead{
+  font-size:15.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:34ch;
+  padding-bottom:5px;
+}
+
+/* ---- bento grid, mixed tile sizes ---- */
+.bf-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-auto-rows:minmax(196px,auto);
+  gap:16px;
+}
+.bf-tile{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:28px 30px 30px;
+  display:flex;
+  flex-direction:column;
+  background:var(--bg);
+  transition:border-color .2s ease, transform .2s ease;
+}
+.bf-tile:hover{border-color:#d3d0cb;transform:translateY(-2px);}
+
+/* the one 2x focal tile — asymmetry + intentional accent */
+.bf-tile--feature{
+  grid-column:span 2;
+  grid-row:span 2;
+  padding:34px 36px 36px;
+  background:#fbfaf9;
+  border-color:#e0ddd8;
+}
+.bf-tile--wide{grid-column:span 2;}
+
+.bf-glyph{
+  width:38px;height:38px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink);
+  margin-bottom:auto;
+}
+.bf-tile--feature .bf-glyph{
+  width:44px;height:44px;
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.bf-glyph svg{display:block;}
+
+.bf-body{margin-top:26px;}
+.bf-h{
+  font-size:16.5px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  margin-bottom:8px;
+}
+.bf-tile--feature .bf-h{
+  font-size:24px;
+  letter-spacing:-0.02em;
+  margin-bottom:12px;
+  max-width:15ch;
+}
+.bf-p{
+  font-size:14px;
+  line-height:1.58;
+  color:var(--muted);
+  max-width:40ch;
+}
+.bf-tile--feature .bf-p{font-size:15px;max-width:44ch;}
+
+.bf-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-top:18px;
+  font-size:12.5px;
+  font-weight:500;
+  color:var(--accent);
+}
+.bf-tag svg{transition:transform .2s ease;}
+.bf-tile--feature:hover .bf-tag svg{transform:translateX(3px);}
+
+.bf-kbd{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:5px;
+  padding:2px 7px;
+  background:#fbfaf9;
+}
+.bf-metaline{
+  margin-top:16px;
+  display:flex;align-items:center;gap:8px;
+}
+
+@media(max-width:640px){
+  .bf-section{padding:64px 20px 72px;}
+  .bf-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:28px;
+    padding-bottom:28px;
+  }
+  .bf-title{font-size:29px;}
+  .bf-lead{max-width:100%;}
+  .bf-grid{grid-template-columns:1fr;grid-auto-rows:auto;gap:12px;}
+  .bf-tile,
+  .bf-tile--feature,
+  .bf-tile--wide{grid-column:auto;grid-row:auto;}
+  .bf-tile{padding:24px 24px 26px;min-height:170px;}
+  .bf-tile--feature{padding:28px 26px 28px;}
+  .bf-tile--feature .bf-h{font-size:21px;}
+}
+</style>
+</head>
+<body>
+<section class="bf-section">
+  <div class="bf-wrap">
+
+    <header class="bf-head">
+      <div>
+        <span class="bf-eyebrow">Inside the toolkit</span>
+        <h2 class="bf-title">Everything the review pass touches, <em>in one grid.</em></h2>
+      </div>
+      <p class="bf-lead">Drop the library into any repo. No config, no service to run — it reads your diff and reports where it hurts.</p>
+    </header>
+
+    <div class="bf-grid">
+
+      <!-- FOCAL 2x2 tile -->
+      <article class="bf-tile bf-tile--feature">
+        <span class="bf-glyph" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h10M4 12h16M4 18h7"/>
+            <circle cx="19" cy="6" r="2"/>
+            <circle cx="16" cy="18" r="2"/>
+          </svg>
+        </span>
+        <div class="bf-body">
+          <h3 class="bf-h">Diff-aware review that reads only what changed</h3>
+          <p class="bf-p">It walks the staged patch line by line, flags the three edits most likely to break, and skips the 400 lines you didn't touch. Findings come back ranked, not alphabetised.</p>
+          <span class="bf-tag">
+            See a sample report
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </article>
+
+      <!-- 1x tile -->
+      <article class="bf-tile">
+        <span class="bf-glyph" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l7 4v6c0 4-3 6.5-7 8-4-1.5-7-4-7-8V7l7-4z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </span>
+        <div class="bf-body">
+          <h3 class="bf-h">Secrets never leave the wire</h3>
+          <p class="bf-p">Keys and tokens are redacted before a single byte is sent for analysis.</p>
+        </div>
+      </article>
+
+      <!-- 1x tile -->
+      <article class="bf-tile">
+        <span class="bf-glyph" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 6v6l4 2"/>
+            <circle cx="12" cy="12" r="8.5"/>
+          </svg>
+        </span>
+        <div class="bf-body">
+          <h3 class="bf-h">Runs in under four seconds</h3>
+          <p class="bf-p">Fast enough to sit in a pre-commit hook without anyone noticing the wait.</p>
+        </div>
+      </article>
+
+      <!-- 2x wide tile -->
+      <article class="bf-tile bf-tile--wide">
+        <span class="bf-glyph" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="2"/>
+            <path d="M8 4v16M3 9h5M3 14h5"/>
+          </svg>
+        </span>
+        <div class="bf-body">
+          <h3 class="bf-h">Every rule is a plain file you can edit</h3>
+          <p class="bf-p">No opaque config format. Open a rule, change the threshold, comment out the ones your team ignores.</p>
+          <div class="bf-metaline">
+            <span class="bf-kbd">rules/</span>
+            <span class="bf-kbd">naming.md</span>
+            <span class="bf-kbd">edge-cases.md</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 1x tile -->
+      <article class="bf-tile">
+        <span class="bf-glyph" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 18l4-6-4-6M8 6l-4 6 4 6M14 4l-4 16"/>
+          </svg>
+        </span>
+        <div class="bf-body">
+          <h3 class="bf-h">Speaks eleven languages</h3>
+          <p class="bf-p">Go, Rust, TypeScript, Python and more — one command, same output.</p>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

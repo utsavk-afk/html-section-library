@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!-- ===== COMPARISON-TABLE — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparison Table — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F5F5EF;
+  --muted:#8A8A82;
+  --line:#242422;
+  --accent:#C7F13B;      /* lime primary */
+  --accent-2:#FF4D9D;    /* magenta secondary */
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',system-ui,sans-serif;
+  --panel:#111110;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.cmp{
+  position:relative;
+  width:100%;
+  padding:88px 40px 96px;
+  overflow:hidden;
+}
+.cmp__inner{
+  max-width:1180px;
+  margin:0 auto;
+  position:relative;
+}
+
+/* eyebrow */
+.cmp__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--accent);
+  padding:7px 14px 6px;
+  border-radius:100px;
+  transform:rotate(-1.5deg);
+}
+.cmp__tag b{width:7px;height:7px;background:var(--accent-2);border-radius:50%;}
+
+/* header row — asymmetric, headline left, blurb right */
+.cmp__head{
+  display:grid;
+  grid-template-columns:1.35fr .85fr;
+  gap:44px;
+  align-items:end;
+  margin:22px 0 46px;
+}
+.cmp__title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(46px,6.4vw,92px);
+  line-height:.9;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.cmp__title em{
+  font-style:normal;
+  color:var(--accent);
+  position:relative;
+  white-space:nowrap;
+}
+.cmp__title em::after{
+  content:"";
+  position:absolute;left:-2px;right:-2px;bottom:.06em;height:.14em;
+  background:var(--accent-2);z-index:-1;
+}
+.cmp__sub{
+  color:var(--muted);
+  font-size:16px;
+  font-weight:500;
+  line-height:1.5;
+  max-width:340px;
+  padding-bottom:8px;
+}
+.cmp__sub strong{color:var(--ink);font-weight:800;}
+
+/* TABLE */
+.tbl{
+  border:2px solid var(--line);
+  border-radius:22px;
+  background:var(--panel);
+  overflow:hidden;
+}
+
+/* generic row grid: criteria | them | them | US */
+.row{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1.15fr;
+  align-items:stretch;
+}
+.row + .row{border-top:2px solid var(--line);}
+
+.cell{
+  padding:20px 22px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:15.5px;
+  font-weight:600;
+}
+.cell--crit{
+  color:var(--ink);
+  font-weight:700;
+  border-right:2px solid var(--line);
+}
+.cell--crit small{
+  display:block;
+  color:var(--muted);
+  font-weight:500;
+  font-size:12.5px;
+  margin-top:3px;
+}
+
+/* header row of the table */
+.row--head .cell{
+  padding-top:26px;padding-bottom:20px;
+  font-family:var(--serif);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  font-size:15px;
+}
+.colname{display:flex;flex-direction:column;gap:2px;}
+.colname span{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:.14em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.row--head .cell--them .colname strong{color:var(--muted);}
+
+/* highlighted US column — runs full height via overlay */
+.us-flag{
+  position:absolute;
+  top:-15px;left:50%;transform:translateX(-50%) rotate(2deg);
+  background:var(--accent-2);
+  color:#0A0A0A;
+  font-size:10.5px;font-weight:900;letter-spacing:.13em;
+  text-transform:uppercase;
+  padding:5px 12px 4px;
+  border-radius:100px;
+  white-space:nowrap;
+}
+.cell--us{
+  background:var(--accent);
+  color:#0A0A0A;
+  position:relative;
+  font-weight:800;
+}
+.row--head .cell--us{
+  padding-top:30px;
+}
+.cell--us .colname span{color:#0A0A0A;opacity:.6;}
+
+/* marks */
+.mk{
+  flex:0 0 auto;
+  width:26px;height:26px;border-radius:8px;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.mk svg{width:15px;height:15px;display:block;}
+.mk--no{background:#1E1E1C;color:#6E6E66;}
+.mk--yes{background:#0A0A0A;color:var(--accent);}
+.cell--us .mk--yes{background:#0A0A0A;color:var(--accent);width:28px;height:28px;}
+.cell--us .txt{color:#0A0A0A;}
+.txt{font-weight:700;}
+.cell--them .txt{color:var(--muted);font-weight:600;}
+
+/* footer / CTA strip inside table */
+.row--cta{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1.15fr;
+  border-top:2px solid var(--line);
+}
+.row--cta .cell{padding:22px;}
+.row--cta .cta-copy{
+  grid-column:1 / 4;
+  display:flex;align-items:center;gap:16px;
+  border-right:2px solid var(--line);
+}
+.row--cta .cta-copy p{font-size:14px;color:var(--muted);font-weight:500;line-height:1.4;}
+.row--cta .cta-copy p strong{color:var(--ink);font-weight:800;display:block;font-size:16px;margin-bottom:2px;}
+.dot-price{
+  flex:0 0 auto;
+  font-family:var(--serif);font-weight:900;font-size:30px;color:var(--accent-2);
+  line-height:1;
+}
+.cell--us.cta-btn{
+  justify-content:center;
+}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#0A0A0A;color:var(--accent);
+  font-family:var(--serif);font-weight:800;
+  font-size:14px;letter-spacing:.02em;text-transform:uppercase;
+  padding:13px 20px;border-radius:100px;
+  text-decoration:none;
+  transition:transform .12s ease;
+}
+.pill:hover{transform:translateY(-2px);}
+.pill svg{width:15px;height:15px;}
+
+.cmp__note{
+  margin-top:20px;
+  font-size:12.5px;color:var(--muted);font-weight:500;
+  display:flex;align-items:center;gap:8px;
+}
+.cmp__note b{width:6px;height:6px;background:var(--accent);border-radius:50%;}
+
+/* stray accent shape */
+.blob{
+  position:absolute;pointer-events:none;
+  width:120px;height:120px;border-radius:50%;
+  background:var(--accent-2);
+  right:-30px;top:40px;opacity:.9;
+  z-index:0;
+}
+.blob::after{
+  content:"VS";
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:900;color:#0A0A0A;font-size:34px;
+  transform:rotate(-8deg);
+}
+.cmp__inner > *{position:relative;z-index:1;}
+
+@media(max-width:640px){
+  .cmp{padding:56px 18px 64px;}
+  .cmp__head{grid-template-columns:1fr;gap:16px;align-items:start;margin-bottom:32px;}
+  .cmp__sub{padding-bottom:0;max-width:none;}
+  .blob{display:none;}
+
+  .tbl{border-radius:16px;}
+  /* collapse: hide one competitor col, keep criteria | them | US */
+  .row,.row--cta{grid-template-columns:1.35fr .8fr 1fr;}
+  .cell--them.them-2{display:none;}
+  .row--cta .cta-copy{grid-column:1 / 3;}
+  .cell{padding:15px 13px;font-size:13.5px;gap:9px;}
+  .cell--crit small{font-size:11px;}
+  .row--head .cell{font-size:12.5px;}
+  .mk{width:22px;height:22px;}
+  .mk svg{width:12px;height:12px;}
+  .us-flag{font-size:9px;padding:4px 9px 3px;}
+  .row--cta .cta-copy{flex-direction:column;align-items:flex-start;gap:8px;}
+  .dot-price{font-size:24px;}
+  .pill{padding:11px 15px;font-size:12px;}
+}
+</style>
+</head>
+<body>
+<section class="cmp">
+  <div class="cmp__inner">
+    <div class="blob" aria-hidden="true"></div>
+
+    <span class="cmp__tag"><b></b>The honest breakdown</span>
+
+    <div class="cmp__head">
+      <h2 class="cmp__title">Why teams<br>ditch the<br><em>old stack</em></h2>
+      <p class="cmp__sub">Same job, three ways to do it. We put <strong>Paceboard</strong> next to the tools people actually try to replace it with — no cherry-picked rows.</p>
+    </div>
+
+    <div class="tbl">
+
+      <!-- HEADER -->
+      <div class="row row--head">
+        <div class="cell cell--crit">What you get</div>
+        <div class="cell cell--them them-2">
+          <span class="colname"><span>Option A</span><strong>Legacy Suite</strong></span>
+        </div>
+        <div class="cell cell--them">
+          <span class="colname"><span>Option B</span><strong>Spreadsheets</strong></span>
+        </div>
+        <div class="cell cell--us">
+          <span class="us-flag">You are here</span>
+          <span class="colname"><span>Best pick</span><strong>Paceboard</strong></span>
+        </div>
+      </div>
+
+      <!-- ROWS -->
+      <div class="row">
+        <div class="cell cell--crit">Setup time<small>From signup to first result</small></div>
+        <div class="cell cell--them them-2"><span class="txt">3–6 weeks</span></div>
+        <div class="cell cell--them"><span class="txt">You build it</span></div>
+        <div class="cell cell--us"><span class="txt">Under 10 min</span></div>
+      </div>
+
+      <div class="row">
+        <div class="cell cell--crit">Live sync across the team<small>Everyone on the same number</small></div>
+        <div class="cell cell--them them-2"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 12h12"/></svg></span></div>
+        <div class="cell cell--them"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 12h12"/></svg></span></div>
+        <div class="cell cell--us"><span class="mk mk--yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="txt">Real-time</span></div>
+      </div>
+
+      <div class="row">
+        <div class="cell cell--crit">Priced per seat<small>Cost when you add people</small></div>
+        <div class="cell cell--them them-2"><span class="txt">$29/seat</span></div>
+        <div class="cell cell--them"><span class="txt">Free-ish</span></div>
+        <div class="cell cell--us"><span class="mk mk--yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="txt">Flat, unlimited</span></div>
+      </div>
+
+      <div class="row">
+        <div class="cell cell--crit">Exports without a lock-in<small>Take your data and leave</small></div>
+        <div class="cell cell--them them-2"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 12h12"/></svg></span></div>
+        <div class="cell cell--them"><span class="mk mk--yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span></div>
+        <div class="cell cell--us"><span class="mk mk--yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="txt">One click</span></div>
+      </div>
+
+      <div class="row">
+        <div class="cell cell--crit">Human on support<small>Reply time when it breaks</small></div>
+        <div class="cell cell--them them-2"><span class="txt">Tier tickets</span></div>
+        <div class="cell cell--them"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 12h12"/></svg></span></div>
+        <div class="cell cell--us"><span class="mk mk--yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="txt">&lt; 2 hrs, real name</span></div>
+      </div>
+
+      <!-- CTA -->
+      <div class="row--cta">
+        <div class="cell cta-copy">
+          <span class="dot-price">$0</span>
+          <p><strong>Try the whole thing free for 14 days</strong>No card, no sales call — cancel with one button if it isn't obviously better.</p>
+        </div>
+        <div class="cell cell--us cta-btn">
+          <a class="pill" href="#start">Start free
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="cmp__note"><b></b>Comparison last updated Jul 2026. Competitor names shown are placeholders — swap in the two tools your buyers actually weigh you against.</p>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusted By — Client Name List (Brutalist)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CLIENT-NAME-LIST — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:2px solid var(--ink);
+  --line-thick:4px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --mono:'Space Mono',monospace;
+  --display:'Archivo',sans-serif;
+}
+
+body{background:var(--paper);color:var(--ink);font-family:var(--display);}
+
+.trust{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  border-top:4px solid var(--ink);
+  border-bottom:4px solid var(--ink);
+  padding:48px 56px 56px;
+}
+
+/* --- top bar: label + counter --- */
+.trust__bar{
+  display:flex;
+  align-items:stretch;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:44px;
+}
+
+.trust__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--acid);
+  border:var(--line-thick);
+  box-shadow:var(--shadow);
+  padding:12px 20px;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+}
+.trust__tag .dot{
+  width:12px;height:12px;
+  background:var(--red);
+  border:2px solid var(--ink);
+  display:inline-block;
+}
+
+.trust__meta{
+  display:flex;
+  align-items:flex-end;
+  gap:22px;
+  font-family:var(--mono);
+}
+.trust__count{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(38px,6vw,72px);
+  line-height:0.82;
+  letter-spacing:-0.03em;
+}
+.trust__count sup{
+  font-size:0.4em;
+  vertical-align:super;
+  color:var(--red);
+}
+.trust__caption{
+  font-size:12px;
+  line-height:1.5;
+  letter-spacing:0.04em;
+  max-width:190px;
+  text-transform:uppercase;
+  padding-bottom:6px;
+  border-left:var(--line);
+  padding-left:14px;
+}
+
+/* --- the list --- */
+.trust__list{
+  font-weight:800;
+  font-size:clamp(32px,5.4vw,66px);
+  line-height:1.02;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:0 34px;
+}
+
+.trust__name{
+  position:relative;
+  white-space:nowrap;
+  padding:2px 0;
+  transition:color .12s;
+}
+/* separator diamond between names */
+.trust__name:not(:last-child)::after{
+  content:"";
+  display:inline-block;
+  width:14px;height:14px;
+  margin-left:34px;
+  background:var(--ink);
+  transform:rotate(45deg) translateY(-6px);
+  vertical-align:baseline;
+}
+.trust__name:hover{color:var(--red);}
+
+/* two names get the focal highlight — asymmetric, not uniform */
+.trust__name--mark{
+  background:var(--acid);
+  padding:2px 14px;
+  border:var(--line);
+  box-shadow:4px 4px 0 var(--ink);
+}
+.trust__name--out{
+  color:var(--paper);
+  background:var(--ink);
+  padding:2px 14px;
+}
+.trust__name--red{color:var(--red);}
+
+/* --- footer strip --- */
+.trust__foot{
+  margin-top:46px;
+  padding-top:22px;
+  border-top:var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+.trust__foot span{opacity:.72;}
+.trust__link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border:var(--line-thick);
+  background:var(--white);
+  box-shadow:var(--shadow-red);
+  padding:12px 22px;
+  font-weight:700;
+  color:var(--ink);
+  text-decoration:none;
+  transition:transform .1s,box-shadow .1s;
+}
+.trust__link:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--red);}
+.trust__link svg{display:block;}
+
+@media(max-width:640px){
+  .trust{padding:30px 20px 36px;}
+  .trust__bar{margin-bottom:30px;}
+  .trust__caption{max-width:100%;border-left:none;border-top:var(--line);padding:8px 0 0;}
+  .trust__meta{width:100%;justify-content:space-between;align-items:flex-start;}
+  .trust__list{font-size:clamp(26px,10vw,40px);gap:0 20px;}
+  .trust__name:not(:last-child)::after{margin-left:20px;width:10px;height:10px;transform:rotate(45deg) translateY(-4px);}
+  .trust__foot{margin-top:30px;}
+  .trust__link{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+<section class="trust" aria-label="Clients we work with">
+  <div class="trust__bar">
+    <span class="trust__tag"><span class="dot"></span>Trusted By The Bold</span>
+    <div class="trust__meta">
+      <div class="trust__count">240<sup>+</sup></div>
+      <p class="trust__caption">Teams shipping in production since 2016</p>
+    </div>
+  </div>
+
+  <h2 class="trust__list">
+    <span class="trust__name">Northwind Freight</span>
+    <span class="trust__name trust__name--mark">Ferro &amp; Slate</span>
+    <span class="trust__name">Beacon Health</span>
+    <span class="trust__name trust__name--red">Kessler Motors</span>
+    <span class="trust__name">Halden Works</span>
+    <span class="trust__name">Voss Analytics</span>
+    <span class="trust__name trust__name--out">Ironhaus</span>
+    <span class="trust__name">Perch Software</span>
+    <span class="trust__name">Marrow Coffee Co.</span>
+    <span class="trust__name">Delta Grain</span>
+    <span class="trust__name trust__name--red">Sundry Labs</span>
+    <span class="trust__name">Copperline Bank</span>
+    <span class="trust__name trust__name--mark">Atlas Provision</span>
+    <span class="trust__name">Marlowe &amp; Reed</span>
+    <span class="trust__name">Grand Junction Rail</span>
+    <span class="trust__name">Pallett Foods</span>
+    <span class="trust__name">Tenfold Studio</span>
+  </h2>
+
+  <div class="trust__foot">
+    <span>// No logos. Just names that ship.</span>
+    <a class="trust__link" href="#case-studies">
+      Read The Case Studies
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
+        <path d="M0 7H17" stroke="#111" stroke-width="3"/>
+        <path d="M12 1L18.5 7L12 13" stroke="#111" stroke-width="3"/>
+      </svg>
+    </a>
+  </div>
+</section>
+</body>
+</html>

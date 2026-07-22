@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!-- ===== METRICS — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metrics — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5B5B54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:"Archivo",Helvetica,Arial,sans-serif;
+  --sans:"Archivo",Helvetica,Arial,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+}
+
+.metrics{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 40px 80px;
+  border-top:4px solid var(--line);
+  border-bottom:4px solid var(--line);
+}
+
+.metrics__inner{
+  max-width:1360px;
+  margin:0 auto;
+}
+
+/* ---- top bar / header ---- */
+.metrics__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  padding-bottom:22px;
+  border-bottom:3px solid var(--line);
+  margin-bottom:0;
+}
+.metrics__eyebrow{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.metrics__eyebrow .dot{
+  width:11px;height:11px;
+  background:var(--red);
+  display:inline-block;
+}
+.metrics__title{
+  font-size:clamp(30px,4.4vw,58px);
+  font-weight:900;
+  line-height:.94;
+  letter-spacing:-.015em;
+  text-transform:uppercase;
+  max-width:14ch;
+  margin-top:14px;
+}
+.metrics__title mark{
+  background:var(--accent);
+  color:var(--ink);
+  padding:0 .12em;
+  box-decoration-break:clone;
+}
+.metrics__stamp{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  border:3px solid var(--line);
+  padding:10px 14px;
+  background:#fff;
+  box-shadow:5px 5px 0 var(--ink);
+  white-space:nowrap;
+  align-self:flex-end;
+}
+
+/* ---- grid of numbers ---- */
+.metrics__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-left:3px solid var(--line);
+  border-top:3px solid var(--line);
+}
+.stat{
+  border-right:3px solid var(--line);
+  border-bottom:3px solid var(--line);
+  padding:34px 26px 30px;
+  background:var(--bg);
+  position:relative;
+  min-height:230px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+/* the ONE focal stat — asymmetric emphasis */
+.stat--hero{
+  background:var(--accent);
+}
+.stat__idx{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  color:var(--muted);
+}
+.stat--hero .stat__idx{color:var(--ink);}
+
+.stat__num{
+  font-size:clamp(46px,5.6vw,76px);
+  font-weight:900;
+  line-height:.86;
+  letter-spacing:-.03em;
+  margin:22px 0 0;
+}
+.stat__num sup{
+  font-size:.4em;
+  vertical-align:super;
+  font-weight:700;
+}
+.stat__cap{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.4;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  color:var(--ink);
+  margin-top:16px;
+  max-width:22ch;
+}
+.stat--hero .stat__cap{color:var(--ink);}
+
+/* trend hint chip */
+.trend{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  border:2px solid var(--line);
+  padding:5px 9px;
+  margin-top:18px;
+  align-self:flex-start;
+  background:#fff;
+}
+.stat--hero .trend{background:var(--ink);color:#fff;border-color:var(--ink);}
+.trend .arrow{
+  width:0;height:0;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+}
+.trend.up .arrow{border-bottom:8px solid var(--red);}
+.trend.down .arrow{border-top:8px solid var(--ink);}
+.stat--hero .trend.up .arrow{border-bottom-color:var(--red);}
+
+/* ---- footer strip ---- */
+.metrics__foot{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:26px;
+  font-family:var(--mono);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+.metrics__foot .bar{
+  flex:1;
+  height:3px;
+  background:repeating-linear-gradient(90deg,var(--ink) 0 14px,transparent 14px 22px);
+  min-width:80px;
+}
+.metrics__foot b{color:var(--ink);}
+
+@media(max-width:640px){
+  .metrics{padding:48px 20px 56px;}
+  .metrics__head{align-items:flex-start;}
+  .metrics__stamp{align-self:flex-start;}
+  .metrics__title{margin-top:16px;}
+  .metrics__grid{grid-template-columns:1fr;}
+  .stat{min-height:0;padding:26px 22px;}
+  .stat__num{font-size:56px;}
+}
+</style>
+</head>
+<body>
+<section class="metrics">
+  <div class="metrics__inner">
+
+    <header class="metrics__head">
+      <div>
+        <span class="metrics__eyebrow"><span class="dot"></span>Field Report / Q2 2026</span>
+        <h2 class="metrics__title">The numbers we <mark>don't hide</mark></h2>
+      </div>
+      <div class="metrics__stamp">Verified&nbsp;·&nbsp;Rev 07-22</div>
+    </header>
+
+    <div class="metrics__grid">
+
+      <article class="stat stat--hero">
+        <span class="stat__idx">01 / IMPACT</span>
+        <div>
+          <div class="stat__num">312<sup>%</sup></div>
+          <p class="stat__cap">Median organic traffic lift after 6 months on the program</p>
+        </div>
+        <span class="trend up"><span class="arrow"></span>+48 pts vs. last cohort</span>
+      </article>
+
+      <article class="stat">
+        <span class="stat__idx">02 / SPEED</span>
+        <div>
+          <div class="stat__num">11<sup>DAYS</sup></div>
+          <p class="stat__cap">Average time from kickoff to first ranking page shipped</p>
+        </div>
+        <span class="trend down"><span class="arrow"></span>-4 days quarter over quarter</span>
+      </article>
+
+      <article class="stat">
+        <span class="stat__idx">03 / SCALE</span>
+        <div>
+          <div class="stat__num">1.4<sup>M</sup></div>
+          <p class="stat__cap">Keywords tracked across 240 active client accounts</p>
+        </div>
+        <span class="trend up"><span class="arrow"></span>+190K added this quarter</span>
+      </article>
+
+      <article class="stat">
+        <span class="stat__idx">04 / TRUST</span>
+        <div>
+          <div class="stat__num">96<sup>%</sup></div>
+          <p class="stat__cap">Retainer renewal rate among partners past month twelve</p>
+        </div>
+        <span class="trend up"><span class="arrow"></span>Highest on record</span>
+      </article>
+
+    </div>
+
+    <div class="metrics__foot">
+      <span>Sample: <b>240 accounts</b>, Jan–Jun 2026</span>
+      <span class="bar"></span>
+      <span>Methodology&nbsp;→&nbsp;<b>/reports/q2</b></span>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!-- ===== MANIFESTO — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifesto — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-soft:#4A4842;
+  --accent:#B4472B;
+  --hair:#D9D6CE;
+  --hair-soft:#E7E4DC;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.manifesto{
+  width:100%;
+  padding:112px 7vw 120px;
+  position:relative;
+}
+.manifesto__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.label{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+/* ---- header row: asymmetric ---- */
+.head{
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:56px;
+  align-items:end;
+  padding-bottom:44px;
+  border-bottom:1px solid var(--hair);
+}
+.head__eyebrow{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:30px;
+}
+.head__eyebrow .rule{
+  height:1px;
+  width:64px;
+  background:var(--accent);
+  opacity:0.55;
+}
+.statement{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,5.4vw,72px);
+  line-height:1.02;
+  letter-spacing:-0.015em;
+}
+.statement em{
+  font-style:italic;
+  color:var(--accent);
+}
+.head__aside{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(17px,1.5vw,20px);
+  line-height:1.5;
+  color:var(--ink-soft);
+  max-width:34ch;
+  padding-bottom:8px;
+}
+.head__aside .marker{
+  display:block;
+  font-family:var(--sans);
+  font-style:normal;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin-top:18px;
+}
+
+/* ---- principles: numbered, hairline separated, varied rhythm ---- */
+.principles{
+  margin-top:8px;
+}
+.principle{
+  display:grid;
+  grid-template-columns:88px minmax(0,1fr) minmax(0,0.9fr);
+  gap:40px;
+  align-items:baseline;
+  padding:38px 0;
+  border-bottom:1px solid var(--hair-soft);
+}
+.principle:last-child{
+  border-bottom:none;
+}
+.principle__num{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:500;
+  color:var(--accent);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:0.02em;
+}
+.principle__num::before{
+  content:"";
+  display:block;
+  width:26px;
+  height:1px;
+  background:var(--ink);
+  margin-bottom:14px;
+}
+.principle__claim{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(21px,2vw,29px);
+  line-height:1.18;
+  letter-spacing:-0.01em;
+}
+.principle__claim em{
+  font-style:italic;
+  color:var(--accent);
+}
+.principle__note{
+  font-size:15px;
+  line-height:1.65;
+  color:var(--ink-soft);
+  max-width:40ch;
+}
+
+/* first principle gets more weight — one focal point */
+.principle--lead .principle__claim{
+  font-size:clamp(24px,2.4vw,34px);
+}
+
+/* ---- closing line ---- */
+.coda{
+  margin-top:64px;
+  padding-top:40px;
+  border-top:1px solid var(--hair);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:24px 40px;
+  justify-content:space-between;
+}
+.coda__line{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(18px,1.7vw,23px);
+  line-height:1.4;
+  color:var(--ink);
+  max-width:52ch;
+}
+.coda__sign{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  white-space:nowrap;
+}
+
+@media(max-width:640px){
+  .manifesto{padding:72px 24px 80px;}
+  .head{
+    grid-template-columns:1fr;
+    gap:28px;
+    padding-bottom:32px;
+  }
+  .head__aside{max-width:none;padding-bottom:0;}
+  .principle{
+    grid-template-columns:1fr;
+    gap:14px;
+    padding:28px 0;
+  }
+  .principle__num::before{margin-bottom:10px;}
+  .coda{
+    flex-direction:column;
+    gap:18px;
+    margin-top:44px;
+  }
+}
+</style>
+</head>
+<body>
+<section class="manifesto">
+  <div class="manifesto__inner">
+
+    <div class="head">
+      <div>
+        <div class="head__eyebrow">
+          <span class="rule"></span>
+          <span class="label">The House Position</span>
+        </div>
+        <h1 class="statement">We would rather ship one honest paragraph<br>than ten <em>persuasive</em> ones nobody believes.</h1>
+      </div>
+      <p class="head__aside">
+        Most content is written to fill a slot. Ours is written to change a mind, or it doesn't run.
+        <span class="marker">Five things we won't move on</span>
+      </p>
+    </div>
+
+    <div class="principles">
+
+      <div class="principle principle--lead">
+        <div class="principle__num">01</div>
+        <div class="principle__claim">Clarity is not a style choice. It is the whole <em>job.</em></div>
+        <p class="principle__note">If a sentence needs a second reading to survive, it fails the first draft. We cut before we decorate — every time, no exceptions.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle__num">02</div>
+        <div class="principle__claim">A ranking with no reader behind it is a vanity metric.</div>
+        <p class="principle__note">Position three means nothing if the click bounces in four seconds. We optimize for the person, and the algorithm follows.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle__num">03</div>
+        <div class="principle__claim">We say <em>no</em> to the brief before we say yes to the work.</div>
+        <p class="principle__note">The best deliverable is sometimes half the pages you asked for. We would rather lose the upsell than pad the sitemap.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle__num">04</div>
+        <div class="principle__claim">Opinions age well. Keyword stuffing ages by Thursday.</div>
+        <p class="principle__note">A point of view is the one thing an AI summary can't flatten. So we take one — on the record, with our name on it.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle__num">05</div>
+        <div class="principle__claim">If we wouldn't send it to a friend, we don't publish it.</div>
+        <p class="principle__note">That's the entire quality gate. It is stricter than any checklist, and it has never once let a filler post through.</p>
+      </div>
+
+    </div>
+
+    <div class="coda">
+      <p class="coda__line">None of this is a growth hack. It is just what happens when you refuse to waste a reader's afternoon.</p>
+      <span class="coda__sign">Written &amp; defended by the editorial desk</span>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

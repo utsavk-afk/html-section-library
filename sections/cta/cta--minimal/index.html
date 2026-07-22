@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- ===== CTA — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e3df;
+  --accent:#c0492b;
+  --serif:'Inter',ui-sans-serif,system-ui,sans-serif;
+  --sans:'Inter',ui-sans-serif,system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.cta{
+  width:100%;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:112px 0;
+}
+
+.cta__inner{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 40px;
+  display:grid;
+  grid-template-columns:1.35fr 0.9fr;
+  gap:80px;
+  align-items:end;
+}
+
+.cta__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:28px;
+}
+.cta__eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+
+.cta__headline{
+  font-size:52px;
+  line-height:1.06;
+  font-weight:600;
+  letter-spacing:-0.025em;
+  max-width:15ch;
+}
+.cta__headline em{
+  font-style:normal;
+  color:var(--accent);
+}
+
+.cta__lead{
+  margin-top:24px;
+  font-size:17px;
+  color:var(--muted);
+  max-width:44ch;
+}
+
+/* right rail — the action, offset lower than the headline baseline */
+.cta__action{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:18px;
+  padding-bottom:6px;
+}
+
+.cta__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--ink);
+  color:#fff;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  padding:17px 30px;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .18s ease, transform .18s ease;
+}
+.cta__btn:hover{
+  background:var(--accent);
+  transform:translateY(-1px);
+}
+.cta__btn svg{
+  width:15px;
+  height:15px;
+  stroke:currentColor;
+  stroke-width:2;
+  fill:none;
+}
+
+.cta__reassure{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:13.5px;
+  color:var(--muted);
+}
+.cta__reassure svg{
+  width:14px;
+  height:14px;
+  stroke:var(--accent);
+  stroke-width:2;
+  fill:none;
+  flex-shrink:0;
+}
+
+.cta__meta{
+  margin-top:14px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  font-size:13px;
+  color:var(--muted);
+  max-width:38ch;
+}
+.cta__meta code{
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;
+  font-size:12.5px;
+  color:var(--ink);
+  background:#f6f4f2;
+  padding:2px 7px;
+  border-radius:3px;
+}
+
+@media(max-width:640px){
+  .cta{padding:64px 0;}
+  .cta__inner{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:0 24px;
+    align-items:start;
+  }
+  .cta__headline{font-size:34px;}
+  .cta__lead{font-size:16px;}
+  .cta__btn{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<section class="cta">
+  <div class="cta__inner">
+    <div class="cta__copy">
+      <span class="cta__eyebrow">The free library</span>
+      <h2 class="cta__headline">Stop hand-building sections. <em>Steal these instead.</em></h2>
+      <p class="cta__lead">Forty-plus production-ready HTML sections — heroes, pricing tables, FAQs, footers. One file each, zero dependencies. Drop one into Claude Code and keep moving.</p>
+    </div>
+
+    <div class="cta__action">
+      <a class="cta__btn" href="#copy">
+        Copy your first section
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <p class="cta__reassure">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        No sign-up, no npm install, MIT-licensed.
+      </p>
+      <p class="cta__meta">Every section is a single <code>index.html</code> — paste it, tweak the tokens, ship it.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

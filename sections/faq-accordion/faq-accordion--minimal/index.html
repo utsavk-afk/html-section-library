@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!-- ===== faq-accordion — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Minimal Accordion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --hairline:#e6e4e0;
+  --hairline-strong:#d6d3ce;
+  --paper:#ffffff;
+  --accent:#c0492b;
+  --accent-tint:#f7ede9;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --maxw:1440px;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ===== SECTION SHELL ===== */
+.faq{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:96px 64px 104px;
+}
+
+.faq__inner{
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:88px;
+  align-items:start;
+}
+
+/* ===== LEFT RAIL (focal point, asymmetric) ===== */
+.faq__aside{
+  position:sticky;
+  top:56px;
+}
+
+.faq__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.faq__eyebrow::before{
+  content:"";
+  width:26px;
+  height:2px;
+  background:var(--accent);
+}
+
+.faq__title{
+  font-size:40px;
+  line-height:1.08;
+  font-weight:700;
+  letter-spacing:-0.02em;
+  margin-bottom:18px;
+}
+.faq__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+
+.faq__lede{
+  font-size:15.5px;
+  line-height:1.62;
+  color:var(--muted);
+  max-width:30ch;
+  margin-bottom:30px;
+}
+
+.faq__contact{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14.5px;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  padding-bottom:3px;
+  border-bottom:1.5px solid var(--ink);
+  transition:color .18s ease,border-color .18s ease,gap .18s ease;
+}
+.faq__contact:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+  gap:12px;
+}
+.faq__contact svg{flex:0 0 auto;}
+
+/* ===== ACCORDION ===== */
+.faq__list{
+  border-top:1px solid var(--hairline-strong);
+}
+
+.faq__item{
+  border-bottom:1px solid var(--hairline);
+}
+.faq__item[open]{
+  border-bottom-color:var(--hairline-strong);
+}
+
+.faq__q{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:flex-start;
+  gap:24px;
+  padding:24px 4px 24px 0;
+  font-size:18px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  line-height:1.4;
+  color:var(--ink);
+  transition:color .16s ease;
+}
+.faq__q::-webkit-details-marker{display:none;}
+.faq__q:hover{color:var(--accent);}
+
+.faq__num{
+  flex:0 0 auto;
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+  padding-top:4px;
+  min-width:26px;
+  font-variant-numeric:tabular-nums;
+  transition:color .16s ease;
+}
+.faq__item[open] .faq__num{color:var(--accent);}
+
+.faq__qtext{flex:1 1 auto;}
+
+/* plus/minus marker */
+.faq__marker{
+  flex:0 0 auto;
+  position:relative;
+  width:20px;
+  height:20px;
+  margin-top:4px;
+}
+.faq__marker::before,
+.faq__marker::after{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  background:var(--ink);
+  transition:transform .24s cubic-bezier(.4,0,.2,1),background .16s ease;
+}
+.faq__marker::before{
+  width:14px;height:1.5px;
+  transform:translate(-50%,-50%);
+}
+.faq__marker::after{
+  width:1.5px;height:14px;
+  transform:translate(-50%,-50%);
+}
+.faq__item[open] .faq__marker::after{
+  transform:translate(-50%,-50%) rotate(90deg);
+  opacity:0;
+}
+.faq__q:hover .faq__marker::before,
+.faq__q:hover .faq__marker::after{background:var(--accent);}
+.faq__item[open] .faq__marker::before{background:var(--accent);}
+
+.faq__a{
+  padding:0 60px 28px 50px;
+  max-width:64ch;
+}
+.faq__a p{
+  font-size:15.5px;
+  line-height:1.68;
+  color:var(--muted);
+}
+.faq__a p + p{margin-top:14px;}
+.faq__a a{
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px solid var(--accent-tint);
+  transition:border-color .16s ease;
+}
+.faq__a a:hover{border-color:var(--accent);}
+.faq__a strong{color:var(--ink);font-weight:600;}
+
+/* open reveal animation */
+.faq__item[open] .faq__a{
+  animation:faqReveal .32s ease both;
+}
+@keyframes faqReveal{
+  from{opacity:0;transform:translateY(-4px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:960px){
+  .faq{padding:72px 40px 80px;}
+  .faq__inner{grid-template-columns:1fr;gap:44px;}
+  .faq__aside{position:static;}
+  .faq__lede{max-width:52ch;}
+}
+
+@media(max-width:640px){
+  .faq{padding:56px 22px 64px;}
+  .faq__title{font-size:31px;}
+  .faq__q{font-size:16.5px;gap:14px;padding:20px 2px;}
+  .faq__num{min-width:22px;font-size:12px;}
+  .faq__a{padding:0 4px 24px 36px;}
+  .faq__a p{font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<section class="faq" aria-labelledby="faq-heading">
+  <div class="faq__inner">
+
+    <aside class="faq__aside">
+      <span class="faq__eyebrow">Support</span>
+      <h2 class="faq__title" id="faq-heading">Questions,<br><em>answered</em> plainly.</h2>
+      <p class="faq__lede">Everything about billing, migration, and how the copy-paste library actually works — no fluff.</p>
+      <a class="faq__contact" href="mailto:hello@example.com">
+        Still stuck? Email us
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </aside>
+
+    <div class="faq__list">
+
+      <details class="faq__item" open>
+        <summary class="faq__q">
+          <span class="faq__num">01</span>
+          <span class="faq__qtext">Do I need a build step to use these sections?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>No. Every section is a single self-contained HTML file — inline CSS, no bundler, no npm install. Open it in a browser or paste it straight into your project and it renders exactly as shown.</p>
+          <p>The only external dependency is Google Fonts, which you can swap for a local font in one line if you prefer to stay fully offline.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">02</span>
+          <span class="faq__qtext">Can I use the sections in commercial client work?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>Yes. The library is free for personal and commercial projects, including paid client sites. You don't need to credit us, though a mention is always appreciated.</p>
+          <p>The one thing you can't do is repackage the sections and resell them as a competing component library.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">03</span>
+          <span class="faq__qtext">How do I change the accent color and fonts?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>Every value lives in the <strong>:root</strong> block at the top of the file. Change <strong>--accent</strong> to recolor buttons, links, and markers in one edit, and swap the <strong>--font</strong> token to restyle all type.</p>
+          <p>Because the tokens cascade, you never have to hunt through the markup to update a color.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">04</span>
+          <span class="faq__qtext">Are the sections responsive and accessible?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>Each section ships with a mobile breakpoint at 640px and uses semantic HTML — this accordion is built on native <strong>&lt;details&gt;</strong> and <strong>&lt;summary&gt;</strong>, so keyboard and screen-reader support work out of the box.</p>
+          <p>Nothing overflows horizontally, and focus states are preserved rather than stripped.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">05</span>
+          <span class="faq__qtext">Will these work inside React, Vue, or a CMS?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>Yes. Since the markup is plain HTML and CSS, you can drop a section into a JSX component, a Vue template, or a CMS rich-text block. In React, just rename <strong>class</strong> to <strong>className</strong> and move the styles into your stylesheet.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">06</span>
+          <span class="faq__qtext">How often do you add new sections?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>We publish two to four new sections most weeks — heroes, pricing tables, testimonials, footers, and more — each in the same minimal, editorial style so they compose cleanly on one page.</p>
+          <p>Follow the <a href="#">changelog</a> to see what shipped recently.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">07</span>
+          <span class="faq__qtext">Can I request a section that isn't in the library yet?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>Absolutely. Requests shape the roadmap more than anything else. Send a short description of the layout you need and a reference or two, and we'll queue it — most requested patterns land within a couple of weeks.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!-- ===== client-name-list — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusted By — Client Name List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-2:#17171c;
+  --paper:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --line:rgba(244,244,245,0.12);
+  --line-soft:rgba(244,244,245,0.07);
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+
+/* ---- section shell ---- */
+.roster{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 72px 88px;
+  position:relative;
+}
+.roster::before{
+  content:"";
+  position:absolute;
+  left:72px;right:72px;top:0;
+  height:1px;
+  background:linear-gradient(90deg,var(--amber) 0 88px,var(--line) 88px);
+}
+
+/* ---- top eyebrow row (asymmetric) ---- */
+.roster__head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:48px;
+  margin-bottom:64px;
+}
+.roster__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+}
+.roster__eyebrow .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 0 4px rgba(245,158,66,0.14);
+}
+.roster__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,5.4vw,72px);
+  line-height:1.02;
+  letter-spacing:-0.015em;
+  max-width:15ch;
+  margin-top:22px;
+}
+.roster__title em{
+  font-style:italic;
+  color:var(--amber);
+}
+.roster__meta{
+  flex:0 0 auto;
+  text-align:right;
+  padding-top:6px;
+}
+.roster__count{
+  font-family:var(--serif);
+  font-size:44px;
+  line-height:1;
+  letter-spacing:-0.02em;
+}
+.roster__meta small{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ---- the name list ---- */
+.roster__list{
+  border-top:1px solid var(--line-soft);
+  padding-top:40px;
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(28px,4.4vw,56px);
+  line-height:1.28;
+  letter-spacing:-0.01em;
+  color:var(--paper);
+}
+.roster__name{
+  display:inline;
+  white-space:nowrap;
+  transition:color .18s ease;
+  cursor:default;
+}
+.roster__name:hover{color:var(--amber);}
+/* thin separator dot between names */
+.sep{
+  display:inline-block;
+  margin:0 0.42em;
+  color:var(--muted);
+  font-family:var(--sans);
+  font-size:0.42em;
+  vertical-align:0.34em;
+  transform:translateY(-0.1em);
+}
+/* accent a couple of marquee names so the block isn't a flat uniform wall */
+.roster__name--star{
+  color:var(--paper);
+  border-bottom:2px solid var(--amber);
+  padding-bottom:2px;
+}
+.roster__name--muted{color:var(--muted);}
+
+/* ---- footer strip ---- */
+.roster__foot{
+  margin-top:56px;
+  padding-top:28px;
+  border-top:1px solid var(--line-soft);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.roster__note{
+  font-size:14px;
+  color:var(--muted);
+  max-width:52ch;
+  line-height:1.6;
+}
+.roster__note b{color:var(--paper);font-weight:600;}
+.roster__link{
+  font-size:14px;
+  font-weight:500;
+  letter-spacing:0.02em;
+  color:var(--paper);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  white-space:nowrap;
+}
+.roster__link .arrow{
+  display:inline-flex;
+  transition:transform .2s ease;
+  color:var(--amber);
+}
+.roster__link:hover .arrow{transform:translateX(4px);}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .roster{padding:64px 22px 56px;}
+  .roster::before{left:22px;right:22px;background:linear-gradient(90deg,var(--amber) 0 56px,var(--line) 56px);}
+  .roster__head{flex-direction:column;gap:26px;margin-bottom:40px;}
+  .roster__title{margin-top:16px;max-width:none;}
+  .roster__meta{text-align:left;}
+  .roster__count{font-size:36px;}
+  .roster__list{font-size:clamp(24px,7.2vw,34px);line-height:1.24;padding-top:30px;}
+  .sep{margin:0 0.32em;}
+  .roster__foot{margin-top:40px;flex-direction:column;align-items:flex-start;gap:20px;}
+}
+</style>
+</head>
+<body>
+
+<section class="roster" aria-label="Clients we work with">
+  <div class="roster__head">
+    <div>
+      <span class="roster__eyebrow"><span class="dot"></span>Trusted by teams that ship</span>
+      <h2 class="roster__title">The names on the wall of our <em>studio</em>.</h2>
+    </div>
+    <div class="roster__meta">
+      <div class="roster__count">61</div>
+      <small>Partners since 2016</small>
+    </div>
+  </div>
+
+  <p class="roster__list">
+    <span class="roster__name roster__name--star">Northwind Logistics</span><span class="sep">●</span><span class="roster__name">Kestrel Finance</span><span class="sep">●</span><span class="roster__name">Halden Robotics</span><span class="sep">●</span><span class="roster__name roster__name--muted">Poste Verde</span><span class="sep">●</span><span class="roster__name">Meridian Grid</span><span class="sep">●</span><span class="roster__name">Cobalt &amp; Finch</span><span class="sep">●</span><span class="roster__name">Rally Health</span><span class="sep">●</span><span class="roster__name roster__name--star">Aperture Labs</span><span class="sep">●</span><span class="roster__name">Sundial Coffee</span><span class="sep">●</span><span class="roster__name">Vellum Press</span><span class="sep">●</span><span class="roster__name roster__name--muted">Orbit Freight</span><span class="sep">●</span><span class="roster__name">Fernwood Capital</span><span class="sep">●</span><span class="roster__name">Lumen &amp; Co.</span><span class="sep">●</span><span class="roster__name">Truss Architects</span><span class="sep">●</span><span class="roster__name">Bright Harbor</span><span class="sep">●</span><span class="roster__name roster__name--star">Ironside Steel</span><span class="sep">●</span><span class="roster__name">Petra Ceramics</span><span class="sep">●</span><span class="roster__name">Wavelength Audio</span><span class="sep">●</span><span class="roster__name roster__name--muted">Junco Bikes</span><span class="sep">●</span><span class="roster__name">Signal Botanics</span><span class="sep">●</span><span class="roster__name">Harbormaster Rum</span><span class="sep">●</span><span class="roster__name">Delta Provisions</span><span class="sep">●</span><span class="roster__name roster__name--star">Nimbus Cloud</span><span class="sep">●</span><span class="roster__name">Copperline Denim</span><span class="sep">●</span><span class="roster__name">Static Field</span>
+  </p>
+
+  <div class="roster__foot">
+    <p class="roster__note">A short roster on purpose. We keep <b>fewer than a dozen active engagements</b> so every account gets a senior team, not a queue.</p>
+    <a class="roster__link" href="#">Read the case studies <span class="arrow">→</span></a>
+  </div>
+</section>
+
+</body>
+</html>

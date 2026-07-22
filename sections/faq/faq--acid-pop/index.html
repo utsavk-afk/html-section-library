@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!-- ===== FAQ — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EF;
+  --muted:#8E8E86;
+  --line:#26261F;
+  --accent:#C7F13B;      /* lime */
+  --accent-2:#FF4D9D;    /* magenta */
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+}
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);}
+
+.faq{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:110px 80px 120px;
+  overflow:hidden;
+}
+
+/* asymmetric two-column: heavy left rail, accordion right */
+.faq__grid{
+  display:grid;
+  grid-template-columns:0.78fr 1.22fr;
+  gap:76px;
+  align-items:start;
+}
+
+/* ---- LEFT RAIL (focal point) ---- */
+.faq__rail{position:sticky;top:110px;}
+
+.faq__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--accent);
+  padding:7px 14px 7px 12px;
+  border-radius:100px;
+  margin-bottom:26px;
+}
+.faq__tag span{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent-2);
+  display:inline-block;
+}
+
+.faq__title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(58px,7vw,104px);
+  line-height:0.86;
+  letter-spacing:-0.035em;
+  text-transform:uppercase;
+}
+.faq__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+.faq__title .amp{
+  display:inline-block;
+  color:var(--accent-2);
+  transform:translateY(4px);
+}
+
+.faq__sub{
+  margin-top:28px;
+  max-width:340px;
+  font-size:16px;
+  line-height:1.55;
+  color:var(--muted);
+  font-weight:500;
+}
+
+.faq__cta{
+  margin-top:34px;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:-0.01em;
+  color:var(--bg);
+  background:var(--accent-2);
+  border:none;
+  padding:16px 26px;
+  border-radius:100px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .12s ease, background .12s ease;
+}
+.faq__cta:hover{transform:translate(-2px,-2px);background:#ff62a9;}
+.faq__cta svg{width:16px;height:16px;}
+
+/* ---- RIGHT: accordion ---- */
+.faq__list{border-top:2px solid var(--line);}
+
+.faq__item{
+  border-bottom:2px solid var(--line);
+}
+.faq__item[open]{
+  background:linear-gradient(90deg,rgba(199,241,59,.05),transparent 60%);
+}
+
+.faq__q{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:baseline;
+  gap:22px;
+  padding:30px 8px 30px 0;
+  outline:none;
+}
+.faq__q::-webkit-details-marker{display:none;}
+
+.faq__num{
+  flex:0 0 auto;
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:0.04em;
+  width:34px;
+  padding-top:6px;
+}
+.faq__item[open] .faq__num{color:var(--accent);}
+
+.faq__qtext{
+  flex:1;
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:clamp(20px,2vw,27px);
+  line-height:1.12;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  transition:color .12s ease;
+}
+.faq__item:hover .faq__qtext{color:var(--accent);}
+.faq__item[open] .faq__qtext{color:var(--ink);}
+
+.faq__mark{
+  flex:0 0 auto;
+  position:relative;
+  width:34px;height:34px;
+  border-radius:50%;
+  border:2px solid var(--line);
+  transition:border-color .15s ease, background .15s ease;
+  align-self:flex-start;
+  margin-top:2px;
+}
+.faq__mark::before,
+.faq__mark::after{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  width:13px;height:2.5px;
+  background:var(--ink);
+  transform:translate(-50%,-50%);
+  transition:transform .2s ease, background .15s ease;
+  border-radius:2px;
+}
+.faq__mark::after{transform:translate(-50%,-50%) rotate(90deg);}
+.faq__item[open] .faq__mark{
+  background:var(--accent);
+  border-color:var(--accent);
+}
+.faq__item[open] .faq__mark::before,
+.faq__item[open] .faq__mark::after{background:var(--bg);}
+.faq__item[open] .faq__mark::after{transform:translate(-50%,-50%) rotate(0deg);}
+
+.faq__a{
+  padding:0 60px 32px 56px;
+  max-width:640px;
+  font-size:16px;
+  line-height:1.62;
+  color:var(--muted);
+  font-weight:500;
+}
+.faq__a strong{color:var(--ink);font-weight:700;}
+.faq__a code{
+  font-family:'Archivo',monospace;
+  background:#16160F;
+  color:var(--accent);
+  padding:2px 7px;
+  border-radius:5px;
+  font-size:14px;
+  font-weight:600;
+}
+
+/* decorative oversized watermark bottom-left */
+.faq__watermark{
+  position:absolute;
+  bottom:-42px;
+  left:-14px;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:210px;
+  line-height:1;
+  letter-spacing:-0.05em;
+  color:#141410;
+  z-index:0;
+  pointer-events:none;
+  user-select:none;
+}
+.faq__grid{position:relative;z-index:1;}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .faq{padding:64px 22px 80px;}
+  .faq__grid{grid-template-columns:1fr;gap:40px;}
+  .faq__rail{position:static;top:auto;}
+  .faq__title{font-size:clamp(52px,17vw,72px);}
+  .faq__sub{max-width:none;}
+  .faq__q{gap:14px;padding:24px 4px;}
+  .faq__num{width:24px;font-size:11px;}
+  .faq__qtext{font-size:19px;}
+  .faq__mark{width:30px;height:30px;}
+  .faq__a{padding:0 8px 26px 38px;}
+  .faq__watermark{font-size:110px;bottom:-18px;}
+}
+</style>
+</head>
+<body>
+
+<section class="faq" aria-label="Frequently asked questions">
+  <div class="faq__watermark" aria-hidden="true">FAQ</div>
+
+  <div class="faq__grid">
+
+    <!-- LEFT RAIL -->
+    <div class="faq__rail">
+      <div class="faq__tag"><span></span>Before you paste</div>
+      <h2 class="faq__title">Ask<br>us <em>any-</em><br>thing<span class="amp">.</span></h2>
+      <p class="faq__sub">Everything about dropping these blocks into Claude Code — licensing, edits, frameworks, and the stuff nobody tells you upfront.</p>
+      <a class="faq__cta" href="#contact">
+        Still stuck? Ping us
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <!-- ACCORDION -->
+    <div class="faq__list">
+
+      <details class="faq__item" open>
+        <summary class="faq__q">
+          <span class="faq__num">01</span>
+          <span class="faq__qtext">Is this thing actually free, or is there a catch on line 40?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          Fully free, no signup, no watermark, no phone-home script. Every section is a single self-contained <code>index.html</code> — <strong>copy it, paste it, ship it.</strong> Use it for client work, resell the finished page, whatever. We only ask you don't repackage the raw library and sell it as your own.
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">02</span>
+          <span class="faq__qtext">Do I need a build step, npm, or a framework to run these?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          Zero build. No Tailwind config, no Vite, no <code>node_modules</code>. Open the file in a browser and it works. The only external dependency is a Google Fonts <code>&lt;link&gt;</code>, and you can swap that for a local font in about ten seconds if you're going offline-first.
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">03</span>
+          <span class="faq__qtext">How do I recolor a section to match my own brand?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          Every file leads with a <code>:root{}</code> token block — <code>--bg</code>, <code>--ink</code>, <code>--accent</code>, and friends. Change those seven variables and the whole section repaints. Tell Claude Code <strong>"swap the tokens to my palette"</strong> and paste your hex codes; it'll rewrite the block cleanly without touching the markup.
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">04</span>
+          <span class="faq__qtext">Will these break on mobile or in older browsers?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          Each section ships with a real <code>@media(max-width:640px)</code> block — not a squished afterthought. Layouts are grid and flexbox, so anything from the last four years of Chrome, Safari, Firefox, and Edge renders it correctly. The accordion here uses native <code>&lt;details&gt;</code>, so it even works with JavaScript disabled.
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">05</span>
+          <span class="faq__qtext">Can I combine multiple sections into one full page?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          Yes — that's the whole point. Grab a hero, a features block, this FAQ, and a footer, then hand them to Claude Code with <strong>"merge these into one page and dedupe the <code>:root</code> tokens."</strong> Because they share the same token naming convention, they stitch together without a fight.
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">06</span>
+          <span class="faq__qtext">What's the catch with the fonts and licensing?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          Everything ships on Google Fonts (Archivo here) under the SIL Open Font License — free for commercial use, no attribution required. The section code itself is MIT-style: <strong>keep it, fork it, sell the page you build with it.</strong> If a section ever references an icon or shape, it's an inline SVG or pure CSS, so there's nothing extra to license.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

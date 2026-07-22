@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<!-- ===== COMPARISON-TABLE — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparison Table — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#26262C;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+
+  --panel:#17171C;
+  --panel-2:#1B1B21;
+  --accent-dim:rgba(245,158,66,0.10);
+  --accent-line:rgba(245,158,66,0.32);
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.cmp{
+  width:100%;
+  padding:112px 40px 120px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* faint off-center vertical rule for asymmetric texture */
+.cmp::before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;
+  left:38%;
+  width:1px;
+  background:linear-gradient(180deg,transparent,var(--line) 20%,var(--line) 80%,transparent);
+  opacity:.5;
+  pointer-events:none;
+}
+
+.cmp__inner{
+  max-width:1120px;
+  margin:0 auto;
+  position:relative;
+}
+
+/* ---- header: left-weighted, not centered ---- */
+.cmp__head{
+  max-width:600px;
+  margin-bottom:56px;
+}
+.cmp__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:22px;
+}
+.cmp__eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-dim);
+}
+.cmp__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:44px;
+  line-height:1.08;
+  letter-spacing:-0.01em;
+}
+.cmp__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.cmp__sub{
+  margin-top:18px;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:520px;
+}
+
+/* ---- table ---- */
+.tbl{
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--panel);
+}
+
+.row{
+  display:grid;
+  grid-template-columns:minmax(240px,1.6fr) 1fr 1fr 1fr;
+  align-items:stretch;
+}
+.row + .row{
+  border-top:1px solid var(--line);
+}
+
+/* header row */
+.row--head .cell{
+  padding:22px 26px 20px;
+}
+.row--head{
+  background:var(--panel-2);
+}
+.colname{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.colname .kind{
+  display:block;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:7px;
+}
+.col-them .colname{ color:var(--muted); }
+
+/* the highlighted column badge */
+.col-us .colname{
+  color:var(--ink);
+}
+.col-us .badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  background:var(--accent-dim);
+  border:1px solid var(--accent-line);
+  padding:4px 9px;
+  border-radius:100px;
+  margin-bottom:9px;
+}
+
+/* body cells */
+.cell{
+  padding:19px 26px;
+  display:flex;
+  align-items:center;
+  font-size:14.5px;
+}
+.cell.criteria{
+  color:var(--ink);
+  font-weight:500;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:3px;
+}
+.cell.criteria .note{
+  font-size:12.5px;
+  font-weight:400;
+  color:var(--muted);
+}
+.cell.mark{
+  justify-content:center;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.cell.mark.txt{
+  font-size:13.5px;
+  text-align:center;
+  line-height:1.35;
+}
+
+/* highlighted "us" column vertical treatment */
+.col-us{
+  position:relative;
+  background:linear-gradient(180deg,rgba(245,158,66,0.05),rgba(245,158,66,0.015));
+  box-shadow:inset 1px 0 0 var(--accent-line),inset -1px 0 0 var(--accent-line);
+}
+.col-us.cell{ color:var(--ink); font-weight:500; }
+.row--head .col-us{
+  background:linear-gradient(180deg,rgba(245,158,66,0.11),rgba(245,158,66,0.04));
+}
+
+/* icons */
+.ic{ width:22px;height:22px;display:block; }
+.ic-check circle{ fill:var(--accent-dim); }
+.ic-check path{ stroke:var(--accent); }
+.ic-dash line{ stroke:#3A3A42; }
+.ic-x line{ stroke:#4A4A52; }
+
+/* footer strip */
+.tbl__foot{
+  display:grid;
+  grid-template-columns:minmax(240px,1.6fr) 1fr 1fr 1fr;
+  border-top:1px solid var(--line);
+  background:var(--panel-2);
+}
+.tbl__foot .cell{ padding:24px 26px; }
+.foot-label{
+  font-size:12.5px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+}
+.foot-price{
+  justify-content:center;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:500;
+}
+.foot-price b{
+  color:var(--ink);
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:17px;
+}
+.col-us.foot-price b{ color:var(--accent); }
+.cta{
+  grid-column:1 / -1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:22px 26px;
+  border-top:1px solid var(--line);
+  background:var(--panel);
+  flex-wrap:wrap;
+}
+.cta p{
+  font-size:14px;
+  color:var(--muted);
+}
+.cta p b{ color:var(--ink);font-weight:600; }
+.cta a{
+  text-decoration:none;
+  background:var(--accent);
+  color:#1A1206;
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.01em;
+  padding:12px 22px;
+  border-radius:9px;
+  white-space:nowrap;
+  transition:transform .15s ease,background .15s ease;
+}
+.cta a:hover{ background:#F7AC5C;transform:translateY(-1px); }
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .cmp{ padding:64px 18px 72px; }
+  .cmp::before{ display:none; }
+  .cmp__title{ font-size:31px; }
+  .cmp__head{ margin-bottom:34px; }
+
+  .row{ grid-template-columns:1.3fr .9fr .9fr; }
+  /* drop the third competitor column on mobile */
+  .col-them-2{ display:none !important; }
+  .tbl__foot{ grid-template-columns:1.3fr .9fr .9fr; }
+
+  .cell{ padding:15px 12px;font-size:13px; }
+  .row--head .cell{ padding:16px 12px 14px; }
+  .colname .kind{ font-size:9.5px;letter-spacing:.1em; }
+  .colname{ font-size:11.5px; }
+  .col-us .badge{ font-size:8.5px;padding:3px 6px; }
+  .cell.criteria .note{ font-size:11px; }
+  .cell.mark.txt{ font-size:11px; }
+  .ic{ width:19px;height:19px; }
+  .cta{ padding:18px 14px; }
+  .foot-price b{ font-size:15px; }
+}
+</style>
+</head>
+<body>
+
+<section class="cmp" aria-label="Feature comparison">
+  <div class="cmp__inner">
+
+    <header class="cmp__head">
+      <span class="cmp__eyebrow"><span class="dot"></span>Side by side</span>
+      <h2 class="cmp__title">Every migration tool copies your data.<br><em>Only Keel keeps it consistent.</em></h2>
+      <p class="cmp__sub">We put the numbers next to the two tools teams usually compare us against. No asterisks, no "coming soon" checkmarks — just what ships in production today.</p>
+    </header>
+
+    <div class="tbl" role="table" aria-label="Keel versus alternatives">
+
+      <!-- header row -->
+      <div class="row row--head" role="row">
+        <div class="cell criteria" role="columnheader">
+          <span class="colname"><span class="kind">Capability</span>What you're actually paying for</span>
+        </div>
+        <div class="cell mark col-them" role="columnheader">
+          <span class="colname"><span class="kind">Option A</span>FluxSync</span>
+        </div>
+        <div class="cell mark col-us" role="columnheader">
+          <span class="colname"><span class="badge"><span class="dot" style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block"></span>Recommended</span>Keel</span>
+        </div>
+        <div class="cell mark col-them col-them-2" role="columnheader">
+          <span class="colname"><span class="kind">Option B</span>Migrately</span>
+        </div>
+      </div>
+
+      <!-- rows -->
+      <div class="row" role="row">
+        <div class="cell criteria">Zero-downtime cutover<span class="note">Switch traffic without a maintenance window</span></div>
+        <div class="cell mark col-them">
+          <svg class="ic ic-dash" viewBox="0 0 24 24" fill="none"><line x1="7" y1="12" x2="17" y2="12" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="cell mark col-us">
+          <svg class="ic ic-check" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell mark col-them col-them-2">
+          <svg class="ic ic-x" viewBox="0 0 24 24" fill="none"><line x1="8" y1="8" x2="16" y2="16" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="8" x2="8" y2="16" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <div class="row" role="row">
+        <div class="cell criteria">Row-level consistency checks<span class="note">Verifies every row after copy, not a sample</span></div>
+        <div class="cell mark col-them txt">Sampled 1%</div>
+        <div class="cell mark col-us">
+          <svg class="ic ic-check" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell mark col-them col-them-2">
+          <svg class="ic ic-dash" viewBox="0 0 24 24" fill="none"><line x1="7" y1="12" x2="17" y2="12" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <div class="row" role="row">
+        <div class="cell criteria">Rollback in one command<span class="note">Revert a bad cutover in under 90 seconds</span></div>
+        <div class="cell mark col-them">
+          <svg class="ic ic-x" viewBox="0 0 24 24" fill="none"><line x1="8" y1="8" x2="16" y2="16" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="8" x2="8" y2="16" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="cell mark col-us">
+          <svg class="ic ic-check" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell mark col-them col-them-2 txt">Manual only</div>
+      </div>
+
+      <div class="row" role="row">
+        <div class="cell criteria">Supported source engines<span class="note">Postgres, MySQL, Mongo, DynamoDB &amp; more</span></div>
+        <div class="cell mark col-them txt">3 engines</div>
+        <div class="cell mark col-us txt" style="font-weight:600">11 engines</div>
+        <div class="cell mark col-them col-them-2 txt">6 engines</div>
+      </div>
+
+      <div class="row" role="row">
+        <div class="cell criteria">Human on-call during cutover<span class="note">A named engineer, not a ticket queue</span></div>
+        <div class="cell mark col-them txt">Add-on</div>
+        <div class="cell mark col-us">
+          <svg class="ic ic-check" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell mark col-them col-them-2">
+          <svg class="ic ic-dash" viewBox="0 0 24 24" fill="none"><line x1="7" y1="12" x2="17" y2="12" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <!-- footer: pricing -->
+      <div class="tbl__foot" role="row">
+        <div class="cell foot-label">Starts at, per migration</div>
+        <div class="cell foot-price col-them"><span><b>$4,900</b>/mo</span></div>
+        <div class="cell foot-price col-us"><span><b>$3,200</b> flat</span></div>
+        <div class="cell foot-price col-them col-them-2"><span><b>$2,400</b>+usage</span></div>
+      </div>
+
+      <div class="cta">
+        <p><b>Migrating this quarter?</b> Send us your schema and we'll return a dry-run report in 48 hours.</p>
+        <a href="#book">Book a dry run</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

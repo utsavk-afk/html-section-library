@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- ===== BIOGRAPHY — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biography — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --accent:#C0492B;
+  --line:#e6e4e1;
+  --paper:#ffffff;
+  --face:#f4f2ef;
+  --maxw:1120px;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+
+.bio{
+  width:100%;
+  padding:104px 40px 112px;
+}
+.bio__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+.bio__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:44px;
+}
+.bio__kicker::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+
+.bio__grid{
+  display:grid;
+  grid-template-columns:236px 1fr;
+  gap:64px;
+  align-items:start;
+}
+
+/* ---- portrait column ---- */
+.bio__aside{
+  position:relative;
+}
+.bio__portrait{
+  position:relative;
+  width:200px;
+  height:236px;
+  border-radius:3px;
+  background:var(--face);
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+/* thin accent rule tucked behind the portrait, asymmetric */
+.bio__portrait::after{
+  content:"";
+  position:absolute;
+  left:-14px;
+  bottom:-14px;
+  width:64px;
+  height:64px;
+  border-left:2px solid var(--accent);
+  border-bottom:2px solid var(--accent);
+  z-index:-1;
+}
+.bio__svg{display:block;width:100%;height:100%;}
+
+.bio__meta{
+  margin-top:26px;
+  font-size:13px;
+  color:var(--muted);
+}
+.bio__meta dt{
+  font-weight:600;
+  color:var(--ink);
+  letter-spacing:.02em;
+}
+.bio__meta dd{
+  margin:2px 0 16px;
+}
+.bio__meta dd:last-child{margin-bottom:0;}
+
+/* ---- text column ---- */
+.bio__name{
+  font-size:44px;
+  line-height:1.06;
+  font-weight:700;
+  letter-spacing:-.02em;
+}
+.bio__role{
+  margin-top:10px;
+  font-size:16px;
+  font-weight:500;
+  color:var(--ink);
+}
+.bio__role span{color:var(--accent);}
+
+.bio__lead{
+  margin-top:28px;
+  font-size:19px;
+  line-height:1.5;
+  font-weight:500;
+  letter-spacing:-.01em;
+  max-width:56ch;
+}
+.bio__body{
+  margin-top:20px;
+  font-size:15.5px;
+  color:#3a3a3a;
+  max-width:60ch;
+}
+.bio__body p+p{margin-top:16px;}
+.bio__body em{
+  color:var(--accent);
+  font-style:normal;
+  font-weight:600;
+}
+
+.bio__rule{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:34px 0 26px;
+  max-width:60ch;
+}
+
+.bio__links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 26px;
+  align-items:center;
+}
+.bio__link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  padding-bottom:2px;
+  border-bottom:1px solid transparent;
+  transition:border-color .18s ease,color .18s ease;
+}
+.bio__link svg{width:15px;height:15px;stroke:var(--muted);transition:stroke .18s ease;}
+.bio__link:hover{color:var(--accent);border-bottom-color:var(--accent);}
+.bio__link:hover svg{stroke:var(--accent);}
+.bio__handle{
+  font-size:13px;
+  color:var(--muted);
+  margin-left:auto;
+}
+
+@media(max-width:640px){
+  .bio{padding:64px 22px 76px;}
+  .bio__kicker{margin-bottom:30px;}
+  .bio__grid{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+  .bio__portrait{width:150px;height:178px;}
+  .bio__portrait::after{width:46px;height:46px;left:-10px;bottom:-10px;}
+  .bio__name{font-size:34px;}
+  .bio__lead{font-size:17px;}
+  .bio__handle{margin-left:0;flex-basis:100%;}
+}
+</style>
+</head>
+<body>
+<section class="bio">
+  <div class="bio__inner">
+    <p class="bio__kicker">Founder profile</p>
+
+    <div class="bio__grid">
+      <aside class="bio__aside">
+        <div class="bio__portrait">
+          <!-- flat monochrome CSS/SVG portrait — no stock face -->
+          <svg class="bio__svg" viewBox="0 0 200 236" role="img" aria-label="Portrait of Marème Diallo">
+            <rect width="200" height="236" fill="#f4f2ef"/>
+            <g fill="none" stroke="#141414" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <!-- shoulders -->
+              <path d="M28 236 C34 190 62 172 100 172 C138 172 166 190 172 236"/>
+              <!-- neck -->
+              <path d="M86 168 L86 150 M114 168 L114 150"/>
+              <!-- head -->
+              <path d="M64 108 C64 138 80 156 100 156 C120 156 136 138 136 108"/>
+              <path d="M64 108 C60 74 74 50 100 50 C126 50 140 74 136 108"/>
+              <!-- hair sweep -->
+              <path d="M62 100 C56 66 76 44 100 44 C126 44 144 68 138 104"/>
+              <path d="M138 104 C150 96 150 118 140 124"/>
+              <!-- brows / eyes -->
+              <path d="M78 100 C82 96 90 96 94 100"/>
+              <path d="M106 100 C110 96 118 96 122 100"/>
+              <!-- nose + mouth -->
+              <path d="M100 106 L100 120 M94 124 C97 127 103 127 106 124"/>
+              <path d="M90 138 C96 142 104 142 110 138"/>
+            </g>
+            <!-- accent collar detail -->
+            <path d="M100 172 L88 206 L100 218 L112 206 Z" fill="#C0492B"/>
+          </svg>
+        </div>
+
+        <dl class="bio__meta">
+          <dt>Based in</dt>
+          <dd>Lisbon, Portugal</dd>
+          <dt>Building since</dt>
+          <dd>2016 — three products, one exit</dd>
+          <dt>Off the clock</dt>
+          <dd>Distance running &amp; letterpress</dd>
+        </dl>
+      </aside>
+
+      <div class="bio__main">
+        <h2 class="bio__name">Marème Diallo</h2>
+        <p class="bio__role">Founder &amp; CEO, <span>Rowan Analytics</span></p>
+
+        <p class="bio__lead">
+          I build tools for the people who read the dashboards nobody else opens — the ops leads, the on-call engineers, the finance teams closing the books at 11pm.
+        </p>
+
+        <div class="bio__body">
+          <p>
+            Before Rowan, I spent six years on data platform teams at Wise and a mid-stage logistics startup, where I learned that most reporting tools fail in the same quiet way: they answer the question you already knew to ask, and go silent on the one that would have saved you. I started Rowan in 2021 to close that gap — a monitoring layer that watches your metrics the way a good analyst would, and taps you on the shoulder <em>before</em> the number in the board deck goes red.
+          </p>
+          <p>
+            Today we're a remote team of fourteen across five time zones, profitable since our second year, and stubbornly bootstrapped. I still review every incident retro and answer support tickets on Fridays — it's the fastest way I know to stay honest about what we ship.
+          </p>
+        </div>
+
+        <hr class="bio__rule">
+
+        <div class="bio__links">
+          <a class="bio__link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 11v5M8 8v0M12 16v-5M12 16v-3a2 2 0 0 1 4 0v3"/></svg>
+            LinkedIn
+          </a>
+          <a class="bio__link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+            mareme@rowan.io
+          </a>
+          <a class="bio__link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 4v16M4 12h16"/><circle cx="12" cy="12" r="9"/></svg>
+            Writing &amp; talks
+          </a>
+          <span class="bio__handle">@maremebuilds</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

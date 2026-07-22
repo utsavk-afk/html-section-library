@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!-- ===== TEAM — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Crew — Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,900&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EE;
+  --muted:#8C8C86;
+  --line:#242422;
+  --accent:#C7F13B;      /* lime — primary */
+  --accent2:#FF4D9D;     /* magenta — secondary */
+  --serif:'Archivo Narrow', sans-serif;
+  --sans:'Archivo', sans-serif;
+}
+
+.crew{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:104px 64px 96px;
+  min-height:720px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* thin lime rule top-left, off-center focal anchor */
+.crew::before{
+  content:"";
+  position:absolute;
+  top:0;left:64px;
+  width:220px;height:8px;
+  background:var(--accent);
+}
+
+.crew__wrap{max-width:1440px;margin:0 auto;}
+
+/* ---- header : asymmetric, headline left-heavy ---- */
+.crew__head{
+  display:grid;
+  grid-template-columns:1.35fr 0.65fr;
+  gap:48px;
+  align-items:end;
+  margin-bottom:64px;
+}
+.crew__eyebrow{
+  font-family:var(--serif);
+  font-weight:700;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  font-size:13px;
+  color:var(--accent2);
+  margin-bottom:22px;
+  display:inline-block;
+}
+.crew__title{
+  font-weight:900;
+  font-size:clamp(52px,7.4vw,116px);
+  line-height:.86;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+}
+.crew__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.crew__lead{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.5;
+  max-width:320px;
+  border-top:2px solid var(--line);
+  padding-top:20px;
+}
+.crew__lead b{color:var(--ink);font-weight:600;}
+
+/* ---- grid : lightly varied, not uniform ---- */
+.crew__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.card{
+  background:#111110;
+  border:2px solid var(--line);
+  border-radius:20px;
+  padding:26px 26px 24px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+/* first card is the loud focal one */
+.card--lead{
+  grid-row:span 2;
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#0A0A0A;
+  border-radius:28px;
+  justify-content:space-between;
+  padding:32px 30px 30px;
+}
+.card--pink{border-color:var(--accent2);border-radius:14px;}
+
+.card__top{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+/* CSS initial-avatar */
+.avatar{
+  width:64px;height:64px;
+  border-radius:16px;
+  display:grid;place-items:center;
+  font-weight:900;
+  font-size:26px;
+  letter-spacing:-.03em;
+  flex:none;
+}
+.avatar--lime{background:var(--accent);color:#0A0A0A;}
+.avatar--pink{background:var(--accent2);color:#0A0A0A;}
+.avatar--ink{background:var(--ink);color:#0A0A0A;}
+.card--lead .avatar{
+  width:88px;height:88px;border-radius:22px;
+  background:#0A0A0A;color:var(--accent);font-size:38px;
+}
+
+.card__id .n{
+  font-weight:800;
+  font-size:22px;
+  letter-spacing:-.02em;
+  line-height:1.05;
+}
+.card--lead .card__id .n{font-size:34px;}
+.card__id .r{
+  font-family:var(--serif);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:11.5px;
+  color:var(--muted);
+  margin-top:6px;
+}
+.card--lead .card__id .r{color:#0A0A0A;opacity:.72;}
+.card--pink .card__id .r{color:var(--accent2);}
+
+.card__bio{
+  font-size:14.5px;
+  line-height:1.5;
+  color:var(--muted);
+}
+.card--lead .card__bio{
+  color:#0A0A0A;
+  font-size:19px;
+  line-height:1.35;
+  font-weight:600;
+}
+
+.card__tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;}
+.tag{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:6px 12px;
+  border-radius:100px;
+  border:1.5px solid var(--line);
+  color:var(--ink);
+}
+.card--lead .tag{border-color:#0A0A0A;color:#0A0A0A;}
+
+/* big index number, offset */
+.card__num{
+  position:absolute;
+  top:22px;right:24px;
+  font-weight:900;
+  font-size:15px;
+  color:var(--line);
+  letter-spacing:-.02em;
+}
+.card--lead .card__num{color:#0A0A0A;opacity:.4;}
+
+/* chunky pill CTA inside lead card */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#0A0A0A;
+  color:var(--accent);
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:-.01em;
+  text-decoration:none;
+  padding:15px 26px;
+  border-radius:100px;
+  width:fit-content;
+  cursor:pointer;
+}
+.pill svg{display:block;}
+
+/* footer CTA row */
+.crew__foot{
+  margin-top:56px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+  border-top:2px solid var(--line);
+  padding-top:36px;
+}
+.crew__foot p{
+  font-weight:800;
+  font-size:clamp(20px,2.2vw,30px);
+  letter-spacing:-.02em;
+  max-width:560px;
+}
+.crew__foot p span{color:var(--accent2);}
+.pill--pink{
+  background:var(--accent2);
+  color:#0A0A0A;
+  margin-left:auto;
+}
+
+@media(max-width:640px){
+  .crew{padding:64px 22px 64px;}
+  .crew::before{left:22px;width:140px;height:6px;}
+  .crew__head{
+    grid-template-columns:1fr;
+    gap:26px;
+    margin-bottom:40px;
+  }
+  .crew__lead{max-width:100%;}
+  .crew__grid{grid-template-columns:1fr;gap:16px;}
+  .card--lead{grid-row:auto;}
+  .crew__foot{flex-direction:column;align-items:flex-start;gap:20px;}
+  .pill--pink{margin-left:0;}
+}
+</style>
+</head>
+<body>
+
+<section class="crew">
+  <div class="crew__wrap">
+
+    <header class="crew__head">
+      <div>
+        <span class="crew__eyebrow">Who ships the work</span>
+        <h2 class="crew__title">Meet the<br><em>whole</em> crew</h2>
+      </div>
+      <p class="crew__lead">
+        Nine people, one Slack channel, zero handoff meetings. The same
+        <b>humans who pitch you</b> are the ones writing the code.
+      </p>
+    </header>
+
+    <div class="crew__grid">
+
+      <!-- FOCAL lime card -->
+      <article class="card card--lead">
+        <span class="card__num">01</span>
+        <div class="card__top">
+          <div class="avatar">MR</div>
+          <div class="card__id">
+            <div class="n">Mara Reyes</div>
+            <div class="r">Founder / Principal</div>
+          </div>
+        </div>
+        <p class="card__bio">Started the shop in a garage in 2016. Still reviews every proposal before it leaves the building.</p>
+        <a class="pill" href="#">
+          Book Mara
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l5 4-5 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+
+      <article class="card card--pink">
+        <span class="card__num">02</span>
+        <div class="card__top">
+          <div class="avatar avatar--pink">DK</div>
+          <div class="card__id">
+            <div class="n">Devon Kang</div>
+            <div class="r">Lead Engineer</div>
+          </div>
+        </div>
+        <p class="card__bio">Turns napkin sketches into shipped infrastructure. Owns the deploy button.</p>
+        <div class="card__tags"><span class="tag">Rust</span><span class="tag">Infra</span></div>
+      </article>
+
+      <article class="card">
+        <span class="card__num">03</span>
+        <div class="card__top">
+          <div class="avatar avatar--lime">SO</div>
+          <div class="card__id">
+            <div class="n">Simi Okafor</div>
+            <div class="r">Design Director</div>
+          </div>
+        </div>
+        <p class="card__bio">Draws the line between loud and legible. Keeps our type tight.</p>
+        <div class="card__tags"><span class="tag">Brand</span><span class="tag">Motion</span></div>
+      </article>
+
+      <article class="card">
+        <span class="card__num">04</span>
+        <div class="card__top">
+          <div class="avatar avatar--ink">TL</div>
+          <div class="card__id">
+            <div class="n">Theo Lindqvist</div>
+            <div class="r">Product Strategy</div>
+          </div>
+        </div>
+        <p class="card__bio">Asks the annoying "why" three times before anyone opens a Figma file.</p>
+        <div class="card__tags"><span class="tag">Research</span><span class="tag">Roadmaps</span></div>
+      </article>
+
+      <article class="card card--pink">
+        <span class="card__num">05</span>
+        <div class="card__top">
+          <div class="avatar avatar--pink">JB</div>
+          <div class="card__id">
+            <div class="n">Juno Barros</div>
+            <div class="r">Client Partner</div>
+          </div>
+        </div>
+        <p class="card__bio">Your one number to call. Answers on the first ring, usually.</p>
+        <div class="card__tags"><span class="tag">Accounts</span><span class="tag">Ops</span></div>
+      </article>
+
+    </div>
+
+    <div class="crew__foot">
+      <p>Ten seats left for Q3 builds. <span>We staff small, on purpose.</span></p>
+      <a class="pill pill--pink" href="#">
+        See open roles
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l5 4-5 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

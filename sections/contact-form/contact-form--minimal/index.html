@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- ===== CONTACT-FORM — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e1;
+  --accent:#c0492b;
+  --serif:'Inter',sans-serif;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+}
+
+.contact{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 48px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.contact__wrap{
+  max-width:1120px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:0.82fr 1.18fr;
+  gap:96px;
+}
+
+/* ---- Left column : info ---- */
+.contact__aside{
+  padding-top:6px;
+}
+.contact__eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:26px;
+}
+.contact__title{
+  font-size:38px;
+  line-height:1.12;
+  font-weight:600;
+  letter-spacing:-.02em;
+  max-width:11ch;
+}
+.contact__lede{
+  margin-top:20px;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:34ch;
+}
+
+.contact__details{
+  margin-top:52px;
+  border-top:1px solid var(--line);
+}
+.contact__row{
+  display:block;
+  padding:20px 0;
+  border-bottom:1px solid var(--line);
+  text-decoration:none;
+  color:inherit;
+}
+.contact__label{
+  display:block;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:7px;
+}
+.contact__value{
+  display:block;
+  font-size:16px;
+  font-weight:500;
+  color:var(--ink);
+}
+a.contact__row:hover .contact__value{
+  color:var(--accent);
+}
+.contact__value small{
+  display:block;
+  font-weight:400;
+  font-size:14px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+/* ---- Right column : form ---- */
+.contact__form{
+  display:grid;
+  gap:30px;
+}
+.contact__grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+.field{
+  display:flex;
+  flex-direction:column;
+}
+.field label{
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  margin-bottom:10px;
+}
+.field label span{
+  color:var(--accent);
+}
+.field input,
+.field textarea{
+  font-family:inherit;
+  font-size:15px;
+  color:var(--ink);
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--line);
+  padding:10px 2px;
+  transition:border-color .18s ease;
+}
+.field textarea{
+  resize:vertical;
+  min-height:104px;
+  line-height:1.5;
+}
+.field input::placeholder,
+.field textarea::placeholder{
+  color:#b8b5b1;
+}
+.field input:focus,
+.field textarea:focus{
+  outline:none;
+  border-bottom-color:var(--ink);
+}
+
+.contact__actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-top:6px;
+}
+.contact__submit{
+  font-family:inherit;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:#fff;
+  background:var(--accent);
+  border:none;
+  padding:15px 32px;
+  border-radius:2px;
+  cursor:pointer;
+  transition:background .18s ease;
+}
+.contact__submit:hover{
+  background:#a53d22;
+}
+.contact__note{
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  max-width:26ch;
+}
+
+@media(max-width:640px){
+  .contact{padding:64px 22px;}
+  .contact__wrap{
+    grid-template-columns:1fr;
+    gap:52px;
+  }
+  .contact__title{font-size:30px;max-width:none;}
+  .contact__grid2{grid-template-columns:1fr;gap:30px;}
+  .contact__details{margin-top:40px;}
+  .contact__actions{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+  .contact__submit{width:100%;}
+  .contact__note{max-width:none;}
+}
+</style>
+</head>
+<body>
+
+<section class="contact">
+  <div class="contact__wrap">
+
+    <aside class="contact__aside">
+      <p class="contact__eyebrow">Contact</p>
+      <h2 class="contact__title">Tell us about the project.</h2>
+      <p class="contact__lede">We read every message and reply within one business day — usually the same afternoon.</p>
+
+      <div class="contact__details">
+        <a class="contact__row" href="mailto:studio@northbound.co">
+          <span class="contact__label">Email</span>
+          <span class="contact__value">studio@northbound.co</span>
+        </a>
+        <a class="contact__row" href="tel:+15037749210">
+          <span class="contact__label">Phone</span>
+          <span class="contact__value">+1 (503) 774-9210
+            <small>Mon–Fri, 9am–5pm PT</small>
+          </span>
+        </a>
+        <div class="contact__row">
+          <span class="contact__label">Studio</span>
+          <span class="contact__value">1140 SE Water Ave, Suite 208
+            <small>Portland, Oregon 97214</small>
+          </span>
+        </div>
+      </div>
+    </aside>
+
+    <form class="contact__form" action="#" method="post" novalidate>
+      <div class="contact__grid2">
+        <div class="field">
+          <label for="cf-name">Full name <span>*</span></label>
+          <input id="cf-name" name="name" type="text" placeholder="Dana Whitfield" required>
+        </div>
+        <div class="field">
+          <label for="cf-email">Email address <span>*</span></label>
+          <input id="cf-email" name="email" type="email" placeholder="dana@company.com" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="cf-company">Company</label>
+        <input id="cf-company" name="company" type="text" placeholder="Where you work (optional)">
+      </div>
+
+      <div class="field">
+        <label for="cf-message">What can we help with? <span>*</span></label>
+        <textarea id="cf-message" name="message" placeholder="A few sentences on scope, timeline, and budget range." required></textarea>
+      </div>
+
+      <div class="contact__actions">
+        <button class="contact__submit" type="submit">Send message</button>
+        <p class="contact__note">By sending, you agree to be contacted about your enquiry. No newsletters.</p>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+</body>
+</html>

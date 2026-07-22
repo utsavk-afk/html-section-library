@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Slider — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+/* ===== TESTIMONIAL-SLIDER — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-2:#141414;
+  --paper:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --white:#FFFFFF;
+  --muted:#8A8A82;
+  --line:rgba(255,255,255,0.12);
+  --pill-radius:999px;
+  --font:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+body{background:var(--ink);font-family:var(--font);color:var(--white);-webkit-font-smoothing:antialiased;}
+
+.ts{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:76px 64px 72px;
+  background:var(--ink);
+  overflow:hidden;
+}
+
+/* huge ghost quote mark, top-left focal anchor */
+.ts__mark{
+  position:absolute;
+  top:-58px;
+  left:36px;
+  font-size:340px;
+  line-height:1;
+  font-weight:900;
+  color:var(--ink-2);
+  z-index:0;
+  pointer-events:none;
+  user-select:none;
+}
+
+/* header row */
+.ts__head{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:44px;
+}
+.ts__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--lime);
+  color:var(--ink);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  padding:9px 18px;
+  border-radius:var(--pill-radius);
+}
+.ts__eyebrow span{
+  width:8px;height:8px;border-radius:50%;background:var(--magenta);
+}
+.ts__count{
+  font-weight:900;
+  font-size:15px;
+  color:var(--muted);
+  letter-spacing:0.04em;
+}
+.ts__count b{color:var(--white);}
+
+/* main grid: featured quote + peek */
+.ts__grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:40px;
+  align-items:stretch;
+}
+
+/* featured card */
+.ts__featured{
+  min-width:0;
+}
+.ts__stars{
+  display:flex;
+  gap:5px;
+  margin-bottom:26px;
+}
+.ts__stars svg{width:22px;height:22px;display:block;}
+
+.ts__quote{
+  font-weight:800;
+  font-size:clamp(30px,3.6vw,52px);
+  line-height:1.06;
+  letter-spacing:-0.02em;
+  margin-bottom:34px;
+  max-width:820px;
+}
+.ts__quote em{
+  font-style:normal;
+  color:var(--lime);
+}
+.ts__quote mark{
+  background:var(--magenta);
+  color:var(--ink);
+  padding:0 6px;
+  border-radius:4px;
+}
+
+/* attribution */
+.ts__attr{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.ts__avatar{
+  width:56px;height:56px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-weight:900;
+  font-size:20px;
+  color:var(--ink);
+  background:var(--lime);
+  flex-shrink:0;
+  border:2px solid var(--ink);
+  box-shadow:0 0 0 2px var(--lime);
+}
+.ts__who{line-height:1.3;}
+.ts__name{font-weight:800;font-size:18px;}
+.ts__role{font-weight:600;font-size:14px;color:var(--muted);}
+.ts__role b{color:var(--magenta);font-weight:800;}
+
+/* peek card — the next testimonial half-shown */
+.ts__peek{
+  position:relative;
+  background:var(--ink-2);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px 26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  margin-right:-64px;
+  min-width:0;
+  overflow:hidden;
+}
+.ts__peek::after{
+  content:"";
+  position:absolute;top:0;right:0;bottom:0;
+  width:120px;
+  background:linear-gradient(90deg,rgba(20,20,20,0) 0%,var(--ink) 92%);
+  pointer-events:none;
+}
+.ts__peekLabel{
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--lime);
+  margin-bottom:16px;
+}
+.ts__peekQuote{
+  font-weight:700;
+  font-size:18px;
+  line-height:1.25;
+  color:#CFCFC7;
+  letter-spacing:-0.01em;
+}
+.ts__peekAttr{
+  display:flex;align-items:center;gap:12px;margin-top:22px;
+}
+.ts__peekAvatar{
+  width:40px;height:40px;border-radius:50%;
+  display:grid;place-items:center;
+  font-weight:900;font-size:15px;color:var(--white);
+  background:var(--magenta);flex-shrink:0;
+}
+.ts__peekName{font-weight:800;font-size:14px;}
+.ts__peekRole{font-weight:600;font-size:12px;color:var(--muted);}
+
+/* controls row: arrows + dots */
+.ts__controls{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:26px;
+  margin-top:52px;
+}
+.ts__arrows{display:flex;gap:12px;}
+.ts__arrow{
+  width:58px;height:58px;
+  border-radius:var(--pill-radius);
+  border:none;
+  cursor:pointer;
+  display:grid;place-items:center;
+  font-family:var(--font);
+  transition:transform .12s ease;
+}
+.ts__arrow svg{width:22px;height:22px;}
+.ts__arrow--prev{background:var(--ink-2);border:1.5px solid var(--line);}
+.ts__arrow--prev svg{stroke:var(--white);}
+.ts__arrow--next{background:var(--lime);}
+.ts__arrow--next svg{stroke:var(--ink);}
+.ts__arrow:hover{transform:translateY(-2px);}
+.ts__arrow--next:hover{background:var(--magenta);}
+
+.ts__dots{display:flex;align-items:center;gap:10px;}
+.ts__dot{
+  width:11px;height:11px;border-radius:50%;
+  background:#2E2E2E;border:none;padding:0;cursor:pointer;
+}
+.ts__dot--active{
+  width:34px;border-radius:var(--pill-radius);background:var(--magenta);
+}
+
+.ts__label{
+  margin-left:auto;
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.ts__label b{color:var(--lime);}
+
+@media(max-width:640px){
+  .ts{padding:48px 22px 52px;}
+  .ts__mark{font-size:200px;top:-24px;left:8px;}
+  .ts__head{margin-bottom:30px;flex-wrap:wrap;gap:14px;}
+  .ts__grid{grid-template-columns:1fr;gap:24px;}
+  .ts__quote{font-size:27px;margin-bottom:26px;}
+  .ts__stars svg{width:19px;height:19px;}
+  .ts__peek{margin-right:0;}
+  .ts__peek::after{width:70px;}
+  .ts__controls{margin-top:36px;flex-wrap:wrap;gap:18px;}
+  .ts__label{margin-left:0;width:100%;order:3;}
+  .ts__arrow{width:52px;height:52px;}
+}
+</style>
+</head>
+<body>
+<section class="ts" aria-label="Customer testimonials">
+  <div class="ts__mark" aria-hidden="true">&ldquo;</div>
+
+  <div class="ts__head">
+    <span class="ts__eyebrow"><span></span>What teams actually say</span>
+    <div class="ts__count"><b>02</b> / 07 reviews</div>
+  </div>
+
+  <div class="ts__grid">
+    <!-- Featured quote -->
+    <div class="ts__featured">
+      <div class="ts__stars" aria-label="Rated 5 out of 5">
+        <svg viewBox="0 0 24 24" fill="#C7F13B" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#C7F13B" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#C7F13B" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#C7F13B" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#C7F13B" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+      </div>
+
+      <blockquote class="ts__quote">
+        We shipped our whole reporting rebuild in <em>nine days</em>, not the quarter we'd blocked off. The thing just <mark>got out of the way</mark> and let the team move.
+      </blockquote>
+
+      <figcaption class="ts__attr">
+        <div class="ts__avatar" aria-hidden="true">DM</div>
+        <div class="ts__who">
+          <div class="ts__name">Dara Mensah</div>
+          <div class="ts__role">Head of Analytics, <b>Northbeam Logistics</b></div>
+        </div>
+      </figcaption>
+    </div>
+
+    <!-- Peek of next testimonial -->
+    <aside class="ts__peek" aria-label="Next testimonial preview">
+      <div>
+        <div class="ts__peekLabel">Up next &rarr;</div>
+        <p class="ts__peekQuote">Support replied in eleven minutes at 2am. I stopped budgeting for a vendor babysitter after that first week and never looked&hellip;</p>
+      </div>
+      <div class="ts__peekAttr">
+        <div class="ts__peekAvatar" aria-hidden="true">RK</div>
+        <div>
+          <div class="ts__peekName">Rowan Keller</div>
+          <div class="ts__peekRole">CTO, Palette Studio</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Controls -->
+  <div class="ts__controls">
+    <div class="ts__arrows">
+      <button class="ts__arrow ts__arrow--prev" aria-label="Previous testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="ts__arrow ts__arrow--next" aria-label="Next testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <div class="ts__dots" role="tablist" aria-label="Testimonial navigation">
+      <button class="ts__dot" aria-label="Testimonial 1"></button>
+      <button class="ts__dot ts__dot--active" aria-label="Testimonial 2, current" aria-selected="true"></button>
+      <button class="ts__dot" aria-label="Testimonial 3"></button>
+      <button class="ts__dot" aria-label="Testimonial 4"></button>
+      <button class="ts__dot" aria-label="Testimonial 5"></button>
+      <button class="ts__dot" aria-label="Testimonial 6"></button>
+      <button class="ts__dot" aria-label="Testimonial 7"></button>
+    </div>
+
+    <div class="ts__label">4.9 avg &middot; <b>1,200+ teams</b></div>
+  </div>
+</section>
+</body>
+</html>

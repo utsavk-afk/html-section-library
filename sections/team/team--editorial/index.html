@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- ===== TEAM — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The People — Team Section</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6E6A60;
+  --line:#E2DED4;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.team{
+  max-width:1440px;
+  margin:0 auto;
+  padding:112px 80px 120px;
+}
+
+/* ---- header row: asymmetric, left-weighted ---- */
+.team__head{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:64px;
+  align-items:end;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--line);
+}
+.team__label{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:26px;
+}
+.team__label::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+.team__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,4.4vw,60px);
+  line-height:1.04;
+  letter-spacing:-0.015em;
+  max-width:15ch;
+}
+.team__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.team__intro{
+  font-size:16px;
+  line-height:1.7;
+  color:var(--muted);
+  max-width:38ch;
+  padding-bottom:6px;
+}
+.team__intro strong{
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* ---- grid ---- */
+.team__grid{
+  margin-top:64px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:56px 48px;
+}
+.member{
+  display:flex;
+  flex-direction:column;
+}
+/* second row members sit a touch lower for intentional rhythm */
+.member--drop{
+  padding-top:34px;
+}
+
+.member__avatar{
+  width:76px;
+  height:76px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--serif);
+  font-size:27px;
+  font-weight:500;
+  letter-spacing:.01em;
+  margin-bottom:22px;
+  border:1px solid var(--line);
+  position:relative;
+}
+.member__avatar span{position:relative;z-index:1;}
+/* varied avatar treatments — not a uniform set */
+.a1{background:#F3EEE4;color:#8A5A38;}
+.a2{background:var(--ink);color:#FCFCFA;border-color:var(--ink);}
+.a3{background:#EFE7DE;color:var(--accent);}
+.a4{background:#FCFCFA;color:var(--ink);border-width:1.5px;}
+.a5{background:#E7EAE4;color:#4A5A44;}
+.a6{background:var(--accent);color:#FCFCFA;border-color:var(--accent);}
+
+.member__name{
+  font-family:var(--serif);
+  font-size:23px;
+  font-weight:500;
+  letter-spacing:-0.01em;
+  line-height:1.15;
+}
+.member__role{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:9px;
+  font-weight:500;
+}
+.member__bio{
+  font-size:14.5px;
+  line-height:1.65;
+  color:var(--muted);
+  margin-top:16px;
+  max-width:30ch;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+.member__bio em{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink);
+}
+.member__handle{
+  margin-top:18px;
+  font-size:12px;
+  letter-spacing:.02em;
+  color:var(--ink);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+}
+.member__handle::after{
+  content:"↗";
+  color:var(--accent);
+  font-size:13px;
+}
+.member__handle:hover{color:var(--accent);}
+
+@media(max-width:640px){
+  .team{padding:64px 24px 76px;}
+  .team__head{
+    grid-template-columns:1fr;
+    gap:26px;
+    align-items:start;
+  }
+  .team__title{font-size:34px;}
+  .team__intro{max-width:none;padding-bottom:0;}
+  .team__grid{
+    margin-top:44px;
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .member--drop{padding-top:0;}
+  .member__bio,.member__intro{max-width:none;}
+}
+</style>
+</head>
+<body>
+
+<section class="team">
+  <div class="team__head">
+    <div>
+      <p class="team__label">Who you'll work with</p>
+      <h2 class="team__title">A small studio of <em>stubborn</em> generalists.</h2>
+    </div>
+    <p class="team__intro">
+      No account managers, no handoffs. The people who <strong>scope your project</strong>
+      are the same ones writing the code and answering your Friday-afternoon emails.
+    </p>
+  </div>
+
+  <div class="team__grid">
+
+    <article class="member">
+      <div class="member__avatar a1"><span>DR</span></div>
+      <h3 class="member__name">Dana Reyes</h3>
+      <p class="member__role">Founder · Principal Engineer</p>
+      <p class="member__bio">
+        Spent eight years untangling other people's databases before deciding
+        she'd rather build them <em>right the first time</em>.
+      </p>
+      <a class="member__handle" href="#">github.com/danareyes</a>
+    </article>
+
+    <article class="member member--drop">
+      <div class="member__avatar a2"><span>MK</span></div>
+      <h3 class="member__name">Marcus Ilyin</h3>
+      <p class="member__role">Design Lead</p>
+      <p class="member__bio">
+        Draws every interface by hand first. Believes a good layout should be
+        boring in exactly the <em>places that matter</em>.
+      </p>
+      <a class="member__handle" href="#">read.cv/marcus</a>
+    </article>
+
+    <article class="member">
+      <div class="member__avatar a3"><span>PO</span></div>
+      <h3 class="member__name">Priya Okonkwo</h3>
+      <p class="member__role">Infrastructure</p>
+      <p class="member__bio">
+        Keeps the servers boringly quiet. On call for outages that,
+        thanks to her, <em>almost never happen</em>.
+      </p>
+      <a class="member__handle" href="#">priya.dev</a>
+    </article>
+
+    <article class="member member--drop">
+      <div class="member__avatar a4"><span>TF</span></div>
+      <h3 class="member__name">Theo Fischer</h3>
+      <p class="member__role">Front-of-house · Copy</p>
+      <p class="member__bio">
+        Writes the words people actually read — error messages, empty states,
+        the fine print nobody else <em>wants to touch</em>.
+      </p>
+      <a class="member__handle" href="#">theo.writes.md</a>
+    </article>
+
+    <article class="member">
+      <div class="member__avatar a5"><span>SN</span></div>
+      <h3 class="member__name">Simone Navarro</h3>
+      <p class="member__role">Data · Machine Learning</p>
+      <p class="member__bio">
+        Turns messy spreadsheets into models that hold up. Deeply suspicious
+        of any metric that <em>only goes up</em>.
+      </p>
+      <a class="member__handle" href="#">simone.works</a>
+    </article>
+
+    <article class="member member--drop">
+      <div class="member__avatar a6"><span>JB</span></div>
+      <h3 class="member__name">Jonah Behr</h3>
+      <p class="member__role">Client Partner</p>
+      <p class="member__bio">
+        Your first call and your last one. Translates half-formed ideas into
+        scopes that <em>survive contact</em> with reality.
+      </p>
+      <a class="member__handle" href="#">calendly.com/jonah</a>
+    </article>
+
+  </div>
+</section>
+
+</body>
+</html>

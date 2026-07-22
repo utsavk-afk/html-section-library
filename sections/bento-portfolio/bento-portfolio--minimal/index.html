@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!-- ===== BENTO-PORTFOLIO — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selected Work — Bento Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --accent:#C0492B;
+  --line:#e6e4e1;
+  --line-strong:#d6d3cf;
+  --tile:#fbfafa;
+  --tile-2:#f5f3f1;
+  --radius:10px;
+  --radius-lg:14px;
+  --maxw:1240px;
+  --gap:18px;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.folio{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:76px 40px 84px;
+}
+
+/* --- header row: asymmetric, left-weighted --- */
+.folio__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  padding-bottom:26px;
+  margin-bottom:34px;
+  border-bottom:1px solid var(--line-strong);
+}
+.folio__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.folio__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+.folio__title{
+  font-size:38px;
+  font-weight:600;
+  letter-spacing:-0.025em;
+  line-height:1.08;
+  max-width:15ch;
+}
+.folio__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+.folio__meta{
+  text-align:right;
+  flex-shrink:0;
+  padding-bottom:4px;
+}
+.folio__meta-num{
+  font-size:30px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  line-height:1;
+}
+.folio__meta-label{
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* --- bento grid --- */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:186px;
+  gap:var(--gap);
+}
+
+.card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:var(--bg);
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .22s ease, transform .22s ease;
+}
+.card:hover{
+  border-color:var(--line-strong);
+  transform:translateY(-2px);
+}
+.card:hover .card__arrow{
+  color:var(--accent);
+  transform:translate(2px,-2px);
+}
+
+/* thumbnail (CSS-drawn) */
+.thumb{
+  position:relative;
+  flex:1 1 auto;
+  overflow:hidden;
+  background:var(--tile);
+  border-bottom:1px solid var(--line);
+}
+
+/* footer text of a card */
+.card__foot{
+  flex:0 0 auto;
+  padding:16px 18px 17px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+}
+.card__t{
+  font-size:15.5px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  line-height:1.25;
+}
+.card__tags{
+  margin-top:7px;
+  font-size:12.5px;
+  color:var(--muted);
+}
+.card__arrow{
+  flex-shrink:0;
+  font-size:17px;
+  line-height:1;
+  color:var(--muted);
+  transition:transform .22s ease, color .22s ease;
+  margin-top:2px;
+}
+
+/* size spans */
+.card--wide{grid-column:span 2;}
+.card--tall{grid-row:span 2;}
+.card--big{grid-column:span 2;grid-row:span 2;}
+
+/* ===== THUMBNAIL ARTWORK (pure CSS) ===== */
+
+/* 1 — Feature: waveform bars on warm panel */
+.art-wave{background:var(--tile-2);}
+.art-wave .panel{
+  position:absolute;inset:26px 30px;
+  display:flex;align-items:flex-end;gap:7px;
+}
+.art-wave .panel span{
+  flex:1;background:var(--ink);border-radius:3px 3px 0 0;opacity:.85;
+}
+.art-wave .panel span:nth-child(2){background:var(--accent);opacity:1;}
+.art-wave .panel span:nth-child(5){background:var(--accent);opacity:1;}
+.art-wave .tag{
+  position:absolute;top:20px;left:24px;
+  font-size:11px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* 2 — Ledger: stacked rule lines */
+.art-lines{background:var(--tile);}
+.art-lines .rows{position:absolute;inset:24px 26px;display:flex;flex-direction:column;justify-content:center;gap:11px;}
+.art-lines .rows i{height:1.5px;background:var(--line-strong);display:block;border-radius:2px;}
+.art-lines .rows i:nth-child(1){width:70%;}
+.art-lines .rows i:nth-child(2){width:100%;}
+.art-lines .rows i:nth-child(3){width:52%;background:var(--accent);height:2px;}
+.art-lines .rows i:nth-child(4){width:86%;}
+.art-lines .rows i:nth-child(5){width:64%;}
+
+/* 3 — Map: node graph */
+.art-nodes{background:var(--tile-2);}
+.art-nodes .grid-dots{position:absolute;inset:0;
+  background-image:radial-gradient(var(--line-strong) 1px,transparent 1px);
+  background-size:18px 18px;opacity:.6;}
+.art-nodes .n{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--ink);}
+.art-nodes .n.a{top:30%;left:24%;}
+.art-nodes .n.b{top:62%;left:46%;border-color:var(--accent);background:var(--accent);}
+.art-nodes .n.c{top:36%;left:72%;}
+.art-nodes .edge{position:absolute;height:1.5px;background:var(--ink);transform-origin:left center;opacity:.7;}
+.art-nodes .edge.e1{top:35%;left:26%;width:26%;transform:rotate(20deg);}
+.art-nodes .edge.e2{top:62%;left:49%;width:28%;transform:rotate(-22deg);}
+
+/* 4 — Type specimen: giant glyph */
+.art-glyph{background:var(--tile);overflow:hidden;}
+.art-glyph .g{
+  position:absolute;bottom:-30px;right:-6px;
+  font-size:150px;font-weight:700;line-height:.7;
+  color:var(--ink);letter-spacing:-0.06em;
+}
+.art-glyph .g b{color:var(--accent);font-weight:700;}
+.art-glyph .cap{position:absolute;top:20px;left:22px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+
+/* 5 — Data: rising area chart */
+.art-chart{background:var(--tile-2);}
+.art-chart .plot{position:absolute;inset:22px 24px 24px;}
+.art-chart .plot .grid-h{position:absolute;left:0;right:0;height:1px;background:var(--line-strong);opacity:.55;}
+.art-chart .plot .grid-h:nth-child(1){top:0;}
+.art-chart .plot .grid-h:nth-child(2){top:50%;}
+.art-chart .plot .grid-h:nth-child(3){bottom:0;}
+.art-chart .bars{position:absolute;inset:0;display:flex;align-items:flex-end;gap:9px;}
+.art-chart .bars b{flex:1;background:var(--ink);opacity:.16;border-radius:2px 2px 0 0;}
+.art-chart .bars b:last-child{background:var(--accent);opacity:1;}
+.art-chart .bars b:nth-child(1){height:32%;}
+.art-chart .bars b:nth-child(2){height:48%;}
+.art-chart .bars b:nth-child(3){height:41%;}
+.art-chart .bars b:nth-child(4){height:66%;}
+.art-chart .bars b:nth-child(5){height:58%;}
+.art-chart .bars b:nth-child(6){height:88%;}
+
+/* 6 — Motion: concentric arcs */
+.art-arcs{background:var(--tile);}
+.art-arcs .ring{position:absolute;border-radius:50%;border:1.5px solid var(--line-strong);}
+.art-arcs .ring.r1{width:150px;height:150px;top:50%;left:34%;transform:translate(-50%,-50%);}
+.art-arcs .ring.r2{width:98px;height:98px;top:50%;left:34%;transform:translate(-50%,-50%);border-color:var(--ink);opacity:.65;}
+.art-arcs .dot{position:absolute;top:50%;left:34%;width:12px;height:12px;border-radius:50%;background:var(--accent);transform:translate(30px,-58px);}
+
+/* --- footer note row --- */
+.folio__foot{
+  margin-top:34px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.folio__foot p{font-size:13.5px;color:var(--muted);}
+.folio__cta{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.folio__cta:hover{color:var(--accent);border-color:var(--accent);}
+
+/* ===== responsive ===== */
+@media(max-width:640px){
+  .folio{padding:48px 20px 56px;}
+  .folio__head{flex-direction:column;align-items:flex-start;gap:22px;}
+  .folio__title{font-size:29px;}
+  .folio__meta{text-align:left;}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:158px;gap:12px;}
+  .card--wide{grid-column:span 2;}
+  .card--big{grid-column:span 2;grid-row:span 2;}
+  .card--tall{grid-row:span 1;grid-column:span 1;}
+  .art-glyph .g{font-size:112px;}
+  .art-arcs .ring.r1{left:50%;}
+  .art-arcs .ring.r2{left:50%;}
+  .art-arcs .dot{left:50%;}
+}
+</style>
+</head>
+<body>
+  <section class="folio">
+    <div class="folio__head">
+      <div>
+        <span class="folio__eyebrow">Selected Work — 2023–2026</span>
+        <h2 class="folio__title">Studio projects, shipped and <em>measured.</em></h2>
+      </div>
+      <div class="folio__meta">
+        <div class="folio__meta-num">28</div>
+        <div class="folio__meta-label">engagements delivered</div>
+      </div>
+    </div>
+
+    <div class="bento">
+
+      <!-- BIG feature -->
+      <a href="#" class="card card--big">
+        <div class="thumb art-wave">
+          <span class="tag">Case study</span>
+          <div class="panel">
+            <span style="height:38%"></span><span style="height:72%"></span>
+            <span style="height:54%"></span><span style="height:90%"></span>
+            <span style="height:63%"></span><span style="height:47%"></span>
+            <span style="height:80%"></span><span style="height:34%"></span>
+            <span style="height:58%"></span>
+          </div>
+        </div>
+        <div class="card__foot">
+          <div>
+            <div class="card__t">Kestrel Audio — podcast platform rebuild</div>
+            <div class="card__tags">Product design · Web app · Design system</div>
+          </div>
+          <span class="card__arrow">↗</span>
+        </div>
+      </a>
+
+      <!-- wide -->
+      <a href="#" class="card card--wide">
+        <div class="thumb art-lines">
+          <div class="rows"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card__foot">
+          <div>
+            <div class="card__t">Northbank ledger dashboard</div>
+            <div class="card__tags">Fintech · Data UI</div>
+          </div>
+          <span class="card__arrow">↗</span>
+        </div>
+      </a>
+
+      <!-- small -->
+      <a href="#" class="card">
+        <div class="thumb art-glyph">
+          <span class="cap">Identity</span>
+          <div class="g">A<b>a</b></div>
+        </div>
+        <div class="card__foot">
+          <div>
+            <div class="card__t">Alder & Vane typeface</div>
+            <div class="card__tags">Branding</div>
+          </div>
+          <span class="card__arrow">↗</span>
+        </div>
+      </a>
+
+      <!-- small -->
+      <a href="#" class="card">
+        <div class="thumb art-arcs">
+          <span class="ring r1"></span>
+          <span class="ring r2"></span>
+          <span class="dot"></span>
+        </div>
+        <div class="card__foot">
+          <div>
+            <div class="card__t">Loop motion kit</div>
+            <div class="card__tags">Animation</div>
+          </div>
+          <span class="card__arrow">↗</span>
+        </div>
+      </a>
+
+      <!-- tall -->
+      <a href="#" class="card card--tall">
+        <div class="thumb art-nodes">
+          <div class="grid-dots"></div>
+          <span class="edge e1"></span>
+          <span class="edge e2"></span>
+          <span class="n a"></span>
+          <span class="n b"></span>
+          <span class="n c"></span>
+        </div>
+        <div class="card__foot">
+          <div>
+            <div class="card__t">Harbor routing map for regional transit</div>
+            <div class="card__tags">Data viz · Wayfinding</div>
+          </div>
+          <span class="card__arrow">↗</span>
+        </div>
+      </a>
+
+      <!-- wide chart -->
+      <a href="#" class="card card--wide">
+        <div class="thumb art-chart">
+          <div class="plot">
+            <span class="grid-h"></span><span class="grid-h"></span><span class="grid-h"></span>
+            <div class="bars"><b></b><b></b><b></b><b></b><b></b><b></b></div>
+          </div>
+        </div>
+        <div class="card__foot">
+          <div>
+            <div class="card__t">Meridian growth report</div>
+            <div class="card__tags">Analytics · Reporting</div>
+          </div>
+          <span class="card__arrow">↗</span>
+        </div>
+      </a>
+
+      <!-- small -->
+      <a href="#" class="card">
+        <div class="thumb art-lines">
+          <div class="rows"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="card__foot">
+          <div>
+            <div class="card__t">Pact onboarding flow</div>
+            <div class="card__tags">UX writing</div>
+          </div>
+          <span class="card__arrow">↗</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="folio__foot">
+      <p>Full archive available on request — NDA-covered work included.</p>
+      <a href="#" class="folio__cta">See the complete index <span>→</span></a>
+    </div>
+  </section>
+</body>
+</html>

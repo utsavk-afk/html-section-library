@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- ===== TRANSFORMATION — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformation — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-soft:#4A473F;
+  --ink-faint:#8A867A;
+  --accent:#B4472B;
+  --accent-tint:#F0E4DE;
+  --rule:#DAD6CC;
+  --rule-soft:#E7E3D9;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.tx{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 80px 104px;
+}
+
+.tx__label{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:34px;
+}
+.tx__label::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+
+.tx__head{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:64px;
+  align-items:end;
+  padding-bottom:52px;
+  border-bottom:1px solid var(--rule);
+}
+
+.tx__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(34px,4.4vw,60px);
+  line-height:1.04;
+  letter-spacing:-0.015em;
+  max-width:16ch;
+}
+.tx__title em{
+  font-style:italic;
+  font-weight:500;
+  color:var(--accent);
+}
+
+.tx__intro{
+  font-size:16px;
+  line-height:1.65;
+  color:var(--ink-soft);
+  max-width:38ch;
+  padding-bottom:8px;
+}
+.tx__intro strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* body grid: story on the left, the one big proof number on the right */
+.tx__grid{
+  display:grid;
+  grid-template-columns:1.15fr 1px 1fr;
+  gap:0;
+  margin-top:56px;
+}
+
+/* FROM / TO ledger */
+.tx__ledger{
+  padding-right:64px;
+}
+.tx__pair{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:24px;
+  padding:26px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.tx__pair:first-child{padding-top:0;}
+.tx__pair:last-child{border-bottom:none;padding-bottom:0;}
+
+.tx__tag{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  padding-top:5px;
+}
+.tx__pair--to .tx__tag{color:var(--accent);}
+
+.tx__from-line{
+  font-family:var(--serif);
+  font-size:21px;
+  line-height:1.35;
+  color:var(--ink-faint);
+}
+.tx__from-line s{
+  text-decoration-color:var(--accent);
+  text-decoration-thickness:1px;
+}
+.tx__to-line{
+  font-family:var(--serif);
+  font-size:23px;
+  line-height:1.32;
+  color:var(--ink);
+  font-weight:500;
+}
+.tx__to-line span{
+  display:block;
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:400;
+  color:var(--ink-soft);
+  margin-top:8px;
+  line-height:1.55;
+}
+
+.tx__divider{background:var(--rule);width:1px;}
+
+/* the one big number */
+.tx__proof{
+  padding-left:64px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.tx__metric-label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.tx__big{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(84px,11vw,168px);
+  line-height:.86;
+  letter-spacing:-0.03em;
+  color:var(--accent);
+  margin:22px 0 4px;
+}
+.tx__big sup{
+  font-size:.34em;
+  vertical-align:super;
+  font-weight:500;
+  letter-spacing:0;
+  margin-left:2px;
+}
+.tx__big-sub{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:20px;
+  color:var(--ink);
+  max-width:20ch;
+  line-height:1.35;
+}
+
+.tx__minis{
+  display:flex;
+  gap:38px;
+  margin-top:44px;
+  padding-top:30px;
+  border-top:1px solid var(--rule-soft);
+}
+.tx__mini-num{
+  font-family:var(--serif);
+  font-size:32px;
+  font-weight:500;
+  line-height:1;
+  color:var(--ink);
+}
+.tx__mini-txt{
+  font-size:12.5px;
+  color:var(--ink-soft);
+  margin-top:9px;
+  line-height:1.45;
+  max-width:15ch;
+}
+
+.tx__attr{
+  margin-top:52px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  font-size:14px;
+  color:var(--ink-soft);
+}
+.tx__avatar{
+  width:42px;height:42px;
+  border-radius:50%;
+  background:var(--accent-tint);
+  color:var(--accent);
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  letter-spacing:.01em;
+}
+.tx__attr b{color:var(--ink);font-weight:600;}
+.tx__attr em{font-style:italic;}
+
+@media(max-width:640px){
+  .tx{padding:56px 22px 64px;}
+  .tx__head{grid-template-columns:1fr;gap:26px;padding-bottom:36px;}
+  .tx__intro{max-width:none;}
+  .tx__grid{grid-template-columns:1fr;margin-top:38px;}
+  .tx__ledger{padding-right:0;padding-bottom:36px;}
+  .tx__divider{display:none;}
+  .tx__proof{padding-left:0;padding-top:36px;border-top:1px solid var(--rule);}
+  .tx__pair{grid-template-columns:64px 1fr;gap:16px;}
+  .tx__minis{gap:24px;flex-wrap:wrap;}
+  .tx__attr{margin-top:38px;}
+}
+</style>
+</head>
+<body>
+<section class="tx">
+  <p class="tx__label">The Turnaround · Meridian Kitchenware</p>
+
+  <div class="tx__head">
+    <h2 class="tx__title">
+      A catalog nobody scrolled became the page that <em>pays the bills.</em>
+    </h2>
+    <p class="tx__intro">
+      Eleven weeks. One rebuilt product page, a re-sequenced checkout, and copy
+      that finally sounded human. <strong>The traffic never changed — the outcome
+      did.</strong>
+    </p>
+  </div>
+
+  <div class="tx__grid">
+    <div class="tx__ledger">
+      <div class="tx__pair tx__pair--from">
+        <span class="tx__tag">Before</span>
+        <p class="tx__from-line">
+          <s>A 5.3-second load and a checkout that asked for everything twice.</s>
+        </p>
+      </div>
+      <div class="tx__pair tx__pair--from">
+        <span class="tx__tag">Before</span>
+        <p class="tx__from-line">
+          <s>Cart abandonment sitting at 81%, blamed on the market.</s>
+        </p>
+      </div>
+      <div class="tx__pair tx__pair--to">
+        <span class="tx__tag">After</span>
+        <p class="tx__to-line">
+          Sub-second pages, a two-field checkout.
+          <span>Guest purchase now clears in under 40 seconds, no account wall.</span>
+        </p>
+      </div>
+      <div class="tx__pair tx__pair--to">
+        <span class="tx__tag">After</span>
+        <p class="tx__to-line">
+          Abandonment down to 34% — and holding.
+          <span>Recovered revenue paid back the whole engagement inside month two.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tx__divider" aria-hidden="true"></div>
+
+    <div class="tx__proof">
+      <div>
+        <p class="tx__metric-label">Revenue per 1,000 visitors</p>
+        <p class="tx__big">3.9<sup>×</sup></p>
+        <p class="tx__big-sub">
+          the same audience, now worth nearly <em>four times</em> as much.
+        </p>
+      </div>
+
+      <div>
+        <div class="tx__minis">
+          <div>
+            <div class="tx__mini-num">+47%</div>
+            <p class="tx__mini-txt">add-to-cart on the flagship line</p>
+          </div>
+          <div>
+            <div class="tx__mini-num">−58%</div>
+            <p class="tx__mini-txt">support tickets about checkout</p>
+          </div>
+          <div>
+            <div class="tx__mini-num">11 wk</div>
+            <p class="tx__mini-txt">brief to measurable lift</p>
+          </div>
+        </div>
+
+        <div class="tx__attr">
+          <div class="tx__avatar" aria-hidden="true">DL</div>
+          <p>
+            <b>Dana Lindqvist</b>, Head of Ecommerce —
+            <em>"We stopped buying traffic and started keeping it."</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

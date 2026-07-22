@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- ===== BIOGRAPHY — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biography — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --faint:#6b6b74;
+  --line:#2a2a31;
+  --amber:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.bio{
+  width:100%;
+  padding:88px 48px 96px;
+  display:flex;
+  justify-content:center;
+}
+
+.bio__inner{
+  width:100%;
+  max-width:1180px;
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:72px;
+  align-items:start;
+}
+
+/* ---- left column: portrait ---- */
+.bio__aside{
+  position:sticky;
+  top:88px;
+}
+
+.portrait{
+  position:relative;
+  width:290px;
+  border:1px solid var(--line);
+  border-radius:20px 20px 20px 4px;
+  background:
+    radial-gradient(120% 90% at 30% 12%, #202028 0%, #16161b 62%, #131317 100%);
+  padding:26px 26px 22px;
+  overflow:hidden;
+}
+
+/* stamped index number, top-right of panel */
+.portrait__mark{
+  position:absolute;
+  top:16px;
+  right:20px;
+  font-family:var(--serif);
+  font-size:13px;
+  letter-spacing:.06em;
+  color:var(--faint);
+}
+
+/* CSS-built avatar face (geometric, not a stock smile) */
+.avatar{
+  width:238px;
+  height:238px;
+  border-radius:16px;
+  background:linear-gradient(155deg,#23232b 0%,#1a1a20 100%);
+  border:1px solid var(--line);
+  display:block;
+  margin:0 auto;
+}
+
+.avatar__ring{
+  fill:none;
+  stroke:var(--line);
+  stroke-width:1;
+}
+.avatar__glyph{
+  font-family:var(--serif);
+  font-weight:500;
+  fill:var(--ink);
+  letter-spacing:.02em;
+}
+.avatar__accent{ fill:var(--amber); }
+
+.portrait__caption{
+  margin-top:18px;
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  font-size:12.5px;
+  color:var(--muted);
+}
+.portrait__caption b{ color:var(--ink); font-weight:500; }
+.portrait__dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--amber);
+  display:inline-block;
+  transform:translateY(-1px);
+}
+
+/* ---- right column: bio text ---- */
+.bio__eyebrow{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:22px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.bio__eyebrow::before{
+  content:"";
+  width:26px;height:1px;
+  background:var(--amber);
+  display:inline-block;
+}
+
+.bio__name{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(38px,5vw,58px);
+  line-height:1.02;
+  letter-spacing:-0.015em;
+}
+
+.bio__role{
+  margin-top:14px;
+  font-size:15px;
+  color:var(--muted);
+}
+.bio__role em{
+  color:var(--ink);
+  font-style:normal;
+  font-weight:500;
+}
+
+.bio__body{
+  margin-top:34px;
+  max-width:620px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.bio__body p{
+  font-size:16.5px;
+  line-height:1.7;
+  color:#d3d3d8;
+}
+.bio__body p:first-child{
+  font-size:18px;
+  color:var(--ink);
+}
+.bio__body strong{
+  color:var(--ink);
+  font-weight:500;
+  border-bottom:1px solid var(--amber);
+  padding-bottom:1px;
+}
+
+/* meta row: small facts */
+.bio__facts{
+  margin-top:36px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.fact{
+  padding:18px 30px 18px 0;
+  margin-right:30px;
+  border-right:1px solid var(--line);
+}
+.fact:last-child{ border-right:none; margin-right:0; padding-right:0; }
+.fact__k{
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--faint);
+}
+.fact__v{
+  margin-top:6px;
+  font-family:var(--serif);
+  font-size:22px;
+  color:var(--ink);
+}
+
+/* links */
+.bio__links{
+  margin-top:34px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:14px;
+}
+.link{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:14px;
+  font-weight:500;
+  text-decoration:none;
+  padding:11px 20px;
+  border-radius:9px;
+  transition:border-color .18s ease,color .18s ease,background .18s ease;
+}
+.link--primary{
+  background:var(--amber);
+  color:#1a1206;
+}
+.link--primary:hover{ background:#f7ac5c; }
+.link--ghost{
+  border:1px solid var(--line);
+  color:var(--ink);
+}
+.link--ghost:hover{ border-color:var(--muted); }
+.link svg{ width:15px;height:15px; }
+.link--ghost svg{ stroke:var(--muted); }
+
+@media (max-width:640px){
+  .bio{ padding:56px 22px 64px; }
+  .bio__inner{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
+  .bio__aside{ position:static; }
+  .portrait{ width:100%; max-width:300px; }
+  .avatar{ width:100%; max-width:248px; height:auto; aspect-ratio:1; }
+  .bio__facts{ gap:0; }
+  .fact{
+    padding:14px 22px 14px 0;
+    margin-right:22px;
+  }
+  .bio__body p:first-child{ font-size:17px; }
+}
+</style>
+</head>
+<body>
+
+<section class="bio">
+  <div class="bio__inner">
+
+    <!-- LEFT: portrait -->
+    <aside class="bio__aside">
+      <figure class="portrait">
+        <span class="portrait__mark">№ 04</span>
+        <svg class="avatar" viewBox="0 0 238 238" role="img" aria-label="Portrait of Mara Okonkwo">
+          <rect x="0.5" y="0.5" width="237" height="237" rx="15.5" class="avatar__ring"/>
+          <circle cx="119" cy="132" r="150" class="avatar__ring"/>
+          <circle cx="119" cy="98" r="46" class="avatar__ring"/>
+          <text x="119" y="118" text-anchor="middle" class="avatar__glyph" font-size="70">MO</text>
+          <rect x="70" y="176" width="98" height="2" class="avatar__accent"/>
+          <circle cx="180" cy="70" r="3.5" class="avatar__accent"/>
+        </svg>
+        <figcaption class="portrait__caption">
+          <span class="portrait__dot"></span>
+          <span><b>Lisbon</b> &nbsp;·&nbsp; building since 2011</span>
+        </figcaption>
+      </figure>
+    </aside>
+
+    <!-- RIGHT: bio -->
+    <div class="bio__main">
+      <div class="bio__eyebrow">Founder</div>
+      <h1 class="bio__name">Mara Okonkwo</h1>
+      <p class="bio__role">Founder &amp; Principal Engineer at <em>Halyard Systems</em> — previously infrastructure lead at Cloudflare and Stripe.</p>
+
+      <div class="bio__body">
+        <p>Mara started writing payment reconciliation code because a former employer kept losing three cents on every transaction and nobody could say why. Fifteen years later she runs a nine-person team that ships ledger infrastructure quietly trusted by fintechs in eleven countries.</p>
+        <p>Her work sits at the awkward seam between <strong>correctness and speed</strong> — the belief that a system can be both provably right and fast enough to feel invisible. She wrote the open-source <em style="font-style:italic;color:#e6e6ea">Tallow</em> double-entry engine, mentors two apprentices a year, and keeps a running list of every bug that ever cost a customer money, framed above her desk.</p>
+        <p>Outside the terminal she restores mechanical typewriters, coaches a junior chess club on Saturdays, and is slowly failing to learn the cello.</p>
+      </div>
+
+      <div class="bio__facts">
+        <div class="fact">
+          <div class="fact__k">Focus</div>
+          <div class="fact__v">Ledger infra</div>
+        </div>
+        <div class="fact">
+          <div class="fact__k">Shipping since</div>
+          <div class="fact__v">2011</div>
+        </div>
+        <div class="fact">
+          <div class="fact__k">Team</div>
+          <div class="fact__v">9 people</div>
+        </div>
+      </div>
+
+      <div class="bio__links">
+        <a class="link link--primary" href="#">
+          Read her writing
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1a1206" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="link link--ghost" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8l9 5 9-5"/></svg>
+          mara@halyard.dev
+        </a>
+        <a class="link link--ghost" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0 0 20 4.8 4.9 4.9 0 0 0 19.9 1S18.7.6 16 2.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A4.9 4.9 0 0 0 5 4.8a5.2 5.2 0 0 0-1.4 3.7c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>
+          github.com/maraok
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

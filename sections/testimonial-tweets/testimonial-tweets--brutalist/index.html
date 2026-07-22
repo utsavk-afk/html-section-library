@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<!-- ===== TESTIMONIAL-TWEETS — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Tweets — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:#111111;
+  --shadow:6px 6px 0 #111111;
+  --shadow-sm:4px 4px 0 #111111;
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- SECTION SHELL ---- */
+.tt-wrap{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:72px 48px 88px;
+  position:relative;
+}
+.tt-wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(var(--ink) 1px,transparent 1px),linear-gradient(90deg,var(--ink) 1px,transparent 1px);
+  background-size:56px 56px;
+  opacity:.05;
+  pointer-events:none;
+}
+
+/* ---- HEADER (asymmetric, not centered) ---- */
+.tt-head{
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  margin-bottom:44px;
+  flex-wrap:wrap;
+}
+.tt-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:7px 12px;
+  margin-bottom:18px;
+}
+.tt-title{
+  font-size:clamp(34px,4.6vw,62px);
+  font-weight:900;
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  max-width:12ch;
+}
+.tt-title mark{
+  background:var(--acid);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.tt-metric{
+  border:3px solid var(--line);
+  background:var(--white);
+  box-shadow:var(--shadow);
+  padding:14px 20px 12px;
+  min-width:190px;
+}
+.tt-metric b{
+  display:block;
+  font-size:40px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.tt-metric span{
+  display:block;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-top:6px;
+  color:var(--ink);
+}
+
+/* ---- MASONRY-ISH GRID (varied, not uniform) ---- */
+.tt-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  align-items:start;
+}
+.tt-col{display:flex;flex-direction:column;gap:22px;}
+.tt-col:nth-child(2){margin-top:34px;}
+
+/* ---- TWEET CARD ---- */
+.tw{
+  border:3px solid var(--line);
+  background:var(--white);
+  box-shadow:var(--shadow);
+  padding:20px 20px 16px;
+  position:relative;
+}
+.tw--acid{background:var(--acid);}
+.tw--ink{background:var(--ink);color:var(--paper);}
+.tw--ink .tw-handle,.tw--ink .tw-meta{color:#BDBDBD;}
+.tw--ink .tw-stats{border-top-color:#444;}
+.tw--ink .tw-stat b{color:var(--paper);}
+
+.tw-top{display:flex;align-items:center;gap:12px;}
+.tw-av{
+  width:44px;height:44px;flex:0 0 44px;
+  border:2px solid var(--ink);
+  display:grid;place-items:center;
+  font-family:var(--sans);
+  font-weight:900;font-size:18px;
+  line-height:1;
+}
+.av-a{background:var(--red);color:var(--white);}
+.av-b{background:var(--acid);color:var(--ink);}
+.av-c{background:var(--ink);color:var(--acid);}
+.av-d{background:var(--white);color:var(--ink);}
+.av-e{background:var(--red);color:var(--white);}
+.av-f{background:var(--acid);color:var(--ink);}
+.tw--acid .tw-av{border-color:var(--ink);}
+.tw--ink .tw-av{border-color:var(--paper);}
+
+.tw-id{display:flex;flex-direction:column;min-width:0;}
+.tw-name{
+  display:flex;align-items:center;gap:6px;
+  font-weight:800;font-size:15px;letter-spacing:-.01em;
+  text-transform:uppercase;
+}
+.tw-check{
+  width:15px;height:15px;flex:0 0 15px;
+}
+.tw-handle{
+  font-family:var(--mono);font-size:12px;font-weight:400;
+  color:#666;letter-spacing:.02em;
+}
+.tw-bird{margin-left:auto;width:22px;height:22px;flex:0 0 22px;opacity:.85;}
+
+.tw-body{
+  font-size:16px;line-height:1.42;font-weight:600;
+  margin:15px 0 16px;letter-spacing:-.005em;
+}
+.tw--lg .tw-body{font-size:19px;line-height:1.36;}
+.tw-body strong{
+  background:var(--acid);color:var(--ink);
+  font-weight:800;padding:0 3px;
+}
+.tw--acid .tw-body strong{background:var(--ink);color:var(--acid);}
+.tw--ink .tw-body strong{background:var(--red);color:var(--white);}
+
+.tw-meta{
+  font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+  color:#666;margin-bottom:12px;
+}
+
+.tw-stats{
+  display:flex;align-items:center;gap:22px;
+  border-top:2px solid var(--line);
+  padding-top:12px;
+}
+.tw-stat{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:12px;font-weight:700;
+}
+.tw-stat svg{width:16px;height:16px;flex:0 0 16px;}
+.tw-stat b{font-weight:700;}
+.tw-stat.is-like svg{color:var(--red);}
+.tw--acid .tw-stat.is-like svg{color:var(--red);}
+
+/* ---- CTA STRIP ---- */
+.tt-foot{
+  margin-top:30px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+  border:3px solid var(--line);
+  background:var(--acid);
+  box-shadow:var(--shadow);
+  padding:18px 24px;
+  position:relative;
+}
+.tt-foot p{
+  font-weight:800;font-size:17px;text-transform:uppercase;
+  letter-spacing:-.01em;
+}
+.tt-foot p span{font-family:var(--mono);font-weight:700;text-transform:none;font-size:13px;display:block;margin-top:4px;letter-spacing:.02em;}
+.tt-btn{
+  font-family:var(--sans);font-weight:900;font-size:15px;
+  text-transform:uppercase;letter-spacing:.02em;
+  background:var(--ink);color:var(--white);
+  border:3px solid var(--ink);
+  padding:14px 26px;
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;text-decoration:none;display:inline-block;
+  transition:transform .08s ease,box-shadow .08s ease;
+}
+.tt-btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:980px){
+  .tt-grid{grid-template-columns:repeat(2,1fr);}
+  .tt-col:nth-child(3){display:contents;}
+  .tt-col:nth-child(3) .tw{margin-top:0;}
+}
+@media(max-width:640px){
+  .tt-wrap{padding:44px 20px 56px;}
+  .tt-head{margin-bottom:32px;}
+  .tt-metric{min-width:0;flex:1;}
+  .tt-grid{grid-template-columns:1fr;gap:18px;}
+  .tt-col{gap:18px;}
+  .tt-col:nth-child(2){margin-top:0;}
+  .tt-col:nth-child(3){display:flex;}
+  .tw-body{font-size:15px;}
+  .tw--lg .tw-body{font-size:17px;}
+  .tt-foot{padding:16px 18px;}
+  .tt-btn{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+<section class="tt-wrap">
+
+  <div class="tt-head">
+    <div>
+      <span class="tt-tag">// receipts, not marketing</span>
+      <h1 class="tt-title">What people <mark>actually</mark> post</h1>
+    </div>
+    <div class="tt-metric">
+      <b>4,912</b>
+      <span>teams shipping with it</span>
+    </div>
+  </div>
+
+  <div class="tt-grid">
+
+    <!-- COLUMN 1 -->
+    <div class="tt-col">
+
+      <article class="tw tw--lg">
+        <div class="tw-top">
+          <div class="tw-av av-a">DK</div>
+          <div class="tw-id">
+            <span class="tw-name">Dara Kwon
+              <svg class="tw-check" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 2.1 3.1-.5 1.2 2.9 2.9 1.2-.5 3.1L23 12l-1.8 2.7.5 3.1-2.9 1.2-1.2 2.9-3.1-.5L12 22l-2.7-1.9-3.1.5-1.2-2.9L2.1 15.7l.5-3.1L1 12l2.6-2.7-.5-3.1 2.9-1.2 1.2-2.9 3.1.5L12 2z" fill="#111"/><path d="M8.5 12l2.5 2.5L16 9" stroke="#FFE500" stroke-width="2" stroke-linecap="square" fill="none"/></svg>
+            </span>
+            <span class="tw-handle">@darabuilds</span>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="none"><path d="M2 4l9.5 12.5L2.5 21h2.2l7.5-7.7L18 21h4l-9.9-13.1L21 4h-2.2l-7 7.2L12.6 4H2z" fill="#111"/></svg>
+        </div>
+        <p class="tw-body">Migrated our whole billing stack over a weekend. First run, <strong>zero manual reconciliation</strong>. My finance lead thought I'd hired a contractor behind her back.</p>
+        <div class="tw-meta">9:14 PM · Jul 18, 2026 · iPhone</div>
+        <div class="tw-stats">
+          <span class="tw-stat is-like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21S3 14.6 3 8.9C3 6.2 5.1 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.9 4 21 6.2 21 8.9 21 14.6 12 21 12 21z"/></svg><b>2,143</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M17 2l4 4-4 4M21 6H7a4 4 0 00-4 4v2M7 22l-4-4 4-4M3 18h14a4 4 0 004-4v-2"/></svg><b>388</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-4A8.4 8.4 0 1121 11.5z"/></svg><b>57</b></span>
+        </div>
+      </article>
+
+      <article class="tw tw--ink">
+        <div class="tw-top">
+          <div class="tw-av av-c">RM</div>
+          <div class="tw-id">
+            <span class="tw-name">Renata Mehta</span>
+            <span class="tw-handle">@ren_ops</span>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="none"><path d="M2 4l9.5 12.5L2.5 21h2.2l7.5-7.7L18 21h4l-9.9-13.1L21 4h-2.2l-7 7.2L12.6 4H2z" fill="#FAFAF7"/></svg>
+        </div>
+        <p class="tw-body">Support queue went from a 6-hour wait to <strong>11 minutes</strong>. Same headcount. I keep re-checking the dashboard because I don't believe it.</p>
+        <div class="tw-meta">2:02 PM · Jul 9, 2026</div>
+        <div class="tw-stats">
+          <span class="tw-stat is-like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21S3 14.6 3 8.9C3 6.2 5.1 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.9 4 21 6.2 21 8.9 21 14.6 12 21 12 21z"/></svg><b>901</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#FAFAF7" stroke-width="2"><path d="M17 2l4 4-4 4M21 6H7a4 4 0 00-4 4v2M7 22l-4-4 4-4M3 18h14a4 4 0 004-4v-2"/></svg><b>124</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#FAFAF7" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-4A8.4 8.4 0 1121 11.5z"/></svg><b>19</b></span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- COLUMN 2 (offset) -->
+    <div class="tt-col">
+
+      <article class="tw tw--acid">
+        <div class="tw-top">
+          <div class="tw-av av-d">JO</div>
+          <div class="tw-id">
+            <span class="tw-name">Julian Ofori
+              <svg class="tw-check" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 2.1 3.1-.5 1.2 2.9 2.9 1.2-.5 3.1L23 12l-1.8 2.7.5 3.1-2.9 1.2-1.2 2.9-3.1-.5L12 22l-2.7-1.9-3.1.5-1.2-2.9L2.1 15.7l.5-3.1L1 12l2.6-2.7-.5-3.1 2.9-1.2 1.2-2.9 3.1.5L12 2z" fill="#111"/><path d="M8.5 12l2.5 2.5L16 9" stroke="#FFE500" stroke-width="2" stroke-linecap="square" fill="none"/></svg>
+            </span>
+            <span class="tw-handle">@julesships</span>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="none"><path d="M2 4l9.5 12.5L2.5 21h2.2l7.5-7.7L18 21h4l-9.9-13.1L21 4h-2.2l-7 7.2L12.6 4H2z" fill="#111"/></svg>
+        </div>
+        <p class="tw-body">I was ready to hate this. Set it up in <strong>under 20 minutes</strong>, no vendor call, no "book a demo" wall. Just worked. Rare.</p>
+        <div class="tw-meta">11:47 AM · Jul 21, 2026 · Web</div>
+        <div class="tw-stats">
+          <span class="tw-stat is-like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21S3 14.6 3 8.9C3 6.2 5.1 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.9 4 21 6.2 21 8.9 21 14.6 12 21 12 21z"/></svg><b>3,507</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M17 2l4 4-4 4M21 6H7a4 4 0 00-4 4v2M7 22l-4-4 4-4M3 18h14a4 4 0 004-4v-2"/></svg><b>612</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-4A8.4 8.4 0 1121 11.5z"/></svg><b>140</b></span>
+        </div>
+      </article>
+
+      <article class="tw">
+        <div class="tw-top">
+          <div class="tw-av av-e">SB</div>
+          <div class="tw-id">
+            <span class="tw-name">Sofia Brandt</span>
+            <span class="tw-handle">@sofiabuilds</span>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="none"><path d="M2 4l9.5 12.5L2.5 21h2.2l7.5-7.7L18 21h4l-9.9-13.1L21 4h-2.2l-7 7.2L12.6 4H2z" fill="#111"/></svg>
+        </div>
+        <p class="tw-body">Killed three internal tools we were paying $840/mo for. Replaced all of them and the docs actually made sense. Chef's kiss.</p>
+        <div class="tw-meta">7:31 AM · Jul 14, 2026</div>
+        <div class="tw-stats">
+          <span class="tw-stat is-like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21S3 14.6 3 8.9C3 6.2 5.1 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.9 4 21 6.2 21 8.9 21 14.6 12 21 12 21z"/></svg><b>1,264</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M17 2l4 4-4 4M21 6H7a4 4 0 00-4 4v2M7 22l-4-4 4-4M3 18h14a4 4 0 004-4v-2"/></svg><b>203</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-4A8.4 8.4 0 1121 11.5z"/></svg><b>41</b></span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="tt-col">
+
+      <article class="tw">
+        <div class="tw-top">
+          <div class="tw-av av-b">TA</div>
+          <div class="tw-id">
+            <span class="tw-name">Theo Alvarez
+              <svg class="tw-check" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 2.1 3.1-.5 1.2 2.9 2.9 1.2-.5 3.1L23 12l-1.8 2.7.5 3.1-2.9 1.2-1.2 2.9-3.1-.5L12 22l-2.7-1.9-3.1.5-1.2-2.9L2.1 15.7l.5-3.1L1 12l2.6-2.7-.5-3.1 2.9-1.2 1.2-2.9 3.1.5L12 2z" fill="#111"/><path d="M8.5 12l2.5 2.5L16 9" stroke="#FFE500" stroke-width="2" stroke-linecap="square" fill="none"/></svg>
+            </span>
+            <span class="tw-handle">@theoruns</span>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="none"><path d="M2 4l9.5 12.5L2.5 21h2.2l7.5-7.7L18 21h4l-9.9-13.1L21 4h-2.2l-7 7.2L12.6 4H2z" fill="#111"/></svg>
+        </div>
+        <p class="tw-body">Onboarded 4 engineers this week. Not one of them opened a support ticket. If you've ever run a rollout, you know how insane that sentence is.</p>
+        <div class="tw-meta">4:18 PM · Jul 16, 2026 · Web</div>
+        <div class="tw-stats">
+          <span class="tw-stat is-like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21S3 14.6 3 8.9C3 6.2 5.1 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.9 4 21 6.2 21 8.9 21 14.6 12 21 12 21z"/></svg><b>1,780</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M17 2l4 4-4 4M21 6H7a4 4 0 00-4 4v2M7 22l-4-4 4-4M3 18h14a4 4 0 004-4v-2"/></svg><b>295</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-4A8.4 8.4 0 1121 11.5z"/></svg><b>33</b></span>
+        </div>
+      </article>
+
+      <article class="tw tw--lg">
+        <div class="tw-top">
+          <div class="tw-av av-f">NP</div>
+          <div class="tw-id">
+            <span class="tw-name">Nadia Park</span>
+            <span class="tw-handle">@nadiaships</span>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="none"><path d="M2 4l9.5 12.5L2.5 21h2.2l7.5-7.7L18 21h4l-9.9-13.1L21 4h-2.2l-7 7.2L12.6 4H2z" fill="#111"/></svg>
+        </div>
+        <p class="tw-body">Cut our monthly cloud bill by <strong>$4,200</strong> in the first cycle. I screenshotted the invoice and pinned it to the office wall.</p>
+        <div class="tw-meta">10:05 AM · Jul 20, 2026</div>
+        <div class="tw-stats">
+          <span class="tw-stat is-like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21S3 14.6 3 8.9C3 6.2 5.1 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.9 4 21 6.2 21 8.9 21 14.6 12 21 12 21z"/></svg><b>2,940</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M17 2l4 4-4 4M21 6H7a4 4 0 00-4 4v2M7 22l-4-4 4-4M3 18h14a4 4 0 004-4v-2"/></svg><b>451</b></span>
+          <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-4A8.4 8.4 0 1121 11.5z"/></svg><b>66</b></span>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+
+  <div class="tt-foot">
+    <p>Got a receipt of your own?
+      <span>Tag @stackforge — we repost the best ones every Friday.</span>
+    </p>
+    <a href="#" class="tt-btn">Read all 4,912 →</a>
+  </div>
+
+</section>
+</body>
+</html>

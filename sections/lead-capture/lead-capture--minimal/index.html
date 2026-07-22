@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!-- ===== lead-capture — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waitlist — Lead Capture (Minimal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden}
+
+  :root{
+    --ink:#141414;
+    --muted:#737373;
+    --line:#e6e4e0;
+    --line-strong:#d4d1cc;
+    --bg:#ffffff;
+    --bg-soft:#faf9f7;
+    --accent:#C0492B;
+    --accent-tint:#f7ece9;
+    --radius-sm:6px;
+    --radius-md:10px;
+    --maxw:1120px;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+
+  body{
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  .lc{
+    width:100%;
+    background:var(--bg);
+    padding:104px 32px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .lc__inner{
+    width:100%;
+    max-width:var(--maxw);
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:88px;
+    align-items:center;
+  }
+
+  /* ---- left: focal content ---- */
+  .lc__lead{max-width:520px}
+
+  .lc__eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:26px;
+  }
+  .lc__eyebrow::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--accent);
+  }
+
+  .lc__title{
+    font-size:44px;
+    line-height:1.08;
+    font-weight:700;
+    letter-spacing:-0.022em;
+    margin-bottom:20px;
+  }
+  .lc__title em{
+    font-style:normal;
+    color:var(--accent);
+  }
+
+  .lc__sub{
+    font-size:17px;
+    color:var(--muted);
+    line-height:1.6;
+    max-width:440px;
+    margin-bottom:34px;
+  }
+
+  /* ---- form ---- */
+  .lc__form{
+    display:flex;
+    gap:10px;
+    max-width:460px;
+    margin-bottom:16px;
+  }
+
+  .lc__field{
+    flex:1;
+    position:relative;
+  }
+  .lc__input{
+    width:100%;
+    height:52px;
+    padding:0 16px;
+    font-family:var(--font);
+    font-size:15px;
+    color:var(--ink);
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius-sm);
+    outline:none;
+    transition:border-color .16s ease, box-shadow .16s ease;
+  }
+  .lc__input::placeholder{color:#9a9a9a}
+  .lc__input:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px var(--accent-tint);
+  }
+
+  .lc__btn{
+    height:52px;
+    padding:0 26px;
+    font-family:var(--font);
+    font-size:15px;
+    font-weight:600;
+    color:#fff;
+    background:var(--accent);
+    border:1px solid var(--accent);
+    border-radius:var(--radius-sm);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background .16s ease, transform .06s ease;
+  }
+  .lc__btn:hover{background:#a83d22}
+  .lc__btn:active{transform:translateY(1px)}
+
+  .lc__fineprint{
+    font-size:13px;
+    color:var(--muted);
+  }
+  .lc__fineprint strong{
+    color:var(--ink);
+    font-weight:600;
+  }
+
+  /* ---- right: live count panel (asymmetric focal card) ---- */
+  .lc__panel{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:34px 34px 30px;
+    position:relative;
+  }
+  .lc__panel::before{
+    content:"";
+    position:absolute;
+    left:0;top:28px;bottom:28px;
+    width:2px;
+    background:var(--accent);
+    border-radius:2px;
+  }
+
+  .lc__count-label{
+    font-size:13px;
+    font-weight:500;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .lc__pulse{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    position:relative;
+    flex:none;
+  }
+  .lc__pulse::after{
+    content:"";
+    position:absolute;inset:0;
+    border-radius:50%;
+    background:var(--accent);
+    animation:lcpulse 2s ease-out infinite;
+  }
+  @keyframes lcpulse{
+    0%{transform:scale(1);opacity:.55}
+    70%{transform:scale(3.2);opacity:0}
+    100%{opacity:0}
+  }
+
+  .lc__count{
+    font-size:52px;
+    font-weight:700;
+    letter-spacing:-0.03em;
+    line-height:1;
+    margin-bottom:6px;
+    font-variant-numeric:tabular-nums;
+  }
+  .lc__count-sub{
+    font-size:14px;
+    color:var(--muted);
+    margin-bottom:26px;
+  }
+
+  .lc__avatars{
+    display:flex;
+    align-items:center;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+  }
+  .lc__ava{
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:600;color:#fff;
+    border:2px solid var(--bg-soft);
+    margin-left:-8px;
+    flex:none;
+  }
+  .lc__ava:first-child{margin-left:0}
+  .lc__ava--1{background:#8a5a44}
+  .lc__ava--2{background:#3f6152}
+  .lc__ava--3{background:#5a5f7a}
+  .lc__ava--4{background:var(--accent)}
+  .lc__ava--more{
+    background:#fff;color:var(--muted);
+    border:2px solid var(--line-strong);
+    font-size:11px;
+  }
+  .lc__ava-note{
+    font-size:13px;
+    color:var(--muted);
+    margin-left:12px;
+  }
+  .lc__ava-note b{color:var(--ink);font-weight:600}
+
+  /* ---- responsive ---- */
+  @media(max-width:640px){
+    .lc{padding:64px 22px}
+    .lc__inner{
+      grid-template-columns:1fr;
+      gap:40px;
+    }
+    .lc__title{font-size:33px}
+    .lc__sub{font-size:16px}
+    .lc__form{
+      flex-direction:column;
+      max-width:100%;
+    }
+    .lc__btn{width:100%}
+    .lc__panel{padding:28px 26px}
+    .lc__count{font-size:44px}
+  }
+</style>
+</head>
+<body>
+
+  <section class="lc" aria-labelledby="lc-title">
+    <div class="lc__inner">
+
+      <div class="lc__lead">
+        <span class="lc__eyebrow">Early access · Batch 03</span>
+        <h1 class="lc__title" id="lc-title">
+          Ship changelogs your users<br><em>actually read.</em>
+        </h1>
+        <p class="lc__sub">
+          Postline turns your merged PRs into a clean, on-brand release feed —
+          no copywriting, no manual formatting. Join the waitlist to get your
+          workspace before public launch on August 12.
+        </p>
+
+        <form class="lc__form" novalidate>
+          <div class="lc__field">
+            <input class="lc__input" type="email" name="email"
+                   placeholder="you@company.com" autocomplete="email"
+                   aria-label="Work email">
+          </div>
+          <button class="lc__btn" type="submit">Request access</button>
+        </form>
+
+        <p class="lc__fineprint">
+          <strong>No credit card.</strong> We email you once your workspace is ready — that's it.
+        </p>
+      </div>
+
+      <aside class="lc__panel" aria-label="Signup activity">
+        <div class="lc__count-label">
+          <span class="lc__pulse" aria-hidden="true"></span>
+          Live signups
+        </div>
+        <div class="lc__count">2,847</div>
+        <div class="lc__count-sub">builders on the waitlist · 34 joined today</div>
+
+        <div class="lc__avatars">
+          <span class="lc__ava lc__ava--1" aria-hidden="true">RM</span>
+          <span class="lc__ava lc__ava--2" aria-hidden="true">KT</span>
+          <span class="lc__ava lc__ava--3" aria-hidden="true">JD</span>
+          <span class="lc__ava lc__ava--4" aria-hidden="true">SA</span>
+          <span class="lc__ava lc__ava--more" aria-hidden="true">+</span>
+          <span class="lc__ava-note">Teams from <b>Linear</b>, <b>Retool</b> & 200 more</span>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</body>
+</html>

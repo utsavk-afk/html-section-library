@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<!-- ===== HERO-LEAD-CAPTURE — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Lead Capture — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.hlc{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:720px;
+  border-bottom:5px solid var(--ink);
+  overflow:hidden;
+}
+
+/* top status bar */
+.hlc__bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border-bottom:var(--border);
+  padding:12px 40px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  background:var(--ink);
+  color:var(--paper);
+}
+.hlc__bar span:nth-child(2){color:var(--acid);}
+.hlc__bar-dot{color:var(--red);}
+
+/* main asymmetric grid: text 62% / panel 38% */
+.hlc__grid{
+  display:grid;
+  grid-template-columns:1.6fr 1fr;
+}
+
+.hlc__main{
+  padding:64px 40px 72px 40px;
+  border-right:var(--border);
+  position:relative;
+}
+
+.hlc__tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  background:var(--acid);
+  color:var(--ink);
+  border:var(--border);
+  padding:6px 12px;
+  margin-bottom:28px;
+  box-shadow:3px 3px 0 var(--ink);
+}
+
+.hlc__title{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(44px,6.4vw,86px);
+  line-height:0.92;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  max-width:14ch;
+  margin-bottom:26px;
+}
+.hlc__title mark{
+  background:var(--red);
+  color:var(--paper);
+  padding:0 8px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.hlc__title .u{
+  text-decoration:underline;
+  text-decoration-thickness:6px;
+  text-underline-offset:8px;
+  text-decoration-color:var(--acid);
+}
+
+.hlc__sub{
+  font-family:var(--mono);
+  font-size:16px;
+  line-height:1.55;
+  max-width:44ch;
+  margin-bottom:36px;
+  color:var(--ink);
+}
+.hlc__sub b{background:var(--acid);padding:0 3px;font-weight:700;}
+
+/* inline capture form */
+.hlc__form{
+  display:flex;
+  align-items:stretch;
+  max-width:520px;
+  border:var(--border);
+  box-shadow:var(--shadow);
+  background:var(--white);
+}
+.hlc__input{
+  flex:1 1 auto;
+  min-width:0;
+  border:none;
+  border-right:var(--border);
+  background:var(--white);
+  font-family:var(--mono);
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  padding:18px 18px;
+  text-transform:none;
+  outline:none;
+}
+.hlc__input::placeholder{color:#888;font-weight:400;}
+.hlc__input:focus{background:var(--acid);}
+.hlc__btn{
+  flex:0 0 auto;
+  border:none;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  padding:0 26px;
+  cursor:pointer;
+  transition:transform .04s ease;
+  white-space:nowrap;
+}
+.hlc__btn:hover{background:var(--red);}
+.hlc__btn:active{transform:translate(2px,2px);}
+
+.hlc__reassure{
+  margin-top:16px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:400;
+  letter-spacing:0.02em;
+  color:#555;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  max-width:520px;
+}
+.hlc__reassure svg{flex:0 0 auto;display:block;}
+.hlc__reassure b{color:var(--ink);font-weight:700;}
+
+/* right proof panel — deliberately different treatment */
+.hlc__panel{
+  background:var(--acid);
+  padding:36px 32px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  position:relative;
+}
+.hlc__panel::before{
+  content:"ISSUE #47 / THIS WEEK";
+  position:absolute;
+  top:0;left:0;
+  transform:translateY(-100%);
+}
+.hlc__stat{
+  border:var(--border);
+  background:var(--paper);
+  box-shadow:var(--shadow);
+  padding:18px 18px 16px;
+}
+.hlc__stat:nth-child(2){box-shadow:var(--shadow-red);}
+.hlc__stat-num{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:40px;
+  line-height:1;
+  letter-spacing:-0.02em;
+}
+.hlc__stat-num .red{color:var(--red);}
+.hlc__stat-lbl{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-top:8px;
+  color:var(--ink);
+}
+
+.hlc__readers{
+  margin-top:auto;
+  border-top:var(--border);
+  padding-top:18px;
+}
+.hlc__readers-lbl{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-bottom:12px;
+}
+.hlc__avatars{display:flex;align-items:center;}
+.hlc__av{
+  width:38px;height:38px;
+  border:var(--border);
+  border-radius:0;
+  margin-left:-3px;
+  display:grid;
+  place-items:center;
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:14px;
+  color:var(--ink);
+}
+.hlc__av:first-child{margin-left:0;}
+.hlc__av--1{background:var(--paper);}
+.hlc__av--2{background:var(--red);color:var(--paper);}
+.hlc__av--3{background:var(--white);}
+.hlc__av--4{background:var(--ink);color:var(--acid);}
+.hlc__av--more{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+}
+
+/* bottom marquee strip */
+.hlc__strip{
+  border-top:var(--border);
+  background:var(--red);
+  color:var(--paper);
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  padding:12px 40px;
+  display:flex;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.hlc__strip span::before{content:"→ ";}
+
+@media(max-width:640px){
+  .hlc{min-height:0;}
+  .hlc__bar{padding:10px 18px;font-size:10px;gap:8px;}
+  .hlc__bar span:nth-child(3){display:none;}
+  .hlc__grid{grid-template-columns:1fr;}
+  .hlc__main{padding:40px 18px 44px;border-right:none;border-bottom:var(--border);}
+  .hlc__title{font-size:clamp(38px,12vw,56px);}
+  .hlc__form{max-width:none;flex-direction:column;box-shadow:4px 4px 0 var(--ink);}
+  .hlc__input{border-right:none;border-bottom:var(--border);}
+  .hlc__btn{padding:16px;}
+  .hlc__reassure{max-width:none;}
+  .hlc__panel{padding:28px 18px;}
+  .hlc__stat-num{font-size:34px;}
+  .hlc__strip{padding:12px 18px;gap:18px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+<section class="hlc" aria-label="Newsletter signup">
+
+  <div class="hlc__bar">
+    <span><span class="hlc__bar-dot">●</span> THE MARGIN / SEO OPERATORS BRIEF</span>
+    <span>NO FLUFF · NO SPAM</span>
+    <span>EST. 2019 — 40,912 READERS</span>
+  </div>
+
+  <div class="hlc__grid">
+
+    <div class="hlc__main">
+      <span class="hlc__tag">FREE · EVERY TUESDAY 6AM</span>
+
+      <h1 class="hlc__title">
+        Steal the <mark>tactics</mark> we<br>
+        use to rank <span class="u">B2B pages</span>
+      </h1>
+
+      <p class="hlc__sub">
+        One teardown a week. Real client experiments, the exact briefs, and the
+        numbers that moved. <b>Written by operators, not marketers.</b> Read it in
+        four minutes, ship it the same afternoon.
+      </p>
+
+      <form class="hlc__form" onsubmit="return false;" novalidate>
+        <input class="hlc__input" type="email" name="email"
+               placeholder="you@company.com" aria-label="Email address" required>
+        <button class="hlc__btn" type="submit">GET IT →</button>
+      </form>
+
+      <p class="hlc__reassure">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="11" height="11" fill="none" stroke="#111" stroke-width="2"/>
+          <path d="M4 7.2l2.1 2.1L10 5" fill="none" stroke="#FF3B21" stroke-width="2"/>
+        </svg>
+        <span>Unsubscribe in one click. <b>We never sell your address.</b> Zero junk, ever.</span>
+      </p>
+    </div>
+
+    <aside class="hlc__panel">
+      <div class="hlc__stat">
+        <div class="hlc__stat-num">4&nbsp;MIN</div>
+        <div class="hlc__stat-lbl">Average read time</div>
+      </div>
+      <div class="hlc__stat">
+        <div class="hlc__stat-num"><span class="red">+218%</span></div>
+        <div class="hlc__stat-lbl">Median traffic lift, case #33</div>
+      </div>
+
+      <div class="hlc__readers">
+        <div class="hlc__readers-lbl">Read by teams at</div>
+        <div class="hlc__avatars" aria-hidden="true">
+          <div class="hlc__av hlc__av--1">DV</div>
+          <div class="hlc__av hlc__av--2">KO</div>
+          <div class="hlc__av hlc__av--3">RN</div>
+          <div class="hlc__av hlc__av--4">SM</div>
+          <div class="hlc__av hlc__av--more">+40K</div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div class="hlc__strip">
+    <span>NO COURSE UPSELLS</span>
+    <span>NO AI SLOP</span>
+    <span>ONE EMAIL A WEEK</span>
+    <span>ARCHIVE INCLUDED</span>
+  </div>
+
+</section>
+</body>
+</html>

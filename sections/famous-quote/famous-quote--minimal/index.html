@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Famous Quote — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== FAMOUS-QUOTE — MINIMAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --paper:#ffffff;
+  --accent:#C0492B;
+  --hair:#e7e4e0;
+  --hair-soft:#f0eeeb;
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --maxw:1440px;
+  --pad:clamp(24px,7vw,140px);
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.quote-section{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:clamp(72px,10vw,132px) var(--pad);
+  position:relative;
+}
+
+/* eyebrow row, top-left focal anchor */
+.quote-eyebrow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:clamp(40px,6vw,68px);
+}
+.quote-eyebrow .rule{
+  width:44px;
+  height:2px;
+  background:var(--accent);
+  flex:none;
+}
+.quote-eyebrow .label{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.quote-eyebrow .num{
+  margin-left:auto;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.08em;
+  color:#b7b2ac;
+  font-variant-numeric:tabular-nums;
+}
+
+/* the pull-quote — asymmetric, hangs the opening mark into the margin */
+.quote-body{
+  max-width:16.5ch;
+  position:relative;
+}
+.quote-body .mark{
+  position:absolute;
+  top:-.34em;
+  left:-.62em;
+  font-size:clamp(120px,17vw,260px);
+  line-height:1;
+  color:var(--accent);
+  font-weight:700;
+  pointer-events:none;
+  user-select:none;
+}
+blockquote{
+  font-size:clamp(34px,6.4vw,86px);
+  line-height:1.04;
+  letter-spacing:-.028em;
+  font-weight:600;
+  color:var(--ink);
+  max-width:14ch;
+}
+blockquote em{
+  font-style:normal;
+  color:var(--accent);
+}
+
+/* attribution — offset to the right, sits under the shorter measure */
+.quote-attrib{
+  margin-top:clamp(44px,6vw,72px);
+  margin-left:clamp(0px,26vw,420px);
+  max-width:340px;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+}
+.quote-attrib .avatar{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  flex:none;
+  display:grid;
+  place-items:center;
+  background:var(--ink);
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.quote-attrib .meta .name{
+  font-size:16px;
+  font-weight:600;
+  color:var(--ink);
+  letter-spacing:-.01em;
+}
+.quote-attrib .meta .role{
+  margin-top:3px;
+  font-size:14px;
+  line-height:1.45;
+  color:var(--muted);
+}
+.quote-attrib .meta .role b{
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* faint source line, far right baseline */
+.quote-source{
+  margin-top:clamp(52px,7vw,88px);
+  padding-top:22px;
+  border-top:1px solid var(--hair);
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.quote-source .ctx{
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:.01em;
+}
+.quote-source .ctx b{color:var(--ink);font-weight:500;}
+.quote-source .tag{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#b7b2ac;
+}
+
+@media(max-width:640px){
+  .quote-section{padding:56px 24px;}
+  .quote-eyebrow{margin-bottom:34px;}
+  .quote-eyebrow .num{display:none;}
+  .quote-body{max-width:100%;}
+  .quote-body .mark{
+    font-size:96px;
+    top:-.28em;
+    left:-.06em;
+  }
+  blockquote{
+    font-size:clamp(30px,9vw,40px);
+    max-width:100%;
+    padding-left:2px;
+  }
+  .quote-attrib{
+    margin-left:0;
+    margin-top:38px;
+  }
+  .quote-source{margin-top:44px;}
+}
+</style>
+</head>
+<body>
+<section class="quote-section" aria-label="Featured quote">
+  <div class="quote-eyebrow">
+    <span class="rule" aria-hidden="true"></span>
+    <span class="label">On shipping</span>
+    <span class="num">Field Notes / 04</span>
+  </div>
+
+  <div class="quote-body">
+    <span class="mark" aria-hidden="true">&ldquo;</span>
+    <blockquote>
+      We stopped guessing what users wanted and started <em>watching what they abandoned.</em> The roadmap wrote itself.
+    </blockquote>
+  </div>
+
+  <figcaption class="quote-attrib">
+    <span class="avatar" aria-hidden="true">RO</span>
+    <span class="meta">
+      <span class="name">Rina Okafor</span>
+      <span class="role">Head of Product at <b>Halden</b>, on rebuilding onboarding in 2024</span>
+    </span>
+  </figcaption>
+
+  <div class="quote-source">
+    <span class="ctx">From the essay <b>&ldquo;Ship the Boring Thing First&rdquo;</b> &middot; 6 min read</span>
+    <span class="tag">Interview</span>
+  </div>
+</section>
+</body>
+</html>

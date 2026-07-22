@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!-- ===== SCROLL-HINT — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Hint — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e6e6;
+  --line-soft:#f0f0f0;
+  --paper:#ffffff;
+  --accent:#C0492B;
+  --accent-ink:#8f3620;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --maxw:1440px;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.sh{
+  position:relative;
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 clamp(20px,5vw,88px);
+}
+
+/* ---- hero-bottom band ---- */
+.sh__hero{
+  min-height:640px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding-top:96px;
+  padding-bottom:0;
+  position:relative;
+}
+
+/* faint index marker, top-right — asymmetric focal balance */
+.sh__marker{
+  position:absolute;
+  top:96px;
+  right:clamp(20px,5vw,88px);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+}
+.sh__marker b{color:var(--ink);font-weight:600;}
+
+.sh__lead{
+  max-width:560px;
+}
+.sh__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:26px;
+}
+.sh__kicker::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+.sh__line{
+  font-size:clamp(22px,3vw,30px);
+  line-height:1.32;
+  font-weight:500;
+  letter-spacing:-.01em;
+  color:var(--ink);
+}
+.sh__line em{
+  font-style:normal;
+  color:var(--muted);
+}
+
+/* ---- baseline row: cue on the left, hairline running right ---- */
+.sh__baseline{
+  display:flex;
+  align-items:flex-end;
+  gap:28px;
+  margin-top:clamp(40px,6vw,72px);
+  padding-bottom:26px;
+}
+
+.sh__cue{
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  flex:0 0 auto;
+  background:none;
+  border:0;
+  cursor:pointer;
+  color:inherit;
+  font-family:inherit;
+}
+.sh__cue-label{
+  font-size:13px;
+  letter-spacing:.04em;
+  color:var(--muted);
+  font-weight:500;
+  white-space:nowrap;
+}
+.sh__cue:hover .sh__cue-label{color:var(--ink);}
+
+/* the animated track + drop */
+.sh__track{
+  position:relative;
+  width:22px;
+  height:44px;
+  border-radius:14px;
+  border:1.5px solid var(--ink);
+  flex:0 0 auto;
+}
+.sh__drop{
+  position:absolute;
+  left:50%;
+  top:9px;
+  width:4px;
+  height:4px;
+  margin-left:-2px;
+  border-radius:50%;
+  background:var(--accent);
+  animation:sh-drop 1.9s cubic-bezier(.55,.15,.25,1) infinite;
+}
+@keyframes sh-drop{
+  0%   {transform:translateY(0);   opacity:0;}
+  18%  {opacity:1;}
+  68%  {transform:translateY(18px);opacity:1;}
+  100% {transform:translateY(22px);opacity:0;}
+}
+
+/* hairline stretching to the right, with a moving progress node */
+.sh__rail{
+  position:relative;
+  flex:1 1 auto;
+  height:1px;
+  background:var(--line);
+  overflow:visible;
+  margin-bottom:14px;
+}
+.sh__rail::after{
+  content:"";
+  position:absolute;
+  top:-2px;
+  left:0;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--accent);
+  animation:sh-run 2.6s ease-in-out infinite;
+}
+@keyframes sh-run{
+  0%,100%{left:0;opacity:0;}
+  12%{opacity:1;}
+  88%{opacity:1;}
+  50%{left:calc(100% - 5px);}
+}
+
+/* ---- peek of the next block ---- */
+.sh__peek{
+  position:relative;
+  border-top:1px solid var(--line);
+  padding:38px 0 0;
+  margin-top:-1px;
+}
+.sh__peek-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(20px,4vw,56px);
+  align-items:start;
+}
+.sh__peek-head{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+  margin-bottom:14px;
+}
+.sh__peek-title{
+  font-size:19px;
+  font-weight:600;
+  line-height:1.35;
+  letter-spacing:-.01em;
+  margin-bottom:8px;
+}
+.sh__peek-sub{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+}
+.sh__peek-stat b{
+  display:block;
+  font-size:34px;
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1;
+}
+.sh__peek-stat b .u{color:var(--accent);}
+.sh__peek-stat span{
+  display:block;
+  margin-top:8px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* the fade that signals "there's more below" */
+.sh__peek::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:56px;
+  background:linear-gradient(to bottom,rgba(255,255,255,0),#ffffff 82%);
+  pointer-events:none;
+}
+.sh__peek-inner{padding-bottom:44px;}
+
+@media(max-width:640px){
+  .sh__hero{min-height:520px;padding-top:72px;}
+  .sh__marker{position:static;display:block;margin-bottom:28px;}
+  .sh__line{font-size:20px;}
+  .sh__baseline{flex-wrap:wrap;gap:20px;margin-top:44px;padding-bottom:22px;}
+  .sh__rail{display:none;}
+  .sh__peek-grid{grid-template-columns:1fr;gap:22px;}
+  .sh__peek-stat{display:flex;align-items:baseline;gap:12px;}
+  .sh__peek-stat b{font-size:28px;}
+  .sh__peek-stat span{margin-top:0;}
+}
+</style>
+</head>
+<body>
+<section class="sh" aria-label="Scroll hint">
+  <div class="sh__hero">
+    <div class="sh__marker">Field Notes&nbsp;&nbsp;<b>01</b>&nbsp;/&nbsp;06</div>
+
+    <div class="sh__lead">
+      <span class="sh__kicker">Keep reading</span>
+      <p class="sh__line">
+        We spent eleven months rebuilding how field crews log inspections offline.
+        <em>The next three sections are what actually changed on site.</em>
+      </p>
+    </div>
+
+    <div class="sh__baseline">
+      <button class="sh__cue" type="button" aria-label="Scroll to the next section">
+        <span class="sh__track"><span class="sh__drop"></span></span>
+        <span class="sh__cue-label">Scroll to see the results</span>
+      </button>
+      <span class="sh__rail" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="sh__peek">
+    <div class="sh__peek-inner">
+      <div class="sh__peek-grid">
+        <div>
+          <div class="sh__peek-head">Up next — The rollout</div>
+          <h3 class="sh__peek-title">From 40-minute paper reports to a two-tap sync.</h3>
+          <p class="sh__peek-sub">
+            Crews at 214 substations moved to the offline-first workflow in a single
+            quarter, with no retraining sessions and zero lost records during handoff.
+          </p>
+        </div>
+        <div class="sh__peek-stat">
+          <b>92<span class="u">%</span></b>
+          <span>of inspections now filed before crews leave the site.</span>
+        </div>
+        <div class="sh__peek-stat">
+          <b>6.5<span class="u">h</span></b>
+          <span>saved per crew each week, redirected back to fieldwork.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

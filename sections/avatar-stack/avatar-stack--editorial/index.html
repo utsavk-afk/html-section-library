@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- ===== AVATAR-STACK — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Stack — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6B675E;
+  --line:#E4E0D6;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.proof{
+  width:100%;
+  padding:120px 64px;
+  display:flex;
+  justify-content:center;
+}
+
+.proof__inner{
+  width:100%;
+  max-width:1440px;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:80px;
+  align-items:center;
+}
+
+/* ---- left focal block ---- */
+.proof__lead{
+  max-width:560px;
+}
+
+.proof__label{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:34px;
+}
+.proof__label::after{
+  content:"";
+  height:1px;
+  width:64px;
+  background:var(--line);
+}
+
+.proof__headline{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:44px;
+  line-height:1.12;
+  letter-spacing:-.015em;
+  margin-bottom:26px;
+}
+.proof__headline em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.proof__sub{
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:440px;
+}
+
+/* ---- right social-proof column ---- */
+.proof__social{
+  padding-left:56px;
+  border-left:1px solid var(--line);
+}
+
+.proof__stack{
+  display:flex;
+  align-items:center;
+  margin-bottom:26px;
+  padding-left:8px;
+}
+
+.av{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  margin-left:-16px;
+  border:3px solid var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:21px;
+  color:#fff;
+  letter-spacing:.01em;
+  box-shadow:0 2px 8px rgba(27,26,23,.10);
+  position:relative;
+}
+.av:first-child{margin-left:0;}
+.av:nth-child(1){background:#7A5C43;z-index:6;}
+.av:nth-child(2){background:#3E5241;z-index:5;}
+.av:nth-child(3){background:#B4472B;z-index:4;}
+.av:nth-child(4){background:#4A4E63;z-index:3;}
+.av:nth-child(5){background:#8A6E2F;z-index:2;}
+
+.av--more{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:14px;
+  border:1px dashed #C9C3B6;
+  box-shadow:none;
+  z-index:1;
+}
+
+.proof__count{
+  font-size:15px;
+  line-height:1.55;
+  color:var(--ink);
+  margin-bottom:20px;
+}
+.proof__count strong{
+  font-weight:600;
+}
+.proof__count span{
+  color:var(--muted);
+}
+
+.proof__rating{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+.stars{
+  display:inline-flex;
+  gap:3px;
+}
+.stars svg{
+  width:17px;
+  height:17px;
+  display:block;
+}
+.proof__score{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:19px;
+}
+.proof__score em{
+  font-style:normal;
+  font-size:13px;
+  font-family:var(--sans);
+  color:var(--muted);
+  letter-spacing:.01em;
+  margin-left:2px;
+}
+
+@media(max-width:640px){
+  .proof{padding:72px 24px;}
+  .proof__inner{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .proof__headline{font-size:32px;}
+  .proof__social{
+    padding-left:0;
+    border-left:none;
+    padding-top:40px;
+    border-top:1px solid var(--line);
+  }
+  .av{width:52px;height:52px;font-size:17px;margin-left:-14px;}
+  .av--more{font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+  <section class="proof">
+    <div class="proof__inner">
+
+      <div class="proof__lead">
+        <p class="proof__label">Trusted in the wild</p>
+        <h2 class="proof__headline">
+          The library engineering teams keep <em>reaching for</em> when a page is due Friday.
+        </h2>
+        <p class="proof__sub">
+          Copy a section, paste it into Claude Code, ship it. No package to install, no design system to learn, no license to read twice.
+        </p>
+      </div>
+
+      <div class="proof__social">
+        <div class="proof__stack" aria-label="Avatars of teams using the library">
+          <div class="av" title="Meridian Labs">ML</div>
+          <div class="av" title="Northbound Studio">NS</div>
+          <div class="av" title="Postscript">PS</div>
+          <div class="av" title="Vellum &amp; Co">VC</div>
+          <div class="av" title="Ravel">RA</div>
+          <div class="av av--more" title="and more">+4k</div>
+        </div>
+
+        <p class="proof__count">
+          <strong>Join 4,200 teams</strong>
+          <span>&mdash; from two-person studios to Series-C product orgs &mdash; already shipping with these blocks.</span>
+        </p>
+
+        <div class="proof__rating">
+          <span class="stars" role="img" aria-label="Rated 4.9 out of 5 stars">
+            <svg viewBox="0 0 20 20" fill="#B4472B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#B4472B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#B4472B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#B4472B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+            <svg viewBox="0 0 20 20"><defs><linearGradient id="half"><stop offset="88%" stop-color="#B4472B"/><stop offset="88%" stop-color="#E4E0D6"/></linearGradient></defs><path fill="url(#half)" d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg>
+          </span>
+          <span class="proof__score">4.9<em>/5 across 1,180 reviews</em></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!-- ===== MOCKUP-DEVICE — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup Device — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Archivo+Expanded:wght@700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EC;
+  --muted:#8C8C82;
+  --line:#242420;
+  --accent:#C7F13B;   /* lime */
+  --accent-2:#FF4D9D; /* magenta */
+  --serif:"Archivo Expanded","Archivo",sans-serif;
+  --sans:"Archivo",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+
+/* ---------- SECTION SHELL ---------- */
+.mock{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:760px;
+  padding:88px 72px;
+  display:grid;
+  grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);
+  gap:64px;
+  align-items:center;
+  overflow:hidden;
+}
+/* faint grid backdrop, flat */
+.mock::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:52px 52px;
+  opacity:.45;
+  -webkit-mask-image:radial-gradient(120% 90% at 78% 40%,#000 30%,transparent 80%);
+          mask-image:radial-gradient(120% 90% at 78% 40%,#000 30%,transparent 80%);
+  pointer-events:none;
+}
+
+/* ---------- LEFT: COPY ---------- */
+.copy{position:relative;z-index:2;max-width:520px;}
+.tag{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bg);background:var(--accent);
+  padding:8px 14px 7px;border-radius:999px;
+  margin-bottom:26px;
+}
+.tag b{width:7px;height:7px;background:var(--bg);border-radius:50%;}
+
+.copy h1{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(44px,5.4vw,88px);
+  line-height:.9;letter-spacing:-.02em;text-transform:uppercase;
+}
+.copy h1 .hl{color:var(--accent-2);}
+.copy h1 .ol{
+  color:transparent;
+  -webkit-text-stroke:2px var(--accent);
+}
+
+.copy p{
+  margin-top:26px;
+  font-size:18px;line-height:1.5;color:var(--muted);max-width:420px;
+  font-weight:500;
+}
+
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center;}
+.btn{
+  font-family:var(--sans);font-weight:800;font-size:16px;letter-spacing:-.01em;
+  padding:16px 28px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-lime{background:var(--accent);color:var(--bg);box-shadow:5px 5px 0 var(--accent-2);}
+.btn-ghost{background:transparent;color:var(--ink);border:2px solid var(--line);}
+.btn-ghost .k{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 6px;}
+
+.meta{
+  margin-top:38px;display:flex;gap:34px;align-items:flex-end;
+  padding-top:26px;border-top:1px dashed var(--line);max-width:420px;
+}
+.meta .n{font-family:var(--serif);font-weight:800;font-size:34px;line-height:1;}
+.meta .n span{color:var(--accent);}
+.meta .l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px;display:block;}
+
+/* ---------- RIGHT: BROWSER DEVICE ---------- */
+.stage{position:relative;z-index:2;justify-self:center;width:100%;max-width:660px;}
+
+.browser{
+  background:#131310;
+  border:2px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 30px 0 -10px rgba(0,0,0,.5), 0 40px 80px -30px #000;
+  transform:rotate(-1.4deg);
+}
+/* chrome bar */
+.bar{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;background:#0E0E0C;border-bottom:2px solid var(--line);
+}
+.dots{display:flex;gap:8px;}
+.dots i{width:12px;height:12px;border-radius:50%;display:block;}
+.dots i:nth-child(1){background:var(--accent-2);}
+.dots i:nth-child(2){background:#4A4A42;}
+.dots i:nth-child(3){background:var(--accent);}
+.url{
+  flex:1;background:#050504;border:1px solid var(--line);border-radius:8px;
+  font-family:var(--mono);font-size:12.5px;color:var(--muted);
+  padding:8px 12px;display:flex;align-items:center;gap:8px;
+}
+.url b{color:var(--accent);font-weight:700;}
+.url .lock{color:#5a5a52;}
+
+/* app viewport */
+.app{padding:22px;display:grid;grid-template-columns:150px 1fr;gap:18px;background:#0B0B09;}
+
+/* sidebar */
+.side{display:flex;flex-direction:column;gap:8px;}
+.side .brand{
+  font-family:var(--serif);font-weight:900;font-size:19px;letter-spacing:-.02em;
+  color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.side .brand em{width:22px;height:22px;background:var(--accent);border-radius:7px;display:grid;place-items:center;color:var(--bg);font-style:normal;font-weight:900;font-size:14px;}
+.nav{font-family:var(--sans);font-weight:700;font-size:13px;padding:9px 11px;border-radius:9px;color:var(--muted);display:flex;align-items:center;gap:9px;}
+.nav.on{background:var(--accent);color:var(--bg);}
+.nav .ic{width:8px;height:8px;border-radius:2px;background:currentColor;opacity:.7;}
+.nav.on .ic{opacity:1;}
+
+/* main panel */
+.panel{display:flex;flex-direction:column;gap:14px;}
+.phead{display:flex;justify-content:space-between;align-items:flex-end;}
+.phead h4{font-family:var(--serif);font-weight:800;font-size:16px;letter-spacing:-.01em;}
+.phead .pill{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--bg);background:var(--accent-2);border-radius:999px;padding:4px 9px;}
+
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:#0F0F0C;}
+.kpi .v{font-family:var(--serif);font-weight:900;font-size:26px;line-height:1;letter-spacing:-.02em;}
+.kpi .v.lime{color:var(--accent);}
+.kpi .v.mag{color:var(--accent-2);}
+.kpi .c{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:7px;}
+.kpi .up{color:var(--accent);}
+
+/* mini bar chart */
+.chart{
+  border:1px solid var(--line);border-radius:12px;padding:15px 16px 13px;background:#0F0F0C;
+}
+.chart .ct{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.chart .ct span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.chart .ct b{font-family:var(--serif);font-weight:800;font-size:13px;color:var(--ink);}
+.bars{display:flex;align-items:flex-end;gap:9px;height:74px;}
+.bars i{flex:1;border-radius:5px 5px 0 0;display:block;background:#26261f;}
+.bars i.a{background:var(--accent);}
+.bars i.m{background:var(--accent-2);}
+
+/* floating badge over device */
+.badge{
+  position:absolute;z-index:5;
+  bottom:-22px;left:-30px;
+  background:var(--bg);border:2px solid var(--accent);
+  border-radius:14px;padding:13px 17px;
+  transform:rotate(3deg);
+  box-shadow:6px 6px 0 var(--accent-2);
+}
+.badge .bt{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.badge .bv{font-family:var(--serif);font-weight:900;font-size:22px;letter-spacing:-.02em;color:var(--accent);margin-top:3px;}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:640px){
+  .mock{
+    grid-template-columns:1fr;
+    gap:52px;
+    padding:52px 22px 74px;
+    min-height:0;
+  }
+  .mock::before{-webkit-mask-image:radial-gradient(140% 60% at 50% 12%,#000 30%,transparent 85%);mask-image:radial-gradient(140% 60% at 50% 12%,#000 30%,transparent 85%);}
+  .copy h1{font-size:clamp(40px,13vw,62px);}
+  .copy p{font-size:16px;}
+  .meta{gap:22px;flex-wrap:wrap;}
+  .meta .n{font-size:28px;}
+  .browser{transform:rotate(-1deg);}
+  .app{grid-template-columns:1fr;}
+  .side{flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px;}
+  .side .brand{width:100%;margin-bottom:4px;}
+  .nav{font-size:12px;padding:7px 10px;}
+  .badge{left:auto;right:-6px;bottom:-16px;}
+  .btn{flex:1;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+  <section class="mock">
+
+    <!-- LEFT: copy -->
+    <div class="copy">
+      <span class="tag"><b></b>Ships in one paste</span>
+      <h1>See it <span class="hl">live</span><br>before you <span class="ol">write</span><br>a line.</h1>
+      <p>Drop the block into Claude Code and your dashboard renders in the browser instantly — real KPIs, real charts, zero build step, zero config file.</p>
+
+      <div class="actions">
+        <a href="#" class="btn btn-lime">Copy the section &rarr;</a>
+        <a href="#" class="btn btn-ghost">Preview <span class="k">P</span></a>
+      </div>
+
+      <div class="meta">
+        <div><div class="n"><span>0</span>kb</div><span class="l">JS shipped</span></div>
+        <div><div class="n">1<span>×</span></div><span class="l">Paste to render</span></div>
+        <div><div class="n">42<span>+</span></div><span class="l">Snippets in lib</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: browser device -->
+    <div class="stage">
+      <div class="browser">
+        <div class="bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="url"><span class="lock">&#128274;</span>app.pastekit.dev/<b>dashboard</b></div>
+        </div>
+
+        <div class="app">
+          <!-- sidebar -->
+          <aside class="side">
+            <div class="brand"><em>P</em>Pastekit</div>
+            <div class="nav on"><span class="ic"></span>Overview</div>
+            <div class="nav"><span class="ic"></span>Snippets</div>
+            <div class="nav"><span class="ic"></span>Deploys</div>
+            <div class="nav"><span class="ic"></span>Team</div>
+          </aside>
+
+          <!-- panel -->
+          <div class="panel">
+            <div class="phead">
+              <h4>This week</h4>
+              <span class="pill">LIVE</span>
+            </div>
+
+            <div class="kpis">
+              <div class="kpi"><div class="v lime">18,402</div><div class="c">Pastes <span class="up">&uarr; 34%</span></div></div>
+              <div class="kpi"><div class="v mag">96ms</div><div class="c">Render p95 <span class="up">&darr; 12%</span></div></div>
+              <div class="kpi"><div class="v">1,290</div><div class="c">New devs</div></div>
+              <div class="kpi"><div class="v">100%</div><div class="c">Uptime 30d</div></div>
+            </div>
+
+            <div class="chart">
+              <div class="ct"><span>Renders / day</span><b>+ 5.1k</b></div>
+              <div class="bars">
+                <i style="height:38%"></i>
+                <i style="height:54%"></i>
+                <i class="m" style="height:46%"></i>
+                <i style="height:66%"></i>
+                <i class="a" style="height:100%"></i>
+                <i style="height:72%"></i>
+                <i style="height:58%"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- floating flat badge -->
+      <div class="badge">
+        <div class="bt">Build step</div>
+        <div class="bv">None.</div>
+      </div>
+    </div>
+
+  </section>
+
+</body>
+</html>

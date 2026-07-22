@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- ===== HOW-IT-WORKS — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A32;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+  --panel:#17171C;
+  --panel-2:#1C1C22;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.hiw{
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 80px 112px;
+  display:grid;
+  grid-template-columns:0.82fr 1.18fr;
+  gap:72px;
+  align-items:start;
+}
+
+/* ---- LEFT RAIL ---- */
+.hiw__intro{
+  position:sticky;
+  top:64px;
+}
+.hiw__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+}
+.hiw__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+.hiw__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:46px;
+  line-height:1.05;
+  letter-spacing:-0.015em;
+  margin:22px 0 20px;
+}
+.hiw__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.hiw__lede{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.6;
+  max-width:34ch;
+}
+.hiw__meta{
+  margin-top:34px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  display:flex;
+  gap:38px;
+}
+.hiw__meta b{
+  display:block;
+  font-family:var(--serif);
+  font-size:26px;
+  font-weight:500;
+  color:var(--ink);
+}
+.hiw__meta span{
+  display:block;
+  margin-top:4px;
+  font-size:12.5px;
+  color:var(--muted);
+  letter-spacing:0.02em;
+}
+
+/* ---- RIGHT: STEPS ---- */
+.hiw__steps{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+/* connective spine behind the numbers */
+.hiw__steps::before{
+  content:"";
+  position:absolute;
+  left:27px;
+  top:34px;
+  bottom:44px;
+  width:1px;
+  background:linear-gradient(var(--line),var(--line));
+  z-index:0;
+}
+
+.step{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:56px 1fr;
+  gap:26px;
+  align-items:start;
+  padding:26px 30px 26px 0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  padding-left:24px;
+  transition:border-color .2s ease, transform .2s ease;
+}
+.step:hover{
+  border-color:#3a3a44;
+  transform:translateX(4px);
+}
+/* asymmetric stagger — not identical cards */
+.step--1{margin-right:74px;border-radius:14px 14px 14px 4px;}
+.step--2{margin-left:40px;background:var(--panel-2);}
+.step--3{margin-right:40px;}
+.step--4{
+  margin-left:80px;
+  border-color:var(--accent);
+  background:linear-gradient(180deg,rgba(245,158,66,0.07),transparent 70%),var(--panel);
+}
+
+.step__num{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:500;
+  color:var(--ink);
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:var(--bg);
+  flex:none;
+}
+.step--4 .step__num{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.step__num span{
+  font-size:11px;
+  letter-spacing:0.04em;
+  color:var(--muted);
+  margin-top:2px;
+  font-family:var(--sans);
+}
+
+.step__body{padding-top:5px;}
+.step__head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.step__title{
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+.step__tag{
+  font-size:11px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:100px;
+  padding:4px 11px;
+  white-space:nowrap;
+}
+.step--4 .step__tag{
+  color:var(--accent);
+  border-color:rgba(245,158,66,0.4);
+}
+.step__desc{
+  margin-top:9px;
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.58;
+  max-width:52ch;
+}
+.step__desc code{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;
+  font-size:13px;
+  color:var(--ink);
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:5px;
+  padding:1px 6px;
+}
+
+@media(max-width:640px){
+  .hiw{
+    grid-template-columns:1fr;
+    gap:44px;
+    padding:64px 22px 76px;
+  }
+  .hiw__intro{position:static;}
+  .hiw__title{font-size:34px;}
+  .hiw__meta{gap:26px;}
+  .hiw__steps::before{left:24px;top:30px;bottom:36px;}
+  .step,
+  .step--1,.step--2,.step--3,.step--4{
+    margin:0;
+    grid-template-columns:46px 1fr;
+    gap:16px;
+    padding:20px 18px;
+  }
+  .step:hover{transform:none;}
+  .step__num{width:46px;height:46px;font-size:18px;}
+  .step__head{gap:10px;}
+}
+</style>
+</head>
+<body>
+
+<section class="hiw">
+  <!-- LEFT RAIL -->
+  <div class="hiw__intro">
+    <span class="hiw__eyebrow">The workflow</span>
+    <h2 class="hiw__title">Paste it in.<br>Ship it <em>the same day.</em></h2>
+    <p class="hiw__lede">Every section in the library is a single self-contained file. No install, no config, no dependency graph to babysit — just four honest steps from copy to production.</p>
+    <div class="hiw__meta">
+      <div>
+        <b>~4 min</b>
+        <span>copy to preview</span>
+      </div>
+      <div>
+        <b>0</b>
+        <span>build steps</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: STEPS -->
+  <ol class="hiw__steps">
+    <li class="step step--1">
+      <div class="step__num">01</div>
+      <div class="step__body">
+        <div class="step__head">
+          <h3 class="step__title">Grab the section</h3>
+          <span class="step__tag">Copy</span>
+        </div>
+        <p class="step__desc">Open the file, select all, copy. One <code>index.html</code> holds the markup, tokens, and styles — nothing else to fetch.</p>
+      </div>
+    </li>
+
+    <li class="step step--2">
+      <div class="step__num">02</div>
+      <div class="step__body">
+        <div class="step__head">
+          <h3 class="step__title">Drop it into Claude Code</h3>
+          <span class="step__tag">Paste</span>
+        </div>
+        <p class="step__desc">Hand it to the agent with a one-line ask — "make the headline about our onboarding flow." It rewrites the copy and keeps the structure intact.</p>
+      </div>
+    </li>
+
+    <li class="step step--3">
+      <div class="step__num">03</div>
+      <div class="step__body">
+        <div class="step__head">
+          <h3 class="step__title">Retint the tokens</h3>
+          <span class="step__tag">Adjust</span>
+        </div>
+        <p class="step__desc">Every color lives in one <code>:root</code> block. Swap <code>--accent</code>, nudge the radius, match your brand in a couple of edits.</p>
+      </div>
+    </li>
+
+    <li class="step step--4">
+      <div class="step__num">04</div>
+      <div class="step__body">
+        <div class="step__head">
+          <h3 class="step__title">Ship to production</h3>
+          <span class="step__tag">Deploy</span>
+        </div>
+        <p class="step__desc">It's plain HTML and CSS, so it runs anywhere a browser does — paste into your page, commit, push. Done before the coffee's cold.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- ===== ABOUT — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#0A0A0A;
+    --ink:#F5F5F0;
+    --muted:#8A8A82;
+    --line:#242422;
+    --accent:#C7F13B;      /* lime primary */
+    --accent-2:#FF4D9D;    /* magenta secondary */
+    --serif:'Archivo',sans-serif;
+    --sans:'Archivo',sans-serif;
+  }
+
+  html{-webkit-text-size-adjust:100%;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.5;}
+
+  .about{
+    position:relative;
+    max-width:1440px;
+    margin:0 auto;
+    padding:110px 72px 120px;
+    overflow:hidden;
+  }
+
+  /* corner index marker */
+  .about__marker{
+    position:absolute;top:44px;right:72px;
+    font-size:12px;font-weight:800;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .about__marker b{color:var(--accent);}
+
+  .about__grid{
+    display:grid;
+    grid-template-columns:1.35fr 1fr;
+    gap:76px;
+    align-items:end;
+  }
+
+  /* ---- LEFT: story ---- */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;font-weight:800;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--accent);
+    margin-bottom:34px;
+  }
+  .eyebrow::before{
+    content:"";width:34px;height:8px;background:var(--accent);
+    display:inline-block;transform:skewX(-18deg);
+  }
+
+  .about__head{
+    font-weight:900;
+    font-size:clamp(48px,7vw,104px);
+    line-height:.9;
+    letter-spacing:-.045em;
+    text-transform:uppercase;
+    margin-bottom:38px;
+  }
+  .about__head .em{
+    display:block;
+    color:var(--bg);
+    background:var(--accent);
+    padding:0 .12em;
+    width:max-content;
+    max-width:100%;
+    transform:rotate(-1.4deg);
+    margin:.06em 0;
+    box-shadow:10px 10px 0 var(--accent-2);
+  }
+  .about__head .mag{color:var(--accent-2);}
+
+  .about__body{
+    max-width:520px;
+    font-size:18px;
+    line-height:1.62;
+    color:#D8D8D2;
+  }
+  .about__body p+p{margin-top:18px;}
+  .about__body strong{color:var(--ink);font-weight:800;}
+  .about__body mark{
+    background:var(--accent-2);color:var(--bg);
+    font-weight:800;padding:0 .12em;border-radius:2px;
+  }
+
+  .about__sign{
+    margin-top:40px;
+    display:flex;align-items:center;gap:16px;
+  }
+  .about__avatar{
+    width:52px;height:52px;flex:none;
+    background:var(--accent);color:var(--bg);
+    display:grid;place-items:center;
+    font-weight:900;font-size:19px;letter-spacing:-.02em;
+    transform:rotate(3deg);
+  }
+  .about__sign .n{font-weight:800;font-size:15px;line-height:1.25;}
+  .about__sign .r{font-size:13px;color:var(--muted);font-weight:600;}
+
+  /* ---- RIGHT: stat / visual ---- */
+  .about__side{
+    position:relative;
+    align-self:end;
+  }
+
+  .stat{
+    background:var(--accent-2);
+    color:var(--bg);
+    padding:38px 34px 34px;
+    transform:rotate(1.6deg);
+  }
+  .stat__num{
+    font-weight:900;
+    font-size:clamp(76px,9vw,128px);
+    line-height:.82;
+    letter-spacing:-.06em;
+    display:flex;align-items:flex-start;
+  }
+  .stat__num sup{font-size:.34em;font-weight:900;margin-top:.35em;}
+  .stat__label{
+    margin-top:16px;
+    font-size:15px;font-weight:800;
+    text-transform:uppercase;letter-spacing:.06em;
+    line-height:1.3;
+    max-width:230px;
+  }
+
+  /* mini bar viz under the stat */
+  .bars{
+    margin-top:22px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .bar{display:flex;align-items:center;gap:14px;}
+  .bar .cap{
+    font-size:12px;font-weight:800;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--muted);
+    width:104px;flex:none;
+  }
+  .bar .track{flex:1;height:14px;background:var(--line);position:relative;}
+  .bar .fill{position:absolute;inset:0 auto 0 0;background:var(--accent);}
+  .bar:nth-child(2) .fill{width:88%;}
+  .bar:nth-child(3) .fill{width:64%;background:var(--ink);}
+  .bar .val{font-size:12px;font-weight:800;color:var(--ink);width:38px;text-align:right;}
+
+  .about__stamp{
+    position:absolute;
+    left:-46px;bottom:-26px;
+    background:var(--bg);
+    border:2px solid var(--accent);
+    color:var(--accent);
+    font-size:12px;font-weight:800;letter-spacing:.18em;
+    text-transform:uppercase;
+    padding:9px 15px;
+    transform:rotate(-6deg);
+  }
+
+  /* footer strip */
+  .about__strip{
+    margin-top:78px;
+    border-top:2px solid var(--line);
+    padding-top:26px;
+    display:flex;flex-wrap:wrap;gap:12px 40px;
+    align-items:center;
+    font-size:13px;font-weight:800;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .about__strip .dot{width:8px;height:8px;background:var(--accent-2);flex:none;}
+  .about__strip span:first-child{color:var(--ink);}
+
+  @media(max-width:640px){
+    .about{padding:64px 22px 80px;}
+    .about__marker{top:26px;right:22px;font-size:10px;}
+    .about__grid{grid-template-columns:1fr;gap:54px;}
+    .about__head{margin-bottom:30px;}
+    .about__body{font-size:16.5px;}
+    .stat{transform:rotate(1deg);padding:30px 26px;}
+    .about__stamp{left:auto;right:14px;bottom:-18px;}
+    .about__strip{margin-top:58px;gap:10px 26px;font-size:11px;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="about">
+    <div class="about__marker">About <b>/</b> 03</div>
+
+    <div class="about__grid">
+
+      <!-- LEFT -->
+      <div class="about__main">
+        <span class="eyebrow">Who we are</span>
+
+        <h2 class="about__head">
+          We build tools
+          <span class="em">makers</span>
+          actually <span class="mag">keep.</span>
+        </h2>
+
+        <div class="about__body">
+          <p>Blockpaste started in 2021 with a stubborn idea: the best components
+          shouldn't live behind a paywall or rot inside a private repo. So we
+          shipped the first fifty for free — and never stopped.</p>
+          <p>Today it's a library of <strong>420+ copy-paste sections</strong>,
+          hand-built by a team of six who still <mark>read every bug report</mark>
+          and answer their own support tickets. No VC, no roadmap theater. Just
+          code that pastes clean and ships the same day.</p>
+        </div>
+
+        <div class="about__sign">
+          <div class="about__avatar">RM</div>
+          <div>
+            <div class="n">Rosa Medina</div>
+            <div class="r">Founder &amp; lead engineer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="about__side">
+        <div class="stat">
+          <div class="stat__num">1.9<sup>M</sup></div>
+          <div class="stat__label">paste-ins by devs across 140 countries</div>
+
+          <div class="bars">
+            <div class="bar">
+              <span class="cap">Free forever</span>
+              <span class="track"><span class="fill" style="width:100%"></span></span>
+              <span class="val">100%</span>
+            </div>
+            <div class="bar">
+              <span class="cap">Ship same-day</span>
+              <span class="track"><span class="fill"></span></span>
+              <span class="val">88%</span>
+            </div>
+            <div class="bar">
+              <span class="cap">Zero deps</span>
+              <span class="track"><span class="fill"></span></span>
+              <span class="val">64%</span>
+            </div>
+          </div>
+        </div>
+        <div class="about__stamp">Est. 2021 · Lisbon</div>
+      </div>
+
+    </div>
+
+    <div class="about__strip">
+      <span>The whole library</span>
+      <span><i class="dot"></i>&nbsp;&nbsp;No sign-up</span>
+      <span><i class="dot"></i>&nbsp;&nbsp;MIT licensed</span>
+      <span><i class="dot"></i>&nbsp;&nbsp;Drop into Claude Code</span>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- ===== FAQ — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e0;
+  --accent:#C0492B;
+  --serif:"Inter",sans-serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+html{-webkit-font-smoothing:antialiased;}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.5;
+}
+
+.faq{
+  max-width:1440px;
+  margin:0 auto;
+  padding:112px 80px 120px;
+}
+
+.faq__grid{
+  display:grid;
+  grid-template-columns:minmax(0,380px) minmax(0,1fr);
+  gap:88px;
+  align-items:start;
+}
+
+/* ---- left rail (the focal point) ---- */
+.faq__aside{
+  position:sticky;
+  top:112px;
+}
+
+.faq__eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+
+.faq__title{
+  font-size:38px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  line-height:1.12;
+  margin-bottom:20px;
+}
+
+.faq__lede{
+  font-size:15px;
+  color:var(--muted);
+  max-width:300px;
+  margin-bottom:30px;
+}
+
+.faq__contact{
+  font-size:14px;
+  color:var(--ink);
+}
+.faq__contact a{
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px solid rgba(192,73,43,0.35);
+  padding-bottom:1px;
+  transition:border-color .2s ease;
+}
+.faq__contact a:hover{border-bottom-color:var(--accent);}
+
+/* ---- accordion ---- */
+.faq__list{
+  border-top:1px solid var(--line);
+}
+
+.faq__item{
+  border-bottom:1px solid var(--line);
+}
+
+.faq__q{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:flex-start;
+  gap:24px;
+  padding:26px 4px 26px 0;
+  font-size:18px;
+  font-weight:500;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+  transition:color .18s ease;
+}
+.faq__q::-webkit-details-marker{display:none;}
+.faq__q:hover{color:var(--accent);}
+
+.faq__num{
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted);
+  padding-top:4px;
+  min-width:24px;
+  font-variant-numeric:tabular-nums;
+}
+
+.faq__q-text{flex:1;}
+
+.faq__mark{
+  position:relative;
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+  margin-top:6px;
+}
+.faq__mark::before,
+.faq__mark::after{
+  content:"";
+  position:absolute;
+  background:var(--ink);
+  transition:transform .25s cubic-bezier(.4,0,.2,1),background .18s ease;
+}
+.faq__mark::before{
+  top:7px;left:0;
+  width:16px;height:2px;
+}
+.faq__mark::after{
+  top:0;left:7px;
+  width:2px;height:16px;
+}
+.faq__q:hover .faq__mark::before,
+.faq__q:hover .faq__mark::after{background:var(--accent);}
+.faq__item[open] .faq__mark::after{transform:scaleY(0);}
+.faq__item[open] .faq__mark::before{background:var(--accent);}
+.faq__item[open] .faq__q{color:var(--ink);}
+
+.faq__a{
+  padding:0 60px 30px 48px;
+  font-size:15px;
+  color:var(--muted);
+  max-width:640px;
+}
+.faq__a p{margin-bottom:14px;}
+.faq__a p:last-child{margin-bottom:0;}
+.faq__a strong{color:var(--ink);font-weight:600;}
+.faq__a a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(192,73,43,0.3);}
+
+@media(max-width:640px){
+  .faq{padding:64px 22px 72px;}
+  .faq__grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .faq__aside{position:static;top:auto;}
+  .faq__title{font-size:29px;}
+  .faq__lede{max-width:none;}
+  .faq__q{
+    gap:14px;
+    font-size:16px;
+    padding:22px 2px;
+  }
+  .faq__num{min-width:20px;font-size:12px;}
+  .faq__a{padding:0 0 26px 34px;}
+}
+</style>
+</head>
+<body>
+
+<section class="faq" aria-labelledby="faq-title">
+  <div class="faq__grid">
+
+    <aside class="faq__aside">
+      <p class="faq__eyebrow">Before you install</p>
+      <h2 class="faq__title" id="faq-title">Questions from teams already running this in Claude Code.</h2>
+      <p class="faq__lede">Everything here is drawn from real support threads. If you hit something not covered, we usually reply the same working day.</p>
+      <p class="faq__contact">Still stuck? Email <a href="mailto:hello@example.com">hello@example.com</a></p>
+    </aside>
+
+    <div class="faq__list">
+
+      <details class="faq__item" open>
+        <summary class="faq__q">
+          <span class="faq__num">01</span>
+          <span class="faq__q-text">Do I need a build step to use the library?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>No. Every section is a single self-contained <strong>index.html</strong> file. Copy it, paste it, open it in a browser — nothing to compile, no npm install, no bundler. The only external dependency is Google Fonts, loaded over a standard link tag.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">02</span>
+          <span class="faq__q-text">Can I use these sections in commercial client work?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>Yes. The library is free for commercial and personal projects, including paid client sites. You don't need to credit us, though a link back is always appreciated. You may not resell the collection itself as a competing template pack.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">03</span>
+          <span class="faq__q-text">How do I change the accent colour and fonts?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>Open the <strong>:root</strong> block at the top of the stylesheet. Every colour and typeface routes through a custom property — swap <strong>--accent</strong> to rebrand the whole section in one edit, or point <strong>--sans</strong> at a different family after updating the font link in the head.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">04</span>
+          <span class="faq__q-text">Will this work with Tailwind or my existing CSS?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>The markup uses plain, prefixed class names (<strong>faq__item</strong>, <strong>faq__q</strong>) so it won't collide with utility classes. Drop the section into a Tailwind or vanilla project and the scoped styles stay contained. If you'd rather go utility-first, the class structure maps cleanly one-to-one.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">05</span>
+          <span class="faq__q-text">Is the accordion accessible and keyboard-friendly?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>It's built on native <strong>&lt;details&gt;</strong> and <strong>&lt;summary&gt;</strong> elements, so expand and collapse work with the keyboard, screen readers announce state, and it degrades gracefully with JavaScript disabled. No custom ARIA wiring required — the browser handles focus and toggling for you.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">
+          <span class="faq__num">06</span>
+          <span class="faq__q-text">How often do you add new sections?</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <p>New sections ship most weeks, usually in small batches grouped by type — heroes, pricing, testimonials, footers. Existing files get quiet updates when a browser default shifts. Watch the repo or check back; nothing you've already pasted will break underneath you.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Famous Quote — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== FAMOUS-QUOTE — DARK/LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-2:#17171c;
+  --off:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --line:rgba(244,244,245,0.12);
+  --line-soft:rgba(244,244,245,0.06);
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--off);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.fq{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 72px 96px;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 88% 0%, rgba(245,158,66,0.07) 0%, rgba(245,158,66,0) 46%),
+    var(--ink);
+}
+
+/* faint index number, top-left, behind everything */
+.fq__index{
+  position:absolute;
+  top:36px;
+  left:64px;
+  font-family:var(--serif);
+  font-size:clamp(80px,12vw,168px);
+  font-weight:400;
+  line-height:1;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(244,244,245,0.06);
+  letter-spacing:-0.02em;
+  pointer-events:none;
+  user-select:none;
+}
+
+.fq__grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:56px;
+  align-items:end;
+}
+
+/* ---- left: the statement ---- */
+.fq__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+.fq__eyebrow::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--amber);
+}
+
+.fq__quote{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(34px,5.4vw,76px);
+  line-height:1.06;
+  letter-spacing:-0.02em;
+  color:var(--off);
+  max-width:15ch;
+  text-wrap:balance;
+}
+.fq__mark{
+  font-family:var(--serif);
+  color:var(--amber);
+  font-size:1.05em;
+  line-height:0;
+  vertical-align:-0.18em;
+  margin-right:0.04em;
+}
+.fq__quote em{
+  font-style:italic;
+  color:var(--amber);
+}
+
+.fq__attrib{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-top:52px;
+}
+.fq__avatar{
+  flex:0 0 auto;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-family:var(--serif);
+  font-size:20px;
+  font-weight:600;
+  color:var(--ink);
+  background:linear-gradient(150deg,#F7B267 0%,#F59E42 100%);
+  letter-spacing:0.01em;
+}
+.fq__who{display:flex;flex-direction:column;gap:3px;}
+.fq__name{
+  font-size:17px;
+  font-weight:600;
+  color:var(--off);
+  letter-spacing:0.01em;
+}
+.fq__role{
+  font-size:13.5px;
+  color:var(--muted);
+  letter-spacing:0.01em;
+}
+
+/* ---- right: vertical meta rail ---- */
+.fq__rail{
+  border-left:1px solid var(--line);
+  padding:6px 0 6px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+}
+.fq__meta-k{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.fq__meta-v{
+  font-size:14px;
+  color:var(--off);
+  line-height:1.5;
+}
+.fq__meta-v .fq__accent{color:var(--amber);}
+
+.fq__source{
+  margin-top:6px;
+  padding-top:22px;
+  border-top:1px solid var(--line-soft);
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+.fq__source a{
+  color:var(--off);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  transition:border-color .2s ease;
+}
+.fq__source a:hover{border-color:var(--amber);}
+
+@media (max-width:640px){
+  .fq{padding:72px 24px 64px;}
+  .fq__index{top:22px;left:20px;font-size:96px;}
+  .fq__grid{grid-template-columns:1fr;gap:40px;}
+  .fq__quote{max-width:none;}
+  .fq__eyebrow{margin-bottom:28px;}
+  .fq__attrib{margin-top:36px;}
+  .fq__rail{
+    border-left:none;
+    border-top:1px solid var(--line);
+    padding:28px 0 0;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:28px 40px;
+  }
+  .fq__source{flex-basis:100%;}
+}
+</style>
+</head>
+<body>
+<section class="fq" aria-label="Featured quote">
+  <span class="fq__index" aria-hidden="true">07</span>
+
+  <div class="fq__grid">
+    <div class="fq__statement">
+      <span class="fq__eyebrow">From the notebooks</span>
+
+      <blockquote class="fq__quote">
+        <span class="fq__mark" aria-hidden="true">&ldquo;</span>The people who are crazy enough to think they can change the world are the <em>ones who do.</em>&rdquo;
+      </blockquote>
+
+      <figcaption class="fq__attrib">
+        <span class="fq__avatar" aria-hidden="true">RB</span>
+        <span class="fq__who">
+          <span class="fq__name">Rob Siltanen</span>
+          <span class="fq__role">Creative Director &amp; Copywriter, TBWA\Chiat\Day</span>
+        </span>
+      </figcaption>
+    </div>
+
+    <aside class="fq__rail" aria-label="Quote details">
+      <div>
+        <div class="fq__meta-k">Written</div>
+        <div class="fq__meta-v">1997 <span class="fq__accent">&middot;</span> Los Angeles</div>
+      </div>
+      <div>
+        <div class="fq__meta-k">Campaign</div>
+        <div class="fq__meta-v">Think&nbsp;Different, closing line</div>
+      </div>
+      <div class="fq__source">
+        Often misattributed. First drafted for the launch spot, later reworked by the studio.
+        <a href="#">Read the full backstory &rarr;</a>
+      </div>
+    </aside>
+  </div>
+</section>
+</body>
+</html>

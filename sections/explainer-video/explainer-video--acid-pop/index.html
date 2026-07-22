@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!-- ===== explainer-video — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explainer Video — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --ink:#0A0A0A;
+  --paper:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --white:#FFFFFF;
+  --line:rgba(255,255,255,.14);
+  --font:'Archivo',system-ui,sans-serif;
+  --rad-pill:100px;
+  --rad-lg:22px;
+  --rad-sm:10px;
+}
+
+body{
+  background:var(--ink);
+  color:var(--white);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===== SECTION SHELL ===== */
+.xpl{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 72px 104px;
+  background:var(--ink);
+  overflow:hidden;
+}
+/* off-center lime slab behind the player — asymmetry, one focal point */
+.xpl::before{
+  content:"";
+  position:absolute;
+  top:120px;
+  right:-140px;
+  width:640px;
+  height:640px;
+  background:var(--lime);
+  border-radius:50%;
+  filter:none;
+  opacity:.10;
+  z-index:0;
+}
+
+.xpl__grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:64px;
+  align-items:center;
+}
+
+/* ===== LEFT: COPY COLUMN ===== */
+.xpl__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--magenta);
+  color:var(--ink);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:8px 16px 8px 12px;
+  border-radius:var(--rad-pill);
+}
+.xpl__eyebrow .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--ink);
+  display:inline-block;
+}
+
+.xpl__title{
+  margin-top:26px;
+  font-weight:900;
+  font-size:76px;
+  line-height:.92;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+}
+.xpl__title em{
+  font-style:italic;
+  color:var(--lime);
+}
+.xpl__title .mag{color:var(--magenta);}
+
+.xpl__lede{
+  margin-top:26px;
+  max-width:440px;
+  font-size:18px;
+  line-height:1.5;
+  font-weight:400;
+  color:rgba(255,255,255,.72);
+}
+
+.xpl__meta{
+  margin-top:34px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.xpl__watch{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--lime);
+  color:var(--ink);
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  padding:16px 28px;
+  border:none;
+  border-radius:var(--rad-pill);
+  cursor:pointer;
+  transition:transform .12s ease;
+}
+.xpl__watch:hover{transform:translateY(-2px);}
+.xpl__watch svg{width:16px;height:16px;display:block;}
+
+.xpl__runtime{
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+}
+.xpl__runtime b{color:var(--white);}
+
+/* ===== RIGHT: VIDEO PLAYER FRAME (CSS-drawn) ===== */
+.player{
+  position:relative;
+  z-index:2;
+  border-radius:var(--rad-lg);
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.7);
+  /* rotate slightly for asymmetry */
+  transform:rotate(-1.4deg);
+}
+
+/* the "video canvas" — flat acid color blocks, no gradient glow */
+.player__stage{
+  position:relative;
+  aspect-ratio:16/10;
+  background:var(--ink);
+  overflow:hidden;
+}
+/* bold flat geometric composition inside the frame */
+.player__stage::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(0deg, var(--magenta) 0 34%, transparent 34%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 2px, transparent 2px 46px);
+}
+.blob{position:absolute;}
+.blob.a{
+  top:-40px;left:-30px;
+  width:230px;height:230px;
+  background:var(--lime);
+  border-radius:50%;
+}
+.blob.b{
+  top:44px;right:56px;
+  width:96px;height:96px;
+  background:var(--white);
+  transform:rotate(45deg);
+}
+.blob.c{
+  bottom:26px;left:60px;
+  width:160px;height:40px;
+  background:var(--ink);
+  border:3px solid var(--white);
+  border-radius:var(--rad-pill);
+}
+
+/* PLAY BUTTON — the focal point */
+.player__play{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:112px;height:112px;
+  border-radius:50%;
+  background:var(--lime);
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3;
+  box-shadow:0 0 0 0 rgba(199,241,59,.55);
+  animation:ring 2.6s infinite;
+}
+.player__play svg{
+  width:38px;height:38px;
+  margin-left:6px;
+  display:block;
+  fill:var(--ink);
+}
+@keyframes ring{
+  0%{box-shadow:0 0 0 0 rgba(199,241,59,.5);}
+  70%{box-shadow:0 0 0 26px rgba(199,241,59,0);}
+  100%{box-shadow:0 0 0 0 rgba(199,241,59,0);}
+}
+
+/* CHYRON / caption chip over the video */
+.player__chyron{
+  position:absolute;
+  left:18px;bottom:18px;
+  z-index:3;
+  background:var(--ink);
+  color:var(--white);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.04em;
+  padding:8px 14px;
+  border-radius:var(--rad-sm);
+  border:1px solid var(--line);
+}
+.player__chyron b{color:var(--lime);}
+
+/* CONTROL BAR — CSS drawn */
+.player__bar{
+  position:relative;
+  z-index:3;
+  background:#141414;
+  padding:16px 20px 18px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.mini{
+  width:34px;height:34px;
+  border-radius:50%;
+  background:var(--lime);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.mini svg{width:13px;height:13px;fill:var(--ink);display:block;margin-left:2px;}
+
+.scrub{
+  flex:1;
+  height:8px;
+  border-radius:var(--rad-pill);
+  background:rgba(255,255,255,.14);
+  position:relative;
+  overflow:visible;
+}
+.scrub__fill{
+  position:absolute;top:0;left:0;height:100%;
+  width:38%;
+  background:var(--magenta);
+  border-radius:var(--rad-pill);
+}
+.scrub__knob{
+  position:absolute;top:50%;left:38%;
+  transform:translate(-50%,-50%);
+  width:16px;height:16px;border-radius:50%;
+  background:var(--white);
+  border:3px solid var(--magenta);
+}
+.time{
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.7);
+  font-variant-numeric:tabular-nums;
+  flex-shrink:0;
+}
+.time b{color:var(--white);}
+
+/* floating sticker tag near player — asymmetry accent */
+.sticker{
+  position:absolute;
+  z-index:4;
+  top:-18px;left:-22px;
+  background:var(--magenta);
+  color:var(--ink);
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:10px 16px;
+  border-radius:var(--rad-pill);
+  transform:rotate(-6deg);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .xpl{padding:56px 22px 64px;}
+  .xpl::before{width:380px;height:380px;top:auto;bottom:-120px;right:-160px;}
+  .xpl__grid{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .xpl__title{font-size:48px;}
+  .xpl__lede{font-size:16px;}
+  .player{transform:rotate(0);}
+  .player__play{width:84px;height:84px;}
+  .player__play svg{width:30px;height:30px;}
+  .sticker{left:auto;right:8px;top:-14px;}
+  .xpl__watch{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<section class="xpl">
+  <div class="xpl__grid">
+
+    <!-- LEFT: COPY -->
+    <div class="xpl__copy">
+      <span class="xpl__eyebrow"><span class="dot"></span>Watch The 90-Second Tour</span>
+
+      <h2 class="xpl__title">
+        See how <em>Ledgerloop</em><br>
+        closes books in <span class="mag">one</span> click.
+      </h2>
+
+      <p class="xpl__lede">
+        No spreadsheets, no month-end panic. Watch a real finance team
+        reconcile 4,200 transactions, flag two duplicates, and export a
+        board-ready P&amp;L — start to finish, before their coffee gets cold.
+      </p>
+
+      <div class="xpl__meta">
+        <button class="xpl__watch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 4l14 8-14 8z"/></svg>
+          Play the film
+        </button>
+        <span class="xpl__runtime"><b>01:32</b> &nbsp;· &nbsp;no signup</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: PLAYER -->
+    <div class="player">
+      <span class="sticker">▶ Live demo</span>
+
+      <div class="player__stage">
+        <span class="blob a"></span>
+        <span class="blob b"></span>
+        <span class="blob c"></span>
+
+        <button class="player__play" aria-label="Play video">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+        </button>
+
+        <span class="player__chyron">Chapter <b>01</b> — Import &amp; auto-match</span>
+      </div>
+
+      <div class="player__bar">
+        <span class="mini">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+        </span>
+        <span class="scrub">
+          <span class="scrub__fill"></span>
+          <span class="scrub__knob"></span>
+        </span>
+        <span class="time"><b>0:35</b> / 1:32</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

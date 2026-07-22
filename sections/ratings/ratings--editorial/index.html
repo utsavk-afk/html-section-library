@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratings — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== RATINGS — EDITORIAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --muted:#6E6A61;
+  --hairline:#DCD8CF;
+  --star-empty:#D8D3C8;
+  --panel:#F4F1EA;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+.rt-section{
+  background:var(--light);
+  color:var(--ink);
+  font-family:var(--sans);
+  width:100%;
+  padding:96px 40px 104px;
+  position:relative;
+}
+.rt-inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.rt-label{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.rt-label::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+/* asymmetric two-column: heavy left score, lighter right rail */
+.rt-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:72px;
+  margin-top:40px;
+  align-items:end;
+}
+
+/* ---- left focal block ---- */
+.rt-score-row{
+  display:flex;
+  align-items:flex-start;
+  gap:28px;
+}
+.rt-score{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:132px;
+  line-height:.82;
+  letter-spacing:-.02em;
+}
+.rt-score sup{
+  font-size:44px;
+  vertical-align:super;
+  color:var(--muted);
+  font-weight:400;
+  letter-spacing:0;
+}
+.rt-score-meta{
+  padding-top:14px;
+}
+.rt-stars{
+  display:flex;
+  gap:5px;
+  margin-bottom:14px;
+}
+.rt-stars svg{ width:26px; height:26px; display:block; }
+.rt-star-full{ fill:var(--accent); }
+.rt-star-empty{ fill:var(--star-empty); }
+.rt-count{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.5;
+  max-width:230px;
+}
+.rt-count strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+.rt-line{
+  margin-top:40px;
+  padding-top:32px;
+  border-top:1px solid var(--hairline);
+  max-width:460px;
+}
+.rt-line p{
+  font-family:var(--serif);
+  font-size:22px;
+  line-height:1.42;
+  font-weight:400;
+  color:var(--ink);
+}
+.rt-line em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+/* ---- right rail: platform badges ---- */
+.rt-rail{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.rt-rail-head{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+.rt-badge{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:20px 0;
+  border-top:1px solid var(--hairline);
+}
+.rt-badge:last-child{ border-bottom:1px solid var(--hairline); }
+.rt-mark{
+  width:44px;
+  height:44px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:20px;
+  color:var(--light);
+  background:var(--ink);
+}
+.rt-badge:nth-child(3) .rt-mark{ background:var(--accent); border-radius:50%; }
+.rt-badge:nth-child(4) .rt-mark{ background:#2E2B25; border-radius:7px; }
+.rt-badge-body{ flex:1; }
+.rt-badge-name{
+  font-size:15px;
+  font-weight:600;
+  color:var(--ink);
+}
+.rt-badge-sub{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:2px;
+}
+.rt-badge-val{
+  font-family:var(--serif);
+  font-size:19px;
+  font-weight:500;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.rt-badge-val span{
+  font-size:13px;
+  color:var(--muted);
+  font-family:var(--sans);
+}
+
+@media(max-width:640px){
+  .rt-section{ padding:64px 22px 72px; }
+  .rt-grid{
+    grid-template-columns:1fr;
+    gap:44px;
+    margin-top:32px;
+  }
+  .rt-score{ font-size:96px; }
+  .rt-score sup{ font-size:32px; }
+  .rt-score-row{ gap:20px; }
+  .rt-stars svg{ width:22px; height:22px; }
+  .rt-line p{ font-size:19px; }
+}
+</style>
+</head>
+<body>
+<section class="rt-section">
+  <div class="rt-inner">
+    <span class="rt-label">Verified customer reviews</span>
+
+    <div class="rt-grid">
+      <!-- Left focal block -->
+      <div class="rt-main">
+        <div class="rt-score-row">
+          <div class="rt-score">4.9<sup>/5</sup></div>
+          <div class="rt-score-meta">
+            <div class="rt-stars" aria-label="4.9 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path class="rt-star-full" d="M12 2l2.9 6.26L21.6 9.2l-4.8 4.68 1.13 6.62L12 17.37 6.07 20.5l1.13-6.62L2.4 9.2l6.7-.94L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path class="rt-star-full" d="M12 2l2.9 6.26L21.6 9.2l-4.8 4.68 1.13 6.62L12 17.37 6.07 20.5l1.13-6.62L2.4 9.2l6.7-.94L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path class="rt-star-full" d="M12 2l2.9 6.26L21.6 9.2l-4.8 4.68 1.13 6.62L12 17.37 6.07 20.5l1.13-6.62L2.4 9.2l6.7-.94L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path class="rt-star-full" d="M12 2l2.9 6.26L21.6 9.2l-4.8 4.68 1.13 6.62L12 17.37 6.07 20.5l1.13-6.62L2.4 9.2l6.7-.94L12 2z"/></svg>
+              <svg viewBox="0 0 24 24">
+                <defs><linearGradient id="rt-partial"><stop offset="90%" stop-color="var(--accent)"/><stop offset="90%" stop-color="var(--star-empty)"/></linearGradient></defs>
+                <path d="M12 2l2.9 6.26L21.6 9.2l-4.8 4.68 1.13 6.62L12 17.37 6.07 20.5l1.13-6.62L2.4 9.2l6.7-.94L12 2z" fill="url(#rt-partial)"/>
+              </svg>
+            </div>
+            <p class="rt-count">Averaged across <strong>3,412 verified reviews</strong> from growers and roasters since 2019.</p>
+          </div>
+        </div>
+
+        <div class="rt-line">
+          <p>Rated for freshness, delivery timing, and support that <em>actually picks up the phone</em> — the three things people wrote about most.</p>
+        </div>
+      </div>
+
+      <!-- Right rail: platform badges -->
+      <div class="rt-rail">
+        <div class="rt-rail-head">Where they're rating us</div>
+
+        <div class="rt-badge">
+          <div class="rt-mark">Tp</div>
+          <div class="rt-badge-body">
+            <div class="rt-badge-name">Trustpilot</div>
+            <div class="rt-badge-sub">2,180 reviews · Verified company</div>
+          </div>
+          <div class="rt-badge-val">4.9<span>/5</span></div>
+        </div>
+
+        <div class="rt-badge">
+          <div class="rt-mark">G</div>
+          <div class="rt-badge-body">
+            <div class="rt-badge-name">Google Reviews</div>
+            <div class="rt-badge-sub">986 reviews · Business profile</div>
+          </div>
+          <div class="rt-badge-val">4.8<span>/5</span></div>
+        </div>
+
+        <div class="rt-badge">
+          <div class="rt-mark">C</div>
+          <div class="rt-badge-body">
+            <div class="rt-badge-name">Capterra</div>
+            <div class="rt-badge-sub">246 reviews · Category leader</div>
+          </div>
+          <div class="rt-badge-val">5.0<span>/5</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

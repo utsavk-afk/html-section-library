@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!-- ===== COMPARISON-TABLE — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparison Table — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#77726A;
+  --line:#E4E0D8;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.cmp{
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 80px 104px;
+}
+
+.cmp__head{
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+}
+
+.cmp__label{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+
+.cmp__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(34px,4vw,52px);
+  line-height:1.06;
+  letter-spacing:-0.015em;
+  max-width:15ch;
+}
+.cmp__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.cmp__note{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:18px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:34ch;
+  padding-left:26px;
+  border-left:1px solid var(--line);
+}
+.cmp__note strong{
+  font-style:normal;
+  font-weight:500;
+  color:var(--ink);
+}
+
+/* ---- table ---- */
+.cmp__table{
+  margin-top:8px;
+}
+
+.cmp__row{
+  display:grid;
+  grid-template-columns:2fr 1fr 1.15fr 1fr;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+}
+
+.cmp__row--header{
+  border-bottom:1px solid var(--ink);
+}
+
+.cmp__crit{
+  padding:26px 32px 26px 0;
+}
+.cmp__crit-name{
+  font-family:var(--serif);
+  font-size:19px;
+  font-weight:500;
+  letter-spacing:-0.01em;
+}
+.cmp__crit-sub{
+  font-size:13.5px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+.cmp__cell{
+  padding:26px 20px;
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+  min-height:100%;
+}
+
+/* header cells */
+.cmp__colhead{
+  padding:20px;
+  text-align:center;
+}
+.cmp__colhead .k{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.cmp__colhead .n{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:500;
+  color:var(--ink);
+  margin-top:6px;
+  letter-spacing:-0.01em;
+}
+
+/* highlighted column — the focal point */
+.cmp__col--hi{
+  position:relative;
+}
+.cmp__col--hi::before{
+  content:"";
+  position:absolute;
+  top:-16px;bottom:0;left:0;right:0;
+  background:#FBF1EC;
+  border:1px solid #E7C6B8;
+  border-bottom:none;
+  z-index:0;
+}
+.cmp__row:last-child .cmp__col--hi::before{
+  border-bottom:1px solid #E7C6B8;
+  bottom:0;
+}
+.cmp__col--hi > *{position:relative;z-index:1;}
+
+.cmp__colhead.cmp__col--hi::before{top:0;border-radius:6px 6px 0 0;}
+.cmp__colhead.cmp__col--hi .k{color:var(--accent);}
+.cmp__colhead.cmp__col--hi .badge{
+  display:inline-block;
+  margin-top:10px;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:#fff;
+  background:var(--accent);
+  padding:4px 11px;
+  border-radius:100px;
+}
+
+.cmp__col--hi.cmp__cell{
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* marks */
+.mk{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;height:22px;
+}
+.mk svg{width:18px;height:18px;display:block;}
+.mk--yes svg{stroke:var(--accent);}
+.mk--plain svg{stroke:#9A948B;}
+.dash{
+  display:inline-block;
+  width:16px;height:1.5px;
+  background:#C4BEB4;
+}
+.txt-yes{color:var(--ink);font-weight:500;}
+
+/* footer strip */
+.cmp__foot{
+  margin-top:44px;
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.cmp__foot-line{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:16px;
+  color:var(--muted);
+}
+.cmp__cta{
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  color:var(--bg);
+  background:var(--ink);
+  text-decoration:none;
+  padding:14px 26px;
+  border-radius:2px;
+  transition:background .18s ease;
+}
+.cmp__cta:hover{background:var(--accent);}
+
+@media(max-width:640px){
+  .cmp{padding:56px 22px 64px;}
+  .cmp__head{grid-template-columns:1fr;gap:28px;padding-bottom:36px;}
+  .cmp__note{padding-left:0;border-left:none;padding-top:20px;border-top:1px solid var(--line);}
+  .cmp__row{grid-template-columns:1.4fr 0.8fr 1fr 0.8fr;}
+  .cmp__crit{padding:18px 12px 18px 0;}
+  .cmp__crit-name{font-size:15px;}
+  .cmp__crit-sub{display:none;}
+  .cmp__cell{padding:18px 6px;font-size:12px;}
+  .cmp__colhead{padding:14px 6px;}
+  .cmp__colhead .n{font-size:15px;}
+  .cmp__colhead .k{font-size:9px;letter-spacing:0.1em;}
+  .cmp__colhead.cmp__col--hi .badge{font-size:8px;padding:3px 7px;}
+  .cmp__foot{margin-top:28px;}
+}
+</style>
+</head>
+<body>
+<section class="cmp">
+  <div class="cmp__head">
+    <div>
+      <div class="cmp__label">The honest comparison</div>
+      <h1 class="cmp__title">Most SEO retainers bill for <em>motion</em>. We bill for movement.</h1>
+    </div>
+    <p class="cmp__note">Every agency promises rankings. Below is what actually ships each month — line by line, no asterisks. <strong>Stan Ventures</strong> is the middle column.</p>
+  </div>
+
+  <div class="cmp__table">
+    <!-- header row -->
+    <div class="cmp__row cmp__row--header">
+      <div class="cmp__crit"></div>
+      <div class="cmp__colhead">
+        <div class="k">Typical Freelancer</div>
+        <div class="n">The Solo Hire</div>
+      </div>
+      <div class="cmp__colhead cmp__col--hi">
+        <div class="k">Our Approach</div>
+        <div class="n">Stan Ventures</div>
+        <span class="badge">Recommended</span>
+      </div>
+      <div class="cmp__colhead">
+        <div class="k">Legacy Agency</div>
+        <div class="n">The Big Shop</div>
+      </div>
+    </div>
+
+    <!-- rows -->
+    <div class="cmp__row">
+      <div class="cmp__crit">
+        <div class="cmp__crit-name">Editorially-written content</div>
+        <div class="cmp__crit-sub">Human writers, briefed by strategists</div>
+      </div>
+      <div class="cmp__cell">Sometimes</div>
+      <div class="cmp__cell cmp__col--hi">
+        <span class="mk mk--yes" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+      </div>
+      <div class="cmp__cell">Outsourced</div>
+    </div>
+
+    <div class="cmp__row">
+      <div class="cmp__crit">
+        <div class="cmp__crit-name">Named account strategist</div>
+        <div class="cmp__crit-sub">One person who knows your funnel</div>
+      </div>
+      <div class="cmp__cell"><span class="mk mk--yes" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span></div>
+      <div class="cmp__cell cmp__col--hi">
+        <span class="mk mk--yes" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+      </div>
+      <div class="cmp__cell">Rotating junior</div>
+    </div>
+
+    <div class="cmp__row">
+      <div class="cmp__crit">
+        <div class="cmp__crit-name">Link building, white-hat only</div>
+        <div class="cmp__crit-sub">Real outreach, real publications</div>
+      </div>
+      <div class="cmp__cell"><span class="dash" aria-label="No"></span></div>
+      <div class="cmp__cell cmp__col--hi">
+        <span class="mk mk--yes" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+      </div>
+      <div class="cmp__cell"><span class="txt-yes">Yes</span></div>
+    </div>
+
+    <div class="cmp__row">
+      <div class="cmp__crit">
+        <div class="cmp__crit-name">Reporting you can read in 5 min</div>
+        <div class="cmp__crit-sub">Plain-language, not a dashboard dump</div>
+      </div>
+      <div class="cmp__cell">Rarely</div>
+      <div class="cmp__cell cmp__col--hi">
+        <span class="mk mk--yes" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+      </div>
+      <div class="cmp__cell"><span class="dash" aria-label="No"></span></div>
+    </div>
+
+    <div class="cmp__row">
+      <div class="cmp__crit">
+        <div class="cmp__crit-name">No 12-month lock-in</div>
+        <div class="cmp__crit-sub">Month-to-month after the first 90 days</div>
+      </div>
+      <div class="cmp__cell"><span class="mk mk--yes" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span></div>
+      <div class="cmp__cell cmp__col--hi">
+        <span class="mk mk--yes" aria-label="Yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+      </div>
+      <div class="cmp__cell"><span class="dash" aria-label="No"></span></div>
+    </div>
+
+    <div class="cmp__row">
+      <div class="cmp__crit">
+        <div class="cmp__crit-name">Starting monthly investment</div>
+        <div class="cmp__crit-sub">Scoped, not padded with retainers</div>
+      </div>
+      <div class="cmp__cell">$1,200</div>
+      <div class="cmp__cell cmp__col--hi">$2,400</div>
+      <div class="cmp__cell">$7,500+</div>
+    </div>
+  </div>
+
+  <div class="cmp__foot">
+    <p class="cmp__foot-line">Fewer promises. More lines that actually ship.</p>
+    <a href="#book" class="cmp__cta">See a sample month &rarr;</a>
+  </div>
+</section>
+</body>
+</html>

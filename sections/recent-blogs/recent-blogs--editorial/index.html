@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!-- ===== RECENT-BLOGS — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>From the Journal — Recent Writing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-soft:#4A4842;
+  --ink-faint:#8A867C;
+  --accent:#B4472B;
+  --accent-deep:#8F3620;
+  --rule:#E2DFD6;
+  --rule-strong:#CFCBBF;
+  --tag-bg:#F1EEE6;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#16150F;
+    --ink:#F4F1E8;
+    --ink-soft:#C4C0B2;
+    --ink-faint:#8C887A;
+    --accent:#E0774F;
+    --accent-deep:#C25B36;
+    --rule:#2C2A21;
+    --rule-strong:#3B382C;
+    --tag-bg:#221F17;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16150F;
+  --ink:#F4F1E8;
+  --ink-soft:#C4C0B2;
+  --ink-faint:#8C887A;
+  --accent:#E0774F;
+  --accent-deep:#C25B36;
+  --rule:#2C2A21;
+  --rule-strong:#3B382C;
+  --tag-bg:#221F17;
+}
+:root[data-theme="light"]{
+  --paper:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-soft:#4A4842;
+  --ink-faint:#8A867C;
+  --accent:#B4472B;
+  --accent-deep:#8F3620;
+  --rule:#E2DFD6;
+  --rule-strong:#CFCBBF;
+  --tag-bg:#F1EEE6;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.journal{
+  width:100%;
+  padding:96px 48px 104px;
+}
+.journal__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ---- masthead ---- */
+.masthead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--rule-strong);
+}
+.masthead__lead{max-width:640px;}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+.eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+.masthead__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,4.6vw,60px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  text-wrap:balance;
+}
+.masthead__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.masthead__meta{
+  font-size:13px;
+  color:var(--ink-faint);
+  padding-bottom:8px;
+  white-space:nowrap;
+}
+.masthead__meta a{
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--rule-strong);
+  padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.masthead__meta a:hover{color:var(--accent);border-color:var(--accent);}
+
+/* ---- grid ---- */
+.grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:0;
+  margin-top:52px;
+}
+
+/* ---- featured ---- */
+.featured{
+  padding-right:56px;
+  border-right:1px solid var(--rule);
+}
+.tag{
+  display:inline-block;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+  background:var(--tag-bg);
+  padding:5px 11px;
+  border-radius:2px;
+}
+.featured .tag{margin-bottom:20px;}
+.featured__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(28px,3.1vw,40px);
+  line-height:1.08;
+  letter-spacing:-.01em;
+  text-wrap:balance;
+  margin-bottom:18px;
+}
+.featured__title a{color:inherit;text-decoration:none;transition:color .2s;}
+.featured__title a:hover{color:var(--accent);}
+.featured__excerpt{
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.55;
+  color:var(--ink-soft);
+  max-width:52ch;
+  margin-bottom:26px;
+}
+.featured__excerpt em{font-style:italic;color:var(--ink);}
+.byline{
+  font-size:12.5px;
+  letter-spacing:.02em;
+  color:var(--ink-faint);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:30px;
+}
+.byline b{color:var(--ink);font-weight:600;}
+.byline .dot{width:3px;height:3px;border-radius:50%;background:var(--rule-strong);}
+.readmore{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+}
+.readmore svg{
+  width:22px;height:9px;
+  stroke:var(--accent);
+  transition:transform .25s ease;
+}
+.readmore:hover svg{transform:translateX(6px);}
+.readmore span{border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;}
+.readmore:hover span{border-color:var(--accent);}
+
+/* ---- secondary list ---- */
+.list{
+  padding-left:56px;
+  display:flex;
+  flex-direction:column;
+}
+.post{
+  padding:26px 0;
+  border-bottom:1px solid var(--rule);
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:22px;
+}
+.post:first-child{padding-top:0;}
+.post:last-child{border-bottom:none;}
+.post__date{
+  font-family:var(--serif);
+  font-size:13px;
+  font-style:italic;
+  color:var(--ink-faint);
+  white-space:nowrap;
+  padding-top:3px;
+  min-width:70px;
+}
+.post__tag{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:block;
+  margin-bottom:8px;
+}
+.post__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:20px;
+  line-height:1.2;
+  letter-spacing:-.005em;
+  margin-bottom:9px;
+}
+.post__title a{color:inherit;text-decoration:none;transition:color .2s;}
+.post__title a:hover{color:var(--accent);}
+.post__excerpt{
+  font-size:14px;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+
+.journal__foot{
+  margin-top:56px;
+  padding-top:22px;
+  border-top:1px solid var(--rule-strong);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.journal__foot span{
+  font-size:13px;
+  font-style:italic;
+  font-family:var(--serif);
+  color:var(--ink-faint);
+}
+.allposts{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:3px;
+}
+.allposts:hover{color:var(--accent);}
+
+@media (max-width:640px){
+  .journal{padding:60px 22px 68px;}
+  .masthead{flex-direction:column;align-items:flex-start;gap:18px;}
+  .masthead__meta{white-space:normal;padding-bottom:0;}
+  .grid{grid-template-columns:1fr;margin-top:38px;}
+  .featured{
+    padding-right:0;
+    border-right:none;
+    padding-bottom:36px;
+    border-bottom:1px solid var(--rule-strong);
+    margin-bottom:36px;
+  }
+  .list{padding-left:0;}
+  .post{grid-template-columns:1fr;gap:8px;}
+  .post__date{padding-top:0;}
+  .featured__excerpt{font-size:17px;}
+}
+</style>
+</head>
+<body>
+<section class="journal" aria-labelledby="journal-title">
+  <div class="journal__inner">
+
+    <header class="masthead">
+      <div class="masthead__lead">
+        <p class="eyebrow">From the Journal</p>
+        <h2 class="masthead__title" id="journal-title">Notes on making things <em>slowly</em>, and on purpose.</h2>
+      </div>
+      <p class="masthead__meta">Updated weekly · <a href="#feed">Subscribe by RSS</a></p>
+    </header>
+
+    <div class="grid">
+
+      <article class="featured">
+        <span class="tag">Craft &amp; Process</span>
+        <h3 class="featured__title">
+          <a href="#article-1">The case for the first bad draft, and why we keep every one</a>
+        </h3>
+        <p class="featured__excerpt">
+          We used to throw away the ugly early versions. Then we started pinning them to the studio wall — and the archive quietly became <em>the most useful thing we own.</em> Here is how a wall of failures reshaped the way we start any project.
+        </p>
+        <p class="byline">
+          <b>Maren Ostwald</b>
+          <span class="dot" aria-hidden="true"></span>
+          9 min read
+          <span class="dot" aria-hidden="true"></span>
+          July 18, 2026
+        </p>
+        <a class="readmore" href="#article-1">
+          <span>Read the essay</span>
+          <svg viewBox="0 0 22 9" fill="none" aria-hidden="true"><path d="M0 4.5h20M16 1l4 3.5-4 3.5" stroke-width="1.4"/></svg>
+        </a>
+      </article>
+
+      <div class="list">
+
+        <article class="post">
+          <time class="post__date" datetime="2026-07-11">Jul 11</time>
+          <div>
+            <span class="post__tag">Typography</span>
+            <h3 class="post__title"><a href="#article-2">Why we set body copy in a serif nobody recognizes</a></h3>
+            <p class="post__excerpt">A short defense of the unfamiliar, and what happens to reading speed when the letters stop shouting their own names.</p>
+          </div>
+        </article>
+
+        <article class="post">
+          <time class="post__date" datetime="2026-07-04">Jul 04</time>
+          <div>
+            <span class="post__tag">Studio Notes</span>
+            <h3 class="post__title"><a href="#article-3">The four-day week, one year in: the honest ledger</a></h3>
+            <p class="post__excerpt">The projects we turned down, the money we didn't make, and the reasons we would do it again anyway.</p>
+          </div>
+        </article>
+
+        <article class="post">
+          <time class="post__date" datetime="2026-06-27">Jun 27</time>
+          <div>
+            <span class="post__tag">Field Report</span>
+            <h3 class="post__title"><a href="#article-4">Colour-matching a river: a week with the paper mill</a></h3>
+            <p class="post__excerpt">Notes from three days in Cumbria, chasing a specific grey-green that no swatch book has ever managed to hold.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <footer class="journal__foot">
+      <span>Thirty-one essays and counting.</span>
+      <a class="allposts" href="#archive">Browse the full archive</a>
+    </footer>
+
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyebrow Text — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+/* ===== EYEBROW-TEXT — DARK/LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-raise:#17171c;
+  --paper:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --line:rgba(244,244,245,0.10);
+  --line-strong:rgba(244,244,245,0.18);
+  --font-body:'Inter',system-ui,-apple-system,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.opener{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:120px 72px 128px;
+  min-height:680px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:64px;
+  align-items:start;
+}
+
+/* faint index numeral, off to the right edge, purely decorative */
+.opener__mark{
+  position:absolute;
+  top:96px;
+  right:64px;
+  font-family:var(--font-display);
+  font-size:120px;
+  line-height:1;
+  font-weight:400;
+  color:transparent;
+  -webkit-text-stroke:1px var(--line-strong);
+  letter-spacing:-0.04em;
+  user-select:none;
+  pointer-events:none;
+}
+
+/* LEFT: the real content, the focal point */
+.opener__lead{
+  max-width:760px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:34px;
+}
+.eyebrow__tick{
+  width:26px;
+  height:1px;
+  background:var(--amber);
+  display:block;
+}
+.eyebrow__num{
+  color:var(--muted);
+  font-weight:500;
+  letter-spacing:0.14em;
+}
+
+.opener__title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.14;
+  letter-spacing:-0.015em;
+  color:var(--paper);
+}
+.opener__title em{
+  font-style:italic;
+  color:var(--paper);
+}
+.opener__title .accent{
+  color:var(--amber);
+  font-style:normal;
+}
+
+.opener__sub{
+  margin-top:28px;
+  max-width:560px;
+  font-size:17px;
+  line-height:1.65;
+  color:var(--muted);
+}
+
+/* RIGHT: a slim aside — asymmetric counterweight, not a mirrored column */
+.opener__aside{
+  border-left:1px solid var(--line);
+  padding-left:28px;
+  margin-top:8px;
+}
+.aside__label{
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.aside__list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.aside__list li{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  padding:15px 0;
+  font-size:14px;
+  color:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.aside__list li:last-child{border-bottom:0;}
+.aside__list li .k{
+  font-variant-numeric:tabular-nums;
+  color:var(--amber);
+  font-size:12px;
+  font-weight:600;
+  min-width:22px;
+}
+.aside__list li .t{color:var(--muted);}
+
+.opener__foot{
+  grid-column:1 / -1;
+  margin-top:88px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:16px 28px;
+  font-size:13px;
+  color:var(--muted);
+}
+.opener__foot strong{
+  color:var(--paper);
+  font-weight:600;
+}
+.foot__dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--amber);
+  display:inline-block;
+}
+
+@media (max-width:640px){
+  .opener{
+    grid-template-columns:1fr;
+    gap:44px;
+    padding:76px 24px 84px;
+    min-height:0;
+  }
+  .opener__mark{
+    position:static;
+    font-size:74px;
+    margin-bottom:-14px;
+    order:-1;
+  }
+  .opener__title{font-size:34px;}
+  .opener__sub{font-size:16px;}
+  .opener__aside{
+    border-left:0;
+    border-top:1px solid var(--line);
+    padding-left:0;
+    padding-top:26px;
+    margin-top:0;
+  }
+  .opener__foot{margin-top:52px;}
+}
+</style>
+</head>
+<body>
+<section class="opener" aria-label="Section opener">
+  <span class="opener__mark" aria-hidden="true">02</span>
+
+  <div class="opener__lead">
+    <span class="eyebrow">
+      <span class="eyebrow__tick" aria-hidden="true"></span>
+      The Craft Ledger
+      <span class="eyebrow__num">/ Chapter Two</span>
+    </span>
+
+    <h2 class="opener__title">
+      We don't ship the first idea that works.<br>
+      We ship the <span class="accent">one</span> that still
+      holds up <em>after the tenth pass.</em>
+    </h2>
+
+    <p class="opener__sub">
+      Every panel below started as a rough sketch on a Tuesday and got
+      argued over until Friday. What survived is what you're about to read —
+      no filler, no rounded-corner clichés, just the decisions we'd defend
+      in a room.
+    </p>
+  </div>
+
+  <aside class="opener__aside" aria-label="In this chapter">
+    <p class="aside__label">In this chapter</p>
+    <ul class="aside__list">
+      <li><span class="k">01</span><span class="t">Where the tension lives</span></li>
+      <li><span class="k">02</span><span class="t">The cut we almost kept</span></li>
+      <li><span class="k">03</span><span class="t">Proof over polish</span></li>
+      <li><span class="k">04</span><span class="t">What we'd do again</span></li>
+    </ul>
+  </aside>
+
+  <div class="opener__foot">
+    <span class="foot__dot" aria-hidden="true"></span>
+    <span><strong>18 minutes</strong> of reading</span>
+    <span><strong>Revised</strong> July 2026</span>
+    <span>Written by the studio, not a template</span>
+  </div>
+</section>
+</body>
+</html>

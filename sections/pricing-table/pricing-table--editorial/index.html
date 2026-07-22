@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!-- ===== PRICING-TABLE — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#726E64;
+  --line:#E2DFD6;
+  --accent:#B4472B;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",-apple-system,system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.pricing{
+  max-width:1200px;
+  margin:0 auto;
+  padding:84px 48px 96px;
+}
+
+/* ---- header: asymmetric, left-weighted ---- */
+.pricing__head{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:40px;
+  margin-bottom:8px;
+}
+.pricing__label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.pricing__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.04;
+  letter-spacing:-0.015em;
+}
+.pricing__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.pricing__note{
+  font-size:15px;
+  color:var(--muted);
+  max-width:34ch;
+  padding-bottom:6px;
+}
+.pricing__note .cadence{
+  display:block;
+  margin-top:14px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:16px;
+  color:var(--ink);
+}
+
+/* ---- table ---- */
+.tbl{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+.tbl th,.tbl td{
+  text-align:left;
+  vertical-align:middle;
+}
+
+/* column widths */
+.col-feat{width:34%;}
+.col-plan{width:22%;}
+
+/* plan header row */
+.tbl thead th{
+  padding:26px 22px 24px;
+  border-bottom:1.5px solid var(--ink);
+  vertical-align:top;
+}
+.tbl thead th.col-feat{
+  border-bottom:1.5px solid var(--ink);
+}
+.plan-name{
+  font-family:var(--serif);
+  font-size:21px;
+  font-weight:500;
+  letter-spacing:-0.01em;
+}
+.plan-kicker{
+  display:block;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.plan-price{
+  margin-top:14px;
+  font-family:var(--serif);
+  font-size:34px;
+  font-weight:400;
+  letter-spacing:-0.02em;
+  line-height:1;
+}
+.plan-price .per{
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:400;
+  color:var(--muted);
+  letter-spacing:0;
+}
+.plan-blurb{
+  margin-top:12px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.45;
+}
+
+/* highlighted plan column */
+.is-featured{
+  position:relative;
+  background:#FBF3EF;
+  border-bottom:1.5px solid var(--accent) !important;
+}
+.is-featured .plan-kicker{color:var(--accent);}
+.is-featured .plan-price{color:var(--accent);}
+.pick{
+  position:absolute;
+  top:-11px;left:22px;
+  background:var(--accent);
+  color:#fff;
+  font-size:9.5px;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  padding:4px 9px 3px;
+}
+
+/* feature body rows */
+.tbl tbody td{
+  padding:15px 22px;
+  border-bottom:1px solid var(--line);
+  font-size:14.5px;
+}
+.tbl tbody td.feat{
+  color:var(--ink);
+  font-weight:500;
+}
+.tbl tbody td.feat small{
+  display:block;
+  font-weight:400;
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:2px;
+}
+.tbl tbody td.cell{
+  color:var(--muted);
+  font-size:13.5px;
+}
+.tbl tbody td.is-featured{
+  background:#FBF3EF;
+  color:var(--ink);
+}
+
+/* group label row */
+.grp td{
+  padding:26px 22px 10px;
+  border-bottom:none;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* check / dash marks */
+.mk{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:20px;height:20px;
+}
+.mk svg{display:block;}
+.mk--yes svg{color:var(--accent);}
+.dash{
+  display:inline-block;
+  width:14px;height:1.5px;
+  background:var(--line);
+  vertical-align:middle;
+}
+
+/* footer / cta row */
+.tbl tfoot td{
+  padding:28px 22px 8px;
+  vertical-align:top;
+}
+.tbl tfoot td.is-featured{background:#FBF3EF;}
+.cta{
+  display:inline-block;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  text-decoration:none;
+  padding:11px 20px;
+  border:1px solid var(--ink);
+  color:var(--ink);
+  transition:background .18s,color .18s;
+}
+.cta:hover{background:var(--ink);color:var(--bg);}
+.cta--solid{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+.cta--solid:hover{background:#9c3a22;border-color:#9c3a22;color:#fff;}
+.foot-fine{
+  display:block;
+  margin-top:12px;
+  font-size:12px;
+  color:var(--muted);
+  font-family:var(--serif);
+  font-style:italic;
+}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .pricing{padding:52px 20px 64px;}
+  .pricing__head{
+    grid-template-columns:1fr;
+    gap:22px;
+    align-items:start;
+    padding-bottom:28px;
+  }
+  .pricing__title{font-size:38px;}
+  .pricing__note{max-width:none;}
+
+  /* collapse table to stacked cards */
+  .tbl,.tbl thead,.tbl tbody,.tbl tfoot,.tbl tr,.tbl th,.tbl td{
+    display:block;width:100%;
+  }
+  .tbl thead{display:none;}
+  .col-feat,.col-plan{width:100%;}
+  .grp td{padding:24px 0 8px;border-bottom:1px solid var(--ink);}
+  .tbl tbody td.feat{
+    border-bottom:none;
+    padding:16px 0 4px;
+  }
+  .tbl tbody td.cell{
+    padding:6px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+  }
+  .tbl tbody td.cell::before{
+    content:attr(data-plan);
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .tbl tbody td.is-featured{
+    background:none;
+    padding-left:10px;
+    border-left:2px solid var(--accent);
+  }
+  .tbl tbody td.is-featured::before{color:var(--accent);}
+  .tbl tfoot td{padding:18px 0 0;}
+  .tbl tfoot td.is-featured{background:none;}
+  .cta{display:block;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<section class="pricing">
+
+  <div class="pricing__head">
+    <div>
+      <div class="pricing__label">Plans &amp; Pricing</div>
+      <h2 class="pricing__title">Editorial tooling,<br>priced <em>honestly.</em></h2>
+    </div>
+    <p class="pricing__note">
+      Every plan includes the full writing surface and unlimited drafts. What changes is scale, review workflow, and how much of the archive you keep.
+      <span class="cadence">Billed monthly. Cancel any issue.</span>
+    </p>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th class="col-feat"></th>
+        <th class="col-plan">
+          <span class="plan-kicker">Solo</span>
+          <span class="plan-name">The Desk</span>
+          <span class="plan-price">$12<span class="per">/mo</span></span>
+          <span class="plan-blurb">For a single writer keeping one publication tidy.</span>
+        </th>
+        <th class="col-plan is-featured">
+          <span class="pick">Most chosen</span>
+          <span class="plan-kicker">Team</span>
+          <span class="plan-name">The Newsroom</span>
+          <span class="plan-price">$39<span class="per">/mo</span></span>
+          <span class="plan-blurb">For editors running a small masthead with real review.</span>
+        </th>
+        <th class="col-plan">
+          <span class="plan-kicker">Scale</span>
+          <span class="plan-name">The Press</span>
+          <span class="plan-price">$96<span class="per">/mo</span></span>
+          <span class="plan-blurb">For orgs with syndication, roles, and compliance.</span>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="grp"><td colspan="4">Writing &amp; drafting</td></tr>
+
+      <tr>
+        <td class="feat">Active documents<small>Concurrent working drafts</small></td>
+        <td class="cell" data-plan="The Desk">Up to 25</td>
+        <td class="cell is-featured" data-plan="The Newsroom">Unlimited</td>
+        <td class="cell" data-plan="The Press">Unlimited</td>
+      </tr>
+      <tr>
+        <td class="feat">Version history</td>
+        <td class="cell" data-plan="The Desk">30 days</td>
+        <td class="cell is-featured" data-plan="The Newsroom">1 year</td>
+        <td class="cell" data-plan="The Press">Forever</td>
+      </tr>
+      <tr>
+        <td class="feat">Focus &amp; typewriter mode</td>
+        <td class="cell" data-plan="The Desk"><span class="mk mk--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-8"/></svg></span></td>
+        <td class="cell is-featured" data-plan="The Newsroom"><span class="mk mk--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-8"/></svg></span></td>
+        <td class="cell" data-plan="The Press"><span class="mk mk--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-8"/></svg></span></td>
+      </tr>
+
+      <tr class="grp"><td colspan="4">Collaboration</td></tr>
+
+      <tr>
+        <td class="feat">Seats included</td>
+        <td class="cell" data-plan="The Desk">1</td>
+        <td class="cell is-featured" data-plan="The Newsroom">Up to 8</td>
+        <td class="cell" data-plan="The Press">Up to 40</td>
+      </tr>
+      <tr>
+        <td class="feat">Inline editorial review<small>Suggestions, threads, sign-off</small></td>
+        <td class="cell" data-plan="The Desk"><span class="dash"></span></td>
+        <td class="cell is-featured" data-plan="The Newsroom"><span class="mk mk--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-8"/></svg></span></td>
+        <td class="cell" data-plan="The Press"><span class="mk mk--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-8"/></svg></span></td>
+      </tr>
+      <tr>
+        <td class="feat">Assignment &amp; deadlines</td>
+        <td class="cell" data-plan="The Desk"><span class="dash"></span></td>
+        <td class="cell is-featured" data-plan="The Newsroom"><span class="mk mk--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-8"/></svg></span></td>
+        <td class="cell" data-plan="The Press"><span class="mk mk--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-8"/></svg></span></td>
+      </tr>
+
+      <tr class="grp"><td colspan="4">Publishing &amp; governance</td></tr>
+
+      <tr>
+        <td class="feat">Custom domain &amp; exports</td>
+        <td class="cell" data-plan="The Desk">EPUB only</td>
+        <td class="cell is-featured" data-plan="The Newsroom">All formats</td>
+        <td class="cell" data-plan="The Press">All formats</td>
+      </tr>
+      <tr>
+        <td class="feat">Roles &amp; permissions</td>
+        <td class="cell" data-plan="The Desk"><span class="dash"></span></td>
+        <td class="cell is-featured" data-plan="The Newsroom">Basic</td>
+        <td class="cell" data-plan="The Press">Granular</td>
+      </tr>
+      <tr>
+        <td class="feat">Audit log &amp; SSO<small>SAML, provisioning</small></td>
+        <td class="cell" data-plan="The Desk"><span class="dash"></span></td>
+        <td class="cell is-featured" data-plan="The Newsroom"><span class="dash"></span></td>
+        <td class="cell" data-plan="The Press"><span class="mk mk--yes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-8"/></svg></span></td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td class="col-feat"></td>
+        <td>
+          <a href="#" class="cta">Start with The Desk</a>
+          <span class="foot-fine">No card for the trial.</span>
+        </td>
+        <td class="is-featured">
+          <a href="#" class="cta cta--solid">Choose The Newsroom</a>
+          <span class="foot-fine">14 days, full workflow.</span>
+        </td>
+        <td>
+          <a href="#" class="cta">Talk to the Press desk</a>
+          <span class="foot-fine">Annual &amp; invoice billing.</span>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+</section>
+
+</body>
+</html>

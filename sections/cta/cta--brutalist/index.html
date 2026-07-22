@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!-- ===== CTA — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#4A4A46;
+  --line:#111111;
+  --accent:#FFE500;
+  --accent-2:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.cta-band{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px 40px;
+  display:flex;
+  justify-content:center;
+  /* visible grid */
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+
+.cta-inner{
+  width:100%;
+  max-width:1160px;
+  position:relative;
+}
+
+/* top metadata rail */
+.cta-rail{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  border-bottom:3px solid var(--line);
+  padding-bottom:12px;
+  margin-bottom:44px;
+}
+.cta-rail .tag{
+  background:var(--ink);
+  color:var(--bg);
+  padding:5px 10px;
+  font-weight:700;
+}
+.cta-rail .ver{color:var(--muted);}
+
+/* asymmetric main layout: heavy left focal, right supporting */
+.cta-grid{
+  display:grid;
+  grid-template-columns:1.45fr .55fr;
+  gap:56px;
+  align-items:end;
+}
+
+.cta-kicker{
+  display:inline-block;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  background:var(--accent);
+  color:var(--ink);
+  border:2px solid var(--ink);
+  padding:6px 12px;
+  margin-bottom:26px;
+  box-shadow:4px 4px 0 var(--ink);
+}
+
+.cta-head{
+  font-family:var(--serif);
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:.92;
+  letter-spacing:-.02em;
+  font-size:clamp(44px,7vw,104px);
+}
+.cta-head .mark{
+  background:var(--accent);
+  padding:0 .06em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.cta-head .under{
+  border-bottom:8px solid var(--accent-2);
+  padding-bottom:2px;
+}
+
+.cta-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:24px;
+  margin-top:40px;
+}
+
+.cta-btn{
+  font-family:var(--serif);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  font-size:22px;
+  color:var(--bg);
+  background:var(--ink);
+  border:3px solid var(--ink);
+  padding:20px 34px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  box-shadow:6px 6px 0 var(--accent);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.cta-btn .arw{
+  display:inline-flex;
+  width:22px;height:22px;
+}
+.cta-btn:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:8px 8px 0 var(--accent);
+}
+.cta-btn:active{
+  transform:translate(6px,6px);
+  box-shadow:0 0 0 var(--accent);
+}
+
+.cta-reassure{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  max-width:280px;
+}
+.cta-reassure strong{color:var(--ink);}
+.cta-reassure .dot{color:var(--accent-2);font-weight:700;}
+
+/* right supporting column: stat block */
+.cta-side{
+  border:3px solid var(--ink);
+  background:var(--bg);
+  box-shadow:6px 6px 0 var(--ink);
+  padding:0;
+}
+.cta-side .cell{
+  padding:20px 20px;
+  border-bottom:3px solid var(--ink);
+}
+.cta-side .cell:last-child{border-bottom:0;}
+.cta-side .cell.accent{background:var(--accent);}
+.cta-side .num{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:40px;
+  line-height:1;
+}
+.cta-side .lbl{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:8px;
+}
+.cta-side .cell.accent .lbl{color:var(--ink);}
+
+/* offset stamp element */
+.cta-stamp{
+  position:absolute;
+  right:-4px;
+  top:-30px;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  border:2px solid var(--ink);
+  background:var(--bg);
+  padding:6px 10px;
+  transform:rotate(4deg);
+}
+
+@media(max-width:640px){
+  .cta-band{padding:56px 20px;background-size:32px 32px;}
+  .cta-rail{flex-wrap:wrap;gap:10px;font-size:11px;}
+  .cta-grid{grid-template-columns:1fr;gap:36px;}
+  .cta-head{font-size:clamp(40px,13vw,60px);}
+  .cta-actions{gap:18px;}
+  .cta-btn{font-size:19px;padding:17px 26px;width:100%;justify-content:center;}
+  .cta-reassure{max-width:none;}
+  .cta-stamp{top:-18px;right:0;}
+  .cta-side{order:-1;}
+}
+</style>
+</head>
+<body>
+
+<section class="cta-band">
+  <div class="cta-inner">
+
+    <div class="cta-rail">
+      <span class="tag">// SECTION_07 — GET_STARTED</span>
+      <span class="ver">BUILD v2.4 · NO SIGNUP · MIT</span>
+    </div>
+
+    <div class="cta-stamp">Ships raw ↯</div>
+
+    <div class="cta-grid">
+
+      <div class="cta-main">
+        <span class="cta-kicker">Free · Copy · Paste · Ship</span>
+        <h2 class="cta-head">
+          Drop it in <span class="mark">Claude Code</span><br>
+          and <span class="under">ship by lunch.</span>
+        </h2>
+
+        <div class="cta-actions">
+          <a href="#" class="cta-btn">
+            Copy the block
+            <span class="arw" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <path d="M4 12h15"/><path d="M13 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </a>
+
+          <p class="cta-reassure">
+            <span class="dot">■</span> One file. Zero build step.<br>
+            <strong>No account, no tracking, no dependency hell.</strong> Paste, tweak the tokens, done.
+          </p>
+        </div>
+      </div>
+
+      <aside class="cta-side" aria-label="Library stats">
+        <div class="cell accent">
+          <div class="num">120+</div>
+          <div class="lbl">Sections indexed</div>
+        </div>
+        <div class="cell">
+          <div class="num">0kb</div>
+          <div class="lbl">Runtime JS shipped</div>
+        </div>
+        <div class="cell">
+          <div class="num">~4s</div>
+          <div class="lbl">Copy to paste</div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

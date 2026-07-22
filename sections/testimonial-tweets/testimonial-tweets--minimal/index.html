@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!-- ===== testimonial-tweets — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Tweets — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --white:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --accent:#C0492B;
+  --line:#e7e5e2;
+  --line-soft:#f0efec;
+  --bg-panel:#fbfaf8;
+  --r-sm:8px;
+  --r-md:14px;
+  --maxw:1160px;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--white);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.tw-section{
+  width:100%;
+  padding:96px 40px 104px;
+}
+.tw-wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* header — left aligned, asymmetric */
+.tw-head{
+  max-width:560px;
+  margin-bottom:56px;
+}
+.tw-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.tw-eyebrow::before{
+  content:"";
+  width:22px;
+  height:1.5px;
+  background:var(--accent);
+}
+.tw-head h2{
+  font-size:38px;
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1.12;
+}
+.tw-head h2 em{
+  font-style:normal;
+  color:var(--accent);
+}
+.tw-head p{
+  margin-top:16px;
+  font-size:16px;
+  color:var(--muted);
+  max-width:440px;
+}
+
+/* masonry-ish column layout for asymmetry */
+.tw-grid{
+  columns:3;
+  column-gap:24px;
+}
+
+.tw-card{
+  break-inside:avoid;
+  display:inline-block;
+  width:100%;
+  margin:0 0 24px;
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  padding:22px 22px 18px;
+  background:var(--white);
+  transition:border-color .18s ease;
+}
+.tw-card:hover{
+  border-color:#d8d5d0;
+}
+
+/* one focal / featured card gets emphasis, not centered */
+.tw-card--feature{
+  background:var(--bg-panel);
+  border-color:var(--line);
+  padding:26px 24px 20px;
+  box-shadow:0 1px 0 rgba(20,20,20,.02);
+}
+.tw-card--feature .tw-quote{
+  font-size:19px;
+  line-height:1.45;
+}
+.tw-card--accent{
+  border-left:2px solid var(--accent);
+}
+
+.tw-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+.tw-avatar{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+  font-weight:600;
+  color:var(--white);
+  letter-spacing:.01em;
+}
+/* varied avatar tones, one warm accent among neutrals */
+.av-1{background:#2f2f2f;}
+.av-2{background:var(--accent);}
+.av-3{background:#4a5c52;}
+.av-4{background:#6b6560;}
+.av-5{background:#33475b;}
+.av-6{background:#8a5a3c;}
+
+.tw-id{
+  min-width:0;
+  flex:1;
+}
+.tw-name{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.2;
+  color:var(--ink);
+}
+.tw-check{
+  width:15px;
+  height:15px;
+  flex-shrink:0;
+}
+.tw-handle{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.3;
+}
+.tw-bird{
+  width:19px;
+  height:19px;
+  color:#c9c6c1;
+  flex-shrink:0;
+}
+
+.tw-quote{
+  font-size:15.5px;
+  line-height:1.55;
+  color:#242220;
+  letter-spacing:-.005em;
+}
+.tw-quote b{
+  font-weight:600;
+  color:var(--accent);
+}
+
+.tw-meta{
+  margin-top:16px;
+  padding-top:13px;
+  border-top:1px solid var(--line-soft);
+  font-size:12.5px;
+  color:var(--muted);
+}
+.tw-actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-top:12px;
+}
+.tw-act{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:500;
+}
+.tw-act svg{
+  width:15px;
+  height:15px;
+}
+.tw-act--like{color:var(--accent);}
+
+/* footer strip — proof line, asymmetric */
+.tw-foot{
+  margin-top:40px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  font-size:14px;
+  color:var(--muted);
+}
+.tw-foot strong{
+  color:var(--ink);
+  font-weight:600;
+}
+.tw-dot{
+  width:4px;height:4px;border-radius:50%;background:var(--line);
+}
+
+@media(max-width:960px){
+  .tw-grid{columns:2;}
+}
+@media(max-width:640px){
+  .tw-section{padding:64px 20px 72px;}
+  .tw-head{margin-bottom:40px;}
+  .tw-head h2{font-size:29px;}
+  .tw-grid{columns:1;}
+  .tw-card{margin-bottom:18px;}
+}
+</style>
+</head>
+<body>
+
+<section class="tw-section">
+  <div class="tw-wrap">
+
+    <div class="tw-head">
+      <span class="tw-eyebrow">What people are posting</span>
+      <h2>We didn't ask for these. <em>They just showed up.</em></h2>
+      <p>Real reactions from the timeline after teams switched their reporting over to Cadence.</p>
+    </div>
+
+    <div class="tw-grid">
+
+      <!-- featured / focal card -->
+      <article class="tw-card tw-card--feature tw-card--accent">
+        <div class="tw-top">
+          <div class="tw-avatar av-2">MR</div>
+          <div class="tw-id">
+            <div class="tw-name">Maya Rios
+              <svg class="tw-check" viewBox="0 0 24 24" fill="#C0492B"><path d="M12 2l2.4 1.8 3-.2 1 2.8 2.6 1.5-.7 2.9L23 12l-1.7 2.4.7 2.9-2.6 1.5-1 2.8-3-.2L12 22l-2.4-1.8-3 .2-1-2.8-2.6-1.5.7-2.9L1 12l1.7-2.4-.7-2.9 2.6-1.5 1-2.8 3 .2L12 2z"/><path d="M10.6 14.6l-2.2-2.2-1.3 1.3 3.5 3.5 6-6-1.3-1.3z" fill="#fff"/></svg>
+            </div>
+            <div class="tw-handle">@mayabuildsops</div>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.6a4.5 4.5 0 0 0 1.4 6c-.7 0-1.4-.2-2-.5v.1a4.5 4.5 0 0 0 3.6 4.4c-.6.2-1.3.2-2 .1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 18.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3z"/></svg>
+        </div>
+        <p class="tw-quote">Spent three years hand-stitching board decks every quarter. Moved to <b>Cadence</b> in March and got that whole week of my life back. My last review deck built itself in about nine minutes.</p>
+        <div class="tw-meta">
+          8:14 AM · Jun 3, 2026
+          <div class="tw-actions">
+            <span class="tw-act tw-act--like">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-10-9.3C.3 8.6 1.6 4.9 5 4.4c2-.3 3.6.8 4.4 2 .3.4.9.4 1.2 0 .8-1.2 2.4-2.3 4.4-2 3.4.5 4.7 4.2 3 7.3C19.5 16.1 12 21 12 21z"/></svg>
+              2,148
+            </span>
+            <span class="tw-act">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              431
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tw-card">
+        <div class="tw-top">
+          <div class="tw-avatar av-1">DK</div>
+          <div class="tw-id">
+            <div class="tw-name">Devin Kaur</div>
+            <div class="tw-handle">@dkaur_fin</div>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.6a4.5 4.5 0 0 0 1.4 6c-.7 0-1.4-.2-2-.5v.1a4.5 4.5 0 0 0 3.6 4.4c-.6.2-1.3.2-2 .1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 18.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3z"/></svg>
+        </div>
+        <p class="tw-quote">The part nobody tells you: onboarding took one afternoon. I connected two data sources before my coffee went cold.</p>
+        <div class="tw-meta">
+          1:02 PM · May 28, 2026
+          <div class="tw-actions">
+            <span class="tw-act tw-act--like">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-10-9.3C.3 8.6 1.6 4.9 5 4.4c2-.3 3.6.8 4.4 2 .3.4.9.4 1.2 0 .8-1.2 2.4-2.3 4.4-2 3.4.5 4.7 4.2 3 7.3C19.5 16.1 12 21 12 21z"/></svg>
+              876
+            </span>
+            <span class="tw-act">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              92
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tw-card">
+        <div class="tw-top">
+          <div class="tw-avatar av-3">TN</div>
+          <div class="tw-id">
+            <div class="tw-name">Theo Nakamura
+              <svg class="tw-check" viewBox="0 0 24 24" fill="#C0492B"><path d="M12 2l2.4 1.8 3-.2 1 2.8 2.6 1.5-.7 2.9L23 12l-1.7 2.4.7 2.9-2.6 1.5-1 2.8-3-.2L12 22l-2.4-1.8-3 .2-1-2.8-2.6-1.5.7-2.9L1 12l1.7-2.4-.7-2.9 2.6-1.5 1-2.8 3 .2L12 2z"/><path d="M10.6 14.6l-2.2-2.2-1.3 1.3 3.5 3.5 6-6-1.3-1.3z" fill="#fff"/></svg>
+            </div>
+            <div class="tw-handle">@theo_ships</div>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.6a4.5 4.5 0 0 0 1.4 6c-.7 0-1.4-.2-2-.5v.1a4.5 4.5 0 0 0 3.6 4.4c-.6.2-1.3.2-2 .1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 18.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3z"/></svg>
+        </div>
+        <p class="tw-quote">Was skeptical of another dashboard tool. Then our CFO asked how we suddenly close the month two days early. Uh, this thing.</p>
+        <div class="tw-meta">
+          9:47 AM · Jun 11, 2026
+          <div class="tw-actions">
+            <span class="tw-act tw-act--like">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-10-9.3C.3 8.6 1.6 4.9 5 4.4c2-.3 3.6.8 4.4 2 .3.4.9.4 1.2 0 .8-1.2 2.4-2.3 4.4-2 3.4.5 4.7 4.2 3 7.3C19.5 16.1 12 21 12 21z"/></svg>
+              1,304
+            </span>
+            <span class="tw-act">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              218
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tw-card">
+        <div class="tw-top">
+          <div class="tw-avatar av-5">PL</div>
+          <div class="tw-id">
+            <div class="tw-name">Priya Lund</div>
+            <div class="tw-handle">@priya_ops</div>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.6a4.5 4.5 0 0 0 1.4 6c-.7 0-1.4-.2-2-.5v.1a4.5 4.5 0 0 0 3.6 4.4c-.6.2-1.3.2-2 .1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 18.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3z"/></svg>
+        </div>
+        <p class="tw-quote">Honestly the export-to-PDF that keeps our brand fonts is the unsung hero. No more reformatting at 11pm before the board call.</p>
+        <div class="tw-meta">
+          6:33 PM · Apr 30, 2026
+          <div class="tw-actions">
+            <span class="tw-act tw-act--like">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-10-9.3C.3 8.6 1.6 4.9 5 4.4c2-.3 3.6.8 4.4 2 .3.4.9.4 1.2 0 .8-1.2 2.4-2.3 4.4-2 3.4.5 4.7 4.2 3 7.3C19.5 16.1 12 21 12 21z"/></svg>
+              540
+            </span>
+            <span class="tw-act">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              47
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tw-card">
+        <div class="tw-top">
+          <div class="tw-avatar av-4">GA</div>
+          <div class="tw-id">
+            <div class="tw-name">Gabe Ansah</div>
+            <div class="tw-handle">@gabeanalytics</div>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.6a4.5 4.5 0 0 0 1.4 6c-.7 0-1.4-.2-2-.5v.1a4.5 4.5 0 0 0 3.6 4.4c-.6.2-1.3.2-2 .1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 18.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3z"/></svg>
+        </div>
+        <p class="tw-quote">Switched our whole analytics team over last quarter. Support answered a schema question in four minutes at 2am. Four minutes.</p>
+        <div class="tw-meta">
+          2:09 AM · Jul 6, 2026
+          <div class="tw-actions">
+            <span class="tw-act tw-act--like">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-10-9.3C.3 8.6 1.6 4.9 5 4.4c2-.3 3.6.8 4.4 2 .3.4.9.4 1.2 0 .8-1.2 2.4-2.3 4.4-2 3.4.5 4.7 4.2 3 7.3C19.5 16.1 12 21 12 21z"/></svg>
+              963
+            </span>
+            <span class="tw-act">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              128
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tw-card tw-card--accent">
+        <div class="tw-top">
+          <div class="tw-avatar av-6">SB</div>
+          <div class="tw-id">
+            <div class="tw-name">Sana Brar
+              <svg class="tw-check" viewBox="0 0 24 24" fill="#C0492B"><path d="M12 2l2.4 1.8 3-.2 1 2.8 2.6 1.5-.7 2.9L23 12l-1.7 2.4.7 2.9-2.6 1.5-1 2.8-3-.2L12 22l-2.4-1.8-3 .2-1-2.8-2.6-1.5.7-2.9L1 12l1.7-2.4-.7-2.9 2.6-1.5 1-2.8 3 .2L12 2z"/><path d="M10.6 14.6l-2.2-2.2-1.3 1.3 3.5 3.5 6-6-1.3-1.3z" fill="#fff"/></svg>
+            </div>
+            <div class="tw-handle">@sanabuilds</div>
+          </div>
+          <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.6a4.5 4.5 0 0 0 1.4 6c-.7 0-1.4-.2-2-.5v.1a4.5 4.5 0 0 0 3.6 4.4c-.6.2-1.3.2-2 .1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 18.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3z"/></svg>
+        </div>
+        <p class="tw-quote">I have now recommended <b>Cadence</b> to four different founder friends and I don't even work here. This is a public menace at this point.</p>
+        <div class="tw-meta">
+          11:20 AM · Jun 19, 2026
+          <div class="tw-actions">
+            <span class="tw-act tw-act--like">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-10-9.3C.3 8.6 1.6 4.9 5 4.4c2-.3 3.6.8 4.4 2 .3.4.9.4 1.2 0 .8-1.2 2.4-2.3 4.4-2 3.4.5 4.7 4.2 3 7.3C19.5 16.1 12 21 12 21z"/></svg>
+              3,207
+            </span>
+            <span class="tw-act">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              689
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="tw-foot">
+      <strong>1,900+ posts</strong> mentioning Cadence this quarter
+      <span class="tw-dot"></span>
+      <span>Average sentiment: overwhelmingly relieved</span>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

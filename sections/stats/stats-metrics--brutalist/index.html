@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metrics Band — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== stats-metrics — brutalist: black/white slabs, acid-yellow accent, hard 6px offset shadows, boxed numbers on a visible grid ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#f4f2eb;
+  --ink:#101010;
+  --paper:#ffffff;
+  --muted:#4d4d4d;
+  --line:#101010;
+  --accent:#e4ff1a;
+  --accent-2:#ff4d2e;
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+}
+
+.metrics{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:88px 56px 96px;
+  border-top:4px solid var(--ink);
+  border-bottom:4px solid var(--ink);
+  background-image:
+    linear-gradient(var(--ink) 1px,transparent 1px),
+    linear-gradient(90deg,var(--ink) 1px,transparent 1px);
+  background-size:64px 64px;
+  background-position:-1px -1px;
+  background-blend-mode:normal;
+  position:relative;
+}
+/* faint grid — soften the lines so they read as a blueprint, not a table */
+.metrics::before{
+  content:"";
+  position:absolute;inset:0;
+  background:var(--bg);
+  opacity:.94;
+  pointer-events:none;
+}
+.metrics > *{position:relative;z-index:1;}
+
+.metrics__inner{max-width:1440px;margin:0 auto;}
+
+.metrics__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  margin-bottom:56px;
+  flex-wrap:wrap;
+}
+
+.metrics__tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--accent);
+  padding:8px 14px;
+  margin-bottom:20px;
+}
+
+.metrics__title{
+  font-size:clamp(2rem,4.2vw,3.4rem);
+  font-weight:700;
+  line-height:.98;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  max-width:14ch;
+}
+.metrics__title em{
+  font-style:normal;
+  background:var(--accent);
+  padding:0 .12em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+.metrics__note{
+  font-family:var(--mono);
+  font-size:.82rem;
+  line-height:1.5;
+  color:var(--muted);
+  max-width:34ch;
+  border-left:4px solid var(--ink);
+  padding-left:16px;
+}
+
+/* number grid — deliberately uneven: first box spans wider */
+.metrics__grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr 1fr 1fr;
+  border:4px solid var(--ink);
+  background:var(--ink);
+  gap:4px;
+  box-shadow:var(--shadow);
+}
+
+.stat{
+  background:var(--paper);
+  padding:34px 30px 30px;
+  display:flex;
+  flex-direction:column;
+  min-height:230px;
+}
+/* first cell gets the accent fill as the focal point */
+.stat--lead{background:var(--accent);}
+.stat--lead .stat__label{border-color:var(--ink);}
+
+.stat__num{
+  font-size:clamp(3rem,6.5vw,5.6rem);
+  font-weight:700;
+  line-height:.86;
+  letter-spacing:-.04em;
+  margin-top:auto;
+}
+.stat__num .u{
+  font-size:.42em;
+  vertical-align:super;
+  letter-spacing:0;
+}
+.stat--lead .stat__num{font-size:clamp(3.4rem,7.5vw,6.4rem);}
+
+.stat__label{
+  font-family:var(--mono);
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  line-height:1.35;
+  border-top:3px solid var(--ink);
+  padding-top:12px;
+  margin-top:18px;
+}
+
+.stat__idx{
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:700;
+  color:var(--muted);
+  letter-spacing:.1em;
+}
+.stat--lead .stat__idx{color:var(--ink);}
+
+.stat__delta{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  align-self:flex-start;
+  margin-top:10px;
+  padding:3px 8px;
+  border:2px solid var(--ink);
+}
+.stat__delta--hot{background:var(--accent-2);color:var(--paper);border-color:var(--ink);}
+
+.metrics__foot{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:36px;
+  flex-wrap:wrap;
+}
+.metrics__stamp{
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.metrics__cta{
+  font-family:var(--sans);
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--paper);
+  border:3px solid var(--ink);
+  padding:12px 22px;
+  text-decoration:none;
+  box-shadow:var(--shadow-sm);
+  transition:transform .08s ease,box-shadow .08s ease;
+}
+.metrics__cta:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);}
+
+@media(max-width:640px){
+  .metrics{padding:56px 20px 64px;background-size:40px 40px;}
+  .metrics__head{margin-bottom:36px;}
+  .metrics__grid{grid-template-columns:1fr 1fr;}
+  .stat{min-height:170px;padding:22px 18px 20px;}
+  .stat--lead{grid-column:1 / -1;min-height:190px;}
+  .metrics__note{max-width:none;}
+}
+</style>
+</head>
+<body>
+
+<section class="metrics">
+  <div class="metrics__inner">
+
+    <div class="metrics__head">
+      <div>
+        <span class="metrics__tag">Q2 / Field Report</span>
+        <h2 class="metrics__title">The numbers <em>behind</em> uptime we ship</h2>
+      </div>
+      <p class="metrics__note">
+        Pulled straight from production telemetry across 34 regions. No rounding, no vanity math — measured over the trailing 90 days.
+      </p>
+    </div>
+
+    <div class="metrics__grid">
+
+      <div class="stat stat--lead">
+        <span class="stat__idx">01</span>
+        <span class="stat__delta">Rolling 90-day</span>
+        <span class="stat__num">99.98<span class="u">%</span></span>
+        <span class="stat__label">Platform uptime, measured at the edge</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat__idx">02</span>
+        <span class="stat__delta stat__delta--hot">-41ms YoY</span>
+        <span class="stat__num">148<span class="u">ms</span></span>
+        <span class="stat__label">Median API response, p50 global</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat__idx">03</span>
+        <span class="stat__delta">Live now</span>
+        <span class="stat__num">2.7<span class="u">B</span></span>
+        <span class="stat__label">Events processed every single day</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat__idx">04</span>
+        <span class="stat__delta">All plans</span>
+        <span class="stat__num">6<span class="u">min</span></span>
+        <span class="stat__label">Median first-response support time</span>
+      </div>
+
+    </div>
+
+    <div class="metrics__foot">
+      <span class="metrics__stamp">// Last synced 22 Jul 2026 — 04:00 UTC</span>
+      <a class="metrics__cta" href="#status">Open the status page</a>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

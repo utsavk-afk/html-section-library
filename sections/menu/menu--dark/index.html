@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!-- ===== MENU — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bar — Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+  --panel:#16161B;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.menu-section{
+  width:100%;
+  padding:88px 48px 96px;
+}
+.menu-wrap{
+  max-width:1180px;
+  margin:0 auto;
+}
+
+/* ---- header row: asymmetric ---- */
+.menu-head{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:56px;
+  align-items:flex-end;
+  padding-bottom:44px;
+  border-bottom:1px solid var(--line);
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+  font-weight:500;
+}
+.eyebrow::before{
+  content:"";
+  width:22px;height:1px;
+  background:var(--accent);
+}
+.menu-head h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.02;
+  letter-spacing:-.01em;
+}
+.menu-head h2 em{
+  font-style:italic;
+  color:var(--muted);
+}
+.menu-head .lede{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.65;
+  max-width:34ch;
+}
+.menu-head .lede strong{
+  color:var(--ink);
+  font-weight:500;
+}
+.head-meta{
+  margin-top:18px;
+  font-size:12.5px;
+  letter-spacing:.04em;
+  color:var(--muted);
+}
+.head-meta b{color:var(--accent);font-weight:500;}
+
+/* ---- list ---- */
+.menu-list{
+  margin-top:12px;
+}
+.row{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:26px;
+  align-items:baseline;
+  padding:26px 4px 24px;
+  border-bottom:1px solid var(--line);
+  transition:background .25s ease;
+}
+.row:hover{
+  background:var(--panel);
+}
+.row-idx{
+  font-family:var(--serif);
+  font-size:14px;
+  color:var(--muted);
+  min-width:26px;
+  padding-top:3px;
+}
+.row-main .name{
+  font-family:var(--serif);
+  font-size:23px;
+  font-weight:500;
+  letter-spacing:-.005em;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.tag{
+  font-family:var(--sans);
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:3px 8px;
+  font-weight:500;
+}
+.tag.hot{
+  color:var(--accent);
+  border-color:rgba(245,158,66,.4);
+}
+.row-main .desc{
+  margin-top:9px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.55;
+  max-width:52ch;
+}
+.row-main .desc span{
+  color:#CFCFD6;
+}
+.row-price{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:400;
+  text-align:right;
+  white-space:nowrap;
+  padding-top:2px;
+}
+.row-price .cur{
+  font-size:14px;
+  color:var(--muted);
+  vertical-align:2px;
+  margin-right:1px;
+}
+
+/* one focal signature row */
+.row.signature{
+  border-left:2px solid var(--accent);
+  padding-left:22px;
+  background:linear-gradient(90deg,rgba(245,158,66,.05),transparent 60%);
+}
+.row.signature .row-idx{color:var(--accent);}
+.row.signature .row-price{color:var(--accent);}
+
+/* ---- footer note ---- */
+.menu-foot{
+  margin-top:36px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.menu-foot p{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.5;
+  max-width:46ch;
+}
+.foot-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.02em;
+  color:var(--ink);
+  text-decoration:none;
+  border:1px solid var(--line);
+  padding:12px 20px;
+  border-radius:3px;
+  transition:border-color .2s ease,color .2s ease;
+}
+.foot-cta:hover{border-color:var(--accent);color:var(--accent);}
+.foot-cta svg{width:14px;height:14px;}
+
+@media(max-width:640px){
+  .menu-section{padding:56px 22px 64px;}
+  .menu-head{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-bottom:32px;
+  }
+  .menu-head h2{font-size:38px;}
+  .row{
+    grid-template-columns:1fr auto;
+    gap:14px 18px;
+    padding:22px 2px;
+  }
+  .row-idx{
+    grid-column:1 / -1;
+    padding-top:0;
+    margin-bottom:-6px;
+  }
+  .row.signature{padding-left:16px;}
+  .row-main .name{font-size:20px;}
+  .row-price{font-size:19px;}
+  .menu-foot{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<section class="menu-section">
+  <div class="menu-wrap">
+
+    <header class="menu-head">
+      <div>
+        <span class="eyebrow">Cellar &amp; Bar — Winter List</span>
+        <h2>Pours by the <em>ounce,</em><br>chosen by the room.</h2>
+      </div>
+      <div>
+        <p class="lede">Every bottle is opened the night it's poured — <strong>no oxidation, no shortcuts.</strong> Prices are per 2 oz measure unless a flight is noted.</p>
+        <p class="head-meta">Service until <b>1:00 AM</b> · Corkage <b>$45</b> · Ask for the reserve book</p>
+      </div>
+    </header>
+
+    <div class="menu-list">
+
+      <div class="row">
+        <div class="row-idx">01</div>
+        <div class="row-main">
+          <div class="name">Amaro Nonino, Barrel-Rested <span class="tag">Digestif</span></div>
+          <p class="desc">Grape-based Friulian amaro, <span>aged 12 months</span> in ex-sherry oak. Dried apricot, saffron, a slow bitter finish.</p>
+        </div>
+        <div class="row-price"><span class="cur">$</span>16</div>
+      </div>
+
+      <div class="row signature">
+        <div class="row-idx">02</div>
+        <div class="row-main">
+          <div class="name">Yamazaki 18, Single Cask <span class="tag hot">One Bottle Left</span></div>
+          <p class="desc"><span>Mizunara-influenced, cask #2019-A.</span> Sandalwood and stewed plum — the pour the whole list is built around.</p>
+        </div>
+        <div class="row-price"><span class="cur">$</span>78</div>
+      </div>
+
+      <div class="row">
+        <div class="row-idx">03</div>
+        <div class="row-main">
+          <div class="name">Clos du Mesnil Blanc de Blancs <span class="tag">Coupe</span></div>
+          <p class="desc">Grower Champagne, <span>zero dosage.</span> Chalk, green almond, and a line of acidity that stays for minutes.</p>
+        </div>
+        <div class="row-price"><span class="cur">$</span>42</div>
+      </div>
+
+      <div class="row">
+        <div class="row-idx">04</div>
+        <div class="row-main">
+          <div class="name">The Negroni, Split-Base <span class="tag">House</span></div>
+          <p class="desc">Half gin, half mezcal, Antica Formula and Campari, <span>stirred over one clear rock.</span> Orange oil, no garnish theatre.</p>
+        </div>
+        <div class="row-price"><span class="cur">$</span>19</div>
+      </div>
+
+      <div class="row">
+        <div class="row-idx">05</div>
+        <div class="row-main">
+          <div class="name">Tokaji Aszú 6 Puttonyos <span class="tag">Dessert · 3oz</span></div>
+          <p class="desc">Botrytised Furmint, <span>2013 vintage.</span> Honeyed quince and marmalade against bright, cutting acidity.</p>
+        </div>
+        <div class="row-price"><span class="cur">$</span>24</div>
+      </div>
+
+      <div class="row">
+        <div class="row-idx">06</div>
+        <div class="row-main">
+          <div class="name">Highland Flight — Three Islands <span class="tag hot">Flight</span></div>
+          <p class="desc">Guided trio: <span>Springbank 10, Ledaig, Kilkerran.</span> Poured lightest to heaviest with the sommelier's notes.</p>
+        </div>
+        <div class="row-price"><span class="cur">$</span>54</div>
+      </div>
+
+    </div>
+
+    <div class="menu-foot">
+      <p>Vintages rotate weekly and some cask pours are strictly limited — the printed card is a guide, not a guarantee. Your server knows what's open tonight.</p>
+      <a class="foot-cta" href="#reserve">
+        Reserve the counter
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

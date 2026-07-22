@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!-- ===== ROAD-MAP — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Roadmap — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --panel-2:#1c1c22;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --faint:#6b6b73;
+  --line:#2a2a31;
+  --line-soft:#232329;
+  --amber:#F59E42;
+  --shipped:#7dd3a8;
+  --progress:#8ab4f0;
+  --next:#A1A1AA;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-head:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+.rm{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:76px 64px 88px;
+}
+
+/* ---- header row: asymmetric, left-weighted ---- */
+.rm__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  flex-wrap:wrap;
+  border-bottom:1px solid var(--line);
+  padding-bottom:34px;
+  margin-bottom:48px;
+}
+.rm__intro{max-width:620px;}
+.rm__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.rm__kicker::before{
+  content:"";
+  width:22px;height:1px;
+  background:var(--amber);
+}
+.rm__title{
+  font-family:var(--font-head);
+  font-weight:500;
+  font-size:44px;
+  line-height:1.04;
+  letter-spacing:-.01em;
+}
+.rm__title em{
+  font-style:italic;
+  color:var(--amber);
+}
+.rm__sub{
+  margin-top:16px;
+  font-size:15.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:520px;
+}
+.rm__meta{
+  text-align:right;
+  flex-shrink:0;
+}
+.rm__meta-num{
+  font-family:var(--font-head);
+  font-size:40px;
+  line-height:1;
+  color:var(--ink);
+}
+.rm__meta-label{
+  margin-top:8px;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--faint);
+}
+
+/* ---- board ---- */
+.rm__board{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:22px;
+}
+.col{
+  background:var(--panel);
+  border:1px solid var(--line-soft);
+  border-radius:14px;
+  padding:22px 20px 24px;
+}
+/* the focal column — In progress — gets more weight */
+.col--focus{
+  background:var(--panel-2);
+  border-color:var(--line);
+  border-top:2px solid var(--amber);
+  border-radius:14px 14px 16px 16px;
+}
+.col__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:16px;
+  margin-bottom:18px;
+  border-bottom:1px solid var(--line-soft);
+}
+.col__name{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.dot--shipped{background:var(--shipped);}
+.dot--progress{background:var(--amber);box-shadow:0 0 0 4px rgba(245,158,66,.12);}
+.dot--next{background:var(--next);}
+.col__count{
+  font-size:12px;
+  color:var(--faint);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---- cards ---- */
+.card{
+  border:1px solid var(--line-soft);
+  border-radius:10px;
+  padding:15px 15px 16px;
+  margin-bottom:12px;
+  background:rgba(255,255,255,.012);
+}
+.card:last-child{margin-bottom:0;}
+.card--lead{
+  border-color:var(--line);
+  background:rgba(245,158,66,.045);
+}
+.card__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:9px;
+}
+.card__title{
+  font-size:14.5px;
+  font-weight:500;
+  letter-spacing:-.005em;
+  color:var(--ink);
+}
+.card__desc{
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+}
+.card__foot{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:13px;
+}
+.avatar{
+  width:22px;height:22px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:9.5px;font-weight:600;
+  letter-spacing:.02em;
+  color:#121216;
+  flex-shrink:0;
+}
+.card__eta{
+  font-size:11.5px;
+  color:var(--faint);
+  letter-spacing:.02em;
+}
+.card__eta b{color:var(--muted);font-weight:500;}
+
+/* progress bar for in-progress cards */
+.bar{
+  height:4px;
+  border-radius:99px;
+  background:rgba(255,255,255,.07);
+  margin-top:13px;
+  overflow:hidden;
+}
+.bar > span{
+  display:block;height:100%;
+  border-radius:99px;
+  background:var(--amber);
+}
+
+/* ---- tags ---- */
+.tag{
+  font-size:10.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:3px 8px;
+  border-radius:5px;
+  border:1px solid var(--line);
+  color:var(--muted);
+  white-space:nowrap;
+}
+.tag--done{color:var(--shipped);border-color:rgba(125,211,168,.28);}
+.tag--live{color:var(--amber);border-color:rgba(245,158,66,.32);}
+.tag--plan{color:var(--faint);}
+.tag--check{
+  color:var(--shipped);border-color:rgba(125,211,168,.25);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.tag--check::before{content:"\2713";font-size:11px;}
+
+/* ---- footer strip ---- */
+.rm__foot{
+  margin-top:40px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.rm__foot-note{
+  font-size:13px;
+  color:var(--muted);
+}
+.rm__foot-note b{color:var(--ink);font-weight:500;}
+.rm__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:13.5px;
+  font-weight:500;
+  color:#121216;
+  background:var(--amber);
+  padding:11px 18px;
+  border-radius:8px;
+  text-decoration:none;
+}
+.rm__cta::after{content:"\2197";font-size:14px;}
+
+@media(max-width:640px){
+  .rm{padding:48px 20px 60px;}
+  .rm__head{flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:34px;}
+  .rm__meta{text-align:left;}
+  .rm__title{font-size:33px;}
+  .rm__board{grid-template-columns:1fr;gap:16px;}
+  .col--focus{border-top-width:2px;}
+  .rm__foot{flex-direction:column;align-items:flex-start;}
+  .rm__cta{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+<section class="rm">
+
+  <div class="rm__head">
+    <div class="rm__intro">
+      <span class="rm__kicker">Public Roadmap · Q3 2026</span>
+      <h1 class="rm__title">What we're building for <em>Harbor</em>, in the open.</h1>
+      <p class="rm__sub">A live look at the ingestion pipeline, auth, and reporting work. Dates slip, priorities move — this board is the source of truth, updated every Friday.</p>
+    </div>
+    <div class="rm__meta">
+      <div class="rm__meta-num">v4.2</div>
+      <div class="rm__meta-label">Current release</div>
+    </div>
+  </div>
+
+  <div class="rm__board">
+
+    <!-- SHIPPED -->
+    <div class="col">
+      <div class="col__head">
+        <span class="col__name"><span class="dot dot--shipped"></span>Shipped</span>
+        <span class="col__count">3 released</span>
+      </div>
+
+      <article class="card">
+        <div class="card__top">
+          <span class="card__title">CSV & Parquet ingest</span>
+          <span class="tag tag--check">Done</span>
+        </div>
+        <p class="card__desc">Streaming import for files up to 5 GB, with schema inference and per-row error surfacing.</p>
+        <div class="card__foot">
+          <span class="avatar" style="background:#7dd3a8">RK</span>
+          <span class="card__eta">Released <b>Jun 18</b></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__top">
+          <span class="card__title">SAML single sign-on</span>
+          <span class="tag tag--check">Done</span>
+        </div>
+        <p class="card__desc">Okta, Entra ID and Google Workspace, with SCIM user provisioning on the Enterprise tier.</p>
+        <div class="card__foot">
+          <span class="avatar" style="background:#7dd3a8">TM</span>
+          <span class="card__eta">Released <b>Jun 30</b></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__top">
+          <span class="card__title">Dark mode</span>
+          <span class="tag tag--check">Done</span>
+        </div>
+        <p class="card__desc">System-aware theming across the console and shared report views.</p>
+        <div class="card__foot">
+          <span class="avatar" style="background:#7dd3a8">AV</span>
+          <span class="card__eta">Released <b>Jul 09</b></span>
+        </div>
+      </article>
+    </div>
+
+    <!-- IN PROGRESS (focal) -->
+    <div class="col col--focus">
+      <div class="col__head">
+        <span class="col__name"><span class="dot dot--progress"></span>In progress</span>
+        <span class="col__count">2 active</span>
+      </div>
+
+      <article class="card card--lead">
+        <div class="card__top">
+          <span class="card__title">Scheduled report exports</span>
+          <span class="tag tag--live">Building</span>
+        </div>
+        <p class="card__desc">Deliver PDF and XLSX snapshots to email or S3 on a cron you define. Beta with 12 design partners now.</p>
+        <div class="bar"><span style="width:68%"></span></div>
+        <div class="card__foot">
+          <span class="avatar" style="background:#F59E42">NP</span>
+          <span class="avatar" style="background:#8ab4f0;margin-left:-9px">Do</span>
+          <span class="card__eta" style="margin-left:4px">68% · ETA <b>Aug 14</b></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__top">
+          <span class="card__title">Column-level access control</span>
+          <span class="tag tag--live">Building</span>
+        </div>
+        <p class="card__desc">Mask or hide sensitive fields per role, enforced at the query layer — not just the UI.</p>
+        <div class="bar"><span style="width:34%"></span></div>
+        <div class="card__foot">
+          <span class="avatar" style="background:#F59E42">LS</span>
+          <span class="card__eta" style="margin-left:4px">34% · ETA <b>Sep 02</b></span>
+        </div>
+      </article>
+    </div>
+
+    <!-- NEXT -->
+    <div class="col">
+      <div class="col__head">
+        <span class="col__name"><span class="dot dot--next"></span>Next up</span>
+        <span class="col__count">3 planned</span>
+      </div>
+
+      <article class="card">
+        <div class="card__top">
+          <span class="card__title">Webhook event bus</span>
+          <span class="tag tag--plan">Planned</span>
+        </div>
+        <p class="card__desc">Subscribe to ingest, transform and export events with signed, retryable payloads.</p>
+        <div class="card__foot">
+          <span class="card__eta">Targeting <b>Q4 · Oct</b></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__top">
+          <span class="card__title">Saved query snippets</span>
+          <span class="tag tag--plan">Planned</span>
+        </div>
+        <p class="card__desc">Reusable, parameterized SQL blocks shared across a workspace.</p>
+        <div class="card__foot">
+          <span class="card__eta">Targeting <b>Q4 · Nov</b></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__top">
+          <span class="card__title">Mobile read-only app</span>
+          <span class="tag tag--plan">Exploring</span>
+        </div>
+        <p class="card__desc">Glanceable dashboards and alert acks on iOS. Scoping underway — vote to bump it up.</p>
+        <div class="card__foot">
+          <span class="card__eta">Under research</span>
+        </div>
+      </article>
+    </div>
+
+  </div>
+
+  <div class="rm__foot">
+    <p class="rm__foot-note"><b>Missing something?</b> Every item here started as a customer request. Tell us what should ship next.</p>
+    <a class="rm__cta" href="#">Request a feature</a>
+  </div>
+
+</section>
+</body>
+</html>

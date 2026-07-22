@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!-- ===== BIOGRAPHY — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biography — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+
+  :root{
+    --bg:#FCFCFA;
+    --ink:#1B1A17;
+    --ink-soft:#4A473F;
+    --accent:#B4472B;
+    --accent-deep:#8F3620;
+    --hair:#DAD6CC;
+    --portrait-a:#C7BCA6;
+    --portrait-b:#A8987C;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  .bio{
+    width:100%;
+    max-width:1440px;
+    margin:0 auto;
+    padding:110px 96px 96px;
+  }
+
+  .bio__eyebrow{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:56px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .bio__eyebrow::after{
+    content:"";
+    flex:0 0 64px;
+    height:1px;
+    background:var(--hair);
+  }
+
+  .bio__grid{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:88px;
+    align-items:start;
+  }
+
+  /* ---- Portrait column ---- */
+  .bio__portrait-col{
+    position:relative;
+    padding-top:18px;
+  }
+  .bio__frame{
+    position:relative;
+    width:300px;
+    aspect-ratio:4/5;
+    background:linear-gradient(155deg,var(--portrait-a),var(--portrait-b));
+    border-radius:2px 2px 2px 40px;
+    overflow:hidden;
+    box-shadow:0 1px 0 #fff, 22px 24px 0 -8px rgba(180,71,43,.10);
+  }
+  /* CSS-shape portrait: shoulders, head, hair */
+  .bio__shoulders{
+    position:absolute;
+    left:50%;
+    bottom:-8%;
+    width:150%;
+    height:56%;
+    transform:translateX(-50%);
+    background:#3B372F;
+    border-radius:50% 50% 0 0;
+  }
+  .bio__neck{
+    position:absolute;
+    left:50%;
+    bottom:36%;
+    width:23%;
+    height:22%;
+    transform:translateX(-50%);
+    background:#E4C9A8;
+    border-radius:0 0 30% 30%;
+  }
+  .bio__head{
+    position:absolute;
+    left:50%;
+    top:19%;
+    width:39%;
+    height:47%;
+    transform:translateX(-50%);
+    background:#EAD1B0;
+    border-radius:47% 47% 44% 44%;
+  }
+  .bio__hair{
+    position:absolute;
+    left:50%;
+    top:11%;
+    width:50%;
+    height:34%;
+    transform:translateX(-50%);
+    background:#2C2620;
+    border-radius:48% 48% 42% 42%;
+    clip-path:polygon(0 0,100% 0,100% 62%,78% 46%,50% 40%,22% 46%,0 62%);
+  }
+  .bio__collar{
+    position:absolute;
+    left:50%;
+    bottom:2%;
+    width:30%;
+    height:16%;
+    transform:translateX(-50%) rotate(0deg);
+    background:#FCFCFA;
+    clip-path:polygon(0 0,50% 46%,100% 0,74% 100%,26% 100%);
+  }
+  .bio__tag{
+    position:absolute;
+    left:-14px;
+    bottom:34px;
+    background:var(--ink);
+    color:var(--bg);
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    padding:8px 14px;
+  }
+
+  .bio__meta{
+    margin-top:34px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .bio__meta-row{
+    display:flex;
+    gap:14px;
+    font-size:13px;
+    line-height:1.4;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--hair);
+  }
+  .bio__meta-row:last-child{border-bottom:none;padding-bottom:0;}
+  .bio__meta-key{
+    flex:0 0 74px;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    padding-top:2px;
+  }
+  .bio__meta-val{color:var(--ink-soft);}
+  .bio__meta-val em{font-family:var(--serif);font-style:italic;color:var(--ink);}
+
+  /* ---- Text column ---- */
+  .bio__role{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:20px;
+  }
+  .bio__name{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(40px,5vw,68px);
+    line-height:1.02;
+    letter-spacing:-.015em;
+    text-wrap:balance;
+    margin-bottom:6px;
+  }
+  .bio__name em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--accent);
+  }
+  .bio__pron{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:34px;
+  }
+
+  .bio__lede{
+    font-family:var(--serif);
+    font-size:23px;
+    line-height:1.42;
+    font-weight:400;
+    letter-spacing:-.005em;
+    max-width:33ch;
+    margin-bottom:30px;
+  }
+  .bio__lede .drop{
+    float:left;
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:70px;
+    line-height:.78;
+    padding:6px 12px 0 0;
+    color:var(--accent);
+  }
+
+  .bio__body{
+    max-width:60ch;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    font-size:16px;
+    line-height:1.68;
+    color:var(--ink-soft);
+  }
+  .bio__body em{font-family:var(--serif);font-style:italic;color:var(--ink);}
+  .bio__body strong{font-weight:600;color:var(--ink);}
+
+  .bio__pull{
+    margin:8px 0;
+    padding-left:22px;
+    border-left:2px solid var(--accent);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:19px;
+    line-height:1.45;
+    color:var(--ink);
+    max-width:38ch;
+  }
+
+  .bio__links{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:12px 26px;
+    margin-top:38px;
+    padding-top:26px;
+    border-top:1px solid var(--hair);
+  }
+  .bio__link{
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:border-color .18s ease,color .18s ease;
+  }
+  .bio__link svg{width:14px;height:14px;flex:0 0 auto;color:var(--accent);}
+  .bio__link:hover,.bio__link:focus-visible{
+    color:var(--accent-deep);
+    border-bottom-color:var(--accent);
+    outline:none;
+  }
+  .bio__link:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:1px;}
+  .bio__sign{
+    margin-left:auto;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:26px;
+    color:var(--ink);
+    transform:rotate(-4deg);
+    opacity:.85;
+  }
+
+  @media(max-width:640px){
+    .bio{padding:64px 24px 72px;}
+    .bio__eyebrow{margin-bottom:38px;}
+    .bio__eyebrow::after{flex-basis:32px;}
+    .bio__grid{grid-template-columns:1fr;gap:44px;}
+    .bio__frame{width:210px;}
+    .bio__portrait-col{padding-top:0;}
+    .bio__lede{font-size:20px;max-width:none;}
+    .bio__lede .drop{font-size:56px;}
+    .bio__body{font-size:15.5px;max-width:none;}
+    .bio__links{gap:12px 20px;}
+    .bio__sign{margin-left:0;width:100%;font-size:24px;}
+  }
+</style>
+</head>
+<body>
+  <section class="bio" aria-labelledby="bio-name">
+    <p class="bio__eyebrow">The Bindery — Who Made This</p>
+
+    <div class="bio__grid">
+
+      <!-- Portrait + meta -->
+      <div class="bio__portrait-col">
+        <figure class="bio__frame" role="img" aria-label="Illustrated portrait of Margaux Deveraux">
+          <span class="bio__shoulders"></span>
+          <span class="bio__collar"></span>
+          <span class="bio__neck"></span>
+          <span class="bio__head"></span>
+          <span class="bio__hair"></span>
+          <figcaption class="bio__tag">Est. Studio 09</figcaption>
+        </figure>
+
+        <dl class="bio__meta">
+          <div class="bio__meta-row">
+            <dt class="bio__meta-key">Based</dt>
+            <dd class="bio__meta-val">Providence, Rhode Island — a drafty second-floor mill room</dd>
+          </div>
+          <div class="bio__meta-row">
+            <dt class="bio__meta-key">Trained</dt>
+            <dd class="bio__meta-val">RISD, <em>Book Arts</em> (2009); apprenticed two winters in Lyon</dd>
+          </div>
+          <div class="bio__meta-row">
+            <dt class="bio__meta-key">Presses</dt>
+            <dd class="bio__meta-val">A 1926 Vandercook No. 4 named <em>Ada</em></dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Text -->
+      <div class="bio__text-col">
+        <p class="bio__role">Founder &amp; Letterpress Printer</p>
+        <h2 class="bio__name" id="bio-name">Margaux <em>Deveraux</em></h2>
+        <p class="bio__pron">she / her · answers to Mo before noon</p>
+
+        <p class="bio__lede">
+          <span class="drop">I</span> set metal type by hand because the machine that replaced it forgot how to leave a mark you can feel with your thumb.
+        </p>
+
+        <div class="bio__body">
+          <p>
+            Margaux runs <strong>The Bindery</strong>, a two-person letterpress studio that prints wedding suites, poetry chapbooks, and the occasional stubborn business card. She started in 2009 with a borrowed proof press and a drawer of Caslon someone was about to throw in a dumpster. She kept the type. The dumpster went empty.
+          </p>
+
+          <p class="bio__pull">
+            &ldquo;Good printing is mostly patience and a little ink — in that order.&rdquo;
+          </p>
+
+          <p>
+            Her work leans quiet: deep impression, <em>generous margins</em>, one confident accent color and nothing it has to compete with. Clients tend to arrive asking for something &ldquo;elegant&rdquo; and leave with something specific instead. She teaches a Saturday workshop each spring, mostly so the presses get used by hands other than her own.
+          </p>
+        </div>
+
+        <nav class="bio__links" aria-label="Contact and links">
+          <a class="bio__link" href="mailto:margaux@thebindery.studio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg>
+            margaux@thebindery.studio
+          </a>
+          <a class="bio__link" href="https://thebindery.studio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15.5 0 18M12 3c-2.5 2.5-2.5 15.5 0 18"/></svg>
+            thebindery.studio
+          </a>
+          <a class="bio__link" href="https://instagram.com/thebindery.press">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+            @thebindery.press
+          </a>
+          <span class="bio__sign" aria-hidden="true">M. Deveraux</span>
+        </nav>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

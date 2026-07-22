@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!-- ===== MARQUEE — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marquee — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A52;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:'Archivo', sans-serif;
+  --sans:'Archivo', sans-serif;
+  --mono:'Space Mono', monospace;
+}
+
+.mq-wrap{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 0 84px;
+  overflow:hidden;
+  position:relative;
+  border-top:3px solid var(--line);
+  border-bottom:3px solid var(--line);
+}
+
+/* faint visible grid backdrop */
+.mq-wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* header row — asymmetric, left focal */
+.mq-head{
+  position:relative;
+  z-index:2;
+  max-width:1440px;
+  margin:0 auto 40px;
+  padding:0 40px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+}
+.mq-eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--bg);
+  padding:7px 12px;
+  display:inline-block;
+}
+.mq-title{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:44px;
+  line-height:.94;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+  margin-top:16px;
+  max-width:640px;
+}
+.mq-title mark{
+  background:var(--accent);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.mq-meta{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  text-align:right;
+  border:2px solid var(--line);
+  padding:10px 14px;
+  box-shadow:6px 6px 0 var(--ink);
+  background:var(--bg);
+  white-space:nowrap;
+  align-self:flex-end;
+}
+.mq-meta b{color:var(--red);}
+
+/* MARQUEE BANDS */
+.mq-band{
+  position:relative;
+  z-index:2;
+  display:flex;
+  overflow:hidden;
+  user-select:none;
+  border-top:3px solid var(--line);
+  border-bottom:3px solid var(--line);
+}
+.mq-band + .mq-band{border-top:none;}
+
+.mq-band-yellow{background:var(--accent);}
+.mq-band-ink{background:var(--ink);}
+
+.mq-track{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:26px;
+  padding:18px 13px;
+  min-width:100%;
+  white-space:nowrap;
+  will-change:transform;
+  animation:mq-scroll 26s linear infinite;
+}
+.mq-track-slow{animation-duration:38s;}
+.mq-band-ink .mq-track{animation-direction:reverse;animation-duration:32s;}
+
+.mq-wrap:hover .mq-track{animation-play-state:paused;}
+
+@keyframes mq-scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* words */
+.mq-word{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:34px;
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+}
+.mq-band-yellow .mq-word{color:var(--ink);}
+.mq-band-ink .mq-word{color:var(--bg);}
+.mq-band-ink .mq-word.on{color:var(--accent);}
+.mq-band-yellow .mq-word.on{
+  background:var(--ink);
+  color:var(--accent);
+  padding:2px 10px;
+}
+
+/* separator star / bullet made from CSS */
+.mq-dot{
+  flex-shrink:0;
+  width:14px;
+  height:14px;
+  transform:rotate(45deg);
+}
+.mq-band-yellow .mq-dot{background:var(--ink);}
+.mq-band-ink .mq-dot{background:var(--red);}
+
+/* inline mono ticker chips in ink band */
+.mq-chip{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--ink);
+  background:var(--bg);
+  border:2px solid var(--bg);
+  padding:6px 11px;
+}
+.mq-chip.warn{background:var(--red);color:var(--bg);border-color:var(--red);}
+
+/* footer strip */
+.mq-foot{
+  position:relative;
+  z-index:2;
+  max-width:1440px;
+  margin:38px auto 0;
+  padding:0 40px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.mq-foot p{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:.02em;
+}
+.mq-copy-btn{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--ink);
+  background:var(--accent);
+  border:2px solid var(--line);
+  padding:11px 18px;
+  cursor:pointer;
+  box-shadow:6px 6px 0 var(--ink);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.mq-copy-btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink);}
+
+@media(max-width:640px){
+  .mq-wrap{padding:44px 0 52px;}
+  .mq-head{flex-direction:column;align-items:flex-start;padding:0 20px;margin-bottom:28px;gap:14px;}
+  .mq-title{font-size:32px;}
+  .mq-meta{align-self:flex-start;text-align:left;}
+  .mq-word{font-size:26px;}
+  .mq-track{gap:18px;padding:14px 9px;animation-duration:18s;}
+  .mq-track-slow{animation-duration:26s;}
+  .mq-band-ink .mq-track{animation-duration:22s;}
+  .mq-foot{padding:0 20px;}
+}
+</style>
+</head>
+<body>
+
+<section class="mq-wrap" aria-label="Scrolling brutalist marquee band">
+
+  <div class="mq-head">
+    <div>
+      <span class="mq-eyebrow">// SHIP LOG — BUILD 0417</span>
+      <h2 class="mq-title">WE DON'T <mark>DECORATE</mark><br>WE SHIP RAW.</h2>
+    </div>
+    <div class="mq-meta">
+      STATUS <b>LIVE</b><br>
+      LAT 45ms · UPTIME 99.98%
+    </div>
+  </div>
+
+  <!-- BAND 1 — yellow, big words -->
+  <div class="mq-band mq-band-yellow" aria-hidden="true">
+    <div class="mq-track">
+      <span class="mq-word">DEPLOY FRIDAY</span><i class="mq-dot"></i>
+      <span class="mq-word on">NO DARK PATTERNS</span><i class="mq-dot"></i>
+      <span class="mq-word">SHARP CORNERS</span><i class="mq-dot"></i>
+      <span class="mq-word">FONTS THAT SHOUT</span><i class="mq-dot"></i>
+      <span class="mq-word">READ THE DOCS</span><i class="mq-dot"></i>
+      <span class="mq-word on">MERGE IT</span><i class="mq-dot"></i>
+    </div>
+    <div class="mq-track" aria-hidden="true">
+      <span class="mq-word">DEPLOY FRIDAY</span><i class="mq-dot"></i>
+      <span class="mq-word on">NO DARK PATTERNS</span><i class="mq-dot"></i>
+      <span class="mq-word">SHARP CORNERS</span><i class="mq-dot"></i>
+      <span class="mq-word">FONTS THAT SHOUT</span><i class="mq-dot"></i>
+      <span class="mq-word">READ THE DOCS</span><i class="mq-dot"></i>
+      <span class="mq-word on">MERGE IT</span><i class="mq-dot"></i>
+    </div>
+  </div>
+
+  <!-- BAND 2 — ink, reverse, mono chips -->
+  <div class="mq-band mq-band-ink" aria-hidden="true">
+    <div class="mq-track mq-track-slow">
+      <span class="mq-chip">PASTE INTO CLAUDE CODE</span><i class="mq-dot"></i>
+      <span class="mq-chip warn">ZERO BUILD STEP</span><i class="mq-dot"></i>
+      <span class="mq-word on">COPY. DROP. RUN.</span><i class="mq-dot"></i>
+      <span class="mq-chip">SELF-CONTAINED HTML</span><i class="mq-dot"></i>
+      <span class="mq-chip">ONE FILE ONLY</span><i class="mq-dot"></i>
+      <span class="mq-word">FREE FOREVER</span><i class="mq-dot"></i>
+    </div>
+    <div class="mq-track mq-track-slow" aria-hidden="true">
+      <span class="mq-chip">PASTE INTO CLAUDE CODE</span><i class="mq-dot"></i>
+      <span class="mq-chip warn">ZERO BUILD STEP</span><i class="mq-dot"></i>
+      <span class="mq-word on">COPY. DROP. RUN.</span><i class="mq-dot"></i>
+      <span class="mq-chip">SELF-CONTAINED HTML</span><i class="mq-dot"></i>
+      <span class="mq-chip">ONE FILE ONLY</span><i class="mq-dot"></i>
+      <span class="mq-word">FREE FOREVER</span><i class="mq-dot"></i>
+    </div>
+  </div>
+
+  <div class="mq-foot">
+    <button class="mq-copy-btn" type="button">[ COPY THIS SECTION ]</button>
+    <p>Hover the band to freeze it · 2 tracks, seamless loop · no JS, no images.</p>
+  </div>
+
+</section>
+
+</body>
+</html>

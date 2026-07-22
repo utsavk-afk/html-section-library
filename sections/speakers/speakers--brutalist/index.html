@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!-- ===== SPEAKERS — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speakers — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --line:2px solid var(--ink);
+  --line-thick:4px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.spk{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:64px 48px 72px;
+  max-width:1440px;
+  margin:0 auto;
+  position:relative;
+}
+
+/* ---- top bar / event masthead ---- */
+.spk__bar{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  border-bottom:var(--line-thick);
+  padding-bottom:22px;
+}
+.spk__ticket{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  background:var(--ink);
+  color:var(--acid);
+  padding:7px 12px;
+  display:inline-block;
+}
+.spk__meta{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  text-align:right;
+}
+.spk__meta b{color:var(--red);}
+.spk__head{
+  margin:34px 0 40px;
+  max-width:900px;
+}
+.spk__kick{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  margin-bottom:16px;
+}
+.spk__kick span{
+  background:var(--acid);
+  padding:3px 8px;
+  border:var(--line);
+}
+.spk__title{
+  font-weight:900;
+  font-size:clamp(38px,6vw,78px);
+  line-height:.92;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+}
+.spk__title .mark{
+  color:var(--paper);
+  background:var(--ink);
+  padding:0 10px;
+}
+.spk__title .u{
+  text-decoration:underline;
+  text-decoration-color:var(--red);
+  text-decoration-thickness:6px;
+  text-underline-offset:8px;
+}
+
+/* ---- grid ---- */
+.spk__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+.card{
+  background:var(--white);
+  border:var(--line-thick);
+  box-shadow:var(--shadow);
+  padding:20px;
+  position:relative;
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.card:hover{
+  transform:translate(-3px,-3px);
+  box-shadow:9px 9px 0 var(--ink);
+}
+/* asymmetry: first card is the headliner, spans two columns */
+.card--lead{
+  grid-column:span 2;
+  background:var(--acid);
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:22px;
+  align-items:start;
+}
+.card--red:hover{box-shadow:9px 9px 0 var(--red);}
+
+.card__num{
+  position:absolute;
+  top:-2px;
+  right:-2px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  background:var(--ink);
+  color:var(--paper);
+  padding:5px 9px;
+  letter-spacing:.05em;
+}
+.card--lead .card__num{background:var(--red);color:var(--white);}
+
+/* CSS avatars — initials, no stock faces */
+.av{
+  width:100%;
+  aspect-ratio:1/1;
+  border:var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:40px;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+  position:relative;
+  overflow:hidden;
+}
+.card:not(.card--lead) .av{
+  width:70px;height:70px;aspect-ratio:auto;font-size:26px;margin-bottom:16px;
+}
+.av--a{background:var(--red);color:var(--white);}
+.av--b{background:var(--ink);color:var(--acid);}
+.av--c{background:var(--acid);color:var(--ink);}
+.av--d{background:var(--white);color:var(--ink);}
+.av--e{background:var(--ink);color:var(--white);}
+.av--f{background:var(--red);color:var(--white);}
+/* corner tag on avatar */
+.av__dot{
+  position:absolute;bottom:5px;right:5px;
+  width:14px;height:14px;background:var(--paper);border:2px solid var(--ink);
+}
+.card--lead .av{font-size:56px;}
+
+.card__name{
+  font-weight:900;
+  font-size:22px;
+  text-transform:uppercase;
+  line-height:1;
+  letter-spacing:-.01em;
+}
+.card--lead .card__name{font-size:clamp(28px,3.4vw,40px);}
+.card__role{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin:10px 0 16px;
+  padding-bottom:14px;
+  border-bottom:var(--line);
+}
+.card--lead .card__role{border-bottom:2px solid var(--ink);}
+.card__talk-lbl{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--red);
+  display:block;
+  margin-bottom:6px;
+}
+.card--lead .card__talk-lbl{color:var(--ink);}
+.card__talk{
+  font-weight:700;
+  font-size:16px;
+  line-height:1.15;
+  text-transform:uppercase;
+}
+.card--lead .card__talk{font-size:20px;}
+.card__slot{
+  margin-top:16px;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  display:inline-block;
+  border:var(--line);
+  padding:4px 8px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.card--lead .card__body{align-self:center;}
+
+/* ---- bottom strip ---- */
+.spk__foot{
+  margin-top:34px;
+  border-top:var(--line-thick);
+  padding-top:20px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:18px;
+  justify-content:space-between;
+}
+.spk__foot p{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  max-width:520px;
+}
+.btn{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  background:var(--red);
+  color:var(--white);
+  border:var(--line-thick);
+  box-shadow:var(--shadow-sm);
+  padding:14px 26px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  transition:transform .1s ease,box-shadow .1s ease;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);background:var(--ink);color:var(--acid);}
+
+@media(max-width:640px){
+  .spk{padding:40px 20px 48px;}
+  .spk__bar{gap:14px;}
+  .spk__meta{text-align:left;}
+  .spk__head{margin:26px 0 30px;}
+  .spk__grid{grid-template-columns:1fr;gap:20px;}
+  .card--lead{grid-column:span 1;grid-template-columns:90px 1fr;gap:16px;}
+  .card--lead .av{font-size:34px;}
+  .card__talk{font-size:15px;}
+  .spk__foot{flex-direction:column;align-items:flex-start;}
+  .btn{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+<section class="spk">
+  <div class="spk__bar">
+    <span class="spk__ticket">◆ DISPATCH / 2026 LINEUP</span>
+    <div class="spk__meta">
+      OCT 14–15 · WAREHOUSE 9, DETROIT<br>
+      <b>412 SEATS</b> · DOORS 08:30 SHARP
+    </div>
+  </div>
+
+  <div class="spk__head">
+    <div class="spk__kick"><span>THE SPEAKERS</span></div>
+    <h1 class="spk__title">SIX <span class="mark">BUILDERS</span><br>ONE <span class="u">ROOM.</span></h1>
+  </div>
+
+  <div class="spk__grid">
+
+    <!-- headliner -->
+    <article class="card card--lead card--red">
+      <span class="card__num">HEADLINER</span>
+      <div class="av av--a">MR<span class="av__dot"></span></div>
+      <div class="card__body">
+        <h3 class="card__name">Mira Okonkwo</h3>
+        <p class="card__role">Principal Systems Eng · CACHE LABS</p>
+        <span class="card__talk-lbl">// KEYNOTE</span>
+        <p class="card__talk">Shipping Latency: How We Cut P99 By 340ms Without Adding Hardware</p>
+        <span class="card__slot">10:00 — MAIN STAGE</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="card__num">02</span>
+      <div class="av av--b">DV<span class="av__dot"></span></div>
+      <h3 class="card__name">Deni Vasquez</h3>
+      <p class="card__role">Staff Infra · PORTPILOT</p>
+      <span class="card__talk-lbl">// TALK</span>
+      <p class="card__talk">Postgres At 40TB And Still Boring</p>
+      <span class="card__slot">11:15 — RM B</span>
+    </article>
+
+    <article class="card">
+      <span class="card__num">03</span>
+      <div class="av av--c">JT<span class="av__dot"></span></div>
+      <h3 class="card__name">Jonah Tran</h3>
+      <p class="card__role">Founder · GREYFIELD.IO</p>
+      <span class="card__talk-lbl">// TALK</span>
+      <p class="card__talk">We Deleted 60% Of Our Codebase On Purpose</p>
+      <span class="card__slot">13:30 — RM A</span>
+    </article>
+
+    <article class="card">
+      <span class="card__num">04</span>
+      <div class="av av--d">SB<span class="av__dot"></span></div>
+      <h3 class="card__name">Sana Bello</h3>
+      <p class="card__role">Head of ML · NORTHWIRE</p>
+      <span class="card__talk-lbl">// TALK</span>
+      <p class="card__talk">Eval Suites That Actually Catch Regressions</p>
+      <span class="card__slot">14:45 — RM B</span>
+    </article>
+
+    <article class="card">
+      <span class="card__num">05</span>
+      <div class="av av--e">KO<span class="av__dot"></span></div>
+      <h3 class="card__name">Kess Ortega</h3>
+      <p class="card__role">Security Lead · IRONMARK</p>
+      <span class="card__talk-lbl">// TALK</span>
+      <p class="card__talk">Threat-Modeling A Codebase You Didn't Write</p>
+      <span class="card__slot">15:30 — RM A</span>
+    </article>
+
+    <article class="card">
+      <span class="card__num">06</span>
+      <div class="av av--f">LH<span class="av__dot"></span></div>
+      <h3 class="card__name">Lior Haas</h3>
+      <p class="card__role">DX Eng · TOOLSHED</p>
+      <span class="card__talk-lbl">// CLOSER</span>
+      <p class="card__talk">Terminal-First: The CLI Renaissance Is Real</p>
+      <span class="card__slot">16:40 — MAIN STAGE</span>
+    </article>
+
+  </div>
+
+  <div class="spk__foot">
+    <p>→ 14 more lightning talks unannounced. Speaker list updated weekly — no algorithms, no filler panels.</p>
+    <a href="#pass" class="btn">GRAB A PASS ↗</a>
+  </div>
+</section>
+</body>
+</html>

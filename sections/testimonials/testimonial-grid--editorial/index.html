@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!-- ===== testimonial-grid — editorial: near-white paper, Fraunces serif quotes, masonry-ish varied cards, warm terracotta ink accent ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Testimonial Grid — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#f7f5f0;
+    --paper:#fffdf9;
+    --ink:#211d19;
+    --muted:#736b60;
+    --line:#e2ddd3;
+    --accent:#b8543a;      /* warm terracotta ink */
+    --accent-soft:#f0e4de;
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .tg{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    padding:96px 40px 104px;
+    width:100%;
+  }
+  .tg__inner{
+    max-width:1180px;
+    margin:0 auto;
+  }
+
+  /* --- header, left-aligned, one focal point --- */
+  .tg__head{
+    max-width:640px;
+    margin-bottom:60px;
+  }
+  .tg__eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:22px;
+  }
+  .tg__title{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:42px;
+    line-height:1.12;
+    letter-spacing:-.01em;
+  }
+  .tg__title em{
+    font-style:italic;
+    color:var(--accent);
+  }
+  .tg__sub{
+    margin-top:18px;
+    font-size:15.5px;
+    line-height:1.6;
+    color:var(--muted);
+    max-width:520px;
+  }
+
+  /* --- masonry-ish columns for varied heights --- */
+  .tg__grid{
+    column-count:3;
+    column-gap:24px;
+  }
+  .card{
+    break-inside:avoid;
+    background:var(--paper);
+    border:1px solid var(--line);
+    margin-bottom:24px;
+    padding:28px 28px 26px;
+    display:inline-block;
+    width:100%;
+  }
+  .card__quote{
+    font-family:var(--serif);
+    font-weight:400;
+    line-height:1.4;
+    letter-spacing:-.005em;
+    color:var(--ink);
+  }
+
+  /* vary size / weight / elevation intentionally */
+  .card--sm{
+    font-size:0;
+    border-radius:2px;
+  }
+  .card--sm .card__quote{ font-size:16.5px; }
+
+  .card--feature{
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    padding:40px 38px 34px;
+    border-radius:3px;
+  }
+  .card--feature .card__mark{
+    font-family:var(--serif);
+    font-size:64px;
+    line-height:.4;
+    color:var(--accent);
+    display:block;
+    margin-bottom:8px;
+  }
+  .card--feature .card__quote{
+    font-size:26px;
+    line-height:1.32;
+    color:var(--paper);
+  }
+  .card--feature .card__name{ color:var(--paper); }
+  .card--feature .card__role{ color:#b6ada2; }
+
+  .card--wide .card__quote{ font-size:19px; }
+  .card--accent{
+    border-color:var(--accent-soft);
+    box-shadow:6px 8px 0 var(--accent-soft);
+  }
+  .card--accent .card__quote{ font-size:17px; }
+
+  /* --- person row + initial avatar --- */
+  .card__by{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin-top:22px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  .card--feature .card__by{ border-top-color:#3a352f; }
+
+  .avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    flex:0 0 40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:14px;
+    color:#fff;
+    letter-spacing:.01em;
+  }
+  .av--rose{ background:#b8543a; }
+  .av--olive{ background:#6c7a4a; }
+  .av--slate{ background:#4a5b6b; }
+  .av--plum{ background:#7a5068; }
+  .av--sand{ background:#a07d3e; }
+
+  .card__meta{ line-height:1.35; }
+  .card__name{
+    font-family:var(--sans);
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .card__role{
+    font-family:var(--sans);
+    font-size:12.5px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+
+  @media(max-width:640px){
+    .tg{ padding:64px 22px 72px; }
+    .tg__title{ font-size:31px; }
+    .tg__head{ margin-bottom:40px; }
+    .tg__grid{ column-count:1; }
+    .card--feature{ padding:32px 26px 28px; }
+    .card--feature .card__quote{ font-size:22px; }
+  }
+</style>
+</head>
+<body>
+  <section class="tg">
+    <div class="tg__inner">
+
+      <header class="tg__head">
+        <p class="tg__eyebrow">In their words</p>
+        <h2 class="tg__title">The teams who switched to <em>Fielding</em> don't file tickets about it anymore.</h2>
+        <p class="tg__sub">A handful of notes from operators, PMs, and founders who moved their scheduling and dispatch onto one system — and stopped chasing spreadsheets.</p>
+      </header>
+
+      <div class="tg__grid">
+
+        <!-- small -->
+        <article class="card card--sm">
+          <p class="card__quote">Onboarding took an afternoon, not a quarter. My crew leads picked it up without a single training call.</p>
+          <div class="card__by">
+            <span class="avatar av--olive">DR</span>
+            <div class="card__meta">
+              <div class="card__name">Dana Reyes</div>
+              <div class="card__role">Ops Manager, Northline Facilities</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- feature (larger) -->
+        <article class="card card--feature">
+          <span class="card__mark">&ldquo;</span>
+          <p class="card__quote">We were running four tools and a group chat to route field techs. Fielding replaced all of it in the first month, and our on-time rate went from the low 70s to 94%. I stopped dreading Monday dispatch.</p>
+          <div class="card__by">
+            <span class="avatar av--rose">MO</span>
+            <div class="card__meta">
+              <div class="card__name">Marcus Odom</div>
+              <div class="card__role">VP Operations, Cedar & Vale HVAC</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- accent, offset shadow -->
+        <article class="card card--accent">
+          <p class="card__quote">The audit trail alone paid for the year. When a client disputes a visit, I have the timestamp, the photo, and the signature in three clicks.</p>
+          <div class="card__by">
+            <span class="avatar av--slate">PK</span>
+            <div class="card__meta">
+              <div class="card__name">Priya Kanwar</div>
+              <div class="card__role">Founder, Meridian Property Care</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- wide-ish -->
+        <article class="card card--wide">
+          <p class="card__quote">Honest take: I expected to hate the migration. The import pulled ten years of job history cleanly and nothing broke. That never happens.</p>
+          <div class="card__by">
+            <span class="avatar av--plum">TB</span>
+            <div class="card__meta">
+              <div class="card__name">Theo Brandt</div>
+              <div class="card__role">Service Director, Halcyon Plumbing</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- small -->
+        <article class="card card--sm">
+          <p class="card__quote">Support actually answers, and they answer as people who've run a service business. Rare.</p>
+          <div class="card__by">
+            <span class="avatar av--sand">LC</span>
+            <div class="card__meta">
+              <div class="card__name">Lena Cho</div>
+              <div class="card__role">GM, Brightwork Electric</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</body>
+</html>

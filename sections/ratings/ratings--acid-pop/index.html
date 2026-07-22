@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratings — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RATINGS — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --paper:#F4F4EC;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --white:#FFFFFF;
+  --gray:#6E6E6E;
+  --font:'Archivo',system-ui,sans-serif;
+  --font-x:'Archivo Expanded','Archivo',system-ui,sans-serif;
+}
+
+body{background:var(--ink);color:var(--white);font-family:var(--font);-webkit-font-smoothing:antialiased;}
+
+.rt-section{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 72px 104px;
+  background:var(--ink);
+  overflow:hidden;
+}
+
+/* oversized ghost word bleed */
+.rt-ghost{
+  position:absolute;
+  top:-34px;
+  right:-30px;
+  font-family:var(--font-x);
+  font-weight:900;
+  font-size:230px;
+  line-height:.8;
+  letter-spacing:-.04em;
+  color:transparent;
+  -webkit-text-stroke:2px #1c1c1c;
+  text-stroke:2px #1c1c1c;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+}
+
+.rt-kicker{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--magenta);
+  color:var(--ink);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:9px 16px 8px;
+  border-radius:999px;
+  margin-bottom:44px;
+}
+.rt-kicker span.dot{width:9px;height:9px;border-radius:50%;background:var(--ink);}
+
+.rt-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:64px;
+  align-items:end;
+}
+
+/* ---- big score block (focal point, left) ---- */
+.rt-score{position:relative;}
+.rt-score .num{
+  font-family:var(--font-x);
+  font-weight:900;
+  font-size:200px;
+  line-height:.82;
+  letter-spacing:-.05em;
+  color:var(--lime);
+  display:flex;
+  align-items:baseline;
+}
+.rt-score .num small{
+  font-family:var(--font);
+  font-weight:800;
+  font-size:56px;
+  color:var(--white);
+  letter-spacing:-.02em;
+  margin-left:4px;
+}
+.rt-stars{
+  display:flex;
+  gap:7px;
+  margin-top:20px;
+  margin-bottom:16px;
+}
+.rt-stars svg{width:38px;height:38px;display:block;}
+.rt-count{
+  font-weight:700;
+  font-size:18px;
+  color:var(--white);
+}
+.rt-count b{color:var(--lime);}
+.rt-count .sep{color:#3a3a3a;margin:0 10px;font-weight:900;}
+
+/* ---- right column ---- */
+.rt-right{
+  padding-bottom:8px;
+  max-width:520px;
+  justify-self:end;
+}
+.rt-line{
+  font-family:var(--font-x);
+  font-weight:800;
+  font-size:34px;
+  line-height:1.06;
+  letter-spacing:-.02em;
+  margin-bottom:8px;
+}
+.rt-line em{
+  font-style:normal;
+  background:var(--lime);
+  color:var(--ink);
+  padding:0 8px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.rt-sub{
+  font-weight:600;
+  font-size:16px;
+  color:var(--gray);
+  line-height:1.5;
+  margin-top:18px;
+  max-width:440px;
+}
+
+/* ---- platform badges ---- */
+.rt-badges{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:56px;
+  padding-top:40px;
+  border-top:2px dashed #262626;
+}
+.rt-badge{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:#141414;
+  border:2px solid #242424;
+  border-radius:16px;
+  padding:16px 22px 16px 18px;
+}
+.rt-badge:first-child{border-color:var(--lime);}
+.rt-badge:nth-child(2){border-radius:999px;}
+.rt-badge .logo{
+  width:42px;height:42px;
+  border-radius:11px;
+  display:grid;place-items:center;
+  font-weight:900;font-size:20px;
+  flex:none;
+}
+.rt-badge:nth-child(2) .logo{border-radius:50%;}
+.lg-g{background:var(--lime);color:var(--ink);}
+.lg-c{background:var(--magenta);color:var(--white);}
+.lg-t{background:var(--white);color:var(--ink);}
+.rt-badge .meta{display:flex;flex-direction:column;line-height:1.15;}
+.rt-badge .meta .plt{font-weight:800;font-size:15px;color:var(--white);}
+.rt-badge .meta .val{font-weight:700;font-size:13px;color:var(--gray);}
+.rt-badge .meta .val b{color:var(--lime);}
+
+@media(max-width:640px){
+  .rt-section{padding:64px 22px 72px;}
+  .rt-ghost{font-size:120px;top:-14px;right:-14px;}
+  .rt-grid{grid-template-columns:1fr;gap:40px;align-items:start;}
+  .rt-score .num{font-size:118px;}
+  .rt-score .num small{font-size:36px;}
+  .rt-stars svg{width:30px;height:30px;}
+  .rt-right{justify-self:start;max-width:100%;}
+  .rt-line{font-size:26px;}
+  .rt-badges{margin-top:40px;gap:12px;}
+  .rt-badge{padding:14px 18px;}
+}
+</style>
+</head>
+<body>
+<section class="rt-section" aria-label="Customer ratings">
+  <div class="rt-ghost" aria-hidden="true">4.9</div>
+
+  <div class="rt-kicker"><span class="dot"></span>What builders actually say</div>
+
+  <div class="rt-grid">
+    <div class="rt-score">
+      <div class="num">4.9<small>/5</small></div>
+      <div class="rt-stars" aria-label="Rated 4.9 out of 5 stars">
+        <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 1.6l2.9 6.35 6.95.62-5.25 4.6 1.58 6.8L12 16.9l-6.18 3.67 1.58-6.8L2.15 8.57l6.95-.62z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 1.6l2.9 6.35 6.95.62-5.25 4.6 1.58 6.8L12 16.9l-6.18 3.67 1.58-6.8L2.15 8.57l6.95-.62z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 1.6l2.9 6.35 6.95.62-5.25 4.6 1.58 6.8L12 16.9l-6.18 3.67 1.58-6.8L2.15 8.57l6.95-.62z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#C7F13B"><path d="M12 1.6l2.9 6.35 6.95.62-5.25 4.6 1.58 6.8L12 16.9l-6.18 3.67 1.58-6.8L2.15 8.57l6.95-.62z"/></svg>
+        <svg viewBox="0 0 24 24"><defs><linearGradient id="hg"><stop offset="90%" stop-color="#C7F13B"/><stop offset="90%" stop-color="#2a2a2a"/></linearGradient></defs><path fill="url(#hg)" d="M12 1.6l2.9 6.35 6.95.62-5.25 4.6 1.58 6.8L12 16.9l-6.18 3.67 1.58-6.8L2.15 8.57l6.95-.62z"/></svg>
+      </div>
+      <div class="rt-count"><b>3,412</b> verified reviews<span class="sep">/</span>96% five-star</div>
+    </div>
+
+    <div class="rt-right">
+      <div class="rt-line">Shipped <em>faster</em> than any snippet library we've tried.</div>
+      <p class="rt-sub">Rated across 3 platforms by front-end teams who paste, tweak, and deploy the same day — no build step, no dependency graveyard, no cleanup.</p>
+    </div>
+  </div>
+
+  <div class="rt-badges">
+    <div class="rt-badge">
+      <div class="logo lg-g">G</div>
+      <div class="meta"><span class="plt">Google Reviews</span><span class="val"><b>4.9</b> · 1,880 ratings</span></div>
+    </div>
+    <div class="rt-badge">
+      <div class="logo lg-c">P</div>
+      <div class="meta"><span class="plt">Product Hunt</span><span class="val"><b>#1</b> Dev Tool of the Day</span></div>
+    </div>
+    <div class="rt-badge">
+      <div class="logo lg-t">TP</div>
+      <div class="meta"><span class="plt">Trustpilot</span><span class="val"><b>Excellent</b> · 4.8 · 1,532 reviews</span></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

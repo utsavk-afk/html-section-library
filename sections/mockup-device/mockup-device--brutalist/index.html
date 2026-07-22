@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!-- ===== MOCKUP-DEVICE — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup Device — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+/* ---- SECTION SHELL ---- */
+.mkd{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 56px;
+  position:relative;
+  overflow:hidden;
+  /* visible grid */
+  background-image:
+    linear-gradient(to right,rgba(17,17,17,.05) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(17,17,17,.05) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+.mkd__inner{
+  max-width:1440px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1.05fr;
+  gap:64px;
+  align-items:center;
+}
+
+/* ---- LEFT: COPY COLUMN ---- */
+.mkd__tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--bg);
+  padding:6px 12px 5px;
+  margin-bottom:26px;
+}
+.mkd__h1{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:64px;
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+.mkd__h1 mark{
+  background:var(--accent);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.mkd__lead{
+  font-size:17px;
+  line-height:1.5;
+  max-width:38ch;
+  color:var(--muted);
+  margin-bottom:30px;
+}
+.mkd__meta{
+  display:flex;
+  gap:0;
+  border:3px solid var(--ink);
+  width:max-content;
+  max-width:100%;
+  margin-bottom:34px;
+  box-shadow:6px 6px 0 var(--ink);
+}
+.mkd__stat{
+  padding:14px 22px;
+  border-right:3px solid var(--ink);
+}
+.mkd__stat:last-child{border-right:0;}
+.mkd__stat b{
+  display:block;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:28px;
+  line-height:1;
+}
+.mkd__stat span{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.mkd__cta{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.mkd__btn{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:15px 26px;
+  border:3px solid var(--ink);
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease;
+}
+.mkd__btn--primary{
+  background:var(--accent);
+  color:var(--ink);
+  box-shadow:6px 6px 0 var(--ink);
+}
+.mkd__btn--primary:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink);}
+.mkd__btn--ghost{
+  background:var(--bg);
+  color:var(--ink);
+}
+.mkd__btn--ghost:hover{background:var(--ink);color:var(--bg);}
+.mkd__cmd{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ---- RIGHT: DEVICE ---- */
+.mkd__devicewrap{
+  position:relative;
+}
+/* accent slab behind device, offset (asymmetry) */
+.mkd__devicewrap::before{
+  content:"";
+  position:absolute;
+  top:26px;left:-18px;right:34px;bottom:-24px;
+  background:var(--red);
+  z-index:0;
+}
+.browser{
+  position:relative;
+  z-index:1;
+  background:#fff;
+  border:4px solid var(--ink);
+  box-shadow:12px 12px 0 var(--ink);
+}
+.browser__bar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--accent);
+  border-bottom:4px solid var(--ink);
+  padding:11px 14px;
+}
+.browser__dots{display:flex;gap:7px;}
+.browser__dots i{
+  width:13px;height:13px;
+  border:2.5px solid var(--ink);
+  background:transparent;
+  display:block;
+  border-radius:0;
+}
+.browser__dots i:nth-child(1){background:var(--red);}
+.browser__url{
+  flex:1;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  background:#fff;
+  border:2.5px solid var(--ink);
+  padding:6px 12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.browser__url b{color:var(--ink);}
+.browser__url span{color:var(--muted);font-weight:400;}
+
+/* ---- UI MOCKUP INSIDE ---- */
+.ui{padding:20px;display:grid;grid-template-columns:96px 1fr;gap:16px;}
+.ui__side{
+  border:3px solid var(--ink);
+  padding:14px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.ui__logo{
+  width:100%;height:26px;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:.1em;
+}
+.ui__navi{
+  height:10px;
+  background:#E8E8E2;
+  border:2px solid var(--ink);
+}
+.ui__navi.is-on{background:var(--accent);}
+.ui__main{display:flex;flex-direction:column;gap:14px;}
+.ui__head{
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:3px solid var(--ink);
+  padding-bottom:10px;
+}
+.ui__head h4{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+}
+.ui__pill{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  border:2px solid var(--ink);
+  padding:3px 8px;
+  background:var(--red);
+  color:#fff;
+}
+/* stat cards row — varied, not uniform */
+.ui__cards{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;}
+.ui__card{
+  border:3px solid var(--ink);
+  padding:12px;
+}
+.ui__card--fill{background:var(--accent);}
+.ui__card--dark{background:var(--ink);color:#fff;}
+.ui__card small{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  display:block;
+  opacity:.75;
+}
+.ui__card b{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:26px;
+  line-height:1;
+  display:block;
+  margin-top:6px;
+}
+.ui__card--dark b{color:var(--accent);}
+.ui__card em{
+  font-family:var(--mono);
+  font-size:9px;
+  font-style:normal;
+  font-weight:700;
+}
+/* bar chart in CSS */
+.ui__chart{
+  border:3px solid var(--ink);
+  padding:14px 14px 12px;
+}
+.ui__chart .clab{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:12px;
+  display:flex;
+  justify-content:space-between;
+}
+.ui__chart .clab span{color:var(--muted);}
+.bars{
+  display:grid;
+  grid-template-columns:repeat(9,1fr);
+  gap:8px;
+  align-items:end;
+  height:96px;
+}
+.bars i{
+  display:block;
+  background:var(--ink);
+  border:2px solid var(--ink);
+}
+.bars i.hot{background:var(--accent);}
+.bars i:nth-child(1){height:38%;}
+.bars i:nth-child(2){height:56%;}
+.bars i:nth-child(3){height:44%;}
+.bars i:nth-child(4){height:72%;}
+.bars i:nth-child(5){height:60%;}
+.bars i:nth-child(6){height:88%;}
+.bars i:nth-child(7){height:100%;}
+.bars i:nth-child(8){height:70%;}
+.bars i:nth-child(9){height:82%;}
+
+/* corner stamp */
+.mkd__stamp{
+  position:absolute;
+  right:40px;top:34px;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  border:2.5px solid var(--ink);
+  padding:8px 12px;
+  transform:rotate(4deg);
+  background:var(--bg);
+  z-index:3;
+}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:640px){
+  .mkd{padding:44px 22px;}
+  .mkd__inner{grid-template-columns:1fr;gap:44px;}
+  .mkd__h1{font-size:44px;}
+  .mkd__stamp{display:none;}
+  .mkd__devicewrap::before{left:-8px;right:14px;bottom:-14px;top:16px;}
+  .browser{box-shadow:8px 8px 0 var(--ink);}
+  .ui{grid-template-columns:1fr;}
+  .ui__side{flex-direction:row;flex-wrap:wrap;}
+  .ui__logo{width:auto;padding:0 10px;}
+  .ui__navi{flex:1;min-width:40px;}
+  .ui__cards{grid-template-columns:1fr 1fr;}
+  .ui__card--fill{grid-column:1/-1;}
+  .mkd__meta{width:100%;flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+<section class="mkd">
+  <span class="mkd__stamp">V.2.4 // SHIPPED</span>
+  <div class="mkd__inner">
+
+    <!-- COPY -->
+    <div class="mkd__copy">
+      <span class="mkd__tag">Analytics // Live Feed</span>
+      <h1 class="mkd__h1">Watch every <mark>build</mark> deploy in real time.</h1>
+      <p class="mkd__lead">RailGauge tracks your pipeline the second code lands — no dashboards to configure, no agents to install. Paste one line, get the whole picture.</p>
+
+      <div class="mkd__meta">
+        <div class="mkd__stat"><b>0.4s</b><span>Ingest Lag</span></div>
+        <div class="mkd__stat"><b>18K</b><span>Teams Live</span></div>
+        <div class="mkd__stat"><b>99.98%</b><span>Uptime</span></div>
+      </div>
+
+      <div class="mkd__cta">
+        <a href="#" class="mkd__btn mkd__btn--primary">Start Free</a>
+        <a href="#" class="mkd__btn mkd__btn--ghost">See The Docs</a>
+        <span class="mkd__cmd">$ npx railgauge init</span>
+      </div>
+    </div>
+
+    <!-- DEVICE -->
+    <div class="mkd__devicewrap">
+      <div class="browser">
+        <div class="browser__bar">
+          <div class="browser__dots"><i></i><i></i><i></i></div>
+          <div class="browser__url"><b>railgauge.io</b><span>/dash/pipeline</span></div>
+        </div>
+
+        <div class="ui">
+          <aside class="ui__side">
+            <div class="ui__logo">RG//</div>
+            <div class="ui__navi is-on"></div>
+            <div class="ui__navi"></div>
+            <div class="ui__navi"></div>
+            <div class="ui__navi"></div>
+            <div class="ui__navi"></div>
+          </aside>
+
+          <div class="ui__main">
+            <div class="ui__head">
+              <h4>Pipeline Health</h4>
+              <span class="ui__pill">2 Alerts</span>
+            </div>
+
+            <div class="ui__cards">
+              <div class="ui__card ui__card--fill">
+                <small>Deploys Today</small>
+                <b>142</b>
+                <em>+31 vs yest.</em>
+              </div>
+              <div class="ui__card">
+                <small>Avg Build</small>
+                <b>3:12</b>
+                <em>min</em>
+              </div>
+              <div class="ui__card ui__card--dark">
+                <small>Fail Rate</small>
+                <b>1.8%</b>
+                <em>down</em>
+              </div>
+            </div>
+
+            <div class="ui__chart">
+              <div class="clab">Throughput / Last 9h <span>PEAK 14:00</span></div>
+              <div class="bars">
+                <i></i><i></i><i></i><i></i><i></i><i class="hot"></i><i class="hot"></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

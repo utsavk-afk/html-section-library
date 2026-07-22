@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Famous Quote — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== FAMOUS-QUOTE — EDITORIAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --muted:#6E6A62;
+  --hair:#DAD6CC;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+.fq{
+  background:var(--light);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 6vw 96px;
+  position:relative;
+  overflow:hidden;
+}
+.fq__inner{
+  max-width:1440px;
+  margin:0 auto;
+  position:relative;
+}
+
+/* eyebrow label */
+.fq__label{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:56px;
+}
+.fq__label::before{
+  content:"";
+  width:46px;
+  height:1px;
+  background:var(--accent);
+}
+
+/* layout: quote is the single focal point, pushed left; meta rides the right rail */
+.fq__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 232px;
+  gap:64px;
+  align-items:end;
+}
+
+/* the giant mark, drawn typographically, bleeding off the top-left */
+.fq__mark{
+  font-family:var(--serif);
+  font-weight:600;
+  font-style:italic;
+  font-size:clamp(9rem,20vw,17rem);
+  line-height:.6;
+  color:var(--accent);
+  position:absolute;
+  top:-18px;
+  left:-.08em;
+  opacity:.14;
+  pointer-events:none;
+  user-select:none;
+}
+
+.fq__quote{
+  font-family:var(--serif);
+  font-weight:340;
+  font-size:clamp(2.1rem,5.2vw,4.6rem);
+  line-height:1.06;
+  letter-spacing:-.015em;
+  max-width:15ch;
+  position:relative;
+  text-wrap:balance;
+}
+.fq__quote em{
+  font-style:italic;
+  font-weight:440;
+  color:var(--accent);
+}
+.fq__quote .soft{
+  color:var(--muted);
+}
+
+/* right rail attribution + provenance */
+.fq__meta{
+  border-top:1px solid var(--hair);
+  padding-top:26px;
+  padding-bottom:8px;
+}
+.fq__avatar{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:var(--ink);
+  color:var(--light);
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:1.35rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  letter-spacing:.01em;
+}
+.fq__name{
+  font-family:var(--serif);
+  font-weight:560;
+  font-size:1.3rem;
+  line-height:1.15;
+  margin-bottom:6px;
+}
+.fq__role{
+  font-size:.86rem;
+  color:var(--muted);
+  line-height:1.4;
+  max-width:22ch;
+}
+.fq__source{
+  margin-top:28px;
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+/* thin rule that anchors the bottom, asymmetric */
+.fq__rule{
+  margin-top:80px;
+  display:flex;
+  align-items:baseline;
+  gap:22px;
+  color:var(--muted);
+  font-size:.74rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.fq__rule .line{
+  flex:1;
+  height:1px;
+  background:var(--hair);
+}
+.fq__rule .idx{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:.92rem;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--ink);
+}
+
+@media(max-width:640px){
+  .fq{padding:72px 26px 64px;}
+  .fq__label{margin-bottom:38px;}
+  .fq__grid{
+    grid-template-columns:1fr;
+    gap:44px;
+    align-items:start;
+  }
+  .fq__mark{
+    font-size:8.5rem;
+    top:-6px;
+  }
+  .fq__quote{font-size:clamp(1.8rem,9vw,2.6rem);max-width:none;}
+  .fq__meta{padding-top:22px;}
+  .fq__rule{margin-top:52px;}
+  .fq__role{max-width:none;}
+}
+</style>
+</head>
+<body>
+<section class="fq">
+  <div class="fq__inner">
+    <p class="fq__label">On Building in Public</p>
+
+    <div class="fq__grid">
+      <blockquote class="fq__quote">
+        <span class="fq__mark" aria-hidden="true">&ldquo;</span>
+        We shipped the ugly version on a Tuesday and let <em>ten thousand strangers</em>
+        finish the design for us. <span class="soft">The roadmap was never ours to write alone.</span>
+      </blockquote>
+
+      <figure class="fq__meta">
+        <div class="fq__avatar" aria-hidden="true">MO</div>
+        <figcaption>
+          <div class="fq__name">Mara Okonkwo</div>
+          <div class="fq__role">Co-founder &amp; Head of Product, Fieldnote</div>
+          <div class="fq__source">Overshared, Ep. 47</div>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="fq__rule">
+      <span>Voices</span>
+      <span class="line" aria-hidden="true"></span>
+      <span class="idx">No. 12 &mdash; The Iteration Issue</span>
+    </div>
+  </div>
+</section>
+</body>
+</html>

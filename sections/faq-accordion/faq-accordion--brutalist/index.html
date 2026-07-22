@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Accordion — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== FAQ-ACCORDION — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --paper:#FAFAF7;
+  --card:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --hair:#111111;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+
+.faq{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:88px 56px 96px;
+  display:grid;
+  grid-template-columns:minmax(300px,420px) 1fr;
+  gap:64px;
+  align-items:start;
+}
+
+/* ---- LEFT RAIL ---- */
+.faq__aside{
+  position:sticky;
+  top:40px;
+}
+.faq__tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 12px;
+  margin-bottom:26px;
+}
+.faq__title{
+  font-size:58px;
+  line-height:.92;
+  font-weight:900;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+.faq__title em{
+  font-style:normal;
+  background:var(--acid);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.faq__lede{
+  font-family:var(--mono);
+  font-size:14px;
+  line-height:1.65;
+  max-width:34ch;
+  margin-bottom:32px;
+  color:#333;
+}
+.faq__contact{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  border:var(--border);
+  background:var(--card);
+  box-shadow:var(--shadow-red);
+  padding:14px 18px;
+  text-decoration:none;
+  color:var(--ink);
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  transition:transform .08s ease,box-shadow .08s ease;
+}
+.faq__contact:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--red);}
+.faq__contact span.dot{
+  width:12px;height:12px;background:var(--red);flex:none;
+  display:inline-block;
+}
+.faq__meta{
+  margin-top:28px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#888;
+}
+
+/* ---- ACCORDION ---- */
+.faq__list{
+  border-top:3px solid var(--hair);
+}
+.faq__item{
+  border-bottom:2px solid var(--hair);
+  background:transparent;
+}
+.faq__item[open]{
+  background:var(--card);
+  border-bottom:3px solid var(--ink);
+  box-shadow:var(--shadow);
+  position:relative;
+  z-index:2;
+}
+.faq__q{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:24px 22px 24px 4px;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  line-height:1.15;
+  text-transform:uppercase;
+}
+.faq__q::-webkit-details-marker{display:none;}
+.faq__q:hover{color:var(--red);}
+.faq__num{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  color:#999;
+  flex:none;
+  width:34px;
+  padding-left:8px;
+}
+.faq__item[open] .faq__num{color:var(--red);}
+.faq__qtext{flex:1;}
+.faq__mark{
+  flex:none;
+  width:38px;height:38px;
+  border:2px solid var(--ink);
+  background:var(--card);
+  display:grid;place-items:center;
+  position:relative;
+  transition:background .1s ease;
+}
+.faq__item[open] .faq__mark{background:var(--acid);}
+.faq__mark::before,
+.faq__mark::after{
+  content:"";
+  position:absolute;
+  background:var(--ink);
+}
+.faq__mark::before{width:16px;height:3px;}
+.faq__mark::after{width:3px;height:16px;transition:transform .18s ease;}
+.faq__item[open] .faq__mark::after{transform:scaleY(0);}
+.faq__a{
+  padding:0 62px 28px 46px;
+  font-family:var(--mono);
+  font-size:14px;
+  line-height:1.7;
+  color:#2a2a2a;
+  max-width:66ch;
+}
+.faq__a strong{
+  font-family:var(--sans);
+  font-weight:700;
+  background:var(--acid);
+  padding:0 3px;
+}
+.faq__a a{color:var(--red);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:900px){
+  .faq{grid-template-columns:1fr;gap:40px;padding:64px 32px 72px;}
+  .faq__aside{position:static;}
+  .faq__title{font-size:46px;}
+}
+@media(max-width:640px){
+  .faq{padding:48px 18px 60px;gap:32px;}
+  .faq__title{font-size:38px;}
+  .faq__q{font-size:16px;gap:12px;padding:18px 14px 18px 2px;}
+  .faq__num{width:26px;padding-left:2px;font-size:11px;}
+  .faq__mark{width:32px;height:32px;}
+  .faq__a{padding:0 16px 22px 30px;font-size:13px;}
+  .faq__contact{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<section class="faq" aria-labelledby="faq-heading">
+  <aside class="faq__aside">
+    <span class="faq__tag">// Support Desk 03</span>
+    <h2 class="faq__title" id="faq-heading">Questions,<br><em>Answered</em><br>Straight.</h2>
+    <p class="faq__lede">No fluff, no runaround. The stuff people actually email us about before they sign the invoice. Ctrl+F is your friend.</p>
+    <a class="faq__contact" href="#contact">
+      <span class="dot"></span>
+      Still stuck? Ping a human
+    </a>
+    <p class="faq__meta">Updated 22 Jul 2026 · 7 entries</p>
+  </aside>
+
+  <div class="faq__list">
+
+    <details class="faq__item" open>
+      <summary class="faq__q">
+        <span class="faq__num">01</span>
+        <span class="faq__qtext">How fast do I get onboarded?</span>
+        <span class="faq__mark" aria-hidden="true"></span>
+      </summary>
+      <div class="faq__a">
+        Same business day. You send the kickoff form, we spin up your workspace and drop the <strong>access keys</strong> within four hours. First deliverable lands inside 72 hours — no "discovery phase" that quietly eats three weeks of your retainer.
+      </div>
+    </details>
+
+    <details class="faq__item">
+      <summary class="faq__q">
+        <span class="faq__num">02</span>
+        <span class="faq__qtext">Is there a lock-in contract?</span>
+        <span class="faq__mark" aria-hidden="true"></span>
+      </summary>
+      <div class="faq__a">
+        Nope. Everything runs month-to-month. Cancel before the 25th and you won't be billed for the next cycle. You keep every file, brief, and export we ever handed you — <strong>no hostage clauses</strong>, no exit fees.
+      </div>
+    </details>
+
+    <details class="faq__item">
+      <summary class="faq__q">
+        <span class="faq__num">03</span>
+        <span class="faq__qtext">Who actually owns the work?</span>
+        <span class="faq__mark" aria-hidden="true"></span>
+      </summary>
+      <div class="faq__a">
+        You do. Full commercial rights transfer to your entity the moment an invoice clears. Source files, editable layers, the works. We keep a copy for support only and never resell or repurpose it for another client.
+      </div>
+    </details>
+
+    <details class="faq__item">
+      <summary class="faq__q">
+        <span class="faq__num">04</span>
+        <span class="faq__qtext">Can you plug into our stack?</span>
+        <span class="faq__mark" aria-hidden="true"></span>
+      </summary>
+      <div class="faq__a">
+        Yes — Slack, Notion, Linear, GitHub, HubSpot and a dozen more via native connectors. If it has a webhook or an API, we can wire it in. Custom integrations get scoped on the <strong>Scale plan</strong> at no extra hourly rate.
+      </div>
+    </details>
+
+    <details class="faq__item">
+      <summary class="faq__q">
+        <span class="faq__num">05</span>
+        <span class="faq__qtext">What if I hate the first draft?</span>
+        <span class="faq__mark" aria-hidden="true"></span>
+      </summary>
+      <div class="faq__a">
+        You get unlimited revisions inside the sprint window — no per-round charges, no passive-aggressive "scope creep" emails. If round three still misses, we reassign the lead and re-run it free. Roughly <strong>2% of projects</strong> ever need that.
+      </div>
+    </details>
+
+    <details class="faq__item">
+      <summary class="faq__q">
+        <span class="faq__num">06</span>
+        <span class="faq__qtext">How does billing work?</span>
+        <span class="faq__mark" aria-hidden="true"></span>
+      </summary>
+      <div class="faq__a">
+        Flat monthly fee, charged on the 1st, invoiced not metered. No surprise overages, no per-seat math. Card, ACH, or wire — your call. Annual prepay knocks <strong>18% off</strong> and locks your rate for the full year.
+      </div>
+    </details>
+
+    <details class="faq__item">
+      <summary class="faq__q">
+        <span class="faq__num">07</span>
+        <span class="faq__qtext">Is my data kept private?</span>
+        <span class="faq__mark" aria-hidden="true"></span>
+      </summary>
+      <div class="faq__a">
+        Encrypted at rest and in transit, SOC 2 Type II audited, EU and US regions available. We don't train models on your content and we don't share it with third parties. Full sub-processor list is public — <a href="#security">read the security brief</a>.
+      </div>
+    </details>
+
+  </div>
+</section>
+
+</body>
+</html>

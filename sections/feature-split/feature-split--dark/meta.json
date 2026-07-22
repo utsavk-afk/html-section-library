@@ -1,0 +1,6 @@
+{
+  "type": "feature-split",
+  "name": "feature-split--dark",
+  "style": "dark",
+  "file": "index.html"
+}

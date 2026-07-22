@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!-- ===== PRICING — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EF;
+  --muted:#8A8A82;
+  --line:#232320;
+  --accent:#C7F13B;      /* lime */
+  --accent-2:#FF4D9D;    /* magenta */
+  --card:#131311;
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.pricing{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:88px 64px 96px;
+  overflow:hidden;
+}
+
+/* off-center lime slab behind header — asymmetric focal point */
+.pricing::before{
+  content:"";
+  position:absolute;
+  top:-140px;
+  left:-120px;
+  width:520px;
+  height:520px;
+  background:var(--accent);
+  opacity:.09;
+  transform:rotate(18deg);
+  pointer-events:none;
+}
+
+/* ---- header ---- */
+.pr-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  position:relative;
+  margin-bottom:56px;
+}
+.pr-head-left{max-width:760px;}
+
+.pr-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.pr-kicker span{
+  width:34px;height:2px;background:var(--accent-2);display:inline-block;
+}
+
+.pr-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:88px;
+  line-height:.9;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+}
+.pr-title em{
+  font-style:normal;
+  color:var(--accent);
+}
+.pr-title .strike{
+  color:var(--accent-2);
+}
+
+.pr-sub{
+  margin-top:22px;
+  font-size:18px;
+  line-height:1.5;
+  color:var(--muted);
+  max-width:520px;
+}
+.pr-sub b{color:var(--ink);font-weight:700;}
+
+/* billing toggle — static, chunky pill */
+.pr-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:var(--card);
+  border:2px solid var(--line);
+  border-radius:999px;
+  padding:5px;
+  flex-shrink:0;
+}
+.pr-toggle button{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:.02em;
+  color:var(--muted);
+  background:transparent;
+  border:none;
+  padding:11px 20px;
+  border-radius:999px;
+  cursor:pointer;
+}
+.pr-toggle button.on{
+  background:var(--accent);
+  color:#0A0A0A;
+}
+.pr-toggle .save{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  color:var(--accent-2);
+  padding-right:12px;
+}
+
+/* ---- cards grid ---- */
+.pr-grid{
+  display:grid;
+  grid-template-columns:1fr 1.12fr 1fr;
+  gap:22px;
+  align-items:stretch;
+  position:relative;
+}
+
+.tier{
+  position:relative;
+  background:var(--card);
+  border:2px solid var(--line);
+  border-radius:18px;
+  padding:34px 30px 32px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* dominant middle tier — accent border, lift, no gradient */
+.tier.feature{
+  border:3px solid var(--accent);
+  background:#15150F;
+  border-radius:22px;
+  margin-top:-20px;
+  margin-bottom:-20px;
+  padding:44px 32px 40px;
+  box-shadow:14px 18px 0 rgba(199,241,59,.14);
+  z-index:2;
+}
+
+.tier-tag{
+  position:absolute;
+  top:-14px;
+  left:28px;
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#0A0A0A;
+  background:var(--accent-2);
+  padding:7px 14px;
+  border-radius:8px;
+}
+
+.tier-name{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:24px;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+}
+.tier.feature .tier-name{color:var(--accent);}
+
+.tier-for{
+  margin-top:8px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.4;
+  min-height:40px;
+}
+
+.tier-price{
+  display:flex;
+  align-items:flex-start;
+  gap:4px;
+  margin:26px 0 4px;
+}
+.tier-price .cur{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:26px;
+  margin-top:14px;
+}
+.tier-price .amt{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:76px;
+  line-height:.85;
+  letter-spacing:-.04em;
+}
+.tier.feature .tier-price .amt{color:var(--accent);}
+.tier-price .per{
+  align-self:flex-end;
+  font-size:14px;
+  font-weight:700;
+  color:var(--muted);
+  margin-bottom:12px;
+  margin-left:4px;
+}
+.tier-note{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.tier-note strong{color:var(--ink);font-weight:700;}
+
+.tier-cta{
+  display:block;
+  width:100%;
+  text-align:center;
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.02em;
+  padding:16px 22px;
+  border-radius:999px;
+  border:2px solid var(--ink);
+  color:var(--ink);
+  background:transparent;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .12s ease,background .12s ease,color .12s ease;
+}
+.tier-cta:hover{transform:translateY(-2px);background:var(--ink);color:#0A0A0A;}
+.tier.feature .tier-cta{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#0A0A0A;
+  font-size:16px;
+}
+.tier.feature .tier-cta:hover{background:var(--accent-2);border-color:var(--accent-2);color:#0A0A0A;}
+
+.tier-div{
+  height:2px;
+  background:var(--line);
+  margin:28px 0 22px;
+}
+.tier.feature .tier-div{background:rgba(199,241,59,.28);}
+
+.tier-heads{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.feat{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-top:auto;
+}
+.feat li{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  font-size:15px;
+  line-height:1.35;
+  color:var(--ink);
+}
+.feat li.off{color:var(--muted);}
+.feat svg{flex-shrink:0;margin-top:1px;}
+.feat li b{font-weight:800;}
+.feat li b.hl{color:var(--accent);}
+
+/* footer strip under cards */
+.pr-foot{
+  margin-top:52px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  padding-top:26px;
+  border-top:2px solid var(--line);
+  font-size:14px;
+  color:var(--muted);
+}
+.pr-foot strong{color:var(--ink);font-weight:700;}
+.pr-foot .dot{color:var(--accent-2);font-weight:900;margin:0 4px;}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .pricing{padding:56px 20px 64px;}
+  .pricing::before{width:320px;height:320px;top:-90px;left:-90px;}
+  .pr-head{flex-direction:column;align-items:flex-start;gap:26px;margin-bottom:44px;}
+  .pr-title{font-size:52px;}
+  .pr-sub{font-size:16px;}
+  .pr-grid{grid-template-columns:1fr;gap:34px;}
+  .tier.feature{margin:0;box-shadow:8px 10px 0 rgba(199,241,59,.14);}
+  .tier-price .amt{font-size:64px;}
+  .pr-foot{flex-direction:column;align-items:flex-start;gap:12px;}
+}
+</style>
+</head>
+<body>
+
+<section class="pricing">
+  <div class="pr-head">
+    <div class="pr-head-left">
+      <div class="pr-kicker"><span></span>Plans that ship</div>
+      <h2 class="pr-title">Pay for<br><em>output</em>, not <span class="strike">seats</span></h2>
+      <p class="pr-sub">Drop these components into Claude Code and go. <b>No build step, no license keys, no per-editor tax.</b> Cancel any month — you keep every file you already pasted.</p>
+    </div>
+    <div class="pr-toggle" role="group" aria-label="Billing period">
+      <button type="button">Monthly</button>
+      <button type="button" class="on">Yearly</button>
+      <span class="save">–2 MONTHS</span>
+    </div>
+  </div>
+
+  <div class="pr-grid">
+
+    <!-- Tier 1 -->
+    <div class="tier">
+      <h3 class="tier-name">Solo</h3>
+      <p class="tier-for">For one builder shipping side projects on weekends.</p>
+      <div class="tier-price">
+        <span class="cur">$</span>
+        <span class="amt">0</span>
+        <span class="per">/forever</span>
+      </div>
+      <p class="tier-note">No card. 40 sections, MIT-licensed.</p>
+      <a href="#" class="tier-cta">Grab the free set</a>
+      <div class="tier-div"></div>
+      <p class="tier-heads">What's inside</p>
+      <ul class="feat">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#C7F13B" stroke-width="2"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#C7F13B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>40</b> copy-paste sections</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#C7F13B" stroke-width="2"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#C7F13B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Self-contained HTML + CSS</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#C7F13B" stroke-width="2"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#C7F13B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Light + dark tokens</span>
+        </li>
+        <li class="off">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#3A3A34" stroke-width="2"/><path d="M7 7l6 6M13 7l-6 6" stroke="#3A3A34" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <span>Figma source files</span>
+        </li>
+        <li class="off">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#3A3A34" stroke-width="2"/><path d="M7 7l6 6M13 7l-6 6" stroke="#3A3A34" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <span>Private team registry</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tier 2 — dominant -->
+    <div class="tier feature">
+      <span class="tier-tag">Most shipped</span>
+      <h3 class="tier-name">Studio</h3>
+      <p class="tier-for">For freelancers and small teams billing client work.</p>
+      <div class="tier-price">
+        <span class="cur">$</span>
+        <span class="amt">19</span>
+        <span class="per">/mo</span>
+      </div>
+      <p class="tier-note"><strong>$190</strong> billed yearly. Unlimited projects.</p>
+      <a href="#" class="tier-cta">Start 14-day trial</a>
+      <div class="tier-div"></div>
+      <p class="tier-heads">Everything in Solo, plus</p>
+      <ul class="feat">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#C7F13B"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b class="hl">300+</b> sections, weekly drops</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#C7F13B"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>All <b>12</b> style themes</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#C7F13B"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Figma source files</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#C7F13B"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Claude Code <b>MCP block</b> installer</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#C7F13B"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Use in unlimited client sites</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="tier">
+      <h3 class="tier-name">Foundry</h3>
+      <p class="tier-for">For agencies running a shared component library.</p>
+      <div class="tier-price">
+        <span class="cur">$</span>
+        <span class="amt">79</span>
+        <span class="per">/mo</span>
+      </div>
+      <p class="tier-note"><strong>Up to 10</strong> seats. SSO on request.</p>
+      <a href="#" class="tier-cta">Talk to us</a>
+      <div class="tier-div"></div>
+      <p class="tier-heads">Everything in Studio, plus</p>
+      <ul class="feat">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#FF4D9D" stroke-width="2"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#FF4D9D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>Private registry</b> for your team</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#FF4D9D" stroke-width="2"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#FF4D9D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Push your own tokens + themes</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#FF4D9D" stroke-width="2"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#FF4D9D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Priority section requests</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#FF4D9D" stroke-width="2"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#FF4D9D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Shared Slack channel</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#FF4D9D" stroke-width="2"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#FF4D9D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Invoice + PO billing</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="pr-foot">
+    <p><strong>Every plan</strong> ships plain HTML you own outright.<span class="dot">/</span>No framework lock-in, no runtime.</p>
+    <p>Prices in USD.<span class="dot">/</span>Switch or cancel from the dashboard anytime.</p>
+  </div>
+</section>
+
+</body>
+</html>

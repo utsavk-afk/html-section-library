@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!-- ===== NEWSLETTER — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.nl{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:80px 40px;
+  display:flex;
+  justify-content:center;
+  /* faint grid so the raw structure is visible */
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+  background-size:40px 40px;
+}
+
+.nl__frame{
+  width:100%;
+  max-width:1160px;
+  border:4px solid var(--line);
+  background:#fff;
+  box-shadow:12px 12px 0 var(--ink);
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+}
+
+/* ---- LEFT: the pitch ---- */
+.nl__main{
+  padding:52px 48px 48px;
+  border-right:4px solid var(--line);
+  position:relative;
+}
+
+.nl__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--accent);
+  border:2px solid var(--line);
+  padding:6px 12px;
+  box-shadow:4px 4px 0 var(--ink);
+}
+.nl__tag i{
+  width:9px;height:9px;background:var(--red);display:block;
+  border:1px solid var(--line);
+}
+
+.nl__title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(40px,5.4vw,72px);
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  margin:28px 0 22px;
+}
+.nl__title mark{
+  background:var(--accent);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+.nl__promise{
+  font-size:18px;
+  line-height:1.5;
+  font-weight:500;
+  max-width:34ch;
+  color:var(--ink);
+  margin-bottom:34px;
+}
+.nl__promise b{font-weight:700;border-bottom:3px solid var(--red);}
+
+/* form */
+.nl__form{
+  display:flex;
+  gap:0;
+  max-width:480px;
+  margin-bottom:16px;
+}
+.nl__input{
+  flex:1;
+  min-width:0;
+  font-family:var(--mono);
+  font-size:15px;
+  padding:16px 16px;
+  border:3px solid var(--line);
+  border-right:none;
+  background:var(--bg);
+  color:var(--ink);
+  outline:none;
+}
+.nl__input::placeholder{color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-size:13px;}
+.nl__input:focus{background:#fff;box-shadow:inset 0 0 0 3px var(--accent);}
+
+.nl__btn{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--accent);
+  border:3px solid var(--line);
+  padding:16px 26px;
+  cursor:pointer;
+  white-space:nowrap;
+  box-shadow:5px 5px 0 var(--ink);
+  transition:transform .08s ease, box-shadow .08s ease, background .08s ease;
+}
+.nl__btn:hover{background:var(--red);color:#fff;}
+.nl__btn:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--ink);}
+
+.nl__reassure{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.03em;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.nl__reassure b{color:var(--ink);font-weight:700;}
+.nl__reassure svg{flex:none;}
+
+/* ---- RIGHT: the stub / receipt ---- */
+.nl__side{
+  background:var(--ink);
+  color:#fff;
+  padding:44px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.nl__side-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#c9c9c2;
+  border-bottom:2px dashed #55554e;
+  padding-bottom:18px;
+}
+.nl__issue{
+  color:var(--accent);
+  font-weight:700;
+}
+
+.nl__stat{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(56px,7vw,92px);
+  line-height:.9;
+  letter-spacing:-.03em;
+  color:var(--accent);
+  margin:30px 0 4px;
+}
+.nl__stat-label{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#c9c9c2;
+}
+
+.nl__list{
+  list-style:none;
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.nl__list li{
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#efefe9;
+}
+.nl__list li span{
+  color:var(--ink);
+  background:var(--accent);
+  font-weight:700;
+  width:22px;height:22px;
+  display:grid;place-items:center;
+  border:2px solid #fff;
+  flex:none;
+  font-size:12px;
+}
+.nl__list li.red span{background:var(--red);color:#fff;}
+
+.nl__side-foot{
+  margin-top:34px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#8a8a82;
+  border-top:2px dashed #55554e;
+  padding-top:16px;
+  display:flex;
+  justify-content:space-between;
+}
+
+@media(max-width:640px){
+  .nl{padding:40px 18px;}
+  .nl__frame{
+    grid-template-columns:1fr;
+    box-shadow:8px 8px 0 var(--ink);
+  }
+  .nl__main{
+    padding:36px 26px 34px;
+    border-right:none;
+    border-bottom:4px solid var(--line);
+  }
+  .nl__form{flex-direction:column;gap:12px;}
+  .nl__input{border-right:3px solid var(--line);}
+  .nl__btn{box-shadow:5px 5px 0 var(--ink);}
+  .nl__side{padding:34px 26px;}
+}
+</style>
+</head>
+<body>
+<section class="nl">
+  <div class="nl__frame">
+
+    <!-- LEFT -->
+    <div class="nl__main">
+      <span class="nl__tag"><i></i>THE MONDAY MERGE // WEEKLY DISPATCH</span>
+
+      <h1 class="nl__title">SHIP<br>FASTER,<br>READ<mark>LESS</mark></h1>
+
+      <p class="nl__promise">
+        One email, every Monday at 7am. The <b>five things</b> in dev tooling,
+        Claude Code, and shipping that actually moved the needle last week —
+        cut down to what you can read before your coffee goes cold.
+      </p>
+
+      <form class="nl__form" onsubmit="return false;">
+        <input class="nl__input" type="email" placeholder="you@company.com" aria-label="Email address">
+        <button class="nl__btn" type="submit">GET IT →</button>
+      </form>
+
+      <p class="nl__reassure">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <rect x="1" y="1" width="12" height="12" fill="none" stroke="#111" stroke-width="2"/>
+          <path d="M3.5 7.2 L6 9.5 L10.5 4.2" fill="none" stroke="#FF3B21" stroke-width="2"/>
+        </svg>
+        No spam. <b>One click</b> to unsubscribe. We never sell your address.
+      </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="nl__side">
+      <div>
+        <div class="nl__side-top">
+          <span>ISSUE&nbsp;<span class="nl__issue">#147</span></span>
+          <span>EST.&nbsp;2023</span>
+        </div>
+
+        <div class="nl__stat">11,400</div>
+        <div class="nl__stat-label">Builders on the list</div>
+
+        <ul class="nl__list">
+          <li><span>01</span>Tools, not think-pieces</li>
+          <li><span>02</span>4-minute read, hard cap</li>
+          <li class="red"><span>03</span>Zero sponsored fluff</li>
+        </ul>
+      </div>
+
+      <div class="nl__side-foot">
+        <span>PLAIN&nbsp;TEXT</span>
+        <span>52&nbsp;ISSUES/YR</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

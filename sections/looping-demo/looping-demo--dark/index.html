@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!-- ===== looping-demo — dark/luxe ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Looping Demo — Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-2:#17171c;
+  --panel:#1b1b21;
+  --line:#2b2b33;
+  --line-soft:#232329;
+  --off:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --amber-dim:rgba(245,158,66,.14);
+  --font-ui:'Inter',system-ui,-apple-system,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--off);
+  font-family:var(--font-ui);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- section shell ---- */
+.demo{
+  width:100%;
+  background:
+    radial-gradient(120% 90% at 82% 8%, #17171d 0%, var(--ink) 58%);
+  padding:88px 48px 96px;
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+}
+.demo__inner{
+  max-width:1440px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,0.82fr) minmax(0,1.18fr);
+  gap:72px;
+  align-items:center;
+}
+
+/* ---- left copy column ---- */
+.demo__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:7px 13px 7px 11px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--ink-2);
+}
+.demo__eyebrow .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 0 4px var(--amber-dim);
+  animation:pulse 2.6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:.4;transform:scale(.72);}
+}
+.demo__title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(31px,3.4vw,46px);
+  line-height:1.08;
+  letter-spacing:-.01em;
+  margin:26px 0 0;
+}
+.demo__title em{
+  font-style:italic;
+  color:var(--amber);
+}
+.demo__lead{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.6;
+  max-width:39ch;
+  margin:20px 0 0;
+}
+
+.demo__notes{
+  margin:38px 0 0;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.note{
+  display:grid;
+  grid-template-columns:36px 1fr;
+  gap:16px;
+  padding:18px 0;
+  border-top:1px solid var(--line-soft);
+}
+.note:last-child{border-bottom:1px solid var(--line-soft);}
+.note__ico{
+  width:36px;height:36px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  display:grid;place-items:center;
+  background:var(--ink-2);
+}
+.note:nth-child(2) .note__ico{border-radius:50%;}
+.note__ico svg{width:17px;height:17px;stroke:var(--amber);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.note h4{font-size:14.5px;font-weight:600;letter-spacing:.005em;}
+.note p{font-size:13px;color:var(--muted);line-height:1.5;margin-top:4px;}
+
+/* ---- right: UI frame ---- */
+.frame{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:linear-gradient(180deg,#191920,#141419);
+  box-shadow:0 40px 80px -48px rgba(0,0,0,.9);
+  overflow:hidden;
+  justify-self:end;
+  width:100%;
+  max-width:720px;
+}
+.frame__bar{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 18px;
+  border-bottom:1px solid var(--line-soft);
+  background:var(--ink-2);
+}
+.frame__dots{display:flex;gap:7px;}
+.frame__dots i{width:10px;height:10px;border-radius:50%;background:#31313a;display:block;}
+.frame__url{
+  flex:1;
+  font-size:12px;color:var(--muted);
+  background:var(--ink);
+  border:1px solid var(--line-soft);
+  border-radius:7px;
+  padding:6px 12px;
+  font-variant-numeric:tabular-nums;
+}
+.frame__url b{color:var(--off);font-weight:500;}
+.frame__live{
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--amber);
+  display:flex;align-items:center;gap:6px;
+}
+.frame__live::before{
+  content:"";width:6px;height:6px;border-radius:50%;background:var(--amber);
+  animation:pulse 2.6s ease-in-out infinite;
+}
+
+.frame__body{
+  display:grid;
+  grid-template-columns:158px 1fr;
+  min-height:398px;
+}
+
+/* sidebar */
+.side{
+  border-right:1px solid var(--line-soft);
+  padding:18px 14px;
+  background:rgba(0,0,0,.14);
+}
+.side__logo{
+  display:flex;align-items:center;gap:9px;
+  font-family:var(--font-display);font-size:15px;
+  padding:0 4px 16px;
+}
+.side__logo span{
+  width:22px;height:22px;border-radius:6px;
+  background:linear-gradient(135deg,var(--amber),#c9761f);
+  display:grid;place-items:center;
+  font-family:var(--font-ui);font-size:12px;font-weight:600;color:#1b1207;
+}
+.side__nav{display:flex;flex-direction:column;gap:3px;}
+.side__nav a{
+  display:flex;align-items:center;gap:10px;
+  font-size:12.5px;color:var(--muted);
+  padding:8px 10px;border-radius:7px;
+  text-decoration:none;
+}
+.side__nav a svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;}
+.side__nav a.on{
+  color:var(--off);
+  background:var(--amber-dim);
+}
+.side__nav a.on svg{stroke:var(--amber);}
+
+/* main content */
+.main{padding:20px 22px 22px;position:relative;}
+.main__head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:18px;
+}
+.main__head h3{font-size:15px;font-weight:600;}
+.main__head p{font-size:11.5px;color:var(--muted);margin-top:3px;}
+.tag{
+  font-size:10.5px;letter-spacing:.05em;
+  color:var(--amber);
+  border:1px solid var(--line);
+  padding:5px 10px;border-radius:999px;
+  white-space:nowrap;
+}
+
+/* stat cards row — varied, not uniform */
+.stats{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;margin-bottom:18px;}
+.stat{
+  border:1px solid var(--line-soft);border-radius:11px;
+  padding:13px 14px;background:var(--panel);
+}
+.stat:first-child{background:linear-gradient(160deg,#221c12,#1a1a1f);border-color:#3a2e18;}
+.stat label{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+.stat .num{
+  font-family:var(--font-display);font-size:26px;margin-top:7px;line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+.stat:first-child .num{color:var(--amber);}
+.stat .delta{font-size:11px;color:var(--muted);margin-top:6px;}
+.stat .delta b{color:#7fd18a;}
+
+/* animated chart */
+.chart{
+  border:1px solid var(--line-soft);border-radius:12px;
+  background:var(--panel);
+  padding:16px 18px 14px;
+  position:relative;
+  overflow:hidden;
+}
+.chart__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.chart__top h5{font-size:12.5px;font-weight:600;}
+.chart__top .rng{font-size:11px;color:var(--muted);}
+.bars{display:flex;align-items:flex-end;gap:10px;height:96px;}
+.bars .col{
+  flex:1;
+  background:linear-gradient(180deg,#2a2a32,#202027);
+  border-radius:5px 5px 3px 3px;
+  transform-origin:bottom;
+  animation:grow 4.2s ease-in-out infinite;
+}
+.bars .col.hot{
+  background:linear-gradient(180deg,var(--amber),#b96c1c);
+}
+.bars .col:nth-child(1){height:42%;animation-delay:0s;}
+.bars .col:nth-child(2){height:58%;animation-delay:.18s;}
+.bars .col:nth-child(3){height:36%;animation-delay:.36s;}
+.bars .col:nth-child(4){height:72%;animation-delay:.54s;}
+.bars .col:nth-child(5){height:54%;animation-delay:.72s;}
+.bars .col:nth-child(6){height:88%;animation-delay:.9s;}
+.bars .col:nth-child(7){height:64%;animation-delay:1.08s;}
+.bars .col:nth-child(8){height:100%;animation-delay:1.26s;}
+@keyframes grow{
+  0%,100%{transform:scaleY(.55);}
+  46%{transform:scaleY(1);}
+}
+
+/* sweeping cursor + focus ring loop */
+.cursor{
+  position:absolute;top:0;left:0;
+  width:16px;height:16px;
+  pointer-events:none;
+  z-index:5;
+  animation:travel 8s cubic-bezier(.7,0,.3,1) infinite;
+}
+.cursor svg{width:16px;height:16px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6));}
+@keyframes travel{
+  0%   {transform:translate(56px,58px);}
+  20%  {transform:translate(56px,58px);}
+  38%  {transform:translate(300px,150px);}
+  55%  {transform:translate(300px,150px);}
+  74%  {transform:translate(430px,300px);}
+  90%  {transform:translate(430px,300px);}
+  100% {transform:translate(56px,58px);}
+}
+.pick{
+  position:absolute;
+  border:1.5px solid var(--amber);
+  border-radius:9px;
+  box-shadow:0 0 0 3px var(--amber-dim);
+  animation:pick 8s ease-in-out infinite;
+  opacity:0;
+  pointer-events:none;
+  z-index:4;
+}
+@keyframes pick{
+  0%,18%{opacity:0;transform:scale(.985);}
+  24%,50%{opacity:1;transform:scale(1);}
+  56%{opacity:0;}
+  100%{opacity:0;}
+}
+
+/* toast that appears in the loop */
+.toast{
+  position:absolute;right:18px;bottom:16px;
+  display:flex;align-items:center;gap:10px;
+  background:var(--ink);
+  border:1px solid #3a2e18;
+  border-left:2px solid var(--amber);
+  border-radius:10px;
+  padding:11px 14px;
+  font-size:12px;
+  box-shadow:0 18px 30px -18px rgba(0,0,0,.8);
+  animation:toast 8s ease-in-out infinite;
+  opacity:0;
+  z-index:6;
+}
+.toast svg{width:15px;height:15px;stroke:var(--amber);fill:none;stroke-width:1.7;}
+.toast b{font-weight:600;}
+.toast span{color:var(--muted);}
+@keyframes toast{
+  0%,60%{opacity:0;transform:translateY(8px);}
+  66%,88%{opacity:1;transform:translateY(0);}
+  96%,100%{opacity:0;transform:translateY(8px);}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .cursor,.pick,.toast,.bars .col,.frame__live::before,.demo__eyebrow .dot{animation:none;}
+  .toast,.pick{opacity:1;}
+  .toast{transform:none;}
+}
+
+/* ---- responsive ---- */
+@media (max-width:960px){
+  .demo__inner{grid-template-columns:1fr;gap:44px;}
+  .frame{justify-self:stretch;max-width:none;}
+}
+@media (max-width:640px){
+  .demo{padding:56px 20px 64px;}
+  .demo__inner{gap:36px;}
+  .frame__body{grid-template-columns:1fr;}
+  .side{display:none;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .stat:first-child{grid-column:1/-1;}
+  .cursor,.pick{display:none;}
+  .frame__url{font-size:11px;}
+  .toast{left:14px;right:14px;}
+}
+</style>
+</head>
+<body>
+<section class="demo">
+  <div class="demo__inner">
+
+    <!-- left copy -->
+    <div class="demo__copy">
+      <span class="demo__eyebrow"><span class="dot"></span>Live product loop</span>
+      <h2 class="demo__title">Watch a full triage pass run <em>every eight seconds.</em></h2>
+      <p class="demo__lead">This is Harbor's real dashboard, not a screenshot. The cursor selects a spiking cohort, opens the trend, and fires an alert — the exact motion your team repeats forty times a day.</p>
+
+      <div class="demo__notes">
+        <div class="note">
+          <div class="note__ico">
+            <svg viewBox="0 0 24 24"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg>
+          </div>
+          <div>
+            <h4>Anomaly-first sorting</h4>
+            <p>Columns re-rank the moment a metric breaks its band, so the loudest signal is always column one.</p>
+          </div>
+        </div>
+        <div class="note">
+          <div class="note__ico">
+            <svg viewBox="0 0 24 24"><path d="M12 3v4"/><path d="M5.6 6.6l2.8 2.8"/><circle cx="12" cy="14" r="6"/><path d="M12 12v2l1.4 1"/></svg>
+          </div>
+          <div>
+            <h4>One-click escalation</h4>
+            <p>Selecting a cohort drafts the alert, tags the on-call owner, and posts to the channel in a single tap.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- right: UI frame -->
+    <div class="frame" aria-label="Looping product demo, decorative">
+      <div class="frame__bar">
+        <div class="frame__dots"><i></i><i></i><i></i></div>
+        <div class="frame__url">app.harbor.io/<b>cohorts</b></div>
+        <div class="frame__live">Recording</div>
+      </div>
+
+      <div class="frame__body">
+        <!-- sidebar -->
+        <aside class="side">
+          <div class="side__logo"><span>H</span>Harbor</div>
+          <nav class="side__nav">
+            <a href="#" class="on"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Cohorts</a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>Trends</a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>Alerts</a>
+            <a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>Owners</a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Logs</a>
+          </nav>
+        </aside>
+
+        <!-- main -->
+        <div class="main">
+          <!-- cursor + selection loops -->
+          <div class="pick" style="left:14px;top:96px;right:14px;height:64px;"></div>
+          <div class="cursor">
+            <svg viewBox="0 0 16 16" fill="var(--off)"><path d="M1 1l5.5 13 2.1-5.4L14 6.5z" stroke="#000" stroke-width="1"/></svg>
+          </div>
+
+          <div class="main__head">
+            <div>
+              <h3>Active cohorts</h3>
+              <p>Refreshed 4s ago · 6 monitored segments</p>
+            </div>
+            <span class="tag">2 breaching threshold</span>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <label>Free → Paid</label>
+              <div class="num">18.4%</div>
+              <div class="delta"><b>▲ 3.1pt</b> vs last week</div>
+            </div>
+            <div class="stat">
+              <label>Sessions</label>
+              <div class="num">9,204</div>
+              <div class="delta">▲ 640 today</div>
+            </div>
+            <div class="stat">
+              <label>Time to alert</label>
+              <div class="num">42s</div>
+              <div class="delta">median, p50</div>
+            </div>
+          </div>
+
+          <div class="chart">
+            <div class="chart__top">
+              <h5>Signups by hour — EU region</h5>
+              <span class="rng">last 8h</span>
+            </div>
+            <div class="bars">
+              <span class="col"></span>
+              <span class="col"></span>
+              <span class="col"></span>
+              <span class="col"></span>
+              <span class="col"></span>
+              <span class="col"></span>
+              <span class="col"></span>
+              <span class="col hot"></span>
+            </div>
+          </div>
+
+          <div class="toast">
+            <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span><b>Alert sent</b> to #growth-oncall</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

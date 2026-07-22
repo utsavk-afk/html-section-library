@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!-- ===== FOOTER — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A52;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:"Archivo",sans-serif;
+  --sans:"Archivo",sans-serif;
+  --mono:"Space Mono",monospace;
+}
+
+html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+
+.ftr{
+  width:100%;
+  background:var(--bg);
+  border-top:4px solid var(--line);
+  padding:0;
+}
+.ftr__wrap{
+  max-width:1440px;
+  margin:0 auto;
+  padding:56px 48px 0;
+}
+
+/* top grid: wordmark block spans, then link cols + newsletter */
+.ftr__top{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr 1fr 1.4fr;
+  gap:0;
+  border-bottom:2px solid var(--line);
+}
+.ftr__cell{
+  padding:8px 28px 40px 0;
+  border-right:2px solid var(--line);
+}
+.ftr__cell:last-child{border-right:none;padding-right:0;}
+
+/* --- brand / focal cell --- */
+.ftr__brand{padding-right:36px;}
+.ftr__mark{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:46px;
+  line-height:0.86;
+  letter-spacing:-2px;
+  text-transform:uppercase;
+}
+.ftr__mark .slash{color:var(--red);}
+.ftr__tag{
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.5;
+  color:var(--muted);
+  margin-top:18px;
+  max-width:250px;
+}
+.ftr__badge{
+  display:inline-block;
+  margin-top:22px;
+  background:var(--accent);
+  border:2px solid var(--line);
+  box-shadow:6px 6px 0 var(--line);
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  padding:9px 14px;
+}
+
+/* --- link columns --- */
+.ftr__label{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.ftr__list{list-style:none;}
+.ftr__list li{margin-bottom:12px;}
+.ftr__list a{
+  color:var(--ink);
+  text-decoration:none;
+  font-weight:700;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:-0.2px;
+  border-bottom:2px solid transparent;
+  padding-bottom:1px;
+  transition:border-color .12s,background .12s;
+}
+.ftr__list a:hover{border-bottom:2px solid var(--line);background:var(--accent);}
+
+/* --- newsletter cell --- */
+.ftr__news .ftr__label{margin-bottom:14px;}
+.ftr__news p{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:16px;
+  line-height:1.5;
+  max-width:280px;
+}
+.ftr__form{display:flex;max-width:320px;}
+.ftr__input{
+  flex:1;
+  border:2px solid var(--line);
+  border-right:none;
+  background:#fff;
+  padding:12px 12px;
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--ink);
+}
+.ftr__input::placeholder{color:#9A9A90;text-transform:uppercase;font-size:11px;letter-spacing:1px;}
+.ftr__input:focus{outline:none;background:var(--accent);}
+.ftr__btn{
+  background:var(--ink);
+  color:var(--bg);
+  border:2px solid var(--line);
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:16px;
+  text-transform:uppercase;
+  padding:0 18px;
+  cursor:pointer;
+  transition:background .12s,color .12s;
+}
+.ftr__btn:hover{background:var(--red);color:#fff;}
+.ftr__consent{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--muted);
+  margin-top:12px;
+  letter-spacing:.3px;
+}
+
+/* --- fine print row --- */
+.ftr__fine{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+  padding:20px 0 40px;
+}
+.ftr__legal{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.5px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.ftr__legal strong{color:var(--ink);}
+.ftr__legal a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--muted);}
+.ftr__legal a:hover{background:var(--accent);border-color:var(--line);}
+.ftr__socials{display:flex;gap:8px;}
+.ftr__soc{
+  width:38px;height:38px;
+  border:2px solid var(--line);
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink);
+  box-shadow:3px 3px 0 var(--line);
+  transition:transform .1s,background .12s;
+}
+.ftr__soc:hover{background:var(--accent);transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--line);}
+.ftr__soc svg{display:block;}
+
+@media(max-width:640px){
+  .ftr__wrap{padding:36px 20px 0;}
+  .ftr__top{grid-template-columns:1fr 1fr;}
+  .ftr__cell{padding:8px 18px 28px 0;border-right:none;border-bottom:2px solid var(--line);}
+  .ftr__brand{grid-column:1 / -1;border-bottom:2px solid var(--line);}
+  .ftr__news{grid-column:1 / -1;border-bottom:none;}
+  .ftr__mark{font-size:38px;}
+  .ftr__fine{flex-direction:column-reverse;align-items:flex-start;padding:18px 0 32px;}
+}
+</style>
+</head>
+<body>
+<footer class="ftr">
+  <div class="ftr__wrap">
+
+    <div class="ftr__top">
+
+      <div class="ftr__cell ftr__brand">
+        <div class="ftr__mark">CONCRETE<span class="slash">/</span>WORKS</div>
+        <p class="ftr__tag">A no-nonsense component library for people who ship. Copy the block, paste it into Claude Code, keep moving.</p>
+        <span class="ftr__badge">v2.4 — MIT LICENSED</span>
+      </div>
+
+      <div class="ftr__cell">
+        <div class="ftr__label">Library</div>
+        <ul class="ftr__list">
+          <li><a href="#">Heroes</a></li>
+          <li><a href="#">Footers</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Nav Bars</a></li>
+          <li><a href="#">Forms</a></li>
+        </ul>
+      </div>
+
+      <div class="ftr__cell">
+        <div class="ftr__label">Docs</div>
+        <ul class="ftr__list">
+          <li><a href="#">Install</a></li>
+          <li><a href="#">Tokens</a></li>
+          <li><a href="#">Theming</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="ftr__cell">
+        <div class="ftr__label">Company</div>
+        <ul class="ftr__list">
+          <li><a href="#">Manifesto</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+
+      <div class="ftr__cell ftr__news">
+        <div class="ftr__label">Ship List</div>
+        <p>One email a month. New sections, breaking changes, zero fluff. Unsubscribe in one click.</p>
+        <form class="ftr__form" onsubmit="return false">
+          <input class="ftr__input" type="email" placeholder="you@studio.dev" aria-label="Email address">
+          <button class="ftr__btn" type="submit">→</button>
+        </form>
+        <div class="ftr__consent">NO SPAM. NO SELLING DATA. 2,400+ BUILDERS.</div>
+      </div>
+
+    </div>
+
+    <div class="ftr__fine">
+      <div class="ftr__legal">
+        <strong>© 2026 CONCRETE/WORKS</strong> — Built in Bangalore ·
+        <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a>
+      </div>
+      <div class="ftr__socials">
+        <a class="ftr__soc" href="#" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.92-2.34 4.79-4.57 5.04.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        </a>
+        <a class="ftr__soc" href="#" aria-label="X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.5 8.6L23 22h-7l-5-6.6L4.8 22H1.7l8-9.2L1 2h7.2l4.5 6 5.2-6zm-1.2 18h1.7L6.4 3.7H4.6L17.7 20z"/></svg>
+        </a>
+        <a class="ftr__soc" href="#" aria-label="RSS feed">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h-2.5A6.5 6.5 0 0 0 4 13.5V11zm0-5a14 14 0 0 1 14 14h-2.5A11.5 11.5 0 0 0 4 8.5V6zm2.5 11a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+</body>
+</html>

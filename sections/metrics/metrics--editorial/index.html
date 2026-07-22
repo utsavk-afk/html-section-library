@@ -1,0 +1,275 @@
+/* ===== METRICS — EDITORIAL ===== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impact — Editorial Metrics Band</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6B665C;
+  --line:#DCD8CE;
+  --accent:#B4472B;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.impact{
+  width:100%;
+  padding:96px 40px 104px;
+}
+.impact__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ---- header row: asymmetric, label + lead statement ---- */
+.impact__head{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);
+  gap:56px;
+  align-items:end;
+  padding-bottom:44px;
+  border-bottom:1px solid var(--line);
+}
+.impact__eyebrow{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.impact__eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+.impact__lead{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(28px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-0.015em;
+  max-width:15ch;
+}
+.impact__lead em{
+  font-style:italic;
+  color:var(--accent);
+}
+.impact__note{
+  font-size:14.5px;
+  line-height:1.65;
+  color:var(--muted);
+  padding-bottom:8px;
+}
+.impact__note strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* ---- metrics grid: 4 stats separated by hairlines ---- */
+.impact__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-top:8px;
+}
+.stat{
+  padding:52px 34px 8px 0;
+  position:relative;
+}
+.stat + .stat{
+  padding-left:34px;
+  border-left:1px solid var(--line);
+}
+/* asymmetric focal: the second stat carries the accent */
+.stat--focus .stat__num{
+  color:var(--accent);
+}
+.stat__index{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.16em;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.stat__num{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(46px,5.2vw,68px);
+  line-height:0.95;
+  letter-spacing:-0.03em;
+  display:flex;
+  align-items:baseline;
+  gap:3px;
+}
+.stat__unit{
+  font-size:0.42em;
+  font-weight:400;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+}
+.stat__cap{
+  margin-top:20px;
+  font-size:14px;
+  line-height:1.5;
+  color:var(--ink);
+  max-width:20ch;
+}
+.stat__cap span{
+  color:var(--muted);
+}
+.stat__trend{
+  margin-top:16px;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.02em;
+  color:var(--muted);
+}
+.trend__arrow{
+  display:inline-flex;
+}
+.trend--up{color:#3C6E47;}
+.trend--down{color:var(--accent);}
+
+/* footer micro-line */
+.impact__foot{
+  margin-top:52px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.impact__foot p{
+  font-size:12.5px;
+  letter-spacing:0.02em;
+  color:var(--muted);
+}
+.impact__foot .src{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14px;
+  color:var(--ink);
+}
+
+@media(max-width:640px){
+  .impact{padding:64px 22px 72px;}
+  .impact__head{
+    grid-template-columns:1fr;
+    gap:26px;
+    align-items:start;
+  }
+  .impact__lead{font-size:32px;max-width:100%;}
+  .impact__note{padding-bottom:0;}
+  .impact__grid{grid-template-columns:1fr 1fr;}
+  .stat{
+    padding:34px 16px 26px 0;
+    border-top:1px solid var(--line);
+  }
+  .stat + .stat{padding-left:0;border-left:none;}
+  .stat:nth-child(even){padding-left:22px;border-left:1px solid var(--line);}
+  .stat__num{font-size:44px;}
+  .impact__foot{margin-top:36px;}
+}
+</style>
+</head>
+<body>
+  <section class="impact">
+    <div class="impact__inner">
+
+      <div class="impact__head">
+        <div>
+          <p class="impact__eyebrow">Field Results · 2024–2026</p>
+          <h2 class="impact__lead">The numbers we <em>keep</em> after the launch dust settles.</h2>
+        </div>
+        <p class="impact__note">
+          Measured across <strong>140 shipped engagements</strong>, tracked for a full year past handoff — not the launch-week spike. Median figures, self-reported clients excluded.
+        </p>
+      </div>
+
+      <div class="impact__grid">
+
+        <div class="stat">
+          <div class="stat__index">01 / SPEED</div>
+          <div class="stat__num">4.2<span class="stat__unit">×</span></div>
+          <p class="stat__cap">Faster median time-to-first-deploy <span>vs. the team's prior baseline</span></p>
+          <span class="stat__trend trend--up">
+            <span class="trend__arrow">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            up from 1.6× a year ago
+          </span>
+        </div>
+
+        <div class="stat stat--focus">
+          <div class="stat__index">02 / RETENTION</div>
+          <div class="stat__num">91<span class="stat__unit">%</span></div>
+          <p class="stat__cap">Of clients still shipping on the stack <span>twelve months later</span></p>
+          <span class="stat__trend trend--up">
+            <span class="trend__arrow">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            +7 pts year over year
+          </span>
+        </div>
+
+        <div class="stat">
+          <div class="stat__index">03 / COST</div>
+          <div class="stat__num">−38<span class="stat__unit">%</span></div>
+          <p class="stat__cap">Average drop in monthly infrastructure spend <span>after migration</span></p>
+          <span class="stat__trend trend--down">
+            <span class="trend__arrow">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 1L9 9M9 9H3M9 9V3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            steeper than last cohort
+          </span>
+        </div>
+
+        <div class="stat">
+          <div class="stat__index">04 / SCALE</div>
+          <div class="stat__num">2.9<span class="stat__unit">M</span></div>
+          <p class="stat__cap">Requests a day served at p99 under 180ms <span>peak sustained</span></p>
+          <span class="stat__trend trend--up">
+            <span class="trend__arrow">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            no added infra tier
+          </span>
+        </div>
+
+      </div>
+
+      <div class="impact__foot">
+        <p>Figures audited quarterly · rounding to two significant figures · outliers trimmed at the 5th and 95th percentile.</p>
+        <p class="src">— Internal telemetry, Q2 2026</p>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

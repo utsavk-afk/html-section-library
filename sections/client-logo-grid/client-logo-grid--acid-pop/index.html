@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Logo Grid — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== CLIENT-LOGO-GRID — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-2:#141414;
+  --paper:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:#2A2A2A;
+  --muted:#7A7A70;
+  --logo:#8C8C82;
+  --logo-hi:#0A0A0A;
+  --pad:clamp(20px,5vw,80px);
+}
+
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'Archivo',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.logos{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:clamp(48px,7vw,96px) var(--pad) clamp(56px,8vw,104px);
+  background:var(--ink);
+  overflow:hidden;
+}
+
+/* corner accent ticks — asymmetric, one focal top-left */
+.logos::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;
+  width:clamp(120px,20vw,260px);
+  height:14px;
+  background:var(--lime);
+}
+
+/* header: asymmetric two-column, focal on left */
+.logos__head{
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:clamp(20px,4vw,64px);
+  align-items:end;
+  padding-bottom:clamp(32px,4vw,52px);
+  border-bottom:2px solid var(--line);
+}
+
+.logos__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:var(--magenta);
+  color:var(--ink);
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:7px 15px;
+  border-radius:999px;
+  margin-bottom:22px;
+}
+.logos__eyebrow b{font-weight:900;}
+
+.logos__title{
+  font-family:'Archivo Expanded','Archivo',sans-serif;
+  font-weight:900;
+  line-height:.9;
+  letter-spacing:-.02em;
+  font-size:clamp(40px,7.2vw,104px);
+  text-transform:uppercase;
+}
+.logos__title span{color:var(--lime);}
+
+.logos__aside{
+  padding-bottom:6px;
+}
+.logos__count{
+  font-family:'Archivo Expanded','Archivo',sans-serif;
+  font-weight:900;
+  font-size:clamp(30px,4vw,52px);
+  line-height:1;
+  color:var(--paper);
+}
+.logos__count em{color:var(--magenta);font-style:normal;}
+.logos__note{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:15px;
+  font-weight:600;
+  max-width:34ch;
+  line-height:1.45;
+}
+
+/* the grid — ruled, muted, even cells */
+.logos__grid{
+  margin-top:clamp(28px,4vw,44px);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:2px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--ink-2);
+}
+.logos__cell{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:clamp(96px,11vw,140px);
+  padding:22px 20px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  transition:background .18s ease,color .18s ease;
+}
+/* remove trailing edges on last col / last row (8 cells = 2 rows of 4) */
+.logos__cell:nth-child(4n){border-right:none;}
+.logos__cell:nth-child(n+5){border-bottom:none;}
+
+.logos__cell svg{
+  width:100%;
+  max-width:clamp(120px,13vw,168px);
+  height:auto;
+  color:var(--logo);
+  transition:color .18s ease,transform .18s ease;
+}
+.logos__cell:hover{background:var(--lime);}
+.logos__cell:hover svg{color:var(--ink);transform:translateY(-1px);}
+
+/* one focal cell breaks the muted rhythm (asymmetry) */
+.logos__cell--focal{background:var(--magenta);}
+.logos__cell--focal svg{color:var(--ink);}
+.logos__cell--focal:hover{background:var(--magenta);}
+.logos__cell--focal:hover svg{color:var(--ink);}
+
+/* footer strip */
+.logos__foot{
+  margin-top:clamp(26px,3.4vw,40px);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:16px 26px;
+}
+.logos__pill{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:var(--paper);
+  color:var(--ink);
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:.01em;
+  padding:11px 20px;
+  border-radius:999px;
+}
+.logos__pill .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--magenta);
+}
+.logos__foot-text{
+  color:var(--muted);
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.02em;
+}
+.logos__foot-text a{
+  color:var(--lime);
+  text-decoration:none;
+  border-bottom:2px solid var(--lime);
+  padding-bottom:1px;
+}
+
+@media(max-width:960px){
+  .logos__grid{grid-template-columns:repeat(2,1fr);}
+  .logos__cell{border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .logos__cell:nth-child(4n){border-right:1px solid var(--line);}
+  .logos__cell:nth-child(2n){border-right:none;}
+  .logos__cell:nth-child(n+5){border-bottom:1px solid var(--line);}
+  .logos__cell:nth-child(n+7){border-bottom:none;}
+}
+
+@media(max-width:640px){
+  .logos__head{
+    grid-template-columns:1fr;
+    align-items:start;
+    gap:24px;
+  }
+  .logos__aside{border-top:2px solid var(--line);padding-top:22px;}
+  .logos__title{font-size:clamp(38px,13vw,64px);}
+  .logos__grid{grid-template-columns:1fr;}
+  .logos__cell,
+  .logos__cell:nth-child(n){
+    border-right:none;
+    border-bottom:1px solid var(--line);
+  }
+  .logos__cell:last-child{border-bottom:none;}
+  .logos__cell{min-height:92px;}
+}
+</style>
+</head>
+<body>
+
+<section class="logos" aria-label="Clients and partners">
+  <div class="logos__head">
+    <div class="logos__lead">
+      <span class="logos__eyebrow"><b>◆</b> Trusted in the wild</span>
+      <h2 class="logos__title">Teams that<br>ship with <span>us.</span></h2>
+    </div>
+    <div class="logos__aside">
+      <div class="logos__count"><em>240+</em> brands</div>
+      <p class="logos__note">From two-person studios to Series C rockets — these crews put our tooling in front of real users, on real deadlines.</p>
+    </div>
+  </div>
+
+  <div class="logos__grid">
+
+    <!-- 1 -->
+    <div class="logos__cell">
+      <svg viewBox="0 0 168 40" role="img" aria-label="Voltmark">
+        <rect x="1" y="12" width="16" height="16" transform="rotate(45 9 20)" fill="currentColor"/>
+        <text x="26" y="28" font-family="Archivo, sans-serif" font-weight="900" font-size="24" letter-spacing="-1" fill="currentColor">VOLTMARK</text>
+      </svg>
+    </div>
+
+    <!-- 2 -->
+    <div class="logos__cell">
+      <svg viewBox="0 0 168 40" role="img" aria-label="Northpeak">
+        <path d="M4 30 L14 8 L24 30 Z" fill="currentColor"/>
+        <text x="32" y="28" font-family="Archivo, sans-serif" font-weight="800" font-size="23" letter-spacing="-0.5" fill="currentColor">Northpeak</text>
+      </svg>
+    </div>
+
+    <!-- 3 -->
+    <div class="logos__cell">
+      <svg viewBox="0 0 168 40" role="img" aria-label="Fizzbyte">
+        <circle cx="12" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="4"/>
+        <circle cx="12" cy="20" r="3.5" fill="currentColor"/>
+        <text x="30" y="28" font-family="Archivo, sans-serif" font-weight="900" font-size="23" letter-spacing="-1" fill="currentColor">FIZZBYTE</text>
+      </svg>
+    </div>
+
+    <!-- 4 — focal (magenta) -->
+    <div class="logos__cell logos__cell--focal">
+      <svg viewBox="0 0 168 40" role="img" aria-label="Kestrel Labs">
+        <path d="M6 8 L18 20 L6 32 L2 28 L10 20 L2 12 Z" fill="currentColor"/>
+        <text x="24" y="24" font-family="Archivo, sans-serif" font-weight="900" font-size="18" letter-spacing="-0.5" fill="currentColor">KESTREL</text>
+        <text x="24" y="36" font-family="Archivo, sans-serif" font-weight="700" font-size="10" letter-spacing="4" fill="currentColor">LABS</text>
+      </svg>
+    </div>
+
+    <!-- 5 -->
+    <div class="logos__cell">
+      <svg viewBox="0 0 168 40" role="img" aria-label="Ampersend">
+        <text x="2" y="30" font-family="Archivo, sans-serif" font-weight="900" font-size="30" fill="currentColor">&amp;</text>
+        <text x="30" y="28" font-family="Archivo, sans-serif" font-weight="700" font-size="22" letter-spacing="-0.5" fill="currentColor">Ampersend</text>
+      </svg>
+    </div>
+
+    <!-- 6 -->
+    <div class="logos__cell">
+      <svg viewBox="0 0 168 40" role="img" aria-label="Duskwave">
+        <path d="M2 24 Q10 8 18 24 T34 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <text x="42" y="28" font-family="Archivo, sans-serif" font-weight="800" font-size="22" letter-spacing="-0.5" fill="currentColor">Duskwave</text>
+      </svg>
+    </div>
+
+    <!-- 7 -->
+    <div class="logos__cell">
+      <svg viewBox="0 0 168 40" role="img" aria-label="Gritworks">
+        <rect x="2" y="10" width="20" height="20" rx="4" fill="currentColor"/>
+        <text x="12" y="26" font-family="Archivo, sans-serif" font-weight="900" font-size="15" fill="#141414" text-anchor="middle">G</text>
+        <text x="30" y="28" font-family="Archivo, sans-serif" font-weight="900" font-size="21" letter-spacing="-1" fill="currentColor">GRITWORKS</text>
+      </svg>
+    </div>
+
+    <!-- 8 -->
+    <div class="logos__cell">
+      <svg viewBox="0 0 168 40" role="img" aria-label="Halo & Co">
+        <circle cx="13" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="4"/>
+        <text x="30" y="28" font-family="Archivo, sans-serif" font-weight="700" font-size="22" letter-spacing="0" fill="currentColor">Halo</text>
+        <text x="82" y="28" font-family="Archivo, sans-serif" font-weight="900" font-size="22" letter-spacing="-0.5" fill="currentColor">&amp;Co</text>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="logos__foot">
+    <span class="logos__pill"><span class="dot"></span>4.9 avg partner rating</span>
+    <span class="logos__foot-text">Onboarded in a weekend, live by Monday — <a href="#work">see the case studies</a></span>
+  </div>
+</section>
+
+</body>
+</html>

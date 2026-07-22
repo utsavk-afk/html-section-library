@@ -1,0 +1,258 @@
+/* ===== SOCIAL-PROOF — EDITORIAL ===== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Proof — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6E6A61;
+  --line:#E3E0D8;
+  --accent:#B4472B;
+  --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans:'Inter', system-ui, sans-serif;
+}
+
+.proof{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 64px 96px;
+  width:100%;
+  overflow:hidden;
+}
+
+.proof__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.proof__label{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.proof__label::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
+
+/* two-column asymmetric layout — quote is the focal point */
+.proof__grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:72px;
+  margin-top:56px;
+  align-items:start;
+}
+
+.proof__quote{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:41px;
+  line-height:1.24;
+  letter-spacing:-0.01em;
+  max-width:19ch;
+}
+.proof__quote em{
+  font-style:italic;
+  color:var(--accent);
+}
+.proof__mark{
+  font-family:var(--serif);
+  font-size:64px;
+  line-height:0;
+  color:var(--accent);
+  display:inline-block;
+  transform:translateY(14px);
+  margin-right:2px;
+}
+
+.proof__attr{
+  margin-top:36px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.proof__avatar{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--accent);
+  color:var(--bg);
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.proof__attr-name{
+  font-weight:600;
+  font-size:14.5px;
+  letter-spacing:.01em;
+}
+.proof__attr-role{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* right rail — the hero stat */
+.proof__stat{
+  border-left:1px solid var(--line);
+  padding-left:40px;
+}
+.proof__stat-num{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:88px;
+  line-height:0.92;
+  letter-spacing:-0.02em;
+}
+.proof__stat-num sup{
+  font-size:36px;
+  color:var(--accent);
+  vertical-align:super;
+  top:-0.15em;
+  position:relative;
+}
+.proof__stat-desc{
+  margin-top:20px;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--muted);
+  max-width:26ch;
+}
+.proof__stat-desc b{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* wordmark row */
+.proof__logos{
+  margin-top:80px;
+  padding-top:36px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:52px;
+}
+.proof__logos-lead{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-right:8px;
+}
+.wordmark{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:21px;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+  opacity:.72;
+  white-space:nowrap;
+  transition:opacity .2s ease;
+}
+.wordmark:hover{opacity:1;}
+.wordmark span{
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:13px;
+  letter-spacing:.02em;
+  color:var(--muted);
+}
+.wordmark--rule{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:15px;
+  letter-spacing:.02em;
+}
+
+@media(max-width:640px){
+  .proof{padding:64px 24px 56px;}
+  .proof__grid{
+    grid-template-columns:1fr;
+    gap:44px;
+    margin-top:40px;
+  }
+  .proof__quote{font-size:29px;max-width:none;}
+  .proof__mark{font-size:46px;transform:translateY(10px);}
+  .proof__stat{
+    border-left:none;
+    border-top:1px solid var(--line);
+    padding-left:0;
+    padding-top:36px;
+  }
+  .proof__stat-num{font-size:68px;}
+  .proof__logos{
+    margin-top:52px;
+    gap:28px 40px;
+  }
+  .wordmark{font-size:18px;}
+}
+</style>
+</head>
+<body>
+
+<section class="proof">
+  <div class="proof__inner">
+
+    <p class="proof__label">Trusted in production</p>
+
+    <div class="proof__grid">
+
+      <figure class="proof__quote-wrap">
+        <blockquote class="proof__quote">
+          <span class="proof__mark">&ldquo;</span>We shipped a migration that would&rsquo;ve taken a sprint. It read the whole repo, wrote the tests, and <em>caught the edge case</em> our senior missed.
+        </blockquote>
+        <figcaption class="proof__attr">
+          <span class="proof__avatar">DK</span>
+          <span>
+            <span class="proof__attr-name">Dana Krishnan</span>
+            <span class="proof__attr-role">Staff Engineer, Fernweh Logistics</span>
+          </span>
+        </figcaption>
+      </figure>
+
+      <div class="proof__stat">
+        <p class="proof__stat-num">2.4<sup>M</sup></p>
+        <p class="proof__stat-desc"><b>lines merged</b> from this workflow across teams in the last quarter — with a 94% first-pass review rate.</p>
+      </div>
+
+    </div>
+
+    <div class="proof__logos">
+      <span class="proof__logos-lead">Adopted by teams at</span>
+      <span class="wordmark">Northbound</span>
+      <span class="wordmark wordmark--rule">HELM&nbsp;&amp;&nbsp;OAK</span>
+      <span class="wordmark">Fernweh <span>Logistics</span></span>
+      <span class="wordmark">Cinder&middot;io</span>
+      <span class="wordmark wordmark--rule">MERIDIAN</span>
+      <span class="wordmark">Palewater</span>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

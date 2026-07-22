@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!-- ===== TESTIMONIAL-GRID — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Grid — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6E6A61;
+  --line:#E3E0D8;
+  --accent:#B4472B;
+  --serif:'Fraunces', Georgia, serif;
+  --sans:'Inter', system-ui, sans-serif;
+}
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.55;
+}
+
+.tg-section{
+  width:100%;
+  padding:96px 40px 104px;
+}
+
+.tg-wrap{
+  max-width:1180px;
+  margin:0 auto;
+}
+
+/* --- header row: asymmetric, label left, meta right --- */
+.tg-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  padding-bottom:34px;
+  margin-bottom:52px;
+  border-bottom:1px solid var(--line);
+}
+
+.tg-eyebrow{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:20px;
+}
+
+.tg-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:44px;
+  line-height:1.08;
+  letter-spacing:-.01em;
+  max-width:15ch;
+}
+
+.tg-title em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.tg-headmeta{
+  text-align:right;
+  flex-shrink:0;
+  padding-bottom:6px;
+}
+
+.tg-headmeta .num{
+  font-family:var(--serif);
+  font-size:38px;
+  line-height:1;
+  display:block;
+}
+
+.tg-headmeta .lbl{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:8px;
+}
+
+/* --- masonry via columns for varied heights --- */
+.tg-grid{
+  column-count:3;
+  column-gap:26px;
+}
+
+.tg-card{
+  break-inside:avoid;
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:30px 30px 26px;
+  margin-bottom:26px;
+  background:var(--bg);
+}
+
+.tg-quote{
+  font-family:var(--serif);
+  font-weight:400;
+  color:var(--ink);
+  letter-spacing:-.005em;
+}
+
+.tg-quote em{font-style:italic;color:var(--accent);}
+
+.tg-card .tg-quote{
+  font-size:18px;
+  line-height:1.42;
+}
+
+/* feature card — spans wider feel, taller, accent ink bg */
+.tg-card--feature{
+  background:var(--ink);
+  border-color:var(--ink);
+  padding:44px 40px 36px;
+  border-radius:6px;
+}
+.tg-card--feature .tg-quote{
+  color:#F5F2EA;
+  font-size:29px;
+  line-height:1.28;
+}
+.tg-card--feature .tg-quote em{color:#E9A183;}
+.tg-card--feature .tg-mark{color:#E9A183;}
+.tg-card--feature .name{color:#FCFCFA;}
+.tg-card--feature .role{color:#A7A296;}
+.tg-card--feature .tg-foot{border-top-color:#3A3833;}
+.tg-card--feature .avatar{
+  background:#E9A183;
+  color:var(--ink);
+}
+
+.tg-mark{
+  font-family:var(--serif);
+  font-size:44px;
+  line-height:.6;
+  color:var(--accent);
+  display:block;
+  margin-bottom:14px;
+  height:24px;
+}
+
+/* small quiet card variant */
+.tg-card--quiet{
+  background:transparent;
+  border:none;
+  border-left:2px solid var(--accent);
+  border-radius:0;
+  padding:6px 0 6px 24px;
+}
+.tg-card--quiet .tg-mark{display:none;}
+.tg-card--quiet .tg-quote{font-size:17px;line-height:1.5;color:var(--muted);font-style:italic;}
+.tg-card--quiet .tg-quote strong{color:var(--ink);font-weight:500;font-style:normal;}
+
+.tg-foot{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-top:24px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+
+.tg-card--quiet .tg-foot{
+  border-top:none;
+  padding-top:14px;
+  margin-top:16px;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:15px;
+  letter-spacing:.01em;
+  background:#EDE7DA;
+  color:var(--ink);
+}
+.avatar.a2{background:#D9E1DA;}
+.avatar.a3{background:#E9DCD6;}
+.avatar.a4{background:#DDE0E6;}
+.avatar.a5{background:#E7E2D3;}
+
+.name{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:14px;
+  color:var(--ink);
+  line-height:1.3;
+}
+.role{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.3;
+}
+
+.tg-card--quiet .name,
+.tg-card--quiet .role{font-style:normal;}
+
+@media(max-width:640px){
+  .tg-section{padding:60px 22px 68px;}
+  .tg-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:24px;
+  }
+  .tg-headmeta{text-align:left;}
+  .tg-title{font-size:32px;}
+  .tg-grid{column-count:1;}
+  .tg-card--feature{padding:34px 26px 28px;}
+  .tg-card--feature .tg-quote{font-size:23px;}
+}
+
+@media(min-width:641px) and (max-width:980px){
+  .tg-grid{column-count:2;}
+}
+</style>
+</head>
+<body>
+<section class="tg-section">
+  <div class="tg-wrap">
+
+    <div class="tg-head">
+      <div>
+        <div class="tg-eyebrow">Field Notes</div>
+        <h2 class="tg-title">What builders say after they <em>ship</em> with it.</h2>
+      </div>
+      <div class="tg-headmeta">
+        <span class="num">2,140+</span>
+        <span class="lbl">teams · 31 countries</span>
+      </div>
+    </div>
+
+    <div class="tg-grid">
+
+      <!-- feature quote -->
+      <article class="tg-card tg-card--feature">
+        <span class="tg-mark">&ldquo;</span>
+        <p class="tg-quote">We cut our onboarding boilerplate from three days to <em>one afternoon</em>. The thing that surprised me wasn&rsquo;t the speed — it was that the output actually read like code a senior would write.</p>
+        <div class="tg-foot">
+          <span class="avatar">RM</span>
+          <div>
+            <div class="name">Renata Marsh</div>
+            <div class="role">Staff Engineer, Fathom Logistics</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="tg-card">
+        <span class="tg-mark">&ldquo;</span>
+        <p class="tg-quote">I dropped it into a legacy Rails repo nobody wanted to touch. By Friday I&rsquo;d closed four tickets that had been open since spring.</p>
+        <div class="tg-foot">
+          <span class="avatar a2">DO</span>
+          <div>
+            <div class="name">Devin Osei</div>
+            <div class="role">Backend Lead, Ravel Health</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="tg-card tg-card--quiet">
+        <p class="tg-quote">The docs are honest about the edge cases. <strong>Rare, and worth its weight.</strong></p>
+        <div class="tg-foot">
+          <span class="avatar a3">PL</span>
+          <div>
+            <div class="name">Priya Laghari</div>
+            <div class="role">Solo founder, Kettle &amp; Co.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="tg-card">
+        <span class="tg-mark">&ldquo;</span>
+        <p class="tg-quote">Copy, paste, and it just <em>fit</em> our token system — no fighting a build step, no six new dependencies. That&rsquo;s the whole pitch and it delivers on it.</p>
+        <div class="tg-foot">
+          <span class="avatar a4">TK</span>
+          <div>
+            <div class="name">Tomas K&eacute;ri</div>
+            <div class="role">Design Engineer, Northbank</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="tg-card">
+        <span class="tg-mark">&ldquo;</span>
+        <p class="tg-quote">Our juniors learn faster reading the generated diffs than they did from any tutorial. It became a teaching tool by accident.</p>
+        <div class="tg-foot">
+          <span class="avatar a5">JW</span>
+          <div>
+            <div class="name">Joelle Wren</div>
+            <div class="role">Eng Manager, Sable Analytics</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

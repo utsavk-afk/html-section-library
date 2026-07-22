@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- ===== TESTIMONIALS — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e1;
+  --accent:#c0492b;
+  --serif:Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.tm{
+  width:100%;
+  padding:104px clamp(24px,6vw,120px) 96px;
+  max-width:1440px;
+  margin:0 auto;
+}
+
+/* ---- header row: label + count, asymmetric ---- */
+.tm__head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:8px;
+}
+.tm__eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.tm__eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+.tm__count{
+  font-size:13px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+.tm__count b{color:var(--ink);font-weight:600;}
+
+/* ---- layout: one wide featured quote + two stacked ---- */
+.tm__grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:0;
+}
+
+/* featured (left, big) */
+.feature{
+  padding:56px 64px 48px 0;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+}
+.feature__mark{
+  font-family:var(--serif);
+  font-size:58px;
+  line-height:.6;
+  color:var(--accent);
+  height:34px;
+  margin-bottom:26px;
+}
+.feature__quote{
+  font-size:29px;
+  line-height:1.36;
+  font-weight:500;
+  letter-spacing:-0.012em;
+  max-width:19ch;
+  margin-bottom:auto;
+}
+.feature__quote em{
+  font-style:normal;
+  color:var(--accent);
+  background:linear-gradient(transparent 62%, rgba(192,73,43,.14) 0);
+}
+.feature__foot{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:44px;
+}
+
+/* small stacked quotes (right) */
+.stack{
+  display:flex;
+  flex-direction:column;
+}
+.mini{
+  padding:38px 0 34px 48px;
+}
+.mini + .mini{
+  border-top:1px solid var(--line);
+}
+.mini__quote{
+  font-size:16.5px;
+  line-height:1.58;
+  color:#2b2b2b;
+  margin-bottom:22px;
+}
+.mini__foot{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+/* ---- avatar (CSS initials) ---- */
+.avatar{
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  font-weight:600;
+  color:#fff;
+  letter-spacing:.01em;
+  user-select:none;
+}
+.avatar--lg{width:46px;height:46px;font-size:15px;}
+.avatar--sm{width:38px;height:38px;font-size:13px;}
+.av-1{background:#2f5d50;}
+.av-2{background:#8a5a2b;}
+.av-3{background:#3b4b6b;}
+
+/* ---- attribution text ---- */
+.who__name{font-size:15px;font-weight:600;line-height:1.3;}
+.who__role{font-size:13px;color:var(--muted);line-height:1.4;}
+.who__role .co{color:var(--ink);font-weight:500;}
+
+.mini .who__name{font-size:14px;}
+.mini .who__role{font-size:12.5px;}
+
+@media(max-width:640px){
+  .tm{padding:64px 22px 56px;}
+  .tm__head{flex-direction:column;align-items:flex-start;gap:10px;}
+  .tm__grid{grid-template-columns:1fr;}
+  .feature{
+    padding:40px 0 40px;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .feature__quote{font-size:24px;max-width:none;}
+  .feature__foot{margin-top:32px;}
+  .mini{padding:32px 0 28px;}
+  .mini:first-child{padding-top:36px;}
+}
+</style>
+</head>
+<body>
+
+<section class="tm" aria-label="Customer testimonials">
+  <div class="tm__head">
+    <span class="tm__eyebrow">What builders tell us</span>
+    <span class="tm__count">Trusted by <b>2,400+</b> teams shipping with Claude Code</span>
+  </div>
+
+  <div class="tm__grid">
+
+    <!-- FEATURED -->
+    <figure class="feature">
+      <div class="feature__mark">&ldquo;</div>
+      <blockquote class="feature__quote">
+        I pasted one section from the library and it rendered clean on the first try. No build step, no dependency hell — <em>it just worked in Claude Code</em> and matched our brand tokens exactly.
+      </blockquote>
+      <figcaption class="feature__foot">
+        <span class="avatar avatar--lg av-1" aria-hidden="true">DR</span>
+        <span class="who">
+          <span class="who__name">Devon Ruiz</span>
+          <span class="who__role">Staff Engineer, <span class="co">Halcyon Labs</span></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <!-- STACK -->
+    <div class="stack">
+      <figure class="mini">
+        <blockquote class="mini__quote">
+          We cut our landing-page turnaround from two days to about forty minutes. The copy is real and specific, so I barely edit before shipping to a client.
+        </blockquote>
+        <figcaption class="mini__foot">
+          <span class="avatar avatar--sm av-2" aria-hidden="true">PM</span>
+          <span class="who">
+            <span class="who__name">Priya Menon</span>
+            <span class="who__role">Founder, <span class="co">Northbeam Studio</span></span>
+          </span>
+        </figcaption>
+      </figure>
+
+      <figure class="mini">
+        <blockquote class="mini__quote">
+          Every section is a single self-contained file. I dropped four of them into a pitch mockup on a Friday and nobody could tell it wasn&rsquo;t hand-built.
+        </blockquote>
+        <figcaption class="mini__foot">
+          <span class="avatar avatar--sm av-3" aria-hidden="true">TO</span>
+          <span class="who">
+            <span class="who__name">Theo Okafor</span>
+            <span class="who__role">Design Lead, <span class="co">Cadence CX</span></span>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

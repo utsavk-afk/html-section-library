@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- ===== BIOGRAPHY — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biography — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,800&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-2:#141414;
+  --paper:#F5F5EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:#2A2A2A;
+  --muted:#8A8A82;
+  --font:"Archivo",system-ui,sans-serif;
+  --narrow:"Archivo Narrow","Archivo",sans-serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.bio{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 72px 88px;
+  overflow:hidden;
+}
+
+/* top eyebrow strip */
+.bio__eyebrow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:46px;
+}
+.bio__eyebrow .dot{
+  width:12px;height:12px;border-radius:50%;
+  background:var(--magenta);
+  flex:none;
+}
+.bio__eyebrow .label{
+  font-family:var(--narrow);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.bio__eyebrow .rule{
+  height:2px;
+  flex:1;
+  background:var(--line);
+}
+
+.bio__grid{
+  display:grid;
+  grid-template-columns:390px 1fr;
+  gap:64px;
+  align-items:start;
+}
+
+/* ---- portrait column ---- */
+.portrait{
+  position:relative;
+}
+.portrait__frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1.08;
+  background:var(--lime);
+  border-radius:26px 26px 26px 90px;
+  overflow:hidden;
+  box-shadow:14px 14px 0 var(--ink-2);
+}
+.portrait__frame svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+/* magenta chunky pill tag over the portrait */
+.portrait__tag{
+  position:absolute;
+  left:-10px;
+  bottom:26px;
+  background:var(--magenta);
+  color:var(--ink);
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  padding:12px 22px;
+  border-radius:40px;
+  box-shadow:6px 6px 0 var(--ink);
+  transform:rotate(-4deg);
+}
+.portrait__meta{
+  display:flex;
+  gap:10px;
+  margin-top:26px;
+  flex-wrap:wrap;
+}
+.chip{
+  font-family:var(--narrow);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--paper);
+  border:2px solid var(--line);
+  border-radius:30px;
+  padding:8px 16px;
+}
+.chip--lime{border-color:var(--lime);color:var(--lime);}
+
+/* ---- text column ---- */
+.copy{
+  padding-top:4px;
+}
+.copy__role{
+  font-family:var(--narrow);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--lime);
+  margin-bottom:12px;
+}
+.copy__name{
+  font-weight:900;
+  font-size:clamp(48px,7vw,104px);
+  line-height:.9;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.copy__name em{
+  font-style:italic;
+  color:var(--magenta);
+}
+.copy__title{
+  font-weight:600;
+  font-size:19px;
+  color:var(--muted);
+  margin-bottom:34px;
+  max-width:44ch;
+}
+.copy__title b{color:var(--paper);font-weight:800;}
+
+.copy__bio{
+  font-size:18px;
+  line-height:1.62;
+  color:#D8D8D2;
+  max-width:58ch;
+}
+.copy__bio p{margin-bottom:18px;}
+.copy__bio mark{
+  background:var(--lime);
+  color:var(--ink);
+  font-weight:800;
+  padding:1px 6px;
+  border-radius:4px;
+}
+
+.copy__links{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:.01em;
+  text-decoration:none;
+  padding:16px 30px;
+  border-radius:44px;
+  transition:transform .12s ease;
+}
+.btn:active{transform:translateY(2px);}
+.btn--lime{
+  background:var(--lime);
+  color:var(--ink);
+  box-shadow:5px 5px 0 var(--magenta);
+}
+.btn--ghost{
+  color:var(--paper);
+  border:2px solid var(--line);
+}
+.btn--ghost:hover{border-color:var(--lime);color:var(--lime);}
+.btn .arw{font-size:19px;line-height:1;}
+
+.copy__handle{
+  font-family:var(--narrow);
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-left:4px;
+}
+.copy__handle b{color:var(--magenta);}
+
+/* giant decorative amp mark, bottom right, clipped */
+.bio__mark{
+  position:absolute;
+  right:-40px;
+  bottom:-90px;
+  font-weight:900;
+  font-size:340px;
+  line-height:1;
+  color:var(--ink-2);
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+}
+.bio__grid,.bio__eyebrow{position:relative;z-index:1;}
+
+@media(max-width:640px){
+  .bio{padding:56px 22px 64px;}
+  .bio__eyebrow{margin-bottom:32px;}
+  .bio__grid{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .portrait__frame{
+    max-width:280px;
+    border-radius:22px 22px 22px 64px;
+    box-shadow:9px 9px 0 var(--ink-2);
+  }
+  .copy__title{font-size:17px;}
+  .copy__bio{font-size:16px;}
+  .btn{padding:14px 24px;font-size:15px;}
+  .bio__mark{font-size:180px;right:-24px;bottom:-40px;}
+}
+</style>
+</head>
+<body>
+<section class="bio">
+  <div class="bio__mark" aria-hidden="true">&amp;</div>
+
+  <div class="bio__eyebrow">
+    <span class="dot"></span>
+    <span class="label">Founder &nbsp;/&nbsp; Behind the build</span>
+    <span class="rule"></span>
+  </div>
+
+  <div class="bio__grid">
+
+    <!-- portrait -->
+    <div class="portrait">
+      <div class="portrait__frame">
+        <svg viewBox="0 0 300 324" role="img" aria-label="Illustrated portrait of Priya Ramanathan">
+          <!-- neck -->
+          <rect x="122" y="220" width="56" height="60" fill="#0A0A0A"/>
+          <!-- shoulders -->
+          <path d="M60 324 C60 258 100 244 150 244 C200 244 240 258 240 324 Z" fill="#0A0A0A"/>
+          <path d="M150 244 L150 324" stroke="#FF4D9D" stroke-width="6"/>
+          <!-- head -->
+          <rect x="98" y="96" width="104" height="128" rx="42" fill="#141414"/>
+          <!-- hair block -->
+          <path d="M92 150 C90 92 116 70 150 70 C184 70 210 92 208 150 C208 128 196 112 176 108 C170 96 150 96 150 96 C150 96 130 96 124 108 C104 112 92 128 92 150 Z" fill="#0A0A0A"/>
+          <rect x="88" y="120" width="10" height="70" rx="5" fill="#0A0A0A"/>
+          <rect x="202" y="120" width="10" height="70" rx="5" fill="#0A0A0A"/>
+          <!-- eyes -->
+          <rect x="120" y="150" width="20" height="8" rx="4" fill="#0A0A0A"/>
+          <rect x="162" y="150" width="20" height="8" rx="4" fill="#0A0A0A"/>
+          <!-- glasses -->
+          <rect x="112" y="142" width="36" height="26" rx="9" fill="none" stroke="#C7F13B" stroke-width="5"/>
+          <rect x="154" y="142" width="36" height="26" rx="9" fill="none" stroke="#C7F13B" stroke-width="5"/>
+          <line x1="148" y1="152" x2="154" y2="152" stroke="#C7F13B" stroke-width="5"/>
+          <!-- smirk -->
+          <path d="M132 190 C144 200 162 200 172 188" fill="none" stroke="#0A0A0A" stroke-width="6" stroke-linecap="round"/>
+          <!-- collar accent -->
+          <path d="M120 250 L150 276 L180 250" fill="none" stroke="#C7F13B" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="portrait__tag">Ships on Fridays</span>
+      <div class="portrait__meta">
+        <span class="chip chip--lime">Est. 2019</span>
+        <span class="chip">Lisbon · remote</span>
+      </div>
+    </div>
+
+    <!-- copy -->
+    <div class="copy">
+      <div class="copy__role">Founder &amp; Head of Product</div>
+      <h1 class="copy__name">Priya<br><em>Ramanathan</em></h1>
+      <p class="copy__title">Building <b>Loophole</b> — the feedback tool that turns support noise into a ranked roadmap.</p>
+
+      <div class="copy__bio">
+        <p>Priya spent nine years shipping developer tooling — first as engineer #4 at a monitoring startup, then leading the platform team through a rough, instructive acquisition. She started Loophole after watching three good products die from <mark>guessing what users wanted</mark> instead of reading what they already said.</p>
+        <p>These days she writes most of the changelog herself, still reviews every onboarding email, and keeps a running list of features she has deliberately refused to build. She believes small teams win by being sharp, not by being loud.</p>
+      </div>
+
+      <div class="copy__links">
+        <a class="btn btn--lime" href="#work">See the work <span class="arw">&rarr;</span></a>
+        <a class="btn btn--ghost" href="#writing">Read the essays</a>
+        <span class="copy__handle">say hi &nbsp;<b>@priya.builds</b></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

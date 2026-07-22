@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- ===== METRICS — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metrics — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e1;
+  --accent:#C0492B;
+  --serif:'Inter',system-ui,sans-serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+.metrics{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px 40px 104px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.metrics__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* Header — left-aligned, asymmetric with the band below */
+.metrics__head{
+  max-width:560px;
+  margin-bottom:64px;
+}
+
+.metrics__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.09em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.metrics__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1.5px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+.metrics__title{
+  font-size:30px;
+  line-height:1.22;
+  font-weight:600;
+  letter-spacing:-0.017em;
+  max-width:15ch;
+}
+.metrics__title em{
+  font-style:normal;
+  color:var(--muted);
+}
+
+.metrics__note{
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--muted);
+  margin-top:16px;
+  max-width:46ch;
+}
+
+/* The band — ruled, 4 columns, one focal stat pulled forward */
+.metrics__band{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.stat{
+  padding:40px 36px 38px 0;
+  border-left:1px solid var(--line);
+  padding-left:36px;
+  position:relative;
+}
+.stat:first-child{
+  border-left:0;
+  padding-left:0;
+}
+
+/* focal point: the second stat gets the accent + a top rule tick */
+.stat--focus::before{
+  content:"";
+  position:absolute;
+  top:-1px;
+  left:36px;
+  right:36px;
+  height:2px;
+  background:var(--accent);
+}
+.stat--focus .stat__num{
+  color:var(--accent);
+}
+
+.stat__num{
+  font-size:56px;
+  line-height:1;
+  font-weight:700;
+  letter-spacing:-0.032em;
+  font-variant-numeric:tabular-nums;
+  display:flex;
+  align-items:baseline;
+  gap:2px;
+}
+.stat__num sup{
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  top:-0.55em;
+  color:inherit;
+}
+.stat__unit{
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  color:inherit;
+}
+
+.stat__caption{
+  font-size:14px;
+  line-height:1.5;
+  color:var(--ink);
+  font-weight:500;
+  margin-top:18px;
+  max-width:22ch;
+}
+
+.stat__trend{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12.5px;
+  font-weight:500;
+  color:var(--muted);
+  margin-top:12px;
+}
+.stat__trend svg{
+  flex-shrink:0;
+}
+.stat__trend .up{ color:var(--accent); font-weight:600; }
+.stat__trend .flat{ color:var(--muted); }
+
+.metrics__foot{
+  margin-top:36px;
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.metrics__foot .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+
+@media(max-width:640px){
+  .metrics{ padding:64px 22px 72px; }
+  .metrics__head{ margin-bottom:44px; }
+  .metrics__title{ font-size:25px; }
+  .metrics__band{
+    grid-template-columns:1fr 1fr;
+    border-bottom:0;
+  }
+  .stat{
+    padding:30px 18px 30px 22px;
+    border-top:1px solid var(--line);
+  }
+  .stat:first-child,
+  .stat:nth-child(2){
+    border-top:0;
+  }
+  .stat:nth-child(odd){
+    border-left:0;
+    padding-left:0;
+  }
+  .stat--focus::before{ left:0; right:36px; }
+  .stat:nth-child(odd).stat--focus::before{ left:0; }
+  .stat__num{ font-size:44px; }
+  .stat__num sup,.stat__unit{ font-size:19px; }
+}
+</style>
+</head>
+<body>
+
+<section class="metrics" aria-labelledby="metrics-title">
+  <div class="metrics__inner">
+
+    <div class="metrics__head">
+      <span class="metrics__eyebrow">Six months in</span>
+      <h2 class="metrics__title" id="metrics-title">
+        What teams shipped after dropping these sections into Claude Code.
+      </h2>
+      <p class="metrics__note">
+        Self-reported by 340 developers who used the library between January and June 2026. No accounts, no tracking — just the numbers they sent back.
+      </p>
+    </div>
+
+    <div class="metrics__band">
+
+      <div class="stat">
+        <div class="stat__num">1,910</div>
+        <p class="stat__caption">Sections copied straight into production repos</p>
+        <span class="stat__trend">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 8.5L5 5.5L7 7.5L10.5 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="up">+38%</span>&nbsp;vs. last quarter
+        </span>
+      </div>
+
+      <div class="stat stat--focus">
+        <div class="stat__num">92<span class="stat__unit">%</span></div>
+        <p class="stat__caption">Kept the markup unchanged — no rework needed</p>
+        <span class="stat__trend">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 8.5L5 5.5L7 7.5L10.5 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="up">up from 84%</span>
+        </span>
+      </div>
+
+      <div class="stat">
+        <div class="stat__num">6<span class="stat__unit">min</span></div>
+        <p class="stat__caption">Median time from paste to a live, styled page</p>
+        <span class="stat__trend">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4L5 7L7 5L10.5 8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>2 min faster than v1</span>
+        </span>
+      </div>
+
+      <div class="stat">
+        <div class="stat__num">0</div>
+        <p class="stat__caption">Build steps, dependencies or API keys required</p>
+        <span class="stat__trend">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><line x1="2" y1="6" x2="10" y2="6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <span class="flat">unchanged by design</span>
+        </span>
+      </div>
+
+    </div>
+
+    <p class="metrics__foot">
+      <span class="dot" aria-hidden="true"></span>
+      Every section is one file. Google Fonts is the only external request.
+    </p>
+
+  </div>
+</section>
+
+</body>
+</html>

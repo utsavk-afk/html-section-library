@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!-- ===== TRANSFORMATION — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformation — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:2px;
+  --line-thick:4px;
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.xf{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:64px 56px 72px;
+  position:relative;
+}
+
+/* top strip */
+.xf__strip{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  border-bottom:var(--line-thick) solid var(--ink);
+  padding-bottom:12px;
+  margin-bottom:44px;
+  flex-wrap:wrap;
+}
+.xf__strip .dot{
+  width:11px;height:11px;background:var(--red);
+  display:inline-block;
+}
+.xf__strip .tag{
+  background:var(--ink);color:var(--acid);
+  padding:4px 8px;
+}
+.xf__strip .spacer{flex:1;}
+.xf__strip .ref{color:#777;}
+
+/* main grid — asymmetric: wide left, narrow right */
+.xf__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+  gap:40px;
+  align-items:start;
+}
+
+/* LEFT column */
+.xf__lead{
+  font-family:var(--mono);
+  font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;
+  color:var(--red);
+  margin-bottom:18px;
+}
+.xf__h1{
+  font-weight:900;
+  font-size:clamp(38px,5.2vw,74px);
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.xf__h1 .mark{
+  background:var(--acid);
+  padding:0 .08em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.xf__h1 .strike{
+  text-decoration:line-through;
+  text-decoration-thickness:5px;
+  text-decoration-color:var(--red);
+  color:#8a8a86;
+}
+
+/* from -> to bars */
+.xf__ba{
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:0;
+  align-items:stretch;
+  border:var(--line-thick) solid var(--ink);
+  box-shadow:var(--shadow);
+  background:var(--white);
+}
+.xf__cell{padding:20px 20px 22px;}
+.xf__cell--from{background:var(--white);}
+.xf__cell--to{background:var(--ink);color:var(--paper);}
+.xf__cell .lab{
+  font-family:var(--mono);
+  font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.16em;
+  color:#8a8a86;
+  margin-bottom:10px;
+}
+.xf__cell--to .lab{color:var(--acid);}
+.xf__cell .big{
+  font-weight:900;
+  font-size:clamp(26px,3vw,40px);
+  line-height:.96;
+  letter-spacing:-.01em;
+}
+.xf__cell .sub{
+  font-family:var(--mono);
+  font-size:12px;
+  margin-top:8px;
+  color:#666;
+}
+.xf__cell--to .sub{color:#bdbdba;}
+.xf__arrow{
+  display:flex;align-items:center;justify-content:center;
+  background:var(--acid);
+  border-left:var(--line-thick) solid var(--ink);
+  border-right:var(--line-thick) solid var(--ink);
+  width:60px;
+  font-weight:900;
+  font-size:34px;
+  line-height:1;
+}
+
+/* proof list under bars */
+.xf__proof{
+  margin-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.xf__proof .chip{
+  font-family:var(--mono);
+  font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;
+  border:var(--line) solid var(--ink);
+  padding:7px 11px;
+  background:var(--white);
+  display:flex;align-items:center;gap:8px;
+}
+.xf__proof .chip b{color:var(--red);}
+.xf__proof .chip .box{width:9px;height:9px;background:var(--ink);}
+
+/* RIGHT column — big proof number card */
+.xf__hero{
+  border:var(--line-thick) solid var(--ink);
+  background:var(--acid);
+  box-shadow:var(--shadow);
+  padding:26px 24px 28px;
+  position:relative;
+}
+.xf__hero::before{
+  content:"01 / 01";
+  position:absolute;top:12px;right:14px;
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:.1em;
+}
+.xf__hero .cap{
+  font-family:var(--mono);
+  font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;
+  border-bottom:var(--line) solid var(--ink);
+  padding-bottom:12px;
+  margin-bottom:14px;
+}
+.xf__num{
+  font-weight:900;
+  font-size:clamp(84px,13vw,168px);
+  line-height:.82;
+  letter-spacing:-.04em;
+}
+.xf__num sup{
+  font-size:.3em;
+  vertical-align:super;
+  margin-left:2px;
+}
+.xf__hero .desc{
+  font-weight:700;
+  font-size:18px;
+  line-height:1.15;
+  text-transform:uppercase;
+  margin-top:14px;
+}
+.xf__hero .meta{
+  font-family:var(--mono);
+  font-size:12px;
+  margin-top:14px;
+  padding-top:14px;
+  border-top:var(--line) solid var(--ink);
+  color:#3a3a34;
+}
+
+/* attribution row inside hero */
+.xf__who{
+  display:flex;align-items:center;gap:12px;
+  margin-top:18px;
+}
+.xf__avatar{
+  width:44px;height:44px;
+  background:var(--ink);color:var(--acid);
+  border:var(--line) solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+  flex-shrink:0;
+}
+.xf__who .txt{line-height:1.2;}
+.xf__who .n{font-weight:700;font-size:14px;text-transform:uppercase;}
+.xf__who .r{font-family:var(--mono);font-size:11px;color:#3a3a34;}
+
+/* CTA under hero */
+.xf__cta{
+  margin-top:20px;
+  width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--ink);color:var(--paper);
+  border:var(--line-thick) solid var(--ink);
+  box-shadow:var(--shadow-red);
+  padding:16px 20px;
+  font-weight:900;font-size:16px;
+  text-transform:uppercase;letter-spacing:.02em;
+  cursor:pointer;
+  font-family:var(--sans);
+  text-align:left;
+}
+.xf__cta .k{
+  font-family:var(--mono);font-size:22px;font-weight:700;
+  color:var(--acid);
+}
+.xf__cta:hover{background:var(--red);border-color:var(--ink);box-shadow:var(--shadow);}
+
+@media(max-width:640px){
+  .xf{padding:36px 20px 44px;}
+  .xf__strip{margin-bottom:30px;font-size:11px;gap:10px;}
+  .xf__strip .ref{display:none;}
+  .xf__grid{grid-template-columns:1fr;gap:28px;}
+  .xf__ba{grid-template-columns:1fr;}
+  .xf__arrow{
+    width:100%;height:44px;
+    border-left:none;border-right:none;
+    border-top:var(--line-thick) solid var(--ink);
+    border-bottom:var(--line-thick) solid var(--ink);
+    transform:rotate(90deg);
+  }
+  .xf__cell--from{border-bottom:0;}
+  .xf__hero::before{top:10px;right:12px;}
+}
+</style>
+</head>
+<body>
+<section class="xf" aria-label="Results transformation">
+
+  <div class="xf__strip">
+    <span class="dot" aria-hidden="true"></span>
+    <span>CASE&nbsp;FILE</span>
+    <span class="tag">SHIP&nbsp;LOG&nbsp;#0442</span>
+    <span class="ref">// NORTHWIND FULFILLMENT &nbsp;·&nbsp; 90-DAY WINDOW</span>
+    <span class="spacer"></span>
+    <span class="ref">VERIFIED&nbsp;✓</span>
+  </div>
+
+  <div class="xf__grid">
+
+    <!-- LEFT -->
+    <div class="xf__col">
+      <p class="xf__lead">Before → After · The rebuild that stuck</p>
+      <h1 class="xf__h1">
+        We killed the <span class="strike">3-week</span> backlog and
+        made shipping <span class="mark">boring</span> again.
+      </h1>
+
+      <div class="xf__ba">
+        <div class="xf__cell xf__cell--from">
+          <div class="lab">Was</div>
+          <div class="big">19 DAYS</div>
+          <div class="sub">avg. order → doorstep, manual routing</div>
+        </div>
+        <div class="xf__arrow" aria-hidden="true">→</div>
+        <div class="xf__cell xf__cell--to">
+          <div class="lab">Now</div>
+          <div class="big">4 DAYS</div>
+          <div class="sub">auto-routed, one dashboard, zero spreadsheets</div>
+        </div>
+      </div>
+
+      <div class="xf__proof">
+        <span class="chip"><span class="box" aria-hidden="true"></span>TICKETS&nbsp;<b>−71%</b></span>
+        <span class="chip"><span class="box" aria-hidden="true"></span>REFUNDS&nbsp;<b>−58%</b></span>
+        <span class="chip"><span class="box" aria-hidden="true"></span>CSAT&nbsp;<b>4.9/5</b></span>
+        <span class="chip"><span class="box" aria-hidden="true"></span>ROLLOUT&nbsp;<b>11 DAYS</b></span>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <aside class="xf__col">
+      <div class="xf__hero">
+        <div class="cap">The one number</div>
+        <div class="xf__num">4.7<sup>×</sup></div>
+        <div class="desc">Faster fulfillment,<br>same headcount.</div>
+        <div class="meta">Measured across 38,200 orders, Q1 vs. Q2 2026. No new hires.</div>
+
+        <div class="xf__who">
+          <div class="xf__avatar" aria-hidden="true">DM</div>
+          <div class="txt">
+            <div class="n">Dana Meyer</div>
+            <div class="r">VP Ops, Northwind</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="xf__cta" type="button">
+        <span>Read the full teardown</span>
+        <span class="k" aria-hidden="true">↗</span>
+      </button>
+    </aside>
+
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showreel — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== SHOWREEL — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --line:#111111;
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-lg:10px 10px 0 var(--ink);
+  --font-head:'Archivo',sans-serif;
+  --font-mono:'Space Mono',monospace;
+}
+
+.reel{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-head);
+  padding:56px 40px 64px;
+  max-width:1440px;
+  margin:0 auto;
+  border-top:4px solid var(--ink);
+  border-bottom:4px solid var(--ink);
+}
+
+/* top status bar */
+.reel__bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  border:3px solid var(--ink);
+  padding:10px 16px;
+  background:var(--white);
+  margin-bottom:28px;
+  box-shadow:var(--shadow);
+}
+.reel__bar span{white-space:nowrap;}
+.reel__bar-dot{
+  display:inline-block;
+  width:11px;height:11px;
+  background:var(--red);
+  border:2px solid var(--ink);
+  border-radius:50%;
+  margin-right:8px;
+  vertical-align:-1px;
+  animation:blink 1.2s steps(2) infinite;
+}
+@keyframes blink{50%{opacity:.25;}}
+.reel__bar-mid{display:none;}
+
+/* main layout: asymmetric — big screen left, meta rail right */
+.reel__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 320px;
+  gap:28px;
+  align-items:stretch;
+}
+
+/* ---- SCREEN ---- */
+.screen{
+  position:relative;
+  border:4px solid var(--ink);
+  background:var(--ink);
+  box-shadow:var(--shadow-lg);
+  overflow:hidden;
+  min-height:480px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+/* cinematic gradient + scanline field built in CSS only */
+.screen__viz{
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 2px,transparent 2px 5px),
+    repeating-linear-gradient(115deg,rgba(255,229,0,.09) 0 40px,transparent 40px 80px),
+    radial-gradient(120% 90% at 22% 18%,#2a2a2a 0%,#141414 55%,#050505 100%);
+}
+/* bold offset frame lines — brutalist crop marks */
+.screen__crop{position:absolute;inset:0;pointer-events:none;}
+.screen__crop::before,
+.screen__crop::after{
+  content:"";
+  position:absolute;
+  width:52px;height:52px;
+}
+.screen__crop::before{top:18px;left:18px;border-top:4px solid var(--acid);border-left:4px solid var(--acid);}
+.screen__crop::after{bottom:18px;right:18px;border-bottom:4px solid var(--acid);border-right:4px solid var(--acid);}
+
+/* big diagonal type in the plate */
+.screen__ghost{
+  position:absolute;
+  top:26px;left:26px;
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:3px;
+  color:var(--acid);
+  text-transform:uppercase;
+}
+.screen__ghost b{color:var(--white);font-weight:700;}
+
+.screen__runtime{
+  position:absolute;
+  top:24px;right:26px;
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--white);
+  background:var(--red);
+  border:2px solid var(--ink);
+  padding:4px 9px;
+}
+
+/* PLAY BUTTON — the focal point, off-center */
+.play{
+  position:absolute;
+  top:44%;
+  left:38%;
+  transform:translate(-50%,-50%);
+  width:132px;height:132px;
+  background:var(--acid);
+  border:4px solid var(--ink);
+  box-shadow:8px 8px 0 var(--ink);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .08s linear,box-shadow .08s linear;
+}
+.play:hover{transform:translate(-50%,-50%) translate(-3px,-3px);box-shadow:12px 12px 0 var(--ink);}
+.play:active{transform:translate(-50%,-50%) translate(4px,4px);box-shadow:2px 2px 0 var(--ink);}
+.play svg{width:46px;height:46px;margin-left:6px;display:block;}
+.play__ring{
+  position:absolute;
+  inset:-16px;
+  border:3px dashed var(--acid);
+  animation:spin 9s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* headline plate sits at bottom of screen */
+.screen__plate{
+  position:relative;
+  z-index:2;
+  margin:0 22px 22px;
+  background:var(--paper);
+  border:4px solid var(--ink);
+  padding:22px 24px;
+  max-width:640px;
+  box-shadow:6px 6px 0 var(--acid);
+}
+.screen__kicker{
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:10px;
+}
+.screen__title{
+  font-size:clamp(34px,4.4vw,58px);
+  font-weight:900;
+  line-height:.92;
+  letter-spacing:-1px;
+  text-transform:uppercase;
+}
+.screen__title mark{background:var(--acid);color:var(--ink);padding:0 4px;}
+.screen__line{
+  font-family:var(--font-mono);
+  font-size:14px;
+  line-height:1.5;
+  margin-top:14px;
+  max-width:520px;
+}
+
+/* ---- RIGHT RAIL ---- */
+.rail{display:flex;flex-direction:column;gap:20px;}
+.rail__stat{
+  border:4px solid var(--ink);
+  background:var(--white);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.rail__stat:nth-child(2){background:var(--acid);}
+.rail__num{
+  font-size:46px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-1px;
+}
+.rail__label{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-top:8px;
+}
+.rail__cta{
+  margin-top:auto;
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  color:var(--white);
+  background:var(--ink);
+  border:4px solid var(--ink);
+  padding:20px 18px;
+  font-weight:800;
+  font-size:18px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  box-shadow:6px 6px 0 var(--red);
+  transition:transform .08s linear,box-shadow .08s linear;
+}
+.rail__cta:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--red);}
+.rail__cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--red);}
+.rail__cta small{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:var(--acid);margin-top:6px;font-weight:400;}
+
+/* bottom ticker */
+.reel__ticker{
+  margin-top:28px;
+  border:3px solid var(--ink);
+  background:var(--ink);
+  color:var(--paper);
+  overflow:hidden;
+  white-space:nowrap;
+}
+.reel__ticker div{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  padding:11px 0;
+  animation:slide 22s linear infinite;
+}
+.reel__ticker b{color:var(--acid);}
+.reel__ticker span{color:var(--red);margin:0 18px;}
+@keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:640px){
+  .reel{padding:32px 18px 40px;}
+  .reel__bar{flex-wrap:wrap;gap:8px;font-size:10px;letter-spacing:1px;padding:9px 12px;}
+  .reel__grid{grid-template-columns:1fr;gap:20px;}
+  .screen{min-height:400px;}
+  .play{width:96px;height:96px;left:50%;top:38%;box-shadow:6px 6px 0 var(--ink);}
+  .play svg{width:34px;height:34px;}
+  .screen__plate{margin:0 14px 14px;padding:16px;}
+  .screen__ghost{font-size:10px;top:20px;left:20px;}
+  .rail{flex-direction:column;}
+  .rail__num{font-size:38px;}
+}
+</style>
+</head>
+<body>
+<section class="reel" aria-label="Studio showreel">
+
+  <div class="reel__bar">
+    <span><i class="reel__bar-dot"></i>REC / SHOWREEL 2026</span>
+    <span class="reel__bar-mid">NORTHFACTORY MOTION LAB</span>
+    <span>FMT 4K · 24FPS · 02:41</span>
+  </div>
+
+  <div class="reel__grid">
+
+    <!-- SCREEN -->
+    <div class="screen">
+      <div class="screen__viz"></div>
+      <div class="screen__crop"></div>
+      <div class="screen__ghost">CH.01 <b>—</b> ROUGH CUT <b>//</b> 000482 FRAMES</div>
+      <div class="screen__runtime">● 02:41</div>
+
+      <button class="play" aria-label="Play the showreel">
+        <span class="play__ring"></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3v18l15-9L5 3z" fill="#111"/></svg>
+      </button>
+
+      <div class="screen__plate">
+        <p class="screen__kicker">2024–2026 / SELECTED WORK</p>
+        <h2 class="screen__title">WE CUT<br><mark>LOUD</mark> FILM</h2>
+        <p class="screen__line">Forty-one seconds of brand films, title design and broadcast idents — no fades, no filler, every frame earns its place on the timeline.</p>
+      </div>
+    </div>
+
+    <!-- RAIL -->
+    <div class="rail">
+      <div class="rail__stat">
+        <div class="rail__num">128</div>
+        <div class="rail__label">Films shipped</div>
+      </div>
+      <div class="rail__stat">
+        <div class="rail__num">17</div>
+        <div class="rail__label">Awards / no trophies kept</div>
+      </div>
+      <a class="rail__cta" href="#watch">
+        WATCH FULL REEL
+        <small>2 MIN 41 SEC · SOUND ON</small>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="reel__ticker">
+    <div>
+      BRAND FILM <span>✦</span> TITLE DESIGN <span>✦</span> BROADCAST IDENTS <span>✦</span> <b>MOTION FIRST</b> <span>✦</span> BRAND FILM <span>✦</span> TITLE DESIGN <span>✦</span> BROADCAST IDENTS <span>✦</span> <b>MOTION FIRST</b> <span>✦</span>&nbsp;
+    </div>
+  </div>
+
+</section>
+</body>
+</html>

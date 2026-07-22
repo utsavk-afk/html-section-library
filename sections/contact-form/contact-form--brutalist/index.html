@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!-- ===== CONTACT-FORM — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get In Touch — Brutalist Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:"Space Mono",monospace;
+  --sans:"Archivo",sans-serif;
+}
+
+.bx-contact{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 48px 80px;
+  width:100%;
+  /* faint visible grid */
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+
+.bx-wrap{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ---- header row ---- */
+.bx-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  border-bottom:4px solid var(--line);
+  padding-bottom:20px;
+  margin-bottom:48px;
+  flex-wrap:wrap;
+}
+.bx-eyebrow{
+  font-family:var(--serif);
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--accent);
+  padding:5px 10px;
+  display:inline-block;
+  margin-bottom:18px;
+}
+.bx-title{
+  font-size:clamp(38px,6vw,74px);
+  font-weight:900;
+  line-height:.92;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+}
+.bx-title span{
+  background:var(--accent);
+  padding:0 6px;
+  box-shadow:6px 6px 0 var(--line);
+}
+.bx-ref{
+  font-family:var(--serif);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+  text-align:right;
+  line-height:1.6;
+  white-space:nowrap;
+}
+.bx-ref b{color:var(--ink);}
+
+/* ---- main grid: asymmetric, form wider ---- */
+.bx-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:0;
+  border:4px solid var(--line);
+  box-shadow:10px 10px 0 var(--line);
+  background:#fff;
+}
+
+/* ---- form side ---- */
+.bx-form{
+  padding:40px 40px 44px;
+}
+.bx-form h3{
+  font-family:var(--serif);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.bx-field{margin-bottom:22px;}
+.bx-field label{
+  display:block;
+  font-family:var(--serif);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  margin-bottom:8px;
+}
+.bx-field label i{
+  color:var(--red);
+  font-style:normal;
+}
+.bx-field input,
+.bx-field textarea{
+  width:100%;
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:500;
+  color:var(--ink);
+  background:var(--bg);
+  border:3px solid var(--line);
+  padding:14px 14px;
+  outline:none;
+  transition:box-shadow .08s linear, background .08s linear;
+}
+.bx-field input::placeholder,
+.bx-field textarea::placeholder{color:#9A9A93;font-weight:500;}
+.bx-field input:focus,
+.bx-field textarea:focus{
+  background:#fff;
+  box-shadow:5px 5px 0 var(--accent);
+}
+.bx-field textarea{resize:vertical;min-height:120px;line-height:1.5;}
+
+.bx-row2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.bx-submit-row{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
+.bx-btn{
+  font-family:var(--sans);
+  font-size:17px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--ink);
+  background:var(--accent);
+  border:3px solid var(--line);
+  padding:16px 34px;
+  cursor:pointer;
+  box-shadow:6px 6px 0 var(--line);
+  transition:transform .06s linear, box-shadow .06s linear;
+}
+.bx-btn:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--line);}
+.bx-btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--line);}
+.bx-note{
+  font-family:var(--serif);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  line-height:1.5;
+  max-width:200px;
+}
+
+/* ---- info side (dark) ---- */
+.bx-info{
+  background:var(--ink);
+  color:#fff;
+  padding:40px 34px 44px;
+  border-left:4px solid var(--line);
+  display:flex;
+  flex-direction:column;
+}
+.bx-info h3{
+  font-family:var(--serif);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--accent);
+  margin-bottom:28px;
+}
+.bx-block{
+  border-top:2px solid #333;
+  padding:18px 0;
+}
+.bx-block:first-of-type{border-top:none;padding-top:0;}
+.bx-block .k{
+  font-family:var(--serif);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:#8A8A82;
+  margin-bottom:7px;
+}
+.bx-block .v{
+  font-size:18px;
+  font-weight:700;
+  line-height:1.3;
+}
+.bx-block .v a{color:#fff;text-decoration:none;border-bottom:2px solid var(--accent);}
+.bx-block small{
+  display:block;
+  font-family:var(--serif);
+  font-size:12px;
+  color:#B5B5AD;
+  margin-top:5px;
+  letter-spacing:.02em;
+}
+
+.bx-socials{
+  margin-top:auto;
+  padding-top:26px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.bx-socials a{
+  font-family:var(--serif);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--ink);
+  background:#fff;
+  border:2px solid #fff;
+  padding:7px 11px;
+  text-decoration:none;
+  transition:background .08s,color .08s;
+}
+.bx-socials a:hover{background:var(--accent);border-color:var(--accent);}
+
+.bx-status{
+  margin-top:20px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--serif);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#B5B5AD;
+}
+.bx-dot{
+  width:9px;height:9px;background:var(--red);
+  display:inline-block;
+  animation:bx-blink 1.4s steps(2) infinite;
+}
+@keyframes bx-blink{50%{opacity:.25;}}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .bx-contact{padding:44px 18px 52px;background-size:32px 32px;}
+  .bx-top{margin-bottom:32px;}
+  .bx-ref{text-align:left;white-space:normal;}
+  .bx-grid{
+    grid-template-columns:1fr;
+    box-shadow:6px 6px 0 var(--line);
+  }
+  .bx-form{padding:28px 22px 30px;}
+  .bx-row2{grid-template-columns:1fr;gap:22px;}
+  .bx-info{border-left:none;border-top:4px solid var(--line);padding:28px 22px 32px;}
+  .bx-title span{box-shadow:4px 4px 0 var(--line);}
+}
+</style>
+</head>
+<body>
+<section class="bx-contact">
+  <div class="bx-wrap">
+
+    <div class="bx-top">
+      <div>
+        <span class="bx-eyebrow">// Say Hello</span>
+        <h1 class="bx-title">Let's Build<br>Something <span>Loud.</span></h1>
+      </div>
+      <div class="bx-ref">
+        FORM REF: <b>CTA-0417</b><br>
+        RESPONSE ETA: <b>&lt; 24 HRS</b><br>
+        STATUS: <b>OPEN FOR WORK</b>
+      </div>
+    </div>
+
+    <div class="bx-grid">
+
+      <!-- FORM -->
+      <form class="bx-form" onsubmit="return false;">
+        <h3>[ 01 ] Drop Us A Line</h3>
+
+        <div class="bx-row2">
+          <div class="bx-field">
+            <label for="bx-name">Full Name <i>*</i></label>
+            <input id="bx-name" type="text" name="name" placeholder="Dana Okonkwo" required>
+          </div>
+          <div class="bx-field">
+            <label for="bx-email">Email Address <i>*</i></label>
+            <input id="bx-email" type="email" name="email" placeholder="dana@studio.co" required>
+          </div>
+        </div>
+
+        <div class="bx-field">
+          <label for="bx-subject">What's This About</label>
+          <input id="bx-subject" type="text" name="subject" placeholder="New brand identity + landing page">
+        </div>
+
+        <div class="bx-field">
+          <label for="bx-message">Your Message <i>*</i></label>
+          <textarea id="bx-message" name="message" placeholder="We're launching a hardware startup in Q3 and need a site that doesn't look like everyone else's. Timeline is tight — can you help?" required></textarea>
+        </div>
+
+        <div class="bx-submit-row">
+          <button class="bx-btn" type="submit">Send It &rarr;</button>
+          <p class="bx-note">No newsletters. No sales bots. A real human replies.</p>
+        </div>
+      </form>
+
+      <!-- INFO -->
+      <aside class="bx-info">
+        <h3>[ 02 ] Direct Lines</h3>
+
+        <div class="bx-block">
+          <div class="k">Email</div>
+          <div class="v"><a href="mailto:hello@blockshop.studio">hello@blockshop.studio</a></div>
+          <small>Best for briefs, quotes &amp; scoping</small>
+        </div>
+
+        <div class="bx-block">
+          <div class="k">Phone</div>
+          <div class="v">+1 (415) 802-3390</div>
+          <small>Mon–Fri, 9:00–17:00 PST</small>
+        </div>
+
+        <div class="bx-block">
+          <div class="k">Studio</div>
+          <div class="v">Unit 4, 219 Iron Street<br>Oakland, CA 94607</div>
+          <small>Visits by appointment only</small>
+        </div>
+
+        <div class="bx-socials">
+          <a href="#">Instagram</a>
+          <a href="#">Dribbble</a>
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+        </div>
+
+        <div class="bx-status">
+          <span class="bx-dot"></span> Inbox is live &amp; monitored
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

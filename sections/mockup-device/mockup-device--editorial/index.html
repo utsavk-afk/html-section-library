@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!-- ===== MOCKUP-DEVICE — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup Device — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6F6B62;
+  --line:#E4E1D8;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --panel:#FFFFFF;
+  --panel-2:#F5F3ED;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.mockup-device{
+  width:100%;
+  padding:104px 64px 112px;
+  position:relative;
+  overflow:hidden;
+}
+/* faint hairline running the full width, sits behind content */
+.mockup-device::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:64px;
+  height:1px;
+  background:var(--line);
+}
+
+.md-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:0.92fr 1.08fr;
+  gap:76px;
+  align-items:center;
+}
+
+/* ---------- LEFT: copy ---------- */
+.md-copy{
+  padding-top:8px;
+  max-width:440px;
+}
+.md-eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:11px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:30px;
+}
+.md-eyebrow .num{
+  color:var(--muted);
+  font-weight:500;
+}
+.md-eyebrow .tick{
+  width:26px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+.md-headline{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:52px;
+  line-height:1.06;
+  letter-spacing:-0.015em;
+  margin-bottom:26px;
+}
+.md-headline em{
+  font-style:italic;
+  color:var(--accent);
+  font-weight:400;
+}
+
+.md-lede{
+  font-size:16.5px;
+  line-height:1.62;
+  color:var(--muted);
+  margin-bottom:34px;
+  max-width:392px;
+}
+
+.md-list{
+  list-style:none;
+  border-top:1px solid var(--line);
+  margin-bottom:38px;
+}
+.md-list li{
+  display:flex;
+  gap:16px;
+  align-items:baseline;
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14.5px;
+  line-height:1.5;
+}
+.md-list .k{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--accent);
+  min-width:26px;
+}
+.md-list .t strong{
+  font-weight:600;
+  color:var(--ink);
+}
+.md-list .t span{
+  color:var(--muted);
+}
+
+.md-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0.01em;
+  color:var(--bg);
+  background:var(--ink);
+  padding:14px 24px;
+  text-decoration:none;
+  border-radius:2px;
+  transition:background .2s ease;
+}
+.md-cta:hover{background:var(--accent);}
+.md-cta .arw{font-size:15px;transform:translateY(0.5px);}
+.md-note{
+  display:block;
+  margin-top:16px;
+  font-size:12.5px;
+  color:var(--muted);
+}
+.md-note b{color:var(--ink);font-weight:600;}
+
+/* ---------- RIGHT: device ---------- */
+.md-stage{
+  position:relative;
+  padding-left:14px;
+}
+/* editorial caption tucked at the corner, asymmetric focal accent */
+.md-stage .stage-tag{
+  position:absolute;
+  top:-34px;
+  right:2px;
+  font-size:10.5px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+}
+
+.browser{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  box-shadow:0 1px 0 rgba(27,26,23,.04),0 26px 48px -30px rgba(27,26,23,.26);
+  overflow:hidden;
+}
+
+/* browser chrome bar */
+.chrome{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:11px 15px;
+  background:var(--panel-2);
+  border-bottom:1px solid var(--line);
+}
+.dots{display:flex;gap:7px;}
+.dots i{width:10px;height:10px;border-radius:50%;display:block;background:#D6D1C6;}
+.dots i:nth-child(1){background:#D98A6A;}
+.dots i:nth-child(2){background:#D9C27A;}
+.dots i:nth-child(3){background:#A9C29A;}
+.urlbar{
+  flex:1;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:5px;
+  padding:6px 12px;
+  font-size:11.5px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--sans);
+}
+.urlbar .lock{
+  width:9px;height:8px;border:1.4px solid var(--muted);border-radius:2px;
+  position:relative;flex:none;margin-top:-1px;
+}
+.urlbar .lock::before{
+  content:"";position:absolute;left:1px;top:-4px;width:5px;height:5px;
+  border:1.4px solid var(--muted);border-bottom:none;border-radius:3px 3px 0 0;
+}
+.urlbar b{color:var(--ink);font-weight:600;}
+
+/* the mocked app UI inside the browser */
+.app{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  min-height:352px;
+}
+.app-side{
+  border-right:1px solid var(--line);
+  padding:20px 16px;
+  background:var(--panel);
+}
+.brandrow{
+  display:flex;align-items:center;gap:9px;margin-bottom:24px;
+}
+.brandrow .mark{
+  width:22px;height:22px;border-radius:6px;background:var(--ink);
+  position:relative;flex:none;
+}
+.brandrow .mark::after{
+  content:"";position:absolute;inset:6px;border:1.6px solid var(--bg);border-radius:2px;
+}
+.brandrow .bn{font-family:var(--serif);font-weight:600;font-size:14px;letter-spacing:-0.01em;}
+
+.nav{list-style:none;display:flex;flex-direction:column;gap:2px;}
+.nav li{
+  font-size:12.5px;color:var(--muted);padding:8px 10px;border-radius:5px;
+  display:flex;align-items:center;gap:9px;
+}
+.nav li .ico{width:13px;height:13px;border:1.5px solid currentColor;border-radius:3px;flex:none;opacity:.7;}
+.nav li.on{background:var(--panel-2);color:var(--ink);font-weight:600;}
+.nav li.on .ico{border-color:var(--accent);background:var(--accent);opacity:1;}
+
+.app-main{padding:22px 24px 26px;}
+.app-head{
+  display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;
+}
+.app-head h4{
+  font-family:var(--serif);font-weight:500;font-size:18px;letter-spacing:-0.01em;margin-bottom:4px;
+}
+.app-head p{font-size:11.5px;color:var(--muted);}
+.app-head .pill{
+  font-size:10.5px;font-weight:600;letter-spacing:0.04em;color:var(--accent);
+  border:1px solid #E7C9BF;background:#FBEEE9;border-radius:20px;padding:5px 11px;
+}
+
+/* stat row — varied widths, not a uniform grid */
+.stats{display:flex;gap:14px;margin-bottom:22px;}
+.stat{
+  flex:1;border:1px solid var(--line);border-radius:7px;padding:13px 14px;background:var(--panel);
+}
+.stat:first-child{flex:1.3;background:var(--panel-2);border-color:var(--line);}
+.stat .lab{font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px;}
+.stat .val{font-family:var(--serif);font-size:23px;font-weight:500;letter-spacing:-0.01em;line-height:1;}
+.stat .val small{font-size:12px;color:var(--muted);font-weight:400;font-family:var(--sans);margin-left:3px;}
+.stat .val .up{color:var(--accent);font-size:12px;font-family:var(--sans);margin-left:4px;}
+
+/* mini bar chart drawn in CSS */
+.chart{
+  border:1px solid var(--line);border-radius:7px;padding:15px 16px 12px;background:var(--panel);
+}
+.chart .chead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.chart .chead span{font-size:11px;font-weight:600;color:var(--ink);}
+.chart .chead em{font-style:normal;font-size:10.5px;color:var(--muted);}
+.bars{display:flex;align-items:flex-end;gap:9px;height:76px;}
+.bars .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;}
+.bars .bar{width:100%;background:var(--panel-2);border-radius:3px 3px 0 0;}
+.bars .col.hi .bar{background:var(--accent);}
+.bars .col .day{font-size:8.5px;color:var(--muted);text-align:center;letter-spacing:.02em;}
+
+@media(max-width:640px){
+  .mockup-device{padding:64px 22px 72px;}
+  .mockup-device::before{top:40px;}
+  .md-inner{grid-template-columns:1fr;gap:44px;}
+  .md-headline{font-size:38px;}
+  .md-copy{max-width:none;}
+  .md-stage{padding-left:0;}
+  .md-stage .stage-tag{position:static;display:block;margin-bottom:12px;text-align:left;}
+  .app{grid-template-columns:1fr;}
+  .app-side{display:none;}
+  .stats{flex-wrap:wrap;}
+  .stat,.stat:first-child{flex:1 1 40%;}
+}
+</style>
+</head>
+<body>
+<section class="mockup-device">
+  <div class="md-inner">
+
+    <!-- LEFT — copy -->
+    <div class="md-copy">
+      <p class="md-eyebrow"><span class="tick"></span> The dashboard <span class="num">/ 02</span></p>
+      <h1 class="md-headline">See every retainer<br>in one <em>quiet</em> view.</h1>
+      <p class="md-lede">Ledger pulls hours, invoices, and rank movement into a single weekly read — so the Monday client call takes four minutes, not forty.</p>
+
+      <ul class="md-list">
+        <li><span class="k">01</span><span class="t"><strong>Live pacing.</strong> <span>Know which accounts are 20% under budget before the month closes.</span></span></li>
+        <li><span class="k">02</span><span class="t"><strong>One export.</strong> <span>White-label the whole board as a branded PDF in a click.</span></span></li>
+      </ul>
+
+      <a class="md-cta" href="#">Watch the 90-second tour <span class="arw">&rarr;</span></a>
+      <span class="md-note">No card needed. <b>Free while in beta.</b></span>
+    </div>
+
+    <!-- RIGHT — device -->
+    <div class="md-stage">
+      <span class="stage-tag">Actual product · v2.4</span>
+
+      <div class="browser">
+        <div class="chrome">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="urlbar"><span class="lock"></span> app.ledger.co<b>/overview</b></div>
+        </div>
+
+        <div class="app">
+          <!-- sidebar -->
+          <aside class="app-side">
+            <div class="brandrow"><span class="mark"></span><span class="bn">Ledger</span></div>
+            <ul class="nav">
+              <li class="on"><span class="ico"></span> Overview</li>
+              <li><span class="ico"></span> Clients</li>
+              <li><span class="ico"></span> Invoices</li>
+              <li><span class="ico"></span> Reports</li>
+              <li><span class="ico"></span> Settings</li>
+            </ul>
+          </aside>
+
+          <!-- main -->
+          <div class="app-main">
+            <div class="app-head">
+              <div>
+                <h4>This week</h4>
+                <p>14 active retainers · Jul 20–26</p>
+              </div>
+              <span class="pill">On pace</span>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <div class="lab">Billable hrs</div>
+                <div class="val">218<small>/ 260</small></div>
+              </div>
+              <div class="stat">
+                <div class="lab">Collected</div>
+                <div class="val">$41k<span class="up">+9%</span></div>
+              </div>
+              <div class="stat">
+                <div class="lab">Avg rank</div>
+                <div class="val">6.2</div>
+              </div>
+            </div>
+
+            <div class="chart">
+              <div class="chead"><span>Hours logged</span><em>Mon–Sun</em></div>
+              <div class="bars">
+                <div class="col"><span class="bar" style="height:34%"></span><span class="day">M</span></div>
+                <div class="col"><span class="bar" style="height:58%"></span><span class="day">T</span></div>
+                <div class="col hi"><span class="bar" style="height:82%"></span><span class="day">W</span></div>
+                <div class="col"><span class="bar" style="height:46%"></span><span class="day">T</span></div>
+                <div class="col"><span class="bar" style="height:70%"></span><span class="day">F</span></div>
+                <div class="col"><span class="bar" style="height:22%"></span><span class="day">S</span></div>
+                <div class="col"><span class="bar" style="height:12%"></span><span class="day">S</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

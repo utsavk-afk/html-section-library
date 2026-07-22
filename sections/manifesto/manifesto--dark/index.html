@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifesto — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== MANIFESTO — DARK / LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --bg-raise:#17171c;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --line-soft:#212127;
+  --amber:#F59E42;
+  --amber-dim:#c77c31;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Inter",system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.manifesto{
+  width:100%;
+  padding:112px clamp(24px,6vw,96px) 104px;
+}
+.manifesto__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.manifesto__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:44px;
+}
+.manifesto__eyebrow::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--amber);
+}
+
+/* ---- asymmetric two-column: thesis left, principles right ---- */
+.manifesto__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);
+  column-gap:clamp(48px,7vw,112px);
+  align-items:start;
+}
+
+/* ---- thesis ---- */
+.thesis{
+  padding-top:6px;
+}
+.thesis h1{
+  font-family:"Fraunces",Georgia,serif;
+  font-weight:400;
+  font-size:clamp(2.6rem,5.4vw,4.4rem);
+  line-height:1.02;
+  letter-spacing:-0.015em;
+  text-wrap:balance;
+  margin-bottom:36px;
+}
+.thesis h1 em{
+  font-style:italic;
+  font-weight:500;
+  color:var(--amber);
+}
+.thesis h1 .mark{
+  position:relative;
+  white-space:nowrap;
+}
+.thesis h1 .mark::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  bottom:0.04em;
+  height:2px;
+  background:var(--amber);
+  opacity:.55;
+}
+.thesis p{
+  max-width:38ch;
+  color:var(--muted);
+  font-size:1.0625rem;
+  line-height:1.62;
+}
+.thesis .sig{
+  margin-top:40px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:13px;
+  letter-spacing:.02em;
+  color:var(--muted);
+}
+.thesis .sig b{
+  color:var(--ink);
+  font-weight:600;
+}
+.thesis .sig span{
+  width:1px;height:22px;background:var(--line);
+}
+
+/* ---- numbered principles ---- */
+.principles{
+  border-top:1px solid var(--line);
+}
+.principle{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  column-gap:22px;
+  padding:26px 0 24px;
+  border-bottom:1px solid var(--line-soft);
+}
+.principle:last-child{border-bottom:0;}
+.principle__num{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:15px;
+  font-weight:500;
+  color:var(--amber);
+  font-variant-numeric:tabular-nums;
+  padding-top:3px;
+  min-width:2ch;
+}
+.principle__body h3{
+  font-size:1.0625rem;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  margin-bottom:6px;
+}
+.principle__body p{
+  font-size:0.9375rem;
+  color:var(--muted);
+  line-height:1.56;
+  max-width:44ch;
+}
+.principle:hover .principle__num{color:var(--ink);}
+.principle{transition:background-color .2s ease;}
+.principle:hover{background:var(--bg-raise);}
+
+@media (max-width:900px){
+  .manifesto__grid{
+    grid-template-columns:1fr;
+    row-gap:56px;
+  }
+  .thesis p{max-width:52ch;}
+}
+
+@media (max-width:640px){
+  .manifesto{padding:76px 24px 72px;}
+  .manifesto__eyebrow{margin-bottom:34px;}
+  .thesis h1{margin-bottom:28px;}
+  .principle{grid-template-columns:auto 1fr;column-gap:16px;padding:22px 0 20px;}
+  .thesis .sig{margin-top:32px;flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+<section class="manifesto" aria-labelledby="manifesto-title">
+  <div class="manifesto__inner">
+    <span class="manifesto__eyebrow">What we refuse to compromise</span>
+
+    <div class="manifesto__grid">
+
+      <div class="thesis">
+        <h1 id="manifesto-title">
+          Software is not a<br>
+          feature race. It is a<br>
+          <em>promise</em> you keep at <span class="mark">3 a.m.</span>
+        </h1>
+        <p>
+          Anyone can ship fast. We ship things that still make sense
+          six releases later — when the founder is asleep, the docs are
+          stale, and the only thing holding the build together is the
+          decision you made on purpose.
+        </p>
+        <div class="sig">
+          <b>The Longform Studio</b>
+          <span></span>
+          <em style="font-family:'Fraunces',serif;font-style:italic;">est. one stubborn opinion</em>
+        </div>
+      </div>
+
+      <ol class="principles" aria-label="Our principles">
+        <li class="principle">
+          <div class="principle__num">01</div>
+          <div class="principle__body">
+            <h3>Boring on the outside, exact on the inside.</h3>
+            <p>A button that always does the same thing beats a clever one that surprises you twice a year. Predictable is a feature.</p>
+          </div>
+        </li>
+        <li class="principle">
+          <div class="principle__num">02</div>
+          <div class="principle__body">
+            <h3>We delete more than we add.</h3>
+            <p>Every line is a liability someone maintains at 3 a.m. If it can go, it goes — the best pull request is often red.</p>
+          </div>
+        </li>
+        <li class="principle">
+          <div class="principle__num">03</div>
+          <div class="principle__body">
+            <h3>The error message is the product.</h3>
+            <p>Nobody remembers the happy path. They remember whether you told them what broke and exactly how to fix it.</p>
+          </div>
+        </li>
+        <li class="principle">
+          <div class="principle__num">04</div>
+          <div class="principle__body">
+            <h3>Taste is a spec, not a garnish.</h3>
+            <p>Spacing, rhythm, and the right word are decisions with consequences — not the thing you tidy up after the deadline.</p>
+          </div>
+        </li>
+        <li class="principle">
+          <div class="principle__num">05</div>
+          <div class="principle__body">
+            <h3>Ship it slower, own it longer.</h3>
+            <p>We put our name on the maintenance, not just the launch. If we can't stand behind it in a year, it doesn't go out.</p>
+          </div>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

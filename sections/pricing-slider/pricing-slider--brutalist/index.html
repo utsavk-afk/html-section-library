@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Slider — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== PRICING-SLIDER — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --line:3px solid var(--ink);
+  --line-thick:4px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+
+.ps-sec{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:64px 40px 72px;
+  border-top:6px solid var(--ink);
+  border-bottom:6px solid var(--ink);
+}
+.ps-wrap{max-width:1440px;margin:0 auto;}
+
+/* header row */
+.ps-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  border-bottom:var(--line-thick);
+  padding-bottom:20px;
+  margin-bottom:40px;
+}
+.ps-tag{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 12px;
+  display:inline-block;
+  margin-bottom:16px;
+}
+.ps-h1{
+  font-size:clamp(34px,5vw,60px);
+  font-weight:900;
+  line-height:0.92;
+  letter-spacing:-1.5px;
+  text-transform:uppercase;
+  max-width:640px;
+}
+.ps-h1 mark{background:var(--acid);color:var(--ink);padding:0 6px;}
+.ps-note{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.5;
+  max-width:260px;
+  text-align:right;
+  border-left:var(--line);
+  padding-left:16px;
+}
+
+/* main grid — asymmetric: slider wide, price panel narrow */
+.ps-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:36px;
+  align-items:stretch;
+}
+
+/* ---- slider column ---- */
+.ps-panel{
+  background:var(--white);
+  border:var(--line-thick);
+  box-shadow:var(--shadow);
+  padding:34px 34px 40px;
+}
+.ps-panel-top{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+.ps-panel-label{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.ps-usage{
+  font-size:44px;
+  font-weight:900;
+  letter-spacing:-1px;
+  line-height:1;
+}
+.ps-usage span{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:0;}
+.ps-sub{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--ink);
+  margin-bottom:38px;
+}
+.ps-sub b{background:var(--acid);padding:1px 5px;}
+
+/* slider track */
+.ps-slider{position:relative;height:34px;margin:0 12px 10px;}
+.ps-track{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  left:0;right:0;
+  height:16px;
+  background:var(--white);
+  border:var(--line);
+}
+.ps-fill{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  left:0;
+  width:62%;
+  height:16px;
+  background:var(--acid);
+  border:var(--line);
+}
+.ps-thumb{
+  position:absolute;
+  top:50%;
+  left:62%;
+  transform:translate(-50%,-50%);
+  width:30px;height:30px;
+  background:var(--ink);
+  border:3px solid var(--ink);
+  box-shadow:var(--shadow-sm);
+  cursor:grab;
+  z-index:3;
+}
+.ps-thumb::after{
+  content:"||";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--acid);
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:-1px;
+}
+/* ticks */
+.ps-ticks{
+  display:flex;
+  justify-content:space-between;
+  margin:0 12px;
+  padding-top:6px;
+  border-top:var(--line);
+}
+.ps-tick{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.5px;
+  color:var(--ink);
+  position:relative;
+  padding-top:12px;
+}
+.ps-tick::before{
+  content:"";
+  position:absolute;
+  top:0;left:50%;
+  width:2px;height:8px;
+  background:var(--ink);
+  transform:translateX(-50%);
+}
+.ps-tick.on{color:var(--red);}
+.ps-tick.on::before{background:var(--red);height:12px;width:3px;}
+
+/* feature chips under slider */
+.ps-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:34px;
+  border-top:var(--line);
+  padding-top:26px;
+}
+.ps-chip{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  padding:8px 12px;
+  border:var(--line);
+  background:var(--paper);
+}
+.ps-chip.hot{background:var(--ink);color:var(--white);}
+.ps-chip .ck{color:var(--red);margin-right:6px;}
+
+/* ---- price column ---- */
+.ps-price{
+  background:var(--ink);
+  color:var(--white);
+  border:var(--line-thick);
+  box-shadow:var(--shadow-red);
+  padding:32px 30px 30px;
+  display:flex;
+  flex-direction:column;
+}
+.ps-plan-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:3px solid var(--white);
+  padding-bottom:16px;
+  margin-bottom:22px;
+}
+.ps-plan-name{
+  font-size:26px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-0.5px;
+}
+.ps-plan-badge{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  background:var(--acid);
+  color:var(--ink);
+  padding:5px 9px;
+}
+.ps-amount{
+  display:flex;
+  align-items:flex-start;
+  gap:4px;
+  line-height:0.85;
+}
+.ps-cur{font-size:26px;font-weight:800;margin-top:8px;}
+.ps-num{
+  font-size:88px;
+  font-weight:900;
+  letter-spacing:-4px;
+  color:var(--acid);
+}
+.ps-per{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  color:var(--white);
+  align-self:flex-end;
+  margin-bottom:16px;
+}
+.ps-billed{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--white);
+  opacity:0.85;
+  margin:6px 0 22px;
+}
+.ps-billed s{color:var(--red);opacity:1;}
+
+.ps-summary{list-style:none;margin:0 0 24px;}
+.ps-summary li{
+  font-family:var(--mono);
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:9px 0;
+  border-bottom:1px dashed rgba(255,255,255,0.35);
+}
+.ps-summary li span:last-child{font-weight:700;color:var(--acid);}
+
+.ps-cta{
+  margin-top:auto;
+  display:block;
+  width:100%;
+  text-align:center;
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:var(--ink);
+  background:var(--acid);
+  border:var(--line-thick);
+  box-shadow:5px 5px 0 var(--red);
+  padding:16px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .08s,box-shadow .08s;
+}
+.ps-cta:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--red);}
+.ps-fine{
+  font-family:var(--mono);
+  font-size:11px;
+  text-align:center;
+  margin-top:14px;
+  opacity:0.8;
+}
+
+@media(max-width:640px){
+  .ps-sec{padding:44px 20px 52px;}
+  .ps-head{flex-direction:column;align-items:flex-start;gap:14px;}
+  .ps-note{text-align:left;border-left:none;border-top:var(--line);padding:14px 0 0;max-width:none;}
+  .ps-grid{grid-template-columns:1fr;gap:24px;}
+  .ps-panel,.ps-price{padding:26px 20px 30px;}
+  .ps-slider{margin:0 4px 10px;}
+  .ps-thumb,.ps-fill,.ps-track,.ps-ticks{margin-left:0;margin-right:0;}
+  .ps-num{font-size:70px;}
+  .ps-usage{font-size:36px;}
+}
+</style>
+</head>
+<body>
+<section class="ps-sec">
+  <div class="ps-wrap">
+
+    <div class="ps-head">
+      <div>
+        <span class="ps-tag">/// Metered Billing</span>
+        <h1 class="ps-h1">Drag The Bar. <mark>Pay For What You Ship.</mark></h1>
+      </div>
+      <p class="ps-note">No seats. No lock-in. Priced per 1K API events processed each month.</p>
+    </div>
+
+    <div class="ps-grid">
+
+      <!-- SLIDER PANEL -->
+      <div class="ps-panel">
+        <div class="ps-panel-top">
+          <span class="ps-panel-label">Monthly Volume</span>
+          <div class="ps-usage">750K <span>events / mo</span></div>
+        </div>
+        <p class="ps-sub">You are at <b>62%</b> of the Growth band. Overage after 1M billed at 0.9¢ / 1K.</p>
+
+        <div class="ps-slider">
+          <div class="ps-track"></div>
+          <div class="ps-fill"></div>
+          <div class="ps-thumb"></div>
+        </div>
+        <div class="ps-ticks">
+          <span class="ps-tick">10K</span>
+          <span class="ps-tick">100K</span>
+          <span class="ps-tick">250K</span>
+          <span class="ps-tick on">750K</span>
+          <span class="ps-tick">1M</span>
+          <span class="ps-tick">5M+</span>
+        </div>
+
+        <div class="ps-chips">
+          <span class="ps-chip hot"><span class="ck">◆</span>Growth Band</span>
+          <span class="ps-chip"><span class="ck">✓</span>Unlimited Projects</span>
+          <span class="ps-chip"><span class="ck">✓</span>90-Day Log Retention</span>
+          <span class="ps-chip"><span class="ck">✓</span>Slack + PagerDuty Alerts</span>
+          <span class="ps-chip"><span class="ck">✓</span>SOC 2 Export</span>
+          <span class="ps-chip"><span class="ck">✓</span>6 Seats Included</span>
+        </div>
+      </div>
+
+      <!-- PRICE PANEL -->
+      <div class="ps-price">
+        <div class="ps-plan-row">
+          <span class="ps-plan-name">Growth</span>
+          <span class="ps-plan-badge">★ Most Picked</span>
+        </div>
+
+        <div class="ps-amount">
+          <span class="ps-cur">$</span>
+          <span class="ps-num">289</span>
+          <span class="ps-per">/mo</span>
+        </div>
+        <p class="ps-billed">Billed monthly. <s>$3,468/yr</s> → $2,890/yr on annual.</p>
+
+        <ul class="ps-summary">
+          <li><span>Included volume</span><span>750K / mo</span></li>
+          <li><span>Team seats</span><span>6</span></li>
+          <li><span>Overage rate</span><span>0.9¢ / 1K</span></li>
+          <li><span>Support SLA</span><span>4-hour</span></li>
+        </ul>
+
+        <a href="#start" class="ps-cta">Start On Growth →</a>
+        <p class="ps-fine">14-day trial · cancel any time · no card to start</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

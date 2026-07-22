@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!-- ===== SCREENSHOTS — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screenshots — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Archivo+Expanded:wght@700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EF;
+  --muted:#8A8A82;
+  --line:#242422;
+  --accent:#C7F13B;      /* lime */
+  --accent-2:#FF4D9D;    /* magenta */
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.acid-shots{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px clamp(20px,5vw,96px) 88px;
+  overflow:hidden;
+  position:relative;
+}
+.acid-shots::before{
+  content:"";
+  position:absolute;
+  top:-140px;right:-120px;
+  width:420px;height:420px;
+  background:repeating-linear-gradient(45deg,transparent 0 12px,rgba(199,241,59,.05) 12px 13px);
+  pointer-events:none;
+}
+
+.acid-wrap{max-width:1440px;margin:0 auto;position:relative;z-index:1;}
+
+/* ---- header row: asymmetric ---- */
+.acid-head{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:40px;
+  align-items:end;
+  border-bottom:2px solid var(--line);
+  padding-bottom:36px;
+  margin-bottom:52px;
+}
+.acid-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--bg);background:var(--accent);
+  padding:6px 12px;border-radius:100px;margin-bottom:20px;font-weight:700;
+}
+.acid-eyebrow b{width:7px;height:7px;background:var(--bg);border-radius:50%;}
+.acid-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(38px,6.6vw,88px);
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.acid-title .pop{color:var(--accent);}
+.acid-title .mag{color:var(--accent-2);}
+.acid-sub{
+  font-size:16px;line-height:1.5;color:var(--muted);
+  max-width:38ch;padding-bottom:6px;
+}
+.acid-sub strong{color:var(--ink);font-weight:700;}
+
+/* ---- main layout: big panel + callouts ---- */
+.acid-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.62fr) minmax(260px,1fr);
+  gap:clamp(24px,3vw,52px);
+  align-items:start;
+}
+
+/* ===== the CSS-drawn app UI panel ===== */
+.app-panel{
+  position:relative;
+  background:#111310;
+  border:2px solid var(--line);
+  border-radius:20px;
+  box-shadow:18px 18px 0 rgba(199,241,59,.14);
+  overflow:hidden;
+}
+.app-bar{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  border-bottom:2px solid var(--line);
+  background:#0D0F0C;
+}
+.dots{display:flex;gap:7px;}
+.dots i{width:12px;height:12px;border-radius:50%;background:#2c2c28;}
+.dots i:nth-child(1){background:var(--accent-2);}
+.dots i:nth-child(2){background:var(--accent);}
+.url{
+  flex:1;
+  font-family:var(--mono);font-size:12px;color:var(--muted);
+  background:#141612;border:1px solid var(--line);
+  padding:6px 12px;border-radius:8px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.url b{color:var(--accent);font-weight:400;}
+.app-tag{
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  color:var(--bg);background:var(--accent);
+  padding:4px 9px;border-radius:6px;letter-spacing:.04em;
+}
+
+.app-body{display:grid;grid-template-columns:170px 1fr;min-height:360px;}
+
+/* sidebar */
+.app-side{
+  background:#0D0F0C;border-right:2px solid var(--line);
+  padding:20px 14px;display:flex;flex-direction:column;gap:6px;
+}
+.side-brand{
+  font-family:var(--serif);font-weight:900;font-size:18px;
+  text-transform:uppercase;letter-spacing:-.01em;margin-bottom:18px;
+  display:flex;align-items:center;gap:8px;
+}
+.side-brand span{width:20px;height:20px;background:var(--accent-2);border-radius:6px;display:inline-block;}
+.nav-i{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:700;color:var(--muted);
+  padding:9px 11px;border-radius:8px;cursor:default;
+}
+.nav-i b{width:14px;height:14px;border:2px solid currentColor;border-radius:4px;flex:none;}
+.nav-i.on{background:var(--accent);color:var(--bg);}
+.nav-i.on b{border-color:var(--bg);background:var(--bg);}
+
+/* content area */
+.app-main{padding:22px 24px;display:flex;flex-direction:column;gap:18px;}
+.main-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.main-h{font-family:var(--serif);font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:-.01em;}
+.main-h em{font-style:normal;color:var(--accent);}
+.btn-pill{
+  font-family:var(--sans);font-weight:800;font-size:12px;
+  background:var(--accent-2);color:var(--bg);
+  padding:9px 16px;border-radius:100px;white-space:nowrap;letter-spacing:.02em;
+}
+
+/* stat chips */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.stat{
+  background:#161813;border:1px solid var(--line);
+  border-radius:12px;padding:13px 14px;
+}
+.stat .k{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+.stat .v{font-family:var(--serif);font-weight:900;font-size:26px;line-height:1.1;margin-top:6px;}
+.stat:nth-child(1) .v{color:var(--accent);}
+.stat:nth-child(3) .v{color:var(--accent-2);}
+.stat .d{font-size:11px;font-weight:700;color:var(--muted);margin-top:2px;}
+
+/* chart */
+.chart{
+  background:#161813;border:1px solid var(--line);border-radius:12px;
+  padding:16px 16px 12px;flex:1;min-height:120px;
+  display:flex;flex-direction:column;
+}
+.chart .ch-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.chart .ch-h span{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+.chart .ch-h b{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:700;}
+.bars{display:flex;align-items:flex-end;gap:10px;height:96px;}
+.bars i{flex:1;background:#26281f;border-radius:4px 4px 0 0;position:relative;}
+.bars i::after{content:"";position:absolute;inset:auto 0 0 0;height:var(--h);background:var(--accent);border-radius:4px 4px 0 0;}
+.bars i:nth-child(4)::after{background:var(--accent-2);}
+.bars i:nth-child(4){box-shadow:0 0 0 2px var(--accent-2);}
+
+/* ---- callouts column ---- */
+.callouts{display:flex;flex-direction:column;gap:18px;}
+.caption{
+  font-family:var(--mono);font-size:12.5px;line-height:1.5;color:var(--muted);
+  border-left:3px solid var(--accent);padding:2px 0 2px 14px;
+}
+.caption b{color:var(--ink);font-weight:700;}
+
+.call{
+  position:relative;
+  border:2px solid var(--line);border-radius:16px;
+  padding:20px 20px 18px;background:#111310;
+}
+.call:nth-child(2){border-color:var(--accent);box-shadow:8px 8px 0 rgba(199,241,59,.12);}
+.call:nth-child(4){border-color:var(--accent-2);box-shadow:8px 8px 0 rgba(255,77,157,.12);}
+.call .num{
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--bg);width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;position:absolute;top:-13px;left:18px;
+}
+.call:nth-child(2) .num{background:var(--accent);}
+.call:nth-child(3) .num{background:var(--ink);}
+.call:nth-child(4) .num{background:var(--accent-2);}
+.call h4{
+  font-family:var(--serif);font-weight:800;font-size:17px;
+  text-transform:uppercase;letter-spacing:-.01em;margin:8px 0 7px;
+}
+.call p{font-size:13.5px;line-height:1.5;color:var(--muted);}
+.call p b{color:var(--ink);font-weight:700;}
+
+.copybar{
+  display:flex;align-items:center;gap:12px;
+  background:var(--accent);color:var(--bg);
+  border-radius:100px;padding:12px 12px 12px 20px;
+  font-weight:800;font-size:13.5px;
+}
+.copybar code{font-family:var(--mono);font-size:12.5px;font-weight:700;}
+.copybar .go{
+  margin-left:auto;background:var(--bg);color:var(--accent);
+  padding:8px 16px;border-radius:100px;font-weight:800;font-size:12px;white-space:nowrap;
+}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .acid-shots{padding:44px 18px 60px;}
+  .acid-head{grid-template-columns:1fr;gap:22px;align-items:start;}
+  .acid-sub{max-width:100%;}
+  .acid-grid{grid-template-columns:1fr;}
+  .app-body{grid-template-columns:1fr;}
+  .app-side{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:2px solid var(--line);}
+  .side-brand{width:100%;margin-bottom:6px;}
+  .nav-i{font-size:12px;padding:7px 10px;}
+  .stat-row{grid-template-columns:1fr;}
+  .app-panel{box-shadow:10px 10px 0 rgba(199,241,59,.14);}
+}
+</style>
+</head>
+<body>
+<section class="acid-shots">
+  <div class="acid-wrap">
+
+    <div class="acid-head">
+      <div>
+        <span class="acid-eyebrow"><b></b>See it in the dashboard</span>
+        <h1 class="acid-title">Every metric,<br><span class="pop">loud</span> and <span class="mag">legible</span>.</h1>
+      </div>
+      <p class="acid-sub">This is the actual <strong>Pulse</strong> control screen — no mockup filter, no fake data. Watch conversions, spend, and churn update on one board that never makes you squint.</p>
+    </div>
+
+    <div class="acid-grid">
+
+      <!-- ===== APP UI PANEL (all CSS) ===== -->
+      <div class="app-panel" role="img" aria-label="Screenshot of the Pulse analytics dashboard">
+        <div class="app-bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="url">app.pulse.io/<b>workspace/growth-q3</b></div>
+          <span class="app-tag">LIVE</span>
+        </div>
+
+        <div class="app-body">
+          <aside class="app-side">
+            <div class="side-brand"><span></span>Pulse</div>
+            <div class="nav-i on"><b></b>Overview</div>
+            <div class="nav-i"><b></b>Funnels</div>
+            <div class="nav-i"><b></b>Cohorts</div>
+            <div class="nav-i"><b></b>Revenue</div>
+            <div class="nav-i"><b></b>Alerts</div>
+          </aside>
+
+          <div class="app-main">
+            <div class="main-top">
+              <h2 class="main-h">Growth <em>/ Q3</em></h2>
+              <span class="btn-pill">Export CSV</span>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat"><div class="k">Signups</div><div class="v">12,480</div><div class="d">+18.2% wk</div></div>
+              <div class="stat"><div class="k">Active</div><div class="v">4,902</div><div class="d">+4.1% wk</div></div>
+              <div class="stat"><div class="k">Churn</div><div class="v">1.9%</div><div class="d">-0.6% wk</div></div>
+            </div>
+
+            <div class="chart">
+              <div class="ch-h"><span>Conversions / 7d</span><b>PEAK · THU</b></div>
+              <div class="bars">
+                <i style="--h:42%"></i>
+                <i style="--h:58%"></i>
+                <i style="--h:71%"></i>
+                <i style="--h:96%"></i>
+                <i style="--h:64%"></i>
+                <i style="--h:80%"></i>
+                <i style="--h:53%"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CAPTION + CALLOUTS ===== -->
+      <div class="callouts">
+        <p class="caption">Above: the <b>Growth / Q3 overview</b>, captured at 2:14pm on a live account pushing 12k weekly signups.</p>
+
+        <div class="call">
+          <div class="num">01</div>
+          <h4>Numbers you can read from across the room</h4>
+          <p>Key figures render at <b>26px minimum</b> in heavy Archivo — no 11px grey-on-grey stat you have to lean in for.</p>
+        </div>
+
+        <div class="call">
+          <div class="num">02</div>
+          <h4>One color means "look here"</h4>
+          <p>Only the <b>anomaly bar</b> turns magenta. Everything routine stays lime-on-black so the outlier can't hide.</p>
+        </div>
+
+        <div class="call">
+          <div class="num">03</div>
+          <h4>Export in one tap, not five menus</h4>
+          <p>The <b>Export CSV</b> pill lives on the panel itself — grab the exact view you're staring at, no config screen.</p>
+        </div>
+
+        <div class="copybar">
+          Paste it in
+          <code>npx pulse init</code>
+          <span class="go">Copy →</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

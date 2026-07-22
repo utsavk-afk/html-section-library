@@ -1,0 +1,269 @@
+<!-- /* ===== TESTIMONIAL-GRID — MINIMAL ===== */ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Grid — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e5e3;
+  --accent:#c0492b;
+  --serif:'Inter',sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+.tg{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:104px 40px 112px;
+  -webkit-font-smoothing:antialiased;
+}
+.tg__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* header — asymmetric, left focal point */
+.tg__head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:48px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:48px;
+}
+.tg__eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.tg__title{
+  font-family:var(--serif);
+  font-size:38px;
+  line-height:1.08;
+  letter-spacing:-0.03em;
+  font-weight:600;
+  max-width:15ch;
+}
+.tg__meta{
+  flex-shrink:0;
+  text-align:right;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+  padding-bottom:4px;
+}
+.tg__meta strong{
+  display:block;
+  color:var(--ink);
+  font-size:28px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+}
+
+/* masonry via columns for varied heights */
+.tg__grid{
+  column-count:3;
+  column-gap:24px;
+}
+.tg__card{
+  break-inside:avoid;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:26px 26px 24px;
+  margin-bottom:24px;
+  background:var(--bg);
+  transition:box-shadow .2s ease, border-color .2s ease;
+}
+.tg__card:hover{
+  box-shadow:0 2px 14px rgba(20,20,20,.05);
+  border-color:#d8d4d0;
+}
+
+/* feature quote — larger, accent-tinted, keeps top-left weight */
+.tg__card--feature{
+  padding:34px 32px 30px;
+  border-radius:12px;
+  border-color:var(--ink);
+}
+.tg__card--feature .tg__quote{
+  font-family:var(--serif);
+  font-size:23px;
+  line-height:1.4;
+  letter-spacing:-0.02em;
+  font-weight:500;
+}
+.tg__card--feature .tg__mark{
+  color:var(--accent);
+}
+
+.tg__mark{
+  font-family:var(--serif);
+  font-size:34px;
+  line-height:0.6;
+  color:var(--line);
+  display:block;
+  margin-bottom:14px;
+  font-weight:700;
+}
+.tg__quote{
+  font-size:15.5px;
+  line-height:1.6;
+  color:var(--ink);
+  margin-bottom:22px;
+  font-weight:400;
+}
+.tg__quote--sm{
+  font-size:14.5px;
+}
+
+/* attribution row */
+.tg__by{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+.tg__avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:0.01em;
+  color:#fff;
+}
+.tg__avatar--a{background:#141414;}
+.tg__avatar--b{background:#c0492b;}
+.tg__avatar--c{background:#7a6f66;}
+.tg__avatar--d{background:#3d3a37;}
+.tg__avatar--e{background:#9a5a49;}
+.tg__name{
+  font-size:14px;
+  font-weight:600;
+  line-height:1.3;
+}
+.tg__role{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.4;
+}
+
+@media(max-width:640px){
+  .tg{padding:64px 20px 72px;}
+  .tg__head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:24px;
+    margin-bottom:32px;
+  }
+  .tg__title{font-size:29px;}
+  .tg__meta{text-align:left;}
+  .tg__grid{column-count:1;}
+  .tg__card,.tg__card--feature{padding:24px 22px 22px;}
+  .tg__card--feature .tg__quote{font-size:20px;}
+}
+</style>
+</head>
+<body>
+<section class="tg">
+  <div class="tg__inner">
+
+    <div class="tg__head">
+      <div>
+        <div class="tg__eyebrow">From the field</div>
+        <h2 class="tg__title">What teams say after their first month on Ledger.</h2>
+      </div>
+      <div class="tg__meta">
+        <strong>4.9/5</strong>
+        avg rating across 1,240 verified reviews
+      </div>
+    </div>
+
+    <div class="tg__grid">
+
+      <!-- feature -->
+      <figure class="tg__card tg__card--feature">
+        <span class="tg__mark">&ldquo;</span>
+        <blockquote class="tg__quote">We closed the books in three days instead of eleven. The reconciliation view alone paid for the whole year. I stopped dreading month-end.</blockquote>
+        <figcaption class="tg__by">
+          <span class="tg__avatar tg__avatar--b">RN</span>
+          <span>
+            <span class="tg__name">Rekha Nair</span>
+            <span class="tg__role">Head of Finance, Meridian Foods</span>
+          </span>
+        </figcaption>
+      </figure>
+
+      <figure class="tg__card">
+        <span class="tg__mark">&ldquo;</span>
+        <blockquote class="tg__quote tg__quote--sm">Onboarding took an afternoon, not a quarter. Our accountant was up and running before lunch.</blockquote>
+        <figcaption class="tg__by">
+          <span class="tg__avatar tg__avatar--a">DO</span>
+          <span>
+            <span class="tg__name">Daniel Osei</span>
+            <span class="tg__role">Founder, Kettle & Co.</span>
+          </span>
+        </figcaption>
+      </figure>
+
+      <figure class="tg__card">
+        <span class="tg__mark">&ldquo;</span>
+        <blockquote class="tg__quote">I audited four tools before this. Ledger was the only one that let me export a clean trail without emailing support. The API docs are honest about their limits, which I respect.</blockquote>
+        <figcaption class="tg__by">
+          <span class="tg__avatar tg__avatar--c">SV</span>
+          <span>
+            <span class="tg__name">Sofia Vargas</span>
+            <span class="tg__role">Controller, Northline Logistics</span>
+          </span>
+        </figcaption>
+      </figure>
+
+      <figure class="tg__card">
+        <span class="tg__mark">&ldquo;</span>
+        <blockquote class="tg__quote tg__quote--sm">Support replied in nine minutes with an actual fix, not a help-center link. Rare.</blockquote>
+        <figcaption class="tg__by">
+          <span class="tg__avatar tg__avatar--d">MK</span>
+          <span>
+            <span class="tg__name">Marcus Klein</span>
+            <span class="tg__role">Ops Lead, Brightseed Studio</span>
+          </span>
+        </figcaption>
+      </figure>
+
+      <figure class="tg__card">
+        <span class="tg__mark">&ldquo;</span>
+        <blockquote class="tg__quote">Switched our five entities over a weekend. Multi-currency just worked, no spreadsheet gymnastics, no rounding surprises at year end.</blockquote>
+        <figcaption class="tg__by">
+          <span class="tg__avatar tg__avatar--e">TA</span>
+          <span>
+            <span class="tg__name">Thandi Abara</span>
+            <span class="tg__role">CFO, Cove Interiors</span>
+          </span>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

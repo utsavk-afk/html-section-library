@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Logo Grid — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CLIENT-LOGO-GRID — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --muted:#8A8A82;
+  --line:#111111;
+  --shadow:6px 6px 0 var(--ink);
+  --border:3px solid var(--ink);
+  --font-head:'Archivo',sans-serif;
+  --font-mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-head);
+  -webkit-font-smoothing:antialiased;
+}
+
+.logos{
+  max-width:1440px;
+  margin:0 auto;
+  padding:88px 40px 96px;
+  position:relative;
+}
+
+/* top masthead row — asymmetric, left-weighted focal point */
+.logos__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+  border-bottom:4px solid var(--ink);
+  padding-bottom:22px;
+  margin-bottom:0;
+}
+
+.logos__tag{
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 12px;
+  display:inline-block;
+  margin-bottom:18px;
+}
+
+.logos__title{
+  font-family:var(--font-head);
+  font-weight:900;
+  font-size:clamp(34px,5vw,64px);
+  line-height:.94;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+  max-width:12ch;
+}
+.logos__title em{
+  font-style:normal;
+  background:var(--acid);
+  box-shadow:0 0 0 3px var(--ink);
+  padding:0 .1em;
+}
+
+.logos__meta{
+  text-align:right;
+  min-width:200px;
+}
+.logos__count{
+  font-family:var(--font-head);
+  font-weight:900;
+  font-size:clamp(40px,6vw,76px);
+  line-height:.85;
+}
+.logos__count span{color:var(--red);}
+.logos__meta p{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:8px;
+}
+
+/* the grid — ruled cells, no rounded slop, even + muted */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-left:3px solid var(--ink);
+  border-top:3px solid var(--ink);
+}
+.cell{
+  border-right:3px solid var(--ink);
+  border-bottom:3px solid var(--ink);
+  min-height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:26px 22px;
+  position:relative;
+  background:var(--paper);
+  color:var(--muted);
+  transition:background .12s,color .12s;
+}
+.cell svg{width:100%;height:auto;max-width:180px;display:block;}
+.cell svg *{fill:currentColor;}
+
+/* index tick in each cell corner — mono, tiny, machine-like */
+.cell::before{
+  content:attr(data-idx);
+  position:absolute;
+  top:8px;
+  left:10px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:.1em;
+  color:#C7C7BF;
+}
+
+/* one focal cell breaks the muted rhythm — the single accent */
+.cell--accent{background:var(--ink);color:var(--acid);}
+.cell--accent::before{color:#5a5a12;}
+
+.cell:hover{background:var(--acid);color:var(--ink);}
+.cell--accent:hover{background:var(--red);color:var(--paper);}
+
+/* footer strip */
+.logos__foot{
+  margin-top:26px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.logos__foot .note{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.logos__cta{
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  background:var(--paper);
+  border:3px solid var(--ink);
+  box-shadow:var(--shadow);
+  padding:12px 20px;
+  transition:transform .1s,box-shadow .1s;
+}
+.logos__cta:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink);}
+.logos__cta span{color:var(--red);}
+
+@media(max-width:640px){
+  .logos{padding:56px 18px 64px;}
+  .logos__head{border-bottom-width:3px;}
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .cell{min-height:112px;padding:22px 16px;}
+  .cell svg{max-width:132px;}
+  .logos__meta{text-align:left;min-width:0;}
+  .logos__foot{margin-top:20px;}
+  .logos__cta{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<section class="logos">
+
+  <div class="logos__head">
+    <div>
+      <span class="logos__tag">// Trusted Operators — 2019—2026</span>
+      <h2 class="logos__title">Shipped for <em>eight</em> ruthless teams</h2>
+    </div>
+    <div class="logos__meta">
+      <div class="logos__count">8<span>+</span></div>
+      <p>Wordmarks / No fluff</p>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="cell" data-idx="01">
+      <svg viewBox="0 0 180 40" role="img" aria-label="Northbeam">
+        <rect x="0" y="8" width="6" height="24"></rect>
+        <text x="14" y="29" font-family="Archivo,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.5">NORTHBEAM</text>
+      </svg>
+    </div>
+
+    <div class="cell" data-idx="02">
+      <svg viewBox="0 0 180 40" role="img" aria-label="Gridlock Supply Co">
+        <text x="0" y="20" font-family="'Space Mono',monospace" font-weight="700" font-size="15" letter-spacing="1">GRIDLOCK</text>
+        <text x="0" y="35" font-family="'Space Mono',monospace" font-weight="400" font-size="10" letter-spacing="3">SUPPLY CO.</text>
+      </svg>
+    </div>
+
+    <div class="cell cell--accent" data-idx="03">
+      <svg viewBox="0 0 180 40" role="img" aria-label="Volt & Marrow">
+        <text x="0" y="29" font-family="Archivo,sans-serif" font-weight="900" font-size="24" letter-spacing="-1">VOLT</text>
+        <text x="70" y="29" font-family="'Space Mono',monospace" font-weight="700" font-size="20">&amp;</text>
+        <text x="90" y="29" font-family="Archivo,sans-serif" font-weight="400" font-size="24" letter-spacing="-1">MARROW</text>
+      </svg>
+    </div>
+
+    <div class="cell" data-idx="04">
+      <svg viewBox="0 0 180 40" role="img" aria-label="Hollow Machine">
+        <circle cx="14" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="4"></circle>
+        <text x="34" y="26" font-family="Archivo,sans-serif" font-weight="800" font-size="17" letter-spacing="-0.3">HOLLOW.MACHINE</text>
+      </svg>
+    </div>
+
+    <div class="cell" data-idx="05">
+      <svg viewBox="0 0 180 40" role="img" aria-label="Pallet 9">
+        <rect x="0" y="6" width="140" height="28" fill="none" stroke="currentColor" stroke-width="3"></rect>
+        <text x="12" y="27" font-family="Archivo,sans-serif" font-weight="800" font-size="18" letter-spacing="2">PALLET 9</text>
+      </svg>
+    </div>
+
+    <div class="cell" data-idx="06">
+      <svg viewBox="0 0 180 40" role="img" aria-label="Deadstock Labs">
+        <text x="0" y="28" font-family="Archivo,sans-serif" font-weight="900" font-size="21" letter-spacing="-0.8">DEADSTOCK</text>
+        <rect x="150" y="10" width="4" height="18"></rect>
+        <rect x="158" y="10" width="4" height="18"></rect>
+        <rect x="166" y="10" width="4" height="18"></rect>
+      </svg>
+    </div>
+
+    <div class="cell" data-idx="07">
+      <svg viewBox="0 0 180 40" role="img" aria-label="Ferrous Union">
+        <polygon points="10,6 22,20 10,34 -2,20" fill="currentColor" transform="translate(4,0)"></polygon>
+        <text x="30" y="26" font-family="'Space Mono',monospace" font-weight="700" font-size="14" letter-spacing="1">FERROUS UNION</text>
+      </svg>
+    </div>
+
+    <div class="cell" data-idx="08">
+      <svg viewBox="0 0 180 40" role="img" aria-label="Cold Fork Kitchens">
+        <text x="0" y="18" font-family="Archivo,sans-serif" font-weight="800" font-size="16" letter-spacing="-0.3">COLD FORK</text>
+        <text x="0" y="34" font-family="Archivo,sans-serif" font-weight="400" font-size="13" letter-spacing="1">KITCHENS™</text>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="logos__foot">
+    <p class="note">Logos are placeholders — swap with real partner marks.</p>
+    <a class="logos__cta" href="#work">See the case files <span>→</span></a>
+  </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!-- ===== eyebrow-text — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyebrow Text — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-soft:#161616;
+  --paper:#F3F3EE;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:#2A2A2A;
+  --dim:#8C8C8C;
+  --font:'Archivo',system-ui,-apple-system,sans-serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- section shell ---- */
+.eb{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:120px 72px 116px;
+  background:var(--ink);
+  overflow:hidden;
+}
+
+/* faint index number, upper-right, off-symmetry */
+.eb__idx{
+  position:absolute;
+  top:34px;
+  right:60px;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.32em;
+  color:var(--dim);
+}
+
+/* a big lime slab bleeding off the left edge as the focal anchor */
+.eb__slab{
+  position:absolute;
+  left:-90px;
+  top:96px;
+  width:220px;
+  height:220px;
+  background:var(--lime);
+  transform:rotate(-8deg);
+  z-index:0;
+}
+.eb__slab::after{
+  content:"";
+  position:absolute;
+  right:-26px;
+  bottom:-26px;
+  width:64px;
+  height:64px;
+  background:var(--magenta);
+}
+
+.eb__grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:56px;
+  align-items:end;
+}
+
+/* ---- eyebrow kicker ---- */
+.eb__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:9px 18px 9px 14px;
+  background:var(--lime);
+  color:var(--ink);
+  border-radius:999px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:34px;
+}
+.eb__dot{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--magenta);
+}
+
+/* ---- oversized lead statement ---- */
+.eb__lead{
+  font-weight:900;
+  font-size:clamp(44px,6.6vw,96px);
+  line-height:0.94;
+  letter-spacing:-0.03em;
+  text-transform:uppercase;
+  max-width:16ch;
+}
+.eb__lead em{
+  font-style:normal;
+  color:var(--lime);
+}
+.eb__lead .mark{
+  color:var(--ink);
+  background:var(--magenta);
+  padding:0 .1em;
+  border-radius:6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+/* right rail — meta note, deliberately asymmetric */
+.eb__aside{
+  padding-bottom:14px;
+}
+.eb__note{
+  font-size:15px;
+  line-height:1.55;
+  color:var(--dim);
+  font-weight:400;
+  max-width:28ch;
+  border-left:3px solid var(--magenta);
+  padding-left:16px;
+}
+.eb__note strong{
+  color:var(--paper);
+  font-weight:800;
+}
+.eb__tag{
+  margin-top:22px;
+  display:inline-block;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--paper);
+  padding:6px 12px;
+  border-radius:5px;
+}
+
+/* thin lime rule under everything */
+.eb__rule{
+  position:relative;
+  z-index:2;
+  margin-top:64px;
+  height:5px;
+  width:100%;
+  background:
+    linear-gradient(90deg,var(--lime) 0 62%,var(--magenta) 62% 100%);
+  border-radius:3px;
+}
+
+@media(max-width:640px){
+  .eb{padding:72px 24px 68px;}
+  .eb__idx{right:24px;top:24px;font-size:12px;}
+  .eb__slab{left:-70px;top:60px;width:150px;height:150px;}
+  .eb__slab::after{width:44px;height:44px;right:-16px;bottom:-16px;}
+  .eb__grid{grid-template-columns:1fr;gap:40px;align-items:start;}
+  .eb__lead{font-size:clamp(38px,13vw,58px);max-width:100%;}
+  .eb__aside{padding-bottom:0;}
+  .eb__note{max-width:100%;}
+  .eb__rule{margin-top:44px;}
+}
+</style>
+</head>
+<body>
+
+<section class="eb" aria-label="Section introduction">
+  <span class="eb__idx">02 / METHOD</span>
+  <div class="eb__slab" aria-hidden="true"></div>
+
+  <div class="eb__grid">
+    <div class="eb__main">
+      <span class="eb__kicker">
+        <span class="eb__dot"></span>
+        How we ship
+      </span>
+
+      <h2 class="eb__lead">
+        We <em>skip the deck</em> and put a working <span class="mark">prototype</span> in your hands by Friday.
+      </h2>
+    </div>
+
+    <aside class="eb__aside">
+      <p class="eb__note">
+        No 40-slide strategy tour. <strong>Week one</strong> is a clickable build your team can break, argue with, and actually use.
+      </p>
+      <span class="eb__tag">Sprint 0 — live</span>
+    </aside>
+  </div>
+
+  <div class="eb__rule" aria-hidden="true"></div>
+</section>
+
+</body>
+</html>

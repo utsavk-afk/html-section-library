@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!-- ===== lead-capture — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waitlist — Acid Pop Lead Capture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-2:#141414;
+  --paper:#F4F4F0;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:#2A2A2A;
+  --muted:#8C8C86;
+  --font:'Archivo',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-x:'Archivo Expanded','Archivo',sans-serif;
+}
+
+body{
+  font-family:var(--font);
+  background:var(--ink);
+  color:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- section shell ---- */
+.wl{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:720px;
+  padding:88px 64px 96px;
+  display:grid;
+  grid-template-columns:1.35fr 0.9fr;
+  gap:56px;
+  align-items:end;
+  overflow:hidden;
+}
+
+/* corner index tag — top left, off-axis */
+.wl__tag{
+  position:absolute;
+  top:40px;
+  left:64px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.wl__tag b{
+  color:var(--ink);
+  background:var(--lime);
+  padding:5px 10px 4px;
+  border-radius:999px;
+  letter-spacing:.14em;
+}
+
+/* big magenta bracket bar bleeding off the right edge */
+.wl__slash{
+  position:absolute;
+  top:-40px;
+  right:-120px;
+  width:360px;
+  height:360px;
+  background:var(--magenta);
+  transform:rotate(18deg);
+  border-radius:36px;
+  z-index:0;
+}
+.wl__slash::after{
+  content:"↓ DROP EMAIL";
+  position:absolute;
+  bottom:34px;
+  left:30px;
+  transform:rotate(-18deg);
+  font-family:var(--font-x);
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.06em;
+  color:var(--ink);
+}
+
+/* ---- left column: focal headline + form ---- */
+.wl__main{position:relative;z-index:2;}
+
+.wl__eyebrow{
+  display:inline-block;
+  font-family:var(--font-x);
+  font-weight:900;
+  font-size:14px;
+  letter-spacing:.04em;
+  color:var(--lime);
+  margin-bottom:22px;
+  border-bottom:3px solid var(--lime);
+  padding-bottom:4px;
+}
+
+.wl__title{
+  font-family:var(--font-x);
+  font-weight:900;
+  font-size:clamp(52px,7vw,104px);
+  line-height:0.9;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  margin-bottom:26px;
+}
+.wl__title em{
+  font-style:normal;
+  color:var(--ink);
+  background:var(--lime);
+  padding:0 12px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.wl__title span{color:var(--magenta);}
+
+.wl__sub{
+  max-width:440px;
+  font-size:18px;
+  font-weight:600;
+  line-height:1.45;
+  color:#C9C9C4;
+  margin-bottom:38px;
+}
+
+/* form — chunky pill row */
+.wl__form{
+  display:flex;
+  gap:10px;
+  max-width:540px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+.wl__input{
+  flex:1 1 260px;
+  min-width:0;
+  background:var(--ink-2);
+  border:2px solid var(--line);
+  border-radius:999px;
+  padding:19px 26px;
+  font-family:var(--font);
+  font-size:16px;
+  font-weight:700;
+  color:var(--paper);
+}
+.wl__input::placeholder{color:var(--muted);font-weight:600;}
+.wl__input:focus{
+  outline:none;
+  border-color:var(--lime);
+}
+.wl__btn{
+  flex:0 0 auto;
+  background:var(--lime);
+  color:var(--ink);
+  border:none;
+  border-radius:999px;
+  padding:19px 34px;
+  font-family:var(--font-x);
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:transform .12s ease, background .12s ease;
+}
+.wl__btn:hover{background:var(--magenta);color:var(--paper);transform:translateY(-2px);}
+.wl__btn:active{transform:translateY(0);}
+
+.wl__fine{
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+  letter-spacing:.01em;
+}
+.wl__fine b{color:var(--lime);}
+
+/* ---- right column: live signup count card ---- */
+.wl__side{
+  position:relative;
+  z-index:2;
+  background:var(--ink-2);
+  border:2px solid var(--line);
+  border-radius:28px;
+  padding:34px 30px 30px;
+}
+
+.wl__count{
+  font-family:var(--font-x);
+  font-weight:900;
+  font-size:clamp(56px,6vw,82px);
+  line-height:0.92;
+  letter-spacing:-0.03em;
+  color:var(--lime);
+}
+.wl__countlabel{
+  display:block;
+  margin-top:8px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.wl__pulse{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 22px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--magenta);
+}
+.wl__dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--magenta);
+  animation:blip 1.4s ease-in-out infinite;
+}
+@keyframes blip{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.7);}}
+
+/* stacked initial-avatars — no stock faces */
+.wl__avatars{
+  display:flex;
+  align-items:center;
+  padding-top:22px;
+  border-top:2px solid var(--line);
+}
+.wl__av{
+  width:42px;height:42px;
+  border-radius:50%;
+  border:2px solid var(--ink-2);
+  margin-left:-12px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-x);
+  font-weight:900;
+  font-size:14px;
+  color:var(--ink);
+}
+.wl__av:first-child{margin-left:0;}
+.wl__av--1{background:var(--lime);}
+.wl__av--2{background:var(--magenta);color:var(--paper);}
+.wl__av--3{background:#F4F4F0;}
+.wl__av--4{background:var(--lime);}
+.wl__av--more{
+  background:transparent;
+  color:var(--muted);
+  border:2px dashed var(--line);
+  font-size:12px;
+  letter-spacing:.04em;
+}
+.wl__avtext{
+  margin-left:14px;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.3;
+  color:#C9C9C4;
+}
+.wl__avtext b{color:var(--paper);}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .wl{
+    grid-template-columns:1fr;
+    gap:32px;
+    padding:96px 22px 52px;
+    min-height:0;
+    align-items:start;
+  }
+  .wl__tag{left:22px;top:30px;}
+  .wl__slash{width:200px;height:200px;top:-70px;right:-70px;}
+  .wl__slash::after{font-size:11px;bottom:22px;left:18px;}
+  .wl__title{font-size:clamp(44px,15vw,62px);}
+  .wl__sub{margin-bottom:28px;}
+  .wl__btn{flex:1 1 100%;}
+  .wl__side{order:-1;}
+}
+</style>
+</head>
+<body>
+
+<section class="wl">
+  <div class="wl__slash" aria-hidden="true"></div>
+
+  <div class="wl__tag">
+    <b>Waitlist</b>
+    <span>Batch 04 · closing soon</span>
+  </div>
+
+  <!-- FOCAL: headline + form -->
+  <div class="wl__main">
+    <span class="wl__eyebrow">Early access — no card needed</span>
+    <h1 class="wl__title">
+      Ship faster<br>
+      with <em>Relay</em><br>
+      <span>before</span> anyone.
+    </h1>
+    <p class="wl__sub">
+      Relay turns your changelog into a live status page in one paste. We're
+      onboarding 30 teams a week — grab your spot before the queue backs up.
+    </p>
+
+    <form class="wl__form" onsubmit="return false;">
+      <input class="wl__input" type="email" placeholder="you@yourteam.com" aria-label="Email address" required>
+      <button class="wl__btn" type="submit">Claim my spot</button>
+    </form>
+
+    <p class="wl__fine">
+      No spam, ever. <b>One</b> launch-day email, then you're in the product.
+    </p>
+  </div>
+
+  <!-- live signup count card -->
+  <aside class="wl__side" aria-label="Signup activity">
+    <div class="wl__count">8,412</div>
+    <span class="wl__countlabel">Builders on the list</span>
+
+    <div class="wl__pulse">
+      <span class="wl__dot" aria-hidden="true"></span>
+      37 joined in the last hour
+    </div>
+
+    <div class="wl__avatars">
+      <span class="wl__av wl__av--1">DK</span>
+      <span class="wl__av wl__av--2">MR</span>
+      <span class="wl__av wl__av--3">JP</span>
+      <span class="wl__av wl__av--4">AN</span>
+      <span class="wl__av wl__av--more">+8.4k</span>
+      <span class="wl__avtext"><b>Priya</b> from Basefold<br>just grabbed spot #8,412</span>
+    </div>
+  </aside>
+</section>
+
+</body>
+</html>

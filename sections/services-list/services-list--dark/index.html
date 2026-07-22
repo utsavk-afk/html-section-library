@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!-- ===== SERVICES-LIST — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A32;
+  --line-soft:#212128;
+  --accent:#F59E42;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+.svc{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 64px;
+  -webkit-font-smoothing:antialiased;
+}
+.svc__wrap{
+  max-width:1280px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:0.78fr 1.22fr;
+  gap:88px;
+  align-items:start;
+}
+
+/* ---- left intro column ---- */
+.svc__intro{position:sticky;top:112px;}
+.svc__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+}
+.svc__eyebrow::before{
+  content:"";
+  width:26px;height:1px;
+  background:var(--accent);
+}
+.svc__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:52px;
+  line-height:1.04;
+  letter-spacing:-0.015em;
+  margin-top:26px;
+  text-wrap:balance;
+}
+.svc__title em{font-style:italic;color:var(--accent);}
+.svc__lede{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.62;
+  max-width:34ch;
+  margin-top:24px;
+}
+.svc__meta{
+  margin-top:40px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  display:flex;
+  gap:40px;
+}
+.svc__stat b{
+  display:block;
+  font-family:var(--serif);
+  font-size:26px;
+  font-weight:500;
+  font-variant-numeric:tabular-nums;
+}
+.svc__stat span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  letter-spacing:0.06em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+/* ---- right list column ---- */
+.svc__list{border-top:1px solid var(--line);}
+.svc__row{
+  display:grid;
+  grid-template-columns:52px 1fr auto;
+  gap:28px;
+  align-items:baseline;
+  padding:30px 0 30px;
+  border-bottom:1px solid var(--line-soft);
+  position:relative;
+  transition:background .35s ease,padding-left .35s ease;
+}
+.svc__row:hover{
+  background:linear-gradient(90deg,rgba(245,158,66,0.05),transparent 70%);
+  padding-left:14px;
+}
+.svc__num{
+  font-family:var(--serif);
+  font-size:15px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+  padding-top:6px;
+}
+.svc__row:hover .svc__num{color:var(--accent);}
+.svc__body{max-width:52ch;}
+.svc__name{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:25px;
+  letter-spacing:-0.01em;
+  line-height:1.2;
+}
+.svc__desc{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.55;
+  margin-top:9px;
+}
+.svc__tags{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  text-align:right;
+}
+.svc__tag{
+  font-size:11px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+/* the lead offer gets weight — one focal point, not uniform rows */
+.svc__row--lead{
+  padding:38px 24px 38px 24px;
+  margin-left:-24px;
+  margin-right:-24px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:4px;
+  margin-bottom:2px;
+}
+.svc__row--lead .svc__name{font-size:29px;}
+.svc__row--lead .svc__num{color:var(--accent);}
+.svc__flag{
+  display:inline-block;
+  margin-bottom:12px;
+  font-size:11px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  border:1px solid rgba(245,158,66,0.35);
+  border-radius:2px;
+  padding:4px 9px;
+}
+.svc__row--lead:hover{padding-left:24px;background:var(--panel);}
+
+.svc__foot{
+  grid-column:1 / -1;
+  margin-top:14px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.svc__foot p{color:var(--muted);font-size:14px;}
+.svc__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--ink);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  border:1px solid var(--line);
+  padding:12px 20px;
+  border-radius:3px;
+  transition:border-color .3s ease,color .3s ease;
+}
+.svc__cta:hover{border-color:var(--accent);color:var(--accent);}
+.svc__cta svg{transition:transform .3s ease;}
+.svc__cta:hover svg{transform:translateX(4px);}
+
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;}
+}
+
+@media(max-width:640px){
+  .svc{padding:64px 22px;}
+  .svc__wrap{grid-template-columns:1fr;gap:44px;}
+  .svc__intro{position:static;}
+  .svc__title{font-size:38px;}
+  .svc__row{grid-template-columns:34px 1fr;gap:16px;padding:24px 0;}
+  .svc__tags{
+    grid-column:2;
+    flex-direction:row;
+    flex-wrap:wrap;
+    text-align:left;
+    gap:6px 14px;
+    margin-top:12px;
+  }
+  .svc__row--lead{margin-left:0;margin-right:0;padding:26px 18px;}
+  .svc__row--lead .svc__name{font-size:24px;}
+  .svc__foot{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<section class="svc" aria-labelledby="svc-title">
+  <div class="svc__wrap">
+
+    <div class="svc__intro">
+      <span class="svc__eyebrow">What we take on</span>
+      <h2 class="svc__title" id="svc-title">Five ways we <em>ship</em> the work, not the deck.</h2>
+      <p class="svc__lede">Small studio, senior hands. We scope tight, price flat, and hand back production-ready files — no retainer maze, no junior middleman.</p>
+      <div class="svc__meta">
+        <div class="svc__stat"><b>3wk</b><span>Median kickoff</span></div>
+        <div class="svc__stat"><b>1</b><span>Point of contact</span></div>
+      </div>
+    </div>
+
+    <div class="svc__list">
+
+      <div class="svc__row svc__row--lead">
+        <div class="svc__num">01</div>
+        <div class="svc__body">
+          <span class="svc__flag">Most requested</span>
+          <div class="svc__name">Brand systems &amp; identity</div>
+          <p class="svc__desc">Wordmark, type scale, color, and a token sheet your engineers can paste straight into a theme file — not a 60-page PDF nobody opens.</p>
+        </div>
+        <div class="svc__tags">
+          <span class="svc__tag">Logo + tokens</span>
+          <span class="svc__tag">4–6 weeks</span>
+        </div>
+      </div>
+
+      <div class="svc__row">
+        <div class="svc__num">02</div>
+        <div class="svc__body">
+          <div class="svc__name">Product &amp; app interfaces</div>
+          <p class="svc__desc">Flows, states, and a component library built in Figma and shipped as coded React — dark mode and empty states included from day one.</p>
+        </div>
+        <div class="svc__tags">
+          <span class="svc__tag">Figma → code</span>
+          <span class="svc__tag">Sprint-based</span>
+        </div>
+      </div>
+
+      <div class="svc__row">
+        <div class="svc__num">03</div>
+        <div class="svc__body">
+          <div class="svc__name">Motion &amp; brand film</div>
+          <p class="svc__desc">Logo stings, UI micro-interaction reels, and 30-second launch cuts — storyboarded, scored, and delivered as MP4 plus source project.</p>
+        </div>
+        <div class="svc__tags">
+          <span class="svc__tag">MP4 + source</span>
+          <span class="svc__tag">2–3 weeks</span>
+        </div>
+      </div>
+
+      <div class="svc__row">
+        <div class="svc__num">04</div>
+        <div class="svc__body">
+          <div class="svc__name">Editorial &amp; marketing sites</div>
+          <p class="svc__desc">Landing pages and long-form editorial built section by section in clean HTML — fast, responsive, and easy for your team to fork later.</p>
+        </div>
+        <div class="svc__tags">
+          <span class="svc__tag">Hand-coded</span>
+          <span class="svc__tag">Per-page</span>
+        </div>
+      </div>
+
+      <div class="svc__row">
+        <div class="svc__num">05</div>
+        <div class="svc__body">
+          <div class="svc__name">Fractional design lead</div>
+          <p class="svc__desc">A senior designer embedded two days a week — reviews, direction, and hiring help while you build the in-house team to replace us.</p>
+        </div>
+        <div class="svc__tags">
+          <span class="svc__tag">2 days / week</span>
+          <span class="svc__tag">Monthly</span>
+        </div>
+      </div>
+
+      <div class="svc__foot">
+        <p>Not sure which line fits? Send the problem, we'll name the scope.</p>
+        <a class="svc__cta" href="#book">Book a scoping call
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

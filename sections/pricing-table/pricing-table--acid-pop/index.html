@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!-- ===== PRICING-TABLE — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Archivo+Expanded:wght@700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EC;
+  --muted:#8A8A82;
+  --line:#232320;
+  --accent:#C7F13B;      /* lime primary */
+  --accent-2:#FF4D9D;    /* magenta secondary */
+  --panel:#111110;
+  --panel-hi:#141412;
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.acidpx{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:88px clamp(20px,5vw,80px) 96px;
+  width:100%;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+.acidpx__wrap{max-width:1240px;margin:0 auto;}
+
+/* ---- header : asymmetric, focal on left ---- */
+.acidpx__head{
+  display:grid;
+  grid-template-columns:1.35fr 0.85fr;
+  gap:40px;
+  align-items:end;
+  margin-bottom:52px;
+}
+.acidpx__eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:22px;
+}
+.acidpx__eyebrow::before{
+  content:"";
+  width:34px;height:2px;background:var(--accent);
+}
+.acidpx__title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(48px,7.4vw,104px);
+  line-height:.88;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.acidpx__title em{font-style:normal;color:var(--accent-2);}
+.acidpx__lede{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.55;
+  max-width:34ch;
+  padding-bottom:10px;
+}
+.acidpx__lede b{color:var(--ink);font-weight:700;}
+
+/* ---- table ---- */
+.acidpx__scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.acidpx__table{
+  width:100%;
+  min-width:760px;
+  border-collapse:separate;
+  border-spacing:0;
+}
+.acidpx__table th,.acidpx__table td{text-align:left;}
+
+/* plan header row */
+.acidpx__feat-col{width:38%;}
+.acidpx__ph{
+  vertical-align:bottom;
+  padding:0 22px 26px;
+}
+.acidpx__ph--feat{padding-left:4px;}
+.acidpx__plan-kick{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:block;
+  margin-bottom:12px;
+}
+.acidpx__plan-name{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:clamp(22px,2.4vw,30px);
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+  line-height:1;
+  margin-bottom:16px;
+}
+.acidpx__price{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(34px,3.8vw,46px);
+  line-height:1;
+  letter-spacing:-.03em;
+}
+.acidpx__price span{
+  font-size:14px;
+  font-weight:700;
+  color:var(--muted);
+  letter-spacing:0;
+}
+.acidpx__note{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  margin-top:9px;
+  letter-spacing:.02em;
+}
+
+/* highlighted plan column */
+.acidpx__hl{
+  background:var(--accent);
+  color:#0A0A0A;
+  position:relative;
+}
+.acidpx__hl .acidpx__plan-kick{color:#0A0A0A;opacity:.65;}
+.acidpx__hl .acidpx__price span{color:#0A0A0A;opacity:.6;}
+.acidpx__hl .acidpx__note{color:#0A0A0A;opacity:.7;}
+.acidpx__ph.acidpx__hl{
+  border-top-left-radius:20px;
+  border-top-right-radius:20px;
+  padding-top:44px;
+}
+.acidpx__flag{
+  position:absolute;
+  top:-13px;left:22px;
+  background:var(--accent-2);
+  color:#0A0A0A;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:6px 12px;
+  border-radius:999px;
+}
+
+/* feature rows */
+.acidpx__group td{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent-2);
+  padding:30px 4px 12px;
+}
+.acidpx__group .acidpx__hl{color:#0A0A0A;}
+
+.acidpx__row td{
+  padding:15px 22px;
+  border-top:1px solid var(--line);
+  font-size:15px;
+  vertical-align:middle;
+}
+.acidpx__row td:first-child{
+  padding-left:4px;
+  color:var(--ink);
+  font-weight:600;
+}
+.acidpx__row .subt{
+  display:block;
+  font-size:12px;
+  font-weight:400;
+  color:var(--muted);
+  margin-top:3px;
+}
+.acidpx__row .acidpx__hl{border-top:1px solid rgba(10,10,10,.14);}
+
+/* cell marks */
+.mark{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:26px;height:26px;
+  border-radius:8px;
+}
+.mark--yes{background:rgba(199,241,59,.14);}
+.mark--yes svg{stroke:var(--accent);}
+.acidpx__hl .mark--yes{background:rgba(10,10,10,.16);}
+.acidpx__hl .mark--yes svg{stroke:#0A0A0A;}
+.mark--no{color:var(--muted);font-family:var(--mono);font-size:15px;}
+.acidpx__hl .mark--no{color:rgba(10,10,10,.42);}
+.cellval{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.01em;
+}
+.acidpx__hl .cellval{color:#0A0A0A;}
+
+/* footer / cta row */
+.acidpx__cta-row td{padding:26px 22px 8px;border-top:1px solid var(--line);}
+.acidpx__cta-row td:first-child{padding-left:4px;}
+.acidpx__cta-row .acidpx__hl{
+  border-top:1px solid rgba(10,10,10,.14);
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
+  padding-bottom:30px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  width:100%;
+  padding:15px 20px;
+  border-radius:999px;
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border:2px solid var(--line);
+  color:var(--ink);
+  background:transparent;
+  cursor:pointer;
+  transition:transform .12s ease,background .12s ease,color .12s ease,border-color .12s ease;
+}
+.btn:hover{transform:translateY(-2px);border-color:var(--ink);}
+.btn:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px;}
+.btn--dark{background:#0A0A0A;color:var(--accent);border-color:#0A0A0A;}
+.btn--dark:hover{background:#000;color:var(--accent);}
+.acidpx__fineprint{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  margin-top:34px;
+  letter-spacing:.02em;
+  display:flex;
+  gap:8px;
+  align-items:baseline;
+}
+.acidpx__fineprint b{color:var(--accent);font-weight:700;}
+
+@media(max-width:640px){
+  .acidpx{padding:60px 18px 72px;}
+  .acidpx__head{grid-template-columns:1fr;gap:22px;align-items:start;}
+  .acidpx__lede{padding-bottom:0;max-width:42ch;}
+  .acidpx__hint{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent-2);margin-bottom:12px;
+  }
+}
+@media(min-width:641px){.acidpx__hint{display:none;}}
+</style>
+</head>
+<body>
+<section class="acidpx" aria-labelledby="acidpx-title">
+  <div class="acidpx__wrap">
+
+    <header class="acidpx__head">
+      <div>
+        <span class="acidpx__eyebrow">Plans / billed yearly</span>
+        <h2 class="acidpx__title" id="acidpx-title">Pick your<br><em>pace.</em></h2>
+      </div>
+      <p class="acidpx__lede">Every plan ships the full editor. What scales is <b>seats, render minutes, and how loud you get to be.</b> Swap tiers any time — proration is automatic.</p>
+    </header>
+
+    <p class="acidpx__hint">Swipe the table sideways →</p>
+
+    <div class="acidpx__scroll">
+      <table class="acidpx__table">
+        <caption class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Feature comparison across Solo, Studio, and Scale plans</caption>
+
+        <thead>
+          <tr>
+            <th class="acidpx__ph acidpx__ph--feat acidpx__feat-col" scope="col">
+              <span class="acidpx__plan-kick">Compare</span>
+            </th>
+            <th class="acidpx__ph" scope="col">
+              <span class="acidpx__plan-kick">For makers</span>
+              <div class="acidpx__plan-name">Solo</div>
+              <div class="acidpx__price">$0<span> /forever</span></div>
+              <div class="acidpx__note">no card, no catch</div>
+            </th>
+            <th class="acidpx__ph acidpx__hl" scope="col">
+              <span class="acidpx__flag">Most picked</span>
+              <span class="acidpx__plan-kick">For small teams</span>
+              <div class="acidpx__plan-name">Studio</div>
+              <div class="acidpx__price">$24<span> /seat·mo</span></div>
+              <div class="acidpx__note">billed $288 yearly</div>
+            </th>
+            <th class="acidpx__ph" scope="col">
+              <span class="acidpx__plan-kick">For agencies</span>
+              <div class="acidpx__plan-name">Scale</div>
+              <div class="acidpx__price">$79<span> /seat·mo</span></div>
+              <div class="acidpx__note">billed $948 yearly</div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="acidpx__group"><td>Core</td><td></td><td class="acidpx__hl"></td><td></td></tr>
+
+          <tr class="acidpx__row">
+            <td>Editor seats<span class="subt">people who can build</span></td>
+            <td><span class="cellval">1</span></td>
+            <td class="acidpx__hl"><span class="cellval">Up to 8</span></td>
+            <td><span class="cellval">Unlimited</span></td>
+          </tr>
+          <tr class="acidpx__row">
+            <td>Projects<span class="subt">active at once</span></td>
+            <td><span class="cellval">3</span></td>
+            <td class="acidpx__hl"><span class="cellval">50</span></td>
+            <td><span class="cellval">Unlimited</span></td>
+          </tr>
+          <tr class="acidpx__row">
+            <td>Render minutes<span class="subt">per month, HD export</span></td>
+            <td><span class="cellval">30</span></td>
+            <td class="acidpx__hl"><span class="cellval">1,200</span></td>
+            <td><span class="cellval">10,000</span></td>
+          </tr>
+
+          <tr class="acidpx__group"><td>Craft</td><td></td><td class="acidpx__hl"></td><td></td></tr>
+
+          <tr class="acidpx__row">
+            <td>4K &amp; transparent export</td>
+            <td><span class="mark mark--no">—</span></td>
+            <td class="acidpx__hl"><span class="mark mark--yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5L5.5 11L12 3"/></svg></span></td>
+            <td><span class="mark mark--yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5L5.5 11L12 3"/></svg></span></td>
+          </tr>
+          <tr class="acidpx__row">
+            <td>Brand kits<span class="subt">fonts, palettes, logos</span></td>
+            <td><span class="cellval">1</span></td>
+            <td class="acidpx__hl"><span class="cellval">10</span></td>
+            <td><span class="cellval">Unlimited</span></td>
+          </tr>
+          <tr class="acidpx__row">
+            <td>Remove watermark</td>
+            <td><span class="mark mark--no">—</span></td>
+            <td class="acidpx__hl"><span class="mark mark--yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5L5.5 11L12 3"/></svg></span></td>
+            <td><span class="mark mark--yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5L5.5 11L12 3"/></svg></span></td>
+          </tr>
+
+          <tr class="acidpx__group"><td>Team &amp; support</td><td></td><td class="acidpx__hl"></td><td></td></tr>
+
+          <tr class="acidpx__row">
+            <td>Roles &amp; permissions</td>
+            <td><span class="mark mark--no">—</span></td>
+            <td class="acidpx__hl"><span class="mark mark--yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5L5.5 11L12 3"/></svg></span></td>
+            <td><span class="mark mark--yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5L5.5 11L12 3"/></svg></span></td>
+          </tr>
+          <tr class="acidpx__row">
+            <td>SSO &amp; audit log</td>
+            <td><span class="mark mark--no">—</span></td>
+            <td class="acidpx__hl"><span class="mark mark--no" style="color:rgba(10,10,10,.42)">—</span></td>
+            <td><span class="mark mark--yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5L5.5 11L12 3"/></svg></span></td>
+          </tr>
+          <tr class="acidpx__row">
+            <td>Support<span class="subt">how fast we reply</span></td>
+            <td><span class="cellval">Community</span></td>
+            <td class="acidpx__hl"><span class="cellval">24h email</span></td>
+            <td><span class="cellval">Named rep</span></td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr class="acidpx__cta-row">
+            <td></td>
+            <td><a class="btn" href="#solo">Start free</a></td>
+            <td class="acidpx__hl"><a class="btn btn--dark" href="#studio">Get Studio →</a></td>
+            <td><a class="btn" href="#scale">Talk to sales</a></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <p class="acidpx__fineprint"><b>+</b> All plans include unlimited viewers, version history, and a 14-day money-back window. Prices in USD, excl. tax.</p>
+
+  </div>
+</section>
+</body>
+</html>

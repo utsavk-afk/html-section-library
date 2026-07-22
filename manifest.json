@@ -1,0 +1,1832 @@
+[
+  {
+    "type": "about",
+    "name": "about--acid-pop",
+    "style": "acid-pop",
+    "dir": "about/about--acid-pop"
+  },
+  {
+    "type": "about",
+    "name": "about--brutalist",
+    "style": "brutalist",
+    "dir": "about/about--brutalist"
+  },
+  {
+    "type": "about",
+    "name": "about--dark",
+    "style": "dark",
+    "dir": "about/about--dark"
+  },
+  {
+    "type": "about",
+    "name": "about--editorial",
+    "style": "editorial",
+    "dir": "about/about--editorial"
+  },
+  {
+    "type": "about",
+    "name": "about--minimal",
+    "style": "minimal",
+    "dir": "about/about--minimal"
+  },
+  {
+    "type": "avatar-stack",
+    "name": "avatar-stack--acid-pop",
+    "style": "acid-pop",
+    "dir": "avatar-stack/avatar-stack--acid-pop"
+  },
+  {
+    "type": "avatar-stack",
+    "name": "avatar-stack--brutalist",
+    "style": "brutalist",
+    "dir": "avatar-stack/avatar-stack--brutalist"
+  },
+  {
+    "type": "avatar-stack",
+    "name": "avatar-stack--dark",
+    "style": "dark",
+    "dir": "avatar-stack/avatar-stack--dark"
+  },
+  {
+    "type": "avatar-stack",
+    "name": "avatar-stack--editorial",
+    "style": "editorial",
+    "dir": "avatar-stack/avatar-stack--editorial"
+  },
+  {
+    "type": "avatar-stack",
+    "name": "avatar-stack--minimal",
+    "style": "minimal",
+    "dir": "avatar-stack/avatar-stack--minimal"
+  },
+  {
+    "type": "before-after",
+    "name": "before-after--acid-pop",
+    "style": "acid-pop",
+    "dir": "before-after/before-after--acid-pop"
+  },
+  {
+    "type": "before-after",
+    "name": "before-after--brutalist",
+    "style": "brutalist",
+    "dir": "before-after/before-after--brutalist"
+  },
+  {
+    "type": "before-after",
+    "name": "before-after--dark",
+    "style": "dark",
+    "dir": "before-after/before-after--dark"
+  },
+  {
+    "type": "before-after",
+    "name": "before-after--editorial",
+    "style": "editorial",
+    "dir": "before-after/before-after--editorial"
+  },
+  {
+    "type": "before-after",
+    "name": "before-after--minimal",
+    "style": "minimal",
+    "dir": "before-after/before-after--minimal"
+  },
+  {
+    "type": "bento-features",
+    "name": "bento-features--acid-pop",
+    "style": "acid-pop",
+    "dir": "bento-features/bento-features--acid-pop"
+  },
+  {
+    "type": "bento-features",
+    "name": "bento-features--brutalist",
+    "style": "brutalist",
+    "dir": "bento-features/bento-features--brutalist"
+  },
+  {
+    "type": "bento-features",
+    "name": "bento-features--dark",
+    "style": "dark",
+    "dir": "bento-features/bento-features--dark"
+  },
+  {
+    "type": "bento-features",
+    "name": "bento-features--editorial",
+    "style": "editorial",
+    "dir": "bento-features/bento-features--editorial"
+  },
+  {
+    "type": "bento-features",
+    "name": "bento-features--minimal",
+    "style": "minimal",
+    "dir": "bento-features/bento-features--minimal"
+  },
+  {
+    "type": "bento-portfolio",
+    "name": "bento-portfolio--acid-pop",
+    "style": "acid-pop",
+    "dir": "bento-portfolio/bento-portfolio--acid-pop"
+  },
+  {
+    "type": "bento-portfolio",
+    "name": "bento-portfolio--brutalist",
+    "style": "brutalist",
+    "dir": "bento-portfolio/bento-portfolio--brutalist"
+  },
+  {
+    "type": "bento-portfolio",
+    "name": "bento-portfolio--dark",
+    "style": "dark",
+    "dir": "bento-portfolio/bento-portfolio--dark"
+  },
+  {
+    "type": "bento-portfolio",
+    "name": "bento-portfolio--editorial",
+    "style": "editorial",
+    "dir": "bento-portfolio/bento-portfolio--editorial"
+  },
+  {
+    "type": "bento-portfolio",
+    "name": "bento-portfolio--minimal",
+    "style": "minimal",
+    "dir": "bento-portfolio/bento-portfolio--minimal"
+  },
+  {
+    "type": "biography",
+    "name": "biography--acid-pop",
+    "style": "acid-pop",
+    "dir": "biography/biography--acid-pop"
+  },
+  {
+    "type": "biography",
+    "name": "biography--brutalist",
+    "style": "brutalist",
+    "dir": "biography/biography--brutalist"
+  },
+  {
+    "type": "biography",
+    "name": "biography--dark",
+    "style": "dark",
+    "dir": "biography/biography--dark"
+  },
+  {
+    "type": "biography",
+    "name": "biography--editorial",
+    "style": "editorial",
+    "dir": "biography/biography--editorial"
+  },
+  {
+    "type": "biography",
+    "name": "biography--minimal",
+    "style": "minimal",
+    "dir": "biography/biography--minimal"
+  },
+  {
+    "type": "client-logo-grid",
+    "name": "client-logo-grid--acid-pop",
+    "style": "acid-pop",
+    "dir": "client-logo-grid/client-logo-grid--acid-pop"
+  },
+  {
+    "type": "client-logo-grid",
+    "name": "client-logo-grid--brutalist",
+    "style": "brutalist",
+    "dir": "client-logo-grid/client-logo-grid--brutalist"
+  },
+  {
+    "type": "client-logo-grid",
+    "name": "client-logo-grid--dark",
+    "style": "dark",
+    "dir": "client-logo-grid/client-logo-grid--dark"
+  },
+  {
+    "type": "client-logo-grid",
+    "name": "client-logo-grid--editorial",
+    "style": "editorial",
+    "dir": "client-logo-grid/client-logo-grid--editorial"
+  },
+  {
+    "type": "client-logo-grid",
+    "name": "client-logo-grid--minimal",
+    "style": "minimal",
+    "dir": "client-logo-grid/client-logo-grid--minimal"
+  },
+  {
+    "type": "client-logos",
+    "name": "client-logos--acid-pop",
+    "style": "acid-pop",
+    "dir": "client-logos/client-logos--acid-pop"
+  },
+  {
+    "type": "client-logos",
+    "name": "client-logos--brutalist",
+    "style": "brutalist",
+    "dir": "client-logos/client-logos--brutalist"
+  },
+  {
+    "type": "client-logos",
+    "name": "client-logos--dark",
+    "style": "dark",
+    "dir": "client-logos/client-logos--dark"
+  },
+  {
+    "type": "client-logos",
+    "name": "client-logos--editorial",
+    "style": "editorial",
+    "dir": "client-logos/client-logos--editorial"
+  },
+  {
+    "type": "client-logos",
+    "name": "client-logos--minimal",
+    "style": "minimal",
+    "dir": "client-logos/client-logos--minimal"
+  },
+  {
+    "type": "client-name-list",
+    "name": "client-name-list--acid-pop",
+    "style": "acid-pop",
+    "dir": "client-name-list/client-name-list--acid-pop"
+  },
+  {
+    "type": "client-name-list",
+    "name": "client-name-list--brutalist",
+    "style": "brutalist",
+    "dir": "client-name-list/client-name-list--brutalist"
+  },
+  {
+    "type": "client-name-list",
+    "name": "client-name-list--dark",
+    "style": "dark",
+    "dir": "client-name-list/client-name-list--dark"
+  },
+  {
+    "type": "client-name-list",
+    "name": "client-name-list--editorial",
+    "style": "editorial",
+    "dir": "client-name-list/client-name-list--editorial"
+  },
+  {
+    "type": "client-name-list",
+    "name": "client-name-list--minimal",
+    "style": "minimal",
+    "dir": "client-name-list/client-name-list--minimal"
+  },
+  {
+    "type": "comparison-table",
+    "name": "comparison-table--acid-pop",
+    "style": "acid-pop",
+    "dir": "comparison-table/comparison-table--acid-pop"
+  },
+  {
+    "type": "comparison-table",
+    "name": "comparison-table--brutalist",
+    "style": "brutalist",
+    "dir": "comparison-table/comparison-table--brutalist"
+  },
+  {
+    "type": "comparison-table",
+    "name": "comparison-table--dark",
+    "style": "dark",
+    "dir": "comparison-table/comparison-table--dark"
+  },
+  {
+    "type": "comparison-table",
+    "name": "comparison-table--editorial",
+    "style": "editorial",
+    "dir": "comparison-table/comparison-table--editorial"
+  },
+  {
+    "type": "comparison-table",
+    "name": "comparison-table--minimal",
+    "style": "minimal",
+    "dir": "comparison-table/comparison-table--minimal"
+  },
+  {
+    "type": "contact-form",
+    "name": "contact-form--acid-pop",
+    "style": "acid-pop",
+    "dir": "contact-form/contact-form--acid-pop"
+  },
+  {
+    "type": "contact-form",
+    "name": "contact-form--brutalist",
+    "style": "brutalist",
+    "dir": "contact-form/contact-form--brutalist"
+  },
+  {
+    "type": "contact-form",
+    "name": "contact-form--dark",
+    "style": "dark",
+    "dir": "contact-form/contact-form--dark"
+  },
+  {
+    "type": "contact-form",
+    "name": "contact-form--editorial",
+    "style": "editorial",
+    "dir": "contact-form/contact-form--editorial"
+  },
+  {
+    "type": "contact-form",
+    "name": "contact-form--minimal",
+    "style": "minimal",
+    "dir": "contact-form/contact-form--minimal"
+  },
+  {
+    "type": "cta-footer",
+    "name": "cta-footer--acid-pop",
+    "style": "acid-pop",
+    "dir": "cta-footer/cta-footer--acid-pop"
+  },
+  {
+    "type": "cta-footer",
+    "name": "cta-footer--brutalist",
+    "style": "brutalist",
+    "dir": "cta-footer/cta-footer--brutalist"
+  },
+  {
+    "type": "cta-footer",
+    "name": "cta-footer--dark",
+    "style": "dark",
+    "dir": "cta-footer/cta-footer--dark"
+  },
+  {
+    "type": "cta-footer",
+    "name": "cta-footer--editorial",
+    "style": "editorial",
+    "dir": "cta-footer/cta-footer--editorial"
+  },
+  {
+    "type": "cta-footer",
+    "name": "cta-footer--minimal",
+    "style": "minimal",
+    "dir": "cta-footer/cta-footer--minimal"
+  },
+  {
+    "type": "cta-hero",
+    "name": "cta-hero--acid-pop",
+    "style": "acid-pop",
+    "dir": "cta-hero/cta-hero--acid-pop"
+  },
+  {
+    "type": "cta-hero",
+    "name": "cta-hero--brutalist",
+    "style": "brutalist",
+    "dir": "cta-hero/cta-hero--brutalist"
+  },
+  {
+    "type": "cta-hero",
+    "name": "cta-hero--dark",
+    "style": "dark",
+    "dir": "cta-hero/cta-hero--dark"
+  },
+  {
+    "type": "cta-hero",
+    "name": "cta-hero--editorial",
+    "style": "editorial",
+    "dir": "cta-hero/cta-hero--editorial"
+  },
+  {
+    "type": "cta-hero",
+    "name": "cta-hero--minimal",
+    "style": "minimal",
+    "dir": "cta-hero/cta-hero--minimal"
+  },
+  {
+    "type": "cta",
+    "name": "cta--acid-pop",
+    "style": "acid-pop",
+    "dir": "cta/cta--acid-pop"
+  },
+  {
+    "type": "cta",
+    "name": "cta--brutalist",
+    "style": "brutalist",
+    "dir": "cta/cta--brutalist"
+  },
+  {
+    "type": "cta",
+    "name": "cta--dark",
+    "style": "dark",
+    "dir": "cta/cta--dark"
+  },
+  {
+    "type": "cta",
+    "name": "cta--editorial",
+    "style": "editorial",
+    "dir": "cta/cta--editorial"
+  },
+  {
+    "type": "cta",
+    "name": "cta--minimal",
+    "style": "minimal",
+    "dir": "cta/cta--minimal"
+  },
+  {
+    "type": "customers-strip",
+    "name": "customers-strip--acid-pop",
+    "style": "acid-pop",
+    "dir": "customers-strip/customers-strip--acid-pop"
+  },
+  {
+    "type": "customers-strip",
+    "name": "customers-strip--brutalist",
+    "style": "brutalist",
+    "dir": "customers-strip/customers-strip--brutalist"
+  },
+  {
+    "type": "customers-strip",
+    "name": "customers-strip--dark",
+    "style": "dark",
+    "dir": "customers-strip/customers-strip--dark"
+  },
+  {
+    "type": "customers-strip",
+    "name": "customers-strip--editorial",
+    "style": "editorial",
+    "dir": "customers-strip/customers-strip--editorial"
+  },
+  {
+    "type": "customers-strip",
+    "name": "customers-strip--minimal",
+    "style": "minimal",
+    "dir": "customers-strip/customers-strip--minimal"
+  },
+  {
+    "type": "explainer-video",
+    "name": "explainer-video--acid-pop",
+    "style": "acid-pop",
+    "dir": "explainer-video/explainer-video--acid-pop"
+  },
+  {
+    "type": "explainer-video",
+    "name": "explainer-video--brutalist",
+    "style": "brutalist",
+    "dir": "explainer-video/explainer-video--brutalist"
+  },
+  {
+    "type": "explainer-video",
+    "name": "explainer-video--dark",
+    "style": "dark",
+    "dir": "explainer-video/explainer-video--dark"
+  },
+  {
+    "type": "explainer-video",
+    "name": "explainer-video--editorial",
+    "style": "editorial",
+    "dir": "explainer-video/explainer-video--editorial"
+  },
+  {
+    "type": "explainer-video",
+    "name": "explainer-video--minimal",
+    "style": "minimal",
+    "dir": "explainer-video/explainer-video--minimal"
+  },
+  {
+    "type": "eyebrow-text",
+    "name": "eyebrow-text--acid-pop",
+    "style": "acid-pop",
+    "dir": "eyebrow-text/eyebrow-text--acid-pop"
+  },
+  {
+    "type": "eyebrow-text",
+    "name": "eyebrow-text--brutalist",
+    "style": "brutalist",
+    "dir": "eyebrow-text/eyebrow-text--brutalist"
+  },
+  {
+    "type": "eyebrow-text",
+    "name": "eyebrow-text--dark",
+    "style": "dark",
+    "dir": "eyebrow-text/eyebrow-text--dark"
+  },
+  {
+    "type": "eyebrow-text",
+    "name": "eyebrow-text--editorial",
+    "style": "editorial",
+    "dir": "eyebrow-text/eyebrow-text--editorial"
+  },
+  {
+    "type": "eyebrow-text",
+    "name": "eyebrow-text--minimal",
+    "style": "minimal",
+    "dir": "eyebrow-text/eyebrow-text--minimal"
+  },
+  {
+    "type": "famous-quote",
+    "name": "famous-quote--acid-pop",
+    "style": "acid-pop",
+    "dir": "famous-quote/famous-quote--acid-pop"
+  },
+  {
+    "type": "famous-quote",
+    "name": "famous-quote--brutalist",
+    "style": "brutalist",
+    "dir": "famous-quote/famous-quote--brutalist"
+  },
+  {
+    "type": "famous-quote",
+    "name": "famous-quote--dark",
+    "style": "dark",
+    "dir": "famous-quote/famous-quote--dark"
+  },
+  {
+    "type": "famous-quote",
+    "name": "famous-quote--editorial",
+    "style": "editorial",
+    "dir": "famous-quote/famous-quote--editorial"
+  },
+  {
+    "type": "famous-quote",
+    "name": "famous-quote--minimal",
+    "style": "minimal",
+    "dir": "famous-quote/famous-quote--minimal"
+  },
+  {
+    "type": "faq-accordion",
+    "name": "faq-accordion--acid-pop",
+    "style": "acid-pop",
+    "dir": "faq-accordion/faq-accordion--acid-pop"
+  },
+  {
+    "type": "faq-accordion",
+    "name": "faq-accordion--brutalist",
+    "style": "brutalist",
+    "dir": "faq-accordion/faq-accordion--brutalist"
+  },
+  {
+    "type": "faq-accordion",
+    "name": "faq-accordion--dark",
+    "style": "dark",
+    "dir": "faq-accordion/faq-accordion--dark"
+  },
+  {
+    "type": "faq-accordion",
+    "name": "faq-accordion--editorial",
+    "style": "editorial",
+    "dir": "faq-accordion/faq-accordion--editorial"
+  },
+  {
+    "type": "faq-accordion",
+    "name": "faq-accordion--minimal",
+    "style": "minimal",
+    "dir": "faq-accordion/faq-accordion--minimal"
+  },
+  {
+    "type": "faq-grid",
+    "name": "faq-grid--acid-pop",
+    "style": "acid-pop",
+    "dir": "faq-grid/faq-grid--acid-pop"
+  },
+  {
+    "type": "faq-grid",
+    "name": "faq-grid--brutalist",
+    "style": "brutalist",
+    "dir": "faq-grid/faq-grid--brutalist"
+  },
+  {
+    "type": "faq-grid",
+    "name": "faq-grid--dark",
+    "style": "dark",
+    "dir": "faq-grid/faq-grid--dark"
+  },
+  {
+    "type": "faq-grid",
+    "name": "faq-grid--editorial",
+    "style": "editorial",
+    "dir": "faq-grid/faq-grid--editorial"
+  },
+  {
+    "type": "faq-grid",
+    "name": "faq-grid--minimal",
+    "style": "minimal",
+    "dir": "faq-grid/faq-grid--minimal"
+  },
+  {
+    "type": "faq",
+    "name": "faq--acid-pop",
+    "style": "acid-pop",
+    "dir": "faq/faq--acid-pop"
+  },
+  {
+    "type": "faq",
+    "name": "faq--brutalist",
+    "style": "brutalist",
+    "dir": "faq/faq--brutalist"
+  },
+  {
+    "type": "faq",
+    "name": "faq--dark",
+    "style": "dark",
+    "dir": "faq/faq--dark"
+  },
+  {
+    "type": "faq",
+    "name": "faq--editorial",
+    "style": "editorial",
+    "dir": "faq/faq--editorial"
+  },
+  {
+    "type": "faq",
+    "name": "faq--minimal",
+    "style": "minimal",
+    "dir": "faq/faq--minimal"
+  },
+  {
+    "type": "faq",
+    "name": "faq-accordion--minimal",
+    "style": "minimal",
+    "dir": "faq/faq-accordion--minimal"
+  },
+  {
+    "type": "feature-carousel",
+    "name": "feature-carousel--acid-pop",
+    "style": "acid-pop",
+    "dir": "feature-carousel/feature-carousel--acid-pop"
+  },
+  {
+    "type": "feature-carousel",
+    "name": "feature-carousel--brutalist",
+    "style": "brutalist",
+    "dir": "feature-carousel/feature-carousel--brutalist"
+  },
+  {
+    "type": "feature-carousel",
+    "name": "feature-carousel--dark",
+    "style": "dark",
+    "dir": "feature-carousel/feature-carousel--dark"
+  },
+  {
+    "type": "feature-carousel",
+    "name": "feature-carousel--editorial",
+    "style": "editorial",
+    "dir": "feature-carousel/feature-carousel--editorial"
+  },
+  {
+    "type": "feature-carousel",
+    "name": "feature-carousel--minimal",
+    "style": "minimal",
+    "dir": "feature-carousel/feature-carousel--minimal"
+  },
+  {
+    "type": "feature-split",
+    "name": "feature-split--acid-pop",
+    "style": "acid-pop",
+    "dir": "feature-split/feature-split--acid-pop"
+  },
+  {
+    "type": "feature-split",
+    "name": "feature-split--brutalist",
+    "style": "brutalist",
+    "dir": "feature-split/feature-split--brutalist"
+  },
+  {
+    "type": "feature-split",
+    "name": "feature-split--dark",
+    "style": "dark",
+    "dir": "feature-split/feature-split--dark"
+  },
+  {
+    "type": "feature-split",
+    "name": "feature-split--editorial",
+    "style": "editorial",
+    "dir": "feature-split/feature-split--editorial"
+  },
+  {
+    "type": "feature-split",
+    "name": "feature-split--minimal",
+    "style": "minimal",
+    "dir": "feature-split/feature-split--minimal"
+  },
+  {
+    "type": "features",
+    "name": "bento-features--dark",
+    "style": "dark",
+    "dir": "features/bento-features--dark"
+  },
+  {
+    "type": "footer",
+    "name": "footer--acid-pop",
+    "style": "acid-pop",
+    "dir": "footer/footer--acid-pop"
+  },
+  {
+    "type": "footer",
+    "name": "footer--brutalist",
+    "style": "brutalist",
+    "dir": "footer/footer--brutalist"
+  },
+  {
+    "type": "footer",
+    "name": "footer--dark",
+    "style": "dark",
+    "dir": "footer/footer--dark"
+  },
+  {
+    "type": "footer",
+    "name": "footer--editorial",
+    "style": "editorial",
+    "dir": "footer/footer--editorial"
+  },
+  {
+    "type": "footer",
+    "name": "footer--minimal",
+    "style": "minimal",
+    "dir": "footer/footer--minimal"
+  },
+  {
+    "type": "header-navigation",
+    "name": "header-navigation--acid-pop",
+    "style": "acid-pop",
+    "dir": "header-navigation/header-navigation--acid-pop"
+  },
+  {
+    "type": "header-navigation",
+    "name": "header-navigation--brutalist",
+    "style": "brutalist",
+    "dir": "header-navigation/header-navigation--brutalist"
+  },
+  {
+    "type": "header-navigation",
+    "name": "header-navigation--dark",
+    "style": "dark",
+    "dir": "header-navigation/header-navigation--dark"
+  },
+  {
+    "type": "header-navigation",
+    "name": "header-navigation--editorial",
+    "style": "editorial",
+    "dir": "header-navigation/header-navigation--editorial"
+  },
+  {
+    "type": "header-navigation",
+    "name": "header-navigation--minimal",
+    "style": "minimal",
+    "dir": "header-navigation/header-navigation--minimal"
+  },
+  {
+    "type": "hero-lead-capture",
+    "name": "hero-lead-capture--acid-pop",
+    "style": "acid-pop",
+    "dir": "hero-lead-capture/hero-lead-capture--acid-pop"
+  },
+  {
+    "type": "hero-lead-capture",
+    "name": "hero-lead-capture--brutalist",
+    "style": "brutalist",
+    "dir": "hero-lead-capture/hero-lead-capture--brutalist"
+  },
+  {
+    "type": "hero-lead-capture",
+    "name": "hero-lead-capture--dark",
+    "style": "dark",
+    "dir": "hero-lead-capture/hero-lead-capture--dark"
+  },
+  {
+    "type": "hero-lead-capture",
+    "name": "hero-lead-capture--editorial",
+    "style": "editorial",
+    "dir": "hero-lead-capture/hero-lead-capture--editorial"
+  },
+  {
+    "type": "hero-lead-capture",
+    "name": "hero-lead-capture--minimal",
+    "style": "minimal",
+    "dir": "hero-lead-capture/hero-lead-capture--minimal"
+  },
+  {
+    "type": "hero",
+    "name": "hero--acid-pop",
+    "style": "acid-pop",
+    "dir": "hero/hero--acid-pop"
+  },
+  {
+    "type": "hero",
+    "name": "hero--brutalist",
+    "style": "brutalist",
+    "dir": "hero/hero--brutalist"
+  },
+  {
+    "type": "hero",
+    "name": "hero--dark",
+    "style": "dark",
+    "dir": "hero/hero--dark"
+  },
+  {
+    "type": "hero",
+    "name": "hero--editorial",
+    "style": "editorial",
+    "dir": "hero/hero--editorial"
+  },
+  {
+    "type": "hero",
+    "name": "hero--minimal",
+    "style": "minimal",
+    "dir": "hero/hero--minimal"
+  },
+  {
+    "type": "highlights",
+    "name": "highlights--acid-pop",
+    "style": "acid-pop",
+    "dir": "highlights/highlights--acid-pop"
+  },
+  {
+    "type": "highlights",
+    "name": "highlights--brutalist",
+    "style": "brutalist",
+    "dir": "highlights/highlights--brutalist"
+  },
+  {
+    "type": "highlights",
+    "name": "highlights--dark",
+    "style": "dark",
+    "dir": "highlights/highlights--dark"
+  },
+  {
+    "type": "highlights",
+    "name": "highlights--editorial",
+    "style": "editorial",
+    "dir": "highlights/highlights--editorial"
+  },
+  {
+    "type": "highlights",
+    "name": "highlights--minimal",
+    "style": "minimal",
+    "dir": "highlights/highlights--minimal"
+  },
+  {
+    "type": "how-it-works",
+    "name": "how-it-works--acid-pop",
+    "style": "acid-pop",
+    "dir": "how-it-works/how-it-works--acid-pop"
+  },
+  {
+    "type": "how-it-works",
+    "name": "how-it-works--brutalist",
+    "style": "brutalist",
+    "dir": "how-it-works/how-it-works--brutalist"
+  },
+  {
+    "type": "how-it-works",
+    "name": "how-it-works--dark",
+    "style": "dark",
+    "dir": "how-it-works/how-it-works--dark"
+  },
+  {
+    "type": "how-it-works",
+    "name": "how-it-works--editorial",
+    "style": "editorial",
+    "dir": "how-it-works/how-it-works--editorial"
+  },
+  {
+    "type": "how-it-works",
+    "name": "how-it-works--minimal",
+    "style": "minimal",
+    "dir": "how-it-works/how-it-works--minimal"
+  },
+  {
+    "type": "infographics",
+    "name": "infographics--acid-pop",
+    "style": "acid-pop",
+    "dir": "infographics/infographics--acid-pop"
+  },
+  {
+    "type": "infographics",
+    "name": "infographics--brutalist",
+    "style": "brutalist",
+    "dir": "infographics/infographics--brutalist"
+  },
+  {
+    "type": "infographics",
+    "name": "infographics--dark",
+    "style": "dark",
+    "dir": "infographics/infographics--dark"
+  },
+  {
+    "type": "infographics",
+    "name": "infographics--editorial",
+    "style": "editorial",
+    "dir": "infographics/infographics--editorial"
+  },
+  {
+    "type": "infographics",
+    "name": "infographics--minimal",
+    "style": "minimal",
+    "dir": "infographics/infographics--minimal"
+  },
+  {
+    "type": "lead-capture",
+    "name": "lead-capture--acid-pop",
+    "style": "acid-pop",
+    "dir": "lead-capture/lead-capture--acid-pop"
+  },
+  {
+    "type": "lead-capture",
+    "name": "lead-capture--brutalist",
+    "style": "brutalist",
+    "dir": "lead-capture/lead-capture--brutalist"
+  },
+  {
+    "type": "lead-capture",
+    "name": "lead-capture--dark",
+    "style": "dark",
+    "dir": "lead-capture/lead-capture--dark"
+  },
+  {
+    "type": "lead-capture",
+    "name": "lead-capture--editorial",
+    "style": "editorial",
+    "dir": "lead-capture/lead-capture--editorial"
+  },
+  {
+    "type": "lead-capture",
+    "name": "lead-capture--minimal",
+    "style": "minimal",
+    "dir": "lead-capture/lead-capture--minimal"
+  },
+  {
+    "type": "logos",
+    "name": "client-logos--minimal",
+    "style": "minimal",
+    "dir": "logos/client-logos--minimal"
+  },
+  {
+    "type": "looping-demo",
+    "name": "looping-demo--acid-pop",
+    "style": "acid-pop",
+    "dir": "looping-demo/looping-demo--acid-pop"
+  },
+  {
+    "type": "looping-demo",
+    "name": "looping-demo--brutalist",
+    "style": "brutalist",
+    "dir": "looping-demo/looping-demo--brutalist"
+  },
+  {
+    "type": "looping-demo",
+    "name": "looping-demo--dark",
+    "style": "dark",
+    "dir": "looping-demo/looping-demo--dark"
+  },
+  {
+    "type": "looping-demo",
+    "name": "looping-demo--editorial",
+    "style": "editorial",
+    "dir": "looping-demo/looping-demo--editorial"
+  },
+  {
+    "type": "looping-demo",
+    "name": "looping-demo--minimal",
+    "style": "minimal",
+    "dir": "looping-demo/looping-demo--minimal"
+  },
+  {
+    "type": "manifesto",
+    "name": "manifesto--acid-pop",
+    "style": "acid-pop",
+    "dir": "manifesto/manifesto--acid-pop"
+  },
+  {
+    "type": "manifesto",
+    "name": "manifesto--brutalist",
+    "style": "brutalist",
+    "dir": "manifesto/manifesto--brutalist"
+  },
+  {
+    "type": "manifesto",
+    "name": "manifesto--dark",
+    "style": "dark",
+    "dir": "manifesto/manifesto--dark"
+  },
+  {
+    "type": "manifesto",
+    "name": "manifesto--editorial",
+    "style": "editorial",
+    "dir": "manifesto/manifesto--editorial"
+  },
+  {
+    "type": "manifesto",
+    "name": "manifesto--minimal",
+    "style": "minimal",
+    "dir": "manifesto/manifesto--minimal"
+  },
+  {
+    "type": "marquee",
+    "name": "marquee--acid-pop",
+    "style": "acid-pop",
+    "dir": "marquee/marquee--acid-pop"
+  },
+  {
+    "type": "marquee",
+    "name": "marquee--brutalist",
+    "style": "brutalist",
+    "dir": "marquee/marquee--brutalist"
+  },
+  {
+    "type": "marquee",
+    "name": "marquee--dark",
+    "style": "dark",
+    "dir": "marquee/marquee--dark"
+  },
+  {
+    "type": "marquee",
+    "name": "marquee--editorial",
+    "style": "editorial",
+    "dir": "marquee/marquee--editorial"
+  },
+  {
+    "type": "marquee",
+    "name": "marquee--minimal",
+    "style": "minimal",
+    "dir": "marquee/marquee--minimal"
+  },
+  {
+    "type": "menu",
+    "name": "menu--acid-pop",
+    "style": "acid-pop",
+    "dir": "menu/menu--acid-pop"
+  },
+  {
+    "type": "menu",
+    "name": "menu--brutalist",
+    "style": "brutalist",
+    "dir": "menu/menu--brutalist"
+  },
+  {
+    "type": "menu",
+    "name": "menu--dark",
+    "style": "dark",
+    "dir": "menu/menu--dark"
+  },
+  {
+    "type": "menu",
+    "name": "menu--editorial",
+    "style": "editorial",
+    "dir": "menu/menu--editorial"
+  },
+  {
+    "type": "menu",
+    "name": "menu--minimal",
+    "style": "minimal",
+    "dir": "menu/menu--minimal"
+  },
+  {
+    "type": "metrics",
+    "name": "metrics--acid-pop",
+    "style": "acid-pop",
+    "dir": "metrics/metrics--acid-pop"
+  },
+  {
+    "type": "metrics",
+    "name": "metrics--brutalist",
+    "style": "brutalist",
+    "dir": "metrics/metrics--brutalist"
+  },
+  {
+    "type": "metrics",
+    "name": "metrics--dark",
+    "style": "dark",
+    "dir": "metrics/metrics--dark"
+  },
+  {
+    "type": "metrics",
+    "name": "metrics--editorial",
+    "style": "editorial",
+    "dir": "metrics/metrics--editorial"
+  },
+  {
+    "type": "metrics",
+    "name": "metrics--minimal",
+    "style": "minimal",
+    "dir": "metrics/metrics--minimal"
+  },
+  {
+    "type": "mockup-device",
+    "name": "mockup-device--acid-pop",
+    "style": "acid-pop",
+    "dir": "mockup-device/mockup-device--acid-pop"
+  },
+  {
+    "type": "mockup-device",
+    "name": "mockup-device--brutalist",
+    "style": "brutalist",
+    "dir": "mockup-device/mockup-device--brutalist"
+  },
+  {
+    "type": "mockup-device",
+    "name": "mockup-device--dark",
+    "style": "dark",
+    "dir": "mockup-device/mockup-device--dark"
+  },
+  {
+    "type": "mockup-device",
+    "name": "mockup-device--editorial",
+    "style": "editorial",
+    "dir": "mockup-device/mockup-device--editorial"
+  },
+  {
+    "type": "mockup-device",
+    "name": "mockup-device--minimal",
+    "style": "minimal",
+    "dir": "mockup-device/mockup-device--minimal"
+  },
+  {
+    "type": "newsletter",
+    "name": "newsletter--acid-pop",
+    "style": "acid-pop",
+    "dir": "newsletter/newsletter--acid-pop"
+  },
+  {
+    "type": "newsletter",
+    "name": "newsletter--brutalist",
+    "style": "brutalist",
+    "dir": "newsletter/newsletter--brutalist"
+  },
+  {
+    "type": "newsletter",
+    "name": "newsletter--dark",
+    "style": "dark",
+    "dir": "newsletter/newsletter--dark"
+  },
+  {
+    "type": "newsletter",
+    "name": "newsletter--editorial",
+    "style": "editorial",
+    "dir": "newsletter/newsletter--editorial"
+  },
+  {
+    "type": "newsletter",
+    "name": "newsletter--minimal",
+    "style": "minimal",
+    "dir": "newsletter/newsletter--minimal"
+  },
+  {
+    "type": "press-logos",
+    "name": "press-logos--acid-pop",
+    "style": "acid-pop",
+    "dir": "press-logos/press-logos--acid-pop"
+  },
+  {
+    "type": "press-logos",
+    "name": "press-logos--brutalist",
+    "style": "brutalist",
+    "dir": "press-logos/press-logos--brutalist"
+  },
+  {
+    "type": "press-logos",
+    "name": "press-logos--dark",
+    "style": "dark",
+    "dir": "press-logos/press-logos--dark"
+  },
+  {
+    "type": "press-logos",
+    "name": "press-logos--editorial",
+    "style": "editorial",
+    "dir": "press-logos/press-logos--editorial"
+  },
+  {
+    "type": "press-logos",
+    "name": "press-logos--minimal",
+    "style": "minimal",
+    "dir": "press-logos/press-logos--minimal"
+  },
+  {
+    "type": "pricing-slider",
+    "name": "pricing-slider--acid-pop",
+    "style": "acid-pop",
+    "dir": "pricing-slider/pricing-slider--acid-pop"
+  },
+  {
+    "type": "pricing-slider",
+    "name": "pricing-slider--brutalist",
+    "style": "brutalist",
+    "dir": "pricing-slider/pricing-slider--brutalist"
+  },
+  {
+    "type": "pricing-slider",
+    "name": "pricing-slider--dark",
+    "style": "dark",
+    "dir": "pricing-slider/pricing-slider--dark"
+  },
+  {
+    "type": "pricing-slider",
+    "name": "pricing-slider--editorial",
+    "style": "editorial",
+    "dir": "pricing-slider/pricing-slider--editorial"
+  },
+  {
+    "type": "pricing-slider",
+    "name": "pricing-slider--minimal",
+    "style": "minimal",
+    "dir": "pricing-slider/pricing-slider--minimal"
+  },
+  {
+    "type": "pricing-table",
+    "name": "pricing-table--acid-pop",
+    "style": "acid-pop",
+    "dir": "pricing-table/pricing-table--acid-pop"
+  },
+  {
+    "type": "pricing-table",
+    "name": "pricing-table--brutalist",
+    "style": "brutalist",
+    "dir": "pricing-table/pricing-table--brutalist"
+  },
+  {
+    "type": "pricing-table",
+    "name": "pricing-table--dark",
+    "style": "dark",
+    "dir": "pricing-table/pricing-table--dark"
+  },
+  {
+    "type": "pricing-table",
+    "name": "pricing-table--editorial",
+    "style": "editorial",
+    "dir": "pricing-table/pricing-table--editorial"
+  },
+  {
+    "type": "pricing-table",
+    "name": "pricing-table--minimal",
+    "style": "minimal",
+    "dir": "pricing-table/pricing-table--minimal"
+  },
+  {
+    "type": "pricing",
+    "name": "pricing--acid-pop",
+    "style": "acid-pop",
+    "dir": "pricing/pricing--acid-pop"
+  },
+  {
+    "type": "pricing",
+    "name": "pricing--brutalist",
+    "style": "brutalist",
+    "dir": "pricing/pricing--brutalist"
+  },
+  {
+    "type": "pricing",
+    "name": "pricing--dark",
+    "style": "dark",
+    "dir": "pricing/pricing--dark"
+  },
+  {
+    "type": "pricing",
+    "name": "pricing--editorial",
+    "style": "editorial",
+    "dir": "pricing/pricing--editorial"
+  },
+  {
+    "type": "pricing",
+    "name": "pricing--minimal",
+    "style": "minimal",
+    "dir": "pricing/pricing--minimal"
+  },
+  {
+    "type": "ratings",
+    "name": "ratings--acid-pop",
+    "style": "acid-pop",
+    "dir": "ratings/ratings--acid-pop"
+  },
+  {
+    "type": "ratings",
+    "name": "ratings--brutalist",
+    "style": "brutalist",
+    "dir": "ratings/ratings--brutalist"
+  },
+  {
+    "type": "ratings",
+    "name": "ratings--dark",
+    "style": "dark",
+    "dir": "ratings/ratings--dark"
+  },
+  {
+    "type": "ratings",
+    "name": "ratings--editorial",
+    "style": "editorial",
+    "dir": "ratings/ratings--editorial"
+  },
+  {
+    "type": "ratings",
+    "name": "ratings--minimal",
+    "style": "minimal",
+    "dir": "ratings/ratings--minimal"
+  },
+  {
+    "type": "recent-blogs",
+    "name": "recent-blogs--acid-pop",
+    "style": "acid-pop",
+    "dir": "recent-blogs/recent-blogs--acid-pop"
+  },
+  {
+    "type": "recent-blogs",
+    "name": "recent-blogs--brutalist",
+    "style": "brutalist",
+    "dir": "recent-blogs/recent-blogs--brutalist"
+  },
+  {
+    "type": "recent-blogs",
+    "name": "recent-blogs--dark",
+    "style": "dark",
+    "dir": "recent-blogs/recent-blogs--dark"
+  },
+  {
+    "type": "recent-blogs",
+    "name": "recent-blogs--editorial",
+    "style": "editorial",
+    "dir": "recent-blogs/recent-blogs--editorial"
+  },
+  {
+    "type": "recent-blogs",
+    "name": "recent-blogs--minimal",
+    "style": "minimal",
+    "dir": "recent-blogs/recent-blogs--minimal"
+  },
+  {
+    "type": "road-map",
+    "name": "road-map--acid-pop",
+    "style": "acid-pop",
+    "dir": "road-map/road-map--acid-pop"
+  },
+  {
+    "type": "road-map",
+    "name": "road-map--brutalist",
+    "style": "brutalist",
+    "dir": "road-map/road-map--brutalist"
+  },
+  {
+    "type": "road-map",
+    "name": "road-map--dark",
+    "style": "dark",
+    "dir": "road-map/road-map--dark"
+  },
+  {
+    "type": "road-map",
+    "name": "road-map--editorial",
+    "style": "editorial",
+    "dir": "road-map/road-map--editorial"
+  },
+  {
+    "type": "road-map",
+    "name": "road-map--minimal",
+    "style": "minimal",
+    "dir": "road-map/road-map--minimal"
+  },
+  {
+    "type": "screenshots",
+    "name": "screenshots--acid-pop",
+    "style": "acid-pop",
+    "dir": "screenshots/screenshots--acid-pop"
+  },
+  {
+    "type": "screenshots",
+    "name": "screenshots--brutalist",
+    "style": "brutalist",
+    "dir": "screenshots/screenshots--brutalist"
+  },
+  {
+    "type": "screenshots",
+    "name": "screenshots--dark",
+    "style": "dark",
+    "dir": "screenshots/screenshots--dark"
+  },
+  {
+    "type": "screenshots",
+    "name": "screenshots--editorial",
+    "style": "editorial",
+    "dir": "screenshots/screenshots--editorial"
+  },
+  {
+    "type": "screenshots",
+    "name": "screenshots--minimal",
+    "style": "minimal",
+    "dir": "screenshots/screenshots--minimal"
+  },
+  {
+    "type": "scroll-hint",
+    "name": "scroll-hint--acid-pop",
+    "style": "acid-pop",
+    "dir": "scroll-hint/scroll-hint--acid-pop"
+  },
+  {
+    "type": "scroll-hint",
+    "name": "scroll-hint--brutalist",
+    "style": "brutalist",
+    "dir": "scroll-hint/scroll-hint--brutalist"
+  },
+  {
+    "type": "scroll-hint",
+    "name": "scroll-hint--dark",
+    "style": "dark",
+    "dir": "scroll-hint/scroll-hint--dark"
+  },
+  {
+    "type": "scroll-hint",
+    "name": "scroll-hint--editorial",
+    "style": "editorial",
+    "dir": "scroll-hint/scroll-hint--editorial"
+  },
+  {
+    "type": "scroll-hint",
+    "name": "scroll-hint--minimal",
+    "style": "minimal",
+    "dir": "scroll-hint/scroll-hint--minimal"
+  },
+  {
+    "type": "services-list",
+    "name": "services-list--acid-pop",
+    "style": "acid-pop",
+    "dir": "services-list/services-list--acid-pop"
+  },
+  {
+    "type": "services-list",
+    "name": "services-list--brutalist",
+    "style": "brutalist",
+    "dir": "services-list/services-list--brutalist"
+  },
+  {
+    "type": "services-list",
+    "name": "services-list--dark",
+    "style": "dark",
+    "dir": "services-list/services-list--dark"
+  },
+  {
+    "type": "services-list",
+    "name": "services-list--editorial",
+    "style": "editorial",
+    "dir": "services-list/services-list--editorial"
+  },
+  {
+    "type": "services-list",
+    "name": "services-list--minimal",
+    "style": "minimal",
+    "dir": "services-list/services-list--minimal"
+  },
+  {
+    "type": "showreel",
+    "name": "showreel--acid-pop",
+    "style": "acid-pop",
+    "dir": "showreel/showreel--acid-pop"
+  },
+  {
+    "type": "showreel",
+    "name": "showreel--brutalist",
+    "style": "brutalist",
+    "dir": "showreel/showreel--brutalist"
+  },
+  {
+    "type": "showreel",
+    "name": "showreel--dark",
+    "style": "dark",
+    "dir": "showreel/showreel--dark"
+  },
+  {
+    "type": "showreel",
+    "name": "showreel--editorial",
+    "style": "editorial",
+    "dir": "showreel/showreel--editorial"
+  },
+  {
+    "type": "showreel",
+    "name": "showreel--minimal",
+    "style": "minimal",
+    "dir": "showreel/showreel--minimal"
+  },
+  {
+    "type": "social-proof",
+    "name": "social-proof--acid-pop",
+    "style": "acid-pop",
+    "dir": "social-proof/social-proof--acid-pop"
+  },
+  {
+    "type": "social-proof",
+    "name": "social-proof--brutalist",
+    "style": "brutalist",
+    "dir": "social-proof/social-proof--brutalist"
+  },
+  {
+    "type": "social-proof",
+    "name": "social-proof--dark",
+    "style": "dark",
+    "dir": "social-proof/social-proof--dark"
+  },
+  {
+    "type": "social-proof",
+    "name": "social-proof--editorial",
+    "style": "editorial",
+    "dir": "social-proof/social-proof--editorial"
+  },
+  {
+    "type": "social-proof",
+    "name": "social-proof--minimal",
+    "style": "minimal",
+    "dir": "social-proof/social-proof--minimal"
+  },
+  {
+    "type": "speakers",
+    "name": "speakers--acid-pop",
+    "style": "acid-pop",
+    "dir": "speakers/speakers--acid-pop"
+  },
+  {
+    "type": "speakers",
+    "name": "speakers--brutalist",
+    "style": "brutalist",
+    "dir": "speakers/speakers--brutalist"
+  },
+  {
+    "type": "speakers",
+    "name": "speakers--dark",
+    "style": "dark",
+    "dir": "speakers/speakers--dark"
+  },
+  {
+    "type": "speakers",
+    "name": "speakers--editorial",
+    "style": "editorial",
+    "dir": "speakers/speakers--editorial"
+  },
+  {
+    "type": "speakers",
+    "name": "speakers--minimal",
+    "style": "minimal",
+    "dir": "speakers/speakers--minimal"
+  },
+  {
+    "type": "stats",
+    "name": "stats--acid-pop",
+    "style": "acid-pop",
+    "dir": "stats/stats--acid-pop"
+  },
+  {
+    "type": "stats",
+    "name": "stats--brutalist",
+    "style": "brutalist",
+    "dir": "stats/stats--brutalist"
+  },
+  {
+    "type": "stats",
+    "name": "stats--dark",
+    "style": "dark",
+    "dir": "stats/stats--dark"
+  },
+  {
+    "type": "stats",
+    "name": "stats--editorial",
+    "style": "editorial",
+    "dir": "stats/stats--editorial"
+  },
+  {
+    "type": "stats",
+    "name": "stats--minimal",
+    "style": "minimal",
+    "dir": "stats/stats--minimal"
+  },
+  {
+    "type": "stats",
+    "name": "stats-metrics--brutalist",
+    "style": "brutalist",
+    "dir": "stats/stats-metrics--brutalist"
+  },
+  {
+    "type": "team",
+    "name": "team--acid-pop",
+    "style": "acid-pop",
+    "dir": "team/team--acid-pop"
+  },
+  {
+    "type": "team",
+    "name": "team--brutalist",
+    "style": "brutalist",
+    "dir": "team/team--brutalist"
+  },
+  {
+    "type": "team",
+    "name": "team--dark",
+    "style": "dark",
+    "dir": "team/team--dark"
+  },
+  {
+    "type": "team",
+    "name": "team--editorial",
+    "style": "editorial",
+    "dir": "team/team--editorial"
+  },
+  {
+    "type": "team",
+    "name": "team--minimal",
+    "style": "minimal",
+    "dir": "team/team--minimal"
+  },
+  {
+    "type": "testimonial-grid",
+    "name": "testimonial-grid--acid-pop",
+    "style": "acid-pop",
+    "dir": "testimonial-grid/testimonial-grid--acid-pop"
+  },
+  {
+    "type": "testimonial-grid",
+    "name": "testimonial-grid--brutalist",
+    "style": "brutalist",
+    "dir": "testimonial-grid/testimonial-grid--brutalist"
+  },
+  {
+    "type": "testimonial-grid",
+    "name": "testimonial-grid--dark",
+    "style": "dark",
+    "dir": "testimonial-grid/testimonial-grid--dark"
+  },
+  {
+    "type": "testimonial-grid",
+    "name": "testimonial-grid--editorial",
+    "style": "editorial",
+    "dir": "testimonial-grid/testimonial-grid--editorial"
+  },
+  {
+    "type": "testimonial-grid",
+    "name": "testimonial-grid--minimal",
+    "style": "minimal",
+    "dir": "testimonial-grid/testimonial-grid--minimal"
+  },
+  {
+    "type": "testimonial-slider",
+    "name": "testimonial-slider--acid-pop",
+    "style": "acid-pop",
+    "dir": "testimonial-slider/testimonial-slider--acid-pop"
+  },
+  {
+    "type": "testimonial-slider",
+    "name": "testimonial-slider--brutalist",
+    "style": "brutalist",
+    "dir": "testimonial-slider/testimonial-slider--brutalist"
+  },
+  {
+    "type": "testimonial-slider",
+    "name": "testimonial-slider--dark",
+    "style": "dark",
+    "dir": "testimonial-slider/testimonial-slider--dark"
+  },
+  {
+    "type": "testimonial-slider",
+    "name": "testimonial-slider--editorial",
+    "style": "editorial",
+    "dir": "testimonial-slider/testimonial-slider--editorial"
+  },
+  {
+    "type": "testimonial-slider",
+    "name": "testimonial-slider--minimal",
+    "style": "minimal",
+    "dir": "testimonial-slider/testimonial-slider--minimal"
+  },
+  {
+    "type": "testimonial-tweets",
+    "name": "testimonial-tweets--acid-pop",
+    "style": "acid-pop",
+    "dir": "testimonial-tweets/testimonial-tweets--acid-pop"
+  },
+  {
+    "type": "testimonial-tweets",
+    "name": "testimonial-tweets--brutalist",
+    "style": "brutalist",
+    "dir": "testimonial-tweets/testimonial-tweets--brutalist"
+  },
+  {
+    "type": "testimonial-tweets",
+    "name": "testimonial-tweets--dark",
+    "style": "dark",
+    "dir": "testimonial-tweets/testimonial-tweets--dark"
+  },
+  {
+    "type": "testimonial-tweets",
+    "name": "testimonial-tweets--editorial",
+    "style": "editorial",
+    "dir": "testimonial-tweets/testimonial-tweets--editorial"
+  },
+  {
+    "type": "testimonial-tweets",
+    "name": "testimonial-tweets--minimal",
+    "style": "minimal",
+    "dir": "testimonial-tweets/testimonial-tweets--minimal"
+  },
+  {
+    "type": "testimonials",
+    "name": "testimonial-grid--editorial",
+    "style": "editorial",
+    "dir": "testimonials/testimonial-grid--editorial"
+  },
+  {
+    "type": "testimonials",
+    "name": "testimonials--acid-pop",
+    "style": "acid-pop",
+    "dir": "testimonials/testimonials--acid-pop"
+  },
+  {
+    "type": "testimonials",
+    "name": "testimonials--brutalist",
+    "style": "brutalist",
+    "dir": "testimonials/testimonials--brutalist"
+  },
+  {
+    "type": "testimonials",
+    "name": "testimonials--dark",
+    "style": "dark",
+    "dir": "testimonials/testimonials--dark"
+  },
+  {
+    "type": "testimonials",
+    "name": "testimonials--editorial",
+    "style": "editorial",
+    "dir": "testimonials/testimonials--editorial"
+  },
+  {
+    "type": "testimonials",
+    "name": "testimonials--minimal",
+    "style": "minimal",
+    "dir": "testimonials/testimonials--minimal"
+  },
+  {
+    "type": "timeline",
+    "name": "timeline--acid-pop",
+    "style": "acid-pop",
+    "dir": "timeline/timeline--acid-pop"
+  },
+  {
+    "type": "timeline",
+    "name": "timeline--brutalist",
+    "style": "brutalist",
+    "dir": "timeline/timeline--brutalist"
+  },
+  {
+    "type": "timeline",
+    "name": "timeline--dark",
+    "style": "dark",
+    "dir": "timeline/timeline--dark"
+  },
+  {
+    "type": "timeline",
+    "name": "timeline--editorial",
+    "style": "editorial",
+    "dir": "timeline/timeline--editorial"
+  },
+  {
+    "type": "timeline",
+    "name": "timeline--minimal",
+    "style": "minimal",
+    "dir": "timeline/timeline--minimal"
+  },
+  {
+    "type": "transformation",
+    "name": "transformation--acid-pop",
+    "style": "acid-pop",
+    "dir": "transformation/transformation--acid-pop"
+  },
+  {
+    "type": "transformation",
+    "name": "transformation--brutalist",
+    "style": "brutalist",
+    "dir": "transformation/transformation--brutalist"
+  },
+  {
+    "type": "transformation",
+    "name": "transformation--dark",
+    "style": "dark",
+    "dir": "transformation/transformation--dark"
+  },
+  {
+    "type": "transformation",
+    "name": "transformation--editorial",
+    "style": "editorial",
+    "dir": "transformation/transformation--editorial"
+  },
+  {
+    "type": "transformation",
+    "name": "transformation--minimal",
+    "style": "minimal",
+    "dir": "transformation/transformation--minimal"
+  },
+  {
+    "type": "z-pattern",
+    "name": "z-pattern--acid-pop",
+    "style": "acid-pop",
+    "dir": "z-pattern/z-pattern--acid-pop"
+  },
+  {
+    "type": "z-pattern",
+    "name": "z-pattern--brutalist",
+    "style": "brutalist",
+    "dir": "z-pattern/z-pattern--brutalist"
+  },
+  {
+    "type": "z-pattern",
+    "name": "z-pattern--dark",
+    "style": "dark",
+    "dir": "z-pattern/z-pattern--dark"
+  },
+  {
+    "type": "z-pattern",
+    "name": "z-pattern--editorial",
+    "style": "editorial",
+    "dir": "z-pattern/z-pattern--editorial"
+  },
+  {
+    "type": "z-pattern",
+    "name": "z-pattern--minimal",
+    "style": "minimal",
+    "dir": "z-pattern/z-pattern--minimal"
+  }
+]

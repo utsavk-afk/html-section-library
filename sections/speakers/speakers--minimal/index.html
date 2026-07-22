@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!-- ===== SPEAKERS — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speakers — Frontend Systems Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e6e4;
+  --line-soft:#f0f0ee;
+  --bg:#ffffff;
+  --accent:#C0492B;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --maxw:1180px;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.speakers{
+  width:100%;
+  padding:104px 40px 112px;
+}
+.speakers__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* ---- header: asymmetric, left-aligned ---- */
+.speakers__head{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:8px;
+}
+.speakers__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.speakers__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+.speakers__title{
+  font-size:44px;
+  font-weight:600;
+  letter-spacing:-.02em;
+  line-height:1.06;
+}
+.speakers__title em{
+  font-style:normal;
+  color:var(--muted);
+}
+.speakers__meta{
+  padding-bottom:6px;
+}
+.speakers__meta p{
+  font-size:15px;
+  color:var(--muted);
+  max-width:34ch;
+}
+.speakers__meta .when{
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* ---- grid ---- */
+.speakers__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+.card{
+  padding:34px 30px 32px 0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+/* vertical hairlines between columns via inset */
+.card:not(:nth-child(3n)){
+  padding-right:30px;
+}
+.card:not(:nth-child(3n)) + .card{
+  padding-left:30px;
+}
+.card:nth-child(3n+2),
+.card:nth-child(3n){
+  border-left:1px solid var(--line-soft);
+  padding-left:30px;
+}
+
+/* avatar: CSS initial monogram, no photos */
+.card__avatar{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:var(--ink);
+  background:#f4f3f1;
+  border:1px solid var(--line);
+  margin-bottom:20px;
+}
+.card:nth-child(1) .card__avatar{color:var(--accent);background:#faf0ed;border-color:#f0dcd6;}
+
+.card__num{
+  position:absolute;
+  top:36px;
+  right:0;
+  font-size:12px;
+  font-weight:500;
+  color:#c4c4c2;
+  letter-spacing:.04em;
+}
+.card:nth-child(3n) .card__num{right:0;}
+
+.card__name{
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  margin-bottom:4px;
+}
+.card__role{
+  font-size:13.5px;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+.card__role b{
+  color:var(--ink);
+  font-weight:500;
+}
+.card__talk-label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#b0b0ad;
+  margin-bottom:7px;
+}
+.card__talk{
+  font-size:15.5px;
+  font-weight:500;
+  line-height:1.35;
+  color:var(--ink);
+  max-width:26ch;
+}
+
+/* footer line */
+.speakers__foot{
+  margin-top:38px;
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.speakers__foot .tag{
+  font-size:14px;
+  color:var(--muted);
+}
+.speakers__foot a{
+  font-size:14px;
+  font-weight:600;
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:border-color .18s ease;
+}
+.speakers__foot a:hover{
+  border-bottom-color:var(--accent);
+}
+
+@media(max-width:640px){
+  .speakers{padding:64px 22px 72px;}
+  .speakers__head{
+    grid-template-columns:1fr;
+    gap:24px;
+    align-items:start;
+  }
+  .speakers__title{font-size:32px;}
+  .speakers__grid{grid-template-columns:1fr;}
+  .card{
+    padding:28px 0 26px !important;
+    border-left:none !important;
+  }
+  .card__num{top:30px;}
+}
+</style>
+</head>
+<body>
+<section class="speakers">
+  <div class="speakers__inner">
+
+    <header class="speakers__head">
+      <div>
+        <span class="speakers__eyebrow">Lineup · 2026</span>
+        <h1 class="speakers__title">Six people who ship<br><em>the web you actually use.</em></h1>
+      </div>
+      <div class="speakers__meta">
+        <p><span class="when">October 14 — Lisbon.</span> One track, one room, no keynote fluff. Talks on the parts of the frontend that break in production.</p>
+      </div>
+    </header>
+
+    <div class="speakers__grid">
+
+      <article class="card">
+        <span class="card__num">01</span>
+        <div class="card__avatar">MR</div>
+        <h3 class="card__name">Mara Ostrowski</h3>
+        <p class="card__role">Principal Engineer, <b>Vercel</b></p>
+        <p class="card__talk-label">Talk</p>
+        <p class="card__talk">Rendering 40,000 rows without dropping a frame</p>
+      </article>
+
+      <article class="card">
+        <span class="card__num">02</span>
+        <div class="card__avatar">DK</div>
+        <h3 class="card__name">Dele Koffi</h3>
+        <p class="card__role">Design Systems Lead, <b>Linear</b></p>
+        <p class="card__talk-label">Talk</p>
+        <p class="card__talk">Tokens are not a design system, and other hard truths</p>
+      </article>
+
+      <article class="card">
+        <span class="card__num">03</span>
+        <div class="card__avatar">YS</div>
+        <h3 class="card__name">Yuki Sato</h3>
+        <p class="card__role">Staff Engineer, <b>Figma</b></p>
+        <p class="card__talk-label">Talk</p>
+        <p class="card__talk">Multiplayer state when the network is lying to you</p>
+      </article>
+
+      <article class="card">
+        <span class="card__num">04</span>
+        <div class="card__avatar">PN</div>
+        <h3 class="card__name">Priya Nadella</h3>
+        <p class="card__role">CTO, <b>Resend</b></p>
+        <p class="card__talk-label">Talk</p>
+        <p class="card__talk">The email client that ate our render budget</p>
+      </article>
+
+      <article class="card">
+        <span class="card__num">05</span>
+        <div class="card__avatar">TB</div>
+        <h3 class="card__name">Tomas Bergström</h3>
+        <p class="card__role">Browser Engineer, <b>Mozilla</b></p>
+        <p class="card__talk-label">Talk</p>
+        <p class="card__talk">What the layout engine wishes you knew about CSS</p>
+      </article>
+
+      <article class="card">
+        <span class="card__num">06</span>
+        <div class="card__avatar">GA</div>
+        <h3 class="card__name">Grace Amadi</h3>
+        <p class="card__role">Accessibility Engineer, <b>GOV.UK</b></p>
+        <p class="card__talk-label">Talk</p>
+        <p class="card__talk">Shipping for 68 million people who don't use a mouse</p>
+      </article>
+
+    </div>
+
+    <div class="speakers__foot">
+      <span class="tag">Two more speakers announced in August.</span>
+      <a href="#lineup">See the full schedule &rarr;</a>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

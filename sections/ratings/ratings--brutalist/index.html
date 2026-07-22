@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratings — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RATINGS — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:#111111;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --display:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--mono);
+  -webkit-font-smoothing:antialiased;
+}
+
+.rt-section{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:80px 56px;
+  position:relative;
+}
+
+/* top strip */
+.rt-strip{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:44px;
+}
+.rt-strip .tag{
+  background:var(--ink);
+  color:var(--acid);
+  padding:7px 12px;
+}
+.rt-strip .dash{
+  flex:1;
+  height:3px;
+  background:var(--ink);
+}
+.rt-strip .verified{
+  color:var(--ink);
+}
+.rt-strip .verified b{color:var(--red);}
+
+/* main grid: asymmetric — big score left, breakdown right */
+.rt-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:0;
+  border:var(--border);
+  box-shadow:var(--shadow);
+  background:var(--white);
+}
+
+/* LEFT — the focal score block */
+.rt-score{
+  background:var(--acid);
+  border-right:var(--border);
+  padding:44px 40px 40px;
+  position:relative;
+}
+.rt-score .kicker{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.rt-number{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  font-family:var(--display);
+  line-height:.82;
+}
+.rt-number .big{
+  font-size:132px;
+  font-weight:900;
+  letter-spacing:-.04em;
+}
+.rt-number .max{
+  font-family:var(--mono);
+  font-size:22px;
+  font-weight:700;
+}
+.rt-stars{
+  display:flex;
+  gap:6px;
+  margin:22px 0 18px;
+}
+.rt-stars svg{display:block;}
+.rt-count{
+  display:inline-flex;
+  align-items:center;
+  gap:0;
+  font-family:var(--display);
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+.rt-count .num{
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 11px;
+}
+.rt-count .lbl{
+  background:var(--white);
+  color:var(--ink);
+  border:var(--border);
+  border-left:none;
+  padding:6px 11px;
+}
+
+/* RIGHT — breakdown bars + line */
+.rt-detail{
+  padding:36px 38px 34px;
+  display:flex;
+  flex-direction:column;
+}
+.rt-detail .head{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:20px;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+  margin-bottom:22px;
+}
+.rt-bars{display:flex;flex-direction:column;gap:14px;margin-bottom:26px;}
+.rt-bar{display:flex;align-items:center;gap:12px;}
+.rt-bar .n{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:12px;
+  width:34px;
+  flex:none;
+}
+.rt-bar .track{
+  flex:1;
+  height:16px;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  position:relative;
+  overflow:hidden;
+}
+.rt-bar .fill{
+  height:100%;
+  background:var(--ink);
+}
+.rt-bar:nth-child(1) .fill{background:var(--red);}
+.rt-bar .pct{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:11px;
+  width:44px;
+  text-align:right;
+  flex:none;
+}
+.rt-line{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.6;
+  border-top:3px solid var(--ink);
+  padding-top:18px;
+  margin-top:auto;
+}
+.rt-line b{background:var(--acid);padding:1px 4px;}
+
+/* platform badges row */
+.rt-badges{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+  margin-top:26px;
+}
+.rt-badge{
+  border:var(--border);
+  background:var(--white);
+  box-shadow:var(--shadow-sm);
+  padding:18px 18px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.rt-badge:nth-child(2){box-shadow:4px 4px 0 var(--red);}
+.rt-badge .top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.rt-badge .plat{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.rt-badge .mark{
+  width:30px;height:30px;flex:none;
+  border:2px solid var(--ink);
+  display:grid;place-items:center;
+  font-family:var(--display);
+  font-weight:900;
+  font-size:15px;
+}
+.rt-badge:nth-child(1) .mark{background:var(--acid);}
+.rt-badge:nth-child(2) .mark{background:var(--red);color:var(--white);}
+.rt-badge:nth-child(3) .mark{background:var(--ink);color:var(--acid);}
+.rt-badge .name{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+}
+.rt-badge .score{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:13px;
+}
+.rt-badge .mini{display:flex;gap:3px;}
+.rt-badge .foot{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  color:var(--ink);
+  opacity:.75;
+}
+
+@media(max-width:640px){
+  .rt-section{padding:44px 20px;}
+  .rt-strip{flex-wrap:wrap;gap:10px;margin-bottom:28px;}
+  .rt-strip .dash{display:none;}
+  .rt-grid{grid-template-columns:1fr;box-shadow:var(--shadow-sm);}
+  .rt-score{border-right:none;border-bottom:var(--border);padding:32px 24px;}
+  .rt-number .big{font-size:96px;}
+  .rt-detail{padding:28px 24px;}
+  .rt-badges{grid-template-columns:1fr;gap:16px;margin-top:20px;}
+}
+</style>
+</head>
+<body>
+
+<section class="rt-section">
+
+  <div class="rt-strip">
+    <span class="tag">Customer Ratings</span>
+    <span class="dash"></span>
+    <span class="verified">All reviews <b>verified</b> — no gifts, no filters</span>
+  </div>
+
+  <div class="rt-grid">
+
+    <!-- FOCAL SCORE -->
+    <div class="rt-score">
+      <div class="kicker">Average across every platform</div>
+      <div class="rt-number">
+        <span class="big">4.8</span>
+        <span class="max">/ 5.0</span>
+      </div>
+
+      <div class="rt-stars" aria-label="4.8 out of 5 stars">
+        <!-- 4 full + 1 partial star, hard black outlines -->
+        <svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24">
+          <defs><clipPath id="p80"><rect x="0" y="0" width="19.2" height="24"/></clipPath></defs>
+          <path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#fff" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111" stroke="#111" stroke-width="1.5" stroke-linejoin="round" clip-path="url(#p80)"/>
+        </svg>
+      </div>
+
+      <div class="rt-count">
+        <span class="num">3,412</span>
+        <span class="lbl">Verified Reviews</span>
+      </div>
+    </div>
+
+    <!-- BREAKDOWN -->
+    <div class="rt-detail">
+      <div class="head">Star Breakdown</div>
+      <div class="rt-bars">
+        <div class="rt-bar"><span class="n">5 ★</span><span class="track"><span class="fill" style="width:84%"></span></span><span class="pct">84%</span></div>
+        <div class="rt-bar"><span class="n">4 ★</span><span class="track"><span class="fill" style="width:11%"></span></span><span class="pct">11%</span></div>
+        <div class="rt-bar"><span class="n">3 ★</span><span class="track"><span class="fill" style="width:3%"></span></span><span class="pct">3%</span></div>
+        <div class="rt-bar"><span class="n">2 ★</span><span class="track"><span class="fill" style="width:1%"></span></span><span class="pct">1%</span></div>
+        <div class="rt-bar"><span class="n">1 ★</span><span class="track"><span class="fill" style="width:1%"></span></span><span class="pct">1%</span></div>
+      </div>
+      <p class="rt-line">
+        <b>96% of buyers</b> would recommend us to a colleague. Median response
+        time on any flagged review: <b>under 4 hours</b>, replied to by a real
+        human — not a macro.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- PLATFORM BADGES -->
+  <div class="rt-badges">
+    <div class="rt-badge">
+      <div class="top">
+        <span class="plat"><span class="mark">G</span><span class="name">G2</span></span>
+        <span class="score">4.9 / 5</span>
+      </div>
+      <div class="mini" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+      </div>
+      <div class="foot">1,204 reviews · Leader Winter '26</div>
+    </div>
+
+    <div class="rt-badge">
+      <div class="top">
+        <span class="plat"><span class="mark">T</span><span class="name">Trustpilot</span></span>
+        <span class="score">4.7 / 5</span>
+      </div>
+      <div class="mini" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#fff" stroke="#111" stroke-width="1.5"/></svg>
+      </div>
+      <div class="foot">1,860 reviews · Verified company</div>
+    </div>
+
+    <div class="rt-badge">
+      <div class="top">
+        <span class="plat"><span class="mark">C</span><span class="name">Capterra</span></span>
+        <span class="score">4.8 / 5</span>
+      </div>
+      <div class="mini" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.9l1.4-6.8L2.2 9l6.9-.7z" fill="#111"/></svg>
+      </div>
+      <div class="foot">348 reviews · Best Ease of Use</div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>

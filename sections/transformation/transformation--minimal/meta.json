@@ -1,0 +1,6 @@
+{
+  "type": "transformation",
+  "name": "transformation--minimal",
+  "style": "minimal",
+  "file": "index.html"
+}

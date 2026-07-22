@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusted By — Client Name List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CLIENT-NAME-LIST — MINIMAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --white:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --accent:#C0492B;
+  --hair:#e7e7e4;
+  --hair-soft:#efefec;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --shell:1440px;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--white);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.tb{
+  width:100%;
+  background:var(--white);
+  padding:104px 0 96px;
+}
+
+.tb__shell{
+  max-width:var(--shell);
+  margin:0 auto;
+  padding:0 64px;
+}
+
+/* --- eyebrow / meta row --- */
+.tb__meta{
+  display:flex;
+  align-items:baseline;
+  gap:18px;
+  margin-bottom:52px;
+}
+.tb__kicker{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+.tb__kicker::before{
+  content:"";
+  display:inline-block;
+  width:26px;
+  height:1px;
+  background:var(--accent);
+  vertical-align:middle;
+  margin-right:14px;
+}
+.tb__count{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.02em;
+  color:var(--muted);
+}
+
+/* --- asymmetric body: list left-weighted, note tucked right --- */
+.tb__body{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 232px;
+  gap:56px;
+  align-items:start;
+}
+
+/* --- the wrapped typographic list --- */
+.tb__list{
+  font-size:clamp(30px,4.3vw,60px);
+  line-height:1.16;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+}
+.tb__name{
+  display:inline;
+  transition:color .18s ease;
+}
+.tb__sep{
+  display:inline-block;
+  color:var(--hair);
+  font-weight:400;
+  margin:0 0.26em;
+  transform:translateY(-0.04em);
+}
+/* one focal name — the accent, not the whole grid */
+.tb__name--focus{
+  color:var(--accent);
+}
+.tb__name:hover{
+  color:var(--accent);
+}
+.tb__name--focus:hover{
+  color:var(--ink);
+}
+
+/* --- right-hand editorial note --- */
+.tb__aside{
+  padding-top:10px;
+  border-top:1px solid var(--ink);
+}
+.tb__note{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+  font-weight:400;
+  margin-top:16px;
+}
+.tb__note strong{
+  color:var(--ink);
+  font-weight:600;
+}
+.tb__stat{
+  margin-top:28px;
+  display:flex;
+  align-items:baseline;
+  gap:9px;
+}
+.tb__stat-num{
+  font-size:34px;
+  font-weight:700;
+  letter-spacing:-0.03em;
+  color:var(--ink);
+}
+.tb__stat-label{
+  font-size:12px;
+  line-height:1.35;
+  color:var(--muted);
+  font-weight:500;
+}
+
+/* --- footer hairline + read-out --- */
+.tb__foot{
+  margin-top:64px;
+  padding-top:20px;
+  border-top:1px solid var(--hair);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.tb__foot-txt{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:400;
+}
+.tb__foot-link{
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  letter-spacing:-0.005em;
+  border-bottom:1px solid var(--accent);
+  padding-bottom:2px;
+  transition:color .18s ease;
+}
+.tb__foot-link:hover{ color:var(--accent); }
+
+@media(max-width:640px){
+  .tb{ padding:64px 0 60px; }
+  .tb__shell{ padding:0 24px; }
+  .tb__meta{
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:34px;
+  }
+  .tb__body{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .tb__list{
+    font-size:clamp(26px,8.4vw,38px);
+    line-height:1.2;
+  }
+  .tb__aside{ order:2; }
+  .tb__foot{
+    margin-top:44px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+  }
+}
+</style>
+</head>
+<body>
+<section class="tb" aria-label="Trusted by clients">
+  <div class="tb__shell">
+
+    <div class="tb__meta">
+      <span class="tb__kicker">Trusted&nbsp;by</span>
+      <span class="tb__count">Selected partners, 2019–2026</span>
+    </div>
+
+    <div class="tb__body">
+
+      <p class="tb__list">
+        <span class="tb__name">Northwind&nbsp;Freight</span><span class="tb__sep">/</span><span class="tb__name">Lumen&nbsp;Health</span><span class="tb__sep">/</span><span class="tb__name">Cedar&nbsp;&amp;&nbsp;Vale</span><span class="tb__sep">/</span><span class="tb__name tb__name--focus">Halden&nbsp;Robotics</span><span class="tb__sep">/</span><span class="tb__name">Meridian&nbsp;Bank</span><span class="tb__sep">/</span><span class="tb__name">Fieldnote&nbsp;Coffee</span><span class="tb__sep">/</span><span class="tb__name">Ardent&nbsp;Labs</span><span class="tb__sep">/</span><span class="tb__name">Postmark&nbsp;Studio</span><span class="tb__sep">/</span><span class="tb__name">Grayline&nbsp;Ventures</span><span class="tb__sep">/</span><span class="tb__name">Sundial&nbsp;Foods</span><span class="tb__sep">/</span><span class="tb__name">Kestrel&nbsp;Aero</span><span class="tb__sep">/</span><span class="tb__name">Bellweather&nbsp;Co.</span><span class="tb__sep">/</span><span class="tb__name">Overmorrow</span><span class="tb__sep">/</span><span class="tb__name">Tidewater&nbsp;Group</span>
+      </p>
+
+      <aside class="tb__aside">
+        <p class="tb__note">
+          Long-run engagements only — we count a name here once it has shipped with us for <strong>eighteen months</strong> or more.
+        </p>
+        <div class="tb__stat">
+          <span class="tb__stat-num">94%</span>
+          <span class="tb__stat-label">renew past<br>year&nbsp;one</span>
+        </div>
+      </aside>
+
+    </div>
+
+    <div class="tb__foot">
+      <span class="tb__foot-txt">Fourteen teams across logistics, health, finance &amp; consumer goods.</span>
+      <a class="tb__foot-link" href="#work">Read the case studies →</a>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

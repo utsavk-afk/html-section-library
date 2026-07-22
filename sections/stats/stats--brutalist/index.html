@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!-- ===== STATS — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stats — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A52;
+  --line:#111111;
+  --accent:#FFE500;
+  --accent-2:#FF3B21;
+  --serif:"Archivo","Arial Black",sans-serif;
+  --sans:"Archivo",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+}
+
+.stats-band{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 48px 80px;
+  width:100%;
+  border-top:4px solid var(--line);
+  border-bottom:4px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+
+/* faint background grid */
+.stats-band::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(to right,rgba(17,17,17,.05) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(17,17,17,.05) 1px,transparent 1px);
+  background-size:56px 56px;
+  pointer-events:none;
+  z-index:0;
+}
+
+.stats-inner{
+  max-width:1440px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+
+/* header row — asymmetric, left-weighted */
+.stats-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-bottom:44px;
+}
+
+.stats-eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--accent);
+  display:inline-block;
+  padding:6px 12px;
+  margin-bottom:16px;
+}
+
+.stats-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:44px;
+  line-height:.96;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  max-width:12ch;
+}
+
+.stats-title .mark{
+  background:var(--accent);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+.stats-note{
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.5;
+  color:var(--muted);
+  max-width:26ch;
+  text-align:right;
+  border-left:2px solid var(--line);
+  padding-left:14px;
+}
+.stats-note b{color:var(--ink);}
+
+/* the number grid — 4 boxes, deliberately uneven emphasis */
+.stats-grid{
+  display:grid;
+  grid-template-columns:1.25fr 1fr 1fr 1fr;
+  border:3px solid var(--line);
+  background:var(--ink);
+  gap:3px;
+}
+
+.stat{
+  background:var(--bg);
+  padding:34px 26px 28px;
+  position:relative;
+  min-height:236px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+/* first box = focal point: yellow fill + hard offset shadow lift */
+.stat--focal{
+  background:var(--accent);
+}
+
+.stat__idx{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  color:var(--muted);
+}
+.stat--focal .stat__idx{color:var(--ink);}
+
+.stat__num{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:76px;
+  line-height:.86;
+  letter-spacing:-.04em;
+  margin:18px 0 12px;
+}
+.stat--focal .stat__num{font-size:88px;}
+
+.stat__num .unit{
+  font-size:34px;
+  vertical-align:super;
+  letter-spacing:-.02em;
+}
+.stat--focal .stat__num .unit{color:var(--accent-2);}
+
+.stat__label{
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:14px;
+  line-height:1.25;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+
+.stat__sub{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  margin-top:8px;
+  display:block;
+}
+.stat--focal .stat__sub{color:#333;}
+
+/* red corner tick on the second stat for one-off accent */
+.stat--tick::after{
+  content:"";
+  position:absolute;
+  top:0;right:0;
+  border-width:0 22px 22px 0;
+  border-style:solid;
+  border-color:transparent var(--accent-2) transparent transparent;
+}
+
+/* footer strip */
+.stats-foot{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+.stats-tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  border:2px solid var(--line);
+  padding:6px 10px;
+  background:var(--bg);
+}
+.stats-tag--fill{background:var(--ink);color:var(--bg);}
+.stats-updated{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  margin-left:auto;
+}
+
+@media(max-width:640px){
+  .stats-band{padding:48px 20px 56px;}
+  .stats-head{margin-bottom:32px;}
+  .stats-title{font-size:34px;}
+  .stats-note{text-align:left;border-left:none;border-top:2px solid var(--line);padding-left:0;padding-top:12px;max-width:none;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .stat{min-height:180px;padding:24px 20px;}
+  .stat__num{font-size:58px;}
+  .stat--focal .stat__num{font-size:64px;}
+  .stats-updated{margin-left:0;width:100%;margin-top:6px;}
+}
+</style>
+</head>
+<body>
+<section class="stats-band">
+  <div class="stats-inner">
+
+    <div class="stats-head">
+      <div>
+        <span class="stats-eyebrow">// THE NUMBERS</span>
+        <h2 class="stats-title">SHIPPED, NOT <span class="mark">HYPED.</span></h2>
+      </div>
+      <p class="stats-note">Pulled straight from the registry on <b>22 JUL 2026</b>. No rounding up. No vanity math.</p>
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="stat stat--focal">
+        <span class="stat__idx">01 / DOWNLOADS</span>
+        <div>
+          <div class="stat__num">148<span class="unit">K</span></div>
+          <div class="stat__label">Copy-paste installs</div>
+          <span class="stat__sub">+12.4K in the last 30 days</span>
+        </div>
+      </div>
+
+      <div class="stat stat--tick">
+        <span class="stat__idx">02 / SECTIONS</span>
+        <div>
+          <div class="stat__num">312</div>
+          <div class="stat__label">Ready-to-drop blocks</div>
+          <span class="stat__sub">Every one hand-built</span>
+        </div>
+      </div>
+
+      <div class="stat">
+        <span class="stat__idx">03 / BUILD STEP</span>
+        <div>
+          <div class="stat__num">0<span class="unit">ms</span></div>
+          <div class="stat__label">No bundler, no deps</div>
+          <span class="stat__sub">Paste and it runs</span>
+        </div>
+      </div>
+
+      <div class="stat">
+        <span class="stat__idx">04 / LICENSE</span>
+        <div>
+          <div class="stat__num">100<span class="unit">%</span></div>
+          <div class="stat__label">Free, forever, MIT</div>
+          <span class="stat__sub">Ship it in client work</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stats-foot">
+      <span class="stats-tag stats-tag--fill">MIT LICENSED</span>
+      <span class="stats-tag">SINGLE-FILE HTML</span>
+      <span class="stats-tag">DARK-MODE SAFE</span>
+      <span class="stats-updated">SRC: /registry/stats.json — REV 0447</span>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

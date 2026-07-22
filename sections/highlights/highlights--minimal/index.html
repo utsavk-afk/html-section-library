@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!-- ===== HIGHLIGHTS — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highlights — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e4e0;
+  --accent:#C0492B;
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+}
+
+.hl-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:96px 40px 104px;
+  width:100%;
+}
+.hl-wrap{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* header — asymmetric, left focal */
+.hl-head{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--line);
+}
+.hl-eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+.hl-eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+.hl-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:40px;
+  line-height:1.12;
+  letter-spacing:-0.01em;
+  max-width:15ch;
+}
+.hl-title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.hl-note{
+  font-size:15px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:34ch;
+  padding-bottom:6px;
+}
+
+/* strip */
+.hl-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-top:8px;
+}
+.hl-item{
+  padding:38px 32px 34px 0;
+  border-right:1px solid var(--line);
+  padding-left:32px;
+}
+.hl-item:first-child{padding-left:0;}
+.hl-item:last-child{border-right:none;padding-right:0;}
+
+/* intentional accent: first item carries the warm mark */
+.hl-mark{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--ink);
+  margin-bottom:22px;
+}
+.hl-item--lead .hl-mark{color:var(--accent);}
+.hl-mark svg{display:block;}
+
+.hl-index{
+  font-size:12px;
+  font-weight:600;
+  color:var(--muted);
+  letter-spacing:.06em;
+  margin-bottom:10px;
+}
+.hl-item--lead .hl-index{color:var(--accent);}
+
+.hl-h{
+  font-size:16.5px;
+  font-weight:600;
+  line-height:1.35;
+  letter-spacing:-0.01em;
+  margin-bottom:9px;
+}
+.hl-p{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+}
+.hl-p b{
+  color:var(--ink);
+  font-weight:600;
+}
+
+@media(max-width:640px){
+  .hl-section{padding:64px 22px 72px;}
+  .hl-head{
+    grid-template-columns:1fr;
+    gap:22px;
+    align-items:start;
+  }
+  .hl-title{font-size:30px;}
+  .hl-grid{grid-template-columns:1fr;}
+  .hl-item{
+    padding:26px 0;
+    border-right:none;
+    border-bottom:1px solid var(--line);
+  }
+  .hl-item:last-child{border-bottom:none;padding-bottom:0;}
+}
+</style>
+</head>
+<body>
+<section class="hl-section">
+  <div class="hl-wrap">
+
+    <div class="hl-head">
+      <div>
+        <div class="hl-eyebrow">What you get</div>
+        <h1 class="hl-title">Sections that behave, <em>right out of the paste.</em></h1>
+      </div>
+      <p class="hl-note">Every block ships as one file. No config, no dependencies to chase, no cleanup after Claude Code drops it in.</p>
+    </div>
+
+    <div class="hl-grid">
+
+      <div class="hl-item hl-item--lead">
+        <div class="hl-mark">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="22" height="22" rx="3"/>
+            <path d="M10 15l3.5 3.5L21 11"/>
+          </svg>
+        </div>
+        <div class="hl-index">01</div>
+        <h3 class="hl-h">One file, zero setup</h3>
+        <p class="hl-p">Self-contained HTML with inline CSS. Copy it, paste it, <b>ship it in the same minute</b> — nothing to install.</p>
+      </div>
+
+      <div class="hl-item">
+        <div class="hl-mark">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 5H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3"/>
+            <rect x="11" y="3" width="8" height="4" rx="1"/>
+            <path d="M9 13h12M9 18h8"/>
+          </svg>
+        </div>
+        <div class="hl-index">02</div>
+        <h3 class="hl-h">Token-driven theming</h3>
+        <p class="hl-p">A single <b>:root</b> block controls color, type and spacing — recolor a whole section from seven variables.</p>
+      </div>
+
+      <div class="hl-item">
+        <div class="hl-mark">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="6" width="24" height="15" rx="2"/>
+            <path d="M9 25h12M15 21v4"/>
+            <path d="M8 11l3 3-3 3"/>
+          </svg>
+        </div>
+        <div class="hl-index">03</div>
+        <h3 class="hl-h">Responsive by default</h3>
+        <p class="hl-p">Each layout folds cleanly to mobile at <b>640px</b>. No horizontal scroll, no broken grids to patch.</p>
+      </div>
+
+      <div class="hl-item">
+        <div class="hl-mark">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3l3.4 7.2 7.6 1-5.6 5.4 1.4 7.7L15 20.6 8.2 24.3l1.4-7.7L4 11.2l7.6-1z"/>
+          </svg>
+        </div>
+        <div class="hl-index">04</div>
+        <h3 class="hl-h">Free to use, forever</h3>
+        <p class="hl-p">No attribution, no license gate. Fork it, rebrand it, resell the page it lives in — <b>it's yours</b>.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

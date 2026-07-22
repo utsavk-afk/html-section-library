@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- ===== TIMELINE — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A52;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.tl-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 56px 88px;
+  width:100%;
+  border-top:4px solid var(--line);
+  border-bottom:4px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+
+/* faint visible grid */
+.tl-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;
+  opacity:.05;
+  pointer-events:none;
+}
+
+.tl-inner{
+  max-width:1440px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+
+/* header — asymmetric, focal point top-left */
+.tl-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  margin-bottom:64px;
+  flex-wrap:wrap;
+}
+.tl-head-left{max-width:640px;}
+.tl-kicker{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--accent);
+  padding:6px 12px;
+  display:inline-block;
+  margin-bottom:20px;
+}
+.tl-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(36px,5.4vw,72px);
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.tl-title span{
+  background:var(--accent);
+  box-shadow:6px 6px 0 var(--ink);
+  padding:0 8px;
+}
+.tl-meta{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--muted);
+  border:2px solid var(--line);
+  padding:14px 18px;
+  line-height:1.5;
+  max-width:260px;
+}
+.tl-meta b{color:var(--ink);}
+.tl-meta .dot{color:var(--red);}
+
+/* timeline rail */
+.tl-rail{
+  position:relative;
+  padding-top:44px;
+}
+.tl-line{
+  position:absolute;
+  top:8px;
+  left:0;
+  right:0;
+  height:4px;
+  background:var(--line);
+}
+.tl-track{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:0;
+}
+.tl-node{
+  position:relative;
+  padding:0 20px 0 0;
+}
+.tl-node:not(:last-child){
+  border-right:2px dashed rgba(17,17,17,.28);
+}
+
+/* the dot on the line */
+.tl-dot{
+  position:absolute;
+  top:-40px;
+  left:0;
+  width:26px;
+  height:26px;
+  background:var(--bg);
+  border:4px solid var(--ink);
+}
+.tl-node:nth-child(2) .tl-dot{background:var(--accent);}
+.tl-node:nth-child(4) .tl-dot{background:var(--red);}
+
+.tl-year{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.1em;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+.tl-card{
+  background:#fff;
+  border:3px solid var(--ink);
+  box-shadow:6px 6px 0 var(--ink);
+  padding:22px 20px 24px;
+  margin-right:18px;
+  min-height:196px;
+  display:flex;
+  flex-direction:column;
+}
+.tl-node:nth-child(2) .tl-card{box-shadow:6px 6px 0 var(--accent),6px 6px 0 1px var(--ink);}
+.tl-node:nth-child(4) .tl-card{box-shadow:6px 6px 0 var(--red);}
+
+.tl-num{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  color:var(--red);
+  margin-bottom:10px;
+}
+.tl-card h3{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:20px;
+  line-height:1.02;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+  margin-bottom:12px;
+}
+.tl-card p{
+  font-size:14px;
+  line-height:1.5;
+  color:var(--muted);
+  font-weight:600;
+  margin-top:auto;
+}
+.tl-tag{
+  align-self:flex-start;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  border:2px solid var(--ink);
+  padding:3px 8px;
+  margin-top:16px;
+}
+
+/* footer strip */
+.tl-foot{
+  margin-top:56px;
+  border:3px solid var(--ink);
+  background:var(--ink);
+  color:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 24px;
+  flex-wrap:wrap;
+}
+.tl-foot span{
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:.06em;
+}
+.tl-foot span b{color:var(--accent);}
+.tl-foot a{
+  font-family:var(--serif);
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:14px;
+  letter-spacing:.04em;
+  color:var(--ink);
+  background:var(--accent);
+  text-decoration:none;
+  padding:12px 22px;
+  border:3px solid var(--bg);
+  box-shadow:5px 5px 0 var(--red);
+}
+
+@media(max-width:640px){
+  .tl-section{padding:48px 22px 60px;}
+  .tl-head{margin-bottom:40px;}
+  .tl-meta{max-width:none;}
+  .tl-rail{padding-top:0;}
+  .tl-line{display:none;}
+  .tl-track{grid-template-columns:1fr;gap:0;}
+  .tl-node{
+    padding:0 0 0 26px;
+    border-right:none!important;
+    border-left:4px solid var(--ink);
+    margin-bottom:0;
+    padding-bottom:34px;
+  }
+  .tl-node:last-child{padding-bottom:0;}
+  .tl-dot{top:2px;left:-15px;}
+  .tl-card{margin-right:0;min-height:0;}
+  .tl-year{margin-top:2px;}
+}
+</style>
+</head>
+<body>
+<section class="tl-section">
+  <div class="tl-inner">
+
+    <div class="tl-head">
+      <div class="tl-head-left">
+        <span class="tl-kicker">// Build Log</span>
+        <h1 class="tl-title">From one prompt<br>to a <span>shipped</span> tool</h1>
+      </div>
+      <div class="tl-meta">
+        <b>STATUS:</b> LIVE<br>
+        <b>REV:</b> 04.2 <span class="dot">●</span> STABLE<br>
+        <b>NODES:</b> 5 MILESTONES
+      </div>
+    </div>
+
+    <div class="tl-rail">
+      <div class="tl-line" aria-hidden="true"></div>
+      <div class="tl-track">
+
+        <div class="tl-node">
+          <span class="tl-dot"></span>
+          <div class="tl-year">2021 — Q2</div>
+          <div class="tl-card">
+            <div class="tl-num">01 / ORIGIN</div>
+            <h3>Bash script<br>in a repo</h3>
+            <p>A 40-line hack pasted between two engineers. It worked on exactly one machine.</p>
+            <span class="tl-tag">v0.1</span>
+          </div>
+        </div>
+
+        <div class="tl-node">
+          <span class="tl-dot"></span>
+          <div class="tl-year">2022 — Q4</div>
+          <div class="tl-card">
+            <div class="tl-num">02 / OPEN</div>
+            <h3>Made it<br>copy-paste</h3>
+            <p>Stripped the config. First 200 people dropped it straight into their terminal.</p>
+            <span class="tl-tag">v0.7</span>
+          </div>
+        </div>
+
+        <div class="tl-node">
+          <span class="tl-dot"></span>
+          <div class="tl-year">2023 — Q3</div>
+          <div class="tl-card">
+            <div class="tl-num">03 / SCALE</div>
+            <h3>Templates<br>and presets</h3>
+            <p>Nine reusable blocks. Setup time fell from an afternoon to under two minutes.</p>
+            <span class="tl-tag">v1.4</span>
+          </div>
+        </div>
+
+        <div class="tl-node">
+          <span class="tl-dot"></span>
+          <div class="tl-year">2024 — Q2</div>
+          <div class="tl-card">
+            <div class="tl-num">04 / SHIP</div>
+            <h3>Full library<br>goes free</h3>
+            <p>Every section documented, versioned, and MIT-licensed. Zero build step required.</p>
+            <span class="tl-tag">v3.0</span>
+          </div>
+        </div>
+
+        <div class="tl-node">
+          <span class="tl-dot"></span>
+          <div class="tl-year">2026 — NOW</div>
+          <div class="tl-card">
+            <div class="tl-num">05 / TODAY</div>
+            <h3>Used in<br>Claude Code</h3>
+            <p>Paste a section, ship a page. Fourteen thousand builders and counting.</p>
+            <span class="tl-tag">v4.2</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tl-foot">
+      <span><b>NEXT ▸</b> component variants, dark tokens, and a CLI. All still free.</span>
+      <a href="#grab">Grab the library</a>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

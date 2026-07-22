@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!-- /* ===== PRESS-LOGOS — MINIMAL ===== */ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>As Featured In — Press Logos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --hairline:#e7e4e0;
+  --hairline-strong:#d8d4cf;
+  --white:#ffffff;
+  --accent:#C0492B;
+  --paper:#ffffff;
+  --wordmark:#1d1d1d;
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+body{
+  font-family:var(--font);
+  background:var(--paper);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.press{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 72px 96px;
+}
+
+/* Header: asymmetric — label sits left, small note pushes right */
+.press__head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:38px;
+  border-bottom:1px solid var(--hairline);
+}
+
+.press__label{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.press__label::before{
+  content:"";
+  width:26px;
+  height:2px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+.press__note{
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  max-width:230px;
+  text-align:right;
+}
+.press__note b{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* Logo row — a single flowing line, not a uniform card grid.
+   Widths vary intentionally so it reads as real wordmarks. */
+.press__row{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:0;
+  margin-top:44px;
+}
+
+.press__logo{
+  display:inline-flex;
+  align-items:center;
+  color:var(--wordmark);
+  opacity:.62;
+  transition:opacity .22s ease, color .22s ease;
+  padding:14px 40px;
+  flex:0 0 auto;
+}
+.press__logo:first-child{padding-left:0;}
+.press__logo:hover{
+  opacity:1;
+  color:var(--accent);
+}
+.press__logo svg{
+  display:block;
+  height:26px;
+  width:auto;
+}
+
+/* Thin vertical separators between logos */
+.press__logo + .press__logo{
+  border-left:1px solid var(--hairline);
+}
+
+/* One focal wordmark gets slightly more presence — asymmetry */
+.press__logo--lead{
+  opacity:.85;
+}
+
+.press__foot{
+  margin-top:52px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:13px;
+  color:var(--muted);
+}
+.press__foot a{
+  color:var(--ink);
+  font-weight:500;
+  text-decoration:none;
+  border-bottom:1px solid var(--hairline-strong);
+  padding-bottom:2px;
+  transition:border-color .2s ease;
+}
+.press__foot a:hover{border-color:var(--accent);}
+.press__count{
+  color:var(--accent);
+  font-weight:600;
+}
+
+@media(max-width:640px){
+  .press{padding:64px 24px 60px;}
+  .press__head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    padding-bottom:28px;
+  }
+  .press__note{text-align:left;max-width:none;}
+  .press__row{margin-top:30px;gap:0;}
+  .press__logo{
+    padding:12px 18px;
+    flex:0 0 auto;
+  }
+  .press__logo:first-child{padding-left:0;}
+  .press__logo svg{height:20px;}
+  .press__logo:nth-child(3n+1){border-left:none;padding-left:0;}
+  .press__foot{margin-top:36px;flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<section class="press" aria-label="Press coverage">
+  <div class="press__head">
+    <span class="press__label">As featured in</span>
+    <p class="press__note">Coverage of our <b>Series&nbsp;B</b> and the 2026 field report, syndicated across desks.</p>
+  </div>
+
+  <div class="press__row">
+    <!-- Ledgerline -->
+    <span class="press__logo press__logo--lead" aria-label="Ledgerline">
+      <svg viewBox="0 0 168 26" role="img" aria-hidden="true">
+        <text x="0" y="20" font-family="Inter, sans-serif" font-size="23" font-weight="700" letter-spacing="-0.5" fill="currentColor">Ledger<tspan font-weight="400" font-style="italic">line</tspan></text>
+      </svg>
+    </span>
+
+    <!-- THE CADENCE -->
+    <span class="press__logo" aria-label="The Cadence">
+      <svg viewBox="0 0 176 26" role="img" aria-hidden="true">
+        <text x="0" y="19" font-family="Inter, sans-serif" font-size="17" font-weight="700" letter-spacing="0.22em" fill="currentColor">THE CADENCE</text>
+      </svg>
+    </span>
+
+    <!-- Northbound -->
+    <span class="press__logo" aria-label="Northbound">
+      <svg viewBox="0 0 158 26" role="img" aria-hidden="true">
+        <circle cx="10" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="10" y1="7" x2="10" y2="19" stroke="currentColor" stroke-width="2"/>
+        <text x="26" y="19" font-family="Inter, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.3" fill="currentColor">Northbound</text>
+      </svg>
+    </span>
+
+    <!-- QUARTERLY WIRE -->
+    <span class="press__logo" aria-label="Quarterly Wire">
+      <svg viewBox="0 0 148 30" role="img" aria-hidden="true">
+        <text x="0" y="12" font-family="Inter, sans-serif" font-size="9" font-weight="600" letter-spacing="0.34em" fill="currentColor">QUARTERLY</text>
+        <text x="0" y="27" font-family="Inter, sans-serif" font-size="19" font-weight="700" letter-spacing="0.04em" fill="currentColor">WIRE</text>
+      </svg>
+    </span>
+
+    <!-- Sightline -->
+    <span class="press__logo" aria-label="Sightline">
+      <svg viewBox="0 0 132 26" role="img" aria-hidden="true">
+        <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="500" letter-spacing="-0.4" fill="currentColor">Sightline</text>
+        <rect x="118" y="4" width="6" height="6" fill="currentColor"/>
+      </svg>
+    </span>
+
+    <!-- MERIDIAN -->
+    <span class="press__logo" aria-label="Meridian">
+      <svg viewBox="0 0 154 26" role="img" aria-hidden="true">
+        <text x="0" y="19" font-family="Inter, sans-serif" font-size="18" font-weight="400" letter-spacing="0.28em" fill="currentColor">MERIDIAN</text>
+      </svg>
+    </span>
+  </div>
+
+  <div class="press__foot">
+    <span><span class="press__count">40+</span> outlets to date</span>
+    <span aria-hidden="true">·</span>
+    <a href="#press-kit">Read the press kit</a>
+  </div>
+</section>
+
+</body>
+</html>

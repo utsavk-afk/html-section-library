@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explainer Video — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== EXPLAINER-VIDEO — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --border:3px solid var(--ink);
+  --border-thick:4px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --font-head:'Archivo',sans-serif;
+  --font-mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-head);
+  -webkit-font-smoothing:antialiased;
+}
+
+.xv-section{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:72px 56px;
+  background:
+    repeating-linear-gradient(90deg,transparent 0 39px,rgba(17,17,17,0.04) 39px 40px),
+    var(--paper);
+}
+
+.xv-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  background:var(--acid);
+  border:var(--border);
+  box-shadow:3px 3px 0 var(--ink);
+  padding:7px 14px;
+  margin-bottom:36px;
+}
+.xv-tag .dot{
+  width:9px;height:9px;
+  background:var(--red);
+  display:inline-block;
+}
+
+.xv-grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:48px;
+  align-items:stretch;
+}
+
+/* ---- PLAYER ---- */
+.xv-player-wrap{
+  position:relative;
+}
+.xv-player{
+  position:relative;
+  aspect-ratio:16/10;
+  width:100%;
+  background:var(--ink);
+  border:var(--border-thick);
+  box-shadow:var(--shadow-red);
+  overflow:hidden;
+  cursor:pointer;
+}
+/* CSS-drawn "footage": bold flat shapes, not a photo */
+.xv-screen{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 78% 26%, var(--acid) 0 46px, transparent 47px),
+    linear-gradient(135deg, #1c1c1c 0%, #0d0d0d 100%);
+}
+.xv-screen .bar{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:44%;
+  background:
+    repeating-linear-gradient(90deg,
+      var(--acid) 0 26px,
+      transparent 26px 52px);
+  opacity:0.16;
+}
+.xv-screen .slab{
+  position:absolute;
+  left:34px;bottom:34px;
+  width:38%;height:10px;
+  background:var(--red);
+}
+.xv-screen .slab.two{
+  bottom:56px;width:24%;background:var(--white);height:10px;opacity:0.85;
+}
+.xv-screen .frame-lbl{
+  position:absolute;
+  top:16px;left:18px;
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.12em;
+  color:var(--acid);
+  text-transform:uppercase;
+}
+
+/* timeline strip */
+.xv-timeline{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:26px;
+  background:var(--ink);
+  border-top:3px solid var(--paper);
+  display:flex;
+  align-items:center;
+  padding:0 12px;
+  gap:10px;
+}
+.xv-timeline .track{
+  flex:1;
+  height:6px;
+  background:#444;
+  position:relative;
+}
+.xv-timeline .track::after{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;
+  width:34%;
+  background:var(--acid);
+}
+.xv-timeline .track::before{
+  content:"";
+  position:absolute;left:34%;top:-4px;
+  width:14px;height:14px;
+  background:var(--red);
+  border:2px solid var(--paper);
+}
+.xv-timeline .tc{
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--acid);
+  font-weight:700;
+}
+
+/* play button */
+.xv-play{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:104px;height:104px;
+  background:var(--acid);
+  border:var(--border-thick);
+  box-shadow:6px 6px 0 var(--red);
+  display:grid;
+  place-items:center;
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.xv-player:hover .xv-play{
+  transform:translate(-50%,-50%) translate(-2px,-2px);
+  box-shadow:9px 9px 0 var(--red);
+}
+.xv-player:active .xv-play{
+  transform:translate(-50%,-50%) translate(3px,3px);
+  box-shadow:2px 2px 0 var(--red);
+}
+.xv-play .tri{
+  width:0;height:0;
+  margin-left:6px;
+  border-top:22px solid transparent;
+  border-bottom:22px solid transparent;
+  border-left:36px solid var(--ink);
+}
+.xv-runtime{
+  position:absolute;
+  right:-3px;top:-3px;
+  background:var(--red);
+  color:var(--white);
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.1em;
+  padding:6px 12px;
+  border:3px solid var(--ink);
+}
+
+/* ---- COPY SIDE ---- */
+.xv-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.xv-eyebrow{
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:14px;
+}
+.xv-copy h2{
+  font-size:clamp(30px,3.6vw,52px);
+  font-weight:900;
+  line-height:0.96;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+.xv-copy h2 mark{
+  background:var(--acid);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.xv-copy p{
+  font-family:var(--font-mono);
+  font-size:15px;
+  line-height:1.65;
+  max-width:38ch;
+  margin-bottom:28px;
+}
+.xv-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0;
+  border:var(--border);
+  box-shadow:5px 5px 0 var(--ink);
+  margin-bottom:30px;
+}
+.xv-meta .cell{
+  flex:1 1 33%;
+  min-width:110px;
+  padding:16px 16px;
+  border-right:var(--border);
+  background:var(--white);
+}
+.xv-meta .cell:last-child{border-right:none;}
+.xv-meta .cell:nth-child(2){background:var(--acid);}
+.xv-meta .cell .num{
+  font-size:26px;
+  font-weight:900;
+  line-height:1;
+}
+.xv-meta .cell .lbl{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-top:6px;
+  display:block;
+}
+.xv-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  align-self:flex-start;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font-head);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:16px 26px;
+  border:var(--border-thick);
+  box-shadow:var(--shadow);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.xv-cta:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:8px 8px 0 var(--ink);
+  background:var(--red);
+}
+.xv-cta:active{
+  transform:translate(3px,3px);
+  box-shadow:2px 2px 0 var(--ink);
+}
+.xv-cta .arw{
+  font-family:var(--font-mono);
+  font-weight:700;
+}
+
+@media(max-width:640px){
+  .xv-section{padding:44px 20px;background:var(--paper);}
+  .xv-grid{grid-template-columns:1fr;gap:30px;}
+  .xv-play{width:78px;height:78px;box-shadow:4px 4px 0 var(--red);}
+  .xv-play .tri{border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:26px solid var(--ink);}
+  .xv-copy h2{font-size:34px;}
+  .xv-copy p{max-width:100%;}
+  .xv-tag{margin-bottom:26px;}
+}
+</style>
+</head>
+<body>
+<section class="xv-section">
+  <span class="xv-tag"><span class="dot"></span>Watch · 90-Second Teardown</span>
+
+  <div class="xv-grid">
+    <!-- PLAYER -->
+    <div class="xv-player-wrap">
+      <div class="xv-player" role="button" aria-label="Play the explainer video">
+        <div class="xv-screen">
+          <span class="frame-lbl">REC · CAM_01 · 4K</span>
+          <span class="slab two"></span>
+          <span class="slab"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="xv-play">
+          <span class="tri"></span>
+          <span class="xv-runtime">01:32</span>
+        </div>
+        <div class="xv-timeline">
+          <span class="tc">00:31</span>
+          <span class="track"></span>
+          <span class="tc">01:32</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COPY -->
+    <div class="xv-copy">
+      <p class="xv-eyebrow">// How It Actually Works</p>
+      <h2>See the whole <mark>pipeline</mark> in ninety seconds flat.</h2>
+      <p>No sales fluff, no talking heads. We open the hood and walk you through raw ingest, tagging, and export — the exact path your files take from drop to done.</p>
+
+      <div class="xv-meta">
+        <div class="cell">
+          <span class="num">1:32</span>
+          <span class="lbl">Runtime</span>
+        </div>
+        <div class="cell">
+          <span class="num">6</span>
+          <span class="lbl">Steps Shown</span>
+        </div>
+        <div class="cell">
+          <span class="num">0</span>
+          <span class="lbl">Signup Wall</span>
+        </div>
+      </div>
+
+      <a href="#play" class="xv-cta">Play The Teardown <span class="arw">→</span></a>
+    </div>
+  </div>
+</section>
+</body>
+</html>

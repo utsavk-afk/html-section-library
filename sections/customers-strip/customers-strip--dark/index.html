@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customers Strip — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CUSTOMERS-STRIP — DARK/LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --near-black:#121216;
+  --panel:#17171c;
+  --panel-2:#1c1c22;
+  --off-white:#F4F4F5;
+  --muted:#A1A1AA;
+  --muted-dim:#71717A;
+  --amber:#F59E42;
+  --line:rgba(244,244,245,0.10);
+  --line-soft:rgba(244,244,245,0.06);
+  --font-body:'Inter',system-ui,-apple-system,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--near-black);
+  color:var(--off-white);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+.cs-strip{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 72px;
+  min-height:600px;
+  display:flex;
+  align-items:center;
+}
+
+.cs-inner{
+  width:100%;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:72px;
+  align-items:center;
+}
+
+/* ---- left focal block ---- */
+.cs-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:26px;
+}
+.cs-eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--amber);
+}
+
+.cs-headline{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:44px;
+  line-height:1.08;
+  letter-spacing:-0.01em;
+  color:var(--off-white);
+  max-width:15ch;
+}
+.cs-headline em{
+  font-style:italic;
+  color:var(--amber);
+}
+
+.cs-sub{
+  margin-top:20px;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:44ch;
+}
+
+.cs-join{
+  margin-top:34px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+/* ---- overlapping avatars ---- */
+.cs-avatars{
+  display:flex;
+  align-items:center;
+}
+.cs-avatar{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  margin-left:-13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  font-weight:600;
+  color:var(--near-black);
+  border:2px solid var(--near-black);
+  position:relative;
+  box-shadow:0 2px 10px rgba(0,0,0,0.35);
+}
+.cs-avatar:first-child{margin-left:0;}
+.cs-avatar:nth-child(1){background:linear-gradient(150deg,#f6d5a8,#e7a86b);}
+.cs-avatar:nth-child(2){background:linear-gradient(150deg,#c8d3e0,#8a9bb0);z-index:2;}
+.cs-avatar:nth-child(3){background:linear-gradient(150deg,#e8c2c2,#c98a8a);z-index:3;}
+.cs-avatar:nth-child(4){background:linear-gradient(150deg,#cfd8c5,#9bab86);z-index:4;}
+.cs-avatar:nth-child(5){background:linear-gradient(150deg,#d6cbe4,#a892c4);z-index:5;}
+.cs-avatar-more{
+  background:var(--panel-2);
+  color:var(--off-white);
+  font-size:13px;
+  border:2px solid var(--near-black);
+  z-index:6;
+}
+
+.cs-join-text{
+  font-size:15px;
+  line-height:1.4;
+  color:var(--muted);
+}
+.cs-join-text b{
+  color:var(--off-white);
+  font-weight:600;
+}
+
+/* ---- right rating panel (asymmetric, offset) ---- */
+.cs-panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px 16px 16px 4px;
+  padding:30px 32px;
+  transform:translateY(-8px);
+}
+.cs-panel-top{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line-soft);
+}
+.cs-score{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:40px;
+  line-height:1;
+  color:var(--off-white);
+}
+.cs-score span{
+  font-size:20px;
+  color:var(--muted-dim);
+}
+.cs-stars{
+  display:flex;
+  gap:3px;
+  margin-bottom:4px;
+}
+.cs-stars svg{width:16px;height:16px;display:block;}
+.cs-star-full{fill:var(--amber);}
+.cs-star-half-fill{fill:var(--amber);}
+.cs-star-empty{fill:rgba(244,244,245,0.16);}
+
+.cs-panel-meta{
+  margin-top:16px;
+  font-size:13px;
+  line-height:1.6;
+  color:var(--muted);
+}
+.cs-panel-meta b{color:var(--off-white);font-weight:600;}
+
+.cs-logos{
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid var(--line-soft);
+  display:flex;
+  gap:22px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.cs-logo{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  color:var(--muted-dim);
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+}
+.cs-logo svg{width:15px;height:15px;display:block;fill:var(--muted-dim);}
+
+@media(max-width:640px){
+  .cs-strip{padding:64px 24px;min-height:0;}
+  .cs-inner{grid-template-columns:1fr;gap:40px;}
+  .cs-headline{font-size:32px;}
+  .cs-sub{font-size:15px;}
+  .cs-panel{transform:none;}
+  .cs-join{gap:16px;}
+  .cs-avatar{width:42px;height:42px;}
+}
+</style>
+</head>
+<body>
+
+<section class="cs-strip">
+  <div class="cs-inner">
+
+    <div class="cs-focal">
+      <span class="cs-eyebrow">Trusted in production</span>
+      <h2 class="cs-headline">The design teams shipping <em>faster</em> already switched.</h2>
+      <p class="cs-sub">From two-person studios to platform teams at scale — Northbeam, Cadence, Meridian Labs and hundreds more run their handoff on us every single day.</p>
+
+      <div class="cs-join">
+        <div class="cs-avatars" aria-label="Customer avatars">
+          <div class="cs-avatar">RK</div>
+          <div class="cs-avatar">SD</div>
+          <div class="cs-avatar">MO</div>
+          <div class="cs-avatar">TL</div>
+          <div class="cs-avatar">JP</div>
+          <div class="cs-avatar cs-avatar-more">+2.3k</div>
+        </div>
+        <p class="cs-join-text">Join <b>2,340 product teams</b><br>building on the platform</p>
+      </div>
+    </div>
+
+    <div class="cs-panel">
+      <div class="cs-panel-top">
+        <div class="cs-score">4.9<span>/5</span></div>
+        <div>
+          <div class="cs-stars" aria-label="4.9 out of 5 stars">
+            <svg viewBox="0 0 24 24"><path class="cs-star-full" d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.7 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path class="cs-star-full" d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.7 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path class="cs-star-full" d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.7 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path class="cs-star-full" d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.7 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24">
+              <defs><linearGradient id="half"><stop offset="88%" stop-color="var(--amber)"/><stop offset="88%" stop-color="rgba(244,244,245,0.16)"/></linearGradient></defs>
+              <path fill="url(#half)" d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.7 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/>
+            </svg>
+          </div>
+          <div style="font-size:12.5px;color:var(--muted-dim);letter-spacing:0.02em;">based on 1,180 verified reviews</div>
+        </div>
+      </div>
+      <p class="cs-panel-meta">Rated <b>#1 for handoff speed</b> on G2 — Summer 2026. Median time-to-first-ship dropped <b>41%</b> across surveyed teams.</p>
+      <div class="cs-logos">
+        <span class="cs-logo">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Northbeam
+        </span>
+        <span class="cs-logo">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>Cadence
+        </span>
+        <span class="cs-logo">
+          <svg viewBox="0 0 24 24"><path d="M12 2l10 20H2z"/></svg>Meridian
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

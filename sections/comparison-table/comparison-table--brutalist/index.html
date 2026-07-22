@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!-- ===== COMPARISON-TABLE — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparison Table — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5C5C55;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.cmp{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 40px 88px;
+  width:100%;
+  /* faint grid lines behind everything */
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+.cmp__wrap{max-width:1160px;margin:0 auto;}
+
+/* --- header / focal point --- */
+.cmp__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  margin-bottom:44px;
+  flex-wrap:wrap;
+}
+.cmp__eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--accent);
+  padding:6px 12px;
+  display:inline-block;
+  margin-bottom:20px;
+}
+.cmp__title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:64px;
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  max-width:9ch;
+}
+.cmp__title .mark{
+  background:var(--accent);
+  padding:0 8px;
+  box-shadow:6px 6px 0 var(--ink);
+  display:inline-block;
+  margin-top:8px;
+}
+.cmp__note{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:30ch;
+  border-left:3px solid var(--red);
+  padding-left:14px;
+}
+.cmp__note b{color:var(--ink);}
+
+/* --- table --- */
+.cmp__tablewrap{overflow-x:auto;}
+.cmp__table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  border:3px solid var(--line);
+  box-shadow:8px 8px 0 var(--ink);
+  background:#fff;
+  min-width:720px;
+}
+.cmp__table th,.cmp__table td{
+  padding:20px 22px;
+  text-align:left;
+  border-bottom:2px solid var(--line);
+  vertical-align:middle;
+}
+
+/* column head row */
+.cmp__table thead th{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:16px 22px;
+  border-bottom:3px solid var(--line);
+  white-space:nowrap;
+}
+.col-crit{width:38%;}
+.col-them{width:23%;text-align:center;color:var(--muted);}
+.cmp__brand{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:18px;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+}
+
+/* highlighted "us" column */
+.col-us{
+  width:23%;
+  text-align:center;
+  border-left:3px solid var(--line);
+  border-right:3px solid var(--line);
+}
+.cmp__table thead .col-us{
+  background:var(--accent);
+  color:var(--ink);
+  position:relative;
+}
+.cmp__table thead .col-us .cmp__brand{font-size:20px;}
+.cmp__tag{
+  display:block;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.14em;
+  margin-top:4px;
+}
+.cmp__table tbody .col-us{
+  background:#FFFBDB;
+  text-align:center;
+}
+
+/* criteria cells */
+.crit-name{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:16px;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+}
+.crit-sub{
+  display:block;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:400;
+  color:var(--muted);
+  text-transform:none;
+  letter-spacing:0;
+  margin-top:4px;
+}
+.cmp__num{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  margin-right:8px;
+}
+
+/* marks */
+.mk{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;height:34px;
+  border:2.5px solid var(--ink);
+}
+.mk svg{width:16px;height:16px;display:block;}
+.mk--yes{background:var(--ink);}
+.mk--yes svg{stroke:var(--accent);}
+.mk--yes-us{background:var(--ink);}
+.mk--yes-us svg{stroke:#fff;}
+.mk--no{background:#fff;border-color:var(--muted);}
+.mk--no svg{stroke:var(--muted);}
+.cell-txt{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+.cell-txt--muted{color:var(--muted);font-weight:400;}
+.cell-txt--red{color:var(--red);}
+
+.cmp__table tbody tr:last-child td{border-bottom:none;}
+
+/* footer row / cta */
+.cmp__foot{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin-top:32px;
+  flex-wrap:wrap;
+}
+.cmp__cta{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:#fff;
+  border:3px solid var(--ink);
+  padding:16px 30px;
+  box-shadow:6px 6px 0 var(--accent);
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease;
+}
+.cmp__cta:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--accent);}
+.cmp__foot-meta{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.6;
+}
+.cmp__foot-meta b{color:var(--ink);}
+
+@media(max-width:640px){
+  .cmp{padding:48px 20px 60px;}
+  .cmp__title{font-size:42px;}
+  .cmp__head{margin-bottom:32px;}
+  .cmp__table{box-shadow:5px 5px 0 var(--ink);}
+  .cmp__table th,.cmp__table td{padding:14px 14px;}
+  .crit-name{font-size:14px;}
+  .mk{width:28px;height:28px;}
+  .cmp__cta{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+<section class="cmp">
+  <div class="cmp__wrap">
+
+    <div class="cmp__head">
+      <div>
+        <span class="cmp__eyebrow">// Ship-Speed-Report — Q3 '26</span>
+        <h1 class="cmp__title">Why Teams<br><span class="mark">Drop Jira.</span></h1>
+      </div>
+      <p class="cmp__note">Ran the same 6-week sprint on both tools. <b>Same team, same backlog.</b> Numbers below are receipts, not marketing.</p>
+    </div>
+
+    <div class="cmp__tablewrap">
+      <table class="cmp__table">
+        <thead>
+          <tr>
+            <th class="col-crit">What Actually Matters</th>
+            <th class="col-them"><span class="cmp__brand">Jira Cloud</span></th>
+            <th class="col-them"><span class="cmp__brand">Trello +<br>Plugins</span></th>
+            <th class="col-us">
+              <span class="cmp__brand">Kanbolt</span>
+              <span class="cmp__tag">← YOU ARE HERE</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="crit-name"><span class="cmp__num">01</span>Setup To First Board</span><span class="crit-sub">Time from signup to a usable sprint</span></td>
+            <td class="col-them"><span class="cell-txt cell-txt--red">3–5 Days</span></td>
+            <td class="col-them"><span class="cell-txt cell-txt--muted">~2 Hours</span></td>
+            <td class="col-us"><span class="cell-txt">4 Minutes</span></td>
+          </tr>
+          <tr>
+            <td><span class="crit-name"><span class="cmp__num">02</span>Keyboard-Only Workflow</span><span class="crit-sub">Move, assign, close — no mouse</span></td>
+            <td class="col-them"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/></svg></span></td>
+            <td class="col-them"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/></svg></span></td>
+            <td class="col-us"><span class="mk mk--yes-us"><svg viewBox="0 0 24 24" fill="none" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><polyline points="4 12 10 18 20 6"/></svg></span></td>
+          </tr>
+          <tr>
+            <td><span class="crit-name"><span class="cmp__num">03</span>Flat Price, All Seats</span><span class="crit-sub">No per-user tax as you grow</span></td>
+            <td class="col-them"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/></svg></span></td>
+            <td class="col-them"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/></svg></span></td>
+            <td class="col-us"><span class="mk mk--yes-us"><svg viewBox="0 0 24 24" fill="none" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><polyline points="4 12 10 18 20 6"/></svg></span></td>
+          </tr>
+          <tr>
+            <td><span class="crit-name"><span class="cmp__num">04</span>Offline-First Sync</span><span class="crit-sub">Works on a plane, resolves later</span></td>
+            <td class="col-them"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/></svg></span></td>
+            <td class="col-them"><span class="cell-txt cell-txt--muted">Read-Only</span></td>
+            <td class="col-us"><span class="mk mk--yes-us"><svg viewBox="0 0 24 24" fill="none" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><polyline points="4 12 10 18 20 6"/></svg></span></td>
+          </tr>
+          <tr>
+            <td><span class="crit-name"><span class="cmp__num">05</span>Support Reply Time</span><span class="crit-sub">Real human, not a bot loop</span></td>
+            <td class="col-them"><span class="cell-txt cell-txt--red">48+ Hrs</span></td>
+            <td class="col-them"><span class="cell-txt cell-txt--muted">Forum Only</span></td>
+            <td class="col-us"><span class="cell-txt">Under 2 Hrs</span></td>
+          </tr>
+          <tr>
+            <td><span class="crit-name"><span class="cmp__num">06</span>Export Everything, No Lock-In</span><span class="crit-sub">JSON + Markdown, one click</span></td>
+            <td class="col-them"><span class="mk mk--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"/></svg></span></td>
+            <td class="col-them"><span class="mk mk--yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><polyline points="4 12 10 18 20 6"/></svg></span></td>
+            <td class="col-us"><span class="mk mk--yes-us"><svg viewBox="0 0 24 24" fill="none" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><polyline points="4 12 10 18 20 6"/></svg></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cmp__foot">
+      <button class="cmp__cta">Migrate My Board Free →</button>
+      <p class="cmp__foot-meta"><b>No card required.</b> We import your Jira backlog<br>in one click. Kill it in 30 days, keep the export.</p>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

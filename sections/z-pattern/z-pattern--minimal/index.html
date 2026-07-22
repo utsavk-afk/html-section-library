@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- ===== Z-PATTERN — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Pattern — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e0;
+  --line-soft:#efedea;
+  --paper:#ffffff;
+  --accent:#C0492B;
+  --accent-wash:#faf2ef;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --maxw:1200px;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.zsec{
+  width:100%;
+  padding:96px 40px 104px;
+}
+.zsec__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* --- section eyebrow --- */
+.zsec__head{
+  max-width:560px;
+  margin-bottom:72px;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+.zsec__title{
+  font-size:34px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  line-height:1.14;
+}
+.zsec__title em{
+  font-style:normal;
+  color:var(--muted);
+}
+
+/* --- rows --- */
+.zrow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:88px;
+  padding:56px 0;
+  border-top:1px solid var(--line-soft);
+}
+.zrow:first-of-type{ border-top:none; padding-top:8px; }
+
+/* alternate: even rows put visual on the right, text on left; odd reverse */
+.zrow--flip .zrow__text{ order:2; }
+.zrow--flip .zrow__visual{ order:1; }
+
+.zrow__text{ max-width:440px; }
+.zrow--flip .zrow__text{ margin-left:auto; }
+
+.step{
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+  letter-spacing:0.02em;
+  margin-bottom:16px;
+}
+.step b{ color:var(--ink); }
+.zrow__text h3{
+  font-size:23px;
+  font-weight:600;
+  letter-spacing:-0.015em;
+  line-height:1.22;
+  margin-bottom:14px;
+}
+.zrow__text p{
+  font-size:15.5px;
+  color:var(--muted);
+  line-height:1.62;
+  margin-bottom:22px;
+}
+.zrow__text p b{ color:var(--ink); font-weight:600; }
+
+.tags{ list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
+.tags li{
+  font-size:12.5px;
+  color:var(--ink);
+  padding:5px 12px;
+  border:1px solid var(--line);
+  border-radius:100px;
+}
+.tags li:first-child{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.linkarrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  padding-bottom:3px;
+  border-bottom:2px solid var(--ink);
+  transition:gap .18s ease;
+}
+.linkarrow:hover{ gap:13px; color:var(--accent); border-color:var(--accent); }
+
+/* --- visuals (CSS/SVG only) --- */
+.zrow__visual{ width:100%; }
+.panel{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--paper);
+  overflow:hidden;
+}
+
+/* visual 1: paste/terminal card */
+.v-paste{ padding:22px; box-shadow:0 20px 44px -34px rgba(20,20,20,.4); }
+.v-paste__bar{
+  display:flex; align-items:center; gap:7px; margin-bottom:18px;
+}
+.dot{ width:9px; height:9px; border-radius:50%; background:var(--line); }
+.dot.a{ background:var(--accent); }
+.v-paste__bar span{ margin-left:auto; font-size:11.5px; color:var(--muted); letter-spacing:.03em; }
+.code{ font-family:'Inter',monospace; font-size:13px; line-height:1.85; }
+.code .ln{ display:block; white-space:nowrap; }
+.code .mut{ color:#a3a3a3; }
+.code .key{ color:var(--accent); font-weight:600; }
+.code .cursor{
+  display:inline-block; width:8px; height:16px; vertical-align:-3px;
+  background:var(--ink); margin-left:2px; animation:blink 1.1s steps(1) infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
+
+/* visual 2: section stack diagram */
+.v-stack{ padding:30px 28px; background:linear-gradient(180deg,#fcfbfa,#fff); }
+.v-stack__row{
+  display:flex; align-items:center; gap:14px;
+  padding:13px 15px; margin-bottom:11px;
+  border:1px solid var(--line); border-radius:10px; background:#fff;
+}
+.v-stack__row:last-child{ margin-bottom:0; }
+.v-stack__row.hot{ border-color:var(--accent); background:var(--accent-wash); }
+.v-stack__num{
+  width:26px; height:26px; flex:none; border-radius:7px;
+  display:grid; place-items:center; font-size:12px; font-weight:600;
+  background:#f4f2ef; color:var(--muted);
+}
+.v-stack__row.hot .v-stack__num{ background:var(--accent); color:#fff; }
+.v-stack__bars{ flex:1; }
+.v-stack__bars i{ display:block; height:6px; border-radius:3px; background:var(--line); }
+.v-stack__bars i:first-child{ width:70%; margin-bottom:6px; background:#dcdad6; }
+.v-stack__bars i:last-child{ width:44%; }
+.v-stack__row.hot .v-stack__bars i:first-child{ background:#e2a693; }
+.v-stack__row.hot .v-stack__bars i:last-child{ background:#eec2b5; }
+
+/* visual 3: quality checklist */
+.v-check{ padding:28px 26px; }
+.v-check h4{ font-size:13px; font-weight:600; letter-spacing:.02em; margin-bottom:6px; }
+.v-check__meta{ font-size:12px; color:var(--muted); margin-bottom:20px; }
+.v-check ul{ list-style:none; }
+.v-check li{
+  display:flex; align-items:center; gap:12px;
+  font-size:14px; padding:11px 0; border-top:1px solid var(--line-soft);
+}
+.v-check li:first-child{ border-top:none; }
+.tick{ width:20px; height:20px; flex:none; }
+.v-check li.off{ color:var(--muted); }
+.v-check .score{
+  margin-top:20px; padding-top:16px; border-top:1px solid var(--line);
+  display:flex; align-items:baseline; gap:8px;
+}
+.v-check .score b{ font-size:28px; font-weight:700; letter-spacing:-.02em; }
+.v-check .score span{ font-size:13px; color:var(--muted); }
+
+@media(max-width:640px){
+  .zsec{ padding:64px 20px 72px; }
+  .zsec__head{ margin-bottom:48px; }
+  .zsec__title{ font-size:27px; }
+  .zrow{
+    grid-template-columns:1fr;
+    gap:32px;
+    padding:44px 0;
+  }
+  .zrow--flip .zrow__text,
+  .zrow--flip .zrow__visual{ order:0; }
+  .zrow__text{ max-width:none; }
+  .zrow--flip .zrow__text{ margin-left:0; }
+  .code .ln{ white-space:normal; }
+}
+</style>
+</head>
+<body>
+<section class="zsec">
+  <div class="zsec__inner">
+
+    <header class="zsec__head">
+      <span class="eyebrow">The library, end to end</span>
+      <h2 class="zsec__title">Grab a section, drop it in Claude Code, <em>ship the page the same afternoon.</em></h2>
+    </header>
+
+    <!-- ROW 1 : text left / visual right -->
+    <div class="zrow">
+      <div class="zrow__text">
+        <span class="step"><b>01</b> &nbsp;— &nbsp;Copy the raw block</span>
+        <h3>Every section is one self-contained HTML file. No build step.</h3>
+        <p>Open the section you want, hit copy, and paste the whole thing into a <b>Claude Code</b> prompt. Fonts, tokens, markup, and the responsive breakpoint all travel together in a single file.</p>
+        <ul class="tags">
+          <li>Zero dependencies</li>
+          <li>Inline SVG</li>
+          <li>Google Fonts only</li>
+        </ul>
+      </div>
+      <div class="zrow__visual">
+        <div class="panel v-paste">
+          <div class="v-paste__bar">
+            <i class="dot a"></i><i class="dot"></i><i class="dot"></i>
+            <span>hero--minimal.html</span>
+          </div>
+          <div class="code">
+            <span class="ln"><span class="mut">/* ===== HERO — MINIMAL ===== */</span></span>
+            <span class="ln"><span class="key">:root</span>{</span>
+            <span class="ln">&nbsp;&nbsp;--ink:<span class="mut">#141414</span>;</span>
+            <span class="ln">&nbsp;&nbsp;--accent:<span class="mut">#C0492B</span>;</span>
+            <span class="ln">}</span>
+            <span class="ln"><span class="mut">&lt;section class="hero"&gt;</span><span class="cursor"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2 : visual left / text right -->
+    <div class="zrow zrow--flip">
+      <div class="zrow__text">
+        <span class="step"><b>02</b> &nbsp;— &nbsp;Stack them like bricks</span>
+        <h3>Mix hero, pricing, FAQ, and footer into one coherent page.</h3>
+        <p>Sections share the same token names, so a color you change in one place carries through the stack. Reorder them, delete the ones you don't need — the rhythm holds because <b>the spacing scale is shared.</b></p>
+        <a class="linkarrow" href="#">Browse all 40 sections &nbsp;→</a>
+      </div>
+      <div class="zrow__visual">
+        <div class="panel v-stack">
+          <div class="v-stack__row">
+            <span class="v-stack__num">A</span>
+            <div class="v-stack__bars"><i></i><i></i></div>
+          </div>
+          <div class="v-stack__row hot">
+            <span class="v-stack__num">B</span>
+            <div class="v-stack__bars"><i></i><i></i></div>
+          </div>
+          <div class="v-stack__row">
+            <span class="v-stack__num">C</span>
+            <div class="v-stack__bars"><i></i><i></i></div>
+          </div>
+          <div class="v-stack__row">
+            <span class="v-stack__num">D</span>
+            <div class="v-stack__bars"><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 : text left / visual right -->
+    <div class="zrow">
+      <div class="zrow__text">
+        <span class="step"><b>03</b> &nbsp;— &nbsp;Trust what you paste</span>
+        <h3>Anti-slop rules baked into every file before it ships.</h3>
+        <p>No purple-to-cyan gradients, no glassmorphism, no uniform icon grids. Each section is checked against a hard checklist so what you drop in reads as <b>designed, not generated.</b></p>
+        <a class="linkarrow" href="#">See the standard &nbsp;→</a>
+      </div>
+      <div class="zrow__visual">
+        <div class="panel v-check">
+          <h4>Section review — z-pattern</h4>
+          <div class="v-check__meta">Checked 22 Jul, before publish</div>
+          <ul>
+            <li>
+              <svg class="tick" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#C0492B"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              One restrained warm accent
+            </li>
+            <li>
+              <svg class="tick" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#C0492B"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Left-aligned, asymmetric focal point
+            </li>
+            <li>
+              <svg class="tick" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#C0492B"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              No horizontal overflow
+            </li>
+            <li class="off">
+              <svg class="tick" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="none" stroke="#d8d5d1" stroke-width="1.6"/></svg>
+              Stock-smile faces
+            </li>
+          </ul>
+          <div class="score"><b>3 / 3</b><span>required checks passed</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "type": "before-after",
+  "name": "before-after--minimal",
+  "style": "minimal",
+  "file": "index.html"
+}

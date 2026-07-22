@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- ===== HEADER-NAVIGATION — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Header Navigation — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5c5c54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+html{-webkit-text-size-adjust:100%;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  min-height:100vh;
+  padding-bottom:80px;
+}
+
+/* ---- announcement strip ---- */
+.wrap{max-width:1440px;margin:0 auto;}
+
+.strip{
+  background:var(--ink);
+  color:var(--accent);
+  border-bottom:3px solid var(--ink);
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:9px 28px;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.strip .strip-left{display:flex;align-items:center;gap:14px;min-width:0;overflow:hidden;}
+.strip .blink{
+  display:inline-block;
+  width:9px;height:9px;
+  background:var(--red);
+  flex:0 0 auto;
+}
+.strip .strip-left span{overflow:hidden;text-overflow:ellipsis;}
+.strip .strip-right{
+  color:var(--bg);
+  flex:0 0 auto;
+  border-left:1px solid #444;
+  padding-left:16px;
+}
+
+/* ---- nav bar ---- */
+.nav{
+  background:var(--bg);
+  border-bottom:4px solid var(--line);
+  display:flex;
+  align-items:stretch;
+  justify-content:space-between;
+  padding:0 28px;
+  height:78px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:var(--ink);
+}
+.brand .mark{
+  width:40px;height:40px;
+  background:var(--accent);
+  border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink);
+  display:grid;
+  place-items:center;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:22px;
+  line-height:1;
+  flex:0 0 auto;
+}
+.brand .word{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:23px;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+}
+.brand .word b{color:var(--red);}
+.brand .tag{
+  display:block;
+  font-family:var(--mono);
+  font-weight:400;
+  font-size:10px;
+  letter-spacing:0.18em;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-top:2px;
+}
+
+/* ---- links ---- */
+.links{
+  display:flex;
+  align-items:stretch;
+  list-style:none;
+}
+.links li{display:flex;}
+.links a{
+  display:flex;
+  align-items:center;
+  padding:0 20px;
+  height:100%;
+  text-decoration:none;
+  color:var(--ink);
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  border-left:2px solid var(--line);
+  position:relative;
+  transition:background .04s linear,color .04s linear;
+}
+.links li:last-child a{border-right:2px solid var(--line);}
+.links a .idx{
+  font-family:var(--mono);
+  font-weight:400;
+  font-size:10px;
+  color:var(--muted);
+  margin-right:7px;
+}
+.links a:hover{background:var(--ink);color:var(--accent);}
+.links a:hover .idx{color:var(--red);}
+.links a.active{background:var(--accent);}
+.links a.active .idx{color:var(--ink);}
+
+/* ---- right cluster ---- */
+.right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.count{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  color:var(--ink);
+  text-transform:uppercase;
+  text-align:right;
+  line-height:1.3;
+}
+.count b{color:var(--red);font-size:14px;}
+.cta{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:14px;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--accent);
+  border:3px solid var(--ink);
+  box-shadow:6px 6px 0 var(--ink);
+  padding:13px 22px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  transition:transform .05s linear,box-shadow .05s linear;
+}
+.cta:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink);}
+.cta:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink);}
+.cta .arw{font-family:var(--mono);font-weight:700;}
+
+.burger{display:none;}
+
+/* ---- demo canvas below nav (context only) ---- */
+.stage{
+  padding:64px 28px 0;
+}
+.stage .eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+.stage h1{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(40px,7vw,96px);
+  line-height:0.92;
+  letter-spacing:-0.03em;
+  text-transform:uppercase;
+  max-width:14ch;
+}
+.stage h1 mark{
+  background:var(--accent);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.stage .sub{
+  font-family:var(--mono);
+  font-size:14px;
+  color:var(--ink);
+  margin-top:26px;
+  max-width:46ch;
+  line-height:1.7;
+  border-left:3px solid var(--red);
+  padding-left:16px;
+}
+
+@media(max-width:640px){
+  body{padding-bottom:48px;}
+  .strip{padding:8px 16px;font-size:10px;letter-spacing:0.08em;}
+  .strip .strip-right{display:none;}
+  .nav{
+    height:auto;
+    padding:14px 16px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .brand .word{font-size:19px;}
+  .brand .mark{width:34px;height:34px;font-size:18px;box-shadow:3px 3px 0 var(--ink);}
+  .links{
+    order:3;
+    width:100%;
+    flex-direction:column;
+    border-top:3px solid var(--line);
+    margin-top:14px;
+    display:none;
+  }
+  .nav.open .links{display:flex;}
+  .links li{width:100%;}
+  .links a{
+    border-left:none;
+    border-bottom:2px solid var(--line);
+    height:52px;
+    padding:0 4px;
+    width:100%;
+  }
+  .links li:last-child a{border-right:none;}
+  .right .count{display:none;}
+  .cta{padding:11px 16px;font-size:13px;box-shadow:4px 4px 0 var(--ink);}
+  .burger{
+    display:inline-grid;
+    place-items:center;
+    width:46px;height:46px;
+    background:var(--bg);
+    border:3px solid var(--ink);
+    box-shadow:4px 4px 0 var(--ink);
+    cursor:pointer;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .stage{padding:44px 16px 0;}
+  .stage h1{font-size:44px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- announcement strip -->
+  <div class="strip">
+    <span class="strip-left">
+      <span class="blink"></span>
+      <span>NEW &mdash; v2.4 drops the &ldquo;refactor-in-place&rdquo; command &middot; ships tonight</span>
+    </span>
+    <span class="strip-right">FREE &middot; NO SIGNUP</span>
+  </div>
+
+  <!-- nav bar -->
+  <nav class="nav" id="nav">
+    <a class="brand" href="#top">
+      <span class="mark">C</span>
+      <span>
+        <span class="word">COPY<b>/</b>PASTE</span>
+        <span class="tag">SECTION LIBRARY</span>
+      </span>
+    </a>
+
+    <ul class="links">
+      <li><a href="#sections" class="active"><span class="idx">01</span>Sections</a></li>
+      <li><a href="#styles"><span class="idx">02</span>Styles</a></li>
+      <li><a href="#tokens"><span class="idx">03</span>Tokens</a></li>
+      <li><a href="#recipes"><span class="idx">04</span>Recipes</a></li>
+      <li><a href="#changelog"><span class="idx">05</span>Changelog</a></li>
+    </ul>
+
+    <div class="right">
+      <span class="count">SNIPPETS<br><b>184</b> LIVE</span>
+      <a class="cta" href="#grab">GRAB THE PACK <span class="arw">&rarr;</span></a>
+      <button class="burger" id="burger" aria-label="Toggle menu">MENU</button>
+    </div>
+  </nav>
+
+  <!-- context stage (shows the bar in situ) -->
+  <section class="stage" id="top">
+    <p class="eyebrow">// drop into Claude Code &middot; zero build step</p>
+    <h1>Steal these <mark>blocks.</mark> Paste. Ship it.</h1>
+    <p class="sub">Every section is one flat HTML file &mdash; fonts linked, tokens exposed, no dependencies. Copy the file, wire your colors, done in under a minute.</p>
+  </section>
+
+</div>
+
+<script>
+  var b=document.getElementById('burger'),n=document.getElementById('nav');
+  if(b){b.addEventListener('click',function(){n.classList.toggle('open');b.textContent=n.classList.contains('open')?'CLOSE':'MENU';});}
+</script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!-- ===== CTA-FOOTER — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Footer — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --paper:#F4F4EF;
+  --line:rgba(199,241,59,.22);
+  --font:"Archivo",system-ui,-apple-system,sans-serif;
+}
+
+body{
+  background:var(--ink);
+  font-family:var(--font);
+  color:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- CTA BAND ---------- */
+.cta{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  background:var(--ink);
+  padding:88px 64px 72px;
+  overflow:hidden;
+  border-bottom:2px solid var(--line);
+}
+
+/* oversized off-canvas ghost word, breaks symmetry */
+.cta__ghost{
+  position:absolute;
+  right:-4vw;
+  bottom:-3.2rem;
+  font-size:clamp(9rem,22vw,20rem);
+  font-weight:900;
+  font-style:italic;
+  letter-spacing:-.05em;
+  line-height:.7;
+  color:transparent;
+  -webkit-text-stroke:2px rgba(199,241,59,.14);
+  pointer-events:none;
+  user-select:none;
+  white-space:nowrap;
+  z-index:0;
+}
+
+.cta__grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:end;
+  gap:48px;
+}
+
+.cta__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--lime);
+  padding:.42rem .9rem .42rem .7rem;
+  border-radius:999px;
+  margin-bottom:1.6rem;
+}
+.cta__eyebrow b{
+  width:.55rem;height:.55rem;border-radius:50%;
+  background:var(--magenta);display:inline-block;
+}
+
+.cta__head{
+  font-size:clamp(2.9rem,7.2vw,6.4rem);
+  font-weight:900;
+  line-height:.9;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+  max-width:14ch;
+}
+.cta__head .pink{color:var(--magenta);}
+.cta__head .lime{
+  color:transparent;
+  -webkit-text-stroke:2px var(--lime);
+}
+
+.cta__sub{
+  margin-top:1.5rem;
+  font-size:1.02rem;
+  font-weight:600;
+  line-height:1.45;
+  color:rgba(244,244,239,.66);
+  max-width:38ch;
+}
+
+/* action stack — right column, asymmetric anchor */
+.cta__act{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:1.1rem;
+  padding-bottom:.4rem;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+  font-family:var(--font);
+  font-size:1.18rem;
+  font-weight:900;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ink);
+  background:var(--lime);
+  padding:1.25rem 2rem;
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+  transition:transform .14s ease, background .14s ease;
+  box-shadow:8px 8px 0 var(--magenta);
+}
+.btn svg{transition:transform .14s ease;}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--magenta);}
+.btn:hover svg{transform:translate(3px,0);}
+.btn:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--magenta);}
+
+.cta__note{
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  color:rgba(244,244,239,.5);
+  text-align:right;
+}
+.cta__note s{color:var(--magenta);text-decoration:none;}
+
+/* ---------- FOOTER ---------- */
+.foot{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  background:var(--ink);
+  padding:40px 64px 44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.foot__brand{
+  display:flex;align-items:center;gap:.7rem;
+  font-size:1.35rem;font-weight:900;letter-spacing:-.03em;
+  text-transform:uppercase;
+}
+.foot__mark{
+  width:34px;height:34px;border-radius:9px;
+  background:var(--magenta);color:var(--ink);
+  display:grid;place-items:center;
+  font-size:1.15rem;font-weight:900;
+}
+.foot__nav{
+  display:flex;gap:1.6rem;flex-wrap:wrap;
+  font-size:.86rem;font-weight:700;letter-spacing:.02em;
+  text-transform:uppercase;
+}
+.foot__nav a{
+  color:rgba(244,244,239,.6);text-decoration:none;
+  transition:color .12s ease;
+}
+.foot__nav a:hover{color:var(--lime);}
+.foot__copy{
+  font-size:.78rem;font-weight:600;
+  color:rgba(244,244,239,.4);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:640px){
+  .cta{padding:56px 24px 52px;}
+  .cta__grid{grid-template-columns:1fr;gap:34px;align-items:start;}
+  .cta__act{align-items:stretch;}
+  .btn{justify-content:center;box-shadow:6px 6px 0 var(--magenta);}
+  .cta__note{text-align:left;}
+  .cta__ghost{bottom:auto;top:-1rem;right:-8vw;opacity:.6;}
+  .foot{padding:32px 24px 40px;flex-direction:column;align-items:flex-start;gap:20px;}
+}
+</style>
+</head>
+<body>
+
+  <section class="cta" aria-labelledby="cta-head">
+    <span class="cta__ghost" aria-hidden="true">SHIP IT</span>
+
+    <div class="cta__grid">
+      <div class="cta__copy">
+        <span class="cta__eyebrow"><b></b>Onboarding closes Friday</span>
+        <h2 class="cta__head" id="cta-head">
+          Stop <span class="pink">planning.</span><br>
+          Start <span class="lime">shipping</span> today.
+        </h2>
+        <p class="cta__sub">
+          Get your first landing page live in 48 hours — copy, design, and dev handled by one team. No retainers, no six-week discovery calls.
+        </p>
+      </div>
+
+      <div class="cta__act">
+        <a class="btn" href="#book">
+          Book a build slot
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12h14M13 6l6 6-6 6" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="cta__note">Flat $2,400 / project. <s>No hidden fees.</s></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot__brand">
+      <span class="foot__mark">V</span>
+      Voltpage
+    </div>
+    <nav class="foot__nav" aria-label="Footer">
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="foot__copy">© 2026 Voltpage Studio. Built loud.</span>
+  </footer>
+
+</body>
+</html>

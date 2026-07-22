@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- ===== EYEBROW-TEXT — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyebrow Text — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:2px solid var(--ink);
+  --line-thick:4px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- section shell ---- */
+.eb{
+  width:100%;
+  min-height:640px;
+  display:flex;
+  align-items:center;
+  padding:96px 40px;
+  background:
+    repeating-linear-gradient(90deg,transparent 0,transparent 79px,rgba(17,17,17,.05) 79px,rgba(17,17,17,.05) 80px),
+    var(--paper);
+}
+.eb__inner{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 320px;
+  gap:64px;
+  align-items:start;
+}
+
+/* ---- left / focal column ---- */
+.eb__lead{max-width:940px;}
+
+.eb__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--acid);
+  border:var(--line-thick);
+  box-shadow:var(--shadow);
+  padding:9px 16px 9px 14px;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transform:rotate(-1.4deg);
+  margin-bottom:38px;
+}
+.eb__kicker .dot{
+  width:11px;height:11px;
+  background:var(--red);
+  border:2px solid var(--ink);
+  display:block;
+  flex:0 0 auto;
+}
+.eb__kicker .num{
+  border-left:2px solid var(--ink);
+  padding-left:12px;
+  color:var(--ink);
+}
+
+.eb__head{
+  font-weight:900;
+  font-size:clamp(38px,6.4vw,86px);
+  line-height:.98;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.eb__head .l2{display:block;}
+.eb__head .mark{
+  background:var(--acid);
+  box-shadow:4px 0 0 var(--acid),-4px 0 0 var(--acid);
+  padding:0 2px;
+}
+.eb__head .under{
+  position:relative;
+  color:var(--red);
+  display:inline-block;
+}
+.eb__head .under::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:6px;
+  width:100%;height:8px;
+  background:var(--ink);
+  z-index:-1;
+}
+
+.eb__rule{
+  height:4px;
+  width:180px;
+  background:var(--ink);
+  margin:40px 0 22px;
+}
+.eb__sub{
+  font-family:var(--mono);
+  font-size:15px;
+  line-height:1.6;
+  max-width:560px;
+  color:var(--ink);
+}
+.eb__sub b{color:var(--red);}
+
+/* ---- right / meta column ---- */
+.eb__meta{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding-top:6px;
+}
+.eb__card{
+  border:var(--line);
+  background:var(--white);
+  padding:16px 18px;
+}
+.eb__card--index{
+  background:var(--ink);
+  color:var(--paper);
+  box-shadow:var(--shadow-red);
+  border-color:var(--ink);
+}
+.eb__card--index .big{
+  font-weight:900;
+  font-size:52px;
+  line-height:.9;
+  letter-spacing:-.03em;
+}
+.eb__card--index .cap{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-top:8px;
+  color:var(--acid);
+}
+.eb__card .k{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#666;
+  display:block;
+  margin-bottom:6px;
+}
+.eb__card .v{
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+}
+.eb__tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.eb__tags span{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  border:2px solid var(--ink);
+  padding:5px 9px;
+  background:var(--paper);
+}
+.eb__tags span:nth-child(2){background:var(--acid);}
+
+@media(max-width:640px){
+  .eb{padding:60px 20px;min-height:0;}
+  .eb__inner{grid-template-columns:1fr;gap:36px;}
+  .eb__meta{flex-direction:column;}
+  .eb__head{font-size:clamp(34px,12vw,52px);}
+  .eb__kicker{margin-bottom:26px;}
+  .eb__rule{margin:28px 0 18px;}
+  .eb__card--index .big{font-size:44px;}
+}
+</style>
+</head>
+<body>
+
+<section class="eb" aria-label="Section introduction">
+  <div class="eb__inner">
+
+    <div class="eb__lead">
+      <span class="eb__kicker">
+        <span class="dot" aria-hidden="true"></span>
+        Field Notes / 2026
+        <span class="num">Vol.07</span>
+      </span>
+
+      <h2 class="eb__head">
+        We ship <span class="mark">rough</span>,
+        <span class="l2">measure hard, and</span>
+        <span class="l2">delete the <span class="under">excuses</span>.</span>
+      </h2>
+
+      <div class="eb__rule" aria-hidden="true"></div>
+
+      <p class="eb__sub">
+        No polish theater. No 40-slide roadmap. We put the raw build in front of
+        real users on <b>day three</b> and let the numbers do the arguing.
+      </p>
+    </div>
+
+    <aside class="eb__meta" aria-label="Section metadata">
+      <div class="eb__card eb__card--index">
+        <div class="big">01</div>
+        <div class="cap">The Working Method</div>
+      </div>
+      <div class="eb__card">
+        <span class="k">Read Time</span>
+        <span class="v">4 Min / No Fluff</span>
+      </div>
+      <div class="eb__card">
+        <span class="k">Filed Under</span>
+        <div class="eb__tags">
+          <span>Process</span>
+          <span>Shipping</span>
+          <span>Metrics</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+</body>
+</html>

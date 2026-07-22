@@ -1,0 +1,243 @@
+<!-- /* ===== SOCIAL-PROOF — MINIMAL ===== */ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Proof — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e1;
+  --accent:#C0492B;
+  --serif:'Inter',system-ui,sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.proof{
+  max-width:1440px;
+  margin:0 auto;
+  padding:112px 80px 96px;
+}
+
+/* ---- top eyebrow row ---- */
+.proof__eyebrow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:56px;
+}
+.proof__eyebrow::before{
+  content:"";
+  width:28px;
+  height:1px;
+  background:var(--accent);
+}
+
+/* ---- main asymmetric grid ---- */
+.proof__grid{
+  display:grid;
+  grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:80px;
+  align-items:end;
+}
+
+/* left: the stat + quote */
+.proof__stat{
+  font-size:88px;
+  line-height:.94;
+  font-weight:700;
+  letter-spacing:-.03em;
+  margin-bottom:28px;
+}
+.proof__stat span{
+  color:var(--accent);
+}
+.proof__lede{
+  font-size:20px;
+  line-height:1.45;
+  color:var(--ink);
+  max-width:34ch;
+  font-weight:400;
+}
+.proof__lede b{
+  font-weight:600;
+}
+
+/* right: rating card, offset & elevated slightly */
+.proof__rating{
+  border:1px solid var(--line);
+  border-radius:14px 14px 4px 14px;
+  padding:30px 32px 28px;
+  box-shadow:0 1px 0 var(--line);
+}
+.proof__stars{
+  display:flex;
+  gap:5px;
+  margin-bottom:16px;
+}
+.proof__stars svg{width:20px;height:20px;display:block;}
+.proof__rating-num{
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:-.01em;
+}
+.proof__rating-num em{
+  font-style:normal;
+  color:var(--muted);
+  font-weight:400;
+  font-size:15px;
+}
+.proof__quote{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  font-size:15px;
+  line-height:1.55;
+  color:var(--ink);
+}
+.proof__attr{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-top:16px;
+}
+.proof__avatar{
+  width:34px;height:34px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  letter-spacing:.02em;
+}
+.proof__attr-txt{
+  font-size:13px;
+  line-height:1.35;
+  color:var(--muted);
+}
+.proof__attr-txt strong{
+  color:var(--ink);
+  font-weight:600;
+  display:block;
+}
+
+/* ---- logo row ---- */
+.proof__logos{
+  margin-top:80px;
+  padding-top:34px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px 52px;
+}
+.proof__logos-label{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.04em;
+  margin-right:8px;
+}
+.proof__wordmark{
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:#a3a09c;
+  white-space:nowrap;
+}
+.proof__wordmark.lc{font-weight:600;letter-spacing:.01em;}
+.proof__wordmark .dot{color:var(--accent);}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .proof{padding:64px 24px 56px;}
+  .proof__eyebrow{margin-bottom:40px;}
+  .proof__grid{
+    grid-template-columns:1fr;
+    gap:44px;
+    align-items:start;
+  }
+  .proof__stat{font-size:60px;margin-bottom:20px;}
+  .proof__lede{font-size:17px;}
+  .proof__logos{
+    margin-top:52px;
+    gap:16px 34px;
+  }
+  .proof__wordmark{font-size:16px;}
+}
+</style>
+</head>
+<body>
+
+  <section class="proof">
+    <p class="proof__eyebrow">Trusted in production</p>
+
+    <div class="proof__grid">
+      <div class="proof__left">
+        <p class="proof__stat">2.4M<span>+</span></p>
+        <p class="proof__lede">
+          snippets copied straight into Claude Code by
+          <b>developers at 900+ teams</b> — no sign-up, no build step, no lock-in.
+        </p>
+      </div>
+
+      <aside class="proof__rating">
+        <div class="proof__stars" aria-label="Rated 4.9 out of 5">
+          <svg viewBox="0 0 24 24" fill="#C0492B"><path d="M12 2.2l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.9 6.1 20.3l1.3-6.6L2.5 9.1l6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C0492B"><path d="M12 2.2l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.9 6.1 20.3l1.3-6.6L2.5 9.1l6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C0492B"><path d="M12 2.2l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.9 6.1 20.3l1.3-6.6L2.5 9.1l6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C0492B"><path d="M12 2.2l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.9 6.1 20.3l1.3-6.6L2.5 9.1l6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C0492B" stroke-width="1.6"><path d="M12 3.3l2.6 5.5 6 .7-4.4 4.1 1.1 5.9L12 16.7 6.7 19.5l1.1-5.9-4.4-4.1 6-.7z"/></svg>
+        </div>
+        <div class="proof__rating-num">4.9 / 5 <em>· 1,286 reviews</em></div>
+
+        <p class="proof__quote">
+          "I dropped in the pricing section and shipped a client landing page before lunch. It reads like a designer wrote it — not a template."
+        </p>
+        <div class="proof__attr">
+          <div class="proof__avatar">DR</div>
+          <p class="proof__attr-txt">
+            <strong>Dana Reyes</strong>
+            Freelance front-end dev, Lisbon
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="proof__logos">
+      <span class="proof__logos-label">Copied by builders at</span>
+      <span class="proof__wordmark">NORTHWIND</span>
+      <span class="proof__wordmark lc">Loomtype<span class="dot">.</span></span>
+      <span class="proof__wordmark">HELIOSTAT</span>
+      <span class="proof__wordmark lc">basecamp&nbsp;9</span>
+      <span class="proof__wordmark">FIELDNOTE</span>
+      <span class="proof__wordmark lc">Cadence<span class="dot">/</span>UI</span>
+    </div>
+  </section>
+
+</body>
+</html>

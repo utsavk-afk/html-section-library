@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- ===== testimonial-slider — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Slider — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --muted:#6E6A61;
+  --hair:#D8D4C8;
+  --paper:#F3F0E8;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+body{background:var(--light);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+
+.tsx-section{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:88px 72px 96px;
+  position:relative;
+}
+
+/* header row */
+.tsx-top{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  border-top:1px solid var(--ink);
+  padding-top:18px;
+  gap:24px;
+}
+.tsx-label{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.tsx-count{
+  font-family:var(--serif);
+  font-size:14px;
+  font-style:italic;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+/* main grid: quote + peek */
+.tsx-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:64px;
+  margin-top:56px;
+  align-items:start;
+}
+
+/* featured quote */
+.tsx-mark{
+  font-family:var(--serif);
+  font-size:120px;
+  line-height:.5;
+  color:var(--accent);
+  height:52px;
+  display:block;
+  margin-bottom:8px;
+}
+.tsx-quote{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:40px;
+  line-height:1.28;
+  letter-spacing:-.01em;
+  max-width:19ch;
+  color:var(--ink);
+}
+@media(min-width:900px){
+  .tsx-quote{font-size:44px;max-width:22ch;}
+}
+.tsx-quote em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.tsx-attr{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:44px;
+}
+.tsx-avatar{
+  width:48px;height:48px;
+  flex:0 0 48px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-family:var(--serif);
+  font-size:18px;
+  font-weight:500;
+  color:var(--light);
+  background:var(--ink);
+}
+.tsx-attr-text{display:flex;flex-direction:column;gap:2px;}
+.tsx-name{
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+.tsx-role{
+  font-family:var(--sans);
+  font-size:12.5px;
+  letter-spacing:.04em;
+  color:var(--muted);
+}
+
+/* peek of next — right column */
+.tsx-peek{
+  border-left:1px solid var(--hair);
+  padding-left:32px;
+  position:relative;
+}
+.tsx-peek-label{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:block;
+  margin-bottom:18px;
+}
+.tsx-peek-quote{
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.4;
+  color:var(--muted);
+  opacity:.72;
+  max-width:20ch;
+}
+.tsx-peek-attr{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-top:22px;
+}
+.tsx-peek-avatar{
+  width:32px;height:32px;
+  flex:0 0 32px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-family:var(--serif);
+  font-size:13px;
+  color:var(--ink);
+  background:var(--paper);
+  border:1px solid var(--hair);
+}
+.tsx-peek-name{
+  font-size:12px;
+  font-weight:600;
+  color:var(--ink);
+  letter-spacing:.01em;
+}
+
+/* controls row */
+.tsx-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:64px;
+  border-top:1px solid var(--hair);
+  padding-top:26px;
+  gap:24px;
+  max-width:calc(100% - 364px);
+}
+.tsx-dots{display:flex;align-items:center;gap:12px;}
+.tsx-dot{
+  width:26px;height:2px;
+  background:var(--hair);
+  border:none;
+  padding:0;
+  cursor:pointer;
+}
+.tsx-dot.is-active{background:var(--accent);height:3px;}
+.tsx-arrows{display:flex;align-items:center;gap:10px;}
+.tsx-arrow{
+  width:46px;height:46px;
+  border:1px solid var(--ink);
+  background:transparent;
+  border-radius:50%;
+  display:grid;place-items:center;
+  cursor:pointer;
+  color:var(--ink);
+  transition:background .18s,color .18s;
+}
+.tsx-arrow:hover{background:var(--ink);color:var(--light);}
+.tsx-arrow svg{width:17px;height:17px;display:block;}
+
+@media(max-width:640px){
+  .tsx-section{padding:56px 22px 64px;}
+  .tsx-grid{grid-template-columns:1fr;gap:40px;margin-top:38px;}
+  .tsx-quote{font-size:29px;max-width:100%;}
+  .tsx-mark{font-size:88px;height:40px;}
+  .tsx-peek{
+    border-left:none;
+    border-top:1px solid var(--hair);
+    padding-left:0;
+    padding-top:26px;
+  }
+  .tsx-peek-quote{font-size:17px;}
+  .tsx-controls{
+    max-width:100%;
+    margin-top:44px;
+    flex-wrap:wrap;
+    row-gap:20px;
+  }
+  .tsx-attr{margin-top:32px;}
+}
+</style>
+</head>
+<body>
+<section class="tsx-section" aria-label="Client testimonials">
+  <div class="tsx-top">
+    <span class="tsx-label">What partners say</span>
+    <span class="tsx-count">02 <span style="color:var(--hair)">/</span> 05</span>
+  </div>
+
+  <div class="tsx-grid">
+    <!-- featured quote -->
+    <figure class="tsx-featured">
+      <span class="tsx-mark" aria-hidden="true">&ldquo;</span>
+      <blockquote class="tsx-quote">
+        We shipped the rebrand in six weeks flat. What stayed with me wasn&rsquo;t the speed &mdash; it was how they made every hard trade-off feel <em>obvious in hindsight.</em>
+      </blockquote>
+      <figcaption class="tsx-attr">
+        <span class="tsx-avatar" aria-hidden="true">MO</span>
+        <span class="tsx-attr-text">
+          <span class="tsx-name">Mara Odell</span>
+          <span class="tsx-role">VP Brand, Northwind Coffee Roasters</span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <!-- peek of next -->
+    <aside class="tsx-peek" aria-label="Next testimonial preview">
+      <span class="tsx-peek-label">Up next</span>
+      <p class="tsx-peek-quote">
+        &ldquo;They read our messy analytics like a manuscript &mdash; found the one page that mattered&hellip;&rdquo;
+      </p>
+      <div class="tsx-peek-attr">
+        <span class="tsx-peek-avatar" aria-hidden="true">DR</span>
+        <span class="tsx-peek-name">Devin Rao &middot; Founder, Ledgerline</span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- controls -->
+  <div class="tsx-controls">
+    <div class="tsx-dots" role="tablist" aria-label="Testimonial navigation">
+      <button class="tsx-dot" aria-label="Testimonial 1"></button>
+      <button class="tsx-dot is-active" aria-label="Testimonial 2" aria-selected="true"></button>
+      <button class="tsx-dot" aria-label="Testimonial 3"></button>
+      <button class="tsx-dot" aria-label="Testimonial 4"></button>
+      <button class="tsx-dot" aria-label="Testimonial 5"></button>
+    </div>
+    <div class="tsx-arrows">
+      <button class="tsx-arrow" aria-label="Previous testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="tsx-arrow" aria-label="Next testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+</body>
+</html>

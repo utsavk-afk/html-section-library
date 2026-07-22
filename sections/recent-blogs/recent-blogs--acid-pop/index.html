@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recent Blogs — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+/* ===== recent-blogs — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#0A0A0A;
+  --paper:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --smoke:#1A1A1A;
+  --line:#2E2E2E;
+  --muted:#8C8C8C;
+  --white:#FAFAFA;
+  --font:'Archivo',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.rb{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:84px 64px 96px;
+  position:relative;
+}
+
+/* ---- header row ---- */
+.rb__top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  margin-bottom:52px;
+  flex-wrap:wrap;
+}
+.rb__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--magenta);
+  color:var(--ink);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  padding:8px 16px;
+  border-radius:999px;
+  margin-bottom:22px;
+}
+.rb__eyebrow::before{
+  content:"";
+  width:9px;height:9px;border-radius:50%;
+  background:var(--ink);
+}
+.rb__title{
+  font-weight:900;
+  font-size:clamp(48px,7vw,104px);
+  line-height:0.86;
+  letter-spacing:-0.03em;
+  text-transform:uppercase;
+  max-width:11ch;
+}
+.rb__title em{
+  font-style:italic;
+  color:var(--lime);
+}
+.rb__allbtn{
+  flex-shrink:0;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--lime);
+  color:var(--ink);
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:0.01em;
+  text-decoration:none;
+  padding:16px 26px;
+  border-radius:999px;
+  border:3px solid var(--lime);
+  transition:transform .15s ease, background .15s ease;
+  margin-bottom:6px;
+}
+.rb__allbtn:hover{
+  background:transparent;
+  color:var(--lime);
+  transform:translateY(-3px);
+}
+.rb__allbtn span{font-size:20px;line-height:1;}
+
+/* ---- grid ---- */
+.rb__grid{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:28px;
+}
+.rb__col{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* ---- shared card ---- */
+.card{
+  text-decoration:none;
+  color:inherit;
+  display:flex;
+  flex-direction:column;
+  transition:transform .18s ease;
+}
+.card:hover{transform:translateY(-4px);}
+.card__tag{
+  align-self:flex-start;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  padding:6px 13px;
+  border-radius:999px;
+}
+.card__meta{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+.card__meta .dot{width:5px;height:5px;border-radius:50%;background:var(--muted);}
+.card__more{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+.card__more .arw{
+  display:inline-flex;
+  align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;
+  border:2px solid currentColor;
+  font-size:14px;
+  transition:background .15s ease, color .15s ease;
+}
+.card:hover .card__more .arw{background:var(--lime);color:var(--ink);border-color:var(--lime);}
+
+/* ---- FEATURED (left, large) ---- */
+.feat{
+  background:var(--lime);
+  color:var(--ink);
+  border-radius:26px;
+  padding:36px 38px 34px;
+  height:100%;
+  min-height:520px;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+}
+.feat__thumb{
+  height:180px;
+  border-radius:16px;
+  margin-bottom:26px;
+  background:
+    repeating-linear-gradient(45deg, rgba(10,10,10,.9) 0 18px, transparent 18px 36px),
+    var(--magenta);
+  position:relative;
+  overflow:hidden;
+}
+.feat__thumb .badge{
+  position:absolute;
+  top:16px;left:16px;
+  background:var(--ink);
+  color:var(--lime);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  padding:7px 14px;
+  border-radius:999px;
+}
+.feat__thumb .glyph{
+  position:absolute;
+  right:-14px;bottom:-30px;
+  font-weight:900;
+  font-size:150px;
+  line-height:1;
+  color:var(--lime);
+  letter-spacing:-0.05em;
+}
+.feat .card__tag{background:var(--ink);color:var(--lime);margin-bottom:16px;}
+.feat__title{
+  font-weight:900;
+  font-size:clamp(30px,3.2vw,46px);
+  line-height:0.94;
+  letter-spacing:-0.025em;
+  margin-bottom:16px;
+}
+.feat__ex{
+  font-size:16px;
+  line-height:1.5;
+  font-weight:500;
+  max-width:38ch;
+  color:#141414;
+  margin-bottom:26px;
+}
+.feat__foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border-top:2px solid rgba(10,10,10,.22);
+  padding-top:20px;
+}
+.feat .card__meta{color:#242424;}
+.feat .card__meta .dot{background:#242424;}
+.feat .card__more{color:var(--ink);}
+.feat:hover .card__more .arw{background:var(--ink);color:var(--lime);border-color:var(--ink);}
+
+/* ---- SMALL cards (right col) ---- */
+.mini{
+  background:var(--smoke);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:26px 28px;
+  gap:14px;
+  flex:1;
+  justify-content:center;
+}
+.mini .card__tag{
+  background:transparent;
+  border:2px solid var(--magenta);
+  color:var(--magenta);
+  margin-bottom:4px;
+}
+.mini--b .card__tag{border-color:var(--lime);color:var(--lime);}
+.mini__title{
+  font-weight:800;
+  font-size:clamp(22px,2vw,28px);
+  line-height:1.02;
+  letter-spacing:-0.02em;
+  color:var(--white);
+}
+.mini__ex{
+  font-size:14.5px;
+  line-height:1.5;
+  color:var(--muted);
+  font-weight:500;
+  max-width:42ch;
+}
+.mini__foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-top:2px;
+}
+.mini .card__more{color:var(--white);font-size:13px;}
+
+/* ---- decorative sticker ---- */
+.rb__sticker{
+  position:absolute;
+  top:70px;right:56px;
+  width:96px;height:96px;
+  background:var(--magenta);
+  color:var(--ink);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  line-height:1.05;
+  transform:rotate(-13deg);
+  pointer-events:none;
+}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .rb{padding:52px 22px 64px;}
+  .rb__top{margin-bottom:36px;}
+  .rb__title{font-size:44px;max-width:100%;}
+  .rb__allbtn{width:100%;justify-content:center;}
+  .rb__grid{grid-template-columns:1fr;gap:20px;}
+  .rb__sticker{display:none;}
+  .feat{min-height:0;padding:26px 24px 28px;border-radius:20px;}
+  .feat__thumb{height:150px;}
+  .feat__thumb .glyph{font-size:110px;}
+  .feat__title{font-size:32px;}
+  .feat__foot{flex-direction:column;align-items:flex-start;gap:16px;}
+  .mini{padding:22px 22px;}
+  .mini__foot{flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+<section class="rb" aria-label="Recent blog posts">
+  <span class="rb__sticker">Fresh<br>Ink</span>
+
+  <div class="rb__top">
+    <div>
+      <span class="rb__eyebrow">From the notebook</span>
+      <h2 class="rb__title">Latest <em>reads</em> on shipping fast</h2>
+    </div>
+    <a class="rb__allbtn" href="#">All 47 posts <span>&rarr;</span></a>
+  </div>
+
+  <div class="rb__grid">
+    <!-- Featured -->
+    <a class="card feat" href="#">
+      <div>
+        <div class="feat__thumb">
+          <span class="badge">Editor's pick</span>
+          <span class="glyph">01</span>
+        </div>
+        <span class="card__tag">Prompt Engineering</span>
+        <h3 class="feat__title">We rebuilt our whole CLI workflow around 6 slash commands</h3>
+        <p class="feat__ex">Three months of pasting the same setup into Claude Code taught us exactly which shortcuts actually earn their keep — and which ones we deleted after a week.</p>
+      </div>
+      <div class="feat__foot">
+        <div class="card__meta">
+          <span>Jul 18, 2026</span><span class="dot"></span><span>9 min read</span>
+        </div>
+        <span class="card__more">Read it <span class="arw">&rarr;</span></span>
+      </div>
+    </a>
+
+    <!-- Right column: two minis -->
+    <div class="rb__col">
+      <a class="card mini mini--a" href="#">
+        <span class="card__tag">Case Study</span>
+        <h3 class="mini__title">How a 4-person team cut deploy time from 40 min to 90 sec</h3>
+        <p class="mini__ex">No new hires, no rewrite — just one honest look at where the pipeline was waiting on nothing.</p>
+        <div class="mini__foot">
+          <div class="card__meta"><span>Jul 11, 2026</span><span class="dot"></span><span>6 min</span></div>
+          <span class="card__more">Read <span class="arw">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="card mini mini--b" href="#">
+        <span class="card__tag">Playbook</span>
+        <h3 class="mini__title">The copy-paste library that killed our "blank page" problem</h3>
+        <p class="mini__ex">Forty-seven drop-in sections, zero build step. Here's the folder structure that keeps them findable at 2am.</p>
+        <div class="mini__foot">
+          <div class="card__meta"><span>Jul 03, 2026</span><span class="dot"></span><span>5 min</span></div>
+          <span class="card__more">Read <span class="arw">&rarr;</span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+</body>
+</html>

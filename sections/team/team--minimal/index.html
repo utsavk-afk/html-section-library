@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!-- ===== TEAM — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e7e4;
+  --accent:#C0492B;
+  --serif:'Inter',system-ui,sans-serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.team{
+  max-width:1180px;
+  margin:0 auto;
+  padding:104px 40px 112px;
+}
+
+/* ---- header: asymmetric, left-weighted ---- */
+.team__head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,340px);
+  gap:48px;
+  align-items:end;
+  padding-bottom:44px;
+  border-bottom:1px solid var(--line);
+}
+.team__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.team__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+.team__title{
+  font-size:44px;
+  font-weight:600;
+  letter-spacing:-.025em;
+  line-height:1.08;
+  max-width:15ch;
+}
+.team__lede{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.65;
+  padding-bottom:6px;
+}
+.team__lede strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* ---- grid ---- */
+.team__grid{
+  margin-top:56px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.card{
+  background:var(--bg);
+  padding:30px 30px 34px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  transition:background .2s ease;
+}
+.card:hover{background:#fafaf9;}
+
+/* one intentional focal member: first card gets the accent treatment */
+.card--lead{
+  background:#fbf7f5;
+}
+.card--lead:hover{background:#f7f0ed;}
+
+.card__top{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.avatar{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  flex:0 0 56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  background:#f0efec;
+  border:1px solid var(--line);
+}
+.card--lead .avatar{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+}
+.avatar--b{background:#eceef0;}
+.avatar--c{background:#f0eee8;}
+.avatar--d{background:#eef0ee;}
+.avatar--e{background:#f0ecef;}
+
+.card__ident{min-width:0;}
+.card__name{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-.012em;
+}
+.card__role{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.card__role b{
+  color:var(--accent);
+  font-weight:600;
+}
+
+.card__bio{
+  font-size:13.5px;
+  color:var(--muted);
+  line-height:1.62;
+}
+
+.card__foot{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.card--lead .card__foot{border-top-color:#eaded8;}
+.card__loc{
+  font-size:11.5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.card__link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12.5px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+}
+.card__link svg{width:13px;height:13px;stroke:var(--muted);transition:transform .2s ease,stroke .2s ease;}
+.card__link:hover svg{transform:translate(2px,-2px);stroke:var(--accent);}
+
+@media(max-width:640px){
+  .team{padding:64px 22px 72px;}
+  .team__head{
+    grid-template-columns:1fr;
+    gap:22px;
+    align-items:start;
+  }
+  .team__title{font-size:32px;}
+  .team__grid{
+    grid-template-columns:1fr;
+    margin-top:36px;
+  }
+  .card{padding:26px 24px 28px;}
+}
+</style>
+</head>
+<body>
+<section class="team">
+  <div class="team__head">
+    <div>
+      <span class="team__eyebrow">The people</span>
+      <h2 class="team__title">A small studio, deliberately kept that way.</h2>
+    </div>
+    <p class="team__lede">Six of us. No account managers between you and the person doing the work — <strong>you talk to the maker directly.</strong></p>
+  </div>
+
+  <div class="team__grid">
+
+    <article class="card card--lead">
+      <div class="card__top">
+        <div class="avatar">MR</div>
+        <div class="card__ident">
+          <div class="card__name">Mara Reyes</div>
+          <div class="card__role"><b>Founder</b> · Principal designer</div>
+        </div>
+      </div>
+      <p class="card__bio">Started the studio in 2016 after nine years in-house. Leads brand and product direction, and reads every contract line before it ships.</p>
+      <div class="card__foot">
+        <span class="card__loc">Lisbon</span>
+        <a class="card__link" href="#">Email
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__top">
+        <div class="avatar avatar--b">DO</div>
+        <div class="card__ident">
+          <div class="card__name">Dele Okonkwo</div>
+          <div class="card__role">Lead engineer</div>
+        </div>
+      </div>
+      <p class="card__bio">Owns the front-end architecture and the boring parts everyone forgets — build pipelines, accessibility, the 3am uptime page.</p>
+      <div class="card__foot">
+        <span class="card__loc">Berlin</span>
+        <a class="card__link" href="#">GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__top">
+        <div class="avatar avatar--c">JT</div>
+        <div class="card__ident">
+          <div class="card__name">Junko Tan</div>
+          <div class="card__role">Motion &amp; interaction</div>
+        </div>
+      </div>
+      <p class="card__bio">Makes things move with a reason. Prototypes in code, not video, so what you approve is what actually ships.</p>
+      <div class="card__foot">
+        <span class="card__loc">Singapore</span>
+        <a class="card__link" href="#">Dribbble
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__top">
+        <div class="avatar avatar--d">FB</div>
+        <div class="card__ident">
+          <div class="card__name">Felix Brandt</div>
+          <div class="card__role">Strategy &amp; research</div>
+        </div>
+      </div>
+      <p class="card__bio">Runs the interviews and the messy discovery weeks. Turns twelve stakeholder opinions into one page everyone can agree on.</p>
+      <div class="card__foot">
+        <span class="card__loc">Copenhagen</span>
+        <a class="card__link" href="#">LinkedIn
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__top">
+        <div class="avatar avatar--e">PS</div>
+        <div class="card__ident">
+          <div class="card__name">Priya Sharma</div>
+          <div class="card__role">Brand &amp; type</div>
+        </div>
+      </div>
+      <p class="card__bio">Draws letterforms by hand before she opens a tool. Responsible for most of the wordmarks you've probably squinted at this year.</p>
+      <div class="card__foot">
+        <span class="card__loc">Bengaluru</span>
+        <a class="card__link" href="#">Behance
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__top">
+        <div class="avatar avatar--b">HC</div>
+        <div class="card__ident">
+          <div class="card__name">HanaČek</div>
+          <div class="card__role">Operations</div>
+        </div>
+      </div>
+      <p class="card__bio">Keeps the studio honest about scope and calendars. If a project stays on time, it's usually because Hana said no to something.</p>
+      <div class="card__foot">
+        <span class="card__loc">Ljubljana</span>
+        <a class="card__link" href="#">Email
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
+</body>
+</html>

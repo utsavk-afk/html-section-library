@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!-- ===== HERO — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#ffffff;
+    --ink:#141414;
+    --muted:#737373;
+    --line:#e6e4e0;
+    --accent:#c0492b;
+    --serif:"Inter",system-ui,sans-serif;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+  }
+
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+
+  /* ---- section shell ---- */
+  .hero{
+    width:100%;
+    min-height:640px;
+    padding:34px clamp(24px,6vw,88px) 72px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ---- top rule / eyebrow bar ---- */
+  .hero__top{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero__mark{
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .hero__mark span{color:var(--accent);}
+  .hero__topnav{
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:0.02em;
+  }
+  .hero__topnav b{
+    color:var(--ink);
+    font-weight:500;
+  }
+
+  /* ---- main grid: asymmetric, left-weighted ---- */
+  .hero__grid{
+    flex:1;
+    display:grid;
+    grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+    gap:clamp(40px,7vw,110px);
+    align-items:center;
+    padding-top:clamp(48px,7vw,84px);
+  }
+
+  /* ---- left column: the focal point ---- */
+  .hero__eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:26px;
+  }
+  .hero__eyebrow::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--accent);
+  }
+
+  .hero__title{
+    font-size:clamp(38px,5.4vw,66px);
+    line-height:1.03;
+    letter-spacing:-0.03em;
+    font-weight:600;
+    max-width:15ch;
+  }
+  .hero__title em{
+    font-style:normal;
+    color:var(--accent);
+  }
+
+  .hero__sub{
+    margin-top:26px;
+    font-size:clamp(16px,1.4vw,18px);
+    color:var(--muted);
+    max-width:46ch;
+    line-height:1.6;
+  }
+
+  .hero__cta{
+    margin-top:36px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:inherit;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    cursor:pointer;
+    border:1px solid transparent;
+    padding:13px 22px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    transition:background .16s ease,border-color .16s ease,color .16s ease;
+  }
+  .btn--primary{
+    background:var(--ink);
+    color:#fff;
+    border-radius:2px;
+  }
+  .btn--primary:hover{background:var(--accent);}
+  .btn--primary svg{transition:transform .16s ease;}
+  .btn--primary:hover svg{transform:translateX(3px);}
+  .btn--ghost{
+    background:transparent;
+    color:var(--ink);
+    padding:13px 6px;
+  }
+  .btn--ghost:hover{color:var(--accent);}
+  .btn--ghost u{
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+    transition:border-color .16s ease;
+  }
+  .btn--ghost:hover u{border-color:var(--accent);}
+
+  .hero__note{
+    margin-top:26px;
+    font-size:13px;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .hero__note code{
+    font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;
+    font-size:12px;
+    background:#f6f4f1;
+    border:1px solid var(--line);
+    padding:2px 7px;
+    border-radius:3px;
+    color:var(--ink);
+  }
+
+  /* ---- right column: CSS product placeholder (a browser/editor pane) ---- */
+  .hero__panel{
+    border:1px solid var(--line);
+    border-radius:5px;
+    background:#fff;
+    overflow:hidden;
+    box-shadow:0 1px 0 rgba(20,20,20,0.02),0 18px 40px -28px rgba(20,20,20,0.28);
+  }
+  .panel__bar{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+  }
+  .panel__dot{width:9px;height:9px;border-radius:50%;background:var(--line);}
+  .panel__dot:nth-child(1){background:#e0ddd8;}
+  .panel__file{
+    margin-left:10px;
+    font-size:12px;
+    color:var(--muted);
+    font-family:ui-monospace,Menlo,monospace;
+  }
+  .panel__body{padding:20px 22px 24px;}
+  .code{
+    font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;
+    font-size:12.5px;
+    line-height:1.85;
+    color:var(--muted);
+  }
+  .code .ln{display:block;white-space:pre;}
+  .code .k{color:var(--ink);font-weight:600;}
+  .code .a{color:var(--accent);}
+  .code .c{color:#b8b4ae;}
+
+  .panel__foot{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .panel__count{
+    font-size:12px;
+    color:var(--muted);
+  }
+  .panel__count b{color:var(--ink);font-weight:600;}
+  .panel__pill{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--accent);
+    border:1px solid var(--line);
+    padding:4px 9px;
+    border-radius:99px;
+  }
+
+  /* ---- stat row along the bottom ---- */
+  .hero__stats{
+    margin-top:clamp(44px,6vw,72px);
+    padding-top:26px;
+    border-top:1px solid var(--line);
+    display:flex;
+    flex-wrap:wrap;
+    gap:clamp(30px,6vw,72px);
+  }
+  .stat__n{
+    font-size:26px;
+    font-weight:600;
+    letter-spacing:-0.02em;
+  }
+  .stat__n s{text-decoration:none;color:var(--accent);}
+  .stat__l{
+    margin-top:4px;
+    font-size:13px;
+    color:var(--muted);
+    max-width:22ch;
+  }
+
+  /* ---- responsive ---- */
+  @media(max-width:640px){
+    .hero{padding:22px 22px 48px;min-height:0;}
+    .hero__topnav{display:none;}
+    .hero__grid{
+      grid-template-columns:1fr;
+      gap:40px;
+      padding-top:44px;
+    }
+    .hero__title{font-size:38px;max-width:none;}
+    .hero__sub{max-width:none;}
+    .hero__panel{order:2;}
+    .hero__stats{gap:26px 34px;}
+    .stat__n{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero__top">
+      <div class="hero__mark">paste<span>.</span>section</div>
+      <div class="hero__topnav">A free library &middot; <b>142 sections</b> &middot; MIT licensed</div>
+    </div>
+
+    <div class="hero__grid">
+      <!-- FOCAL: headline + copy + CTAs -->
+      <div class="hero__lead">
+        <span class="hero__eyebrow">Copy-paste, not a component library</span>
+        <h1 class="hero__title">Ship a landing page before your coffee gets <em>cold</em>.</h1>
+        <p class="hero__sub">Hand-built HTML sections with zero dependencies. Drop one into Claude Code, tell it what to change, and keep moving. No npm install, no config, no framework to learn.</p>
+
+        <div class="hero__cta">
+          <a href="#browse" class="btn btn--primary">
+            Browse the library
+            <svg width="15" height="12" viewBox="0 0 15 12" fill="none" aria-hidden="true"><path d="M9 1l5 5-5 5M14 6H0" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+          <a href="#how" class="btn btn--ghost">See <u>how it works</u></a>
+        </div>
+
+        <p class="hero__note">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3.5" stroke="#c0492b" stroke-width="1.6"/></svg>
+          Works with any stack &middot; just copy <code>index.html</code>
+        </p>
+      </div>
+
+      <!-- SUPPORT: CSS editor/product placeholder -->
+      <div class="hero__panel" aria-hidden="true">
+        <div class="panel__bar">
+          <span class="panel__dot"></span>
+          <span class="panel__dot"></span>
+          <span class="panel__dot"></span>
+          <span class="panel__file">hero--minimal / index.html</span>
+        </div>
+        <div class="panel__body">
+          <div class="code">
+            <span class="ln c">/* ===== HERO — MINIMAL ===== */</span>
+            <span class="ln"><span class="k">&lt;section</span> class=<span class="a">"hero"</span><span class="k">&gt;</span></span>
+            <span class="ln">  <span class="k">&lt;span</span> class=<span class="a">"eyebrow"</span><span class="k">&gt;</span>Copy-paste<span class="k">&lt;/span&gt;</span></span>
+            <span class="ln">  <span class="k">&lt;h1&gt;</span>Ship a landing page&hellip;<span class="k">&lt;/h1&gt;</span></span>
+            <span class="ln">  <span class="k">&lt;a</span> class=<span class="a">"btn"</span><span class="k">&gt;</span>Browse<span class="k">&lt;/a&gt;</span></span>
+            <span class="ln"><span class="k">&lt;/section&gt;</span></span>
+          </div>
+          <div class="panel__foot">
+            <span class="panel__count"><b>0</b> dependencies &middot; <b>1</b> file</span>
+            <span class="panel__pill">Ready to paste</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- stat row -->
+    <div class="hero__stats">
+      <div class="stat">
+        <div class="stat__n">142</div>
+        <div class="stat__l">sections across 9 categories</div>
+      </div>
+      <div class="stat">
+        <div class="stat__n">0<s> kb</s></div>
+        <div class="stat__l">runtime JS shipped by default</div>
+      </div>
+      <div class="stat">
+        <div class="stat__n">~40<s>s</s></div>
+        <div class="stat__l">from copy to live preview</div>
+      </div>
+      <div class="stat">
+        <div class="stat__n">MIT</div>
+        <div class="stat__l">use them in client work, no credit needed</div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

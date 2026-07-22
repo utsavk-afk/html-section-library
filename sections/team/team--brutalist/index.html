@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- ===== TEAM — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:"Archivo",sans-serif;
+  --sans:"Archivo",sans-serif;
+  --mono:"Space Mono",monospace;
+}
+
+.team-brut{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 48px 88px;
+  border-top:4px solid var(--line);
+  border-bottom:4px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+
+/* faint visible grid */
+.team-brut::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(to right,rgba(17,17,17,.05) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(17,17,17,.05) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+}
+
+.tb-inner{
+  max-width:1440px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+
+/* ---- header : asymmetric, one focal point ---- */
+.tb-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:28px;
+  border-bottom:3px solid var(--line);
+  margin-bottom:48px;
+}
+.tb-kicker{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--accent);
+  display:inline-block;
+  padding:6px 12px;
+  margin-bottom:20px;
+}
+.tb-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(40px,6vw,88px);
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  max-width:12ch;
+}
+.tb-title span{
+  background:var(--accent);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.tb-meta{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.7;
+  text-transform:uppercase;
+  text-align:right;
+  flex-shrink:0;
+  max-width:26ch;
+}
+.tb-meta b{font-weight:700;}
+.tb-meta .tb-count{
+  display:block;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:52px;
+  line-height:1;
+  color:var(--red);
+  margin-bottom:6px;
+}
+
+/* ---- grid : lightly varied, not uniform ---- */
+.tb-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+.tb-card{
+  background:#fff;
+  border:3px solid var(--line);
+  box-shadow:6px 6px 0 var(--ink);
+  padding:22px 22px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.tb-card:hover{
+  transform:translate(-3px,-3px);
+  box-shadow:9px 9px 0 var(--ink);
+}
+/* intentional variation: one lead card uses accent fill + bigger footprint */
+.tb-card.lead{
+  grid-column:span 1;
+  background:var(--accent);
+  box-shadow:6px 6px 0 var(--red);
+}
+.tb-card.lead:hover{box-shadow:9px 9px 0 var(--red);}
+.tb-card.wide{grid-column:span 2;flex-direction:row;align-items:center;gap:24px;}
+
+.tb-topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.tb-card.lead .tb-topline{color:var(--ink);}
+.tb-id{color:var(--ink);}
+
+/* avatar : CSS initial block */
+.tb-ava{
+  width:88px;
+  height:88px;
+  flex-shrink:0;
+  border:3px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:34px;
+  letter-spacing:-.02em;
+  background:var(--ink);
+  color:#fff;
+}
+.tb-ava.y{background:var(--accent);color:var(--ink);}
+.tb-ava.r{background:var(--red);color:#fff;}
+.tb-ava.w{background:#fff;color:var(--ink);}
+.tb-card.lead .tb-ava{background:var(--ink);color:var(--accent);}
+
+.tb-body{display:flex;flex-direction:column;gap:16px;}
+.tb-card.wide .tb-body{gap:12px;}
+
+.tb-name{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:26px;
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+}
+.tb-role{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  color:var(--muted);
+  margin-top:6px;
+}
+.tb-card.lead .tb-role{color:var(--ink);}
+.tb-note{
+  font-family:var(--mono);
+  font-size:12.5px;
+  line-height:1.55;
+  color:var(--ink);
+  border-top:2px solid var(--line);
+  padding-top:12px;
+}
+.tb-card.lead .tb-note{border-color:var(--ink);}
+
+.tb-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:auto;
+}
+.tb-tag{
+  font-family:var(--mono);
+  font-size:10.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  border:2px solid var(--line);
+  padding:3px 7px;
+}
+.tb-card.lead .tb-tag{border-color:var(--ink);background:var(--ink);color:var(--accent);}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .team-brut{padding:44px 20px 56px;}
+  .tb-head{flex-direction:column;align-items:flex-start;gap:20px;}
+  .tb-meta{text-align:left;}
+  .tb-grid{grid-template-columns:1fr;gap:20px;}
+  .tb-card,.tb-card.lead,.tb-card.wide{grid-column:span 1;}
+  .tb-card.wide{flex-direction:column;align-items:flex-start;}
+  .tb-title{font-size:clamp(38px,13vw,60px);}
+}
+</style>
+</head>
+<body>
+<section class="team-brut">
+  <div class="tb-inner">
+
+    <header class="tb-head">
+      <div>
+        <span class="tb-kicker">// The Build Crew</span>
+        <h1 class="tb-title">People Who <span>Ship</span> The Weird Stuff</h1>
+      </div>
+      <div class="tb-meta">
+        <span class="tb-count">05</span>
+        <b>OPERATORS ON PAYROLL</b><br>
+        HQ: LEEDS + REMOTE<br>
+        EST. 2019 · NO AGENCY FLUFF
+      </div>
+    </header>
+
+    <div class="tb-grid">
+
+      <!-- lead / focal card -->
+      <article class="tb-card lead">
+        <div class="tb-topline"><span class="tb-id">MBR-01</span><span>FOUNDER</span></div>
+        <div class="tb-ava">MO</div>
+        <div class="tb-body">
+          <div>
+            <div class="tb-name">Marta Okonkwo</div>
+            <div class="tb-role">Principal / Systems Architect</div>
+          </div>
+          <p class="tb-note">Writes the tokens, argues about grid gutters, refuses gradients. 11 years in.</p>
+          <div class="tb-tags"><span class="tb-tag">Design Ops</span><span class="tb-tag">CSS</span><span class="tb-tag">Hiring</span></div>
+        </div>
+      </article>
+
+      <article class="tb-card">
+        <div class="tb-topline"><span class="tb-id">MBR-02</span><span>ENGINEERING</span></div>
+        <div class="tb-ava r">DV</div>
+        <div class="tb-body">
+          <div>
+            <div class="tb-name">Dev Varma</div>
+            <div class="tb-role">Lead Front-End Engineer</div>
+          </div>
+          <p class="tb-note">Ships components at 2am. Owns the CI pipeline nobody else understands.</p>
+          <div class="tb-tags"><span class="tb-tag">TypeScript</span><span class="tb-tag">Perf</span></div>
+        </div>
+      </article>
+
+      <article class="tb-card">
+        <div class="tb-topline"><span class="tb-id">MBR-03</span><span>STRATEGY</span></div>
+        <div class="tb-ava y">RS</div>
+        <div class="tb-body">
+          <div>
+            <div class="tb-name">Rae Sørensen</div>
+            <div class="tb-role">Head of Content Strategy</div>
+          </div>
+          <p class="tb-note">Turns messy client goals into three-word section briefs. Kills the lorem.</p>
+          <div class="tb-tags"><span class="tb-tag">SEO</span><span class="tb-tag">Copy</span></div>
+        </div>
+      </article>
+
+      <!-- wide horizontal card -->
+      <article class="tb-card wide">
+        <div class="tb-ava w">KT</div>
+        <div class="tb-body">
+          <div class="tb-topline"><span class="tb-id">MBR-04</span><span>DESIGN</span></div>
+          <div>
+            <div class="tb-name">Kofi Tetteh</div>
+            <div class="tb-role">Senior Product Designer</div>
+          </div>
+          <p class="tb-note">Prototypes in the browser, not Figma. Drew every SVG in this library by hand.</p>
+          <div class="tb-tags"><span class="tb-tag">Prototyping</span><span class="tb-tag">Motion</span><span class="tb-tag">SVG</span></div>
+        </div>
+      </article>
+
+      <article class="tb-card">
+        <div class="tb-topline"><span class="tb-id">MBR-05</span><span>OPS</span></div>
+        <div class="tb-ava">LN</div>
+        <div class="tb-body">
+          <div>
+            <div class="tb-name">Lena Novak</div>
+            <div class="tb-role">Client Ops &amp; Delivery</div>
+          </div>
+          <p class="tb-note">Keeps timelines brutal and honest. Answers your Slack before you finish typing.</p>
+          <div class="tb-tags"><span class="tb-tag">PM</span><span class="tb-tag">QA</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

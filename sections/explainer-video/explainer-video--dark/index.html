@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!-- ===== explainer-video — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explainer Video — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --line:#2a2a31;
+  --line-soft:#232329;
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- section shell ---- */
+.ev{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 72px;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:64px;
+  align-items:center;
+}
+
+/* ---- left: player ---- */
+.ev__stage{position:relative;}
+
+.ev__frame{
+  position:relative;
+  aspect-ratio:16/10;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:
+    radial-gradient(120% 140% at 78% 8%, #1c1c22 0%, #141419 55%, #101014 100%);
+  overflow:hidden;
+}
+
+/* faint scene composition drawn in CSS: horizon + light streak */
+.ev__frame::before{
+  content:"";
+  position:absolute;
+  left:-10%;
+  right:-10%;
+  bottom:-18%;
+  height:62%;
+  background:
+    radial-gradient(60% 100% at 30% 100%, rgba(245,158,66,0.10) 0%, rgba(245,158,66,0) 70%);
+  transform:skewY(-6deg);
+}
+.ev__frame::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px) 0 0/44px 44px,
+    linear-gradient(0deg, rgba(255,255,255,0.015) 1px, transparent 1px) 0 0/44px 44px;
+  mask-image:radial-gradient(110% 90% at 60% 40%, #000 20%, transparent 80%);
+}
+
+/* top browser-ish chrome bar */
+.ev__chrome{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:38px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:0 16px;
+  border-bottom:1px solid var(--line-soft);
+  background:rgba(18,18,22,0.55);
+  z-index:3;
+}
+.ev__dot{width:9px;height:9px;border-radius:50%;background:#33333b;}
+.ev__chrome .ev__label{
+  margin-left:14px;
+  font-size:12px;
+  letter-spacing:.02em;
+  color:var(--muted);
+}
+
+/* the big play control — off-center for asymmetry */
+.ev__play{
+  position:absolute;
+  left:34%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:88px;height:88px;
+  border-radius:50%;
+  border:1px solid rgba(245,158,66,0.55);
+  background:rgba(20,20,25,0.72);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:4;
+  transition:border-color .25s ease, background .25s ease, transform .25s ease;
+}
+.ev__play::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:50%;
+  border:1px solid rgba(245,158,66,0.18);
+  transform:scale(1.28);
+  transition:transform .3s ease, opacity .3s ease;
+}
+.ev__play:hover{
+  border-color:var(--amber);
+  background:rgba(245,158,66,0.12);
+  transform:translate(-50%,-50%) scale(1.04);
+}
+.ev__play:hover::after{transform:scale(1.4);opacity:.4;}
+.ev__tri{
+  width:0;height:0;
+  margin-left:5px;
+  border-left:22px solid var(--amber);
+  border-top:14px solid transparent;
+  border-bottom:14px solid transparent;
+}
+
+/* scrubber pinned to bottom */
+.ev__bar{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:52px;
+  z-index:3;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:linear-gradient(180deg, transparent, rgba(16,16,20,0.85) 60%);
+}
+.ev__time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;}
+.ev__track{
+  flex:1;
+  height:3px;
+  border-radius:2px;
+  background:#2b2b33;
+  position:relative;
+}
+.ev__prog{
+  position:absolute;left:0;top:0;bottom:0;
+  width:38%;
+  border-radius:2px;
+  background:var(--amber);
+}
+.ev__prog::after{
+  content:"";
+  position:absolute;right:-5px;top:50%;
+  transform:translateY(-50%);
+  width:10px;height:10px;border-radius:50%;
+  background:var(--ink);
+}
+
+/* small caption tag floating over the frame, bottom-left */
+.ev__tag{
+  position:absolute;
+  left:-14px;bottom:64px;
+  z-index:5;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:11px 15px;
+  max-width:210px;
+  box-shadow:0 18px 40px -20px rgba(0,0,0,0.8);
+}
+.ev__tag b{display:block;font-size:13px;margin-bottom:3px;color:var(--ink);}
+.ev__tag span{font-size:12px;color:var(--muted);line-height:1.4;}
+
+/* ---- right: copy ---- */
+.ev__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:22px;
+}
+.ev__eyebrow::before{
+  content:"";
+  width:26px;height:1px;background:var(--amber);
+}
+.ev__h{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:40px;
+  line-height:1.12;
+  letter-spacing:-0.01em;
+  margin-bottom:20px;
+}
+.ev__h em{font-style:italic;color:var(--amber);}
+.ev__p{
+  font-size:16px;
+  line-height:1.65;
+  color:var(--muted);
+  max-width:44ch;
+  margin-bottom:30px;
+}
+.ev__meta{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-bottom:34px;
+}
+.ev__stat b{
+  display:block;
+  font-family:var(--serif);
+  font-size:22px;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:5px;
+}
+.ev__stat span{font-size:12.5px;color:var(--muted);}
+.ev__divider{width:1px;height:34px;background:var(--line);}
+
+.ev__actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.ev__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--amber);
+  color:#1a1205;
+  font-weight:600;
+  font-size:14.5px;
+  padding:13px 22px;
+  border-radius:9px;
+  text-decoration:none;
+  transition:background .2s ease, transform .2s ease;
+}
+.ev__cta:hover{background:#f7ab5b;transform:translateY(-1px);}
+.ev__ghost{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:var(--ink);
+  font-size:14.5px;
+  text-decoration:none;
+}
+.ev__ghost span{
+  width:26px;height:26px;border-radius:50%;
+  border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+}
+.ev__ghost small{
+  width:0;height:0;
+  border-left:8px solid var(--ink);
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+  margin-left:2px;
+}
+.ev__ghost:hover span{border-color:var(--amber);}
+
+@media (max-width:640px){
+  .ev{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:56px 22px;
+  }
+  .ev__h{font-size:29px;}
+  .ev__play{width:70px;height:70px;left:50%;}
+  .ev__tri{border-left:18px solid var(--amber);border-top:11px solid transparent;border-bottom:11px solid transparent;}
+  .ev__tag{left:8px;bottom:60px;max-width:180px;}
+  .ev__p{max-width:none;}
+}
+</style>
+</head>
+<body>
+
+<section class="ev">
+  <!-- LEFT: CSS-drawn player -->
+  <div class="ev__stage">
+    <div class="ev__frame">
+      <div class="ev__chrome">
+        <span class="ev__dot"></span><span class="ev__dot"></span><span class="ev__dot"></span>
+        <span class="ev__label">product-tour — chapter 01</span>
+      </div>
+
+      <button class="ev__play" aria-label="Play the 2 minute product tour">
+        <span class="ev__tri"></span>
+      </button>
+
+      <div class="ev__bar">
+        <span class="ev__time">0:47</span>
+        <span class="ev__track"><span class="ev__prog"></span></span>
+        <span class="ev__time">2:04</span>
+      </div>
+    </div>
+
+    <div class="ev__tag">
+      <b>Chapter 2 · Wiring the pipeline</b>
+      <span>See how a single config file connects every source.</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: copy -->
+  <div class="ev__copy">
+    <span class="ev__eyebrow">Watch it work</span>
+    <h2 class="ev__h">Two minutes from <em>raw feed</em> to a shipped dashboard.</h2>
+    <p class="ev__p">No slide deck, no sales narrator. This is the actual product doing the actual job — importing a messy CSV, mapping fields, and pushing a live view your whole team can read.</p>
+
+    <div class="ev__meta">
+      <div class="ev__stat"><b>2:04</b><span>Full walkthrough</span></div>
+      <div class="ev__divider"></div>
+      <div class="ev__stat"><b>6</b><span>Chapters, no fluff</span></div>
+      <div class="ev__divider"></div>
+      <div class="ev__stat"><b>4K</b><span>Captioned</span></div>
+    </div>
+
+    <div class="ev__actions">
+      <a class="ev__cta" href="#watch">Play the tour</a>
+      <a class="ev__ghost" href="#chapters"><span><small></small></span>Skip to a chapter</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

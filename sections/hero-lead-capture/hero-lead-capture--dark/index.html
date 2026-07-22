@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!-- ===== hero-lead-capture — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Lead Capture — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --ink:#121216;
+  --ink-2:#17171d;
+  --panel:#1b1b22;
+  --line:#2a2a33;
+  --off:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --amber-dim:rgba(245,158,66,.14);
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --r-sm:8px;
+  --r-md:14px;
+  --r-lg:22px;
+}
+
+body{
+  background:var(--ink);
+  color:var(--off);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.hlc{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:720px;
+  padding:88px 72px 96px;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:64px;
+  align-items:center;
+  background:
+    radial-gradient(120% 90% at 88% 8%, rgba(245,158,66,.06), transparent 46%),
+    var(--ink);
+  overflow:hidden;
+}
+
+/* faint engineered grid, not a glow */
+.hlc::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:.12;
+  -webkit-mask-image:linear-gradient(115deg, transparent 40%, #000 100%);
+  mask-image:linear-gradient(115deg, transparent 40%, #000 100%);
+  pointer-events:none;
+}
+
+/* ---- LEFT: the focal point ---- */
+.hlc__lead{position:relative;z-index:2;max-width:620px;}
+
+.hlc__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:7px 14px 7px 10px;
+  border:1px solid var(--line);
+  border-radius:100px;
+  margin-bottom:30px;
+}
+.hlc__pulse{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 0 4px var(--amber-dim);
+}
+
+.hlc__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(40px,5vw,68px);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  color:var(--off);
+}
+.hlc__title em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--amber);
+}
+
+.hlc__sub{
+  margin-top:24px;
+  max-width:498px;
+  font-size:18px;
+  line-height:1.6;
+  color:var(--muted);
+}
+.hlc__sub strong{color:var(--off);font-weight:600;}
+
+/* ---- capture form ---- */
+.hlc__form{
+  margin-top:40px;
+  display:flex;
+  gap:10px;
+  max-width:512px;
+  background:var(--ink-2);
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  padding:8px;
+}
+.hlc__input{
+  flex:1;
+  min-width:0;
+  background:transparent;
+  border:0;
+  outline:0;
+  color:var(--off);
+  font-family:var(--sans);
+  font-size:15.5px;
+  padding:0 12px;
+}
+.hlc__input::placeholder{color:#71717a;}
+.hlc__form:focus-within{border-color:#3a3a45;}
+
+.hlc__btn{
+  flex:0 0 auto;
+  border:0;
+  cursor:pointer;
+  background:var(--amber);
+  color:#1a1205;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:15px;
+  letter-spacing:-.01em;
+  padding:14px 22px;
+  border-radius:var(--r-sm);
+  transition:transform .12s ease, background .2s ease;
+}
+.hlc__btn:hover{background:#ffab55;transform:translateY(-1px);}
+.hlc__btn:active{transform:translateY(0);}
+
+.hlc__reassure{
+  margin-top:15px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  color:var(--muted);
+}
+.hlc__reassure svg{flex:0 0 auto;}
+
+/* ---- proof row, asymmetric footer of left col ---- */
+.hlc__proof{
+  margin-top:44px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.hlc__avatars{display:flex;}
+.hlc__av{
+  width:34px;height:34px;border-radius:50%;
+  margin-left:-9px;
+  border:2px solid var(--ink);
+  display:grid;place-items:center;
+  font-size:12px;font-weight:700;color:#0d0d10;
+}
+.hlc__av:first-child{margin-left:0;}
+.hlc__av--a{background:#f3c37a;}
+.hlc__av--b{background:#e0857a;}
+.hlc__av--c{background:#8fb8a8;}
+.hlc__av--d{background:#9aa7d0;}
+.hlc__proof-txt{font-size:13.5px;color:var(--muted);line-height:1.4;}
+.hlc__proof-txt b{color:var(--off);font-weight:600;}
+
+/* ---- RIGHT: offset card, deliberately unequal ---- */
+.hlc__aside{position:relative;z-index:2;}
+
+.hlc__card{
+  position:relative;
+  background:linear-gradient(180deg,var(--panel),var(--ink-2));
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  padding:28px 28px 24px;
+  transform:translateY(-14px);
+  box-shadow:0 40px 80px -48px rgba(0,0,0,.9);
+}
+.hlc__card-top{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+.hlc__card-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+.hlc__issue{font-family:var(--serif);font-size:15px;color:var(--amber);font-style:italic;}
+
+.hlc__list{list-style:none;margin-top:6px;}
+.hlc__row{
+  display:flex;gap:14px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+}
+.hlc__row:last-child{border-bottom:0;padding-bottom:2px;}
+.hlc__num{
+  font-family:var(--serif);
+  font-size:15px;
+  color:#5f5f6b;
+  width:26px;flex:0 0 auto;
+  padding-top:1px;
+}
+.hlc__row-h{font-size:15px;font-weight:600;color:var(--off);margin-bottom:3px;}
+.hlc__row-p{font-size:13px;color:var(--muted);line-height:1.5;}
+
+.hlc__stat{
+  position:absolute;
+  left:-26px;bottom:-22px;
+  background:var(--amber);
+  color:#1a1205;
+  border-radius:var(--r-md);
+  padding:14px 18px;
+  box-shadow:0 24px 48px -24px rgba(245,158,66,.5);
+}
+.hlc__stat b{display:block;font-size:26px;font-weight:700;line-height:1;letter-spacing:-.02em;font-family:var(--serif);}
+.hlc__stat span{font-size:11.5px;font-weight:600;letter-spacing:.04em;opacity:.82;}
+
+/* ---- responsive ---- */
+@media (max-width:960px){
+  .hlc{grid-template-columns:1fr;gap:48px;padding:72px 40px 88px;}
+  .hlc__card{transform:none;max-width:520px;}
+  .hlc__stat{left:auto;right:-14px;}
+}
+@media (max-width:640px){
+  .hlc{padding:52px 20px 72px;min-height:0;gap:40px;}
+  .hlc::before{background-size:40px 40px;}
+  .hlc__title{font-size:clamp(34px,9vw,44px);}
+  .hlc__sub{font-size:16px;}
+  .hlc__form{flex-direction:column;background:transparent;border:0;padding:0;gap:10px;}
+  .hlc__input{
+    background:var(--ink-2);border:1px solid var(--line);
+    border-radius:var(--r-sm);padding:14px 14px;
+  }
+  .hlc__btn{width:100%;padding:15px;}
+  .hlc__proof{flex-wrap:wrap;}
+  .hlc__stat{left:auto;right:16px;bottom:-18px;}
+}
+</style>
+</head>
+<body>
+
+<section class="hlc" aria-labelledby="hlc-title">
+  <!-- FOCAL: lead copy + capture -->
+  <div class="hlc__lead">
+    <span class="hlc__eyebrow"><span class="hlc__pulse"></span>The Off-Hours Brief · Issue 041</span>
+
+    <h1 class="hlc__title" id="hlc-title">
+      The 6-minute read that<br>
+      keeps you <em>ahead of</em><br>
+      the next release.
+    </h1>
+
+    <p class="hlc__sub">
+      Every Tuesday, one tight teardown of a shipping decision — the tradeoff, the metric that moved, and the exact call we'd make again. <strong>No think-pieces. No recap of the recap.</strong>
+    </p>
+
+    <form class="hlc__form" action="#" method="post" novalidate>
+      <label for="hlc-email" class="hlc__input" style="display:none">Email</label>
+      <input class="hlc__input" id="hlc-email" type="email" name="email"
+             placeholder="you@company.com" autocomplete="email" required>
+      <button class="hlc__btn" type="submit">Get Tuesday's brief</button>
+    </form>
+
+    <p class="hlc__reassure">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2 4 5v6c0 5 3.4 8.4 8 11 4.6-2.6 8-6 8-11V5l-8-3Z" stroke="#A1A1AA" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M9 12l2 2 4-4" stroke="#F59E42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Free forever. One email a week. Unsubscribe in a single click.
+    </p>
+
+    <div class="hlc__proof">
+      <div class="hlc__avatars" aria-hidden="true">
+        <span class="hlc__av hlc__av--a">RK</span>
+        <span class="hlc__av hlc__av--b">MØ</span>
+        <span class="hlc__av hlc__av--c">JL</span>
+        <span class="hlc__av hlc__av--d">TS</span>
+      </div>
+      <p class="hlc__proof-txt"><b>9,400+ builders</b> read it before standup —<br>PMs, staff eng, and a few founders who won't admit it.</p>
+    </div>
+  </div>
+
+  <!-- OFFSET aside: what's inside this issue -->
+  <aside class="hlc__aside" aria-label="Inside this issue">
+    <div class="hlc__card">
+      <div class="hlc__card-top">
+        <span class="hlc__card-label">Inside this week</span>
+        <span class="hlc__issue">Jul 22</span>
+      </div>
+      <ul class="hlc__list">
+        <li class="hlc__row">
+          <span class="hlc__num">01</span>
+          <div>
+            <p class="hlc__row-h">Why we killed the settings page</p>
+            <p class="hlc__row-p">Three toggles nobody used, and the support tickets that dropped 31% when they left.</p>
+          </div>
+        </li>
+        <li class="hlc__row">
+          <span class="hlc__num">02</span>
+          <div>
+            <p class="hlc__row-h">The p95 we stopped chasing</p>
+            <p class="hlc__row-p">When a slower median beat a faster tail — and how the on-call rotation felt it first.</p>
+          </div>
+        </li>
+        <li class="hlc__row">
+          <span class="hlc__num">03</span>
+          <div>
+            <p class="hlc__row-h">One pricing test, run wrong</p>
+            <p class="hlc__row-p">The honest post-mortem on a 4-week experiment that taught us nothing — until it did.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="hlc__stat">
+        <b>92%</b>
+        <span>OPEN RATE</span>
+      </div>
+    </div>
+  </aside>
+</section>
+
+</body>
+</html>

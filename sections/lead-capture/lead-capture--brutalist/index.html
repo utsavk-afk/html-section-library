@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!-- /* ===== LEAD-CAPTURE — BRUTALIST ===== */ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Capture — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:#111111;
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===== SECTION SHELL ===== */
+.lc{
+  width:100%;
+  min-height:640px;
+  padding:64px 24px;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 39px,rgba(17,17,17,.05) 39px 40px),
+    var(--paper);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.lc__grid{
+  width:100%;
+  max-width:1180px;
+  border:4px solid var(--line);
+  background:var(--white);
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+}
+
+/* ===== LEFT: PITCH ===== */
+.lc__left{
+  padding:48px 44px 44px;
+  border-right:4px solid var(--line);
+  position:relative;
+}
+.lc__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 12px;
+  border:2px solid var(--ink);
+}
+.lc__tag b{width:8px;height:8px;background:var(--red);display:block;}
+
+.lc__title{
+  margin-top:26px;
+  font-size:clamp(38px,5.4vw,68px);
+  font-weight:900;
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.lc__title mark{
+  background:var(--acid);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+.lc__sub{
+  margin-top:22px;
+  max-width:34ch;
+  font-family:var(--mono);
+  font-size:14px;
+  line-height:1.55;
+  color:#333;
+}
+
+.lc__perks{
+  margin-top:28px;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  border-top:2px solid var(--line);
+}
+.lc__perks li{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:2px solid var(--line);
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.lc__perks li span{
+  flex:none;
+  width:22px;height:22px;
+  display:grid;place-items:center;
+  background:var(--ink);color:var(--acid);
+  font-size:12px;
+}
+
+/* ===== RIGHT: FORM ===== */
+.lc__right{
+  padding:48px 44px 44px;
+  background:var(--paper);
+  display:flex;
+  flex-direction:column;
+}
+.lc__count{
+  border:3px solid var(--ink);
+  background:var(--white);
+  box-shadow:var(--shadow-red);
+  padding:18px 20px;
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+}
+.lc__num{
+  font-size:48px;
+  font-weight:900;
+  line-height:.9;
+  letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;
+}
+.lc__live{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  line-height:1.4;
+  color:#333;
+}
+.lc__live b{
+  display:inline-flex;align-items:center;gap:6px;color:var(--ink);
+}
+.lc__dot{
+  width:9px;height:9px;background:var(--red);border-radius:50%;
+  display:inline-block;
+  animation:blink 1.3s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:.15;}}
+
+.lc__formlabel{
+  margin-top:28px;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+.lc__field{
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.lc__input{
+  font-family:var(--mono);
+  font-size:15px;
+  font-weight:700;
+  padding:16px 16px;
+  border:3px solid var(--ink);
+  background:var(--white);
+  color:var(--ink);
+  outline:none;
+  width:100%;
+}
+.lc__input::placeholder{color:#999;font-weight:400;}
+.lc__input:focus{
+  box-shadow:var(--shadow);
+  transform:translate(-2px,-2px);
+}
+.lc__btn{
+  font-family:var(--sans);
+  font-size:18px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  padding:16px;
+  border:3px solid var(--ink);
+  background:var(--acid);
+  color:var(--ink);
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:transform .06s linear,box-shadow .06s linear;
+}
+.lc__btn:hover{background:var(--red);color:var(--white);}
+.lc__btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink);}
+
+.lc__fine{
+  margin-top:16px;
+  font-family:var(--mono);
+  font-size:11px;
+  line-height:1.5;
+  color:#555;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+}
+.lc__fine b{color:var(--ink);}
+
+.lc__avatars{
+  margin-top:auto;
+  padding-top:26px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.lc__stack{display:flex;}
+.lc__av{
+  width:34px;height:34px;
+  border:2px solid var(--ink);
+  margin-left:-8px;
+  display:grid;place-items:center;
+  font-family:var(--sans);
+  font-weight:800;font-size:13px;
+  color:var(--ink);
+}
+.lc__av:first-child{margin-left:0;}
+.lc__av--y{background:var(--acid);}
+.lc__av--w{background:var(--white);}
+.lc__av--r{background:var(--red);color:var(--white);}
+.lc__av--k{background:var(--ink);color:var(--acid);}
+.lc__avtext{
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;color:#333;line-height:1.4;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .lc{padding:36px 16px;}
+  .lc__grid{grid-template-columns:1fr;box-shadow:4px 4px 0 var(--ink);}
+  .lc__left{border-right:none;border-bottom:4px solid var(--line);padding:34px 24px 30px;}
+  .lc__right{padding:34px 24px 30px;}
+  .lc__title{font-size:clamp(34px,11vw,52px);}
+  .lc__num{font-size:40px;}
+  .lc__avatars{margin-top:24px;}
+}
+</style>
+</head>
+<body>
+
+<section class="lc" aria-label="Waitlist signup">
+  <div class="lc__grid">
+
+    <!-- LEFT -->
+    <div class="lc__left">
+      <span class="lc__tag"><b></b>Private Beta · Cohort 04</span>
+      <h1 class="lc__title">Ship <mark>faster</mark> than<br>your changelog.</h1>
+      <p class="lc__sub">DEPLOYQUEUE turns messy release notes into shippable weekly digests. Get an invite before the next cohort locks on August 1.</p>
+
+      <ul class="lc__perks">
+        <li><span>01</span>No credit card · No sales call</li>
+        <li><span>02</span>First 500 keep it free forever</li>
+        <li><span>03</span>Founder DMs you your onboarding</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="lc__right">
+      <div class="lc__count">
+        <span class="lc__num" id="lcCount">2,847</span>
+        <span class="lc__live">
+          <b><span class="lc__dot"></span>Live</span><br>
+          builders on the list
+        </span>
+      </div>
+
+      <label class="lc__formlabel" for="lcEmail">Drop your work email</label>
+      <form class="lc__field" id="lcForm" novalidate>
+        <input class="lc__input" id="lcEmail" type="email" inputmode="email"
+               placeholder="you@company.com" aria-label="Work email" required>
+        <button class="lc__btn" type="submit">Grab My Spot →</button>
+      </form>
+
+      <p class="lc__fine" id="lcMsg"><b>Spot #2,848</b> is open. We email in batches every Thursday, 9AM PT.</p>
+
+      <div class="lc__avatars">
+        <div class="lc__stack">
+          <div class="lc__av lc__av--y">RK</div>
+          <div class="lc__av lc__av--w">MJ</div>
+          <div class="lc__av lc__av--k">TS</div>
+          <div class="lc__av lc__av--r">+</div>
+        </div>
+        <span class="lc__avtext">Devs from Linear,<br>Vercel &amp; 300+ teams</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var el=document.getElementById('lcCount');
+  var msg=document.getElementById('lcMsg');
+  var form=document.getElementById('lcForm');
+  var email=document.getElementById('lcEmail');
+  var n=2847;
+
+  // live ticker — occasional real-feeling increment
+  function tick(){
+    n+=1;
+    el.textContent=n.toLocaleString('en-US');
+    if(!form.dataset.done){
+      msg.innerHTML='<b>Spot #'+(n+1).toLocaleString('en-US')+'</b> is open. We email in batches every Thursday, 9AM PT.';
+    }
+    setTimeout(tick, 4000 + Math.random()*7000);
+  }
+  setTimeout(tick, 3500);
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=(email.value||'').trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){
+      email.style.borderColor='#FF3B21';
+      msg.innerHTML='<b style="color:#FF3B21">Bad email.</b> Use a real one — that\'s where the invite lands.';
+      return;
+    }
+    email.style.borderColor='#111';
+    n+=1; el.textContent=n.toLocaleString('en-US');
+    form.dataset.done='1';
+    msg.innerHTML='<b>You\'re in at #'+n.toLocaleString('en-US')+'.</b> Check '+v.replace(/</g,'')+' Thursday 9AM PT.';
+    email.value=''; email.placeholder='Locked in ✓';
+    email.disabled=true;
+    form.querySelector('.lc__btn').textContent='On The List ✓';
+    form.querySelector('.lc__btn').style.background='#111';
+    form.querySelector('.lc__btn').style.color='#FFE500';
+  });
+})();
+</script>
+
+</body>
+</html>

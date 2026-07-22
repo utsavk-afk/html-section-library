@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Slider — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== testimonial-slider — DARK/LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2a2a31;
+  --line-soft:#212127;
+  --amber:#F59E42;
+  --r-lg:20px;
+  --r-md:14px;
+  --r-sm:8px;
+  --maxw:1200px;
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;}
+
+.ts{
+  width:100%;
+  background:
+    radial-gradient(120% 140% at 88% 8%, rgba(245,158,66,.05), transparent 46%),
+    var(--bg);
+  padding:88px 40px 96px;
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+}
+.ts__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* ---- eyebrow row ---- */
+.ts__top{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-bottom:44px;
+}
+.ts__eyebrow{
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.ts__eyebrow::before{
+  content:"";
+  width:26px;height:1px;
+  background:var(--amber);
+  display:inline-block;
+}
+.ts__count{
+  font-family:var(--serif);
+  font-size:15px;
+  color:var(--muted);
+}
+.ts__count b{color:var(--ink);font-weight:600;}
+
+/* ---- main grid: big quote + peek ---- */
+.ts__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 296px;
+  gap:40px;
+  align-items:stretch;
+}
+
+/* featured card */
+.ts__feature{
+  position:relative;
+  background:linear-gradient(180deg,#191920,#141419);
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  padding:52px 56px 40px;
+  overflow:hidden;
+}
+.ts__mark{
+  font-family:var(--serif);
+  font-size:120px;
+  line-height:.6;
+  color:var(--amber);
+  opacity:.9;
+  position:absolute;
+  top:34px;left:52px;
+  pointer-events:none;
+}
+.ts__quote{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:31px;
+  line-height:1.42;
+  letter-spacing:-.01em;
+  max-width:44ch;
+  margin:64px 0 0;
+}
+.ts__quote em{
+  font-style:normal;
+  color:var(--amber);
+}
+
+.ts__attr{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:38px;
+  padding-top:26px;
+  border-top:1px solid var(--line-soft);
+}
+.ts__avatar{
+  width:50px;height:50px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:16px;
+  font-weight:600;
+  color:#121216;
+  flex-shrink:0;
+  letter-spacing:.02em;
+}
+.ts__avatar--v{background:linear-gradient(135deg,#F5B662,#E07E2C);}
+.ts__who{display:flex;flex-direction:column;gap:3px;}
+.ts__name{font-size:15px;font-weight:600;letter-spacing:.01em;}
+.ts__role{font-size:13px;color:var(--muted);}
+.ts__logo{
+  margin-left:auto;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.ts__logo svg{display:block;}
+
+/* peek card (next testimonial) */
+.ts__peek{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--line-soft);
+  border-radius:var(--r-md);
+  padding:30px 30px 26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  /* clipped feel: slightly recessed */
+  color:var(--muted);
+}
+.ts__peek::after{
+  content:"Up next";
+  position:absolute;
+  top:20px;right:24px;
+  font-size:10.5px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#6b6b74;
+}
+.ts__peek-q{
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.5;
+  color:#c9c9cf;
+  margin-top:30px;
+}
+.ts__peek-who{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:26px;
+}
+.ts__peek .ts__avatar{width:38px;height:38px;font-size:13px;}
+.ts__avatar--n{background:linear-gradient(135deg,#3a3a44,#26262e);color:#e6e6ea;}
+.ts__peek-name{font-size:13.5px;font-weight:600;color:var(--ink);}
+.ts__peek-role{font-size:12px;color:var(--muted);}
+
+/* ---- controls row ---- */
+.ts__controls{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-top:34px;
+}
+.ts__arrows{display:flex;gap:10px;}
+.ts__arrow{
+  width:46px;height:46px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--ink);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  transition:border-color .18s ease,background .18s ease,color .18s ease;
+}
+.ts__arrow:hover{border-color:var(--amber);color:var(--amber);}
+.ts__arrow svg{width:16px;height:16px;}
+
+.ts__dots{display:flex;align-items:center;gap:10px;}
+.ts__dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#3a3a42;
+  border:0;
+  padding:0;
+  cursor:pointer;
+}
+.ts__dot--on{
+  width:26px;
+  border-radius:5px;
+  background:var(--amber);
+}
+.ts__meta{
+  margin-left:auto;
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.ts__meta b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;}
+.ts__stars{color:var(--amber);letter-spacing:2px;font-size:12px;}
+
+@media(max-width:640px){
+  .ts{padding:60px 20px 68px;}
+  .ts__grid{grid-template-columns:1fr;gap:16px;}
+  .ts__feature{padding:40px 26px 32px;}
+  .ts__mark{font-size:88px;top:24px;left:24px;}
+  .ts__quote{font-size:23px;margin-top:48px;line-height:1.44;}
+  .ts__attr{flex-wrap:wrap;gap:12px;}
+  .ts__logo{margin-left:0;width:100%;}
+  .ts__peek{display:none;}
+  .ts__controls{flex-wrap:wrap;gap:16px;}
+  .ts__meta{margin-left:0;width:100%;order:3;}
+}
+</style>
+</head>
+<body>
+
+<section class="ts" aria-label="Customer testimonials">
+  <div class="ts__inner">
+
+    <div class="ts__top">
+      <span class="ts__eyebrow">What partners tell us</span>
+      <span class="ts__count">Testimonial <b>02</b> of 06</span>
+    </div>
+
+    <div class="ts__grid">
+
+      <!-- Featured quote -->
+      <figure class="ts__feature">
+        <span class="ts__mark" aria-hidden="true">&ldquo;</span>
+        <blockquote class="ts__quote">
+          We handed off 40 client sites and expected the usual reporting mess.
+          Instead we got <em>clean monthly rollups</em> and a partner rep who
+          actually reads the tickets. Retention on those accounts is up 18% since
+          the switch.
+        </blockquote>
+        <figcaption class="ts__attr">
+          <span class="ts__avatar ts__avatar--v">DM</span>
+          <span class="ts__who">
+            <span class="ts__name">Dana Mercado</span>
+            <span class="ts__role">VP, Client Delivery · Northbeam Digital</span>
+          </span>
+          <span class="ts__logo" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect x="1" y="1" width="14" height="14" rx="3" stroke="#F59E42" stroke-width="1.3"/>
+              <path d="M4.5 8.2l2.2 2.2 4.8-5" stroke="#F59E42" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Verified partner
+          </span>
+        </figcaption>
+      </figure>
+
+      <!-- Peek of next -->
+      <aside class="ts__peek" aria-label="Next testimonial preview">
+        <p class="ts__peek-q">
+          &ldquo;The audit caught a redirect chain that had been quietly bleeding
+          traffic for two quarters. Fixed in a day.&rdquo;
+        </p>
+        <div class="ts__peek-who">
+          <span class="ts__avatar ts__avatar--n">RK</span>
+          <span>
+            <span class="ts__peek-name" style="display:block;">Rohan Kapoor</span>
+            <span class="ts__peek-role">Founder · Ledgerhouse SaaS</span>
+          </span>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Controls -->
+    <div class="ts__controls">
+      <div class="ts__arrows">
+        <button class="ts__arrow" aria-label="Previous testimonial">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="ts__arrow" aria-label="Next testimonial">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="ts__dots" role="tablist" aria-label="Testimonial navigation">
+        <button class="ts__dot" aria-label="Go to testimonial 1"></button>
+        <button class="ts__dot ts__dot--on" aria-label="Testimonial 2, current" aria-current="true"></button>
+        <button class="ts__dot" aria-label="Go to testimonial 3"></button>
+        <button class="ts__dot" aria-label="Go to testimonial 4"></button>
+        <button class="ts__dot" aria-label="Go to testimonial 5"></button>
+        <button class="ts__dot" aria-label="Go to testimonial 6"></button>
+      </div>
+
+      <span class="ts__meta">
+        <span class="ts__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <b>4.9</b> avg across 214 partner reviews
+      </span>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

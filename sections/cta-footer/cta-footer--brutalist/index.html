@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Footer — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CTA-FOOTER — BRUTALIST ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --line:3px solid var(--ink);
+  --line-thick:4px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  font-family:var(--sans);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+
+.brut-wrap{
+  max-width:1440px;
+  margin:0 auto;
+}
+
+/* ---- CTA BAND ---- */
+.cta-band{
+  background:var(--acid);
+  border-top:var(--line-thick);
+  border-bottom:var(--line-thick);
+  padding:48px 56px;
+  position:relative;
+  overflow:hidden;
+}
+
+.cta-band::before{
+  content:"↘ DEPLOY";
+  position:absolute;
+  top:14px;
+  right:-14px;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.28em;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 32px 6px 20px;
+  transform:rotate(90deg);
+  transform-origin:top right;
+}
+
+.cta-grid{
+  display:grid;
+  grid-template-columns:1.35fr auto;
+  align-items:center;
+  gap:40px 56px;
+}
+
+.cta-left{max-width:760px;}
+
+.cta-kicker{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--white);
+  padding:6px 14px;
+  margin-bottom:22px;
+}
+
+.cta-kicker .dot{color:var(--red);}
+
+.cta-head{
+  font-weight:900;
+  font-size:clamp(34px,5.2vw,64px);
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+
+.cta-head .strike{
+  display:inline-block;
+  background:var(--ink);
+  color:var(--acid);
+  padding:0 10px;
+  transform:rotate(-1.5deg);
+}
+
+.cta-sub{
+  font-family:var(--mono);
+  font-size:14px;
+  line-height:1.5;
+  margin-top:18px;
+  max-width:520px;
+  border-left:var(--line);
+  padding-left:16px;
+}
+
+.cta-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:14px;
+}
+
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  background:var(--red);
+  color:var(--white);
+  border:var(--line-thick);
+  box-shadow:var(--shadow);
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(18px,2vw,24px);
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:22px 34px;
+  cursor:pointer;
+  transition:transform .08s ease, box-shadow .08s ease;
+  white-space:nowrap;
+}
+.cta-btn .arw{
+  font-family:var(--mono);
+  font-weight:700;
+}
+.cta-btn:hover{
+  transform:translate(4px,4px);
+  box-shadow:2px 2px 0 var(--ink);
+}
+.cta-btn:active{
+  transform:translate(6px,6px);
+  box-shadow:0 0 0 var(--ink);
+}
+
+.cta-meta{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-align:right;
+}
+.cta-meta b{color:var(--red);}
+
+/* ---- FOOTER ---- */
+.brut-foot{
+  background:var(--ink);
+  color:var(--paper);
+  padding:44px 56px 30px;
+}
+
+.foot-top{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1.3fr;
+  gap:40px;
+  padding-bottom:34px;
+  border-bottom:3px solid #333;
+}
+
+.foot-brand .logo{
+  font-weight:900;
+  font-size:30px;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  line-height:1;
+}
+.foot-brand .logo span{color:var(--acid);}
+.foot-brand p{
+  font-family:var(--mono);
+  font-size:12.5px;
+  line-height:1.6;
+  color:#b7b7b1;
+  margin-top:16px;
+  max-width:280px;
+}
+
+.foot-col h4{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--acid);
+  margin-bottom:16px;
+}
+.foot-col ul{list-style:none;}
+.foot-col li{margin-bottom:10px;}
+.foot-col a{
+  color:var(--paper);
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.01em;
+  border-bottom:2px solid transparent;
+  padding-bottom:1px;
+  transition:border-color .1s ease,color .1s ease;
+}
+.foot-col a:hover{border-bottom-color:var(--acid);color:var(--acid);}
+
+.foot-signup{}
+.foot-signup .field{
+  display:flex;
+  border:3px solid var(--paper);
+  margin-top:4px;
+}
+.foot-signup input{
+  flex:1;
+  min-width:0;
+  border:none;
+  background:transparent;
+  color:var(--paper);
+  font-family:var(--mono);
+  font-size:13px;
+  padding:12px 14px;
+  outline:none;
+}
+.foot-signup input::placeholder{color:#7d7d78;}
+.foot-signup button{
+  border:none;
+  border-left:3px solid var(--paper);
+  background:var(--acid);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:16px;
+  padding:0 16px;
+  cursor:pointer;
+}
+.foot-signup button:hover{background:var(--red);color:var(--white);}
+
+.foot-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+  padding-top:22px;
+}
+.foot-bottom .copy{
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.05em;
+  color:#8f8f8a;
+  text-transform:uppercase;
+}
+.foot-bottom .copy b{color:var(--paper);}
+.foot-social{
+  display:flex;
+  gap:10px;
+}
+.foot-social a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  border:2px solid var(--paper);
+  color:var(--paper);
+  text-decoration:none;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:12px;
+  transition:background .1s ease,color .1s ease;
+}
+.foot-social a:hover{background:var(--acid);color:var(--ink);border-color:var(--acid);}
+
+@media(max-width:640px){
+  .cta-band{padding:34px 22px;}
+  .cta-band::before{display:none;}
+  .cta-grid{grid-template-columns:1fr;gap:26px;}
+  .cta-right{align-items:stretch;}
+  .cta-btn{justify-content:center;width:100%;}
+  .cta-meta{text-align:left;}
+  .brut-foot{padding:34px 22px 26px;}
+  .foot-top{grid-template-columns:1fr 1fr;gap:28px 24px;}
+  .foot-brand{grid-column:1 / -1;}
+  .foot-signup{grid-column:1 / -1;}
+  .foot-bottom{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<section class="brut-wrap" aria-label="Call to action and footer">
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <div class="cta-grid">
+      <div class="cta-left">
+        <span class="cta-kicker">FREE FOREVER<span class="dot">.</span> NO CARD</span>
+        <h1 class="cta-head">SHIP YOUR FIRST<br>PAGE IN <span class="strike">11 MINUTES</span></h1>
+        <p class="cta-sub">Copy the block, paste into Claude Code, hit run. 240+ sections, zero build step, zero dependencies to babysit.</p>
+      </div>
+      <div class="cta-right">
+        <a href="#" class="cta-btn">GRAB THE LIBRARY <span class="arw">→</span></a>
+        <p class="cta-meta">USED BY <b>8,400+</b> BUILDERS THIS WEEK</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="brut-foot">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="logo">BLOCK<span>/</span>YARD</div>
+        <p>Raw, unstyled HTML sections you actually own. Fork them, break them, ship them. Built for people who hate node_modules.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Library</h4>
+        <ul>
+          <li><a href="#">All Sections</a></li>
+          <li><a href="#">Heroes</a></li>
+          <li><a href="#">Pricing Tables</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Docs</h4>
+        <ul>
+          <li><a href="#">Quickstart</a></li>
+          <li><a href="#">Tokens</a></li>
+          <li><a href="#">Contributing</a></li>
+          <li><a href="#">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="foot-col foot-signup">
+        <h4>Drop List</h4>
+        <p style="font-family:var(--mono);font-size:12px;color:#b7b7b1;margin-bottom:10px;line-height:1.5;">New blocks every Friday. No spam, unsubscribe with one click.</p>
+        <form class="field" onsubmit="return false">
+          <input type="email" placeholder="you@studio.dev" aria-label="Email">
+          <button type="submit">JOIN</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="copy">© 2026 <b>BLOCK/YARD</b> — MIT LICENSED · MADE WITHOUT A FRAMEWORK</p>
+      <div class="foot-social">
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="GitHub">GH</a>
+        <a href="#" aria-label="RSS">RS</a>
+      </div>
+    </div>
+  </footer>
+
+</section>
+</body>
+</html>

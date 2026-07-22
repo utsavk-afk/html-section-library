@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!-- ===== CLIENT-LOGOS — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Logos — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Archivo+Expanded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4F0;
+  --muted:#6B6B66;
+  --line:#1E1E1C;
+  --accent:#C7F13B;      /* lime primary */
+  --accent-2:#FF4D9D;    /* magenta secondary */
+  --serif:'Archivo Expanded','Archivo',sans-serif;
+  --sans:'Archivo',system-ui,sans-serif;
+}
+
+.logos{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  width:100%;
+  padding:104px 48px 88px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* asymmetric focal accent — off to one side, not centered */
+.logos__spark{
+  position:absolute;
+  top:0;
+  left:64px;
+  width:6px;
+  height:190px;
+  background:var(--accent);
+}
+
+.logos__inner{
+  max-width:1440px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+
+/* header row: label left, count chip right — deliberately unbalanced */
+.logos__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+  padding-bottom:44px;
+  border-bottom:2px solid var(--line);
+}
+
+.logos__label{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:0.34em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.logos__label b{
+  color:var(--accent);
+  font-weight:800;
+}
+.logos__dot{
+  width:9px;height:9px;
+  background:var(--accent-2);
+  border-radius:50%;
+  flex:none;
+}
+
+.logos__lead{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(38px,5.4vw,76px);
+  line-height:0.92;
+  letter-spacing:-0.03em;
+  text-transform:uppercase;
+  max-width:14ch;
+}
+.logos__lead em{
+  font-style:normal;
+  color:var(--accent);
+}
+
+.logos__count{
+  flex:none;
+  display:inline-flex;
+  align-items:baseline;
+  gap:10px;
+  background:var(--accent-2);
+  color:#0A0A0A;
+  font-weight:900;
+  padding:12px 22px;
+  border-radius:100px;
+  letter-spacing:-0.02em;
+  align-self:flex-end;
+  margin-bottom:6px;
+}
+.logos__count .num{font-size:26px;}
+.logos__count .cap{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:800;}
+
+/* the strip */
+.strip{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:0;
+  margin-top:0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  min-height:118px;
+  padding:26px 30px 26px 0;
+  border-right:2px solid var(--line);
+  color:var(--muted);
+  transition:color .18s ease,transform .18s ease;
+}
+.brand:last-child{border-right:none;}
+.brand svg{display:block;width:100%;height:auto;max-width:150px;}
+.brand svg *{transition:fill .18s ease,stroke .18s ease;}
+.brand:hover{color:var(--ink);transform:translateY(-3px);}
+.brand:hover .hl{fill:var(--accent);}
+.brand:hover .hl-stroke{stroke:var(--accent);}
+.brand:nth-child(3):hover .hl{fill:var(--accent-2);}
+.brand:nth-child(3):hover .hl-stroke{stroke:var(--accent-2);}
+
+.wm{fill:currentColor;font-family:var(--sans);font-weight:900;letter-spacing:-0.04em;}
+.wm-sub{fill:currentColor;font-family:var(--sans);font-weight:700;letter-spacing:0.02em;}
+
+/* footer micro-note */
+.logos__note{
+  margin-top:46px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+}
+.logos__note .bar{height:2px;width:52px;background:var(--accent);flex:none;}
+.logos__note b{color:var(--ink);font-weight:800;}
+
+@media(max-width:640px){
+  .logos{padding:64px 22px 56px;}
+  .logos__spark{left:22px;height:120px;width:5px;}
+  .logos__head{padding-bottom:30px;}
+  .logos__lead{font-size:40px;}
+  .logos__count{margin-bottom:0;}
+  .strip{grid-template-columns:repeat(2,1fr);}
+  .brand{
+    min-height:96px;
+    padding:20px 18px;
+    border-right:2px solid var(--line);
+    border-bottom:2px solid var(--line);
+    justify-content:center;
+  }
+  .brand svg{max-width:130px;}
+  .brand:nth-child(2n){border-right:none;}
+  .brand:nth-child(5),.brand:nth-child(6){border-bottom:none;}
+  .logos__note{margin-top:30px;}
+}
+</style>
+</head>
+<body>
+<section class="logos" aria-label="Trusted by">
+  <span class="logos__spark" aria-hidden="true"></span>
+  <div class="logos__inner">
+
+    <div class="logos__head">
+      <div>
+        <p class="logos__label"><span class="logos__dot"></span>Trusted by teams shipping <b>daily</b></p>
+        <h2 class="logos__lead">Built into <em>2,400+</em> workflows</h2>
+      </div>
+      <span class="logos__count">
+        <span class="num">6</span><span class="cap">Featured</span>
+      </span>
+    </div>
+
+    <div class="strip">
+
+      <!-- 1 · HALFPIPE -->
+      <div class="brand" aria-label="Halfpipe">
+        <svg viewBox="0 0 170 44" role="img" aria-hidden="true">
+          <rect class="hl" x="0" y="8" width="14" height="28" rx="2" fill="currentColor"/>
+          <text class="wm" x="22" y="31" font-size="22">Halfpipe</text>
+        </svg>
+      </div>
+
+      <!-- 2 · NORTHBOUND -->
+      <div class="brand" aria-label="Northbound">
+        <svg viewBox="0 0 190 44" role="img" aria-hidden="true">
+          <path class="hl" d="M4 34 L4 10 L18 34 L18 10" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+          <text class="wm" x="28" y="30" font-size="19">Northbound</text>
+        </svg>
+      </div>
+
+      <!-- 3 · KILOWATT -->
+      <div class="brand" aria-label="Kilowatt">
+        <svg viewBox="0 0 176 44" role="img" aria-hidden="true">
+          <path class="hl" d="M12 6 L4 24 L11 24 L7 38 L20 18 L13 18 Z" fill="currentColor"/>
+          <text class="wm" x="28" y="31" font-size="21">Kilowatt</text>
+        </svg>
+      </div>
+
+      <!-- 4 · MOSSFIELD -->
+      <div class="brand" aria-label="Mossfield Labs">
+        <svg viewBox="0 0 176 44" role="img" aria-hidden="true">
+          <circle class="hl" cx="12" cy="22" r="10" fill="currentColor"/>
+          <text class="wm" x="30" y="20" font-size="17">Mossfield</text>
+          <text class="wm-sub" x="30" y="35" font-size="10">L A B S</text>
+        </svg>
+      </div>
+
+      <!-- 5 · VOLTA — geometric monospaced feel -->
+      <div class="brand" aria-label="Volta Supply">
+        <svg viewBox="0 0 166 44" role="img" aria-hidden="true">
+          <rect class="hl-stroke" x="3" y="9" width="24" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/>
+          <line class="hl-stroke" x1="15" y1="14" x2="15" y2="28" stroke="currentColor" stroke-width="3.5"/>
+          <text class="wm" x="36" y="30" font-size="21">Volta</text>
+        </svg>
+      </div>
+
+      <!-- 6 · PLUMROW -->
+      <div class="brand" aria-label="Plumrow">
+        <svg viewBox="0 0 176 44" role="img" aria-hidden="true">
+          <path class="hl" d="M4 36 L4 8 L14 8 L14 22 L4 22" fill="none" stroke="currentColor" stroke-width="4"/>
+          <text class="wm" x="24" y="31" font-size="21">Plumrow</text>
+        </svg>
+      </div>
+
+    </div>
+
+    <p class="logos__note"><span class="bar"></span>From two-person studios to <b>Series C platforms</b> — same drop-in setup.</p>
+
+  </div>
+</section>
+</body>
+</html>

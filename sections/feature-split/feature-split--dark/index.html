@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- ===== feature-split — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Split — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+  --panel:#17171C;
+  --panel-2:#1C1C22;
+}
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+
+.fs{
+  width:100%;
+  background:
+    radial-gradient(120% 90% at 88% 0%, rgba(245,158,66,0.06), transparent 55%),
+    var(--bg);
+  padding:96px 40px;
+  display:flex;
+  justify-content:center;
+}
+.fs__inner{
+  width:100%;
+  max-width:1240px;
+  display:grid;
+  grid-template-columns:1.02fr 0.98fr;
+  gap:72px;
+  align-items:center;
+}
+
+/* ---- COPY SIDE ---- */
+.fs__copy{max-width:520px;}
+.fs__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.fs__eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(245,158,66,0.14);
+}
+.fs__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:44px;
+  line-height:1.08;
+  letter-spacing:-0.015em;
+  margin-bottom:22px;
+}
+.fs__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.fs__lede{
+  font-size:16.5px;
+  color:var(--muted);
+  line-height:1.62;
+  margin-bottom:34px;
+  max-width:460px;
+}
+
+.fs__list{list-style:none;display:grid;gap:2px;margin-bottom:38px;}
+.fs__item{
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:16px;
+  padding:16px 0;
+  border-top:1px solid var(--line);
+}
+.fs__item:last-child{border-bottom:1px solid var(--line);}
+.fs__num{
+  font-family:var(--serif);
+  font-size:15px;
+  color:var(--accent);
+  padding-top:1px;
+  font-feature-settings:"tnum" 1;
+}
+.fs__item h3{font-size:15.5px;font-weight:600;margin-bottom:4px;letter-spacing:-0.01em;}
+.fs__item p{font-size:14px;color:var(--muted);line-height:1.55;}
+
+.fs__actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.fs__cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent);
+  color:#1a1206;
+  font-weight:600;
+  font-size:14.5px;
+  padding:13px 24px;
+  border-radius:8px;
+  text-decoration:none;
+  transition:transform .15s ease, background .15s ease;
+}
+.fs__cta:hover{background:#f8ad5e;transform:translateY(-1px);}
+.fs__cta svg{width:15px;height:15px;}
+.fs__link{
+  color:var(--ink);font-size:14px;font-weight:500;text-decoration:none;
+  border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .15s;
+}
+.fs__link:hover{border-color:var(--accent);}
+
+/* ---- VISUAL SIDE ---- */
+.fs__visual{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:linear-gradient(180deg,var(--panel),#141419);
+  padding:26px 26px 30px;
+  overflow:hidden;
+}
+.fs__visual::before{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(90% 70% at 78% 12%, rgba(245,158,66,0.10), transparent 60%);
+  pointer-events:none;
+}
+
+.dash{position:relative;z-index:1;}
+.dash__bar{
+  display:flex;align-items:center;gap:8px;
+  padding-bottom:18px;margin-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+.dash__bar .lbl{
+  font-size:12px;color:var(--muted);letter-spacing:.04em;margin-left:6px;
+}
+.dash__bar .tag{
+  margin-left:auto;font-size:11px;color:var(--accent);
+  border:1px solid rgba(245,158,66,0.35);border-radius:999px;
+  padding:3px 10px;letter-spacing:.06em;
+}
+.dot-r{width:9px;height:9px;border-radius:50%;background:var(--line);}
+.dot-r.a{background:var(--accent);}
+
+.dash__row{
+  display:flex;align-items:baseline;gap:12px;margin-bottom:4px;
+}
+.dash__kpi{font-family:var(--serif);font-size:38px;font-weight:500;letter-spacing:-0.02em;line-height:1;}
+.dash__delta{
+  font-size:13px;font-weight:600;color:var(--accent);
+  display:inline-flex;align-items:center;gap:4px;
+}
+.dash__cap{font-size:12.5px;color:var(--muted);margin-bottom:22px;}
+
+/* bar chart */
+.chart{display:flex;align-items:flex-end;gap:10px;height:118px;padding:0 2px;}
+.chart .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:7px;height:100%;}
+.chart .bar{
+  width:100%;border-radius:5px 5px 2px 2px;
+  background:linear-gradient(180deg,#33333c,#26262d);
+}
+.chart .col.peak .bar{
+  background:linear-gradient(180deg,var(--accent),#c9762b);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.chart .t{font-size:10.5px;color:var(--muted);text-align:center;letter-spacing:.03em;}
+
+.chart-div{height:1px;background:var(--line);margin:22px 0 18px;}
+
+/* mini stat cards — deliberately non-uniform */
+.mini{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;}
+.mini .card{
+  border:1px solid var(--line);border-radius:10px;padding:14px 15px;background:var(--panel-2);
+}
+.mini .card.wide{grid-row:span 1;}
+.mini .card .m-lbl{font-size:11px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:9px;}
+.mini .card .m-val{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:-0.01em;}
+.mini .card .m-sub{font-size:11.5px;color:var(--muted);margin-top:3px;}
+.mini .spark{display:flex;align-items:flex-end;gap:3px;height:26px;margin-top:10px;}
+.mini .spark span{flex:1;background:var(--line);border-radius:2px;}
+.mini .spark span.hi{background:var(--accent);}
+
+@media(max-width:640px){
+  .fs{padding:60px 22px;}
+  .fs__inner{grid-template-columns:1fr;gap:40px;}
+  .fs__copy{max-width:100%;}
+  .fs__title{font-size:34px;}
+  .fs__lede{font-size:15.5px;}
+  .fs__visual{padding:20px 18px 24px;}
+  .dash__kpi{font-size:32px;}
+  .fs__actions{gap:16px;}
+  .fs__cta{flex:1;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<section class="fs">
+  <div class="fs__inner">
+
+    <!-- COPY -->
+    <div class="fs__copy">
+      <span class="fs__eyebrow"><span class="dot"></span>Ledger Engine</span>
+      <h1 class="fs__title">Close the books in hours, <em>not weeks.</em></h1>
+      <p class="fs__lede">Halcyon reconciles every transaction against source-of-truth ledgers the moment it lands — so your month-end is a review, not a rebuild. No spreadsheets stapled together at 2am.</p>
+
+      <ul class="fs__list">
+        <li class="fs__item">
+          <span class="fs__num">01</span>
+          <div>
+            <h3>Auto-match at ingest</h3>
+            <p>92% of line items reconcile before a human ever opens the file.</p>
+          </div>
+        </li>
+        <li class="fs__item">
+          <span class="fs__num">02</span>
+          <div>
+            <h3>Exceptions, ranked</h3>
+            <p>The 8% that need eyes surface first, sorted by dollar impact.</p>
+          </div>
+        </li>
+        <li class="fs__item">
+          <span class="fs__num">03</span>
+          <div>
+            <h3>Audit trail, built-in</h3>
+            <p>Every adjustment is signed, timestamped, and export-ready for SOC 2.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="fs__actions">
+        <a class="fs__cta" href="#">Start a free close
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="fs__link" href="#">Book a 20-min walkthrough</a>
+      </div>
+    </div>
+
+    <!-- VISUAL -->
+    <div class="fs__visual">
+      <div class="dash">
+        <div class="dash__bar">
+          <span class="dot-r a"></span><span class="dot-r"></span><span class="dot-r"></span>
+          <span class="lbl">close · june 2026</span>
+          <span class="tag">RECONCILED</span>
+        </div>
+
+        <div class="dash__row">
+          <span class="dash__kpi">3.4h</span>
+          <span class="dash__delta">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+            81% faster
+          </span>
+        </div>
+        <p class="dash__cap">Average time-to-close, last six cycles</p>
+
+        <div class="chart">
+          <div class="col"><div class="bar" style="height:38%"></div><span class="t">Jan</span></div>
+          <div class="col"><div class="bar" style="height:52%"></div><span class="t">Feb</span></div>
+          <div class="col"><div class="bar" style="height:46%"></div><span class="t">Mar</span></div>
+          <div class="col"><div class="bar" style="height:64%"></div><span class="t">Apr</span></div>
+          <div class="col"><div class="bar" style="height:58%"></div><span class="t">May</span></div>
+          <div class="col peak"><div class="bar" style="height:92%"></div><span class="t">Jun</span></div>
+        </div>
+
+        <div class="chart-div"></div>
+
+        <div class="mini">
+          <div class="card wide">
+            <div class="m-lbl">Auto-reconciled</div>
+            <div class="m-val">18,204 <span style="font-size:13px;color:var(--muted);font-family:var(--sans)">of 19,760</span></div>
+            <div class="spark">
+              <span style="height:40%"></span><span style="height:55%"></span><span style="height:48%"></span>
+              <span style="height:70%"></span><span style="height:62%"></span><span style="height:85%"></span>
+              <span class="hi" style="height:100%"></span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="m-lbl">Open exceptions</div>
+            <div class="m-val">14</div>
+            <div class="m-sub">$42,180 at stake</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!-- ===== RECENT-BLOGS — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recent Blogs — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --accent:#C0492B;
+  --line:#e6e4e1;
+  --line-strong:#d7d4cf;
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --maxw:1200px;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.blogs{
+  width:100%;
+  padding:92px 40px 104px;
+}
+.blogs__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* header row — asymmetric, left weighted */
+.blogs__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--line-strong);
+  margin-bottom:52px;
+}
+.blogs__eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.blogs__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+.blogs__title{
+  font-size:38px;
+  font-weight:600;
+  letter-spacing:-.02em;
+  line-height:1.08;
+  max-width:16ch;
+}
+.blogs__all{
+  flex:none;
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  white-space:nowrap;
+  padding-bottom:4px;
+  border-bottom:1px solid var(--ink);
+  transition:color .18s ease,border-color .18s ease;
+}
+.blogs__all:hover{color:var(--accent);border-color:var(--accent);}
+
+/* grid — one featured left, two stacked right */
+.blogs__grid{
+  display:grid;
+  grid-template-columns:1.34fr 1fr;
+  gap:56px;
+}
+
+/* featured article */
+.feat{
+  display:flex;
+  flex-direction:column;
+}
+.feat__thumb{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/10;
+  border:1px solid var(--line);
+  border-radius:4px;
+  overflow:hidden;
+  background:#faf9f8;
+}
+/* CSS-shape "cover" — abstract diagonal, not a stock image */
+.feat__thumb::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(120deg,transparent 46%,rgba(20,20,20,.06) 46%,rgba(20,20,20,.06) 54%,transparent 54%),
+    radial-gradient(circle at 78% 26%,var(--accent) 0 44px,transparent 45px);
+}
+.feat__thumb::after{
+  content:"";
+  position:absolute;
+  left:34px;bottom:34px;
+  width:112px;height:112px;
+  border:1.5px solid var(--ink);
+  border-radius:3px;
+  transform:rotate(-8deg);
+  opacity:.16;
+}
+.feat__meta{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:26px 0 14px;
+}
+.tag{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.dot{width:3px;height:3px;border-radius:50%;background:var(--line-strong);}
+.date{font-size:13px;color:var(--muted);}
+.feat__title{
+  font-size:27px;
+  font-weight:600;
+  letter-spacing:-.015em;
+  line-height:1.18;
+  margin-bottom:14px;
+  max-width:20ch;
+}
+.feat__title a{color:inherit;text-decoration:none;transition:color .18s ease;}
+.feat__title a:hover{color:var(--accent);}
+.feat__excerpt{
+  font-size:15.5px;
+  color:var(--muted);
+  line-height:1.62;
+  max-width:46ch;
+  margin-bottom:22px;
+}
+.more{
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+}
+.more span{transition:transform .18s ease;}
+.more:hover{color:var(--accent);}
+.more:hover span{transform:translateX(4px);}
+
+/* stacked list on the right */
+.list{
+  display:flex;
+  flex-direction:column;
+}
+.post{
+  padding:26px 0 28px;
+  border-top:1px solid var(--line);
+}
+.post:first-child{padding-top:0;border-top:none;}
+.post__meta{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:11px;
+}
+.post__title{
+  font-size:18.5px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  line-height:1.3;
+  margin-bottom:9px;
+}
+.post__title a{color:inherit;text-decoration:none;transition:color .18s ease;}
+.post__title a:hover{color:var(--accent);}
+.post__excerpt{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.55;
+  max-width:42ch;
+}
+.post__more{
+  display:inline-block;
+  margin-top:11px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--line-strong);
+  padding-bottom:2px;
+  transition:color .18s ease,border-color .18s ease;
+}
+.post__more:hover{color:var(--accent);border-color:var(--accent);}
+
+@media(max-width:640px){
+  .blogs{padding:56px 22px 64px;}
+  .blogs__head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:36px;
+  }
+  .blogs__title{font-size:28px;}
+  .blogs__grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .feat__title{font-size:23px;}
+  .feat__thumb::after{width:84px;height:84px;left:22px;bottom:22px;}
+}
+</style>
+</head>
+<body>
+<section class="blogs">
+  <div class="blogs__inner">
+
+    <div class="blogs__head">
+      <div>
+        <div class="blogs__eyebrow">From the journal</div>
+        <h2 class="blogs__title">Field notes on shipping software that stays quiet.</h2>
+      </div>
+      <a class="blogs__all" href="#">All articles &rarr;</a>
+    </div>
+
+    <div class="blogs__grid">
+
+      <!-- FEATURED -->
+      <article class="feat">
+        <div class="feat__thumb" aria-hidden="true"></div>
+        <div class="feat__meta">
+          <span class="tag">Engineering</span>
+          <span class="dot"></span>
+          <span class="date">July 18, 2026</span>
+        </div>
+        <h3 class="feat__title"><a href="#">We deleted 40% of our dashboard and retention went up</a></h3>
+        <p class="feat__excerpt">Every quarter someone asked for one more chart. Three years later the overview page took nine seconds to read. Here is what we cut, what we kept, and the two metrics we were wrong to hide.</p>
+        <a class="more" href="#">Read the article <span>&rarr;</span></a>
+      </article>
+
+      <!-- STACKED LIST -->
+      <div class="list">
+
+        <article class="post">
+          <div class="post__meta">
+            <span class="tag">Product</span>
+            <span class="dot"></span>
+            <span class="date">July 11, 2026</span>
+          </div>
+          <h3 class="post__title"><a href="#">Pricing pages don't need a fourth column</a></h3>
+          <p class="post__excerpt">The enterprise tier that says "Contact us" is doing more work than three plans stacked beside it. A short case for saying less.</p>
+          <a class="post__more" href="#">Read more</a>
+        </article>
+
+        <article class="post">
+          <div class="post__meta">
+            <span class="tag">Design</span>
+            <span class="dot"></span>
+            <span class="date">July 3, 2026</span>
+          </div>
+          <h3 class="post__title"><a href="#">Hairlines, whitespace, and the cost of a border</a></h3>
+          <p class="post__excerpt">A one-pixel rule can carry a layout that a drop shadow only clutters. Notes from a week spent removing containers.</p>
+          <a class="post__more" href="#">Read more</a>
+        </article>
+
+        <article class="post">
+          <div class="post__meta">
+            <span class="tag">Team</span>
+            <span class="dot"></span>
+            <span class="date">June 26, 2026</span>
+          </div>
+          <h3 class="post__title"><a href="#">How we run a release with no launch meeting</a></h3>
+          <p class="post__excerpt">Async by default, one owner per ship, and a changelog anyone can edit. The rituals we dropped and the one we kept.</p>
+          <a class="post__more" href="#">Read more</a>
+        </article>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

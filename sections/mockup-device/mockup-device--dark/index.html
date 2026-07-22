@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!-- ===== MOCKUP-DEVICE — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup Device — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#26262C;
+  --accent:#F59E42;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+
+  --panel:#17171C;
+  --panel-2:#1D1D23;
+  --chrome:#0E0E12;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- section shell ---- */
+.device-section{
+  width:100%;
+  min-height:720px;
+  display:flex;
+  align-items:center;
+  padding:96px 48px;
+  position:relative;
+  overflow:hidden;
+}
+.device-section::before{
+  /* faint off-center guide line, not centered symmetry */
+  content:"";
+  position:absolute;
+  top:0;left:34%;
+  width:1px;height:100%;
+  background:linear-gradient(180deg,transparent,var(--line) 22%,var(--line) 78%,transparent);
+  opacity:.55;
+  pointer-events:none;
+}
+.device-wrap{
+  width:100%;
+  max-width:1280px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:0.82fr 1.18fr;
+  align-items:center;
+  gap:72px;
+}
+
+/* ---- left: copy ---- */
+.copy{position:relative;z-index:2;}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(245,158,66,.14);
+}
+.copy h1{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:52px;
+  line-height:1.04;
+  letter-spacing:-.01em;
+  margin-bottom:22px;
+}
+.copy h1 em{
+  font-style:italic;
+  color:var(--accent);
+}
+.copy p.lede{
+  font-size:16.5px;
+  line-height:1.65;
+  color:var(--muted);
+  max-width:400px;
+  margin-bottom:34px;
+}
+.spec-row{
+  display:flex;
+  gap:32px;
+  margin-bottom:38px;
+}
+.spec{border-left:1px solid var(--line);padding-left:16px;}
+.spec .num{
+  font-family:var(--serif);
+  font-size:24px;
+  font-weight:500;
+  color:var(--ink);
+}
+.spec .lbl{
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.cta-line{display:flex;align-items:center;gap:20px;}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:var(--accent);
+  color:#1A1206;
+  font-weight:600;
+  font-size:14.5px;
+  padding:13px 22px;
+  border-radius:9px;
+  text-decoration:none;
+  transition:transform .16s ease, background .16s ease;
+}
+.btn:hover{transform:translateY(-1px);background:#FBAE5A;}
+.btn svg{width:15px;height:15px;}
+.ghost{
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  padding-bottom:2px;
+  transition:color .16s ease,border-color .16s ease;
+}
+.ghost:hover{color:var(--ink);border-color:var(--accent);}
+
+/* ---- right: browser device ---- */
+.stage{position:relative;z-index:2;}
+.browser{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.02);
+  transform:perspective(1600px) rotateY(-4deg) rotateX(1.5deg);
+  transform-origin:left center;
+}
+.browser-bar{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 16px;
+  background:var(--chrome);
+  border-bottom:1px solid var(--line);
+}
+.traffic{display:flex;gap:7px;}
+.traffic span{width:11px;height:11px;border-radius:50%;background:#33333B;}
+.traffic span:first-child{background:#3A3A42;}
+.url{
+  flex:1;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:6px 12px;
+  font-size:12.5px;
+  color:var(--muted);
+}
+.url svg{width:12px;height:12px;flex:none;color:var(--accent);}
+.url b{color:var(--ink);font-weight:500;}
+.bar-actions{display:flex;gap:6px;}
+.bar-actions i{
+  width:15px;height:2px;border-radius:2px;background:#33333B;display:block;
+}
+.bar-actions div{display:flex;flex-direction:column;gap:3px;}
+
+/* ---- app UI inside device ---- */
+.app{
+  display:grid;
+  grid-template-columns:186px 1fr;
+  min-height:404px;
+}
+.side{
+  background:var(--chrome);
+  border-right:1px solid var(--line);
+  padding:20px 16px;
+}
+.brandmark{
+  display:flex;align-items:center;gap:9px;
+  margin-bottom:24px;
+}
+.brandmark .glyph{
+  width:26px;height:26px;border-radius:7px;
+  background:linear-gradient(150deg,var(--accent),#C9762B);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:600;font-size:14px;color:#1A1206;
+}
+.brandmark span{font-weight:600;font-size:13.5px;letter-spacing:-.01em;}
+.nav-item{
+  display:flex;align-items:center;gap:11px;
+  padding:9px 10px;border-radius:7px;
+  font-size:12.5px;color:var(--muted);
+  margin-bottom:2px;
+}
+.nav-item .ic{width:15px;height:15px;border-radius:4px;border:1.5px solid #3A3A42;flex:none;}
+.nav-item.active{background:var(--panel-2);color:var(--ink);}
+.nav-item.active .ic{border-color:var(--accent);background:rgba(245,158,66,.15);}
+.side-tag{
+  margin-top:22px;
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:#5A5A63;padding:0 10px 8px;
+}
+
+.main{padding:22px 24px;background:var(--panel);}
+.main-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:20px;
+}
+.main-head h3{
+  font-family:var(--serif);font-weight:500;font-size:19px;letter-spacing:-.01em;
+}
+.main-head p{font-size:12px;color:var(--muted);margin-top:3px;}
+.pill{
+  font-size:11px;font-weight:600;color:var(--accent);
+  background:rgba(245,158,66,.12);
+  border:1px solid rgba(245,158,66,.28);
+  padding:5px 10px;border-radius:20px;
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+.stat{
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:13px 14px;
+}
+.stat .k{font-size:11px;color:var(--muted);margin-bottom:7px;}
+.stat .v{font-family:var(--serif);font-size:22px;font-weight:500;}
+.stat .d{font-size:10.5px;margin-top:5px;color:#6FCF97;}
+.stat.warn .d{color:var(--accent);}
+
+/* mini chart */
+.chart{
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:16px 16px 12px;
+}
+.chart-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+.chart-top .t{font-size:12.5px;font-weight:600;}
+.chart-top .r{font-size:11px;color:var(--muted);}
+.bars{display:flex;align-items:flex-end;gap:9px;height:76px;}
+.bars .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%;}
+.bars .bar{width:100%;border-radius:4px 4px 2px 2px;background:#2C2C34;}
+.bars .col.peak .bar{background:linear-gradient(180deg,var(--accent),#C9762B);}
+.bars .cap{font-size:9.5px;color:#5A5A63;text-align:center;}
+
+/* ---- floating notification chip, off the frame corner ---- */
+.chip{
+  position:absolute;
+  bottom:-18px;right:-14px;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:12px 15px;
+  display:flex;align-items:center;gap:11px;
+  box-shadow:0 24px 44px -20px rgba(0,0,0,.75);
+  z-index:4;
+  max-width:236px;
+}
+.chip .av{
+  width:30px;height:30px;border-radius:8px;flex:none;
+  background:linear-gradient(150deg,#3A3A42,#26262C);
+  color:var(--ink);font-weight:600;font-size:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.chip .tx b{display:block;font-size:12px;font-weight:600;}
+.chip .tx span{display:block;font-size:11px;color:var(--muted);margin-top:1px;}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .device-section{padding:56px 22px;min-height:0;}
+  .device-section::before{display:none;}
+  .device-wrap{grid-template-columns:1fr;gap:44px;}
+  .copy h1{font-size:36px;}
+  .copy p.lede{font-size:15px;}
+  .spec-row{gap:22px;flex-wrap:wrap;}
+  .browser{transform:none;box-shadow:0 24px 50px -30px rgba(0,0,0,.7);}
+  .app{grid-template-columns:1fr;}
+  .side{display:none;}
+  .stats{grid-template-columns:1fr;}
+  .chip{right:6px;bottom:-14px;max-width:210px;}
+  .cta-line{flex-wrap:wrap;gap:14px;}
+}
+</style>
+</head>
+<body>
+<section class="device-section">
+  <div class="device-wrap">
+
+    <!-- LEFT — copy -->
+    <div class="copy">
+      <span class="eyebrow"><span class="dot"></span>Live product · v2.4</span>
+      <h1>Watch every render <em>settle</em> before you ship it.</h1>
+      <p class="lede">Meridian records the exact frame budget of each build, flags the panels that drift over 16ms, and keeps a rolling diff so a regression never reaches your users unnoticed.</p>
+
+      <div class="spec-row">
+        <div class="spec">
+          <div class="num">11.4k</div>
+          <div class="lbl">renders traced daily</div>
+        </div>
+        <div class="spec">
+          <div class="num">3 min</div>
+          <div class="lbl">from install to first trace</div>
+        </div>
+      </div>
+
+      <div class="cta-line">
+        <a class="btn" href="#">
+          Start tracing free
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="ghost" href="#">Read the render docs</a>
+      </div>
+    </div>
+
+    <!-- RIGHT — device -->
+    <div class="stage">
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="traffic"><span></span><span></span><span></span></div>
+          <div class="url">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            app.meridian.dev/<b>traces/checkout-flow</b>
+          </div>
+          <div class="bar-actions"><div><i></i><i></i><i></i></div></div>
+        </div>
+
+        <div class="app">
+          <!-- sidebar -->
+          <aside class="side">
+            <div class="brandmark">
+              <span class="glyph">M</span>
+              <span>Meridian</span>
+            </div>
+            <div class="nav-item active"><span class="ic"></span>Traces</div>
+            <div class="nav-item"><span class="ic"></span>Panels</div>
+            <div class="nav-item"><span class="ic"></span>Regressions</div>
+            <div class="nav-item"><span class="ic"></span>Budgets</div>
+            <div class="side-tag">Projects</div>
+            <div class="nav-item"><span class="ic"></span>Checkout flow</div>
+            <div class="nav-item"><span class="ic"></span>Dashboard v3</div>
+          </aside>
+
+          <!-- main panel -->
+          <div class="main">
+            <div class="main-head">
+              <div>
+                <h3>Checkout flow</h3>
+                <p>Last trace 40 seconds ago · main@f2a91c</p>
+              </div>
+              <span class="pill">Within budget</span>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <div class="k">Avg frame</div>
+                <div class="v">9.2ms</div>
+                <div class="d">↓ 2.1 vs last</div>
+              </div>
+              <div class="stat warn">
+                <div class="k">Slowest panel</div>
+                <div class="v">14.8ms</div>
+                <div class="d">CartSummary</div>
+              </div>
+              <div class="stat">
+                <div class="k">Dropped</div>
+                <div class="v">0</div>
+                <div class="d">clean run</div>
+              </div>
+            </div>
+
+            <div class="chart">
+              <div class="chart-top">
+                <span class="t">Frame time — last 8 builds</span>
+                <span class="r">16ms budget</span>
+              </div>
+              <div class="bars">
+                <div class="col"><div class="bar" style="height:44%"></div><div class="cap">c1</div></div>
+                <div class="col"><div class="bar" style="height:58%"></div><div class="cap">c2</div></div>
+                <div class="col"><div class="bar" style="height:50%"></div><div class="cap">c3</div></div>
+                <div class="col peak"><div class="bar" style="height:92%"></div><div class="cap">c4</div></div>
+                <div class="col"><div class="bar" style="height:63%"></div><div class="cap">c5</div></div>
+                <div class="col"><div class="bar" style="height:48%"></div><div class="cap">c6</div></div>
+                <div class="col"><div class="bar" style="height:55%"></div><div class="cap">c7</div></div>
+                <div class="col"><div class="bar" style="height:40%"></div><div class="cap">c8</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- floating chip -->
+      <div class="chip">
+        <div class="av">DK</div>
+        <div class="tx">
+          <b>Dana caught a 22ms spike</b>
+          <span>Resolved in ProductGrid · 6m ago</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

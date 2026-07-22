@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<!-- ===== Z-PATTERN — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Pattern — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,900&family=Archivo+Narrow:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-2:#141414;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --paper:#F4F4EF;
+  --smoke:#8A8A82;
+  --line:#2A2A26;
+  --pill-radius:999px;
+  --font-display:'Archivo',sans-serif;
+  --font-narrow:'Archivo Narrow',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+
+.zp{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font-display);
+  padding:88px clamp(20px,5vw,80px) 96px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* top eyebrow band */
+.zp__band{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+  flex-wrap:wrap;
+  border-bottom:2px solid var(--line);
+  padding-bottom:22px;
+  margin-bottom:64px;
+  max-width:1280px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.zp__tag{
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--lime);
+  padding:7px 13px 6px;
+  border-radius:var(--pill-radius);
+}
+.zp__band h2{
+  font-weight:900;
+  font-size:clamp(26px,3.4vw,40px);
+  line-height:.98;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  text-wrap:balance;
+}
+.zp__band h2 em{
+  font-style:normal;
+  color:var(--magenta);
+}
+.zp__count{
+  margin-left:auto;
+  font-family:var(--font-mono);
+  font-size:13px;
+  font-weight:500;
+  color:var(--smoke);
+}
+
+/* rows */
+.zp__rows{
+  max-width:1280px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:72px;
+}
+.zp__row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:clamp(28px,5vw,88px);
+}
+.zp__row--flip .zp__visual{order:2;}
+.zp__row--flip .zp__text{order:1;}
+
+/* text block */
+.zp__index{
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.1em;
+  color:var(--magenta);
+  display:inline-block;
+  margin-bottom:20px;
+}
+.zp__row--flip .zp__index{color:var(--lime);}
+.zp__text h3{
+  font-weight:900;
+  font-size:clamp(34px,4.8vw,60px);
+  line-height:.92;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  text-wrap:balance;
+}
+.zp__text h3 span{color:var(--lime);}
+.zp__row--flip .zp__text h3 span{color:var(--magenta);}
+.zp__text p{
+  font-family:var(--font-narrow);
+  font-size:clamp(16px,1.4vw,19px);
+  line-height:1.5;
+  color:#CFCFC8;
+  max-width:42ch;
+  margin-bottom:26px;
+}
+.zp__meta{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.zp__chip{
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:500;
+  color:var(--paper);
+  border:1.5px solid var(--line);
+  padding:8px 14px;
+  border-radius:var(--pill-radius);
+}
+.zp__chip b{color:var(--lime);font-weight:700;}
+.zp__cta{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--lime);
+  border:none;
+  padding:13px 26px;
+  border-radius:var(--pill-radius);
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  transition:transform .12s ease, background .12s ease;
+}
+.zp__cta:hover{transform:translate(-2px,-2px);background:var(--magenta);color:var(--paper);}
+.zp__cta:focus-visible{outline:3px solid var(--paper);outline-offset:3px;}
+.zp__row--flip .zp__cta{background:var(--magenta);color:var(--paper);}
+.zp__row--flip .zp__cta:hover{background:var(--lime);color:var(--ink);}
+
+/* visual: fake code/component tiles built with CSS + SVG */
+.zp__visual{position:relative;min-height:280px;}
+.zp__card{
+  background:var(--ink-2);
+  border:2px solid var(--line);
+  border-radius:20px;
+  padding:22px;
+  position:relative;
+}
+
+/* row 1 visual — terminal snippet */
+.term__bar{display:flex;gap:7px;margin-bottom:18px;align-items:center;}
+.term__dot{width:11px;height:11px;border-radius:50%;background:var(--line);}
+.term__dot--live{background:var(--lime);}
+.term__name{margin-left:8px;font-family:var(--font-mono);font-size:12px;color:var(--smoke);}
+.term__line{font-family:var(--font-mono);font-size:14px;line-height:1.85;white-space:nowrap;}
+.term__p{color:var(--magenta);}
+.term__c{color:var(--smoke);}
+.term__k{color:var(--lime);}
+.term__s{color:#E7E7E0;}
+.term__cursor{display:inline-block;width:9px;height:17px;background:var(--lime);vertical-align:-3px;margin-left:3px;}
+.zp__stamp{
+  position:absolute;
+  top:-16px;right:-8px;
+  background:var(--magenta);
+  color:var(--paper);
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:9px 15px;
+  border-radius:var(--pill-radius);
+  transform:rotate(4deg);
+}
+
+/* row 2 visual — stacked component blocks */
+.stack{display:flex;flex-direction:column;gap:14px;}
+.stack__row{
+  display:flex;align-items:center;gap:14px;
+  background:var(--ink-2);
+  border:2px solid var(--line);
+  border-radius:16px;
+  padding:16px 18px;
+}
+.stack__row--hi{border-color:var(--lime);}
+.stack__glyph{
+  width:44px;height:44px;flex:none;
+  border-radius:12px;
+  display:grid;place-items:center;
+  background:var(--ink);
+  border:2px solid var(--line);
+}
+.stack__row--hi .stack__glyph{background:var(--lime);border-color:var(--lime);}
+.stack__meta{display:flex;flex-direction:column;gap:5px;min-width:0;}
+.stack__t{font-weight:800;font-size:15px;letter-spacing:-.01em;}
+.stack__s{font-family:var(--font-mono);font-size:11px;color:var(--smoke);}
+.stack__badge{
+  margin-left:auto;flex:none;
+  font-family:var(--font-mono);font-size:11px;font-weight:700;
+  padding:5px 11px;border-radius:var(--pill-radius);
+  color:var(--ink);background:var(--magenta);
+}
+.stack__badge--n{background:transparent;color:var(--smoke);border:1.5px solid var(--line);}
+
+/* row 3 visual — big paste tile */
+.paste{
+  border:2px dashed var(--magenta);
+  border-radius:24px;
+  padding:34px 26px;
+  text-align:left;
+  background:linear-gradient(0deg,var(--ink-2),var(--ink-2));
+}
+.paste__kicker{font-family:var(--font-mono);font-size:12px;color:var(--smoke);letter-spacing:.1em;text-transform:uppercase;}
+.paste__big{
+  font-weight:900;font-size:clamp(40px,6vw,72px);line-height:.9;
+  letter-spacing:-.03em;margin:14px 0 20px;text-transform:uppercase;
+}
+.paste__big u{text-decoration:none;color:var(--lime);}
+.paste__keys{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.kbd{
+  font-family:var(--font-mono);font-size:14px;font-weight:700;
+  background:var(--ink);border:2px solid var(--line);border-bottom-width:4px;
+  border-radius:9px;padding:8px 13px;color:var(--paper);
+}
+.paste__plus{color:var(--smoke);font-weight:700;}
+.paste__ok{
+  margin-left:6px;font-family:var(--font-mono);font-size:12px;font-weight:700;
+  color:var(--ink);background:var(--lime);padding:6px 12px;border-radius:var(--pill-radius);
+}
+
+@media(max-width:640px){
+  .zp{padding:56px 20px 64px;}
+  .zp__band{margin-bottom:44px;gap:12px;}
+  .zp__count{margin-left:0;flex-basis:100%;}
+  .zp__rows{gap:52px;}
+  .zp__row{grid-template-columns:1fr;gap:26px;}
+  .zp__row--flip .zp__visual{order:2;}
+  .zp__row--flip .zp__text{order:1;}
+  .zp__visual{min-height:0;}
+  .term__line{font-size:12.5px;white-space:normal;}
+  .zp__stamp{right:8px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .zp__cta{transition:none;}
+}
+</style>
+</head>
+<body>
+<section class="zp" aria-label="Copy-paste section library">
+
+  <div class="zp__band">
+    <span class="zp__tag">// paste-ready</span>
+    <h2>Drop it in. <em>Ship it.</em></h2>
+    <span class="zp__count">42 sections · MIT · zero deps</span>
+  </div>
+
+  <div class="zp__rows">
+
+    <!-- ROW 1: visual left, text right -->
+    <div class="zp__row">
+      <div class="zp__visual">
+        <div class="zp__card">
+          <span class="zp__stamp">One file</span>
+          <div class="term__bar">
+            <span class="term__dot term__dot--live"></span>
+            <span class="term__dot"></span>
+            <span class="term__dot"></span>
+            <span class="term__name">hero--acid.html</span>
+          </div>
+          <div class="term__line"><span class="term__c"># grab a section</span></div>
+          <div class="term__line"><span class="term__p">$</span> <span class="term__k">npx</span> <span class="term__s">grab hero--acid</span></div>
+          <div class="term__line"><span class="term__c">→ copied 4.1kb to clipboard</span></div>
+          <div class="term__line"><span class="term__p">$</span> <span class="term__s">paste → done</span><span class="term__cursor"></span></div>
+        </div>
+      </div>
+      <div class="zp__text">
+        <span class="zp__index">01 / GRAB</span>
+        <h3>No install. <span>No build step.</span></h3>
+        <p>Every section is a single self-contained HTML file — inline styles, no bundler, no npm tree to babysit. Open it, copy it, wire it into whatever you're already running.</p>
+        <div class="zp__meta">
+          <span class="zp__chip"><b>0</b> dependencies</span>
+          <span class="zp__chip"><b>4kb</b> avg weight</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: text left, visual right (flipped) -->
+    <div class="zp__row zp__row--flip">
+      <div class="zp__visual">
+        <div class="stack">
+          <div class="stack__row stack__row--hi">
+            <div class="stack__glyph" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4v12" stroke="#0A0A0A" stroke-width="2.6" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stack__meta">
+              <span class="stack__t">Pricing — Tiers</span>
+              <span class="stack__s">pricing--acid-pop</span>
+            </div>
+            <span class="stack__badge">NEW</span>
+          </div>
+          <div class="stack__row">
+            <div class="stack__glyph" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#8A8A82" stroke-width="2.4"/></svg>
+            </div>
+            <div class="stack__meta">
+              <span class="stack__t">FAQ — Accordion</span>
+              <span class="stack__s">faq--acid-pop</span>
+            </div>
+            <span class="stack__badge stack__badge--n">v2</span>
+          </div>
+          <div class="stack__row">
+            <div class="stack__glyph" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="6" stroke="#8A8A82" stroke-width="2.4"/></svg>
+            </div>
+            <div class="stack__meta">
+              <span class="stack__t">Footer — Sitemap</span>
+              <span class="stack__s">footer--acid-pop</span>
+            </div>
+            <span class="stack__badge stack__badge--n">v2</span>
+          </div>
+        </div>
+      </div>
+      <div class="zp__text">
+        <span class="zp__index">02 / BROWSE</span>
+        <h3>Named by <span>what they do.</span></h3>
+        <p>Heroes, pricing tables, FAQs, footers, testimonial walls — each filed under a plain-English name and a style tag. Search by shape, not by some cryptic component ID nobody remembers.</p>
+        <div class="zp__meta">
+          <a href="#" class="zp__cta">Open the index</a>
+          <span class="zp__chip">14 categories</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: visual left, text right -->
+    <div class="zp__row">
+      <div class="zp__visual">
+        <div class="zp__card">
+          <div class="paste">
+            <span class="paste__kicker">// straight into Claude Code</span>
+            <div class="paste__big">Paste &amp; <u>run</u></div>
+            <div class="paste__keys">
+              <span class="kbd">⌘</span>
+              <span class="paste__plus">+</span>
+              <span class="kbd">V</span>
+              <span class="paste__ok">rendered ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="zp__text">
+        <span class="zp__index">03 / SHIP</span>
+        <h3>Yours to <span>hack apart.</span></h3>
+        <p>Change the tokens, swap the copy, delete the half you don't need — it's flat CSS custom properties, so a find-and-replace on the accent is genuinely all it takes. No license gate, no attribution nag.</p>
+        <div class="zp__meta">
+          <a href="#" class="zp__cta">Copy this section</a>
+          <span class="zp__chip"><b>MIT</b> — do what you want</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

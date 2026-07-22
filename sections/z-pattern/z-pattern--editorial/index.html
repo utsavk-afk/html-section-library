@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!-- ===== Z-PATTERN — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Pattern — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-soft:#4A463F;
+  --ink-faint:#8C8579;
+  --accent:#B4472B;
+  --accent-deep:#8F3820;
+  --line:#DEDACF;
+  --line-soft:#E9E5DB;
+  --panel:#F4F1E9;
+  --panel-2:#EFEBE0;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+  --maxw:1180px;
+  --gutter:clamp(20px,5vw,72px);
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.zsec{
+  width:100%;
+  padding:clamp(56px,7vw,104px) var(--gutter) clamp(64px,8vw,120px);
+}
+.zsec__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* ---- section masthead ---- */
+.mast{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:24px;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--line);
+}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+.mast__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(26px,3.4vw,40px);
+  line-height:1.06;
+  letter-spacing:-.01em;
+  margin-top:16px;
+  max-width:16ch;
+}
+.mast__title em{font-style:italic;color:var(--accent-deep);}
+.mast__meta{
+  font-size:12.5px;
+  color:var(--ink-faint);
+  text-align:right;
+  line-height:1.7;
+  white-space:nowrap;
+}
+.mast__meta b{color:var(--ink-soft);font-weight:600;}
+
+/* ---- rows ---- */
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:clamp(32px,5vw,80px);
+  padding:clamp(44px,6vw,76px) 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.row:last-child{border-bottom:0;padding-bottom:8px;}
+
+/* alternate: put visual on the right for odd rows, left for even */
+.row--flip .row__text{order:2;}
+.row--flip .row__visual{order:1;}
+
+.row__text{max-width:38ch;}
+.row__index{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--accent);
+  letter-spacing:.02em;
+}
+.row__kicker{
+  display:block;
+  margin-top:6px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.row__head{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(23px,2.8vw,33px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  margin:16px 0 14px;
+}
+.row__head em{font-style:italic;color:var(--accent-deep);}
+.row__body{
+  font-size:15px;
+  color:var(--ink-soft);
+  line-height:1.62;
+}
+.row__body + .row__body{margin-top:12px;}
+.row__link{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin-top:22px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:4px;
+  transition:color .2s,border-color .2s,gap .2s;
+}
+.row__link:hover{color:var(--accent);border-color:var(--accent);gap:14px;}
+.row__link svg{width:15px;height:15px;stroke:currentColor;}
+
+/* ---- visuals (CSS/SVG only) ---- */
+.viz{
+  position:relative;
+  aspect-ratio:5/4;
+  border:1px solid var(--line);
+}
+
+/* VISUAL 1 — layered specimen card + rule stack */
+.viz--specimen{
+  background:var(--panel);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.spec__glyph{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(120px,20vw,220px);
+  line-height:1;
+  color:var(--ink);
+  position:relative;
+  z-index:2;
+}
+.spec__glyph span{color:var(--accent);}
+.spec__rules{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:26px 0;
+  z-index:1;
+}
+.spec__rules i{display:block;height:1px;background:var(--line);}
+.spec__tag{
+  position:absolute;
+  top:20px;
+  left:22px;
+  z-index:3;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.spec__num{
+  position:absolute;
+  right:22px;
+  bottom:18px;
+  z-index:3;
+  font-family:var(--serif);
+  font-size:13px;
+  color:var(--ink-faint);
+}
+.spec__swatch{
+  position:absolute;
+  bottom:22px;
+  left:22px;
+  z-index:3;
+  display:flex;
+  gap:6px;
+}
+.spec__swatch b{width:15px;height:15px;display:block;border:1px solid rgba(0,0,0,.08);}
+
+/* VISUAL 2 — inline SVG line diagram (measure / grid) */
+.viz--diagram{
+  background:linear-gradient(180deg,#FBFAF6,#F3EFE6);
+  padding:0;
+}
+.viz--diagram svg{position:absolute;inset:0;width:100%;height:100%;}
+.diag__label{
+  position:absolute;
+  left:24px;
+  bottom:20px;
+  z-index:2;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.diag__cap{
+  position:absolute;
+  right:24px;
+  top:20px;
+  z-index:2;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14px;
+  color:var(--accent-deep);
+}
+
+/* VISUAL 3 — quote plate */
+.viz--plate{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:#F3EFE6;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(26px,4vw,44px);
+}
+.plate__mark{
+  font-family:var(--serif);
+  font-size:64px;
+  line-height:.6;
+  color:var(--accent);
+  height:34px;
+}
+.plate__quote{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(18px,2.3vw,26px);
+  line-height:1.34;
+  margin:12px 0 22px;
+  color:#F6F3EC;
+}
+.plate__quote b{color:#fff;font-weight:500;font-style:normal;border-bottom:1px solid var(--accent);}
+.plate__by{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#B8B0A2;
+}
+.plate__by span{color:var(--accent);}
+.plate__rule{
+  width:40px;height:1px;background:#403c34;margin:0 0 20px;
+}
+
+@media(max-width:640px){
+  .mast{grid-template-columns:1fr;align-items:start;gap:14px;}
+  .mast__meta{text-align:left;white-space:normal;}
+  .row{grid-template-columns:1fr;gap:26px;padding:38px 0;}
+  .row--flip .row__text{order:1;}
+  .row--flip .row__visual{order:2;}
+  .row__text{max-width:none;}
+  .viz{aspect-ratio:16/11;}
+}
+</style>
+</head>
+<body>
+<section class="zsec">
+  <div class="zsec__inner">
+
+    <!-- masthead -->
+    <header class="mast">
+      <div>
+        <span class="eyebrow">The Composition Field Guide</span>
+        <h1 class="mast__title">Three rules for pages that <em>read themselves</em> top to bottom.</h1>
+      </div>
+      <div class="mast__meta">
+        <b>Issue No. 07</b> &nbsp;·&nbsp; Layout<br>
+        Set in Fraunces &amp; Inter<br>
+        Updated July 2026
+      </div>
+    </header>
+
+    <!-- ROW 1 — text left, specimen right -->
+    <div class="row">
+      <div class="row__text">
+        <span class="row__index">01</span>
+        <span class="row__kicker">The Eye's First Landing</span>
+        <h2 class="row__head">Start heavy in the <em>top-left</em>, where every reader's gaze arrives.</h2>
+        <p class="row__body">Western readers anchor their first fixation in the upper-left quadrant before the page has fully loaded. Put the single most important line there — a name, a promise, a number — and let it earn the scan that follows.</p>
+        <p class="row__body">One focal point per screen. Not two competing headlines fighting for the same corner.</p>
+        <a class="row__link" href="#">Read the scan-path notes
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="row__visual">
+        <div class="viz viz--specimen">
+          <span class="spec__tag">Optical anchor · Aa</span>
+          <div class="spec__rules"><i></i><i></i><i></i><i></i></div>
+          <div class="spec__glyph"><span>Z</span></div>
+          <div class="spec__swatch">
+            <b style="background:#1B1A17"></b>
+            <b style="background:#B4472B"></b>
+            <b style="background:#F4F1E9"></b>
+          </div>
+          <span class="spec__num">fig. 01 — 240pt</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2 — visual left, text right (flip) -->
+    <div class="row row--flip">
+      <div class="row__text">
+        <span class="row__index">02</span>
+        <span class="row__kicker">The Diagonal Drop</span>
+        <h2 class="row__head">Sweep across, then <em>down and back</em> to build a natural Z.</h2>
+        <p class="row__body">After the top edge, the eye cuts diagonally to the lower-left, then travels right again. Alternate a visual and a text block across each row so the layout traces that Z instead of stacking into a monotonous column.</p>
+        <p class="row__body">Vary the rhythm: tighten spacing on quiet rows, open it up where a claim needs air.</p>
+        <a class="row__link" href="#">See the grid overlay
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="row__visual">
+        <div class="viz viz--diagram">
+          <span class="diag__cap">the path</span>
+          <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <!-- baseline grid -->
+            <g stroke="#DAD5C8" stroke-width="1">
+              <line x1="40" y1="70" x2="360" y2="70"/>
+              <line x1="40" y1="160" x2="360" y2="160"/>
+              <line x1="40" y1="250" x2="360" y2="250"/>
+            </g>
+            <!-- corner nodes -->
+            <g fill="#1B1A17">
+              <circle cx="40" cy="70" r="5"/>
+              <circle cx="360" cy="70" r="5"/>
+              <circle cx="40" cy="250" r="5"/>
+              <circle cx="360" cy="250" r="5"/>
+            </g>
+            <!-- z path -->
+            <path d="M40 70 L360 70 L40 250 L360 250" fill="none"
+              stroke="#B4472B" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" stroke-dasharray="0.5 9"/>
+            <!-- direction arrow -->
+            <path d="M348 244 l12 6 -12 6" fill="none" stroke="#B4472B" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- labels -->
+            <text x="46" y="60" font-family="Inter,sans-serif" font-size="11" fill="#8C8579">1</text>
+            <text x="354" y="60" font-family="Inter,sans-serif" font-size="11" fill="#8C8579" text-anchor="end">2</text>
+            <text x="46" y="240" font-family="Inter,sans-serif" font-size="11" fill="#8C8579">3</text>
+            <text x="354" y="240" font-family="Inter,sans-serif" font-size="11" fill="#8C8579" text-anchor="end">4</text>
+          </svg>
+          <span class="diag__label">Fig. 02 — reading vector</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 — text left, quote plate right -->
+    <div class="row">
+      <div class="row__text">
+        <span class="row__index">03</span>
+        <span class="row__kicker">The Resting Corner</span>
+        <h2 class="row__head">Land the ask in the <em>bottom-right</em>, the last place they look.</h2>
+        <p class="row__body">The Z closes where attention naturally exits. Reserve that corner for the one action worth taking — a single button, a signature, a call. Crowd it with three choices and the momentum you built dissolves.</p>
+        <p class="row__body">End the way a good paragraph ends: deliberately, not by running out of room.</p>
+        <a class="row__link" href="#">Copy the closing block
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="row__visual">
+        <div class="viz viz--plate">
+          <div class="plate__mark">&ldquo;</div>
+          <p class="plate__quote">A layout isn't decoration — it's the order you ask someone to <b>think in</b>.</p>
+          <div class="plate__rule"></div>
+          <div class="plate__by">Marisol Vega <span>/</span> Type &amp; Grid Studio</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

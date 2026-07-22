@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- /* ===== HOW-IT-WORKS — MINIMAL ===== */ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e7e4e0;
+  --accent:#C0492B;
+  --serif:'Inter',sans-serif;
+  --sans:'Inter',sans-serif;
+}
+
+.hiw{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:112px 64px 128px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.hiw__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* Header — left aligned, asymmetric */
+.hiw__head{
+  max-width:600px;
+  margin-bottom:88px;
+}
+.hiw__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+.hiw__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+.hiw__title{
+  font-size:38px;
+  line-height:1.14;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  margin-bottom:18px;
+}
+.hiw__lead{
+  font-size:17px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:480px;
+}
+
+/* Steps — staggered, connected by a hairline running through the numbers */
+.hiw__steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  position:relative;
+}
+.hiw__step{
+  position:relative;
+  padding:0 40px 0 0;
+}
+.hiw__step:not(:last-child){
+  border-right:1px solid var(--line);
+  padding-right:44px;
+}
+.hiw__step:not(:first-child){
+  padding-left:44px;
+}
+/* stagger — middle step drops, third drops further */
+.hiw__step--2{ margin-top:44px; }
+.hiw__step--3{ margin-top:88px; }
+
+.hiw__num{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  margin-bottom:26px;
+}
+.hiw__num b{
+  font-size:15px;
+  font-weight:600;
+  color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.hiw__dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--line);
+  transform:translateY(-2px);
+}
+.hiw__step--1 .hiw__dot{ background:var(--accent); }
+
+.hiw__step h3{
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  margin-bottom:12px;
+}
+.hiw__step p{
+  font-size:15px;
+  line-height:1.62;
+  color:var(--muted);
+  max-width:260px;
+}
+.hiw__code{
+  margin-top:22px;
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;
+  font-size:12.5px;
+  color:var(--ink);
+  background:#f6f4f2;
+  border:1px solid var(--line);
+  border-left:2px solid var(--accent);
+  padding:9px 13px;
+  border-radius:3px;
+  display:inline-block;
+}
+
+/* footer note — single focal action, not centered */
+.hiw__foot{
+  margin-top:96px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.hiw__foot span{
+  font-size:14px;
+  color:var(--muted);
+}
+.hiw__foot a{
+  font-size:14px;
+  font-weight:600;
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:border-color .15s ease;
+}
+.hiw__foot a:hover{ border-color:var(--accent); }
+
+@media(max-width:640px){
+  .hiw{ padding:72px 22px 80px; }
+  .hiw__head{ margin-bottom:52px; }
+  .hiw__title{ font-size:29px; }
+  .hiw__steps{ grid-template-columns:1fr; }
+  .hiw__step{ padding:0 0 40px !important; margin-top:0 !important; }
+  .hiw__step:not(:last-child){
+    border-right:none;
+    border-bottom:1px solid var(--line);
+    margin-bottom:40px;
+  }
+  .hiw__step p,.hiw__step h3{ max-width:none; }
+  .hiw__foot{ margin-top:56px; }
+}
+</style>
+</head>
+<body>
+<section class="hiw">
+  <div class="hiw__inner">
+    <div class="hiw__head">
+      <span class="hiw__eyebrow">How the library works</span>
+      <h1 class="hiw__title">Drop a section into Claude Code and ship it in three moves.</h1>
+      <p class="hiw__lead">Every block is a single self-contained HTML file. No build step, no dependencies to install, no account to create. Copy, paste, adjust the tokens.</p>
+    </div>
+
+    <div class="hiw__steps">
+      <div class="hiw__step hiw__step--1">
+        <div class="hiw__num"><b>01</b><span class="hiw__dot"></span></div>
+        <h3>Copy the file</h3>
+        <p>Open any section and grab the full HTML. It comes with its own CSS token block, so nothing breaks when you move it.</p>
+        <code class="hiw__code">Cmd + C</code>
+      </div>
+
+      <div class="hiw__step hiw__step--2">
+        <div class="hiw__num"><b>02</b><span class="hiw__dot"></span></div>
+        <h3>Paste into Claude Code</h3>
+        <p>Drop it in and say what you're building. Claude wires the section into your page and matches your existing markup.</p>
+        <code class="hiw__code">paste &rarr; describe &rarr; run</code>
+      </div>
+
+      <div class="hiw__step hiw__step--3">
+        <div class="hiw__num"><b>03</b><span class="hiw__dot"></span></div>
+        <h3>Recolor to your brand</h3>
+        <p>Change five values in the <code style="font-family:ui-monospace,monospace;font-size:13px;">:root</code> block — bg, ink, accent, fonts — and the whole section follows.</p>
+        <code class="hiw__code">--accent: #C0492B;</code>
+      </div>
+    </div>
+
+    <div class="hiw__foot">
+      <span>Free forever. 40+ sections and counting.</span>
+      <a href="#browse">Browse the full library &rarr;</a>
+    </div>
+  </div>
+</section>
+</body>
+</html>

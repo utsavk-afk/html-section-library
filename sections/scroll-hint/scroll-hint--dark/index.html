@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Hint — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== SCROLL-HINT — DARK / LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-raise:#17171c;
+  --paper:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --line:rgba(244,244,245,.11);
+  --line-soft:rgba(244,244,245,.06);
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.sh{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:760px;
+  padding:64px clamp(24px,6vw,96px) 0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+/* faint vertical hairline grid, off-center to break symmetry */
+.sh::before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;
+  left:38%;
+  width:1px;
+  background:var(--line-soft);
+  pointer-events:none;
+}
+
+/* --- top rail --- */
+.sh__rail{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  position:relative;
+  z-index:2;
+}
+.sh__rail b{color:var(--paper);font-weight:600;}
+.sh__rail .dot{
+  display:inline-block;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--amber);
+  margin-right:9px;
+  vertical-align:middle;
+}
+
+/* --- hero lead, asymmetric, left-weighted --- */
+.sh__lead{
+  flex:1;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.62fr);
+  align-items:end;
+  gap:40px;
+  padding:min(9vw,120px) 0 44px;
+  position:relative;
+  z-index:2;
+}
+.sh__eyebrow{
+  font-size:13px;
+  letter-spacing:.05em;
+  color:var(--amber);
+  margin-bottom:22px;
+}
+.sh__eyebrow span{color:var(--muted);}
+.sh__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,5.6vw,74px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  max-width:14ch;
+}
+.sh__title em{
+  font-style:italic;
+  color:var(--amber);
+}
+.sh__aside{
+  align-self:end;
+  padding-bottom:6px;
+}
+.sh__aside p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.6;
+  max-width:34ch;
+}
+.sh__aside p b{color:var(--paper);font-weight:500;}
+
+/* --- scroll cue, anchored bottom-left, NOT centered --- */
+.sh__cue{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding-bottom:34px;
+}
+.sh__mouse{
+  position:relative;
+  width:26px;
+  height:42px;
+  border:1.5px solid var(--line);
+  border-radius:14px;
+  flex-shrink:0;
+}
+.sh__mouse::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:8px;
+  width:3px;
+  height:7px;
+  margin-left:-1.5px;
+  border-radius:2px;
+  background:var(--amber);
+  animation:wheel 1.9s cubic-bezier(.6,.05,.2,1) infinite;
+}
+@keyframes wheel{
+  0%{transform:translateY(0);opacity:0;}
+  22%{opacity:1;}
+  60%{opacity:1;}
+  100%{transform:translateY(15px);opacity:0;}
+}
+.sh__cuetext{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.sh__cuetext b{
+  display:block;
+  color:var(--paper);
+  font-weight:500;
+  letter-spacing:.02em;
+  text-transform:none;
+  font-size:14px;
+  margin-top:3px;
+}
+/* animated descending bars beside the label */
+.sh__bars{
+  display:flex;
+  align-items:flex-end;
+  gap:4px;
+  height:20px;
+  margin-left:6px;
+}
+.sh__bars i{
+  width:3px;
+  background:var(--line);
+  border-radius:2px;
+  animation:pulse 1.6s ease-in-out infinite;
+}
+.sh__bars i:nth-child(1){height:8px;animation-delay:0s;}
+.sh__bars i:nth-child(2){height:14px;animation-delay:.18s;}
+.sh__bars i:nth-child(3){height:20px;animation-delay:.36s;}
+@keyframes pulse{
+  0%,100%{background:var(--line);transform:scaleY(.55);}
+  50%{background:var(--amber);transform:scaleY(1);}
+}
+
+/* --- peek of next block --- */
+.sh__peek{
+  position:relative;
+  z-index:2;
+  margin:0 calc(clamp(24px,6vw,96px) * -1);
+  padding:26px clamp(24px,6vw,96px) 0;
+  border-top:1px solid var(--line);
+  background:var(--ink-raise);
+}
+.sh__peekhead{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+.sh__peekhead h3{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:19px;
+  letter-spacing:-.01em;
+}
+.sh__peekhead span{
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.sh__cards{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:16px;
+  /* clipped so it reads as a "peek" of what's below */
+  height:104px;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,#000 34%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 34%,transparent 100%);
+}
+.sh__card{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:18px 20px;
+  background:var(--ink);
+}
+.sh__card:nth-child(1){border-radius:12px 12px 4px 12px;}
+.sh__card:nth-child(2){background:transparent;}
+.sh__card .k{
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:12px;
+}
+.sh__card:nth-child(2) .k,
+.sh__card:nth-child(3) .k{color:var(--muted);}
+.sh__card .v{
+  font-family:var(--serif);
+  font-size:clamp(22px,2.4vw,30px);
+  line-height:1;
+}
+.sh__card .s{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:9px;
+}
+
+@media(max-width:640px){
+  .sh{min-height:0;padding:40px 22px 0;}
+  .sh::before{left:auto;right:26px;}
+  .sh__lead{
+    grid-template-columns:1fr;
+    gap:26px;
+    padding:52px 0 34px;
+  }
+  .sh__title{font-size:clamp(34px,10vw,48px);}
+  .sh__aside{padding-bottom:0;}
+  .sh__peek{margin:0 -22px;padding:22px 22px 0;}
+  .sh__cards{
+    grid-template-columns:1fr 1fr;
+    height:96px;
+  }
+  .sh__card:nth-child(3){display:none;}
+  .sh__peekhead span{display:none;}
+}
+</style>
+</head>
+<body>
+<section class="sh">
+  <div class="sh__rail">
+    <div><span class="dot"></span>Vaultworks — Field Notes</div>
+    <div><b>01</b> / 07</div>
+  </div>
+
+  <div class="sh__lead">
+    <div>
+      <p class="sh__eyebrow">Issue No. 14 <span>— shipped this morning</span></p>
+      <h1 class="sh__title">We rebuilt the ledger so it <em>closes in four seconds</em>, not four days.</h1>
+    </div>
+    <div class="sh__aside">
+      <p><b>The old reconciliation ran overnight.</b> Below, the three numbers that changed once we moved settlement off the batch queue and onto the stream.</p>
+    </div>
+  </div>
+
+  <div class="sh__cue">
+    <div class="sh__mouse"></div>
+    <div class="sh__cuetext">
+      Scroll
+      <b>See what moved</b>
+    </div>
+    <div class="sh__bars"><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="sh__peek">
+    <div class="sh__peekhead">
+      <h3>What actually changed</h3>
+      <span>Q2 · verified figures</span>
+    </div>
+    <div class="sh__cards">
+      <div class="sh__card">
+        <div class="k">Close time</div>
+        <div class="v">4.1s</div>
+        <div class="s">down from a 26-hour batch window</div>
+      </div>
+      <div class="sh__card">
+        <div class="k">Break rate</div>
+        <div class="v">0.03%</div>
+        <div class="s">across 2.4M daily entries</div>
+      </div>
+      <div class="sh__card">
+        <div class="k">Manual touches</div>
+        <div class="v">11</div>
+        <div class="s">per month, from 900+</div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

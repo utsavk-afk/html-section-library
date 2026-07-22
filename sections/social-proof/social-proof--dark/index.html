@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!-- ===== SOCIAL-PROOF — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Proof — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#2A2A31;
+  --accent:#F59E42;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --panel:#16161B;
+}
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.5;
+}
+
+.proof{
+  width:100%;
+  padding:100px 40px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(120% 120% at 12% 0%, rgba(245,158,66,0.05) 0%, rgba(245,158,66,0) 42%),
+    var(--bg);
+}
+
+.proof__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ---- eyebrow ---- */
+.proof__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+.proof__eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+
+/* ---- asymmetric top grid: big stat left, quote right ---- */
+.proof__top{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+  gap:64px;
+  align-items:end;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+}
+
+.stat__num{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:112px;
+  line-height:0.86;
+  letter-spacing:-0.03em;
+  color:var(--ink);
+}
+.stat__num .plus{color:var(--accent);}
+.stat__label{
+  margin-top:22px;
+  font-size:15px;
+  color:var(--muted);
+  max-width:300px;
+}
+.stat__label strong{color:var(--ink);font-weight:500;}
+
+/* ---- pull quote ---- */
+.quote{
+  position:relative;
+  padding-left:34px;
+  border-left:1px solid var(--line);
+}
+.quote::before{
+  content:"“";
+  position:absolute;
+  left:-4px;
+  top:-26px;
+  font-family:var(--serif);
+  font-size:72px;
+  line-height:1;
+  color:var(--accent);
+}
+.quote p{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:25px;
+  line-height:1.42;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+}
+.quote p em{
+  font-style:italic;
+  color:var(--accent);
+}
+.quote__by{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:26px;
+}
+.avatar{
+  width:42px;height:42px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:#1E1E25;
+  display:grid;
+  place-items:center;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  color:var(--accent);
+  flex:none;
+}
+.quote__by .who{font-size:14px;font-weight:500;color:var(--ink);}
+.quote__by .role{font-size:13px;color:var(--muted);}
+
+/* ---- logo / rating band ---- */
+.proof__band{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:40px;
+  padding-top:44px;
+}
+
+.rating{display:flex;align-items:center;gap:14px;}
+.stars{display:flex;gap:3px;}
+.stars svg{width:17px;height:17px;display:block;}
+.rating__txt{font-size:13.5px;color:var(--muted);}
+.rating__txt b{color:var(--ink);font-weight:600;}
+
+.logos{
+  display:flex;
+  align-items:center;
+  gap:44px;
+  flex-wrap:wrap;
+}
+.logos .wm{
+  font-weight:600;
+  font-size:17px;
+  letter-spacing:-0.01em;
+  color:var(--muted);
+  white-space:nowrap;
+  opacity:0.82;
+  transition:color .2s ease,opacity .2s ease;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.logos .wm:hover{color:var(--ink);opacity:1;}
+.logos .wm .dot{
+  width:8px;height:8px;border-radius:2px;
+  background:var(--accent);flex:none;
+}
+.logos .wm .ring{
+  width:14px;height:14px;border-radius:50%;
+  border:1.5px solid currentColor;flex:none;
+}
+.logos .wm .bar{
+  width:14px;height:14px;flex:none;
+  background:currentColor;
+  clip-path:polygon(0 100%,50% 0,100% 100%);
+}
+.logos .wm.thin{font-weight:400;font-family:var(--serif);font-size:19px;letter-spacing:0;}
+
+@media(max-width:640px){
+  .proof{padding:64px 22px;}
+  .proof__eyebrow{margin-bottom:30px;}
+  .proof__top{
+    grid-template-columns:1fr;
+    gap:44px;
+    padding-bottom:40px;
+  }
+  .stat__num{font-size:82px;}
+  .quote p{font-size:21px;}
+  .quote{padding-left:24px;}
+  .proof__band{gap:28px;padding-top:34px;}
+  .logos{gap:26px;}
+  .logos .wm{font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<section class="proof">
+  <div class="proof__inner">
+
+    <span class="proof__eyebrow">Trusted in production</span>
+
+    <div class="proof__top">
+
+      <div class="stat">
+        <div class="stat__num">18,400<span class="plus">+</span></div>
+        <p class="stat__label"><strong>engineering teams</strong> shipped their first release with our workflow this quarter — no rip-and-replace required.</p>
+      </div>
+
+      <blockquote class="quote">
+        <p>We cut our deploy checklist from 40 manual steps to <em>three commands</em>. The thing that surprised us wasn't the speed — it was that nothing broke.</p>
+        <div class="quote__by">
+          <div class="avatar">DR</div>
+          <div>
+            <div class="who">Dana Reyes</div>
+            <div class="role">Staff Platform Engineer, Northwind Freight</div>
+          </div>
+        </div>
+      </blockquote>
+
+    </div>
+
+    <div class="proof__band">
+
+      <div class="rating">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="#F59E42"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#F59E42"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#F59E42"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#F59E42"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F59E42" stroke-width="1.4"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.6 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+        </div>
+        <span class="rating__txt"><b>4.8 / 5</b> across 2,116 verified reviews</span>
+      </div>
+
+      <div class="logos">
+        <span class="wm"><span class="dot"></span>Northwind</span>
+        <span class="wm"><span class="ring"></span>Corevault</span>
+        <span class="wm thin">Halden&nbsp;&amp;&nbsp;Cole</span>
+        <span class="wm"><span class="bar"></span>Meridian</span>
+        <span class="wm">Fathom<span style="color:var(--accent)">.io</span></span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!-- ===== MENU — ACID-POP ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Menu — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,700&family=Archivo+Narrow:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0A0A0A;
+  --ink:#F4F4EF;
+  --muted:#8A8A82;
+  --line:#242420;
+  --accent:#C7F13B;      /* lime */
+  --accent-2:#FF4D9D;    /* magenta */
+  --serif:'Archivo Narrow',sans-serif;
+  --sans:'Archivo',sans-serif;
+}
+
+.menu-acid{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:88px 6vw 96px;
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+
+/* ---- top bar / eyebrow ---- */
+.menu-acid__top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  border-bottom:2px solid var(--line);
+  padding-bottom:26px;
+  margin-bottom:8px;
+}
+.menu-acid__kicker{
+  font-family:var(--serif);
+  text-transform:uppercase;
+  letter-spacing:.28em;
+  font-size:13px;
+  color:var(--accent);
+  font-weight:600;
+}
+.menu-acid__hours{
+  font-family:var(--serif);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:12px;
+  color:var(--muted);
+  text-align:right;
+  line-height:1.5;
+}
+.menu-acid__hours b{color:var(--ink);font-weight:600;}
+
+/* ---- headline ---- */
+.menu-acid__head{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:40px;
+  align-items:end;
+  margin:38px 0 56px;
+}
+.menu-acid__title{
+  font-weight:900;
+  font-size:clamp(58px,9vw,132px);
+  line-height:.86;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+}
+.menu-acid__title em{
+  font-style:normal;
+  display:inline-block;
+  color:var(--bg);
+  background:var(--accent);
+  padding:0 .12em;
+  transform:rotate(-2deg);
+  border-radius:6px;
+}
+.menu-acid__title .pink{color:var(--accent-2);}
+.menu-acid__lede{
+  font-size:16px;
+  line-height:1.55;
+  color:var(--muted);
+  max-width:34ch;
+  padding-bottom:10px;
+}
+.menu-acid__lede strong{color:var(--ink);font-weight:600;}
+
+/* ---- list ---- */
+.menu-acid__list{list-style:none;}
+.menu-acid__row{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:baseline;
+  gap:22px;
+  padding:26px 0;
+  border-top:1px solid var(--line);
+  transition:background .18s ease,padding-left .18s ease;
+}
+.menu-acid__row:last-child{border-bottom:1px solid var(--line);}
+.menu-acid__row:hover{
+  background:linear-gradient(90deg,rgba(199,241,59,.07),transparent 60%);
+  padding-left:14px;
+}
+.menu-acid__num{
+  font-family:var(--serif);
+  font-size:14px;
+  color:var(--muted);
+  letter-spacing:.1em;
+  padding-top:8px;
+  min-width:34px;
+}
+.menu-acid__main{min-width:0;}
+.menu-acid__name{
+  font-weight:800;
+  font-size:clamp(24px,3.1vw,40px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.menu-acid__row:hover .menu-acid__name{color:var(--accent);}
+.menu-acid__tag{
+  font-family:var(--serif);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:4px 12px 3px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.tag--lime{background:var(--accent);color:var(--bg);}
+.tag--pink{background:var(--accent-2);color:#1a0010;}
+.tag--ghost{border:1.5px solid var(--line);color:var(--muted);}
+.menu-acid__desc{
+  font-size:15px;
+  line-height:1.5;
+  color:var(--muted);
+  margin-top:10px;
+  max-width:58ch;
+}
+.menu-acid__desc b{color:var(--ink);font-weight:600;}
+.menu-acid__price{
+  font-weight:900;
+  font-size:clamp(22px,2.6vw,34px);
+  letter-spacing:-.02em;
+  white-space:nowrap;
+  padding-top:2px;
+  text-align:right;
+  min-width:120px;
+}
+.menu-acid__price small{
+  display:block;
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:4px;
+}
+.menu-acid__price .from{color:var(--accent-2);}
+
+/* ---- footer strip ---- */
+.menu-acid__foot{
+  margin-top:44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.menu-acid__note{
+  font-family:var(--serif);
+  font-size:13px;
+  letter-spacing:.08em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.menu-acid__note span{color:var(--accent);}
+.menu-acid__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--accent-2);
+  color:#1a0010;
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:16px 30px;
+  border-radius:999px;
+  transition:transform .16s ease;
+}
+.menu-acid__cta:hover{transform:translateY(-3px);}
+.menu-acid__cta svg{width:18px;height:18px;}
+
+/* big background glyph, flat */
+.menu-acid__ghost-type{
+  position:absolute;
+  right:-2vw;
+  bottom:-3vw;
+  font-weight:900;
+  font-size:24vw;
+  line-height:1;
+  color:var(--line);
+  letter-spacing:-.04em;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+  opacity:.6;
+}
+.menu-acid>*{position:relative;z-index:1;}
+
+@media(max-width:640px){
+  .menu-acid{padding:56px 22px 64px;}
+  .menu-acid__top{flex-direction:column;align-items:flex-start;gap:14px;}
+  .menu-acid__hours{text-align:left;}
+  .menu-acid__head{grid-template-columns:1fr;gap:22px;margin:26px 0 36px;}
+  .menu-acid__row{
+    grid-template-columns:1fr auto;
+    gap:6px 16px;
+    padding:20px 0;
+  }
+  .menu-acid__num{display:none;}
+  .menu-acid__price{text-align:left;grid-column:1;min-width:0;}
+  .menu-acid__main{grid-column:1 / -1;order:-1;}
+  .menu-acid__price{order:2;}
+  .menu-acid__row:hover{padding-left:0;}
+  .menu-acid__ghost-type{font-size:42vw;bottom:-6vw;opacity:.5;}
+  .menu-acid__foot{margin-top:32px;}
+}
+</style>
+</head>
+<body>
+<section class="menu-acid" aria-label="Studio services menu">
+  <div class="menu-acid__ghost-type" aria-hidden="true">&amp;</div>
+
+  <div class="menu-acid__top">
+    <span class="menu-acid__kicker">Deadgrid Studio · Rate Card ’26</span>
+    <p class="menu-acid__hours">
+      Booking Q3 &amp; Q4 — <b>2 slots left</b><br>
+      Mon–Thu, async worldwide
+    </p>
+  </div>
+
+  <div class="menu-acid__head">
+    <h2 class="menu-acid__title">Things we<br><em>actually</em> <span class="pink">ship.</span></h2>
+    <p class="menu-acid__lede">Fixed-scope engagements, no retainers, no “discovery calls to schedule the discovery call.” <strong>Pick a line, get a Loom, we start Monday.</strong></p>
+  </div>
+
+  <ul class="menu-acid__list">
+    <li class="menu-acid__row">
+      <span class="menu-acid__num">01</span>
+      <div class="menu-acid__main">
+        <div class="menu-acid__name">Brand Sprint <span class="menu-acid__tag tag--lime">2 weeks</span></div>
+        <p class="menu-acid__desc">Wordmark, color, one type system, and a <b>12-page usage doc</b> your whole team can copy-paste from. Async by default — three async reviews, zero standups.</p>
+      </div>
+      <div class="menu-acid__price">$9,400<small>Flat · 50% up front</small></div>
+    </li>
+
+    <li class="menu-acid__row">
+      <span class="menu-acid__num">02</span>
+      <div class="menu-acid__main">
+        <div class="menu-acid__name">Landing Rebuild <span class="menu-acid__tag tag--pink">most booked</span></div>
+        <p class="menu-acid__desc">One hero-to-footer page rewritten, redesigned, and shipped in code. <b>Copy, layout, and dev included</b> — you hand off Webflow or we push to your repo.</p>
+      </div>
+      <div class="menu-acid__price">$6,800<small>Flat · 10 days</small></div>
+    </li>
+
+    <li class="menu-acid__row">
+      <span class="menu-acid__num">03</span>
+      <div class="menu-acid__main">
+        <div class="menu-acid__name">Design System <span class="menu-acid__tag tag--ghost">3–5 weeks</span></div>
+        <p class="menu-acid__desc">Tokens, components, and a live Storybook your engineers won’t fight. Scoped to <b>~40 components</b>; every one documented with do / don’t pairs.</p>
+      </div>
+      <div class="menu-acid__price"><span class="from">from</span> $18k<small>Scope-dependent</small></div>
+    </li>
+
+    <li class="menu-acid__row">
+      <span class="menu-acid__num">04</span>
+      <div class="menu-acid__main">
+        <div class="menu-acid__name">Teardown Loom <span class="menu-acid__tag tag--lime">48 hours</span></div>
+        <p class="menu-acid__desc">A blunt, timestamped <b>25-minute video</b> ripping your current site apart — hierarchy, copy, conversion leaks — plus a one-page fix list. No fluff, no upsell.</p>
+      </div>
+      <div class="menu-acid__price">$450<small>One-time</small></div>
+    </li>
+
+    <li class="menu-acid__row">
+      <span class="menu-acid__num">05</span>
+      <div class="menu-acid__main">
+        <div class="menu-acid__name">Studio Day <span class="menu-acid__tag tag--ghost">by request</span></div>
+        <p class="menu-acid__desc">Book us for one focused day — pitch deck, event key art, a stuck feature, whatever’s on fire. <b>Eight hours, one deliverable, done.</b></p>
+      </div>
+      <div class="menu-acid__price">$1,600<small>Per day</small></div>
+    </li>
+  </ul>
+
+  <div class="menu-acid__foot">
+    <p class="menu-acid__note">Prices in USD · <span>Non-profits &amp; first-time founders knock 15% off</span></p>
+    <a class="menu-acid__cta" href="#book">
+      Grab a slot
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+</body>
+</html>

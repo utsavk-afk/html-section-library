@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Slider — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== PRICING-SLIDER — EDITORIAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --ink-70:#514E48;
+  --ink-45:#8A857C;
+  --accent:#B4472B;
+  --accent-soft:#E9C9BE;
+  --line:#DED9CF;
+  --line-soft:#EBE7DE;
+  --panel:#F4F1EA;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--light);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.px{
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 72px 112px;
+}
+
+/* ---- label ---- */
+.eyebrow{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--accent);
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+}
+.eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+
+/* ---- header ---- */
+.head{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:56px;
+  align-items:end;
+  padding-bottom:52px;
+  border-bottom:1px solid var(--line);
+}
+.head h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,4.4vw,60px);
+  line-height:1.04;
+  letter-spacing:-.015em;
+  margin-top:22px;
+  max-width:11ch;
+}
+.head h2 em{
+  font-style:italic;
+  color:var(--accent);
+}
+.head .lede{
+  font-size:16px;
+  color:var(--ink-70);
+  max-width:38ch;
+  padding-bottom:6px;
+}
+.head .lede strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* ---- main layout ---- */
+.grid{
+  display:grid;
+  grid-template-columns:1.28fr .72fr;
+  gap:0;
+  margin-top:56px;
+  border:1px solid var(--line);
+}
+
+/* ---- slider column ---- */
+.slider-col{
+  padding:52px 56px 48px;
+  border-right:1px solid var(--line);
+}
+.usage-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.usage-top .k{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink-45);
+}
+.usage-val{
+  font-family:var(--serif);
+  font-size:clamp(30px,3.4vw,44px);
+  line-height:1;
+  letter-spacing:-.01em;
+}
+.usage-val span{
+  font-size:15px;
+  font-family:var(--sans);
+  color:var(--ink-45);
+  letter-spacing:0;
+  margin-left:6px;
+}
+
+/* the static slider */
+.track{
+  margin:40px 0 20px;
+  position:relative;
+  height:2px;
+  background:var(--line);
+}
+.track .fill{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:58%;
+  background:var(--accent);
+}
+.track .tick{
+  position:absolute;
+  top:-4px;
+  width:1px;
+  height:10px;
+  background:var(--line);
+  transform:translateX(-50%);
+}
+.track .tick.on{background:var(--accent);}
+.track .knob{
+  position:absolute;
+  left:58%;
+  top:50%;
+  width:26px;
+  height:26px;
+  background:var(--light);
+  border:1.5px solid var(--accent);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 6px 18px -8px rgba(180,71,43,.55);
+}
+.track .knob::after{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border-radius:50%;
+  background:var(--accent);
+}
+.scale{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--ink-45);
+  font-variant-numeric:tabular-nums;
+}
+.scale b{
+  font-weight:500;
+  color:var(--ink-70);
+}
+
+/* included lines */
+.included{
+  margin-top:44px;
+  border-top:1px solid var(--line-soft);
+  padding-top:30px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px 48px;
+}
+.inc h4{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink-45);
+  margin-bottom:10px;
+}
+.inc p{
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.3;
+  font-weight:400;
+}
+.inc small{
+  display:block;
+  font-family:var(--sans);
+  font-size:13px;
+  color:var(--ink-70);
+  margin-top:5px;
+}
+
+/* ---- price / plan panel ---- */
+.plan-col{
+  background:var(--panel);
+  padding:48px 44px 44px;
+  display:flex;
+  flex-direction:column;
+}
+.plan-name{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.plan-name .n{
+  font-family:var(--serif);
+  font-size:24px;
+  font-style:italic;
+}
+.badge{
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--accent);
+  border:1px solid var(--accent-soft);
+  padding:5px 10px;
+  border-radius:2px;
+  white-space:nowrap;
+}
+.price{
+  margin-top:30px;
+  display:flex;
+  align-items:flex-start;
+  gap:6px;
+}
+.price .cur{
+  font-family:var(--serif);
+  font-size:26px;
+  margin-top:12px;
+}
+.price .amt{
+  font-family:var(--serif);
+  font-size:clamp(64px,7vw,86px);
+  line-height:.85;
+  letter-spacing:-.02em;
+  font-weight:500;
+}
+.price .per{
+  font-size:14px;
+  color:var(--ink-45);
+  margin-top:14px;
+  align-self:flex-end;
+}
+.price-sub{
+  font-size:13px;
+  color:var(--ink-70);
+  margin-top:16px;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--line);
+}
+.price-sub em{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink);
+}
+
+.meta{
+  margin-top:26px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.meta .row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:14px;
+  color:var(--ink-70);
+}
+.meta .row svg{flex:none;}
+.meta .row b{
+  color:var(--ink);
+  font-weight:600;
+}
+
+.cta{
+  margin-top:auto;
+  padding-top:34px;
+}
+.btn{
+  display:block;
+  width:100%;
+  text-align:center;
+  background:var(--ink);
+  color:var(--light);
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.02em;
+  padding:17px;
+  border:none;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .18s ease;
+}
+.btn:hover{background:var(--accent);}
+.cta .fine{
+  text-align:center;
+  font-size:12px;
+  color:var(--ink-45);
+  margin-top:14px;
+}
+
+@media(max-width:640px){
+  .px{padding:64px 22px 72px;}
+  .head{
+    grid-template-columns:1fr;
+    gap:24px;
+    align-items:start;
+  }
+  .head h2{max-width:none;}
+  .grid{
+    grid-template-columns:1fr;
+    margin-top:38px;
+  }
+  .slider-col{
+    padding:36px 26px 34px;
+    border-right:none;
+    border-bottom:1px solid var(--line);
+  }
+  .included{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+  .plan-col{padding:36px 26px 34px;}
+  .price .amt{font-size:72px;}
+}
+</style>
+</head>
+<body>
+<section class="px">
+
+  <div class="head">
+    <div>
+      <span class="eyebrow">Pricing that scales with you</span>
+      <h2>Pay for what you <em>actually</em> ship.</h2>
+    </div>
+    <p class="lede">Slide to your monthly send volume and the plan resizes with it — <strong>no seat minimums, no annual lock-in.</strong> Every tier includes the full deliverability suite.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- SLIDER SIDE -->
+    <div class="slider-col">
+      <div class="usage-top">
+        <span class="k">Monthly email volume</span>
+        <div class="usage-val">145,000<span>sends / mo</span></div>
+      </div>
+
+      <div class="track" role="img" aria-label="Usage slider set at 145,000 monthly sends">
+        <div class="fill"></div>
+        <span class="tick on" style="left:0%"></span>
+        <span class="tick on" style="left:20%"></span>
+        <span class="tick on" style="left:40%"></span>
+        <span class="tick" style="left:58%"></span>
+        <span class="tick" style="left:80%"></span>
+        <span class="tick" style="left:100%"></span>
+        <span class="knob"></span>
+      </div>
+      <div class="scale">
+        <span><b>5K</b></span>
+        <span>50K</span>
+        <span>100K</span>
+        <span>250K</span>
+        <span><b>500K+</b></span>
+      </div>
+
+      <div class="included">
+        <div class="inc">
+          <h4>Deliverability</h4>
+          <p>Dedicated warm-up IP
+            <small>Auto rotation across 3 pools, DMARC monitored daily.</small>
+          </p>
+        </div>
+        <div class="inc">
+          <h4>Team &amp; access</h4>
+          <p>Unlimited seats
+            <small>Role-based permissions, SSO available from this tier up.</small>
+          </p>
+        </div>
+        <div class="inc">
+          <h4>Automation</h4>
+          <p>Branching journeys
+            <small>Visual builder, 40 live workflows, webhook triggers.</small>
+          </p>
+        </div>
+        <div class="inc">
+          <h4>Support</h4>
+          <p>Priority response
+            <small>Under 4-hour reply, quarterly deliverability review.</small>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICE / PLAN SIDE -->
+    <aside class="plan-col">
+      <div class="plan-name">
+        <span class="n">Growth</span>
+        <span class="badge">Recommended for you</span>
+      </div>
+
+      <div class="price">
+        <span class="cur">$</span>
+        <span class="amt">340</span>
+        <span class="per">/ month</span>
+      </div>
+      <p class="price-sub">Billed monthly, cancel anytime. Averages <em>$2.34</em> per thousand sends at your current volume.</p>
+
+      <div class="meta">
+        <div class="row">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 4.8" stroke="#B4472B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>145K</b> sends included, then $2.10 / thousand</span>
+        </div>
+        <div class="row">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 4.8" stroke="#B4472B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>25,000</b> contacts on file, no cap on lists</span>
+        </div>
+        <div class="row">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 4.8" stroke="#B4472B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Full API &amp; <b>12-month</b> analytics retention</span>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a href="#" class="btn">Start on Growth</a>
+        <p class="fine">14-day trial · no card required</p>
+      </div>
+    </aside>
+
+  </div>
+</section>
+</body>
+</html>

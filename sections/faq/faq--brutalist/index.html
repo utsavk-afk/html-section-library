@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!-- ===== FAQ — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.faqx{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:88px 48px 96px;
+  width:100%;
+  border-top:4px solid var(--line);
+  border-bottom:4px solid var(--line);
+}
+
+.faqx__wrap{
+  max-width:1240px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:0.85fr 1.4fr;
+  gap:72px;
+  align-items:start;
+}
+
+/* ---- LEFT RAIL (focal, asymmetric) ---- */
+.faqx__rail{
+  position:sticky;
+  top:40px;
+}
+.faqx__tag{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--bg);
+  display:inline-block;
+  padding:6px 12px;
+  margin-bottom:26px;
+}
+.faqx__title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:64px;
+  line-height:0.92;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+}
+.faqx__title mark{
+  background:var(--accent);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.faqx__sub{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.7;
+  color:var(--muted);
+  margin-top:24px;
+  max-width:300px;
+}
+.faqx__meta{
+  margin-top:34px;
+  border:3px solid var(--line);
+  box-shadow:6px 6px 0 var(--ink);
+  background:var(--bg);
+  padding:18px 20px;
+  max-width:320px;
+}
+.faqx__meta-row{
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--mono);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  padding:7px 0;
+}
+.faqx__meta-row + .faqx__meta-row{border-top:1px solid var(--line);}
+.faqx__meta-row b{font-weight:700;}
+.faqx__meta-row span{color:var(--red);font-weight:700;}
+
+/* ---- RIGHT: ACCORDION ---- */
+.faqx__list{
+  border-top:3px solid var(--line);
+}
+.faqx__item{
+  border-bottom:1px solid var(--line);
+}
+.faqx__item[open]{
+  background:var(--bg);
+  border-bottom:3px solid var(--line);
+}
+.faqx__item[open] .faqx__q{
+  background:var(--accent);
+}
+.faqx__q{
+  list-style:none;
+  cursor:pointer;
+  display:grid;
+  grid-template-columns:52px 1fr 40px;
+  align-items:center;
+  gap:14px;
+  padding:26px 20px 26px 0;
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:22px;
+  line-height:1.12;
+  letter-spacing:-0.01em;
+  text-transform:uppercase;
+  transition:background 0.05s linear;
+}
+.faqx__q::-webkit-details-marker{display:none;}
+.faqx__q:hover{background:var(--accent);}
+.faqx__num{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  color:var(--red);
+  padding-left:16px;
+}
+.faqx__item[open] .faqx__num,
+.faqx__q:hover .faqx__num{color:var(--ink);}
+.faqx__mark{
+  justify-self:end;
+  margin-right:16px;
+  width:30px;
+  height:30px;
+  border:2px solid var(--line);
+  background:var(--bg);
+  position:relative;
+  flex-shrink:0;
+}
+.faqx__mark::before,
+.faqx__mark::after{
+  content:"";
+  position:absolute;
+  background:var(--ink);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+}
+.faqx__mark::before{width:14px;height:2px;}
+.faqx__mark::after{width:2px;height:14px;transition:transform 0.12s linear;}
+.faqx__item[open] .faqx__mark{background:var(--ink);}
+.faqx__item[open] .faqx__mark::before,
+.faqx__item[open] .faqx__mark::after{background:var(--accent);}
+.faqx__item[open] .faqx__mark::after{transform:translate(-50%,-50%) scaleY(0);}
+
+.faqx__a{
+  padding:0 60px 30px 66px;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:640px;
+}
+.faqx__a code{
+  font-family:var(--mono);
+  font-size:13px;
+  background:var(--ink);
+  color:var(--accent);
+  padding:2px 6px;
+}
+.faqx__a a{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;}
+
+.faqx__foot{
+  grid-column:1 / -1;
+  margin-top:14px;
+  padding-top:24px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.faqx__btn{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  background:var(--red);
+  color:var(--bg);
+  border:3px solid var(--line);
+  box-shadow:6px 6px 0 var(--ink);
+  padding:14px 22px;
+  text-decoration:none;
+  display:inline-block;
+}
+.faqx__foot p{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+
+@media(max-width:640px){
+  .faqx{padding:56px 20px 64px;}
+  .faqx__wrap{grid-template-columns:1fr;gap:40px;}
+  .faqx__rail{position:static;}
+  .faqx__title{font-size:44px;}
+  .faqx__q{
+    grid-template-columns:40px 1fr 30px;
+    font-size:17px;
+    padding:20px 12px 20px 0;
+    gap:8px;
+  }
+  .faqx__num{padding-left:8px;font-size:11px;}
+  .faqx__mark{width:26px;height:26px;margin-right:8px;}
+  .faqx__a{padding:0 16px 24px 48px;font-size:15px;}
+  .faqx__meta,.faqx__sub{max-width:none;}
+}
+</style>
+</head>
+<body>
+<section class="faqx" aria-label="Frequently asked questions">
+  <div class="faqx__wrap">
+
+    <!-- LEFT RAIL / focal point -->
+    <div class="faqx__rail">
+      <span class="faqx__tag">FAQ / v2.3</span>
+      <h2 class="faqx__title">STILL<br>GOT<br><mark>QUESTIONS?</mark></h2>
+      <p class="faqx__sub">Everything below is copy-paste ready. Drop a snippet into Claude Code and it just runs — no build step, no config file, no npm install.</p>
+      <div class="faqx__meta">
+        <div class="faqx__meta-row"><b>LICENSE</b><span>MIT / FREE</span></div>
+        <div class="faqx__meta-row"><b>DEPENDENCIES</b><span>ZERO</span></div>
+        <div class="faqx__meta-row"><b>LAST UPDATE</b><span>22.07.26</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT / accordion -->
+    <div class="faqx__list">
+
+      <details class="faqx__item" open>
+        <summary class="faqx__q">
+          <span class="faqx__num">01</span>
+          Is this library actually free to use?
+          <span class="faqx__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faqx__a">
+          Yes. Every section ships under an MIT license — use it in client work, resell the sites you build, strip the credit comment, whatever. No attribution required, no per-seat fee, no "pro tier" gate hiding half the components.
+        </div>
+      </details>
+
+      <details class="faqx__item">
+        <summary class="faqx__q">
+          <span class="faqx__num">02</span>
+          Do I need Tailwind, React, or a build step?
+          <span class="faqx__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faqx__a">
+          None of it. Each file is one self-contained <code>index.html</code> with inline CSS. Open it in a browser and it works. The only external request is a Google Fonts <code>&lt;link&gt;</code> — swap it for a local font and you're fully offline.
+        </div>
+      </details>
+
+      <details class="faqx__item">
+        <summary class="faqx__q">
+          <span class="faqx__num">03</span>
+          How do I drop a section into Claude Code?
+          <span class="faqx__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faqx__a">
+          Paste the raw HTML into your prompt and say "adapt this section to my brand tokens." Because every file uses a <code>:root{}</code> variable block — <code>--bg</code>, <code>--ink</code>, <code>--accent</code> — the model rewrites six values and the whole thing reskins in one shot.
+        </div>
+      </details>
+
+      <details class="faqx__item">
+        <summary class="faqx__q">
+          <span class="faqx__num">04</span>
+          Can I recolor it without breaking the layout?
+          <span class="faqx__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faqx__a">
+          That's the point of the token block. Change <code>--accent</code> from acid-yellow to hot pink and every marker, hover state, and highlight follows. Structure, spacing, and the hard offset shadows stay locked — you only ever touch color and font variables.
+        </div>
+      </details>
+
+      <details class="faqx__item">
+        <summary class="faqx__q">
+          <span class="faqx__num">05</span>
+          Is the markup accessible and keyboard-friendly?
+          <span class="faqx__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faqx__a">
+          This accordion is built on native <code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code> — so it's tab-focusable, toggles on Enter/Space, and works with zero JavaScript. Screen readers announce expand/collapse state for free because the browser handles it.
+        </div>
+      </details>
+
+      <details class="faqx__item">
+        <summary class="faqx__q">
+          <span class="faqx__num">06</span>
+          What if a section breaks on my stack?
+          <span class="faqx__mark" aria-hidden="true"></span>
+        </summary>
+        <div class="faqx__a">
+          It shouldn't — there's no runtime to break. If something looks off, it's almost always a parent <code>* { }</code> reset colliding with the section. Wrap it in an isolating container or file an issue on the repo and it gets patched.
+        </div>
+      </details>
+
+    </div>
+
+    <!-- FOOTER CTA -->
+    <div class="faqx__foot">
+      <a href="#" class="faqx__btn">Copy the whole library →</a>
+      <p>// Still stuck? ping @section-library</p>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

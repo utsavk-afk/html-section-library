@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customers Strip — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== CUSTOMERS-STRIP — EDITORIAL ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --muted:#6B665C;
+  --hair:#DAD6CB;
+  --panel:#F4F1EA;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+
+  --a1:#8A6D3B; --a2:#4A6357; --a3:#9C4A38; --a4:#3E4C63;
+  --a5:#6E5A75; --a6:#B4472B; --a7:#5B6B4A;
+}
+
+body{
+  background:var(--light);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.cs{
+  max-width:1440px;
+  margin:0 auto;
+  padding:104px 72px 108px;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:72px;
+  align-items:center;
+}
+
+.cs__label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:26px;
+}
+.cs__label::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+.cs__head{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(30px,3.4vw,46px);
+  line-height:1.08;
+  letter-spacing:-.01em;
+  max-width:15ch;
+}
+.cs__head em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.cs__sub{
+  margin-top:22px;
+  font-size:15.5px;
+  line-height:1.62;
+  color:var(--muted);
+  max-width:42ch;
+}
+
+/* right column: proof panel */
+.cs__proof{
+  border:1px solid var(--hair);
+  border-radius:4px 4px 22px 4px;
+  padding:38px 40px 34px;
+  background:linear-gradient(180deg,#FFFFFF 0%,var(--panel) 100%);
+  position:relative;
+}
+.cs__proof::before{
+  content:"“";
+  position:absolute;
+  top:6px;
+  right:26px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:96px;
+  line-height:1;
+  color:var(--hair);
+  pointer-events:none;
+}
+
+.cs__avatars{
+  display:flex;
+  align-items:center;
+  margin-bottom:24px;
+}
+.cs__avatar{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:16px;
+  color:#FCFCFA;
+  border:2px solid var(--light);
+  box-shadow:0 2px 6px rgba(27,26,23,.10);
+  margin-left:-14px;
+  position:relative;
+}
+.cs__avatar:first-child{margin-left:0;}
+.cs__avatar:nth-child(1){background:var(--a1);z-index:7;}
+.cs__avatar:nth-child(2){background:var(--a2);z-index:6;}
+.cs__avatar:nth-child(3){background:var(--a3);z-index:5;}
+.cs__avatar:nth-child(4){background:var(--a4);z-index:4;}
+.cs__avatar:nth-child(5){background:var(--a5);z-index:3;}
+.cs__avatar:nth-child(6){background:var(--a7);z-index:2;}
+.cs__avatar--more{
+  background:var(--ink)!important;
+  font-size:12px;
+  letter-spacing:.02em;
+  z-index:1;
+}
+
+.cs__join{
+  font-size:15px;
+  line-height:1.5;
+  color:var(--ink);
+}
+.cs__join b{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:19px;
+  color:var(--accent);
+}
+.cs__join span{
+  display:block;
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+.cs__rule{
+  height:1px;
+  background:var(--hair);
+  margin:26px 0 22px;
+}
+
+.cs__rating{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.cs__stars{
+  display:inline-flex;
+  gap:3px;
+}
+.cs__stars svg{
+  width:17px;
+  height:17px;
+  display:block;
+}
+.cs__score{
+  font-family:var(--serif);
+  font-weight:500;
+  font-style:italic;
+  font-size:17px;
+}
+.cs__score s{
+  text-decoration:none;
+  font-family:var(--sans);
+  font-style:normal;
+  font-weight:500;
+  font-size:12.5px;
+  color:var(--muted);
+  margin-left:6px;
+  letter-spacing:.02em;
+}
+
+@media(max-width:640px){
+  .cs{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:60px 24px 66px;
+  }
+  .cs__proof{
+    padding:30px 26px 28px;
+  }
+  .cs__avatar{
+    width:46px;height:46px;font-size:15px;margin-left:-12px;
+  }
+  .cs__sub{max-width:none;}
+}
+</style>
+</head>
+<body>
+<section class="cs">
+  <div class="cs__intro">
+    <p class="cs__label">Trusted by operators</p>
+    <h2 class="cs__head">The teams shipping their best work run on <em>Kindling</em>.</h2>
+    <p class="cs__sub">From two-person studios to newsroom desks of forty, editors reach for the same quiet toolkit every morning — and rarely put it down.</p>
+  </div>
+
+  <aside class="cs__proof">
+    <div class="cs__avatars" aria-hidden="true">
+      <span class="cs__avatar" title="Priya Raman">PR</span>
+      <span class="cs__avatar" title="Marco Alvarez">MA</span>
+      <span class="cs__avatar" title="Dana Okafor">DO</span>
+      <span class="cs__avatar" title="Theo Lindqvist">TL</span>
+      <span class="cs__avatar" title="Sana Kapoor">SK</span>
+      <span class="cs__avatar" title="Jules Verne">JV</span>
+      <span class="cs__avatar cs__avatar--more">+2.3k</span>
+    </div>
+    <p class="cs__join">Join <b>2,340 teams</b> already writing here.
+      <span>Newsrooms, agencies &amp; independent studios in 41 countries.</span>
+    </p>
+
+    <div class="cs__rule"></div>
+
+    <div class="cs__rating">
+      <span class="cs__stars" aria-hidden="true">
+        <svg viewBox="0 0 20 20" fill="#B4472B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2 5.06 16.8l.94-5.5-4-3.9 5.53-.8z"/></svg>
+        <svg viewBox="0 0 20 20" fill="#B4472B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2 5.06 16.8l.94-5.5-4-3.9 5.53-.8z"/></svg>
+        <svg viewBox="0 0 20 20" fill="#B4472B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2 5.06 16.8l.94-5.5-4-3.9 5.53-.8z"/></svg>
+        <svg viewBox="0 0 20 20" fill="#B4472B"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2 5.06 16.8l.94-5.5-4-3.9 5.53-.8z"/></svg>
+        <svg viewBox="0 0 20 20"><defs><linearGradient id="half"><stop offset="70%" stop-color="#B4472B"/><stop offset="70%" stop-color="#DAD6CB"/></linearGradient></defs><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2 5.06 16.8l.94-5.5-4-3.9 5.53-.8z" fill="url(#half)"/></svg>
+      </span>
+      <span class="cs__score">4.7 / 5<s>from 1,208 verified reviews</s></span>
+    </div>
+  </aside>
+</section>
+</body>
+</html>

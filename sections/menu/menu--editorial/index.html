@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!-- ===== MENU — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bindery — Services Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6B665C;
+  --line:#E1DED4;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+.menu-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:88px 64px 96px;
+  width:100%;
+}
+
+.menu-wrap{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:72px;
+  align-items:start;
+}
+
+/* ---- Left rail: the focal block ---- */
+.menu-aside{
+  position:sticky;
+  top:64px;
+}
+
+.menu-label{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:26px;
+}
+
+.menu-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:52px;
+  line-height:1.02;
+  letter-spacing:-.01em;
+  margin-bottom:22px;
+}
+.menu-title em{
+  font-style:italic;
+  font-weight:500;
+}
+
+.menu-intro{
+  font-size:15px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:30ch;
+  margin-bottom:34px;
+}
+
+.menu-note{
+  display:flex;
+  gap:14px;
+  align-items:baseline;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+}
+.menu-note-num{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:20px;
+  color:var(--accent);
+  line-height:1;
+}
+.menu-note-txt{
+  font-size:12.5px;
+  line-height:1.55;
+  color:var(--muted);
+}
+
+/* ---- Right: the itemized list ---- */
+.menu-list{
+  border-top:1px solid var(--ink);
+}
+
+.menu-item{
+  display:grid;
+  grid-template-columns:1fr auto;
+  column-gap:32px;
+  align-items:baseline;
+  padding:26px 0 24px;
+  border-bottom:1px solid var(--line);
+}
+
+.menu-item-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:9px;
+}
+.menu-item-name{
+  font-family:var(--serif);
+  font-size:23px;
+  font-weight:500;
+  letter-spacing:-.005em;
+}
+.menu-item-tag{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:3px 8px;
+}
+.menu-item-tag.is-featured{
+  color:var(--accent);
+  border-color:var(--accent);
+}
+.menu-item-desc{
+  font-size:14px;
+  line-height:1.58;
+  color:var(--muted);
+  max-width:56ch;
+}
+.menu-item-desc b{
+  color:var(--ink);
+  font-weight:500;
+}
+
+.menu-item-price{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:400;
+  white-space:nowrap;
+  text-align:right;
+}
+.menu-item-price small{
+  display:block;
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.04em;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+/* the one intentional accent: a featured row gets a warm left stroke */
+.menu-item.is-featured{
+  padding-left:22px;
+  margin-left:-22px;
+  border-left:2px solid var(--accent);
+}
+
+.menu-foot{
+  grid-column:1 / -1;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:24px;
+  margin-top:14px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  flex-wrap:wrap;
+}
+.menu-foot-txt{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.menu-foot-txt em{ font-family:var(--serif); font-style:italic; color:var(--ink); }
+.menu-foot-cta{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:4px;
+  white-space:nowrap;
+}
+
+@media(max-width:640px){
+  .menu-section{ padding:56px 24px 64px; }
+  .menu-wrap{ grid-template-columns:1fr; gap:44px; }
+  .menu-aside{ position:static; }
+  .menu-title{ font-size:40px; }
+  .menu-intro{ max-width:none; }
+  .menu-item{
+    grid-template-columns:1fr;
+    row-gap:12px;
+  }
+  .menu-item-price{ text-align:left; }
+  .menu-item-price small{ display:inline; margin-left:8px; }
+  .menu-foot{ flex-direction:column; }
+}
+</style>
+</head>
+<body>
+<section class="menu-section">
+  <div class="menu-wrap">
+
+    <aside class="menu-aside">
+      <p class="menu-label">Studio Services / 2026</p>
+      <h2 class="menu-title">The<br><em>Bindery</em> menu</h2>
+      <p class="menu-intro">A short list of things we do well, priced plainly. Every engagement starts with a 30-minute read of your work — no charge, no deck.</p>
+      <div class="menu-note">
+        <span class="menu-note-num">§</span>
+        <p class="menu-note-txt">Rates are per project unless marked otherwise. Rush turnarounds add 20%. We take on four new bindings a month.</p>
+      </div>
+    </aside>
+
+    <div class="menu-list">
+
+      <article class="menu-item">
+        <div>
+          <div class="menu-item-head">
+            <h3 class="menu-item-name">Editorial identity</h3>
+            <span class="menu-item-tag">4–6 weeks</span>
+          </div>
+          <p class="menu-item-desc">Wordmark, type system, and a one-page voice guide. For founders who are tired of looking like <b>every other tab open</b> in the browser.</p>
+        </div>
+        <div class="menu-item-price">$8,400<small>flat</small></div>
+      </article>
+
+      <article class="menu-item is-featured">
+        <div>
+          <div class="menu-item-head">
+            <h3 class="menu-item-name">Full imprint</h3>
+            <span class="menu-item-tag is-featured">Most booked</span>
+          </div>
+          <p class="menu-item-desc">Identity, a five-page site, and print collateral — the whole <b>front door</b>. Includes two rounds of revision and a handoff Loom you can actually follow.</p>
+        </div>
+        <div class="menu-item-price">$21,000<small>from</small></div>
+      </article>
+
+      <article class="menu-item">
+        <div>
+          <div class="menu-item-head">
+            <h3 class="menu-item-name">Landing page, set right</h3>
+            <span class="menu-item-tag">10 days</span>
+          </div>
+          <p class="menu-item-desc">One page, hand-coded, no theme underneath it. You bring the copy; we make it <b>read like it was set by a person</b>.</p>
+        </div>
+        <div class="menu-item-price">$3,600<small>fixed</small></div>
+      </article>
+
+      <article class="menu-item">
+        <div>
+          <div class="menu-item-head">
+            <h3 class="menu-item-name">Type audit</h3>
+            <span class="menu-item-tag">Async</span>
+          </div>
+          <p class="menu-item-desc">We pull apart your current site's typography and hand back a marked-up PDF with <b>fixes ranked by effort</b>. Good before a redesign you're not sure you need.</p>
+        </div>
+        <div class="menu-item-price">$950<small>one-off</small></div>
+      </article>
+
+      <article class="menu-item">
+        <div>
+          <div class="menu-item-head">
+            <h3 class="menu-item-name">Retainer, on call</h3>
+            <span class="menu-item-tag">Monthly</span>
+          </div>
+          <p class="menu-item-desc">A standing half-day each week for the small things — a new page, a deck, a fix before launch. <b>Cancel with two weeks' notice.</b></p>
+        </div>
+        <div class="menu-item-price">$2,200<small>/ month</small></div>
+      </article>
+
+      <div class="menu-foot">
+        <p class="menu-foot-txt">Not sure which line to point at? <em>Start with the free read.</em></p>
+        <a href="#book" class="menu-foot-cta">Book a 30-minute read →</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

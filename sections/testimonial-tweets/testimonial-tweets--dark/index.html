@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Tweets — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+/* ===== TESTIMONIAL-TWEETS — DARK/LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --bg-panel:#17171c;
+  --bg-panel-2:#1c1c22;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --muted-dim:#71717A;
+  --amber:#F59E42;
+  --border:#2A2A31;
+  --border-soft:#232329;
+  --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+  --font-serif:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.tw-section{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 64px 104px;
+  position:relative;
+}
+
+/* faint vertical hairline as a design anchor, left-of-center */
+.tw-section::before{
+  content:"";
+  position:absolute;
+  top:0;left:34%;
+  width:1px;height:100%;
+  background:linear-gradient(180deg,transparent,var(--border-soft) 18%,var(--border-soft) 82%,transparent);
+  pointer-events:none;
+}
+
+/* --- header : asymmetric, left-weighted --- */
+.tw-head{
+  max-width:560px;
+  margin-bottom:56px;
+  position:relative;
+}
+.tw-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:22px;
+}
+.tw-eyebrow::before{
+  content:"";
+  width:22px;height:1px;
+  background:var(--amber);
+}
+.tw-title{
+  font-family:var(--font-serif);
+  font-weight:600;
+  font-size:44px;
+  line-height:1.06;
+  letter-spacing:-.01em;
+  color:var(--ink);
+}
+.tw-title em{
+  font-style:italic;
+  color:var(--amber);
+}
+.tw-sub{
+  margin-top:18px;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:440px;
+}
+
+/* --- masonry-ish columns, deliberately uneven --- */
+.tw-grid{
+  column-count:3;
+  column-gap:22px;
+}
+.tw-card{
+  break-inside:avoid;
+  display:inline-block;
+  width:100%;
+  margin-bottom:22px;
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px 22px 18px;
+  transition:border-color .2s ease,transform .2s ease;
+}
+.tw-card:hover{
+  border-color:#3a3a44;
+  transform:translateY(-2px);
+}
+/* the one focal card — amber left edge + slightly richer surface */
+.tw-card.is-featured{
+  background:var(--bg-panel-2);
+  border-color:#3b3128;
+  border-left:2px solid var(--amber);
+  border-radius:16px;
+  padding:26px 24px 20px;
+}
+
+/* card head : avatar + identity + bird mark */
+.tw-cardhead{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.tw-avatar{
+  flex:0 0 auto;
+  width:44px;height:44px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-weight:600;
+  font-size:15px;
+  color:var(--bg);
+  letter-spacing:.02em;
+}
+.av-1{background:linear-gradient(135deg,#F59E42,#c9752a);}
+.av-2{background:linear-gradient(135deg,#5b6472,#3b4250);color:var(--ink);}
+.av-3{background:linear-gradient(135deg,#7a5c8e,#4a3a58);color:var(--ink);}
+.av-4{background:linear-gradient(135deg,#3f7d6e,#2a5449);color:var(--ink);}
+.av-5{background:linear-gradient(135deg,#a8546a,#6e3646);color:var(--ink);}
+.av-6{background:linear-gradient(135deg,#c9a24a,#8a6d28);color:var(--bg);}
+
+.tw-id{min-width:0;flex:1;}
+.tw-name{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:15px;
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.2;
+}
+.tw-verify{
+  width:15px;height:15px;
+  flex:0 0 auto;
+  color:var(--amber);
+}
+.tw-handle{
+  font-size:13px;
+  color:var(--muted-dim);
+  margin-top:2px;
+}
+.tw-bird{
+  width:18px;height:18px;
+  color:var(--muted-dim);
+  flex:0 0 auto;
+  opacity:.7;
+}
+
+/* quote body */
+.tw-quote{
+  margin-top:15px;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--ink);
+  letter-spacing:-.005em;
+}
+.tw-quote .hl{color:var(--amber);}
+.tw-quote .mention{color:#8ab4d8;}
+.is-featured .tw-quote{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:19px;
+  line-height:1.45;
+}
+
+.tw-time{
+  margin-top:14px;
+  font-size:12.5px;
+  color:var(--muted-dim);
+}
+
+/* stats row */
+.tw-stats{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid var(--border-soft);
+}
+.tw-stat{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:13px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.tw-stat svg{width:15px;height:15px;color:var(--muted-dim);}
+.tw-stat.liked{color:var(--amber);}
+.tw-stat.liked svg{color:var(--amber);}
+
+/* footer strip */
+.tw-foot{
+  margin-top:44px;
+  padding-top:26px;
+  border-top:1px solid var(--border-soft);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.tw-foot-stat{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+.tw-foot-num{
+  font-family:var(--font-serif);
+  font-size:30px;
+  font-weight:600;
+  color:var(--ink);
+}
+.tw-foot-lbl{
+  font-size:13.5px;
+  color:var(--muted);
+}
+.tw-foot-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--bg);
+  background:var(--amber);
+  padding:12px 22px;
+  border-radius:9px;
+  text-decoration:none;
+  transition:opacity .2s ease;
+}
+.tw-foot-cta:hover{opacity:.9;}
+.tw-foot-cta svg{width:15px;height:15px;}
+
+@media(max-width:1000px){
+  .tw-grid{column-count:2;}
+}
+@media(max-width:640px){
+  .tw-section{padding:56px 20px 64px;}
+  .tw-section::before{display:none;}
+  .tw-title{font-size:32px;}
+  .tw-head{margin-bottom:36px;}
+  .tw-grid{column-count:1;}
+  .is-featured .tw-quote{font-size:17px;}
+  .tw-foot{flex-direction:column;align-items:flex-start;gap:20px;}
+}
+</style>
+</head>
+<body>
+
+<section class="tw-section" aria-label="Customer testimonials">
+
+  <div class="tw-head">
+    <span class="tw-eyebrow">Straight from the timeline</span>
+    <h2 class="tw-title">What people actually <em>post</em> after switching to Loop.</h2>
+    <p class="tw-sub">No cherry-picked survey blurbs. Real threads from founders, ops leads, and support teams who ripped out their old stack.</p>
+  </div>
+
+  <div class="tw-grid">
+
+    <!-- Featured / focal card -->
+    <article class="tw-card is-featured">
+      <div class="tw-cardhead">
+        <div class="tw-avatar av-1">DK</div>
+        <div class="tw-id">
+          <div class="tw-name">Dana Kessler
+            <svg class="tw-verify" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1l2.4 2.1 3.1-.4 1.1 3 2.9 1.3-.6 3.1 2 2.4-2 2.4.6 3.1-2.9 1.3-1.1 3-3.1-.4L12 23l-2.4-2.1-3.1.4-1.1-3-2.9-1.3.6-3.1-2-2.4 2-2.4-.6-3.1 2.9-1.3 1.1-3 3.1.4L12 1zm-1.2 14.3l5.6-5.6-1.4-1.4-4.2 4.2-1.9-1.9-1.4 1.4 3.3 3.3z"/></svg>
+          </div>
+          <div class="tw-handle">@danabuilds</div>
+        </div>
+        <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4 4 0 00-6.9 3.7A11.4 11.4 0 013.6 4.5a4 4 0 001.2 5.3c-.6 0-1.2-.2-1.8-.5v.1a4 4 0 003.2 3.9c-.6.1-1.2.2-1.8.1a4 4 0 003.7 2.8A8 8 0 012 21.5a11.3 11.3 0 006.1 1.8c7.4 0 11.4-6.1 11.4-11.4v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+      </div>
+      <p class="tw-quote">Cancelled three tools this week. Loop replaced our <span class="hl">ticketing, changelog, and status page</span> in one afternoon — and my team actually stopped asking me where things live. That never happens.</p>
+      <div class="tw-time">2:14 PM · Jul 9, 2026</div>
+      <div class="tw-stats">
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-3.5A8.4 8.4 0 1121 11.5z"/></svg>84</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 12v-1a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 12v1a4 4 0 01-4 4H3"/></svg>612</span>
+        <span class="tw-stat liked"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.2-4.6-9.6-9.2A5.3 5.3 0 0112 5.7a5.3 5.3 0 019.6 6.1C19.2 16.4 12 21 12 21z"/></svg>3,914</span>
+      </div>
+    </article>
+
+    <article class="tw-card">
+      <div class="tw-cardhead">
+        <div class="tw-avatar av-3">MR</div>
+        <div class="tw-id">
+          <div class="tw-name">Marcus Røan</div>
+          <div class="tw-handle">@mroan_io</div>
+        </div>
+        <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4 4 0 00-6.9 3.7A11.4 11.4 0 013.6 4.5a4 4 0 001.2 5.3c-.6 0-1.2-.2-1.8-.5v.1a4 4 0 003.2 3.9c-.6.1-1.2.2-1.8.1a4 4 0 003.7 2.8A8 8 0 012 21.5a11.3 11.3 0 006.1 1.8c7.4 0 11.4-6.1 11.4-11.4v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+      </div>
+      <p class="tw-quote">Onboarded the whole support team in under 20 minutes. First-reply time dropped from 6h to 41m. I keep waiting for the catch.</p>
+      <div class="tw-time">11:02 AM · Jun 30, 2026</div>
+      <div class="tw-stats">
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-3.5A8.4 8.4 0 1121 11.5z"/></svg>19</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 12v-1a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 12v1a4 4 0 01-4 4H3"/></svg>128</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7.2-4.6-9.6-9.2A5.3 5.3 0 0112 5.7a5.3 5.3 0 019.6 6.1C19.2 16.4 12 21 12 21z"/></svg>847</span>
+      </div>
+    </article>
+
+    <article class="tw-card">
+      <div class="tw-cardhead">
+        <div class="tw-avatar av-2">PL</div>
+        <div class="tw-id">
+          <div class="tw-name">Priya Lund
+            <svg class="tw-verify" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1l2.4 2.1 3.1-.4 1.1 3 2.9 1.3-.6 3.1 2 2.4-2 2.4.6 3.1-2.9 1.3-1.1 3-3.1-.4L12 23l-2.4-2.1-3.1.4-1.1-3-2.9-1.3.6-3.1-2-2.4 2-2.4-.6-3.1 2.9-1.3 1.1-3 3.1.4L12 1zm-1.2 14.3l5.6-5.6-1.4-1.4-4.2 4.2-1.9-1.9-1.4 1.4 3.3 3.3z"/></svg>
+          </div>
+          <div class="tw-handle">@priya_ships</div>
+        </div>
+        <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4 4 0 00-6.9 3.7A11.4 11.4 0 013.6 4.5a4 4 0 001.2 5.3c-.6 0-1.2-.2-1.8-.5v.1a4 4 0 003.2 3.9c-.6.1-1.2.2-1.8.1a4 4 0 003.7 2.8A8 8 0 012 21.5a11.3 11.3 0 006.1 1.8c7.4 0 11.4-6.1 11.4-11.4v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+      </div>
+      <p class="tw-quote">honestly <span class="mention">@loop</span> is the first ops tool my engineers didn't try to route around. the API is clean, the docs don't lie. rare combo.</p>
+      <div class="tw-time">8:47 AM · Jul 3, 2026</div>
+      <div class="tw-stats">
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-3.5A8.4 8.4 0 1121 11.5z"/></svg>52</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 12v-1a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 12v1a4 4 0 01-4 4H3"/></svg>301</span>
+        <span class="tw-stat liked"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.2-4.6-9.6-9.2A5.3 5.3 0 0112 5.7a5.3 5.3 0 019.6 6.1C19.2 16.4 12 21 12 21z"/></svg>1,502</span>
+      </div>
+    </article>
+
+    <article class="tw-card">
+      <div class="tw-cardhead">
+        <div class="tw-avatar av-4">TW</div>
+        <div class="tw-id">
+          <div class="tw-name">Theo Werner</div>
+          <div class="tw-handle">@theobuildz</div>
+        </div>
+        <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4 4 0 00-6.9 3.7A11.4 11.4 0 013.6 4.5a4 4 0 001.2 5.3c-.6 0-1.2-.2-1.8-.5v.1a4 4 0 003.2 3.9c-.6.1-1.2.2-1.8.1a4 4 0 003.7 2.8A8 8 0 012 21.5a11.3 11.3 0 006.1 1.8c7.4 0 11.4-6.1 11.4-11.4v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+      </div>
+      <p class="tw-quote">Migrated 4 years of legacy tickets over a weekend. Zero data loss, zero support calls. The importer alone is worth the price.</p>
+      <div class="tw-time">6:20 PM · Jun 24, 2026</div>
+      <div class="tw-stats">
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-3.5A8.4 8.4 0 1121 11.5z"/></svg>9</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 12v-1a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 12v1a4 4 0 01-4 4H3"/></svg>76</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7.2-4.6-9.6-9.2A5.3 5.3 0 0112 5.7a5.3 5.3 0 019.6 6.1C19.2 16.4 12 21 12 21z"/></svg>623</span>
+      </div>
+    </article>
+
+    <article class="tw-card">
+      <div class="tw-cardhead">
+        <div class="tw-avatar av-5">GA</div>
+        <div class="tw-id">
+          <div class="tw-name">Gabriela Amaro
+            <svg class="tw-verify" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1l2.4 2.1 3.1-.4 1.1 3 2.9 1.3-.6 3.1 2 2.4-2 2.4.6 3.1-2.9 1.3-1.1 3-3.1-.4L12 23l-2.4-2.1-3.1.4-1.1-3-2.9-1.3.6-3.1-2-2.4 2-2.4-.6-3.1 2.9-1.3 1.1-3 3.1.4L12 1zm-1.2 14.3l5.6-5.6-1.4-1.4-4.2 4.2-1.9-1.9-1.4 1.4 3.3 3.3z"/></svg>
+          </div>
+          <div class="tw-handle">@gabi_ops</div>
+        </div>
+        <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4 4 0 00-6.9 3.7A11.4 11.4 0 013.6 4.5a4 4 0 001.2 5.3c-.6 0-1.2-.2-1.8-.5v.1a4 4 0 003.2 3.9c-.6.1-1.2.2-1.8.1a4 4 0 003.7 2.8A8 8 0 012 21.5a11.3 11.3 0 006.1 1.8c7.4 0 11.4-6.1 11.4-11.4v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+      </div>
+      <p class="tw-quote">Our board meeting had a slide titled <span class="hl">"why is support suddenly a competitive advantage?"</span> The answer was one line: we switched to Loop in Q1.</p>
+      <div class="tw-time">3:38 PM · Jul 15, 2026</div>
+      <div class="tw-stats">
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-3.5A8.4 8.4 0 1121 11.5z"/></svg>67</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 12v-1a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 12v1a4 4 0 01-4 4H3"/></svg>488</span>
+        <span class="tw-stat liked"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.2-4.6-9.6-9.2A5.3 5.3 0 0112 5.7a5.3 5.3 0 019.6 6.1C19.2 16.4 12 21 12 21z"/></svg>2,207</span>
+      </div>
+    </article>
+
+    <article class="tw-card">
+      <div class="tw-cardhead">
+        <div class="tw-avatar av-6">SN</div>
+        <div class="tw-id">
+          <div class="tw-name">Sam Ndiaye</div>
+          <div class="tw-handle">@samn_dev</div>
+        </div>
+        <svg class="tw-bird" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4 4 0 00-6.9 3.7A11.4 11.4 0 013.6 4.5a4 4 0 001.2 5.3c-.6 0-1.2-.2-1.8-.5v.1a4 4 0 003.2 3.9c-.6.1-1.2.2-1.8.1a4 4 0 003.7 2.8A8 8 0 012 21.5a11.3 11.3 0 006.1 1.8c7.4 0 11.4-6.1 11.4-11.4v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+      </div>
+      <p class="tw-quote">was fully ready to hate this. two weeks in and I've quietly become the person who recommends it in every group chat. sorry not sorry.</p>
+      <div class="tw-time">10:11 PM · Jul 1, 2026</div>
+      <div class="tw-stats">
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-9 8.4L3 21l1.1-3.5A8.4 8.4 0 1121 11.5z"/></svg>31</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 12v-1a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 12v1a4 4 0 01-4 4H3"/></svg>214</span>
+        <span class="tw-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7.2-4.6-9.6-9.2A5.3 5.3 0 0112 5.7a5.3 5.3 0 019.6 6.1C19.2 16.4 12 21 12 21z"/></svg>1,088</span>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="tw-foot">
+    <div class="tw-foot-stat">
+      <span class="tw-foot-num">2,400+</span>
+      <span class="tw-foot-lbl">teams posting about Loop —<br>and not because we asked them to.</span>
+    </div>
+    <a class="tw-foot-cta" href="#">
+      See the full thread
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
+</section>
+
+</body>
+</html>

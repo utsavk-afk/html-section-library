@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!-- ===== client-logo-grid — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Logo Grid — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --ink:#141414;
+  --muted:#737373;
+  --hair:#e6e4e0;
+  --hair-strong:#d8d5d0;
+  --paper:#ffffff;
+  --accent:#C0492B;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --logo:#8a8783;
+  --maxw:1200px;
+}
+
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+
+.logos{
+  width:100%;
+  padding:104px 40px 112px;
+}
+.logos__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* ---- header : asymmetric, left-aligned, one focal accent ---- */
+.logos__head{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:44px;
+  border-bottom:1px solid var(--hair-strong);
+}
+.logos__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+.logos__eyebrow::before{
+  content:"";
+  width:26px;
+  height:2px;
+  background:var(--accent);
+}
+.logos__title{
+  font-size:34px;
+  line-height:1.16;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  max-width:16ch;
+}
+.logos__title em{
+  font-style:normal;
+  color:var(--accent);
+}
+.logos__note{
+  font-size:15px;
+  line-height:1.65;
+  color:var(--muted);
+  max-width:34ch;
+  padding-bottom:4px;
+}
+.logos__note b{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* ---- ruled grid : even, muted, hairline dividers ---- */
+.logos__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-left:1px solid var(--hair);
+  border-top:1px solid var(--hair);
+}
+.logo{
+  border-right:1px solid var(--hair);
+  border-bottom:1px solid var(--hair);
+  min-height:126px;
+  display:flex;
+  align-items:center;
+  padding:0 30px;
+  color:var(--logo);
+  transition:color .25s ease, background .25s ease;
+}
+.logo:hover{
+  color:var(--ink);
+  background:#fafafa;
+}
+.logo svg{display:block;height:auto;width:auto;max-width:100%;}
+.logo svg [fill]{transition:fill .25s ease;}
+
+/* eighth cell : quiet call-to-action, breaks the uniform grid */
+.logo--cta{
+  color:var(--ink);
+  padding:0 30px;
+}
+.logo--cta a{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  letter-spacing:-0.01em;
+}
+.logo--cta a .arw{
+  color:var(--accent);
+  transition:transform .25s ease;
+  display:inline-block;
+}
+.logo--cta a:hover .arw{transform:translateX(4px);}
+
+/* ---- footer strip ---- */
+.logos__foot{
+  margin-top:26px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:13px;
+  color:var(--muted);
+}
+.logos__foot .dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--accent);
+  flex:0 0 auto;
+}
+
+@media(max-width:900px){
+  .logos__grid{grid-template-columns:repeat(2,1fr);}
+  .logos__head{grid-template-columns:1fr;gap:20px;align-items:start;}
+  .logos__title{font-size:28px;}
+}
+@media(max-width:640px){
+  .logos{padding:64px 20px 72px;}
+  .logos__title{font-size:24px;}
+  .logo{min-height:104px;padding:0 22px;}
+  .logos__foot{align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<section class="logos" aria-labelledby="logos-title">
+  <div class="logos__inner">
+
+    <header class="logos__head">
+      <div>
+        <span class="logos__eyebrow">Trusted partners</span>
+        <h2 class="logos__title" id="logos-title">The teams shipping with us — <em>from seed to Series C</em>.</h2>
+      </div>
+      <p class="logos__note">Eight of the <b>340+</b> product, fintech, and infrastructure teams running on our platform every day.</p>
+    </header>
+
+    <div class="logos__grid">
+
+      <!-- 1 · Northbeam (finance) -->
+      <div class="logo" role="img" aria-label="Northbeam">
+        <svg width="128" height="24" viewBox="0 0 128 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20V4l7 10V4h1.6v16h-1.6L4 6.4V20H4z" fill="currentColor"/>
+          <path d="M18 12a5.6 5.6 0 1 1 11.2 0 5.6 5.6 0 0 1-11.2 0zm1.6 0a4 4 0 1 0 8 0 4 4 0 0 0-8 0z" fill="currentColor"/>
+          <text x="34" y="17" font-family="Inter,sans-serif" font-size="15" font-weight="700" letter-spacing="-0.5" fill="currentColor">Northbeam</text>
+        </svg>
+      </div>
+
+      <!-- 2 · Cartwright & Vale (serif wordmark) -->
+      <div class="logo" role="img" aria-label="Cartwright and Vale">
+        <svg width="150" height="26" viewBox="0 0 150 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="18" font-family="Georgia,'Times New Roman',serif" font-size="18" font-style="italic" fill="currentColor">Cartwright</text>
+          <text x="98" y="18" font-family="Georgia,serif" font-size="18" fill="var(--accent)">&amp;</text>
+          <text x="112" y="18" font-family="Georgia,'Times New Roman',serif" font-size="18" font-style="italic" fill="currentColor">Vale</text>
+        </svg>
+      </div>
+
+      <!-- 3 · HELIX (geometric mark + caps) -->
+      <div class="logo" role="img" aria-label="Helix Robotics">
+        <svg width="124" height="26" viewBox="0 0 124 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 3c8 5 8 12 0 17M17 3c-8 5-8 12 0 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M5 8.5h10M5 13h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <text x="28" y="17" font-family="Inter,sans-serif" font-size="15" font-weight="700" letter-spacing="2.5" fill="currentColor">HELIX</text>
+        </svg>
+      </div>
+
+      <!-- 4 · Paperkite (lowercase + kite mark) -->
+      <div class="logo" role="img" aria-label="Paperkite">
+        <svg width="132" height="26" viewBox="0 0 132 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 3 17 10 10 17 3 10z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M10 17l-2.5 5" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round"/>
+          <text x="26" y="17" font-family="Inter,sans-serif" font-size="15" font-weight="500" letter-spacing="-0.3" fill="currentColor">paperkite</text>
+        </svg>
+      </div>
+
+      <!-- 5 · MERIDIAN LABS (stacked) -->
+      <div class="logo" role="img" aria-label="Meridian Labs">
+        <svg width="120" height="34" viewBox="0 0 120 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="15" font-family="Inter,sans-serif" font-size="15" font-weight="700" letter-spacing="1" fill="currentColor">MERIDIAN</text>
+          <text x="1" y="29" font-family="Inter,sans-serif" font-size="10" font-weight="500" letter-spacing="4.5" fill="var(--muted)">L A B S</text>
+        </svg>
+      </div>
+
+      <!-- 6 · Övеrton (dotted / bullet accent) -->
+      <div class="logo" role="img" aria-label="Overton Capital">
+        <svg width="140" height="24" viewBox="0 0 140 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="6" cy="12" r="1.8" fill="var(--accent)"/>
+          <text x="18" y="17" font-family="Inter,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.2" fill="currentColor">Overton</text>
+          <text x="92" y="17" font-family="Inter,sans-serif" font-size="10.5" font-weight="500" letter-spacing="2" fill="var(--muted)">CAP</text>
+        </svg>
+      </div>
+
+      <!-- 7 · quanta/ (slash mark) -->
+      <div class="logo" role="img" aria-label="Quanta">
+        <svg width="118" height="24" viewBox="0 0 118 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="18" font-family="Inter,sans-serif" font-size="18" font-weight="700" letter-spacing="-1" fill="currentColor">quanta</text>
+          <path d="M74 20L82 4" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- 8 · CTA cell (breaks uniformity) -->
+      <div class="logo logo--cta">
+        <a href="#customers">See all 340 <span class="arw">&rarr;</span></a>
+      </div>
+
+    </div>
+
+    <p class="logos__foot"><span class="dot"></span> 99.98% uptime across every account since 2021 — no logo here is a design placeholder.</p>
+
+  </div>
+</section>
+
+</body>
+</html>

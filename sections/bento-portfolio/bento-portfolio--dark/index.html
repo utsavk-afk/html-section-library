@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<!-- ===== BENTO-PORTFOLIO — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selected Work — Bento Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --panel-2:#1c1c22;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --faint:#6b6b74;
+  --amber:#F59E42;
+  --line:rgba(244,244,245,0.09);
+  --line-strong:rgba(244,244,245,0.16);
+  --radius-s:10px;
+  --radius-m:16px;
+  --radius-l:22px;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.portfolio{
+  max-width:1440px;
+  margin:0 auto;
+  padding:88px 56px 96px;
+}
+
+/* ---- header row: asymmetric, left-weighted ---- */
+.pf-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+  margin-bottom:44px;
+}
+.pf-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+.pf-eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--amber);
+}
+.pf-title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(30px,3.4vw,50px);
+  line-height:1.04;
+  letter-spacing:-0.01em;
+  max-width:15ch;
+}
+.pf-title em{
+  font-style:italic;
+  color:var(--amber);
+}
+.pf-meta{
+  text-align:right;
+  color:var(--muted);
+  font-size:14px;
+  max-width:280px;
+}
+.pf-meta strong{
+  color:var(--ink);
+  font-weight:600;
+  display:block;
+  font-size:26px;
+  font-family:var(--serif);
+}
+
+/* ---- bento grid ---- */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:172px;
+  gap:16px;
+}
+
+.tile{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:var(--radius-m);
+  background:var(--panel);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .35s ease, transform .35s ease;
+}
+.tile:hover{
+  border-color:var(--line-strong);
+  transform:translateY(-3px);
+}
+.tile:hover .thumb::after{opacity:1;}
+
+/* sizes — deliberate hierarchy */
+.t-hero{grid-column:span 2;grid-row:span 2;border-radius:var(--radius-l);}
+.t-tall{grid-column:span 1;grid-row:span 2;}
+.t-wide{grid-column:span 2;grid-row:span 1;}
+.t-reg {grid-column:span 1;grid-row:span 1;}
+
+/* thumb (CSS-drawn) */
+.thumb{
+  position:relative;
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+}
+.thumb::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(18,18,22,.55));
+  opacity:.6;
+  transition:opacity .35s ease;
+}
+
+/* caption block */
+.cap{
+  position:relative;
+  z-index:2;
+  padding:16px 18px 17px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  border-top:1px solid var(--line);
+  background:var(--panel);
+}
+.t-hero .cap,.t-wide .cap{padding:20px 22px 21px;}
+.cap-txt h3{
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  margin-bottom:5px;
+}
+.t-hero .cap-txt h3{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:24px;
+}
+.t-wide .cap-txt h3{font-size:18px;}
+.cap-txt p{
+  font-size:12.5px;
+  color:var(--muted);
+}
+.tags{
+  display:flex;
+  gap:6px;
+  flex-shrink:0;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  max-width:52%;
+}
+.tag{
+  font-size:10.5px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--line-strong);
+  border-radius:100px;
+  padding:3px 9px;
+  white-space:nowrap;
+}
+.tag.accent{
+  color:var(--bg);
+  background:var(--amber);
+  border-color:var(--amber);
+  font-weight:600;
+}
+
+/* index number badge */
+.idx{
+  position:absolute;
+  top:14px;left:16px;
+  z-index:2;
+  font-size:11px;
+  letter-spacing:0.12em;
+  color:var(--ink);
+  opacity:.7;
+  font-variant-numeric:tabular-nums;
+}
+.year{
+  position:absolute;
+  top:14px;right:16px;
+  z-index:2;
+  font-size:11px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ============ CSS-DRAWN THUMBNAILS ============ */
+
+/* Hero — layered dashboard/aurora lines */
+.th-hero{
+  background:
+    radial-gradient(120% 90% at 78% 18%, rgba(245,158,66,.20), transparent 55%),
+    linear-gradient(160deg,#1d1a1f,#141319);
+}
+.th-hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg,transparent 0 46px,rgba(244,244,245,.045) 46px 47px),
+    repeating-linear-gradient(0deg,transparent 0 46px,rgba(244,244,245,.045) 46px 47px);
+  mask:linear-gradient(200deg,#000 20%,transparent 85%);
+}
+.th-hero .curve{
+  position:absolute;left:0;right:0;bottom:34%;
+  height:44%;
+  background:
+    radial-gradient(120% 140% at 20% 120%, rgba(245,158,66,.35),transparent 60%);
+  clip-path:polygon(0 62%,14% 48%,30% 55%,46% 30%,62% 42%,80% 16%,100% 28%,100% 100%,0 100%);
+  opacity:.9;
+}
+.th-hero .curve.b{
+  bottom:34%;
+  background:linear-gradient(90deg,rgba(244,244,245,.5),rgba(244,244,245,.08));
+  clip-path:polygon(0 60%,14% 46%,30% 53%,46% 28%,62% 40%,80% 14%,100% 26%,100% 27%,80% 15%,62% 41%,46% 29%,30% 54%,14% 47%,0 61%);
+  opacity:.6;
+}
+
+/* Tall — vertical stacked spectrum bars */
+.th-bars{
+  background:linear-gradient(180deg,#181820,#141319);
+  display:flex;
+  align-items:flex-end;
+  gap:9px;
+  padding:26px 22px;
+}
+.th-bars span{
+  flex:1;
+  border-radius:5px 5px 2px 2px;
+  background:rgba(244,244,245,.14);
+}
+.th-bars span:nth-child(1){height:34%;}
+.th-bars span:nth-child(2){height:66%;}
+.th-bars span:nth-child(3){height:48%;background:var(--amber);}
+.th-bars span:nth-child(4){height:88%;}
+.th-bars span:nth-child(5){height:58%;}
+
+/* Wide — horizon type-spec rulers */
+.th-rulers{
+  background:linear-gradient(120deg,#1a1a21,#141318);
+  padding:0;
+}
+.th-rulers::before{
+  content:"Aa";
+  position:absolute;
+  left:24px;top:50%;transform:translateY(-50%);
+  font-family:var(--serif);
+  font-size:64px;
+  color:var(--ink);
+  opacity:.9;
+  line-height:1;
+}
+.th-rulers::after{
+  content:"";position:absolute;
+  right:0;top:0;bottom:0;left:40%;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 15px,rgba(244,244,245,.08) 15px 16px);
+  mask:linear-gradient(90deg,transparent,#000 40%);
+}
+
+/* Reg — concentric orbit */
+.th-orbit{
+  background:radial-gradient(90% 90% at 50% 50%,#1c1b22,#141318);
+  display:grid;place-items:center;
+}
+.th-orbit::before{
+  content:"";
+  width:88px;height:88px;border-radius:50%;
+  border:1px solid var(--line-strong);
+  box-shadow:0 0 0 18px rgba(244,244,245,.03);
+}
+.th-orbit::after{
+  content:"";
+  position:absolute;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--amber);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) translate(44px,0);
+}
+
+/* Reg — grid pixels / map */
+.th-grid{
+  background:#141318;
+  background-image:
+    linear-gradient(rgba(244,244,245,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(244,244,245,.06) 1px,transparent 1px);
+  background-size:22px 22px;
+  background-position:-1px -1px;
+}
+.th-grid::before{
+  content:"";position:absolute;
+  left:38%;top:34%;
+  width:22px;height:22px;background:var(--amber);
+  box-shadow:
+    22px 0 0 rgba(244,244,245,.5),
+    0 22px 0 rgba(244,244,245,.22),
+    -22px 22px 0 var(--amber),
+    22px 44px 0 rgba(244,244,245,.35);
+}
+
+/* Reg — diagonal stripe / motion */
+.th-stripe{
+  background:
+    repeating-linear-gradient(-52deg,#16161c 0 16px,#1b1b22 16px 32px);
+}
+.th-stripe::before{
+  content:"";position:absolute;
+  left:20px;bottom:22px;
+  width:46%;height:4px;border-radius:4px;
+  background:var(--amber);
+  box-shadow:0 0 0 0 var(--amber);
+}
+.th-stripe::after{
+  content:"";position:absolute;
+  left:20px;bottom:36px;
+  width:66%;height:4px;border-radius:4px;
+  background:rgba(244,244,245,.28);
+}
+
+/* footer link row */
+.pf-foot{
+  margin-top:38px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+}
+.pf-foot p{color:var(--muted);font-size:14px;}
+.pf-foot a{
+  color:var(--ink);
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid var(--line-strong);
+  border-radius:100px;
+  padding:11px 20px;
+  transition:border-color .3s ease,gap .3s ease;
+}
+.pf-foot a:hover{border-color:var(--amber);gap:14px;}
+.pf-foot a .arw{color:var(--amber);}
+
+/* ---- responsive ---- */
+@media(max-width:960px){
+  .portfolio{padding:64px 32px 72px;}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:168px;}
+  .t-hero{grid-column:span 2;grid-row:span 2;}
+  .t-wide{grid-column:span 2;}
+  .t-tall{grid-column:span 1;grid-row:span 2;}
+}
+@media(max-width:640px){
+  .portfolio{padding:48px 20px 56px;}
+  .pf-head{margin-bottom:32px;}
+  .pf-meta{text-align:left;}
+  .bento{grid-template-columns:1fr;grid-auto-rows:158px;gap:14px;}
+  .t-hero,.t-tall,.t-wide,.t-reg{grid-column:span 1;grid-row:span 1;}
+  .t-hero{grid-row:span 2;}
+  .tags{max-width:60%;}
+}
+</style>
+</head>
+<body>
+<section class="portfolio">
+  <div class="pf-head">
+    <div>
+      <span class="pf-eyebrow"><span class="dot"></span>Selected work · 2021—2025</span>
+      <h1 class="pf-title">Interfaces, brand systems &amp; the odd <em>experiment.</em></h1>
+    </div>
+    <div class="pf-meta">
+      <strong>27</strong>
+      shipped products across fintech, climate and developer tools — a slim edit below.
+    </div>
+  </div>
+
+  <div class="bento">
+
+    <!-- HERO -->
+    <a href="#" class="tile t-hero">
+      <div class="thumb th-hero">
+        <span class="idx">01 / featured</span>
+        <span class="year">2025</span>
+        <div class="curve"></div>
+        <div class="curve b"></div>
+      </div>
+      <div class="cap">
+        <div class="cap-txt">
+          <h3>Meridian — energy trading desk</h3>
+          <p>Real-time analytics platform rebuilt from a 40-screen legacy terminal.</p>
+        </div>
+        <div class="tags">
+          <span class="tag accent">Case study</span>
+          <span class="tag">Product design</span>
+          <span class="tag">Data-viz</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- TALL -->
+    <a href="#" class="tile t-tall">
+      <div class="thumb th-bars">
+        <span class="idx">02</span>
+        <span class="year">2024</span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="cap">
+        <div class="cap-txt">
+          <h3>Cadence audio</h3>
+          <p>Brand + player UI</p>
+        </div>
+        <div class="tags"><span class="tag">Identity</span></div>
+      </div>
+    </a>
+
+    <!-- REG orbit -->
+    <a href="#" class="tile t-reg">
+      <div class="thumb th-orbit">
+        <span class="idx">03</span>
+        <span class="year">2024</span>
+      </div>
+      <div class="cap">
+        <div class="cap-txt">
+          <h3>Halo scheduling</h3>
+          <p>Calendar SDK</p>
+        </div>
+        <div class="tags"><span class="tag">Dev tool</span></div>
+      </div>
+    </a>
+
+    <!-- REG grid -->
+    <a href="#" class="tile t-reg">
+      <div class="thumb th-grid">
+        <span class="idx">04</span>
+        <span class="year">2023</span>
+      </div>
+      <div class="cap">
+        <div class="cap-txt">
+          <h3>Terra atlas</h3>
+          <p>Emissions map</p>
+        </div>
+        <div class="tags"><span class="tag">Climate</span></div>
+      </div>
+    </a>
+
+    <!-- WIDE -->
+    <a href="#" class="tile t-wide">
+      <div class="thumb th-rulers">
+        <span class="idx">05</span>
+        <span class="year">2023</span>
+      </div>
+      <div class="cap">
+        <div class="cap-txt">
+          <h3>Fraunces in the wild — a type specimen microsite</h3>
+          <p>Editorial system + variable-font playground for a boutique foundry.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Typography</span>
+          <span class="tag">Web</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- REG stripe -->
+    <a href="#" class="tile t-reg">
+      <div class="thumb th-stripe">
+        <span class="idx">06</span>
+        <span class="year">2022</span>
+      </div>
+      <div class="cap">
+        <div class="cap-txt">
+          <h3>Relay ships</h3>
+          <p>Motion study</p>
+        </div>
+        <div class="tags"><span class="tag">Motion</span></div>
+      </div>
+    </a>
+
+    <!-- REG orbit variant -->
+    <a href="#" class="tile t-reg">
+      <div class="thumb th-grid" style="background-size:18px 18px;">
+        <span class="idx">07</span>
+        <span class="year">2021</span>
+      </div>
+      <div class="cap">
+        <div class="cap-txt">
+          <h3>Beacon wallet</h3>
+          <p>iOS fintech</p>
+        </div>
+        <div class="tags"><span class="tag">Mobile</span></div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="pf-foot">
+    <p>Archive of 27 projects, updated quarterly. Currently booking Q1 2026.</p>
+    <a href="#">View the full archive <span class="arw">→</span></a>
+  </div>
+</section>
+</body>
+</html>

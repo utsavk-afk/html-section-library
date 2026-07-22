@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!-- ===== PRICING — MINIMAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#141414;
+  --muted:#737373;
+  --line:#e6e4e0;
+  --accent:#C0492B;
+  --serif:'Inter',system-ui,sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+.pr-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:104px 40px 112px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.pr-wrap{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* header — left aligned, asymmetric with a note on the right */
+.pr-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:48px;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:56px;
+}
+.pr-eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.pr-title{
+  font-size:40px;
+  line-height:1.08;
+  font-weight:600;
+  letter-spacing:-.02em;
+  max-width:15ch;
+}
+.pr-note{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:30ch;
+  flex-shrink:0;
+  text-align:right;
+}
+.pr-note strong{color:var(--ink);font-weight:600;}
+
+/* cards */
+.pr-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0;
+  border:1px solid var(--line);
+  border-radius:4px;
+}
+.pr-card{
+  padding:40px 36px 44px;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+}
+.pr-card:last-child{border-right:none;}
+
+/* dominant middle tier — accent border, slight lift, NO gradient */
+.pr-card--featured{
+  border:1.5px solid var(--accent);
+  border-radius:4px;
+  margin:-18px 0;
+  padding-top:52px;
+  padding-bottom:56px;
+  box-shadow:0 14px 40px -20px rgba(192,73,43,.32);
+  background:var(--bg);
+  z-index:2;
+  position:relative;
+}
+
+.pr-tag{
+  display:inline-block;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+.pr-card--featured .pr-tag{
+  color:var(--accent);
+}
+.pr-badge{
+  position:absolute;
+  top:-11px;
+  left:36px;
+  background:var(--accent);
+  color:#fff;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:5px 12px;
+  border-radius:2px;
+}
+
+.pr-price{
+  display:flex;
+  align-items:baseline;
+  gap:6px;
+  margin-bottom:8px;
+}
+.pr-amount{
+  font-size:46px;
+  font-weight:700;
+  letter-spacing:-.03em;
+  line-height:1;
+}
+.pr-per{
+  font-size:14px;
+  color:var(--muted);
+  font-weight:500;
+}
+.pr-sub{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:30px;
+  min-height:40px;
+}
+
+.pr-cta{
+  display:inline-block;
+  width:100%;
+  text-align:center;
+  font-size:14px;
+  font-weight:600;
+  padding:13px 20px;
+  border-radius:3px;
+  text-decoration:none;
+  border:1px solid var(--ink);
+  color:var(--ink);
+  background:transparent;
+  transition:background .16s ease,color .16s ease,border-color .16s ease;
+  margin-bottom:34px;
+}
+.pr-cta:hover{background:var(--ink);color:#fff;}
+.pr-cta--solid{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+.pr-cta--solid:hover{background:#a53d22;border-color:#a53d22;color:#fff;}
+
+.pr-feat-label{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.pr-list{list-style:none;}
+.pr-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  font-size:14px;
+  line-height:1.5;
+  color:var(--ink);
+  padding:9px 0;
+}
+.pr-list li .pr-check{
+  flex-shrink:0;
+  margin-top:2px;
+  color:var(--accent);
+}
+.pr-list li.pr-off{color:var(--muted);}
+.pr-list li.pr-off .pr-check{color:var(--line);}
+
+@media(max-width:640px){
+  .pr-section{padding:64px 22px 72px;}
+  .pr-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:24px;
+    padding-bottom:38px;
+    margin-bottom:38px;
+  }
+  .pr-title{font-size:30px;}
+  .pr-note{text-align:left;}
+  .pr-grid{
+    grid-template-columns:1fr;
+    border:none;
+  }
+  .pr-card{
+    border:1px solid var(--line);
+    border-radius:4px;
+    margin:0 0 16px;
+    padding:32px 26px 36px;
+  }
+  .pr-card--featured{
+    margin:0 0 16px;
+    padding:40px 26px 40px;
+  }
+  .pr-badge{left:26px;}
+}
+</style>
+</head>
+<body>
+<section class="pr-section">
+  <div class="pr-wrap">
+
+    <div class="pr-head">
+      <div>
+        <div class="pr-eyebrow">Pricing</div>
+        <h2 class="pr-title">Ship the library. Pay for the parts you actually run.</h2>
+      </div>
+      <p class="pr-note">Every plan includes the full copy-paste catalog. You upgrade only when you need <strong>version history</strong> and team seats.</p>
+    </div>
+
+    <div class="pr-grid">
+
+      <!-- Tier 1 -->
+      <div class="pr-card">
+        <span class="pr-tag">Solo</span>
+        <div class="pr-price">
+          <span class="pr-amount">$0</span>
+          <span class="pr-per">forever</span>
+        </div>
+        <p class="pr-sub">For one person pasting sections into a single project.</p>
+        <a href="#" class="pr-cta">Start free</a>
+        <div class="pr-feat-label">What's included</div>
+        <ul class="pr-list">
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>All 60+ section snippets</li>
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Single-file HTML, no build step</li>
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>MIT license for one repo</li>
+          <li class="pr-off"><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l10 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Component version history</li>
+          <li class="pr-off"><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l10 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Team seats &amp; shared tokens</li>
+        </ul>
+      </div>
+
+      <!-- Tier 2 — featured -->
+      <div class="pr-card pr-card--featured">
+        <span class="pr-badge">Most picked</span>
+        <span class="pr-tag">Studio</span>
+        <div class="pr-price">
+          <span class="pr-amount">$18</span>
+          <span class="pr-per">/ month</span>
+        </div>
+        <p class="pr-sub">For freelancers shipping client sites on a monthly cadence.</p>
+        <a href="#" class="pr-cta pr-cta--solid">Start 14-day trial</a>
+        <div class="pr-feat-label">Everything in Solo, plus</div>
+        <ul class="pr-list">
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited client repos</li>
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Component version history</li>
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Swap the token block per project</li>
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>New sections every Thursday</li>
+          <li class="pr-off"><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l10 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Team seats &amp; shared tokens</li>
+        </ul>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="pr-card">
+        <span class="pr-tag">Team</span>
+        <div class="pr-price">
+          <span class="pr-amount">$64</span>
+          <span class="pr-per">/ month</span>
+        </div>
+        <p class="pr-sub">For agencies keeping five designers on one design language.</p>
+        <a href="#" class="pr-cta">Talk to us</a>
+        <div class="pr-feat-label">Everything in Studio, plus</div>
+        <ul class="pr-list">
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 5 team seats</li>
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Shared token presets across the team</li>
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Private section requests</li>
+          <li><svg class="pr-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority answers within one day</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

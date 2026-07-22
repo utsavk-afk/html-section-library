@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!-- ===== FEATURE-CAROUSEL — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Carousel — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+
+  :root{
+    --paper:#FAFAF7;
+    --white:#FFFFFF;
+    --ink:#111111;
+    --acid:#FFE500;
+    --red:#FF3B21;
+    --border:3px solid var(--ink);
+    --shadow:6px 6px 0 var(--ink);
+    --shadow-sm:4px 4px 0 var(--ink);
+    --grotesk:'Archivo',system-ui,sans-serif;
+    --mono:'Space Mono',ui-monospace,monospace;
+  }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--grotesk);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .fc{
+    width:100%;
+    max-width:1440px;
+    margin:0 auto;
+    padding:56px 48px 64px;
+    /* faint visible grid */
+    background-image:
+      linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+    background-size:48px 48px;
+  }
+
+  /* ---- header row (asymmetric) ---- */
+  .fc__head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:24px;
+    border-bottom:var(--border);
+    padding-bottom:20px;
+    margin-bottom:28px;
+    flex-wrap:wrap;
+  }
+  .fc__kicker{
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    background:var(--ink);
+    color:var(--acid);
+    padding:6px 10px;
+    display:inline-block;
+  }
+  .fc__title{
+    font-size:clamp(30px,4.4vw,58px);
+    font-weight:900;
+    line-height:.92;
+    letter-spacing:-.02em;
+    text-transform:uppercase;
+    margin-top:14px;
+    max-width:14ch;
+  }
+  .fc__title em{ color:var(--red); font-style:normal; }
+  .fc__meta{
+    font-family:var(--mono);
+    font-size:13px;
+    line-height:1.5;
+    text-align:right;
+    border:var(--border);
+    padding:10px 14px;
+    background:var(--white);
+    box-shadow:var(--shadow-sm);
+    white-space:nowrap;
+  }
+  .fc__meta b{ font-size:22px; display:block; }
+
+  /* ---- tabs ---- */
+  .fc__tabs{
+    display:flex;
+    gap:0;
+    flex-wrap:wrap;
+    margin-bottom:-3px;
+    position:relative;
+    z-index:2;
+  }
+  .fc input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
+  .fc__tab{
+    font-family:var(--grotesk);
+    font-weight:800;
+    font-size:14px;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    background:var(--white);
+    color:var(--ink);
+    border:var(--border);
+    border-right-width:0;
+    padding:14px 20px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    user-select:none;
+    transition:background .05s linear;
+  }
+  .fc__tab:last-of-type{ border-right-width:3px; }
+  .fc__tab .num{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    background:var(--paper);
+    border:2px solid var(--ink);
+    padding:1px 5px;
+  }
+  .fc__tab:hover{ background:var(--acid); }
+
+  /* active states via :checked + label selectors */
+  #fc-t1:checked ~ .fc__tabs label[for="fc-t1"],
+  #fc-t2:checked ~ .fc__tabs label[for="fc-t2"],
+  #fc-t3:checked ~ .fc__tabs label[for="fc-t3"],
+  #fc-t4:checked ~ .fc__tabs label[for="fc-t4"]{
+    background:var(--acid);
+    box-shadow:0 -4px 0 var(--red) inset;
+  }
+  #fc-t1:checked ~ .fc__tabs label[for="fc-t1"] .num,
+  #fc-t2:checked ~ .fc__tabs label[for="fc-t2"] .num,
+  #fc-t3:checked ~ .fc__tabs label[for="fc-t3"] .num,
+  #fc-t4:checked ~ .fc__tabs label[for="fc-t4"] .num{
+    background:var(--ink); color:var(--acid);
+  }
+
+  /* ---- panel ---- */
+  .fc__stage{
+    border:var(--border);
+    background:var(--white);
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .fc__panel{ display:none; }
+  #fc-t1:checked ~ .fc__stage #fc-p1,
+  #fc-t2:checked ~ .fc__stage #fc-p2,
+  #fc-t3:checked ~ .fc__stage #fc-p3,
+  #fc-t4:checked ~ .fc__stage #fc-p4{ display:grid; }
+
+  .fc__panel{
+    grid-template-columns:1.05fr .95fr;
+    min-height:360px;
+  }
+  .fc__copy{
+    padding:36px 38px;
+    border-right:var(--border);
+    display:flex;
+    flex-direction:column;
+  }
+  .fc__tagpill{
+    align-self:flex-start;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    border:2px solid var(--ink);
+    padding:4px 8px;
+    margin-bottom:18px;
+  }
+  .fc__ptitle{
+    font-size:clamp(24px,2.6vw,36px);
+    font-weight:900;
+    line-height:.98;
+    letter-spacing:-.01em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    max-width:16ch;
+  }
+  .fc__ptext{
+    font-family:var(--mono);
+    font-size:14px;
+    line-height:1.65;
+    max-width:44ch;
+    margin-bottom:22px;
+  }
+  .fc__list{ list-style:none; margin:0 0 26px; display:grid; gap:8px; }
+  .fc__list li{
+    font-weight:700;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    padding-left:26px;
+    position:relative;
+  }
+  .fc__list li::before{
+    content:"→";
+    position:absolute; left:0; top:-1px;
+    color:var(--red);
+    font-weight:900;
+  }
+  .fc__cta{
+    margin-top:auto;
+    align-self:flex-start;
+    font-family:var(--grotesk);
+    font-weight:800;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    background:var(--red);
+    color:var(--white);
+    border:var(--border);
+    box-shadow:var(--shadow-sm);
+    padding:13px 22px;
+    text-decoration:none;
+    cursor:pointer;
+    transition:transform .05s linear,box-shadow .05s linear;
+  }
+  .fc__cta:active{ transform:translate(4px,4px); box-shadow:0 0 0 var(--ink); }
+
+  /* ---- visual pane (CSS shapes / SVG per panel) ---- */
+  .fc__viz{
+    position:relative;
+    background:var(--paper);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-image:
+      linear-gradient(to right, rgba(17,17,17,.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(17,17,17,.06) 1px, transparent 1px);
+    background-size:32px 32px;
+  }
+  .fc__viz .stamp{
+    position:absolute; top:14px; right:14px;
+    font-family:var(--mono); font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em;
+    background:var(--ink); color:var(--acid);
+    padding:4px 8px;
+  }
+
+  /* VIZ 1 — bar terminal */
+  .viz-bars{ display:flex; align-items:flex-end; gap:12px; height:190px; padding:0 8px; }
+  .viz-bars span{
+    width:34px; border:var(--border); box-shadow:var(--shadow-sm);
+    background:var(--white);
+  }
+  .viz-bars span:nth-child(1){ height:56%; }
+  .viz-bars span:nth-child(2){ height:82%; background:var(--acid); }
+  .viz-bars span:nth-child(3){ height:38%; }
+  .viz-bars span:nth-child(4){ height:100%; background:var(--red); }
+  .viz-bars span:nth-child(5){ height:64%; }
+
+  /* VIZ 2 — pipeline nodes */
+  .viz-pipe{ display:flex; align-items:center; gap:0; }
+  .viz-pipe .node{
+    width:64px; height:64px; border:var(--border);
+    background:var(--white); box-shadow:var(--shadow-sm);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-weight:700; font-size:20px;
+  }
+  .viz-pipe .node.on{ background:var(--acid); }
+  .viz-pipe .wire{ width:26px; height:3px; background:var(--ink); }
+  .viz-pipe .wire.hot{ background:var(--red); }
+
+  /* VIZ 3 — checklist card */
+  .viz-card{
+    width:230px; border:var(--border); background:var(--white);
+    box-shadow:var(--shadow); padding:16px;
+  }
+  .viz-card .row{
+    display:flex; align-items:center; gap:10px;
+    border:2px solid var(--ink); padding:8px 10px; margin-bottom:8px;
+    font-family:var(--mono); font-size:12px; font-weight:700;
+    text-transform:uppercase;
+  }
+  .viz-card .row:last-child{ margin-bottom:0; }
+  .viz-card .box{ width:18px; height:18px; border:2px solid var(--ink); flex:none; }
+  .viz-card .row.done{ background:var(--acid); }
+  .viz-card .row.done .box{ background:var(--ink); }
+  .viz-card .row.warn .box{ background:var(--red); }
+
+  /* VIZ 4 — orbit diff */
+  .viz-diff{ position:relative; width:220px; height:200px; }
+  .viz-diff .blk{
+    position:absolute; border:var(--border); background:var(--white);
+    box-shadow:var(--shadow-sm); font-family:var(--mono);
+    font-weight:700; font-size:13px; padding:8px 10px; text-transform:uppercase;
+  }
+  .viz-diff .a{ top:8px; left:0; background:var(--acid); }
+  .viz-diff .b{ top:70px; left:70px; }
+  .viz-diff .c{ top:132px; left:24px; background:var(--red); color:var(--white); }
+  .viz-diff .plus{
+    position:absolute; right:6px; bottom:6px;
+    font-size:52px; font-weight:900; line-height:1; color:var(--ink);
+  }
+
+  /* ---- footer strip ---- */
+  .fc__strip{
+    margin-top:20px;
+    border:var(--border);
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:12px 16px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .fc__strip b{ color:var(--acid); }
+
+  /* ---- responsive ---- */
+  @media(max-width:640px){
+    .fc{ padding:32px 18px 40px; background-size:32px 32px; }
+    .fc__head{ margin-bottom:20px; }
+    .fc__meta{ text-align:left; white-space:normal; }
+    .fc__tabs{ flex-direction:column; margin-bottom:0; }
+    .fc__tab{ border-right-width:3px; border-bottom-width:0; }
+    .fc__tab:last-of-type{ border-bottom-width:3px; }
+    #fc-t1:checked ~ .fc__tabs label[for="fc-t1"],
+    #fc-t2:checked ~ .fc__tabs label[for="fc-t2"],
+    #fc-t3:checked ~ .fc__tabs label[for="fc-t3"],
+    #fc-t4:checked ~ .fc__tabs label[for="fc-t4"]{ box-shadow:-4px 0 0 var(--red) inset; }
+    .fc__panel{ grid-template-columns:1fr; }
+    .fc__copy{ border-right:0; border-bottom:var(--border); padding:26px 22px; }
+    .fc__viz{ min-height:240px; padding:26px 0; }
+  }
+</style>
+</head>
+<body>
+<section class="fc" aria-label="Feature carousel">
+
+  <!-- radios drive the tabs (pure CSS, no JS) -->
+  <input type="radio" name="fc" id="fc-t1" checked>
+  <input type="radio" name="fc" id="fc-t2">
+  <input type="radio" name="fc" id="fc-t3">
+  <input type="radio" name="fc" id="fc-t4">
+
+  <div class="fc__head">
+    <div>
+      <span class="fc__kicker">Drop-in Blocks / v2.4</span>
+      <h2 class="fc__title">Ship the <em>section</em>, not the boilerplate.</h2>
+    </div>
+    <div class="fc__meta">
+      <b>412</b>
+      Copy-paste blocks<br>MIT · zero deps
+    </div>
+  </div>
+
+  <div class="fc__tabs" role="tablist">
+    <label class="fc__tab" for="fc-t1"><span class="num">01</span>Paste &amp; Go</label>
+    <label class="fc__tab" for="fc-t2"><span class="num">02</span>Token Wiring</label>
+    <label class="fc__tab" for="fc-t3"><span class="num">03</span>A11y Pass</label>
+    <label class="fc__tab" for="fc-t4"><span class="num">04</span>Remix Kit</label>
+  </div>
+
+  <div class="fc__stage">
+
+    <!-- PANEL 1 -->
+    <div class="fc__panel" id="fc-p1" role="tabpanel">
+      <div class="fc__copy">
+        <span class="fc__tagpill">01 — Paste &amp; Go</span>
+        <h3 class="fc__ptitle">One file. No build step. It just runs.</h3>
+        <p class="fc__ptext">Every block is a single self-contained HTML file. Drop it into Claude Code, hit preview, and the section renders — no npm install, no config, no bundler crying at 2am.</p>
+        <ul class="fc__list">
+          <li>Inline CSS + SVG only</li>
+          <li>Google Fonts, nothing else external</li>
+          <li>Works offline after first load</li>
+        </ul>
+        <a class="fc__cta" href="#">Copy this block →</a>
+      </div>
+      <div class="fc__viz">
+        <span class="stamp">RENDER OK</span>
+        <div class="viz-bars"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+
+    <!-- PANEL 2 -->
+    <div class="fc__panel" id="fc-p2" role="tabpanel">
+      <div class="fc__copy">
+        <span class="fc__tagpill">02 — Token Wiring</span>
+        <h3 class="fc__ptitle">Repaint the whole thing from one :root block.</h3>
+        <p class="fc__ptext">Colors, borders, shadows and type all resolve to CSS custom properties. Swap eight variables and the block matches your brand — no find-and-replace archaeology across 400 lines.</p>
+        <ul class="fc__list">
+          <li>Single token block up top</li>
+          <li>Light + dark ready</li>
+          <li>Rename-safe class prefixes</li>
+        </ul>
+        <a class="fc__cta" href="#">See the tokens →</a>
+      </div>
+      <div class="fc__viz">
+        <span class="stamp">--ACID</span>
+        <div class="viz-pipe">
+          <div class="node on">{</div>
+          <div class="wire hot"></div>
+          <div class="node">:</div>
+          <div class="wire"></div>
+          <div class="node on">}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 3 -->
+    <div class="fc__panel" id="fc-p3" role="tabpanel">
+      <div class="fc__copy">
+        <span class="fc__tagpill">03 — A11y Pass</span>
+        <h3 class="fc__ptitle">Passes the audit before you paste it.</h3>
+        <p class="fc__ptext">Semantic landmarks, real focus states, labelled controls and AA contrast ship inside every block. Run it through Lighthouse — the boring checkboxes are already ticked.</p>
+        <ul class="fc__list">
+          <li>Keyboard-navigable tabs</li>
+          <li>Contrast ≥ 4.5:1 on text</li>
+          <li>Reduced-motion respected</li>
+        </ul>
+        <a class="fc__cta" href="#">Run the checks →</a>
+      </div>
+      <div class="fc__viz">
+        <span class="stamp">A11Y 98</span>
+        <div class="viz-card">
+          <div class="row done"><span class="box"></span>Contrast</div>
+          <div class="row done"><span class="box"></span>Focus ring</div>
+          <div class="row warn"><span class="box"></span>Alt text</div>
+          <div class="row done"><span class="box"></span>Landmarks</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 4 -->
+    <div class="fc__panel" id="fc-p4" role="tabpanel">
+      <div class="fc__copy">
+        <span class="fc__tagpill">04 — Remix Kit</span>
+        <h3 class="fc__ptitle">Fork a block, feed the diff back in.</h3>
+        <p class="fc__ptext">Each section is a clean starting point, not a locked template. Restyle it, split it, or hand the file back to Claude Code with "make it wider" — the structure is legible enough to remix in one prompt.</p>
+        <ul class="fc__list">
+          <li>Flat, readable markup</li>
+          <li>Commented section anchors</li>
+          <li>Prompt-friendly class names</li>
+        </ul>
+        <a class="fc__cta" href="#">Grab the kit →</a>
+      </div>
+      <div class="fc__viz">
+        <span class="stamp">FORK +3</span>
+        <div class="viz-diff">
+          <div class="blk a">BASE</div>
+          <div class="blk b">EDIT</div>
+          <div class="blk c">YOURS</div>
+          <div class="plus">+</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="fc__strip">
+    <span>&gt;&gt; 412 blocks · 18 categories · updated weekly</span>
+    <span><b>$0</b> forever · no signup · MIT</span>
+  </div>
+
+</section>
+</body>
+</html>

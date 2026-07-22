@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!-- ===== INFOGRAPHICS — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Infographics — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+
+  :root{
+    --bg:#121216;
+    --panel:#17171c;
+    --panel-2:#1c1c22;
+    --ink:#F4F4F5;
+    --muted:#A1A1AA;
+    --line:#2a2a31;
+    --amber:#F59E42;
+    --bar-1:#3f3f46;
+    --bar-2:#52525b;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .infobar{
+    width:100%;
+    padding:88px 24px 96px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .info-inner{
+    width:100%;
+    max-width:1120px;
+    display:grid;
+    grid-template-columns:0.82fr 1.18fr;
+    gap:64px;
+    align-items:center;
+  }
+
+  /* ---- left rail: framing + donut ---- */
+  .rail .kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:22px;
+  }
+  .kicker .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--amber);
+  }
+  .rail h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:38px;
+    line-height:1.08;
+    letter-spacing:-.01em;
+    margin-bottom:16px;
+  }
+  .rail h2 em{
+    font-style:italic;
+    color:var(--amber);
+  }
+  .rail p{
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.62;
+    max-width:34ch;
+    margin-bottom:34px;
+  }
+
+  .donut-wrap{
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+  .donut{
+    position:relative;
+    width:132px;height:132px;
+    border-radius:50%;
+    flex-shrink:0;
+    /* 68% filled — amber slice, rest muted track */
+    background:conic-gradient(var(--amber) 0 68%, #26262c 68% 100%);
+  }
+  .donut::after{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border-radius:50%;
+    background:var(--panel);
+    border:1px solid var(--line);
+  }
+  .donut .val{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:1;
+  }
+  .donut .val b{
+    font-family:var(--serif);
+    font-size:28px;
+    font-weight:600;
+    line-height:1;
+  }
+  .donut .val span{
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:5px;
+  }
+  .donut-legend li{
+    list-style:none;
+    display:flex;
+    align-items:baseline;
+    gap:9px;
+    font-size:13px;
+    color:var(--muted);
+    padding:5px 0;
+  }
+  .donut-legend .sw{
+    width:9px;height:9px;border-radius:2px;
+    transform:translateY(1px);
+    flex-shrink:0;
+  }
+  .donut-legend .sw.a{background:var(--amber);}
+  .donut-legend .sw.b{background:#26262c;border:1px solid var(--line);}
+  .donut-legend b{color:var(--ink);font-weight:600;}
+
+  /* ---- right: bar panel ---- */
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:30px 34px 34px;
+  }
+  .panel-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:16px;
+    padding-bottom:22px;
+    margin-bottom:26px;
+    border-bottom:1px solid var(--line);
+  }
+  .panel-head .t{
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  .panel-head .t small{
+    display:block;
+    font-weight:400;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:5px;
+    letter-spacing:0;
+  }
+  .panel-head .metric{
+    text-align:right;
+    line-height:1;
+  }
+  .panel-head .metric b{
+    font-family:var(--serif);
+    font-size:30px;
+    font-weight:600;
+    color:var(--amber);
+  }
+  .panel-head .metric span{
+    display:block;
+    font-size:11px;
+    color:var(--muted);
+    margin-top:6px;
+    letter-spacing:.04em;
+  }
+
+  .bars{
+    display:flex;
+    align-items:flex-end;
+    gap:22px;
+    height:196px;
+    padding-top:6px;
+  }
+  .bar{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    height:100%;
+  }
+  .bar .fig{
+    font-size:12.5px;
+    color:var(--muted);
+    margin-bottom:9px;
+    font-variant-numeric:tabular-nums;
+  }
+  .bar .col{
+    width:100%;
+    max-width:52px;
+    border-radius:5px 5px 0 0;
+    background:var(--bar-1);
+    border:1px solid var(--line);
+    border-bottom:none;
+  }
+  .bar:nth-child(1) .col{height:38%;background:var(--bar-1);}
+  .bar:nth-child(2) .col{height:54%;background:var(--bar-2);}
+  .bar:nth-child(3) .col{height:71%;background:var(--bar-1);}
+  .bar.hi .col{
+    background:linear-gradient(180deg,var(--amber),#c97a28);
+    border-color:transparent;
+    height:100%;
+  }
+  .bar .lab{
+    margin-top:11px;
+    font-size:11.5px;
+    color:var(--muted);
+    letter-spacing:.02em;
+    text-align:center;
+  }
+  .bar.hi .lab{color:var(--ink);font-weight:600;}
+  .bar .lab b{display:block;color:var(--ink);font-weight:600;font-size:12px;margin-bottom:2px;}
+
+  .panel-foot{
+    margin-top:24px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    color:var(--muted);
+  }
+  .panel-foot .tick{color:var(--amber);font-weight:600;}
+
+  @media(max-width:640px){
+    .infobar{padding:56px 18px 64px;}
+    .info-inner{
+      grid-template-columns:1fr;
+      gap:40px;
+    }
+    .rail h2{font-size:30px;}
+    .panel{padding:24px 20px 26px;}
+    .bars{gap:14px;height:172px;}
+    .panel-head{flex-direction:column;align-items:flex-start;}
+    .panel-head .metric{text-align:left;}
+    .donut-wrap{gap:16px;}
+  }
+</style>
+</head>
+<body>
+  <section class="infobar">
+    <div class="info-inner">
+
+      <!-- left rail -->
+      <div class="rail">
+        <span class="kicker"><span class="dot"></span>Adoption report · Q2 2026</span>
+        <h2>Teams ship faster once the docs<br /><em>live in the editor.</em></h2>
+        <p>We tracked 214 engineering teams through their first 90 days. The pattern was consistent across company size.</p>
+
+        <div class="donut-wrap">
+          <div class="donut" role="img" aria-label="68 percent of onboarded teams stayed active after 90 days">
+            <div class="val"><b>68%</b><span>Retained</span></div>
+          </div>
+          <ul class="donut-legend">
+            <li><span class="sw a"></span><span><b>68%</b> active at day 90</span></li>
+            <li><span class="sw b"></span><span><b>32%</b> churned or paused</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- right bar panel -->
+      <div class="panel">
+        <div class="panel-head">
+          <div class="t">Median time-to-first-merge<small>Days from signup to first merged PR</small></div>
+          <div class="metric"><b>3.1d</b><span>down from 11.4d</span></div>
+        </div>
+
+        <div class="bars">
+          <div class="bar">
+            <span class="fig">11.4</span>
+            <div class="col"></div>
+            <span class="lab"><b>No tooling</b>Baseline</span>
+          </div>
+          <div class="bar">
+            <span class="fig">6.8</span>
+            <div class="col"></div>
+            <span class="lab"><b>Docs portal</b>External wiki</span>
+          </div>
+          <div class="bar">
+            <span class="fig">4.5</span>
+            <div class="col"></div>
+            <span class="lab"><b>Snippets</b>Copy-paste</span>
+          </div>
+          <div class="bar hi">
+            <span class="fig">3.1</span>
+            <div class="col"></div>
+            <span class="lab"><b>In-editor</b>Library</span>
+          </div>
+        </div>
+
+        <div class="panel-foot"><span class="tick">↓ 73%</span> faster to first merge vs. teams with no in-editor reference.</div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

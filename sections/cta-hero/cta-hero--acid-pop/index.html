@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Hero — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== CTA-HERO — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --ink-soft:#161616;
+  --paper:#F2F2EC;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:#2A2A2A;
+  --font:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+body{
+  font-family:var(--font);
+  background:var(--ink);
+  color:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+
+.acid-cta{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  min-height:760px;
+  background:var(--ink);
+  overflow:hidden;
+  padding:64px 72px 72px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+/* --- background type ghost, hard flat, off to one side --- */
+.acid-cta__ghost{
+  position:absolute;
+  right:-70px;
+  top:44%;
+  transform:translateY(-50%) rotate(-8deg);
+  font-size:clamp(180px,34vw,420px);
+  font-weight:900;
+  line-height:.8;
+  letter-spacing:-.04em;
+  color:transparent;
+  -webkit-text-stroke:2px var(--line);
+  text-stroke:2px var(--line);
+  pointer-events:none;
+  white-space:nowrap;
+  z-index:0;
+}
+
+/* --- top rail --- */
+.acid-cta__rail{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.acid-cta__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:var(--lime);
+  color:var(--ink);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:9px 16px 9px 13px;
+  border-radius:999px;
+}
+.acid-cta__tag .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--ink);
+  display:inline-block;
+}
+.acid-cta__seats{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.02em;
+  color:#8a8a82;
+  text-transform:uppercase;
+}
+.acid-cta__seats b{color:var(--magenta);}
+
+/* --- main headline block: bottom-left focal point, asymmetric --- */
+.acid-cta__main{
+  position:relative;
+  z-index:2;
+  max-width:920px;
+}
+.acid-cta__kicker{
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--magenta);
+  margin-bottom:22px;
+}
+.acid-cta__head{
+  font-size:clamp(52px,8.4vw,132px);
+  font-weight:900;
+  line-height:.9;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+  margin-bottom:30px;
+}
+.acid-cta__head .hl{
+  color:var(--lime);
+}
+.acid-cta__head .box{
+  display:inline-block;
+  background:var(--magenta);
+  color:var(--ink);
+  padding:0 .12em 0 .12em;
+  transform:rotate(-1.5deg);
+}
+
+.acid-cta__sub{
+  font-size:clamp(17px,1.8vw,21px);
+  font-weight:600;
+  line-height:1.45;
+  color:#c9c9c1;
+  max-width:520px;
+  margin-bottom:38px;
+}
+.acid-cta__sub .u{
+  color:var(--paper);
+  text-decoration:underline;
+  text-decoration-color:var(--lime);
+  text-decoration-thickness:3px;
+  text-underline-offset:4px;
+}
+
+/* --- action row --- */
+.acid-cta__actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+.acid-cta__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  background:var(--lime);
+  color:var(--ink);
+  font-family:var(--font);
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:20px 30px;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  transition:transform .12s ease, background .12s ease;
+}
+.acid-cta__btn svg{display:block;}
+.acid-cta__btn:hover{
+  background:var(--magenta);
+  transform:translate(-3px,-3px);
+}
+.acid-cta__note{
+  font-size:14px;
+  font-weight:700;
+  color:#8a8a82;
+  letter-spacing:.01em;
+  max-width:230px;
+  line-height:1.4;
+}
+.acid-cta__note strong{color:var(--paper);}
+
+/* --- bottom credibility strip --- */
+.acid-cta__strip{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+  flex-wrap:wrap;
+}
+.acid-cta__avatars{display:flex;}
+.acid-cta__av{
+  width:38px;height:38px;
+  border-radius:50%;
+  border:2px solid var(--ink);
+  margin-left:-11px;
+  display:grid;
+  place-items:center;
+  font-size:14px;
+  font-weight:800;
+  color:var(--ink);
+}
+.acid-cta__av:first-child{margin-left:0;}
+.acid-cta__av.a{background:var(--lime);}
+.acid-cta__av.b{background:var(--magenta);}
+.acid-cta__av.c{background:#F2F2EC;}
+.acid-cta__av.d{background:#7BD1FF;}
+.acid-cta__strip p{
+  font-size:14px;
+  font-weight:700;
+  color:#8a8a82;
+}
+.acid-cta__strip p b{color:var(--paper);}
+
+@media(max-width:640px){
+  .acid-cta{
+    padding:34px 22px 40px;
+    min-height:640px;
+  }
+  .acid-cta__ghost{
+    font-size:150px;
+    right:-40px;
+    top:38%;
+  }
+  .acid-cta__head{margin-bottom:24px;}
+  .acid-cta__sub{margin-bottom:30px;}
+  .acid-cta__actions{gap:16px;}
+  .acid-cta__btn{
+    width:100%;
+    justify-content:center;
+    font-size:18px;
+  }
+  .acid-cta__note{max-width:none;}
+  .acid-cta__rail{gap:12px;}
+}
+</style>
+</head>
+<body>
+
+<section class="acid-cta">
+  <div class="acid-cta__ghost" aria-hidden="true">SHIP IT</div>
+
+  <div class="acid-cta__rail">
+    <span class="acid-cta__tag"><span class="dot"></span>Cohort 09 — starts Aug 4</span>
+    <span class="acid-cta__seats"><b>12 of 40</b> seats left</span>
+  </div>
+
+  <div class="acid-cta__main">
+    <p class="acid-cta__kicker">Stop tweaking. Start launching.</p>
+    <h1 class="acid-cta__head">
+      Get your <span class="hl">first 100</span><br>
+      users in <span class="box">14 days</span>
+    </h1>
+    <p class="acid-cta__sub">
+      A no-fluff sprint that drags your side project out of the drafts folder
+      and in front of <span class="u">real, paying humans</span> — before you talk
+      yourself out of it again.
+    </p>
+
+    <div class="acid-cta__actions">
+      <a class="acid-cta__btn" href="#claim">
+        Claim my seat
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 12h15M13 6l6 6-6 6" stroke="#0A0A0A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p class="acid-cta__note"><strong>No card to start.</strong> Pay only when you ship your landing page.</p>
+    </div>
+  </div>
+
+  <div class="acid-cta__strip">
+    <div class="acid-cta__avatars" aria-hidden="true">
+      <span class="acid-cta__av a">JD</span>
+      <span class="acid-cta__av b">MK</span>
+      <span class="acid-cta__av c">RA</span>
+      <span class="acid-cta__av d">TS</span>
+    </div>
+    <p><b>380+ builders</b> shipped through the last eight cohorts. Average launch: <b>day 11.</b></p>
+  </div>
+</section>
+
+</body>
+</html>

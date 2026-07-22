@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!-- ===== METRICS — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metrics — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#26262C;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.metrics{
+  width:100%;
+  padding:104px 40px 96px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.metrics__inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* Header row — asymmetric, one focal point on the left */
+.metrics__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:48px;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+}
+
+.metrics__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:20px;
+}
+.metrics__eyebrow::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+}
+
+.metrics__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:38px;
+  line-height:1.08;
+  letter-spacing:-.01em;
+  max-width:15ch;
+}
+.metrics__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.metrics__note{
+  flex:0 0 auto;
+  max-width:288px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.6;
+  padding-left:28px;
+  border-left:1px solid var(--line);
+}
+.metrics__note strong{
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* Numbers grid — 4 columns, varied via ruled dividers not boxes */
+.metrics__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.stat{
+  padding:52px 36px 8px 0;
+  position:relative;
+}
+.stat + .stat{
+  padding-left:36px;
+  border-left:1px solid var(--line);
+}
+
+.stat__value{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:66px;
+  line-height:.95;
+  letter-spacing:-.03em;
+  display:flex;
+  align-items:baseline;
+  gap:3px;
+}
+.stat__suffix{
+  font-size:30px;
+  letter-spacing:-.01em;
+  color:var(--muted);
+}
+
+.stat__label{
+  margin-top:20px;
+  font-size:15px;
+  font-weight:500;
+  color:var(--ink);
+}
+.stat__caption{
+  margin-top:6px;
+  font-size:13.5px;
+  color:var(--muted);
+  line-height:1.55;
+  max-width:26ch;
+}
+
+/* Trend hint chip */
+.stat__trend{
+  margin-top:18px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  font-weight:500;
+  color:var(--muted);
+}
+.stat__trend svg{display:block;}
+.stat__trend--up{color:var(--accent);}
+.stat__trend--flat{color:var(--muted);}
+
+/* The one focal accent — first stat gets a top accent rule */
+.stat--focal::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:44px;
+  height:2px;
+  background:var(--accent);
+}
+.stat--focal .stat__value{color:var(--ink);}
+
+.metrics__foot{
+  margin-top:44px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+  color:var(--muted);
+}
+.metrics__foot .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  flex:0 0 auto;
+}
+
+@media(max-width:640px){
+  .metrics{padding:64px 22px 60px;}
+  .metrics__head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:26px;
+    padding-bottom:40px;
+  }
+  .metrics__title{font-size:29px;}
+  .metrics__note{
+    max-width:none;
+    padding-left:0;
+    border-left:0;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  .metrics__grid{grid-template-columns:1fr 1fr;}
+  .stat{padding:34px 18px 8px 0;}
+  .stat + .stat{padding-left:0;border-left:0;}
+  .stat:nth-child(2n){padding-left:22px;border-left:1px solid var(--line);}
+  .stat:nth-child(n+3){border-top:1px solid var(--line);}
+  .stat__value{font-size:48px;}
+  .stat__suffix{font-size:23px;}
+  .stat--focal::before{width:36px;}
+}
+</style>
+</head>
+<body>
+
+<section class="metrics" aria-label="Impact metrics">
+  <div class="metrics__inner">
+
+    <div class="metrics__head">
+      <div>
+        <span class="metrics__eyebrow">Impact · FY2025 to date</span>
+        <h2 class="metrics__title">The numbers behind <em>18 months</em> of shipping in the open.</h2>
+      </div>
+      <p class="metrics__note">
+        Pulled from production telemetry and support logs, not a marketing survey.
+        <strong>Verified quarterly</strong> — last reconciled 12 days ago.
+      </p>
+    </div>
+
+    <div class="metrics__grid">
+
+      <div class="stat stat--focal">
+        <div class="stat__value">2.4<span class="stat__suffix">M</span></div>
+        <div class="stat__label">Snippets copied</div>
+        <p class="stat__caption">Blocks pasted straight into Claude Code from the library.</p>
+        <span class="stat__trend stat__trend--up">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 8L4.3 4.7L6.2 6.6L10 2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.2 2.8H10V5.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          +38% vs. last quarter
+        </span>
+      </div>
+
+      <div class="stat">
+        <div class="stat__value">99.98<span class="stat__suffix">%</span></div>
+        <div class="stat__label">Render pass rate</div>
+        <p class="stat__caption">Sections that render clean on first paste, no edits.</p>
+        <span class="stat__trend stat__trend--flat">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5H9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Holding steady
+        </span>
+      </div>
+
+      <div class="stat">
+        <div class="stat__value">640<span class="stat__suffix">+</span></div>
+        <div class="stat__label">Sections shipped</div>
+        <p class="stat__caption">Across 22 categories, every one hand-reviewed.</p>
+        <span class="stat__trend stat__trend--up">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 8L4.3 4.7L6.2 6.6L10 2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.2 2.8H10V5.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          +54 this month
+        </span>
+      </div>
+
+      <div class="stat">
+        <div class="stat__value">1.2<span class="stat__suffix">s</span></div>
+        <div class="stat__label">Median paint time</div>
+        <p class="stat__caption">First contentful paint on a mid-range laptop, no build.</p>
+        <span class="stat__trend stat__trend--up">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M10 8L6.7 4.7L4.8 6.6L1 2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.8 2.8H1V5.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          0.3s faster
+        </span>
+      </div>
+
+    </div>
+
+    <div class="metrics__foot">
+      <span class="dot" aria-hidden="true"></span>
+      Figures reflect the 90-day window ending July 22, 2026. Full methodology in the repo README.
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

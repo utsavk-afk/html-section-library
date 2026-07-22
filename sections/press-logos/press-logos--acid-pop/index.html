@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Press Logos — Acid Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== PRESS-LOGOS — ACID-POP ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#0A0A0A;
+  --paper:#F4F4EF;
+  --lime:#C7F13B;
+  --magenta:#FF4D9D;
+  --line:rgba(255,255,255,.14);
+  --dim:rgba(255,255,255,.62);
+  --font:'Archivo',system-ui,-apple-system,sans-serif;
+}
+
+.pl-section{
+  background:var(--ink);
+  color:#fff;
+  font-family:var(--font);
+  padding:clamp(56px,7vw,104px) clamp(20px,5vw,88px);
+  width:100%;
+}
+.pl-wrap{
+  max-width:1440px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(220px,300px) 1fr;
+  gap:clamp(32px,5vw,84px);
+  align-items:center;
+}
+
+/* left label block — the one focal point, off to the side */
+.pl-label{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:flex-start;
+}
+.pl-tag{
+  display:inline-block;
+  background:var(--lime);
+  color:var(--ink);
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:7px 16px 8px;
+  border-radius:999px;
+}
+.pl-heading{
+  font-weight:900;
+  font-size:clamp(30px,4vw,52px);
+  line-height:.94;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+}
+.pl-heading em{
+  font-style:normal;
+  color:var(--magenta);
+}
+.pl-sub{
+  font-weight:600;
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--dim);
+  max-width:26ch;
+}
+.pl-count{
+  display:inline-flex;
+  align-items:baseline;
+  gap:8px;
+  margin-top:4px;
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.02em;
+  color:#fff;
+}
+.pl-count b{
+  color:var(--lime);
+  font-weight:900;
+  font-size:20px;
+}
+
+/* right — wordmark strip. asymmetric, not a uniform grid */
+.pl-logos{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.pl-logo{
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  min-height:112px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding:0 clamp(18px,2.4vw,34px);
+  color:#EDEDED;
+  transition:background .18s ease,color .18s ease;
+}
+.pl-logo svg{
+  height:26px;
+  width:auto;
+  max-width:100%;
+  display:block;
+  fill:currentColor;
+}
+.pl-logo:hover{
+  background:var(--lime);
+  color:var(--ink);
+}
+/* one accent tile keyed to magenta so the row isn't flat-uniform */
+.pl-logo.is-star{
+  justify-content:center;
+}
+.pl-logo.is-star .pl-star{
+  color:var(--magenta);
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.pl-logo.is-star .pl-star span{
+  width:26px;height:26px;border-radius:50%;
+  background:var(--magenta);color:var(--ink);
+  display:grid;place-items:center;font-size:14px;
+}
+.pl-logo.is-star:hover{
+  background:var(--magenta);
+  color:var(--ink);
+}
+.pl-logo.is-star:hover .pl-star{color:var(--ink);}
+.pl-logo.is-star:hover .pl-star span{background:var(--ink);color:var(--magenta);}
+
+@media(max-width:960px){
+  .pl-wrap{grid-template-columns:1fr;gap:36px;}
+}
+@media(max-width:640px){
+  .pl-section{padding:48px 18px;}
+  .pl-heading{font-size:34px;}
+  .pl-logos{grid-template-columns:repeat(2,1fr);}
+  .pl-logo{min-height:92px;padding:0 16px;}
+  .pl-logo svg{height:22px;}
+}
+</style>
+</head>
+<body>
+<section class="pl-section">
+  <div class="pl-wrap">
+    <div class="pl-label">
+      <span class="pl-tag">As featured in</span>
+      <h2 class="pl-heading">Press<br><em>picked</em> us.</h2>
+      <p class="pl-sub">Editors and reporters covering the build. No paid placements — just the work getting noticed.</p>
+      <span class="pl-count"><b>40+</b> stories &amp; mentions since 2023</span>
+    </div>
+
+    <div class="pl-logos">
+      <!-- 1 -->
+      <div class="pl-logo" aria-label="The Ledger">
+        <svg viewBox="0 0 220 40" role="img" aria-hidden="true">
+          <text x="0" y="30" font-family="Archivo,sans-serif" font-weight="900" font-size="30" letter-spacing="-1">The Ledger</text>
+        </svg>
+      </div>
+      <!-- 2 -->
+      <div class="pl-logo" aria-label="Northbound Weekly">
+        <svg viewBox="0 0 260 40" role="img" aria-hidden="true">
+          <text x="0" y="29" font-family="Archivo,sans-serif" font-weight="700" font-size="22" letter-spacing="2" style="text-transform:uppercase;">NORTHBOUND</text>
+        </svg>
+      </div>
+      <!-- 3 accent -->
+      <div class="pl-logo is-star" aria-label="Editor's Pick">
+        <span class="pl-star"><span>&#9733;</span>Editor&rsquo;s Pick</span>
+      </div>
+      <!-- 4 -->
+      <div class="pl-logo" aria-label="Cinder Report">
+        <svg viewBox="0 0 240 40" role="img" aria-hidden="true">
+          <text x="0" y="30" font-family="Archivo,sans-serif" font-weight="800" font-size="27" letter-spacing="-.5" font-style="italic">Cinder</text>
+          <text x="118" y="30" font-family="Archivo,sans-serif" font-weight="600" font-size="27" letter-spacing="-.5">Report</text>
+        </svg>
+      </div>
+      <!-- 5 -->
+      <div class="pl-logo" aria-label="Modem Quarterly">
+        <svg viewBox="0 0 250 40" role="img" aria-hidden="true">
+          <rect x="0" y="8" width="24" height="24" rx="6"></rect>
+          <text x="36" y="29" font-family="Archivo,sans-serif" font-weight="900" font-size="24" letter-spacing="-.5">MODEM</text>
+          <text x="150" y="29" font-family="Archivo,sans-serif" font-weight="600" font-size="24" letter-spacing="-.5" opacity="0.7">Q</text>
+        </svg>
+      </div>
+      <!-- 6 -->
+      <div class="pl-logo" aria-label="Signal Wire">
+        <svg viewBox="0 0 240 40" role="img" aria-hidden="true">
+          <text x="0" y="30" font-family="Archivo,sans-serif" font-weight="800" font-size="28" letter-spacing="-1">SIGNAL</text>
+          <text x="128" y="30" font-family="Archivo,sans-serif" font-weight="900" font-size="28" letter-spacing="-1">/WIRE</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

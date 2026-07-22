@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!-- ===== FOOTER — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6B6760;
+  --line:#E2DFD8;
+  --accent:#B4472B;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.ed-footer{
+  width:100%;
+  border-top:1px solid var(--ink);
+  padding:88px 64px 40px;
+}
+.ed-footer__inner{
+  max-width:1440px;
+  margin:0 auto;
+}
+
+/* label */
+.ed-label{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* top grid: asymmetric — brand block wider, then columns */
+.ed-top{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));
+  gap:56px;
+  align-items:start;
+}
+
+/* brand block */
+.ed-brand__mark{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:34px;
+  letter-spacing:-.01em;
+  line-height:1;
+  display:inline-flex;
+  align-items:baseline;
+  gap:2px;
+}
+.ed-brand__mark .dot{color:var(--accent);}
+.ed-brand__tag{
+  margin-top:20px;
+  max-width:30ch;
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.5;
+  color:var(--ink);
+}
+.ed-brand__tag em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+/* newsletter */
+.ed-news{
+  margin-top:34px;
+  max-width:340px;
+}
+.ed-news .ed-label{display:block;margin-bottom:14px;}
+.ed-news__field{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:8px;
+}
+.ed-news__field input{
+  flex:1;
+  border:none;
+  background:transparent;
+  font-family:var(--sans);
+  font-size:15px;
+  color:var(--ink);
+  padding:2px 0;
+}
+.ed-news__field input::placeholder{color:var(--muted);}
+.ed-news__field input:focus{outline:none;}
+.ed-news__btn{
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  color:var(--accent);
+  display:inline-flex;
+  padding:4px;
+  transition:transform .18s ease;
+}
+.ed-news__btn:hover{transform:translateX(4px);}
+.ed-news__note{
+  margin-top:10px;
+  font-size:12.5px;
+  line-height:1.5;
+  color:var(--muted);
+}
+
+/* link columns */
+.ed-col h4{
+  margin-bottom:20px;
+}
+.ed-col ul{list-style:none;}
+.ed-col li{margin-bottom:12px;}
+.ed-col a{
+  font-family:var(--serif);
+  font-size:16px;
+  color:var(--ink);
+  text-decoration:none;
+  position:relative;
+  transition:color .18s ease;
+}
+.ed-col a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-2px;
+  width:0;height:1px;
+  background:var(--accent);
+  transition:width .22s ease;
+}
+.ed-col a:hover{color:var(--accent);}
+.ed-col a:hover::after{width:100%;}
+
+/* hairline rule */
+.ed-rule{
+  height:1px;
+  background:var(--line);
+  margin:64px 0 28px;
+}
+
+/* fine print row */
+.ed-fine{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.ed-fine__left{
+  font-size:12.5px;
+  color:var(--muted);
+  letter-spacing:.01em;
+}
+.ed-fine__left .sep{margin:0 10px;color:var(--line);}
+.ed-fine__right{
+  display:flex;
+  gap:26px;
+}
+.ed-fine__right a{
+  font-size:12.5px;
+  color:var(--muted);
+  text-decoration:none;
+  transition:color .18s ease;
+}
+.ed-fine__right a:hover{color:var(--ink);}
+
+@media(max-width:640px){
+  .ed-footer{padding:56px 24px 32px;}
+  .ed-top{
+    grid-template-columns:1fr 1fr;
+    gap:40px 32px;
+  }
+  .ed-brand{grid-column:1 / -1;}
+  .ed-brand__mark{font-size:30px;}
+  .ed-news{max-width:100%;}
+  .ed-rule{margin:44px 0 24px;}
+  .ed-fine{flex-direction:column;gap:16px;}
+  .ed-fine__right{gap:20px;flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<footer class="ed-footer">
+  <div class="ed-footer__inner">
+    <div class="ed-top">
+
+      <!-- brand + newsletter -->
+      <div class="ed-brand">
+        <div class="ed-brand__mark">Marginalia<span class="dot">.</span></div>
+        <p class="ed-brand__tag">Field notes on typography, slow software, and the <em>quiet craft</em> of building things that last.</p>
+
+        <form class="ed-news" onsubmit="return false">
+          <span class="ed-label">The Monthly Dispatch</span>
+          <div class="ed-news__field">
+            <input type="email" placeholder="you@studio.com" aria-label="Email address">
+            <button class="ed-news__btn" aria-label="Subscribe">
+              <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 7h19M15 2l5 5-5 5"/>
+              </svg>
+            </button>
+          </div>
+          <p class="ed-news__note">One letter a month. No tracking, no filler — unsubscribe in a click.</p>
+        </form>
+      </div>
+
+      <!-- columns -->
+      <nav class="ed-col">
+        <h4 class="ed-label">Reading</h4>
+        <ul>
+          <li><a href="#">The Archive</a></li>
+          <li><a href="#">Essays</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Marginalia Weekly</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ed-col">
+        <h4 class="ed-label">Studio</h4>
+        <ul>
+          <li><a href="#">About the Press</a></li>
+          <li><a href="#">Typefaces</a></li>
+          <li><a href="#">Commissions</a></li>
+          <li><a href="#">Colophon</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ed-col">
+        <h4 class="ed-label">Elsewhere</h4>
+        <ul>
+          <li><a href="#">RSS Feed</a></li>
+          <li><a href="#">Mastodon</a></li>
+          <li><a href="#">Are.na</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="ed-rule"></div>
+
+    <div class="ed-fine">
+      <div class="ed-fine__left">
+        © 2026 Marginalia Press<span class="sep">/</span>Set in Fraunces &amp; Inter<span class="sep">/</span>Printed in Lisbon
+      </div>
+      <div class="ed-fine__right">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Ethics Statement</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

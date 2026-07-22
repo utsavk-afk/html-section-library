@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== TESTIMONIALS — DARK / LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#26262C;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --panel:#17171C;
+  --panel-2:#1C1C22;
+}
+
+.tx-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:104px 40px 112px;
+  min-height:640px;
+  -webkit-font-smoothing:antialiased;
+}
+.tx-wrap{max-width:1240px;margin:0 auto;}
+
+/* header row: asymmetric, label left / small line right */
+.tx-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:52px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:56px;
+}
+.tx-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+.tx-eyebrow::before{
+  content:"";
+  width:26px;height:1px;
+  background:var(--accent);
+}
+.tx-title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:44px;
+  line-height:1.06;
+  letter-spacing:-.015em;
+  max-width:15ch;
+}
+.tx-title em{font-style:italic;color:var(--accent);font-weight:400;}
+.tx-meta{
+  text-align:right;
+  flex-shrink:0;
+  padding-bottom:6px;
+}
+.tx-meta .n{
+  font-family:var(--serif);
+  font-size:34px;
+  line-height:1;
+  color:var(--ink);
+}
+.tx-meta .l{
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:8px;
+  max-width:16ch;
+}
+
+/* grid: one big featured + two stacked */
+.tx-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:22px;
+}
+
+/* featured quote */
+.tx-feature{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:44px 46px 38px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+.tx-feature::after{
+  content:"";
+  position:absolute;
+  left:0;top:44px;bottom:44px;
+  width:2px;
+  background:var(--accent);
+  border-radius:2px;
+}
+.tx-mark{
+  font-family:var(--serif);
+  font-size:66px;
+  line-height:.6;
+  color:var(--accent);
+  height:34px;
+  margin-bottom:26px;
+}
+.tx-feature blockquote{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:27px;
+  line-height:1.42;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  margin-bottom:auto;
+}
+.tx-feature blockquote b{color:var(--accent);font-weight:500;}
+.tx-attrib{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-top:38px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+}
+.tx-avatar{
+  width:48px;height:48px;
+  border-radius:50%;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  font-size:16px;
+  letter-spacing:.01em;
+  color:var(--bg);
+}
+.av-1{background:linear-gradient(135deg,#F59E42,#D97A2B);}
+.av-2{background:#3A3A44;color:var(--ink);border:1px solid #4A4A55;}
+.av-3{background:#2A3B33;color:#8FD4B0;border:1px solid #35473C;}
+.tx-who .nm{font-size:15px;font-weight:600;color:var(--ink);}
+.tx-who .ro{font-size:13px;color:var(--muted);margin-top:3px;}
+.tx-who .ro span{color:var(--ink);}
+
+/* side stack */
+.tx-side{display:flex;flex-direction:column;gap:22px;}
+.tx-card{
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:30px 30px 26px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.tx-card blockquote{
+  font-size:16.5px;
+  line-height:1.58;
+  color:#D4D4D8;
+  margin-bottom:auto;
+  letter-spacing:-.005em;
+}
+.tx-card blockquote b{color:var(--ink);font-weight:600;}
+.tx-stars{
+  color:var(--accent);
+  font-size:13px;
+  letter-spacing:2px;
+  margin-bottom:16px;
+}
+.tx-card .tx-attrib{
+  margin-top:26px;
+  padding-top:20px;
+  gap:13px;
+}
+.tx-card .tx-avatar{width:40px;height:40px;font-size:14px;}
+
+@media(max-width:640px){
+  .tx-section{padding:72px 20px 80px;}
+  .tx-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:26px;
+    padding-bottom:36px;
+    margin-bottom:38px;
+  }
+  .tx-title{font-size:32px;}
+  .tx-meta{text-align:left;}
+  .tx-meta .n{font-size:28px;}
+  .tx-grid{grid-template-columns:1fr;gap:18px;}
+  .tx-feature{padding:32px 28px 30px;border-radius:16px;}
+  .tx-feature::after{left:0;top:32px;bottom:32px;}
+  .tx-feature blockquote{font-size:22px;}
+  .tx-mark{font-size:54px;margin-bottom:20px;}
+}
+</style>
+</head>
+<body>
+<section class="tx-section">
+  <div class="tx-wrap">
+
+    <div class="tx-head">
+      <div>
+        <span class="tx-eyebrow">Field notes</span>
+        <h2 class="tx-title">Teams stopped fighting their tooling and shipped <em>weeks sooner</em>.</h2>
+      </div>
+      <div class="tx-meta">
+        <div class="n">2,400+</div>
+        <div class="l">engineers dropped these blocks into production</div>
+      </div>
+    </div>
+
+    <div class="tx-grid">
+
+      <!-- Featured -->
+      <figure class="tx-feature">
+        <div class="tx-mark">&ldquo;</div>
+        <blockquote>
+          We rebuilt our entire marketing site in an afternoon. The sections just <b>pasted in and worked</b> — no config, no dependency hell, no design review ping-pong. My designer looked at the first draft and said &lsquo;this is what I would have made.&rsquo;
+        </blockquote>
+        <figcaption class="tx-attrib">
+          <div class="tx-avatar av-1">RK</div>
+          <div class="tx-who">
+            <div class="nm">Rafael Knight</div>
+            <div class="ro">Founding Engineer, <span>Northwind Labs</span></div>
+          </div>
+        </figcaption>
+      </figure>
+
+      <!-- Side stack -->
+      <div class="tx-side">
+
+        <figure class="tx-card">
+          <div class="tx-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>
+            I stopped writing boilerplate hero sections at 11pm. Now I paste a block, tweak two tokens, and it&rsquo;s <b>on-brand in minutes</b>.
+          </blockquote>
+          <figcaption class="tx-attrib">
+            <div class="tx-avatar av-2">DO</div>
+            <div class="tx-who">
+              <div class="nm">Dana Osei</div>
+              <div class="ro">Solo founder, Tidepool</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="tx-card">
+          <div class="tx-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>
+            No build step is the whole point. I dropped it into Claude Code, said &lsquo;make it ours,&rsquo; and it <b>held its structure</b> the entire way.
+          </blockquote>
+          <figcaption class="tx-attrib">
+            <div class="tx-avatar av-3">MV</div>
+            <div class="tx-who">
+              <div class="nm">Marcus Vela</div>
+              <div class="ro">Design Engineer, Cadence</div>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

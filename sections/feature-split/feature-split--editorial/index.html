@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- ===== FEATURE-SPLIT — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Split — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#6E695F;
+  --line:#E3DFD5;
+  --accent:#B4472B;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+}
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;}
+
+.fs-section{
+  width:100%;
+  padding:112px 48px 104px;
+}
+.fs-wrap{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* eyebrow */
+.fs-eyebrow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:56px;
+}
+.fs-eyebrow .rule{
+  height:1px;
+  width:64px;
+  background:var(--line);
+}
+.fs-eyebrow .num{color:var(--muted);letter-spacing:.14em;}
+
+/* the split grid — asymmetric: copy narrower, visual wider */
+.fs-grid{
+  display:grid;
+  grid-template-columns:0.92fr 1.08fr;
+  gap:88px;
+  align-items:center;
+}
+
+/* ---- COPY SIDE ---- */
+.fs-copy{max-width:460px;}
+.fs-kicker{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+.fs-head{
+  font-family:var(--serif);
+  font-weight:420;
+  font-size:clamp(34px,3.4vw,50px);
+  line-height:1.08;
+  letter-spacing:-.015em;
+  margin-bottom:26px;
+}
+.fs-head em{
+  font-style:italic;
+  color:var(--accent);
+  font-weight:440;
+}
+.fs-lede{
+  font-size:16.5px;
+  color:var(--muted);
+  line-height:1.72;
+  margin-bottom:36px;
+  max-width:40ch;
+}
+
+.fs-list{list-style:none;border-top:1px solid var(--line);}
+.fs-list li{
+  padding:20px 0 19px;
+  border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-columns:26px 1fr;
+  gap:16px;
+  align-items:baseline;
+}
+.fs-list .idx{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--accent);
+}
+.fs-list .txt strong{
+  display:block;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:-.005em;
+  margin-bottom:3px;
+}
+.fs-list .txt span{
+  font-size:13.5px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.fs-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  margin-top:38px;
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.04em;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1.5px solid var(--accent);
+  padding-bottom:5px;
+  transition:gap .25s ease;
+}
+.fs-cta:hover{gap:16px;}
+.fs-cta .arw{color:var(--accent);font-size:15px;}
+
+/* ---- VISUAL SIDE (CSS/SVG) ---- */
+.fs-visual{
+  position:relative;
+  align-self:stretch;
+  min-height:480px;
+}
+/* framed plate, off-center focal point */
+.fs-plate{
+  position:relative;
+  height:100%;
+  min-height:480px;
+  background:#F6F3EC;
+  border:1px solid var(--line);
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:0 1px 0 rgba(27,26,23,.02);
+}
+/* faint baseline grid */
+.fs-plate::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px);
+  background-size:100% 34px;
+  opacity:.5;
+  pointer-events:none;
+}
+.fs-plate .tag{
+  position:absolute;
+  top:22px;left:24px;
+  font-family:var(--sans);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.fs-plate .tag b{color:var(--accent);font-weight:600;}
+
+/* the SVG chart sits low-left, big serif figure top-right — intentional asymmetry */
+.fs-figure{
+  position:absolute;
+  top:52px;right:30px;
+  text-align:right;
+}
+.fs-figure .big{
+  font-family:var(--serif);
+  font-weight:420;
+  font-size:78px;
+  line-height:.9;
+  letter-spacing:-.03em;
+}
+.fs-figure .big sup{
+  font-size:26px;
+  color:var(--accent);
+  vertical-align:top;
+  top:.4em;
+  position:relative;
+  font-style:italic;
+}
+.fs-figure .cap{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:8px;
+}
+
+.fs-chart{
+  position:absolute;
+  left:26px;right:26px;
+  bottom:26px;
+}
+.fs-chart svg{display:block;width:100%;height:auto;overflow:visible;}
+
+/* floating annotation chip — one intentional accent element */
+.fs-chip{
+  position:absolute;
+  left:30px;
+  bottom:168px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-left:2.5px solid var(--accent);
+  padding:11px 15px;
+  max-width:186px;
+  box-shadow:0 8px 24px -14px rgba(27,26,23,.35);
+}
+.fs-chip .q{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14px;
+  line-height:1.35;
+  margin-bottom:6px;
+}
+.fs-chip .a{
+  font-size:11px;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .fs-section{padding:64px 22px 68px;}
+  .fs-eyebrow{margin-bottom:36px;}
+  .fs-eyebrow .rule{width:36px;}
+  .fs-grid{grid-template-columns:1fr;gap:44px;}
+  .fs-copy{max-width:none;}
+  .fs-head{font-size:32px;}
+  .fs-visual{min-height:420px;}
+  .fs-plate{min-height:420px;}
+  .fs-figure .big{font-size:62px;}
+  .fs-chip{bottom:150px;max-width:160px;}
+}
+</style>
+</head>
+<body>
+<section class="fs-section">
+  <div class="fs-wrap">
+
+    <div class="fs-eyebrow">
+      <span class="num">02 / Retention</span>
+      <span class="rule"></span>
+      <span>The Feature</span>
+    </div>
+
+    <div class="fs-grid">
+
+      <!-- COPY -->
+      <div class="fs-copy">
+        <p class="fs-kicker">Cohort Analytics</p>
+        <h2 class="fs-head">Read every cohort the way an <em>editor reads a draft</em>.</h2>
+        <p class="fs-lede">Ledger stitches raw event streams into weekly cohorts so you can see exactly where a signup cools off — no SQL, no waiting on the data team, no dashboards nobody opens.</p>
+
+        <ul class="fs-list">
+          <li>
+            <span class="idx">i.</span>
+            <span class="txt"><strong>Week-zero anchoring</strong><span>Every user snaps to their true first-touch, not the day they finally clicked around.</span></span>
+          </li>
+          <li>
+            <span class="idx">ii.</span>
+            <span class="txt"><strong>Silent-churn alerts</strong><span>A note lands in Slack the moment a cohort dips below its own trailing median.</span></span>
+          </li>
+          <li>
+            <span class="idx">iii.</span>
+            <span class="txt"><strong>Annotated timelines</strong><span>Pin a release or price change straight onto the curve and watch what moved.</span></span>
+          </li>
+        </ul>
+
+        <a href="#" class="fs-cta">See a live cohort <span class="arw">&rarr;</span></a>
+      </div>
+
+      <!-- VISUAL -->
+      <div class="fs-visual">
+        <div class="fs-plate">
+          <div class="tag">Cohort &mdash; <b>Mar 2026</b></div>
+
+          <div class="fs-figure">
+            <div class="big">61<sup>%</sup></div>
+            <div class="cap">Wk-8 retained</div>
+          </div>
+
+          <div class="fs-chip">
+            <div class="q">&ldquo;The dip at week 3 was our onboarding email.&rdquo;</div>
+            <div class="a">— annotation, R. Okafor</div>
+          </div>
+
+          <div class="fs-chart">
+            <svg viewBox="0 0 520 190" role="img" aria-label="Retention curve by week">
+              <!-- axis -->
+              <line x1="0" y1="160" x2="520" y2="160" stroke="#D8D2C6" stroke-width="1"/>
+              <!-- area -->
+              <path d="M0,42 C70,52 96,70 150,96 C186,113 210,132 260,120 C312,108 360,86 420,80 C462,76 496,72 520,70 L520,160 L0,160 Z"
+                    fill="#B4472B" fill-opacity="0.08"/>
+              <!-- retention line -->
+              <path d="M0,42 C70,52 96,70 150,96 C186,113 210,132 260,120 C312,108 360,86 420,80 C462,76 496,72 520,70"
+                    fill="none" stroke="#B4472B" stroke-width="2.25" stroke-linecap="round"/>
+              <!-- markers -->
+              <circle cx="0" cy="42" r="3.4" fill="#FCFCFA" stroke="#B4472B" stroke-width="2"/>
+              <circle cx="150" cy="96" r="3.4" fill="#FCFCFA" stroke="#B4472B" stroke-width="2"/>
+              <circle cx="260" cy="120" r="4.6" fill="#B4472B"/>
+              <circle cx="520" cy="70" r="3.4" fill="#FCFCFA" stroke="#B4472B" stroke-width="2"/>
+              <!-- week ticks -->
+              <g font-family="Inter,sans-serif" font-size="10" fill="#6E695F" letter-spacing="0.08em">
+                <text x="0" y="178">W0</text>
+                <text x="146" y="178">W3</text>
+                <text x="256" y="178">W5</text>
+                <text x="494" y="178">W8</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<!-- ===== Z-PATTERN — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Pattern — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --line:2px solid var(--ink);
+  --line-thick:4px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-red:6px 6px 0 var(--red);
+  --grotesk:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--grotesk);
+  -webkit-font-smoothing:antialiased;
+}
+
+.zp{
+  max-width:1440px;
+  margin:0 auto;
+  padding:64px 56px 72px;
+  position:relative;
+}
+
+/* faint visible grid backdrop */
+.zp::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  z-index:0;
+}
+
+.zp__head{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  border-bottom:var(--line-thick);
+  padding-bottom:18px;
+  margin-bottom:52px;
+}
+.zp__kicker{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:6px 10px;
+  display:inline-block;
+}
+.zp__title{
+  font-size:clamp(28px,4vw,52px);
+  font-weight:900;
+  line-height:.98;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  margin-top:14px;
+}
+.zp__title em{font-style:normal;background:var(--acid);padding:0 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+.zp__meta{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-align:right;
+  white-space:nowrap;
+  text-transform:uppercase;
+  line-height:1.6;
+}
+.zp__meta b{color:var(--red);}
+
+/* rows */
+.zp__row{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:stretch;
+  margin-bottom:44px;
+}
+.zp__row:last-child{margin-bottom:0;}
+.zp__row--flip .zp__visual{order:2;}
+.zp__row--flip .zp__text{order:1;}
+
+/* text block */
+.zp__text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:8px 4px;
+}
+.zp__num{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.1em;
+  border:var(--line);
+  align-self:flex-start;
+  padding:4px 9px;
+  margin-bottom:18px;
+}
+.zp__row--flip .zp__num{background:var(--red);color:var(--white);border-color:var(--red);}
+.zp__h{
+  font-size:clamp(24px,2.6vw,34px);
+  font-weight:900;
+  line-height:1.02;
+  letter-spacing:-.015em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+.zp__h u{text-decoration:none;border-bottom:6px solid var(--acid);}
+.zp__p{
+  font-size:16px;
+  line-height:1.5;
+  max-width:44ch;
+  margin-bottom:22px;
+  color:#1c1c1c;
+}
+.zp__tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:24px;
+}
+.zp__tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  border:var(--line);
+  padding:5px 8px;
+  background:var(--white);
+}
+.zp__cta{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  background:var(--acid);
+  color:var(--ink);
+  border:var(--line);
+  box-shadow:var(--shadow);
+  padding:12px 18px;
+  align-self:flex-start;
+  cursor:pointer;
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.zp__cta:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink);}
+.zp__row--flip .zp__cta{background:var(--ink);color:var(--white);}
+
+/* visual block */
+.zp__visual{
+  border:var(--line-thick);
+  box-shadow:var(--shadow);
+  background:var(--white);
+  min-height:300px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+}
+.zp__row--flip .zp__visual{box-shadow:var(--shadow-red);}
+
+.zp__vhead{
+  position:absolute;
+  top:0;left:0;right:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  padding:8px 12px;
+  z-index:3;
+}
+.zp__dots{display:flex;gap:6px;}
+.zp__dots span{width:9px;height:9px;border:1.5px solid var(--paper);border-radius:50%;}
+.zp__dots span:first-child{background:var(--acid);border-color:var(--acid);}
+
+/* VISUAL 1 — terminal / prompt block */
+.vis-term{
+  width:100%;
+  padding:56px 22px 22px;
+  background:
+    repeating-linear-gradient(45deg,transparent,transparent 22px,rgba(17,17,17,.03) 22px,rgba(17,17,17,.03) 23px),
+    var(--white);
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.7;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.vis-term .ln{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.vis-term .cmt{color:#8a8a80;}
+.vis-term .cmd b{color:var(--red);}
+.vis-term .ok{background:var(--acid);padding:2px 4px;font-weight:700;}
+.vis-term .cur{display:inline-block;width:9px;height:16px;background:var(--ink);vertical-align:-3px;}
+
+/* VISUAL 2 — stacked spec cards / paste target */
+.vis-stack{
+  width:100%;
+  padding:56px 20px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  justify-content:center;
+}
+.vis-stack .card{
+  border:var(--line);
+  background:var(--paper);
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.vis-stack .card:nth-child(2){box-shadow:4px 4px 0 var(--ink);}
+.vis-stack .badge{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:12px;
+  width:34px;height:34px;
+  flex:0 0 34px;
+  border:var(--line);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--acid);
+}
+.vis-stack .card:nth-child(3) .badge{background:var(--red);color:var(--white);border-color:var(--red);}
+.vis-stack .lbl{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.vis-stack .sub{font-size:12px;color:#555;font-family:var(--grotesk);}
+.vis-stack .bar{margin-left:auto;font-family:var(--mono);font-size:11px;font-weight:700;}
+
+/* VISUAL 3 — big number / offset panels */
+.vis-metric{
+  width:100%;
+  padding:56px 22px 22px;
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:14px;
+  align-items:center;
+}
+.vis-metric .big{
+  border:var(--line-thick);
+  background:var(--acid);
+  padding:16px;
+}
+.vis-metric .big .n{font-size:clamp(44px,6vw,72px);font-weight:900;line-height:.85;letter-spacing:-.03em;}
+.vis-metric .big .u{font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;margin-top:8px;}
+.vis-metric .col{display:flex;flex-direction:column;gap:12px;}
+.vis-metric .mini{border:var(--line);background:var(--white);padding:12px;}
+.vis-metric .mini .n{font-size:26px;font-weight:900;line-height:1;}
+.vis-metric .mini .u{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;color:#555;margin-top:6px;}
+.vis-metric .mini:last-child{background:var(--ink);color:var(--paper);}
+.vis-metric .mini:last-child .u{color:var(--acid);}
+
+@media(max-width:640px){
+  .zp{padding:36px 20px 44px;}
+  .zp::before{background-size:32px 32px;}
+  .zp__head{flex-direction:column;align-items:flex-start;gap:14px;}
+  .zp__meta{text-align:left;}
+  .zp__row{grid-template-columns:1fr;gap:18px;margin-bottom:32px;}
+  .zp__row--flip .zp__visual{order:1;}
+  .zp__row--flip .zp__text{order:2;}
+  .zp__visual{min-height:220px;box-shadow:var(--shadow);}
+  .zp__row--flip .zp__visual{box-shadow:var(--shadow-red);}
+  .vis-metric{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<section class="zp" aria-label="How the copy-paste library works">
+
+  <div class="zp__head">
+    <div>
+      <span class="zp__kicker">// PASTE-READY SECTIONS</span>
+      <h1 class="zp__title">DROP IT IN.<br><em>SHIP IT.</em> NO BUILD STEP.</h1>
+    </div>
+    <div class="zp__meta">
+      V.2.4 / <b>FREE</b><br>
+      140 SECTIONS<br>
+      MIT LICENSE
+    </div>
+  </div>
+
+  <!-- ROW 1 : visual left / text right -->
+  <div class="zp__row">
+    <div class="zp__visual">
+      <div class="zp__vhead"><span>TERMINAL — CLAUDE CODE</span><span class="zp__dots"><span></span><span></span><span></span></span></div>
+      <div class="vis-term">
+        <div class="ln cmt"># paste any section, it just runs</div>
+        <div class="ln cmd">$ <b>claude</b> add sections/hero--split</div>
+        <div class="ln">&nbsp;&rarr; copied 1 file, 0 deps</div>
+        <div class="ln"><span class="ok">READY</span> no npm, no config, no vite</div>
+        <div class="ln cur"></div>
+      </div>
+    </div>
+    <div class="zp__text">
+      <span class="zp__num">01 / GRAB</span>
+      <h2 class="zp__h">One file. <u>Zero dependencies.</u></h2>
+      <p class="zp__p">Every section is a single self-contained HTML file. No package installs, no bundler, no framework lock-in. Open it, read it, understand it in ninety seconds.</p>
+      <div class="zp__tags">
+        <span class="zp__tag">HTML + CSS</span>
+        <span class="zp__tag">NO JS LIBS</span>
+        <span class="zp__tag">GOOGLE FONTS ONLY</span>
+      </div>
+      <button class="zp__cta">BROWSE THE LIBRARY &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ROW 2 : text left / visual right (flip) -->
+  <div class="zp__row zp__row--flip">
+    <div class="zp__visual">
+      <div class="zp__vhead"><span>STACK — PASTE TARGET</span><span class="zp__dots"><span></span><span></span><span></span></span></div>
+      <div class="vis-stack">
+        <div class="card"><span class="badge">1</span><span class="lbl">HERO / SPLIT</span><span class="sub">— headline + form</span><span class="bar">14KB</span></div>
+        <div class="card"><span class="badge">2</span><span class="lbl">Z-PATTERN</span><span class="sub">— alternating rows</span><span class="bar">11KB</span></div>
+        <div class="card"><span class="badge">3</span><span class="lbl">PRICING / SLABS</span><span class="sub">— hard shadows</span><span class="bar">09KB</span></div>
+      </div>
+    </div>
+    <div class="zp__text">
+      <span class="zp__num">02 / STACK</span>
+      <h2 class="zp__h">Stack sections like <u>bricks.</u></h2>
+      <p class="zp__p">Mix and match rows into full pages. Each block owns its own tokens under a scoped selector, so nothing bleeds. Reorder them, delete half, break nothing.</p>
+      <div class="zp__tags">
+        <span class="zp__tag">SCOPED TOKENS</span>
+        <span class="zp__tag">NO BLEED</span>
+        <span class="zp__tag">COPY-PASTE</span>
+      </div>
+      <button class="zp__cta">SEE A FULL PAGE &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ROW 3 : visual left / text right -->
+  <div class="zp__row">
+    <div class="zp__visual">
+      <div class="zp__vhead"><span>METRICS — WHY BOTHER</span><span class="zp__dots"><span></span><span></span><span></span></span></div>
+      <div class="vis-metric">
+        <div class="big"><div class="n">0s</div><div class="u">Build time / it's just HTML</div></div>
+        <div class="col">
+          <div class="mini"><div class="n">140</div><div class="u">Sections</div></div>
+          <div class="mini"><div class="n">$0</div><div class="u">Forever / MIT</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="zp__text">
+      <span class="zp__num">03 / SHIP</span>
+      <h2 class="zp__h">Responsive out of <u>the box.</u></h2>
+      <p class="zp__p">Every section ships with a mobile breakpoint and horizontal-overflow guards already wired. Preview it, tweak the tokens, push it live before your coffee goes cold.</p>
+      <div class="zp__tags">
+        <span class="zp__tag">640PX BREAKPOINT</span>
+        <span class="zp__tag">NO OVERFLOW</span>
+        <span class="zp__tag">A11Y LABELS</span>
+      </div>
+      <button class="zp__cta">COPY THIS SECTION &rarr;</button>
+    </div>
+  </div>
+
+</section>
+</body>
+</html>

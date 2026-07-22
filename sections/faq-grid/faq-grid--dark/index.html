@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Grid — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== FAQ-GRID — DARK / LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-2:#17171c;
+  --panel:#1b1b21;
+  --line:#2a2a32;
+  --line-soft:#232329;
+  --off:#F4F4F5;
+  --muted:#A1A1AA;
+  --muted-2:#71717a;
+  --amber:#F59E42;
+  --amber-ink:#1a1206;
+  --r-sm:8px;
+  --r-md:14px;
+  --r-lg:22px;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --serif:"Fraunces",Georgia,serif;
+}
+
+.faqx{
+  background:var(--ink);
+  color:var(--off);
+  font-family:var(--sans);
+  padding:96px 40px 104px;
+  position:relative;
+  border-top:1px solid var(--line-soft);
+}
+.faqx__inner{
+  max-width:1440px;
+  margin:0 auto;
+}
+
+/* Header — asymmetric, not centered */
+.faqx__head{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:48px;
+  align-items:end;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:56px;
+}
+.faqx__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:22px;
+}
+.faqx__eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--amber);
+}
+.faqx__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(34px,4.4vw,58px);
+  line-height:1.02;
+  letter-spacing:-.02em;
+}
+.faqx__title em{
+  font-style:italic;
+  color:var(--amber);
+}
+.faqx__aside{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.6;
+  max-width:340px;
+  justify-self:end;
+  padding-bottom:6px;
+}
+.faqx__aside a{
+  color:var(--off);
+  text-decoration:none;
+  border-bottom:1px solid var(--amber);
+  padding-bottom:1px;
+  white-space:nowrap;
+}
+.faqx__aside a:hover{color:var(--amber);}
+
+/* Grid — 2 columns, varied blocks */
+.faqx__grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px 40px;
+}
+.faq{
+  position:relative;
+  padding:0 4px 30px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.faq__q{
+  display:flex;
+  gap:16px;
+  align-items:baseline;
+  margin-bottom:12px;
+}
+.faq__num{
+  font-family:var(--serif);
+  font-size:13px;
+  color:var(--muted-2);
+  font-variant-numeric:tabular-nums;
+  padding-top:2px;
+  min-width:24px;
+}
+.faq__h{
+  font-size:19px;
+  font-weight:600;
+  line-height:1.28;
+  letter-spacing:-.01em;
+  color:var(--off);
+}
+.faq__a{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.62;
+  padding-left:40px;
+}
+.faq__a strong{
+  color:var(--off);
+  font-weight:600;
+}
+
+/* Featured block — the one focal point */
+.faq--feature{
+  grid-column:1 / 2;
+  grid-row:1 / 3;
+  background:linear-gradient(180deg,var(--panel),var(--ink-2));
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  padding:34px 34px 32px;
+}
+.faq--feature .faq__tag{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--amber);
+  font-weight:600;
+  margin-bottom:20px;
+}
+.faq--feature .faq__h{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:26px;
+  line-height:1.14;
+  letter-spacing:-.015em;
+}
+.faq--feature .faq__q{margin-bottom:16px;}
+.faq--feature .faq__a{
+  padding-left:0;
+  font-size:15px;
+}
+.faq--feature .faq__meta{
+  margin-top:26px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+.faq--feature .faq__meta .av{
+  width:38px;height:38px;
+  border-radius:50%;
+  background:var(--amber);
+  color:var(--amber-ink);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:600;font-size:14px;
+  flex:none;
+}
+.faq--feature .faq__meta .who{font-size:13px;line-height:1.4;}
+.faq--feature .faq__meta .who b{color:var(--off);font-weight:600;}
+.faq--feature .faq__meta .who span{color:var(--muted-2);}
+
+/* Subtle panel variant for one block */
+.faq--panel{
+  background:var(--ink-2);
+  border:1px solid var(--line-soft);
+  border-radius:var(--r-md);
+  padding:24px 24px 24px;
+}
+.faq--panel{border-bottom:1px solid var(--line-soft);}
+.faq--panel .faq__a{padding-left:40px;}
+
+/* remove bottom border where it collides */
+.faq--nb{border-bottom:none;}
+
+/* Footer note */
+.faqx__foot{
+  margin-top:52px;
+  padding-top:30px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:18px 26px;
+  justify-content:space-between;
+}
+.faqx__foot p{color:var(--muted);font-size:14.5px;}
+.faqx__foot p b{color:var(--off);font-weight:600;}
+.faqx__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--amber);
+  color:var(--amber-ink);
+  text-decoration:none;
+  font-weight:600;
+  font-size:14.5px;
+  padding:13px 22px;
+  border-radius:999px;
+  transition:transform .16s ease,background .16s ease;
+}
+.faqx__cta:hover{background:#ffb15e;transform:translateY(-1px);}
+.faqx__cta svg{width:15px;height:15px;}
+
+@media(max-width:960px){
+  .faqx__head{grid-template-columns:1fr;gap:28px;align-items:start;}
+  .faqx__aside{justify-self:start;}
+  .faqx__grid{grid-template-columns:1fr;gap:0;}
+  .faq--feature{grid-column:auto;grid-row:auto;margin-bottom:28px;}
+  .faq{padding-bottom:24px;margin-bottom:24px;}
+}
+@media(max-width:640px){
+  .faqx{padding:64px 20px 72px;}
+  .faqx__head{padding-bottom:36px;margin-bottom:36px;}
+  .faq__h{font-size:17.5px;}
+  .faq--feature{padding:26px 22px;}
+  .faq--feature .faq__h{font-size:22px;}
+  .faqx__foot{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<section class="faqx" aria-labelledby="faqx-title">
+  <div class="faqx__inner">
+
+    <header class="faqx__head">
+      <div>
+        <span class="faqx__eyebrow">Before you commit</span>
+        <h2 class="faqx__title" id="faqx-title">Questions we get<br><em>right before</em> the paperwork.</h2>
+      </div>
+      <p class="faqx__aside">
+        Answers pulled straight from our onboarding calls. Still stuck on something specific?
+        Email <a href="#">hello@northmark.io</a> and a real engineer replies within a day.
+      </p>
+    </header>
+
+    <div class="faqx__grid">
+
+      <!-- Focal / featured -->
+      <article class="faq faq--feature faq--nb">
+        <span class="faq__tag">Most asked</span>
+        <div class="faq__q">
+          <h3 class="faq__h">Do we own the code, or are we renting it from you?</h3>
+        </div>
+        <p class="faq__a">
+          You own <strong>100% of it</strong>. Everything ships to your GitHub org on day one,
+          MIT-licensed on our side, no runtime tied to our servers. If you ever fire us,
+          the build keeps running and any dev can pick it up — no vendor lock, no “platform fee”
+          quietly renewing in the background.
+        </p>
+        <div class="faq__meta">
+          <span class="av">DL</span>
+          <span class="who"><b>Dana Liu</b><br><span>Head of Delivery · answered 214 times</span></span>
+        </div>
+      </article>
+
+      <article class="faq">
+        <div class="faq__q">
+          <span class="faq__num">01</span>
+          <h3 class="faq__h">How fast can we actually go live?</h3>
+        </div>
+        <p class="faq__a">
+          A standard marketing site lands in <strong>9–14 business days</strong>. Anything with
+          auth, billing, or a dashboard runs 4–6 weeks. We give you a dated milestone plan in the
+          kickoff call, not a vague “soon.”
+        </p>
+      </article>
+
+      <article class="faq faq--nb faq--panel">
+        <div class="faq__q">
+          <span class="faq__num">02</span>
+          <h3 class="faq__h">What happens if a deadline slips?</h3>
+        </div>
+        <p class="faq__a">
+          If the delay is on us, that week is <strong>free</strong> — automatically credited, no
+          argument required. We’d rather eat the cost than defend a missed date.
+        </p>
+      </article>
+
+      <article class="faq">
+        <div class="faq__q">
+          <span class="faq__num">03</span>
+          <h3 class="faq__h">Can you work inside our existing stack?</h3>
+        </div>
+        <p class="faq__a">
+          Yes — Next.js, Rails, Django, Laravel, plain HTML. We adapt to your repo and conventions
+          instead of forcing a rewrite. We’ll flag it early if something is genuinely holding you back.
+        </p>
+      </article>
+
+      <article class="faq faq--nb">
+        <div class="faq__q">
+          <span class="faq__num">04</span>
+          <h3 class="faq__h">Who do we talk to day-to-day?</h3>
+        </div>
+        <p class="faq__a">
+          The engineer building your project — <strong>not an account manager</strong> relaying
+          messages. One shared Slack channel, replies during your working hours, no ticket queue.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="faqx__foot">
+      <p><b>Didn’t see your question?</b> We keep a public changelog of every answer we’ve added.</p>
+      <a class="faqx__cta" href="#">
+        Book a 20-min scoping call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

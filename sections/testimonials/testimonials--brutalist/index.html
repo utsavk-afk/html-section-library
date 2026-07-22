@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!-- ===== TESTIMONIALS — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --accent-2:#FF3B21;
+  --serif:'Archivo',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+.ts-wrap{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 40px 96px;
+  border-top:4px solid var(--line);
+  border-bottom:4px solid var(--line);
+  overflow:hidden;
+}
+.ts-inner{max-width:1440px;margin:0 auto;}
+
+/* ---- header row ---- */
+.ts-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  border-bottom:3px solid var(--line);
+  padding-bottom:24px;
+  margin-bottom:56px;
+}
+.ts-tag{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--accent);
+  padding:6px 12px;
+  display:inline-block;
+  margin-bottom:20px;
+}
+.ts-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(40px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  max-width:15ch;
+}
+.ts-title mark{
+  background:var(--accent);
+  color:var(--ink);
+  padding:0 .1em;
+  box-decoration-break:clone;
+}
+.ts-meter{
+  flex-shrink:0;
+  border:3px solid var(--line);
+  box-shadow:6px 6px 0 var(--ink);
+  padding:18px 22px;
+  min-width:200px;
+  background:#fff;
+}
+.ts-meter .num{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:52px;
+  line-height:1;
+  letter-spacing:-.03em;
+}
+.ts-meter .lbl{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* ---- asymmetric layout ---- */
+.ts-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:28px;
+  align-items:start;
+}
+
+.quote{
+  position:relative;
+  border:3px solid var(--line);
+  background:#fff;
+}
+.quote .body{padding:36px 34px 30px;}
+.quote .mark{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:64px;
+  line-height:.6;
+  display:block;
+  margin-bottom:14px;
+}
+.quote p{
+  font-family:var(--serif);
+  font-weight:600;
+  letter-spacing:-.01em;
+}
+.quote em{font-style:normal;background:var(--accent);padding:0 .12em;box-decoration-break:clone;}
+
+/* attribution block */
+.attr{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  border-top:3px solid var(--line);
+  padding:18px 34px;
+}
+.av{
+  width:52px;height:52px;
+  flex-shrink:0;
+  border:3px solid var(--line);
+  display:grid;place-items:center;
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:20px;
+  color:var(--ink);
+}
+.attr .who{line-height:1.2;}
+.attr .name{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:16px;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+}
+.attr .role{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.attr .role b{color:var(--ink);font-weight:700;}
+
+/* FEATURED — big left quote */
+.quote--lead{
+  box-shadow:10px 10px 0 var(--ink);
+}
+.quote--lead .mark{color:var(--accent-2);}
+.quote--lead .av{background:var(--accent);}
+.quote--lead p{font-size:clamp(24px,2.6vw,34px);line-height:1.18;}
+.quote--lead .body{padding:44px 40px 34px;}
+.quote--lead .badge{
+  position:absolute;top:-15px;right:26px;
+  font-family:var(--mono);
+  font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;
+  background:var(--accent-2);color:#fff;
+  padding:6px 12px;
+  border:3px solid var(--line);
+}
+
+/* right column stack */
+.ts-side{display:flex;flex-direction:column;gap:28px;}
+.quote--sm{box-shadow:6px 6px 0 var(--ink);}
+.quote--sm .mark{color:var(--ink);font-size:44px;}
+.quote--sm .av{background:#fff;}
+.quote--sm p{font-size:17px;line-height:1.4;}
+.quote--sm .body{padding:26px 26px 22px;}
+.quote--sm .attr{padding:14px 26px;}
+
+.quote--dark{
+  background:var(--ink);
+  color:var(--accent);
+}
+.quote--dark .mark{color:var(--accent);}
+.quote--dark p{color:#fff;font-weight:600;}
+.quote--dark em{background:var(--accent);color:var(--ink);}
+.quote--dark .attr{border-top-color:var(--accent);}
+.quote--dark .av{border-color:var(--accent);color:var(--accent);background:transparent;}
+.quote--dark .name{color:#fff;}
+.quote--dark .role{color:#9a9a90;}
+.quote--dark .role b{color:var(--accent);}
+
+/* ---- footer strip ---- */
+.ts-foot{
+  margin-top:40px;
+  border:3px solid var(--line);
+  background:var(--accent);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:20px 28px;
+  box-shadow:6px 6px 0 var(--ink);
+}
+.ts-foot .stars{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.12em;
+}
+.ts-foot .msg{
+  font-family:var(--serif);
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:15px;
+  letter-spacing:.01em;
+}
+.ts-foot .msg span{border-bottom:3px solid var(--ink);}
+
+@media(max-width:640px){
+  .ts-wrap{padding:48px 20px 64px;}
+  .ts-head{flex-direction:column;align-items:flex-start;gap:24px;}
+  .ts-meter{align-self:stretch;box-shadow:5px 5px 0 var(--ink);}
+  .ts-grid{grid-template-columns:1fr;gap:24px;}
+  .quote--lead{box-shadow:6px 6px 0 var(--ink);}
+  .quote--lead .body{padding:34px 22px 26px;}
+  .quote .body{padding:28px 22px 22px;}
+  .attr,.quote--lead .attr{padding:16px 22px;}
+  .quote--lead .badge{right:16px;}
+  .ts-foot{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<section class="ts-wrap">
+  <div class="ts-inner">
+
+    <div class="ts-head">
+      <div>
+        <span class="ts-tag">// Receipts, not adjectives</span>
+        <h1 class="ts-title">Teams shipped <mark>faster</mark> after they stopped guessing.</h1>
+      </div>
+      <div class="ts-meter">
+        <div class="num">4.9/5</div>
+        <div class="lbl">Avg. rating · 312 reviews</div>
+      </div>
+    </div>
+
+    <div class="ts-grid">
+
+      <!-- FEATURED -->
+      <figure class="quote quote--lead">
+        <span class="badge">Customer of the year</span>
+        <div class="body">
+          <span class="mark">&ldquo;</span>
+          <p>We ran a whole quarter of "vibe-based" roadmap calls before this. Now every PR gets an automated review pass in <em>under 90 seconds</em>, and our senior engineers stopped burning Fridays on nitpicks. First tool in years my team actually opens without me nagging them.</p>
+        </div>
+        <figcaption class="attr">
+          <span class="av">DK</span>
+          <span class="who">
+            <span class="name">Dana Koval</span>
+            <span class="role">VP Engineering, <b>Northbeam Labs</b></span>
+          </span>
+        </figcaption>
+      </figure>
+
+      <!-- SIDE STACK -->
+      <div class="ts-side">
+
+        <figure class="quote quote--sm">
+          <div class="body">
+            <span class="mark">&ldquo;</span>
+            <p>Dropped it into a legacy repo nobody wanted to touch. It flagged <em>two race conditions</em> on day one that had been shipping bugs for months.</p>
+          </div>
+          <figcaption class="attr">
+            <span class="av" style="background:var(--accent-2);color:#fff;">MO</span>
+            <span class="who">
+              <span class="name">Marcus Ohl</span>
+              <span class="role">Staff Dev, <b>Rendell &amp; Co.</b></span>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="quote quote--sm quote--dark">
+          <div class="body">
+            <span class="mark">&ldquo;</span>
+            <p>Copy, paste, done. No build step, no config file, no sales call. That is the whole pitch and it <em>actually held up</em>.</p>
+          </div>
+          <figcaption class="attr">
+            <span class="av">PS</span>
+            <span class="who">
+              <span class="name">Priya Sen</span>
+              <span class="role">Indie founder, <b>Tinypilot</b></span>
+            </span>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <div class="ts-foot">
+      <span class="stars">[ ★★★★★ ]</span>
+      <span class="msg">Used by <span>8,400+ builders</span> — zero lock-in, ever.</span>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

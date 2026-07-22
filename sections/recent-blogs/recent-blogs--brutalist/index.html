@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- ===== RECENT-BLOGS — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recent Blogs — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --grotesk:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--grotesk);
+  -webkit-font-smoothing:antialiased;
+}
+
+.rb-section{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:64px 56px 72px;
+  /* faint visible grid */
+  background-image:
+    linear-gradient(rgba(17,17,17,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(17,17,17,.045) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+
+/* ---- header row ---- */
+.rb-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  border-bottom:5px solid var(--ink);
+  padding-bottom:22px;
+  margin-bottom:40px;
+}
+.rb-head-left{display:flex;flex-direction:column;gap:10px;}
+.rb-eyebrow{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:5px 11px;
+  align-self:flex-start;
+}
+.rb-title{
+  font-family:var(--grotesk);
+  font-weight:900;
+  font-size:52px;
+  line-height:.94;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.rb-title span{
+  background:var(--acid);
+  box-shadow:3px 3px 0 var(--ink);
+  padding:0 8px;
+}
+.rb-allbtn{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  text-decoration:none;
+  color:var(--ink);
+  background:var(--white);
+  border:var(--border);
+  box-shadow:var(--shadow-sm);
+  padding:14px 20px;
+  white-space:nowrap;
+  transition:transform .08s ease,box-shadow .08s ease;
+}
+.rb-allbtn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+.rb-allbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink);}
+
+/* ---- grid: featured left, two stacked right ---- */
+.rb-grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  grid-template-rows:auto auto;
+  gap:26px;
+}
+.rb-card{
+  background:var(--white);
+  border:var(--border);
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  transition:transform .1s ease,box-shadow .1s ease;
+}
+.rb-card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink);}
+
+/* featured spans both rows */
+.rb-card--feat{grid-row:1 / span 2;}
+
+.rb-thumb{
+  position:relative;
+  border-bottom:var(--border);
+  overflow:hidden;
+}
+/* CSS-shape "cover" art — no external images */
+.rb-thumb--feat{
+  height:236px;
+  background:
+    repeating-linear-gradient(45deg,var(--ink) 0 14px,transparent 14px 28px),
+    var(--acid);
+}
+.rb-thumb--a{
+  height:104px;
+  background:var(--red);
+  background-image:radial-gradient(var(--ink) 2px,transparent 2.5px);
+  background-size:18px 18px;
+}
+.rb-thumb--b{
+  height:104px;
+  background:var(--ink);
+  background-image:repeating-linear-gradient(90deg,var(--acid) 0 6px,transparent 6px 22px);
+}
+.rb-thumb-badge{
+  position:absolute;
+  top:14px;left:14px;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:var(--paper);
+  color:var(--ink);
+  border:var(--border);
+  padding:5px 10px;
+}
+.rb-thumb-num{
+  position:absolute;
+  bottom:-6px;right:10px;
+  font-family:var(--grotesk);
+  font-weight:900;
+  font-size:88px;
+  line-height:1;
+  color:var(--paper);
+  -webkit-text-stroke:2px var(--ink);
+  opacity:.9;
+}
+
+.rb-body{
+  padding:22px 22px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  flex:1;
+}
+.rb-meta{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.rb-tag{
+  background:var(--acid);
+  border:2px solid var(--ink);
+  padding:3px 8px;
+}
+.rb-tag--red{background:var(--red);color:var(--white);}
+.rb-tag--ink{background:var(--ink);color:var(--acid);}
+.rb-date{color:#555;}
+
+.rb-h{
+  font-family:var(--grotesk);
+  font-weight:900;
+  letter-spacing:-.015em;
+  line-height:1.02;
+  text-transform:uppercase;
+}
+.rb-h--feat{font-size:34px;}
+.rb-h--sm{font-size:20px;}
+
+.rb-excerpt{
+  font-family:var(--grotesk);
+  font-weight:500;
+  font-size:15px;
+  line-height:1.42;
+  color:#2b2b2b;
+}
+.rb-card--feat .rb-excerpt{font-size:16px;max-width:44ch;}
+
+.rb-more{
+  margin-top:auto;
+  align-self:flex-start;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  text-decoration:none;
+  color:var(--ink);
+  border-bottom:3px solid var(--acid);
+  padding-bottom:2px;
+}
+.rb-card--feat .rb-more{
+  background:var(--ink);
+  color:var(--acid);
+  border:none;
+  padding:11px 16px;
+  box-shadow:var(--shadow-sm);
+}
+.rb-more:hover{border-bottom-color:var(--red);}
+.rb-card--feat .rb-more:hover{background:var(--red);color:var(--white);}
+.rb-more span{display:inline-block;transition:transform .12s ease;}
+.rb-more:hover span{transform:translateX(4px);}
+
+/* smaller cards: horizontal layout on desktop */
+.rb-card--row{flex-direction:row;}
+.rb-card--row .rb-thumb{
+  border-bottom:none;
+  border-right:var(--border);
+  width:132px;
+  flex:0 0 132px;
+}
+.rb-card--row .rb-thumb--a,
+.rb-card--row .rb-thumb--b{height:auto;}
+
+@media(max-width:640px){
+  .rb-section{padding:40px 18px 48px;background-size:32px 32px;}
+  .rb-head{margin-bottom:28px;padding-bottom:16px;border-bottom-width:4px;}
+  .rb-title{font-size:36px;}
+  .rb-grid{grid-template-columns:1fr;}
+  .rb-card--feat{grid-row:auto;}
+  .rb-card--row{flex-direction:column;}
+  .rb-card--row .rb-thumb{
+    border-right:none;
+    border-bottom:var(--border);
+    width:100%;
+    flex:none;
+    height:96px;
+  }
+  .rb-h--feat{font-size:27px;}
+  .rb-allbtn{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+<section class="rb-section">
+
+  <div class="rb-head">
+    <div class="rb-head-left">
+      <span class="rb-eyebrow">Fresh off the press // 2026</span>
+      <h2 class="rb-title">From the <span>Notebook</span></h2>
+    </div>
+    <a class="rb-allbtn" href="#">All Posts &rarr;</a>
+  </div>
+
+  <div class="rb-grid">
+
+    <!-- FEATURED -->
+    <article class="rb-card rb-card--feat">
+      <div class="rb-thumb rb-thumb--feat">
+        <span class="rb-thumb-badge">Field Notes</span>
+        <span class="rb-thumb-num">01</span>
+      </div>
+      <div class="rb-body">
+        <div class="rb-meta">
+          <span class="rb-tag rb-tag--ink">Design Systems</span>
+          <span class="rb-date">Jul 18, 2026 · 9 min</span>
+        </div>
+        <h3 class="rb-h rb-h--feat">We Killed 400 Components And Nobody Noticed</h3>
+        <p class="rb-excerpt">A six-month teardown of our token layer — what broke, what we deleted on a Friday, and the one button variant we could never justify keeping alive.</p>
+        <a class="rb-more" href="#">Read the teardown <span>&rarr;</span></a>
+      </div>
+    </article>
+
+    <!-- CARD A -->
+    <article class="rb-card rb-card--row">
+      <div class="rb-thumb rb-thumb--a">
+        <span class="rb-thumb-badge">How-To</span>
+      </div>
+      <div class="rb-body">
+        <div class="rb-meta">
+          <span class="rb-tag rb-tag--red">Performance</span>
+          <span class="rb-date">Jul 11, 2026 · 5 min</span>
+        </div>
+        <h3 class="rb-h rb-h--sm">Ship Web Fonts Without The 900ms Tax</h3>
+        <p class="rb-excerpt">Subsetting, preload order, and the FOUT trick our lead swears by.</p>
+        <a class="rb-more" href="#">Read more <span>&rarr;</span></a>
+      </div>
+    </article>
+
+    <!-- CARD B -->
+    <article class="rb-card rb-card--row">
+      <div class="rb-thumb rb-thumb--b">
+        <span class="rb-thumb-badge">Opinion</span>
+      </div>
+      <div class="rb-body">
+        <div class="rb-meta">
+          <span class="rb-tag">Accessibility</span>
+          <span class="rb-date">Jul 03, 2026 · 7 min</span>
+        </div>
+        <h3 class="rb-h rb-h--sm">Focus Rings Are Not Ugly, Your Design Is</h3>
+        <p class="rb-excerpt">A blunt case for keeping the outline your CSS reset deleted.</p>
+        <a class="rb-more" href="#">Read more <span>&rarr;</span></a>
+      </div>
+    </article>
+
+  </div>
+</section>
+</body>
+</html>

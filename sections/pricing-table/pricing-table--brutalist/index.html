@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<!-- ===== PRICING-TABLE — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Brutalist Feature Table</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A54;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:"Archivo",sans-serif;
+  --sans:"Archivo",sans-serif;
+  --mono:"Space Mono",monospace;
+}
+
+.pt-wrap{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 40px 88px;
+  min-height:640px;
+  -webkit-font-smoothing:antialiased;
+}
+.pt-inner{max-width:1240px;margin:0 auto;}
+
+/* ---- header ---- */
+.pt-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  border-bottom:4px solid var(--line);
+  padding-bottom:22px;
+  margin-bottom:0;
+}
+.pt-eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:16px;
+}
+.pt-eyebrow::before{
+  content:"";
+  width:34px;height:14px;
+  background:var(--accent);
+  border:2px solid var(--line);
+  display:inline-block;
+}
+.pt-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:56px;
+  line-height:.94;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+  max-width:640px;
+}
+.pt-title mark{background:var(--accent);color:var(--ink);padding:0 6px;}
+.pt-note{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.55;
+  max-width:270px;
+  color:var(--muted);
+  text-align:right;
+  padding-bottom:4px;
+}
+.pt-note b{color:var(--ink);}
+
+/* ---- table ---- */
+.pt-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:0;
+  border-left:4px solid var(--line);
+  border-right:4px solid var(--line);
+  border-bottom:4px solid var(--line);
+}
+.pt-table th,.pt-table td{
+  border-bottom:2px solid var(--line);
+  text-align:left;
+  vertical-align:middle;
+}
+
+/* plan header row */
+.pt-plans td,.pt-plans th{
+  border-bottom:4px solid var(--line);
+  padding:0;
+}
+.pt-feat-head{
+  width:34%;
+  padding:26px 24px !important;
+  vertical-align:bottom;
+}
+.pt-feat-head span{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.pt-plan{
+  width:22%;
+  padding:24px 22px !important;
+  border-left:2px solid var(--line);
+  position:relative;
+}
+.pt-plan .tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:block;
+  margin-bottom:8px;
+}
+.pt-plan .name{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:26px;
+  text-transform:uppercase;
+  line-height:1;
+  letter-spacing:-.01em;
+}
+.pt-plan .price{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:40px;
+  line-height:1;
+  margin-top:14px;
+  letter-spacing:-.02em;
+}
+.pt-plan .price em{
+  font-family:var(--mono);
+  font-style:normal;
+  font-size:13px;
+  font-weight:700;
+  color:var(--muted);
+  letter-spacing:0;
+}
+
+/* highlighted plan column */
+.pt-plan.is-featured{
+  background:var(--accent);
+  border-left:4px solid var(--line);
+}
+.pt-plan.is-featured .tag{color:var(--ink);}
+.pt-badge{
+  position:absolute;
+  top:-16px;left:22px;
+  background:var(--ink);
+  color:var(--accent);
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:5px 10px;
+  border:2px solid var(--line);
+  box-shadow:4px 4px 0 var(--red);
+}
+
+/* body feature rows */
+.pt-row-label{
+  padding:16px 24px;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:15px;
+}
+.pt-row-label small{
+  display:block;
+  font-family:var(--mono);
+  font-weight:400;
+  font-size:11px;
+  color:var(--muted);
+  margin-top:3px;
+  letter-spacing:.02em;
+}
+.pt-cell{
+  padding:16px 22px;
+  border-left:2px solid var(--line);
+  font-family:var(--mono);
+  font-size:14px;
+  font-weight:700;
+}
+.pt-cell.is-featured{
+  border-left:4px solid var(--line);
+  background:rgba(255,229,0,.16);
+}
+tr.pt-section td{
+  background:var(--ink);
+  color:var(--bg);
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  padding:9px 24px;
+  border-bottom:2px solid var(--line);
+}
+
+/* check / dash marks */
+.mark{display:inline-flex;align-items:center;justify-content:center;}
+.mark svg{display:block;}
+.mark.no{color:var(--muted);}
+.txtval{color:var(--ink);}
+
+/* footer CTA row */
+.pt-cta td{
+  border-bottom:none;
+  padding:22px 22px 6px;
+  border-left:2px solid var(--line);
+}
+.pt-cta td:first-child{border-left:none;}
+.pt-cta td.is-featured{border-left:4px solid var(--line);background:rgba(255,229,0,.16);}
+.pt-btn{
+  display:block;
+  width:100%;
+  text-align:center;
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  padding:14px 10px;
+  background:var(--bg);
+  color:var(--ink);
+  border:3px solid var(--line);
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:5px 5px 0 var(--line);
+  transition:transform .06s ease,box-shadow .06s ease;
+}
+.pt-btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--line);}
+.pt-btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line);}
+.pt-btn.solid{background:var(--ink);color:var(--accent);box-shadow:5px 5px 0 var(--red);}
+.pt-btn.solid:hover{box-shadow:7px 7px 0 var(--red);}
+.pt-cta-empty td{border:none;background:none;}
+
+.pt-foot{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:26px;
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+}
+.pt-foot span{
+  border:2px solid var(--line);
+  padding:6px 11px;
+  background:var(--bg);
+}
+.pt-foot span b{color:var(--ink);}
+
+/* ---- responsive ---- */
+@media(max-width:640px){
+  .pt-wrap{padding:44px 18px 60px;}
+  .pt-head{flex-direction:column;align-items:flex-start;gap:14px;}
+  .pt-title{font-size:38px;}
+  .pt-note{text-align:left;padding-bottom:0;}
+
+  .pt-table,.pt-table tbody,.pt-table tr,.pt-table td,.pt-table th{
+    display:block;width:100%;
+  }
+  .pt-table{border:none;}
+  .pt-plans,.pt-cta{display:none;}
+  .pt-table tr.pt-section td{border:3px solid var(--line);margin-top:20px;}
+  .pt-row-label{
+    border:3px solid var(--line);
+    border-bottom:none;
+    padding:14px 16px;
+    background:var(--accent);
+    font-size:15px;
+  }
+  .pt-cell{
+    border:3px solid var(--line);
+    border-bottom:none;
+    border-left:3px solid var(--line);
+    display:flex !important;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 16px;
+  }
+  .pt-cell:last-child{border-bottom:3px solid var(--line);}
+  .pt-cell::before{
+    content:attr(data-plan);
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .pt-cell.is-featured{border-left:3px solid var(--line);}
+}
+</style>
+</head>
+<body>
+<section class="pt-wrap">
+  <div class="pt-inner">
+
+    <div class="pt-head">
+      <div>
+        <span class="pt-eyebrow">Plans / Billed Yearly</span>
+        <h1 class="pt-title">Pick a tier.<br>Ship <mark>faster.</mark></h1>
+      </div>
+      <p class="pt-note"><b>No credit card</b> for the trial. Cancel any time, keep your exports. Prices in USD, per seat.</p>
+    </div>
+
+    <table class="pt-table">
+      <colgroup>
+        <col style="width:34%"><col style="width:22%"><col style="width:22%"><col style="width:22%">
+      </colgroup>
+
+      <!-- plan header -->
+      <thead>
+        <tr class="pt-plans">
+          <th class="pt-feat-head"><span>// Compare features</span></th>
+          <td class="pt-plan">
+            <span class="tag">Solo</span>
+            <span class="name">Starter</span>
+            <span class="price">$0<em> /mo</em></span>
+          </td>
+          <td class="pt-plan is-featured">
+            <span class="pt-badge">Most Picked</span>
+            <span class="tag">Teams up to 12</span>
+            <span class="name">Studio</span>
+            <span class="price">$24<em> /seat/mo</em></span>
+          </td>
+          <td class="pt-plan">
+            <span class="tag">Org-wide</span>
+            <span class="name">Scale</span>
+            <span class="price">$59<em> /seat/mo</em></span>
+          </td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- section 1 -->
+        <tr class="pt-section"><td colspan="4">01 — Core Workspace</td></tr>
+
+        <tr>
+          <td class="pt-row-label">Active projects<small>Concurrent boards per workspace</small></td>
+          <td class="pt-cell" data-plan="Starter"><span class="txtval">3</span></td>
+          <td class="pt-cell is-featured" data-plan="Studio"><span class="txtval">50</span></td>
+          <td class="pt-cell" data-plan="Scale"><span class="txtval">Unlimited</span></td>
+        </tr>
+        <tr>
+          <td class="pt-row-label">Version history<small>Point-in-time restore</small></td>
+          <td class="pt-cell" data-plan="Starter"><span class="txtval">7 days</span></td>
+          <td class="pt-cell is-featured" data-plan="Studio"><span class="txtval">90 days</span></td>
+          <td class="pt-cell" data-plan="Scale"><span class="txtval">Unlimited</span></td>
+        </tr>
+        <tr>
+          <td class="pt-row-label">Guest collaborators</td>
+          <td class="pt-cell" data-plan="Starter">
+            <span class="mark no" aria-label="Not included"><svg width="18" height="4" viewBox="0 0 18 4"><rect width="18" height="4" fill="currentColor"/></svg></span>
+          </td>
+          <td class="pt-cell is-featured" data-plan="Studio">
+            <span class="mark" aria-label="Included"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8L7 13L18 2" stroke="#111" stroke-width="4" fill="none"/></svg></span>
+          </td>
+          <td class="pt-cell" data-plan="Scale">
+            <span class="mark" aria-label="Included"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8L7 13L18 2" stroke="#111" stroke-width="4" fill="none"/></svg></span>
+          </td>
+        </tr>
+
+        <!-- section 2 -->
+        <tr class="pt-section"><td colspan="4">02 — Automation &amp; API</td></tr>
+
+        <tr>
+          <td class="pt-row-label">Automation runs<small>Monthly workflow triggers</small></td>
+          <td class="pt-cell" data-plan="Starter"><span class="txtval">200</span></td>
+          <td class="pt-cell is-featured" data-plan="Studio"><span class="txtval">25,000</span></td>
+          <td class="pt-cell" data-plan="Scale"><span class="txtval">500,000</span></td>
+        </tr>
+        <tr>
+          <td class="pt-row-label">REST + Webhooks API</td>
+          <td class="pt-cell" data-plan="Starter">
+            <span class="mark no" aria-label="Not included"><svg width="18" height="4" viewBox="0 0 18 4"><rect width="18" height="4" fill="currentColor"/></svg></span>
+          </td>
+          <td class="pt-cell is-featured" data-plan="Studio">
+            <span class="mark" aria-label="Included"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8L7 13L18 2" stroke="#111" stroke-width="4" fill="none"/></svg></span>
+          </td>
+          <td class="pt-cell" data-plan="Scale">
+            <span class="mark" aria-label="Included"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8L7 13L18 2" stroke="#111" stroke-width="4" fill="none"/></svg></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="pt-row-label">SSO / SAML<small>Okta, Entra, Google</small></td>
+          <td class="pt-cell" data-plan="Starter">
+            <span class="mark no" aria-label="Not included"><svg width="18" height="4" viewBox="0 0 18 4"><rect width="18" height="4" fill="currentColor"/></svg></span>
+          </td>
+          <td class="pt-cell is-featured" data-plan="Studio">
+            <span class="mark no" aria-label="Not included"><svg width="18" height="4" viewBox="0 0 18 4"><rect width="18" height="4" fill="currentColor"/></svg></span>
+          </td>
+          <td class="pt-cell" data-plan="Scale">
+            <span class="mark" aria-label="Included"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8L7 13L18 2" stroke="#111" stroke-width="4" fill="none"/></svg></span>
+          </td>
+        </tr>
+
+        <!-- section 3 -->
+        <tr class="pt-section"><td colspan="4">03 — Support</td></tr>
+
+        <tr>
+          <td class="pt-row-label">Response SLA</td>
+          <td class="pt-cell" data-plan="Starter"><span class="txtval">Community</span></td>
+          <td class="pt-cell is-featured" data-plan="Studio"><span class="txtval">Next day</span></td>
+          <td class="pt-cell" data-plan="Scale"><span class="txtval">2-hour, 24/7</span></td>
+        </tr>
+        <tr>
+          <td class="pt-row-label">Dedicated success manager</td>
+          <td class="pt-cell" data-plan="Starter">
+            <span class="mark no" aria-label="Not included"><svg width="18" height="4" viewBox="0 0 18 4"><rect width="18" height="4" fill="currentColor"/></svg></span>
+          </td>
+          <td class="pt-cell is-featured" data-plan="Studio">
+            <span class="mark no" aria-label="Not included"><svg width="18" height="4" viewBox="0 0 18 4"><rect width="18" height="4" fill="currentColor"/></svg></span>
+          </td>
+          <td class="pt-cell" data-plan="Scale">
+            <span class="mark" aria-label="Included"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8L7 13L18 2" stroke="#111" stroke-width="4" fill="none"/></svg></span>
+          </td>
+        </tr>
+
+        <!-- CTA row -->
+        <tr class="pt-cta">
+          <td></td>
+          <td><a class="pt-btn" href="#">Start free</a></td>
+          <td class="is-featured"><a class="pt-btn solid" href="#">Get Studio</a></td>
+          <td><a class="pt-btn" href="#">Talk to sales</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pt-foot">
+      <span><b>14-day</b> free trial on paid tiers</span>
+      <span>Switch or downgrade <b>anytime</b></span>
+      <span>Volume pricing at <b>25+ seats</b></span>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

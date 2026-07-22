@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!-- ===== FEATURE-CAROUSEL — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Carousel — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden}
+
+:root{
+  --bg:#121216;
+  --panel:#17171c;
+  --panel-2:#1c1c22;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#28282f;
+  --line-soft:#212128;
+  --amber:#F59E42;
+  --amber-dim:rgba(245,158,66,.14);
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-head:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+.fc{
+  width:100%;
+  padding:88px 40px 96px;
+  background:
+    radial-gradient(900px 420px at 88% -8%, rgba(245,158,66,.05), transparent 60%),
+    var(--bg);
+}
+.fc__wrap{max-width:1200px;margin:0 auto;}
+
+/* header — asymmetric, left focal */
+.fc__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:36px;
+  border-bottom:1px solid var(--line-soft);
+}
+.fc__eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px;
+}
+.fc__eyebrow::before{
+  content:"";width:22px;height:1px;background:var(--amber);display:inline-block;
+}
+.fc__title{
+  font-family:var(--font-head);
+  font-weight:500;
+  font-size:40px;
+  line-height:1.06;
+  letter-spacing:-.01em;
+  max-width:15ch;
+}
+.fc__title em{font-style:italic;color:var(--amber);}
+.fc__sub{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.6;
+  max-width:34ch;
+  padding-bottom:4px;
+}
+
+/* tab row */
+.fc__tabs{
+  display:flex;
+  gap:6px;
+  margin:28px 0 24px;
+  border-bottom:1px solid var(--line-soft);
+  flex-wrap:wrap;
+}
+.fc__tab{
+  appearance:none;background:none;border:none;cursor:pointer;
+  font-family:var(--font-body);
+  color:var(--muted);
+  font-size:14px;font-weight:500;
+  padding:14px 16px 16px;
+  position:relative;
+  display:flex;align-items:center;gap:9px;
+  transition:color .18s ease;
+}
+.fc__tab-idx{
+  font-size:11px;color:var(--line);border:1px solid var(--line);
+  border-radius:4px;padding:2px 5px;line-height:1;font-weight:600;
+  transition:color .18s ease,border-color .18s ease;
+}
+.fc__tab:hover{color:var(--ink);}
+.fc__tab::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;
+  background:var(--amber);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s ease;
+}
+.fc__tab.is-active{color:var(--ink);}
+.fc__tab.is-active::after{transform:scaleX(1);}
+.fc__tab.is-active .fc__tab-idx{color:var(--amber);border-color:rgba(245,158,66,.4);}
+
+/* panel */
+.fc__panel{display:none;}
+.fc__panel.is-active{display:block;animation:fade .35s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.fc__grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:20px;
+  align-items:stretch;
+}
+
+/* copy side */
+.fc__copy{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:38px 36px;
+  display:flex;flex-direction:column;
+}
+.fc__kicker{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:16px;font-weight:600;
+}
+.fc__ph{
+  font-family:var(--font-head);
+  font-weight:500;font-size:27px;line-height:1.15;letter-spacing:-.01em;
+  margin-bottom:14px;
+}
+.fc__pc{color:var(--muted);font-size:15px;line-height:1.65;max-width:42ch;}
+.fc__list{list-style:none;margin:26px 0 0;display:flex;flex-direction:column;gap:12px;}
+.fc__list li{
+  display:flex;gap:11px;font-size:14px;color:var(--ink);align-items:flex-start;
+}
+.fc__list li span{
+  color:var(--amber);font-weight:600;flex:0 0 auto;line-height:1.5;
+}
+.fc__cta{
+  margin-top:auto;padding-top:30px;display:flex;align-items:center;gap:14px;
+}
+.fc__btn{
+  background:var(--amber);color:#1a1206;border:none;border-radius:8px;
+  font-family:var(--font-body);font-weight:600;font-size:14px;
+  padding:12px 20px;cursor:pointer;
+}
+.fc__meta{font-size:13px;color:var(--muted);}
+
+/* visual side — varies per tab, CSS only */
+.fc__visual{
+  background:
+    linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+  min-height:360px;
+  display:flex;flex-direction:column;
+}
+.fc__visual-label{
+  font-size:12px;color:var(--muted);letter-spacing:.04em;
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;
+}
+.fc__dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px var(--amber-dim);}
+
+/* viz 1 — routing / pipeline bars */
+.viz-bars{display:flex;flex-direction:column;gap:14px;margin-top:6px;flex:1;justify-content:center;}
+.viz-bars .row{display:flex;align-items:center;gap:14px;}
+.viz-bars .name{width:96px;font-size:12px;color:var(--muted);flex:0 0 auto;}
+.viz-bars .track{flex:1;height:10px;border-radius:6px;background:#101015;border:1px solid var(--line);overflow:hidden;}
+.viz-bars .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,rgba(245,158,66,.35),var(--amber));}
+.viz-bars .val{width:42px;text-align:right;font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums;}
+
+/* viz 2 — schema cards stack */
+.viz-schema{display:flex;flex-direction:column;gap:12px;flex:1;justify-content:center;}
+.viz-schema .card{
+  background:#101015;border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;display:flex;justify-content:space-between;align-items:center;
+}
+.viz-schema .card.hi{border-color:rgba(245,158,66,.45);background:linear-gradient(90deg,var(--amber-dim),#101015 60%);}
+.viz-schema .k{font-size:13px;color:var(--ink);font-weight:500;}
+.viz-schema .t{font-size:11px;color:var(--muted);font-family:ui-monospace,monospace;}
+.viz-schema .badge{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(245,158,66,.4);border-radius:5px;padding:3px 7px;}
+
+/* viz 3 — grid heat / activity */
+.viz-heat{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;flex:1;align-content:center;}
+.viz-heat i{display:block;aspect-ratio:1;border-radius:3px;background:#16161c;border:1px solid var(--line-soft);}
+.viz-heat i.l1{background:rgba(245,158,66,.18);}
+.viz-heat i.l2{background:rgba(245,158,66,.4);}
+.viz-heat i.l3{background:rgba(245,158,66,.72);}
+.viz-heat i.l4{background:var(--amber);}
+.viz-cap{display:flex;justify-content:space-between;margin-top:18px;font-size:11px;color:var(--muted);}
+
+/* viz 4 — terminal / logs */
+.viz-term{
+  flex:1;background:#0d0d11;border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;font-family:ui-monospace,'SF Mono',monospace;font-size:12.5px;
+  line-height:1.9;color:var(--muted);overflow:hidden;
+}
+.viz-term .ln{display:block;white-space:nowrap;}
+.viz-term .p{color:var(--amber);}
+.viz-term .ok{color:#7dd3a0;}
+.viz-term .d{color:#55555f;}
+.viz-term .w{color:var(--ink);}
+
+.fc__foot{
+  margin-top:30px;font-size:13px;color:var(--muted);
+  display:flex;gap:8px;align-items:center;
+}
+.fc__foot code{
+  font-family:ui-monospace,monospace;color:var(--ink);
+  background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:12px;
+}
+
+@media(max-width:640px){
+  .fc{padding:56px 20px 64px;}
+  .fc__head{flex-direction:column;align-items:flex-start;gap:18px;}
+  .fc__title{font-size:30px;}
+  .fc__sub{max-width:none;}
+  .fc__tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fc__tab{padding:12px 12px 14px;white-space:nowrap;}
+  .fc__grid{grid-template-columns:1fr;}
+  .fc__copy{padding:28px 24px;}
+  .fc__visual{min-height:300px;padding:22px;}
+  .fc__ph{font-size:23px;}
+  .viz-bars .name{width:74px;}
+  .viz-heat{grid-template-columns:repeat(10,1fr);}
+}
+</style>
+</head>
+<body>
+<section class="fc">
+  <div class="fc__wrap">
+
+    <div class="fc__head">
+      <div>
+        <span class="fc__eyebrow">The library, section by section</span>
+        <h2 class="fc__title">Drop a section in.<br><em>Ship the page</em> by lunch.</h2>
+      </div>
+      <p class="fc__sub">Every block is one self-contained HTML file — paste it into Claude Code, tweak the tokens, and it just runs. No build step, no dependencies.</p>
+    </div>
+
+    <div class="fc__tabs" role="tablist">
+      <button class="fc__tab is-active" data-tab="0"><span class="fc__tab-idx">01</span>Copy &amp; paste</button>
+      <button class="fc__tab" data-tab="1"><span class="fc__tab-idx">02</span>Design tokens</button>
+      <button class="fc__tab" data-tab="2"><span class="fc__tab-idx">03</span>Responsive grid</button>
+      <button class="fc__tab" data-tab="3"><span class="fc__tab-idx">04</span>Zero build</button>
+    </div>
+
+    <!-- PANEL 0 -->
+    <div class="fc__panel is-active" data-panel="0">
+      <div class="fc__grid">
+        <div class="fc__copy">
+          <div class="fc__kicker">One file, done</div>
+          <h3 class="fc__ph">Paste it where the cursor blinks</h3>
+          <p class="fc__pc">Each section ships as a single <code>index.html</code> — markup, styles, and the tiny bit of JS it needs, all in one place. No hunting through folders.</p>
+          <ul class="fc__list">
+            <li><span>&rsaquo;</span> Nothing to install, nothing to import</li>
+            <li><span>&rsaquo;</span> Readable class names you can actually edit</li>
+            <li><span>&rsaquo;</span> Works the same in Claude Code, VS Code, or a plain browser</li>
+          </ul>
+          <div class="fc__cta">
+            <button class="fc__btn">Copy this section</button>
+            <span class="fc__meta">~6 KB · MIT</span>
+          </div>
+        </div>
+        <div class="fc__visual">
+          <div class="fc__visual-label">throughput by route <span class="fc__dot"></span></div>
+          <div class="viz-bars">
+            <div class="row"><span class="name">/hero</span><span class="track"><span class="fill" style="width:92%"></span></span><span class="val">0.4s</span></div>
+            <div class="row"><span class="name">/features</span><span class="track"><span class="fill" style="width:74%"></span></span><span class="val">0.6s</span></div>
+            <div class="row"><span class="name">/pricing</span><span class="track"><span class="fill" style="width:58%"></span></span><span class="val">0.8s</span></div>
+            <div class="row"><span class="name">/faq</span><span class="track"><span class="fill" style="width:40%"></span></span><span class="val">1.1s</span></div>
+            <div class="row"><span class="name">/footer</span><span class="track"><span class="fill" style="width:31%"></span></span><span class="val">1.3s</span></div>
+          </div>
+          <div class="fc__foot">First paint after <code>Ctrl+V</code> — no bundler warm-up.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 1 -->
+    <div class="fc__panel" data-panel="1">
+      <div class="fc__grid">
+        <div class="fc__copy">
+          <div class="fc__kicker">Rebrand in seconds</div>
+          <h3 class="fc__ph">Every color lives in one <code>:root</code></h3>
+          <p class="fc__pc">Swap five variables and the whole section follows — background, ink, accent, borders, radius. No find-and-replace across a stylesheet.</p>
+          <ul class="fc__list">
+            <li><span>&rsaquo;</span> Semantic names: <code>--bg</code>, <code>--ink</code>, <code>--amber</code></li>
+            <li><span>&rsaquo;</span> One intentional accent, applied consistently</li>
+            <li><span>&rsaquo;</span> Light or dark by changing the token block alone</li>
+          </ul>
+          <div class="fc__cta">
+            <button class="fc__btn">View token map</button>
+            <span class="fc__meta">14 variables</span>
+          </div>
+        </div>
+        <div class="fc__visual">
+          <div class="fc__visual-label">:root tokens <span class="fc__dot"></span></div>
+          <div class="viz-schema">
+            <div class="card hi"><div><div class="k">--amber</div><div class="t">accent · #F59E42</div></div><span class="badge">brand</span></div>
+            <div class="card"><div><div class="k">--bg</div><div class="t">surface · #121216</div></div></div>
+            <div class="card"><div><div class="k">--ink</div><div class="t">text · #F4F4F5</div></div></div>
+            <div class="card"><div><div class="k">--line</div><div class="t">border · #28282f</div></div></div>
+            <div class="card"><div><div class="k">--radius</div><div class="t">16px / 8px</div></div></div>
+          </div>
+          <div class="fc__foot">Change <code>--amber</code> and the whole file re-tints.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 2 -->
+    <div class="fc__panel" data-panel="2">
+      <div class="fc__grid">
+        <div class="fc__copy">
+          <div class="fc__kicker">Mobile is not an afterthought</div>
+          <h3 class="fc__ph">One breakpoint, tested edge to edge</h3>
+          <p class="fc__pc">Two-column desktop collapses to a clean single stack at 640px. Tabs scroll horizontally instead of wrapping into a mess — nothing spills off the viewport.</p>
+          <ul class="fc__list">
+            <li><span>&rsaquo;</span> Fluid grids with <code>fr</code> units, not fixed widths</li>
+            <li><span>&rsaquo;</span> <code>overflow-x:hidden</code> guaranteed at every size</li>
+            <li><span>&rsaquo;</span> Touch-scroll tab rail below 640px</li>
+          </ul>
+          <div class="fc__cta">
+            <button class="fc__btn">See the @media block</button>
+            <span class="fc__meta">640px cutoff</span>
+          </div>
+        </div>
+        <div class="fc__visual">
+          <div class="fc__visual-label">layout density · last 12 weeks <span class="fc__dot"></span></div>
+          <div class="viz-heat">
+            <i></i><i class="l1"></i><i class="l2"></i><i class="l1"></i><i class="l3"></i><i class="l2"></i><i class="l4"></i><i class="l2"></i><i class="l1"></i><i class="l3"></i><i></i><i class="l2"></i>
+            <i class="l2"></i><i class="l3"></i><i class="l1"></i><i class="l4"></i><i class="l2"></i><i class="l3"></i><i class="l1"></i><i></i><i class="l2"></i><i class="l4"></i><i class="l1"></i><i class="l3"></i>
+            <i class="l1"></i><i></i><i class="l3"></i><i class="l2"></i><i class="l1"></i><i class="l4"></i><i class="l2"></i><i class="l3"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i></i>
+            <i class="l3"></i><i class="l2"></i><i class="l4"></i><i class="l1"></i><i class="l3"></i><i></i><i class="l2"></i><i class="l1"></i><i class="l4"></i><i class="l2"></i><i class="l1"></i><i class="l3"></i>
+          </div>
+          <div class="viz-cap"><span>320px</span><span>768px</span><span>1440px</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 3 -->
+    <div class="fc__panel" data-panel="3">
+      <div class="fc__grid">
+        <div class="fc__copy">
+          <div class="fc__kicker">No toolchain tax</div>
+          <h3 class="fc__ph">Open the file. It already works.</h3>
+          <p class="fc__pc">No npm install, no Tailwind config, no Vite dev server. The only external request is Google Fonts — everything else is inline CSS and vanilla JS.</p>
+          <ul class="fc__list">
+            <li><span>&rsaquo;</span> Zero <code>node_modules</code>, zero lockfiles</li>
+            <li><span>&rsaquo;</span> CSS shapes and inline SVG — no image assets</li>
+            <li><span>&rsaquo;</span> Double-click to preview in any browser</li>
+          </ul>
+          <div class="fc__cta">
+            <button class="fc__btn">Grab the raw file</button>
+            <span class="fc__meta">0 dependencies</span>
+          </div>
+        </div>
+        <div class="fc__visual">
+          <div class="fc__visual-label">install log <span class="fc__dot"></span></div>
+          <div class="viz-term">
+            <span class="ln"><span class="p">$</span> <span class="w">cp feature-carousel/index.html ./</span></span>
+            <span class="ln"><span class="d"># nothing to build</span></span>
+            <span class="ln"><span class="ok">✓</span> markup ......... inline</span>
+            <span class="ln"><span class="ok">✓</span> styles ......... inline</span>
+            <span class="ln"><span class="ok">✓</span> scripts ........ 18 lines, vanilla</span>
+            <span class="ln"><span class="d">deps checked ....</span> <span class="ok">0 found</span></span>
+            <span class="ln"><span class="p">$</span> <span class="w">open index.html</span></span>
+            <span class="ln"><span class="ok">ready in 0ms ⚡</span></span>
+          </div>
+          <div class="fc__foot">Only external call: <code>fonts.googleapis.com</code></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.fc__tab');
+  var panels=document.querySelectorAll('.fc__panel');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      var i=this.getAttribute('data-tab');
+      tabs.forEach(function(x){x.classList.remove('is-active');});
+      panels.forEach(function(p){p.classList.remove('is-active');});
+      this.classList.add('is-active');
+      document.querySelector('.fc__panel[data-panel="'+i+'"]').classList.add('is-active');
+    });
+  });
+})();
+</script>
+</body>
+</html>

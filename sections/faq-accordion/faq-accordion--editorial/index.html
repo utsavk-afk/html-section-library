@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!-- ===== FAQ-ACCORDION — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Editorial Accordion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --light:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --muted:#6B665C;
+  --hair:#DAD6CC;
+  --hair-strong:#C4BFB2;
+  --panel:#F4F1EA;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+}
+
+body{
+  background:var(--light);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.faq{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:96px 80px 104px;
+}
+
+.faq__grid{
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:80px;
+  align-items:start;
+}
+
+/* --- Left rail (focal, asymmetric) --- */
+.faq__aside{
+  position:sticky;
+  top:48px;
+}
+
+.faq__eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:26px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.faq__eyebrow::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--hair-strong);
+  max-width:120px;
+}
+
+.faq__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,3.6vw,54px);
+  line-height:1.04;
+  letter-spacing:-0.015em;
+  margin-bottom:24px;
+}
+.faq__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.faq__lede{
+  font-size:15.5px;
+  color:var(--muted);
+  max-width:34ch;
+  margin-bottom:38px;
+}
+
+.faq__contact{
+  border-top:1px solid var(--hair);
+  padding-top:26px;
+}
+.faq__contact-label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+.faq__contact a{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:19px;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--accent);
+  padding-bottom:2px;
+  transition:color .2s ease;
+}
+.faq__contact a:hover{color:var(--accent);}
+.faq__contact p{
+  font-size:13.5px;
+  color:var(--muted);
+  margin-top:10px;
+}
+
+/* --- Accordion --- */
+.faq__list{
+  border-top:1px solid var(--hair-strong);
+}
+
+.faq__item{
+  border-bottom:1px solid var(--hair);
+}
+
+.faq__item summary{
+  list-style:none;
+  cursor:pointer;
+  display:grid;
+  grid-template-columns:44px 1fr 28px;
+  align-items:baseline;
+  gap:8px;
+  padding:26px 4px 26px 0;
+  transition:color .2s ease;
+}
+.faq__item summary::-webkit-details-marker{display:none;}
+
+.faq__num{
+  font-family:var(--serif);
+  font-size:14px;
+  font-style:italic;
+  color:var(--accent);
+  opacity:.75;
+  line-height:1.7;
+}
+
+.faq__q{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:20.5px;
+  line-height:1.28;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+  transition:color .2s ease;
+}
+.faq__item summary:hover .faq__q{color:var(--accent);}
+
+.faq__marker{
+  position:relative;
+  width:16px;
+  height:16px;
+  margin-top:8px;
+  justify-self:end;
+  flex-shrink:0;
+}
+.faq__marker::before,
+.faq__marker::after{
+  content:"";
+  position:absolute;
+  background:var(--ink);
+  transition:transform .28s cubic-bezier(.4,0,.2,1),background .2s ease;
+}
+.faq__marker::before{ /* horizontal */
+  top:50%;left:0;
+  width:16px;height:1.5px;
+  transform:translateY(-50%);
+}
+.faq__marker::after{ /* vertical */
+  left:50%;top:0;
+  width:1.5px;height:16px;
+  transform:translateX(-50%);
+}
+.faq__item[open] .faq__marker::after{
+  transform:translateX(-50%) rotate(90deg);
+  opacity:0;
+}
+.faq__item[open] .faq__marker::before,
+.faq__item[open] .faq__marker::after{background:var(--accent);}
+.faq__item summary:hover .faq__marker::before,
+.faq__item summary:hover .faq__marker::after{background:var(--accent);}
+
+.faq__a{
+  overflow:hidden;
+  padding:0 40px 4px 44px;
+}
+.faq__a-inner{
+  padding-bottom:28px;
+  max-width:58ch;
+}
+.faq__a p{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.62;
+}
+.faq__a p + p{margin-top:14px;}
+.faq__a strong{
+  color:var(--ink);
+  font-weight:600;
+}
+.faq__a em{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink);
+}
+
+/* open animation */
+.faq__item[open] .faq__a-inner{
+  animation:reveal .34s ease both;
+}
+@keyframes reveal{
+  from{opacity:0;transform:translateY(-6px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.faq__item[open] .faq__q{color:var(--accent);}
+
+/* --- Responsive --- */
+@media (max-width:960px){
+  .faq{padding:72px 44px 84px;}
+  .faq__grid{grid-template-columns:1fr;gap:52px;}
+  .faq__aside{position:static;}
+  .faq__lede{max-width:48ch;}
+}
+@media (max-width:640px){
+  .faq{padding:56px 22px 68px;}
+  .faq__grid{gap:40px;}
+  .faq__title{font-size:34px;}
+  .faq__item summary{
+    grid-template-columns:30px 1fr 20px;
+    padding:22px 2px;
+  }
+  .faq__q{font-size:18px;}
+  .faq__a{padding:0 4px 4px 30px;}
+  .faq__num{font-size:13px;}
+}
+</style>
+</head>
+<body>
+<section class="faq" aria-labelledby="faq-heading">
+  <div class="faq__grid">
+
+    <aside class="faq__aside">
+      <div class="faq__eyebrow">Before you ask</div>
+      <h2 class="faq__title" id="faq-heading">Questions we hear <em>most often</em>.</h2>
+      <p class="faq__lede">Everything about onboarding, pricing, and how the retainer actually works — answered plainly, no sales fog.</p>
+      <div class="faq__contact">
+        <div class="faq__contact-label">Still stuck?</div>
+        <a href="mailto:hello@studio.co">Write to a real strategist</a>
+        <p>We reply within one business day, usually less.</p>
+      </div>
+    </aside>
+
+    <div class="faq__list">
+
+      <details class="faq__item" open>
+        <summary>
+          <span class="faq__num">01</span>
+          <span class="faq__q">How long before we see measurable results?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <p>Technical fixes and on-page improvements often show movement within <strong>4 to 6 weeks</strong>. Meaningful organic traffic gains typically land in the <strong>3 to 5 month</strong> window, depending on your domain history and competition.</p>
+            <p>We share a baseline report on day one so every claim after that is measured against real numbers — <em>not vanity dashboards</em>.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>
+          <span class="faq__num">02</span>
+          <span class="faq__q">Do you require a long-term contract?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <p>No. We work on a rolling monthly retainer with a 30-day notice period. We ask for a soft three-month runway only because SEO compounds — leaving after four weeks rarely does the work justice.</p>
+            <p>If we're not the right fit, we'll tell you before you sign.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>
+          <span class="faq__num">03</span>
+          <span class="faq__q">Who actually does the work on my account?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <p>A named strategist owns your account end to end — the same person you meet in the kickoff call. They're supported by our in-house content and link teams, but you're never handed off to a rotating queue.</p>
+            <p>No offshore black boxes, no ticket-number relationships.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>
+          <span class="faq__num">04</span>
+          <span class="faq__q">How is pricing structured?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <p>Flat monthly retainers scoped to the work — not to your revenue. Plans start at <strong>$2,400/mo</strong> for focused campaigns and scale with content volume, technical depth, and link targets.</p>
+            <p>Every proposal itemizes exactly what's included. <em>You'll never get a surprise line item.</em></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>
+          <span class="faq__num">05</span>
+          <span class="faq__q">Can you work alongside our existing marketing team?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <p>Absolutely — roughly half our clients have an in-house team. We plug into your Slack, your project board, and your content calendar, acting as the specialist layer rather than a replacement.</p>
+            <p>We document everything so your team is never dependent on us to keep moving.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>
+          <span class="faq__num">06</span>
+          <span class="faq__q">What reporting do we get, and how often?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <p>A live dashboard you can open any day, plus a monthly written note where a human explains what moved, what didn't, and what we're changing next. We report on <strong>rankings, qualified traffic, and pipeline</strong> — the metrics tied to money.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>
+          <span class="faq__num">07</span>
+          <span class="faq__q">Do you guarantee first-page rankings?</span>
+          <span class="faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <p>No honest agency can, and anyone who does is selling you a story. What we do guarantee is a transparent process, defensible tactics that survive algorithm updates, and a clear line from our work to your results.</p>
+            <p><em>We'd rather keep your trust than promise a position we don't control.</em></p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

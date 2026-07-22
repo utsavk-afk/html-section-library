@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!-- ===== BIOGRAPHY — BRUTALIST ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bio — Priya Nakamura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --paper:#FAFAF7;
+  --ink:#111111;
+  --acid:#FFE500;
+  --red:#FF3B21;
+  --white:#FFFFFF;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.bio{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:72px 56px;
+  position:relative;
+  /* faint visible grid */
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+
+.bio__tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--acid);
+  padding:7px 14px;
+  border:var(--border);
+  box-shadow:var(--shadow-sm);
+  margin-bottom:40px;
+}
+
+.bio__grid{
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:56px;
+  align-items:start;
+}
+
+/* ---- LEFT: portrait card ---- */
+.portrait{
+  position:relative;
+}
+.portrait__frame{
+  border:4px solid var(--ink);
+  box-shadow:var(--shadow);
+  background:var(--acid);
+  aspect-ratio:1/1;
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+.portrait__frame svg{display:block;width:100%;height:100%;}
+
+.portrait__badge{
+  position:absolute;
+  bottom:-18px;
+  right:-18px;
+  background:var(--red);
+  color:var(--white);
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:9px 13px;
+  border:3px solid var(--ink);
+  box-shadow:var(--shadow-sm);
+  transform:rotate(-4deg);
+}
+
+.portrait__stats{
+  margin-top:44px;
+  border:var(--border);
+  box-shadow:var(--shadow-sm);
+  background:var(--white);
+}
+.stat{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:13px 16px;
+  border-bottom:3px solid var(--ink);
+}
+.stat:last-child{border-bottom:none;}
+.stat__k{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:.7;
+}
+.stat__v{
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+}
+
+/* ---- RIGHT: text ---- */
+.bio__name{
+  font-weight:900;
+  font-size:clamp(46px,6vw,86px);
+  line-height:.9;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.bio__name span{
+  display:inline-block;
+  background:var(--acid);
+  padding:0 6px;
+  box-shadow:var(--shadow-sm);
+  border:3px solid var(--ink);
+}
+.bio__role{
+  font-family:var(--mono);
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  margin-top:22px;
+  padding-top:16px;
+  border-top:3px solid var(--ink);
+  display:inline-block;
+}
+.bio__role em{
+  font-style:normal;
+  color:var(--red);
+}
+
+.bio__body{
+  margin-top:26px;
+  max-width:620px;
+  font-size:17.5px;
+  line-height:1.55;
+  font-weight:400;
+}
+.bio__body p+p{margin-top:16px;}
+.bio__body strong{
+  font-weight:800;
+  background:var(--acid);
+  padding:0 3px;
+}
+
+.bio__links{
+  margin-top:34px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.lnk{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ink);
+  background:var(--white);
+  padding:13px 20px;
+  border:var(--border);
+  box-shadow:var(--shadow-sm);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.lnk:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:6px 6px 0 var(--ink);
+}
+.lnk--primary{
+  background:var(--ink);
+  color:var(--acid);
+}
+.lnk--primary:hover{box-shadow:6px 6px 0 var(--red);}
+.lnk span{color:var(--red);}
+.lnk--primary span{color:var(--acid);}
+
+@media(max-width:640px){
+  .bio{padding:40px 22px;background-size:32px 32px;}
+  .bio__grid{grid-template-columns:1fr;gap:48px;}
+  .portrait{max-width:280px;}
+  .portrait__stats{margin-top:36px;}
+  .bio__tag{margin-bottom:28px;}
+  .bio__body{font-size:16px;}
+  .bio__links{gap:12px;}
+  .lnk{flex:1 1 auto;text-align:center;}
+}
+</style>
+</head>
+<body>
+<section class="bio">
+  <span class="bio__tag">// WHO_MADE_THIS.TXT</span>
+
+  <div class="bio__grid">
+
+    <!-- PORTRAIT COLUMN -->
+    <div class="portrait">
+      <div class="portrait__frame">
+        <!-- inline SVG portrait, geometric / no stock face -->
+        <svg viewBox="0 0 300 300" role="img" aria-label="Illustrated portrait of Priya Nakamura">
+          <rect width="300" height="300" fill="#FFE500"/>
+          <!-- shoulders -->
+          <path d="M40 300 Q40 210 150 210 Q260 210 260 300 Z" fill="#111"/>
+          <path d="M62 300 Q62 228 150 228 Q238 228 238 300 Z" fill="#FF3B21"/>
+          <!-- neck -->
+          <rect x="130" y="182" width="40" height="42" fill="#111"/>
+          <!-- head -->
+          <rect x="98" y="78" width="104" height="120" rx="10" fill="#FAFAF7" stroke="#111" stroke-width="5"/>
+          <!-- hair block -->
+          <path d="M93 120 Q93 62 150 62 Q207 62 207 120 L207 96 Q200 74 150 74 Q118 74 108 96 L108 150 Q98 150 93 138 Z" fill="#111"/>
+          <path d="M186 96 Q207 100 207 150 L196 150 L196 108 Z" fill="#111"/>
+          <!-- brows + eyes -->
+          <rect x="118" y="126" width="24" height="6" fill="#111"/>
+          <rect x="160" y="126" width="24" height="6" fill="#111"/>
+          <circle cx="130" cy="142" r="6" fill="#111"/>
+          <circle cx="172" cy="142" r="6" fill="#111"/>
+          <!-- glasses -->
+          <rect x="112" y="130" width="36" height="26" rx="4" fill="none" stroke="#FF3B21" stroke-width="4"/>
+          <rect x="154" y="130" width="36" height="26" rx="4" fill="none" stroke="#FF3B21" stroke-width="4"/>
+          <line x1="148" y1="140" x2="154" y2="140" stroke="#FF3B21" stroke-width="4"/>
+          <!-- nose + mouth -->
+          <path d="M150 152 L144 168 L154 168" fill="none" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M132 182 Q150 194 168 182" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="portrait__badge">EST. 2019</span>
+
+      <div class="portrait__stats">
+        <div class="stat"><span class="stat__k">Based in</span><span class="stat__v">Lisbon, PT</span></div>
+        <div class="stat"><span class="stat__k">Ships</span><span class="stat__v">Fri Weekly</span></div>
+        <div class="stat"><span class="stat__k">Coffee/day</span><span class="stat__v">4 Cups</span></div>
+      </div>
+    </div>
+
+    <!-- TEXT COLUMN -->
+    <div class="bio__text">
+      <h1 class="bio__name">PRIYA<br><span>NAKAMURA</span></h1>
+      <div class="bio__role">FRONT-END ENGINEER <em>·</em> MAINTAINER OF THIS LIBRARY</div>
+
+      <div class="bio__body">
+        <p>I build the copy-paste sections you're looking at right now. Every block is <strong>one HTML file</strong> — no build step, no npm install, no framework tax. Drop it into Claude Code, tweak the tokens, ship it before lunch.</p>
+        <p>Before this I spent six years untangling design systems at fintech startups, which is a polite way of saying I renamed the same button component forty times. Now I write raw, honest markup that does exactly what it says and nothing it doesn't.</p>
+      </div>
+
+      <div class="bio__links">
+        <a class="lnk lnk--primary" href="https://github.com/priyanakamura">GITHUB <span>&#8599;</span></a>
+        <a class="lnk" href="mailto:priya@thelibrary.dev">EMAIL <span>&#8599;</span></a>
+        <a class="lnk" href="https://priyanakamura.dev">SITE <span>&#8599;</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

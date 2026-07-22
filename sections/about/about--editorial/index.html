@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!-- ===== ABOUT — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#FCFCFA;
+    --ink:#1B1A17;
+    --muted:#6E6A62;
+    --line:#E4E1D8;
+    --accent:#B4472B;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;}
+
+  .about{
+    max-width:1440px;
+    margin:0 auto;
+    padding:120px 88px 128px;
+  }
+
+  .about__grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+    column-gap:112px;
+    align-items:start;
+  }
+
+  /* ---- left rail ---- */
+  .about__rail{
+    padding-top:14px;
+    position:relative;
+  }
+  .label{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:44px;
+  }
+  .label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .about__kicker{
+    font-family:var(--serif);
+    font-size:15px;
+    font-style:italic;
+    color:var(--muted);
+    max-width:22ch;
+    margin-bottom:52px;
+  }
+
+  /* stat block */
+  .stat{
+    border-top:1px solid var(--line);
+    padding-top:22px;
+    margin-bottom:34px;
+  }
+  .stat__num{
+    font-family:var(--serif);
+    font-size:64px;
+    font-weight:500;
+    line-height:.92;
+    letter-spacing:-.01em;
+  }
+  .stat__num sup{
+    font-size:26px;
+    color:var(--accent);
+    vertical-align:super;
+    margin-left:2px;
+  }
+  .stat__desc{
+    margin-top:12px;
+    font-size:13.5px;
+    color:var(--muted);
+    max-width:26ch;
+  }
+
+  /* small ledger of numbers */
+  .ledger{
+    display:flex;
+    gap:40px;
+    border-top:1px solid var(--line);
+    padding-top:20px;
+  }
+  .ledger div{max-width:12ch;}
+  .ledger dt{
+    font-family:var(--serif);
+    font-size:30px;
+    font-weight:500;
+    letter-spacing:-.01em;
+  }
+  .ledger dd{
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:6px;
+  }
+
+  /* ---- right / story ---- */
+  .about__story h2{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:44px;
+    line-height:1.14;
+    letter-spacing:-.015em;
+    max-width:18ch;
+    margin-bottom:36px;
+  }
+  .about__story h2 em{
+    font-style:italic;
+    color:var(--accent);
+  }
+
+  .about__story p{
+    font-size:17px;
+    line-height:1.72;
+    color:#34322D;
+    max-width:52ch;
+    margin-bottom:24px;
+  }
+  .about__story p .muted{color:var(--muted);}
+
+  .emphasis{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:25px;
+    line-height:1.4;
+    color:var(--ink);
+    max-width:30ch;
+    padding:8px 0 8px 28px;
+    border-left:2px solid var(--accent);
+    margin:40px 0 44px;
+  }
+
+  .sign{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-top:56px;
+    padding-top:30px;
+    border-top:1px solid var(--line);
+  }
+  .sign__avatar{
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--bg);
+    display:grid;
+    place-items:center;
+    font-family:var(--serif);
+    font-size:17px;
+    font-weight:500;
+    flex-shrink:0;
+  }
+  .sign__name{
+    font-family:var(--serif);
+    font-size:16px;
+    font-weight:500;
+  }
+  .sign__role{
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:3px;
+  }
+
+  @media(max-width:640px){
+    .about{padding:72px 24px 84px;}
+    .about__grid{grid-template-columns:1fr;row-gap:60px;}
+    .about__rail{padding-top:0;}
+    .about__story h2{font-size:32px;}
+    .stat__num{font-size:52px;}
+    .emphasis{font-size:21px;padding-left:20px;}
+    .ledger{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="about">
+    <div class="about__grid">
+
+      <aside class="about__rail">
+        <span class="label">Who we are</span>
+        <p class="about__kicker">A small studio for people who still read the footnotes.</p>
+
+        <div class="stat">
+          <div class="stat__num">11<sup>yrs</sup></div>
+          <p class="stat__desc">Setting type and shaping books from a single room above the old print house on Marsh Lane.</p>
+        </div>
+
+        <dl class="ledger">
+          <div>
+            <dt>240+</dt>
+            <dd>Titles Set</dd>
+          </div>
+          <div>
+            <dt>3</dt>
+            <dd>Hands on deck</dd>
+          </div>
+        </dl>
+      </aside>
+
+      <div class="about__story">
+        <h2>We make <em>slow things</em> for a fast world, and we don't apologise for it.</h2>
+
+        <p>Rowan &amp; Field began the way most stubborn ideas do — over a bad coffee and a good argument about kerning. We had spent years watching beautiful writing get poured into templates that flattened it, and we wanted to build the opposite: pages where the layout listens to the sentence.</p>
+
+        <p class="muted">So we do fewer projects, on purpose. Every book that leaves this room has been read aloud at least once, usually twice, often to nobody but the cat.</p>
+
+        <blockquote class="emphasis">Good design isn't loud. It's the quiet that lets the words be heard.</blockquote>
+
+        <p>That belief shows up in the small decisions — a margin that gives a paragraph room to breathe, a drop cap that earns its place, a hairline rule instead of a heavy box. None of it shouts. All of it stays.</p>
+
+        <div class="sign">
+          <div class="sign__avatar">RF</div>
+          <div>
+            <div class="sign__name">Rowan Fieldhouse</div>
+            <div class="sign__role">Founder &amp; Typesetter</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

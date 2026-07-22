@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- ===== AVATAR-STACK — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Stack — Social Proof</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#26262c;
+  --accent:#F59E42;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.proof{
+  width:100%;
+  min-height:660px;
+  display:flex;
+  align-items:center;
+  padding:96px 64px;
+  background:
+    radial-gradient(120% 90% at 8% 12%, rgba(245,158,66,0.06), transparent 55%),
+    var(--bg);
+  position:relative;
+  overflow:hidden;
+}
+
+/* faint blueprint hairlines, not a glow */
+.proof::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(var(--line) 1px, transparent 1px);
+  background-size:100% 88px;
+  opacity:.35;
+  -webkit-mask-image:linear-gradient(to bottom, transparent, #000 40%, transparent);
+  mask-image:linear-gradient(to bottom, transparent, #000 40%, transparent);
+  pointer-events:none;
+}
+
+.proof__inner{
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:80px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+
+/* ---------- LEFT: focal content ---------- */
+.proof__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.proof__kicker .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(245,158,66,0.14);
+}
+
+.proof__head{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:52px;
+  line-height:1.06;
+  letter-spacing:-0.015em;
+  margin-bottom:22px;
+}
+.proof__head em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+.proof__sub{
+  font-size:17px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:480px;
+  margin-bottom:40px;
+}
+
+/* the avatar cluster + join line */
+.cluster{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+
+.stack{
+  display:flex;
+  align-items:center;
+}
+.stack .av{
+  width:56px;height:56px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-weight:600;
+  font-size:16px;
+  color:#121216;
+  border:2px solid var(--bg);
+  margin-left:-16px;
+  position:relative;
+  box-shadow:0 6px 16px rgba(0,0,0,0.4);
+  transition:transform .18s ease;
+}
+.stack .av:first-child{margin-left:0;}
+.stack .av:hover{transform:translateY(-5px);z-index:6;}
+.av--1{background:#E4E4E7;z-index:5;}
+.av--2{background:#F59E42;z-index:4;}
+.av--3{background:#7C6BF0;color:#F4F4F5;z-index:3;}
+.av--4{background:#3FB6A8;color:#F4F4F5;z-index:2;}
+.av--5{background:#E86A5E;color:#F4F4F5;z-index:1;}
+.av--more{
+  background:#1c1c22;
+  color:var(--muted);
+  font-size:13px;
+  z-index:0;
+  border:2px solid var(--line);
+}
+
+.joinline{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  line-height:1.3;
+}
+.joinline strong{
+  font-size:16px;
+  font-weight:600;
+  color:var(--ink);
+}
+.joinline strong b{color:var(--accent);font-weight:600;}
+.joinline span{
+  font-size:13.5px;
+  color:var(--muted);
+}
+
+/* ---------- RIGHT: rating panel (asymmetric focal accent) ---------- */
+.rating{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:34px 32px;
+  background:linear-gradient(180deg, #16161b, #141418);
+  position:relative;
+}
+.rating::after{
+  content:"";
+  position:absolute;
+  left:32px;top:0;
+  width:44px;height:2px;
+  background:var(--accent);
+  border-radius:2px;
+}
+.rating__score{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:14px;
+}
+.rating__num{
+  font-family:var(--serif);
+  font-size:46px;
+  font-weight:500;
+  letter-spacing:-0.02em;
+}
+.rating__outof{
+  font-size:15px;
+  color:var(--muted);
+}
+.stars{
+  display:flex;
+  gap:5px;
+  margin-bottom:20px;
+}
+.stars svg{width:20px;height:20px;display:block;}
+.stars .star path{fill:var(--accent);}
+.stars .star--half #half-fill{fill:var(--accent);}
+.stars .star--half .bg{fill:#33333b;}
+
+.rating__foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  gap:14px;
+}
+.rating__from{
+  font-size:13.5px;
+  color:var(--muted);
+}
+.rating__from b{color:var(--ink);font-weight:600;}
+.badge{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  border:1px solid rgba(245,158,66,0.35);
+  border-radius:999px;
+  padding:6px 12px;
+  white-space:nowrap;
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:640px){
+  .proof{padding:56px 22px;min-height:0;}
+  .proof__inner{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
+  .proof__head{font-size:36px;}
+  .proof__sub{font-size:16px;margin-bottom:32px;}
+  .cluster{gap:18px;}
+  .stack .av{width:48px;height:48px;font-size:14px;margin-left:-14px;}
+  .rating{padding:28px 24px;}
+  .rating__num{font-size:40px;}
+  .rating__foot{flex-direction:column;align-items:flex-start;gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<section class="proof">
+  <div class="proof__inner">
+
+    <!-- focal: heading + avatar cluster -->
+    <div class="proof__content">
+      <span class="proof__kicker"><span class="dot"></span>Trusted in production</span>
+      <h1 class="proof__head">The prompt library<br>shipping teams<br>actually <em>reach for</em>.</h1>
+      <p class="proof__sub">Copy a section, drop it into Claude Code, keep moving. No sign-up, no build step, no lock-in — the same snippets our own engineers paste every day.</p>
+
+      <div class="cluster">
+        <div class="stack" aria-label="Member avatars">
+          <div class="av av--1">JM</div>
+          <div class="av av--2">RK</div>
+          <div class="av av--3">AY</div>
+          <div class="av av--4">SD</div>
+          <div class="av av--5">NP</div>
+          <div class="av av--more">+</div>
+        </div>
+        <div class="joinline">
+          <strong>Join <b>2,340+</b> product teams</strong>
+          <span>from Linear, Ramp, Vercel &amp; 900 more shops</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- accent: rating panel -->
+    <aside class="rating" aria-label="Average rating">
+      <div class="rating__score">
+        <span class="rating__num">4.9</span>
+        <span class="rating__outof">/ 5 average</span>
+      </div>
+      <div class="stars" role="img" aria-label="4.9 out of 5 stars">
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.02 6.64.97-4.8 4.68 1.13 6.61L12 17.36l-5.92 3.12L7.2 13.87 2.4 9.19l6.64-.97z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.02 6.64.97-4.8 4.68 1.13 6.61L12 17.36l-5.92 3.12L7.2 13.87 2.4 9.19l6.64-.97z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.02 6.64.97-4.8 4.68 1.13 6.61L12 17.36l-5.92 3.12L7.2 13.87 2.4 9.19l6.64-.97z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.02 6.64.97-4.8 4.68 1.13 6.61L12 17.36l-5.92 3.12L7.2 13.87 2.4 9.19l6.64-.97z"/></svg>
+        <svg class="star star--half" viewBox="0 0 24 24">
+          <defs><clipPath id="clip-h"><rect x="0" y="0" width="12" height="24"/></clipPath></defs>
+          <path class="bg" d="M12 2.2l2.95 6.02 6.64.97-4.8 4.68 1.13 6.61L12 17.36l-5.92 3.12L7.2 13.87 2.4 9.19l6.64-.97z"/>
+          <path id="half-fill" clip-path="url(#clip-h)" d="M12 2.2l2.95 6.02 6.64.97-4.8 4.68 1.13 6.61L12 17.36l-5.92 3.12L7.2 13.87 2.4 9.19l6.64-.97z"/>
+        </svg>
+      </div>
+      <div class="rating__foot">
+        <span class="rating__from">Based on <b>1,812</b> verified reviews</span>
+        <span class="badge">G2 · Winter '26</span>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+</body>
+</html>

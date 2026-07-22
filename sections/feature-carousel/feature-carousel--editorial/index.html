@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!-- ===== FEATURE-CAROUSEL — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Carousel — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --accent:#B4472B;
+  --paper:#F4F2EC;
+  --paper-2:#EDEAE1;
+  --muted:#6E6A61;
+  --hair:#DAD6CB;
+  --hair-strong:#C7C1B3;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --maxw:1180px;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+.fc{
+  width:100%;
+  padding:88px 40px 96px;
+}
+.fc__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* ---- header row ---- */
+.fc__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--hair);
+}
+.fc__label{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.fc__label::before{
+  content:"";
+  width:22px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+.fc__title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:39px;
+  line-height:1.08;
+  letter-spacing:-.01em;
+  max-width:15ch;
+  margin-top:14px;
+}
+.fc__title em{
+  font-style:italic;
+  color:var(--accent);
+}
+.fc__index{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--muted);
+  white-space:nowrap;
+  padding-bottom:4px;
+}
+.fc__index b{
+  color:var(--ink);
+  font-style:normal;
+  font-weight:500;
+}
+
+/* ---- tabs ---- */
+.fc__tabs{
+  display:flex;
+  gap:0;
+  margin-top:38px;
+  border-bottom:1px solid var(--hair);
+  flex-wrap:wrap;
+}
+.fc__tab{
+  appearance:none;
+  background:none;
+  border:none;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;
+  padding:0 24px 16px 0;
+  margin-right:34px;
+  cursor:pointer;
+  text-align:left;
+  font-family:var(--sans);
+  color:var(--muted);
+  transition:color .18s ease;
+}
+.fc__tab:last-child{margin-right:0;}
+.fc__tab-n{
+  display:block;
+  font-size:11px;
+  letter-spacing:.16em;
+  font-weight:600;
+  color:var(--hair-strong);
+  margin-bottom:7px;
+  transition:color .18s ease;
+}
+.fc__tab-t{
+  font-family:var(--serif);
+  font-size:19px;
+  font-weight:500;
+  line-height:1.15;
+}
+.fc__tab:hover{color:var(--ink);}
+.fc__tab.is-active{
+  color:var(--ink);
+  border-bottom-color:var(--accent);
+}
+.fc__tab.is-active .fc__tab-n{color:var(--accent);}
+
+/* ---- panel ---- */
+.fc__stage{
+  position:relative;
+  margin-top:46px;
+}
+.fc__panel{
+  display:none;
+  grid-template-columns:1fr 1.02fr;
+  gap:64px;
+  align-items:center;
+  animation:fade .5s ease both;
+}
+.fc__panel.is-active{display:grid;}
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.fc__copy-kicker{
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+  margin-bottom:20px;
+}
+.fc__h{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:31px;
+  line-height:1.16;
+  letter-spacing:-.01em;
+  margin-bottom:18px;
+}
+.fc__h em{font-style:italic;color:var(--accent);}
+.fc__p{
+  font-size:15.5px;
+  line-height:1.66;
+  color:var(--muted);
+  max-width:40ch;
+  margin-bottom:26px;
+}
+.fc__list{
+  list-style:none;
+  border-top:1px solid var(--hair);
+}
+.fc__list li{
+  display:flex;
+  gap:14px;
+  align-items:baseline;
+  padding:13px 0;
+  border-bottom:1px solid var(--hair);
+  font-size:14.5px;
+}
+.fc__list li span{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:13px;
+  color:var(--accent);
+  min-width:26px;
+}
+.fc__list li b{font-weight:500;color:var(--ink);}
+.fc__list li small{
+  color:var(--muted);
+  font-size:13px;
+  display:block;
+  margin-top:2px;
+}
+
+/* ---- visual (right) : CSS-only art per tab ---- */
+.fc__visual{
+  position:relative;
+  aspect-ratio:5/4;
+  background:var(--paper);
+  border:1px solid var(--hair);
+  overflow:hidden;
+}
+.fc__visual::after{
+  content:attr(data-cap);
+  position:absolute;
+  left:22px;
+  bottom:18px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:13px;
+  color:var(--muted);
+  z-index:6;
+}
+.fc__visual-tag{
+  position:absolute;
+  top:0;right:0;
+  background:var(--ink);
+  color:var(--bg);
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:8px 13px;
+  z-index:6;
+}
+
+/* viz 1 — ledger bars */
+.viz-ledger{position:absolute;inset:0;padding:40px 40px 60px;display:flex;align-items:flex-end;gap:18px;}
+.viz-ledger i{
+  flex:1;
+  display:block;
+  background:var(--paper-2);
+  border-top:2px solid var(--hair-strong);
+}
+.viz-ledger i:nth-child(1){height:34%;}
+.viz-ledger i:nth-child(2){height:58%;}
+.viz-ledger i:nth-child(3){height:46%;}
+.viz-ledger i:nth-child(4){height:78%;background:var(--accent);border-top-color:var(--accent);}
+.viz-ledger i:nth-child(5){height:64%;}
+.viz-ledger i:nth-child(6){height:88%;}
+.viz-ledger::before{
+  content:"";position:absolute;left:40px;right:40px;bottom:60px;height:1px;background:var(--hair-strong);
+}
+
+/* viz 2 — concentric proof rings */
+.viz-rings{position:absolute;inset:0;}
+.viz-rings b{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  border:1px solid var(--hair-strong);
+}
+.viz-rings b:nth-child(1){width:76%;height:76%;}
+.viz-rings b:nth-child(2){width:54%;height:54%;border-style:dashed;}
+.viz-rings b:nth-child(3){width:30%;height:30%;border:2px solid var(--accent);background:var(--paper-2);}
+.viz-rings s{
+  position:absolute;top:50%;left:50%;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);transform:translate(-50%,-50%);
+}
+.viz-rings u{
+  position:absolute;width:7px;height:7px;border-radius:50%;background:var(--ink);
+  top:19%;left:63%;text-decoration:none;
+}
+.viz-rings u::after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--ink);top:145px;left:-92px;}
+
+/* viz 3 — routing lines */
+.viz-route{position:absolute;inset:0;padding:44px;}
+.viz-route .node{
+  position:absolute;padding:9px 13px;background:var(--bg);border:1px solid var(--hair-strong);
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--muted);
+}
+.viz-route .n1{top:44px;left:44px;}
+.viz-route .n2{top:44px;right:44px;}
+.viz-route .n3{bottom:52px;left:50%;transform:translateX(-50%);border-color:var(--accent);color:var(--accent);}
+.viz-route svg{position:absolute;inset:0;width:100%;height:100%;}
+
+/* viz 4 — draft calendar grid */
+.viz-cal{position:absolute;inset:0;padding:42px;display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:1fr;gap:10px;}
+.viz-cal i{background:var(--paper-2);border:1px solid var(--hair);display:block;}
+.viz-cal i.on{background:var(--bg);border-color:var(--hair-strong);}
+.viz-cal i.hit{background:var(--accent);border-color:var(--accent);position:relative;}
+.viz-cal i.hit::after{content:"";position:absolute;top:7px;left:7px;width:6px;height:6px;border-radius:50%;background:var(--bg);}
+
+/* footer note */
+.fc__foot{
+  margin-top:52px;
+  padding-top:22px;
+  border-top:1px solid var(--hair);
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.fc__cta{
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.04em;
+  color:var(--bg);
+  background:var(--ink);
+  border:none;
+  padding:13px 22px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+.fc__foot-note{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14px;
+  color:var(--muted);
+}
+
+@media(max-width:640px){
+  .fc{padding:56px 20px 64px;}
+  .fc__head{flex-direction:column;align-items:flex-start;gap:12px;}
+  .fc__title{font-size:29px;}
+  .fc__index{padding-bottom:0;}
+  .fc__tabs{margin-top:28px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
+  .fc__tab{margin-right:24px;padding-right:8px;white-space:nowrap;}
+  .fc__tab-t{font-size:16px;}
+  .fc__stage{margin-top:32px;}
+  .fc__panel.is-active{grid-template-columns:1fr;gap:34px;}
+  .fc__h{font-size:25px;}
+  .fc__visual{aspect-ratio:4/3;}
+}
+</style>
+</head>
+<body>
+<section class="fc" aria-label="Feature carousel">
+  <div class="fc__inner">
+
+    <div class="fc__head">
+      <div>
+        <p class="fc__label">The Field Manual</p>
+        <h2 class="fc__title">Four working parts of a <em>trustworthy</em> pipeline.</h2>
+      </div>
+      <p class="fc__index">Chapter <b>03</b> — of seven</p>
+    </div>
+
+    <div class="fc__tabs" role="tablist">
+      <button class="fc__tab is-active" role="tab" aria-selected="true" data-tab="0">
+        <span class="fc__tab-n">01</span>
+        <span class="fc__tab-t">Signal Ledger</span>
+      </button>
+      <button class="fc__tab" role="tab" aria-selected="false" data-tab="1">
+        <span class="fc__tab-n">02</span>
+        <span class="fc__tab-t">Proof Layer</span>
+      </button>
+      <button class="fc__tab" role="tab" aria-selected="false" data-tab="2">
+        <span class="fc__tab-n">03</span>
+        <span class="fc__tab-t">Smart Routing</span>
+      </button>
+      <button class="fc__tab" role="tab" aria-selected="false" data-tab="3">
+        <span class="fc__tab-n">04</span>
+        <span class="fc__tab-t">Draft Cadence</span>
+      </button>
+    </div>
+
+    <div class="fc__stage">
+
+      <!-- panel 1 -->
+      <div class="fc__panel is-active" role="tabpanel">
+        <div class="fc__copy">
+          <p class="fc__copy-kicker">Feature 01 · Signal Ledger</p>
+          <h3 class="fc__h">Every touch is written down, so <em>nothing</em> gets attributed twice.</h3>
+          <p class="fc__p">Opens, clicks, replies and quiet no-shows all land in one append-only record. When a deal closes, the ledger already knows which four moments earned it — not a dashboard's best guess.</p>
+          <ul class="fc__list">
+            <li><span>a.</span><b>Append-only by design</b><small>Corrections add a row; they never erase the past.</small></li>
+            <li><span>b.</span><b>Weighted by recency</b><small>Last week's reply outranks last quarter's open.</small></li>
+          </ul>
+        </div>
+        <div class="fc__visual" data-cap="Fig. 3.1 — six-week touch weight">
+          <span class="fc__visual-tag">Ledger</span>
+          <div class="viz-ledger"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+
+      <!-- panel 2 -->
+      <div class="fc__panel" role="tabpanel">
+        <div class="fc__copy">
+          <p class="fc__copy-kicker">Feature 02 · Proof Layer</p>
+          <h3 class="fc__h">A case study drops in <em>where</em> the doubt actually surfaces.</h3>
+          <p class="fc__p">The proof layer watches for hesitation — a re-read, a stalled thread, a pricing page revisited — and surfaces the one reference story that answers it. No carpet-bombing of logos.</p>
+          <ul class="fc__list">
+            <li><span>a.</span><b>Matched to objection</b><small>Migration fear gets a migration story, not a brag reel.</small></li>
+            <li><span>b.</span><b>One proof, well-placed</b><small>Relevance beats volume every single time.</small></li>
+          </ul>
+        </div>
+        <div class="fc__visual" data-cap="Fig. 3.2 — proof at the center">
+          <span class="fc__visual-tag">Proof</span>
+          <div class="viz-rings"><b></b><b></b><b></b><s></s><u></u></div>
+        </div>
+      </div>
+
+      <!-- panel 3 -->
+      <div class="fc__panel" role="tabpanel">
+        <div class="fc__copy">
+          <p class="fc__copy-kicker">Feature 03 · Smart Routing</p>
+          <h3 class="fc__h">Warm hands catch warm leads — <em>before</em> the interest cools.</h3>
+          <p class="fc__p">When a prospect trips a buying signal, routing hands them to the rep who already knows the account, not the next name in a round-robin. Context travels with the person.</p>
+          <ul class="fc__list">
+            <li><span>a.</span><b>Owner-aware</b><small>Prior conversations follow the lead automatically.</small></li>
+            <li><span>b.</span><b>Under four minutes</b><small>Median hand-off from signal to a live rep.</small></li>
+          </ul>
+        </div>
+        <div class="fc__visual" data-cap="Fig. 3.3 — signal to owner">
+          <span class="fc__visual-tag">Routing</span>
+          <div class="viz-route">
+            <svg viewBox="0 0 400 320" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M90 70 L200 250" fill="none" stroke="#C7C1B3" stroke-width="1.5"/>
+              <path d="M310 70 L200 250" fill="none" stroke="#B4472B" stroke-width="2"/>
+              <path d="M90 70 L310 70" fill="none" stroke="#C7C1B3" stroke-width="1.5" stroke-dasharray="4 5"/>
+            </svg>
+            <span class="node n1">Signal</span>
+            <span class="node n2">Queue</span>
+            <span class="node n3">Owner</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- panel 4 -->
+      <div class="fc__panel" role="tabpanel">
+        <div class="fc__copy">
+          <p class="fc__copy-kicker">Feature 04 · Draft Cadence</p>
+          <h3 class="fc__h">The sequence writes a first draft; <em>you</em> keep the last word.</h3>
+          <p class="fc__p">Every send starts as a draft you can read, rewrite or spike. The cadence proposes the timing and the angle — approval is a two-second yes, never an autopilot you have to babysit.</p>
+          <ul class="fc__list">
+            <li><span>a.</span><b>Draft, then approve</b><small>Nothing leaves the building without a human nod.</small></li>
+            <li><span>b.</span><b>Spaced for humans</b><small>Cadence respects nights, weekends and dead air.</small></li>
+          </ul>
+        </div>
+        <div class="fc__visual" data-cap="Fig. 3.4 — a two-week cadence">
+          <span class="fc__visual-tag">Cadence</span>
+          <div class="viz-cal">
+            <i class="on"></i><i></i><i class="hit"></i><i></i><i class="on"></i>
+            <i></i><i class="on"></i><i></i><i class="hit"></i><i></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fc__foot">
+      <a href="#" class="fc__cta">Read the full manual</a>
+      <p class="fc__foot-note">Roughly nine minutes, no gate, no form.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.fc__tab');
+  var panels=document.querySelectorAll('.fc__panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var i=+tab.getAttribute('data-tab');
+      tabs.forEach(function(t){t.classList.remove('is-active');t.setAttribute('aria-selected','false');});
+      tab.classList.add('is-active');tab.setAttribute('aria-selected','true');
+      panels.forEach(function(p,pi){
+        p.classList.toggle('is-active',pi===i);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

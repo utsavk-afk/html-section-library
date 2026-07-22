@@ -1,0 +1,308 @@
+/* ===== TESTIMONIAL-GRID — BRUTALIST ===== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Grid — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#111111;
+  --muted:#5A5A52;
+  --line:#111111;
+  --accent:#FFE500;
+  --red:#FF3B21;
+  --serif:'Archivo', sans-serif;
+  --sans:'Archivo', sans-serif;
+  --mono:'Space Mono', monospace;
+}
+
+.tg-section{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  padding:72px 40px 88px;
+  width:100%;
+  /* faint grid backdrop */
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.05) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+
+.tg-wrap{max-width:1440px;margin:0 auto;}
+
+/* ---- HEADER (asymmetric) ---- */
+.tg-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  border-bottom:4px solid var(--line);
+  padding-bottom:22px;
+  margin-bottom:44px;
+}
+.tg-head-left{max-width:640px;}
+.tg-eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  display:inline-block;
+  background:var(--ink);
+  color:var(--accent);
+  padding:5px 10px;
+  margin-bottom:16px;
+}
+.tg-title{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:52px;
+  line-height:.96;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.tg-title mark{
+  background:var(--accent);
+  color:var(--ink);
+  padding:0 6px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.tg-head-right{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  text-align:right;
+  line-height:1.5;
+  white-space:nowrap;
+}
+.tg-head-right .num{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:40px;
+  display:block;
+  line-height:1;
+  color:var(--red);
+}
+
+/* ---- GRID (masonry-ish via columns) ---- */
+.tg-grid{
+  columns:3;
+  column-gap:28px;
+}
+.tg-card{
+  break-inside:avoid;
+  margin-bottom:28px;
+  border:3px solid var(--line);
+  background:#fff;
+  box-shadow:6px 6px 0 var(--ink);
+  padding:24px 24px 20px;
+  position:relative;
+}
+.tg-quote{
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:18px;
+  line-height:1.34;
+  letter-spacing:-.01em;
+  margin-bottom:22px;
+}
+.tg-quote::before{
+  content:"“";
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:52px;
+  line-height:0;
+  position:relative;
+  top:16px;
+  margin-right:2px;
+  color:var(--ink);
+}
+
+/* person row */
+.tg-person{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-top:2px solid var(--line);
+  padding-top:16px;
+}
+.tg-avatar{
+  width:44px;height:44px;
+  flex:0 0 44px;
+  display:grid;
+  place-items:center;
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:16px;
+  border:2.5px solid var(--line);
+  text-transform:uppercase;
+}
+.tg-meta{line-height:1.25;}
+.tg-name{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+}
+.tg-role{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.tg-tag{
+  position:absolute;
+  top:-3px;right:-3px;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  background:var(--ink);
+  color:#fff;
+  padding:4px 8px;
+  letter-spacing:.08em;
+}
+
+/* variants — vary avatar fills, elevation, radius */
+.av-yellow{background:var(--accent);}
+.av-red{background:var(--red);color:#fff;}
+.av-ink{background:var(--ink);color:var(--accent);}
+.av-white{background:#fff;}
+
+/* FEATURE card — big, acid-yellow, spans full column width visually */
+.tg-feature{
+  background:var(--accent);
+  border:3px solid var(--line);
+  box-shadow:10px 10px 0 var(--ink);
+  padding:32px 30px 26px;
+}
+.tg-feature .tg-quote{
+  font-size:27px;
+  line-height:1.18;
+  font-weight:800;
+}
+.tg-feature .tg-quote::before{color:var(--ink);font-size:70px;top:22px;}
+.tg-feature .tg-person{border-top:2.5px solid var(--line);}
+.tg-feature .tg-tag{background:var(--red);}
+.tg-feature .stars{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.3em;
+  margin-bottom:14px;
+}
+
+.tg-small .tg-quote{font-size:15px;}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:960px){
+  .tg-grid{columns:2;}
+}
+@media(max-width:640px){
+  .tg-section{padding:48px 20px 60px;background-size:32px 32px;}
+  .tg-head{flex-direction:column;align-items:flex-start;gap:18px;}
+  .tg-head-right{text-align:left;white-space:normal;}
+  .tg-title{font-size:38px;}
+  .tg-grid{columns:1;column-gap:0;}
+  .tg-feature .tg-quote{font-size:22px;}
+}
+</style>
+</head>
+<body>
+<section class="tg-section">
+  <div class="tg-wrap">
+
+    <div class="tg-head">
+      <div class="tg-head-left">
+        <span class="tg-eyebrow">// Field Reports</span>
+        <h2 class="tg-title">Teams that <mark>shipped</mark> with it, on the record.</h2>
+      </div>
+      <div class="tg-head-right">
+        <span class="num">2,400+</span>
+        Installs this month<br>
+        Avg rating 4.9 / 5.0
+      </div>
+    </div>
+
+    <div class="tg-grid">
+
+      <!-- FEATURE -->
+      <div class="tg-card tg-feature">
+        <span class="tg-tag">TOP PICK</span>
+        <div class="stars">★★★★★</div>
+        <p class="tg-quote">Dropped it into Claude Code on a Friday. By Monday the whole design team stopped opening Figma just to check spacing tokens. It reads like a spec, not a suggestion.</p>
+        <div class="tg-person">
+          <div class="tg-avatar av-ink">MR</div>
+          <div class="tg-meta">
+            <div class="tg-name">Mara Reyes</div>
+            <div class="tg-role">Lead Engineer · Fathom UI</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- standard -->
+      <div class="tg-card">
+        <span class="tg-tag">DEV</span>
+        <p class="tg-quote">No build step, no npm hell. I pasted the section and it just rendered. That's the whole pitch and it delivers.</p>
+        <div class="tg-person">
+          <div class="tg-avatar av-yellow">TK</div>
+          <div class="tg-meta">
+            <div class="tg-name">Theo Krause</div>
+            <div class="tg-role">Freelance · Berlin</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- small -->
+      <div class="tg-card tg-small">
+        <p class="tg-quote">Finally, testimonials that don't look like every other SaaS page.</p>
+        <div class="tg-person">
+          <div class="tg-avatar av-red">JD</div>
+          <div class="tg-meta">
+            <div class="tg-name">Jun Do</div>
+            <div class="tg-role">Design Eng · Cassette</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- medium -->
+      <div class="tg-card">
+        <span class="tg-tag">AGENCY</span>
+        <p class="tg-quote">We white-labeled four sections for a client pitch in an afternoon. The hard borders and offset shadows made the deck feel deliberate instead of templated. Client signed.</p>
+        <div class="tg-person">
+          <div class="tg-avatar av-white">PN</div>
+          <div class="tg-meta">
+            <div class="tg-name">Priya Nair</div>
+            <div class="tg-role">Creative Dir · Grid & Co.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- standard -->
+      <div class="tg-card">
+        <p class="tg-quote">The Space Mono metadata detail is chef's kiss. Copied the token block into three other projects the same week.</p>
+        <div class="tg-person">
+          <div class="tg-avatar av-ink">LO</div>
+          <div class="tg-meta">
+            <div class="tg-name">Lena Oduya</div>
+            <div class="tg-role">Frontend · Northbound</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

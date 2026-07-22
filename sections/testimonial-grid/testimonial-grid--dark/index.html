@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!-- ===== TESTIMONIAL-GRID — DARK/LUXE ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Grid — Dark/Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#121216;
+  --ink:#F4F4F5;
+  --muted:#A1A1AA;
+  --line:#26262C;
+  --accent:#F59E42;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+  --panel:#17171C;
+  --panel-2:#1B1B21;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.tg-section{
+  width:100%;
+  padding:96px clamp(20px,6vw,120px) 104px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* thin accent hairline top-left, single intentional accent */
+.tg-section::before{
+  content:"";
+  position:absolute;
+  top:0;left:clamp(20px,6vw,120px);
+  width:56px;height:2px;
+  background:var(--accent);
+}
+
+.tg-inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* header — asymmetric, left-weighted */
+.tg-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  margin-bottom:56px;
+  flex-wrap:wrap;
+}
+.tg-head-left{max-width:640px;}
+.tg-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+  margin-bottom:20px;
+}
+.tg-eyebrow::before{
+  content:"";
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--accent);
+}
+.tg-title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(30px,4vw,50px);
+  line-height:1.06;
+  letter-spacing:-0.02em;
+}
+.tg-title em{
+  font-style:italic;
+  color:var(--accent);
+  font-weight:400;
+}
+.tg-metric{
+  text-align:right;
+  flex-shrink:0;
+}
+.tg-metric b{
+  display:block;
+  font-family:var(--serif);
+  font-size:44px;
+  font-weight:500;
+  line-height:1;
+  letter-spacing:-0.02em;
+}
+.tg-metric span{
+  display:block;
+  margin-top:8px;
+  font-size:12.5px;
+  color:var(--muted);
+  letter-spacing:.02em;
+}
+
+/* masonry-ish grid via column layout for varied heights */
+.tg-grid{
+  columns:3;
+  column-gap:22px;
+}
+
+.tg-card{
+  break-inside:avoid;
+  margin-bottom:22px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:26px 26px 24px;
+  position:relative;
+}
+.tg-card p{
+  font-size:15px;
+  line-height:1.55;
+  color:#D9D9DE;
+  letter-spacing:-0.005em;
+}
+
+/* feature card — larger, spans, accent-tinted */
+.tg-card--feature{
+  background:var(--panel-2);
+  border-color:#33332C;
+  border-radius:18px;
+  padding:34px 34px 30px;
+}
+.tg-card--feature .tg-quotemark{
+  font-family:var(--serif);
+  font-size:56px;
+  line-height:0.6;
+  color:var(--accent);
+  display:block;
+  margin-bottom:14px;
+  height:34px;
+}
+.tg-card--feature p{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:23px;
+  line-height:1.38;
+  color:var(--ink);
+  letter-spacing:-0.015em;
+}
+.tg-card--feature .tg-foot{margin-top:26px;}
+
+/* compact/quiet variant */
+.tg-card--quiet{
+  background:transparent;
+  border-style:dashed;
+  border-color:#2E2E35;
+}
+
+.tg-foot{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+.tg-card--feature .tg-foot{border-top-color:#34342D;}
+
+.tg-avatar{
+  width:40px;height:40px;
+  border-radius:50%;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.01em;
+  color:var(--bg);
+}
+.av-1{background:linear-gradient(135deg,#F59E42,#C97824);}
+.av-2{background:#3F3F46;color:#F4F4F5;}
+.av-3{background:linear-gradient(135deg,#6E6E78,#42424A);color:#F4F4F5;}
+.av-4{background:#F4F4F5;color:#121216;}
+.av-5{background:linear-gradient(135deg,#F59E42,#8A5A1E);}
+
+.tg-who{line-height:1.3;}
+.tg-who b{
+  display:block;
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+}
+.tg-who span{
+  display:block;
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* small star row on feature only */
+.tg-stars{
+  display:inline-flex;
+  gap:3px;
+  margin-left:auto;
+}
+.tg-stars svg{width:14px;height:14px;display:block;}
+
+@media(max-width:960px){
+  .tg-grid{columns:2;}
+}
+@media(max-width:640px){
+  .tg-section{padding:64px 20px 72px;}
+  .tg-head{margin-bottom:40px;gap:24px;}
+  .tg-metric{text-align:left;}
+  .tg-metric b{font-size:36px;}
+  .tg-grid{columns:1;}
+  .tg-card--feature p{font-size:20px;}
+}
+</style>
+</head>
+<body>
+<section class="tg-section">
+  <div class="tg-inner">
+
+    <div class="tg-head">
+      <div class="tg-head-left">
+        <span class="tg-eyebrow">From teams shipping with it</span>
+        <h2 class="tg-title">The section library that quietly <em>replaced</em> our design sprints.</h2>
+      </div>
+      <div class="tg-metric">
+        <b>4,100+</b>
+        <span>sections copied this month</span>
+      </div>
+    </div>
+
+    <div class="tg-grid">
+
+      <!-- feature quote (larger) -->
+      <article class="tg-card tg-card--feature">
+        <span class="tg-quotemark">&ldquo;</span>
+        <p>I pasted three sections into Claude Code on a Friday and had a working pricing page before lunch. No build step, no dependency hell, no "why is Tailwind purging my classes." It just renders.</p>
+        <div class="tg-foot">
+          <div class="tg-avatar av-1">DR</div>
+          <div class="tg-who">
+            <b>Dara Reyes</b>
+            <span>Founding engineer, Halyard</span>
+          </div>
+          <span class="tg-stars">
+            <svg viewBox="0 0 20 20" fill="#F59E42"><path d="M10 1l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9 4.8 17.1l1-5.8L1.5 7.2l5.9-.9z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#F59E42"><path d="M10 1l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9 4.8 17.1l1-5.8L1.5 7.2l5.9-.9z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#F59E42"><path d="M10 1l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9 4.8 17.1l1-5.8L1.5 7.2l5.9-.9z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#F59E42"><path d="M10 1l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9 4.8 17.1l1-5.8L1.5 7.2l5.9-.9z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#F59E42"><path d="M10 1l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9 4.8 17.1l1-5.8L1.5 7.2l5.9-.9z"/></svg>
+          </span>
+        </div>
+      </article>
+
+      <article class="tg-card">
+        <p>The dark testimonial grid was already 90% of what our brand needed. I swapped two tokens and the copy. Ten minutes, not a two-day handoff to design.</p>
+        <div class="tg-foot">
+          <div class="tg-avatar av-2">MK</div>
+          <div class="tg-who">
+            <b>Marcus Kline</b>
+            <span>PM, Northwind Labs</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tg-card tg-card--quiet">
+        <p>Every section is one file. That's the whole pitch and it's exactly why my juniors can read it.</p>
+        <div class="tg-foot">
+          <div class="tg-avatar av-3">SP</div>
+          <div class="tg-who">
+            <b>Sana Patel</b>
+            <span>Eng lead, Cobalt Type</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tg-card">
+        <p>I've bought four "UI kits" that needed a bundler and a license key. This one I dropped straight into a static folder and it looked expensive out of the box. The 1px borders do a lot of quiet work.</p>
+        <div class="tg-foot">
+          <div class="tg-avatar av-4">EO</div>
+          <div class="tg-who">
+            <b>Elliot Osei</b>
+            <span>Solo founder, Ledgerly</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tg-card">
+        <p>We keep the library open in a second tab during standups now. Someone needs a section, they grab it, done. Our velocity chart genuinely bent.</p>
+        <div class="tg-foot">
+          <div class="tg-avatar av-5">TN</div>
+          <div class="tg-who">
+            <b>Théo Navarro</b>
+            <span>Design engineer, Fathom&nbsp;UI</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

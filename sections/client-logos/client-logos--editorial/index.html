@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!-- ===== CLIENT-LOGOS — EDITORIAL ===== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusted By — Client Logos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#FCFCFA;
+  --ink:#1B1A17;
+  --muted:#8A857B;
+  --line:#E4E0D7;
+  --accent:#B4472B;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.trust{
+  width:100%;
+  padding:118px 0 108px;
+  overflow:hidden;
+}
+
+.trust__inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 56px;
+}
+
+/* header row — asymmetric: label + editorial line, not centered */
+.trust__head{
+  display:grid;
+  grid-template-columns:minmax(0,3.4fr) minmax(0,4.6fr);
+  gap:48px;
+  align-items:end;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+}
+
+.trust__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.trust__eyebrow::before{
+  content:"";
+  width:26px;
+  height:1px;
+  background:var(--accent);
+}
+
+.trust__line{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:26px;
+  line-height:1.34;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  max-width:38ch;
+  justify-self:end;
+  text-align:right;
+}
+.trust__line em{
+  font-style:italic;
+  color:var(--accent);
+}
+
+/* logo row — six wordmarks, uneven rhythm, muted */
+.trust__row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:26px 0;
+  padding-top:52px;
+}
+
+.mark{
+  flex:1 1 0;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:0 34px;
+  color:#6F6A60;
+  border-left:1px solid var(--line);
+  transition:color .35s ease;
+  min-width:170px;
+}
+.mark:first-child{border-left:none;padding-left:0;}
+
+.mark svg{display:block;flex:none;}
+.mark svg [data-glyph]{fill:#B7B1A6;transition:fill .35s ease;}
+
+.mark__name{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:19px;
+  letter-spacing:-.01em;
+  line-height:1;
+  white-space:nowrap;
+}
+.mark__name b{font-weight:500;}
+.mark__sub{
+  display:block;
+  font-family:var(--sans);
+  font-size:8.5px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.mark:hover{color:var(--accent);}
+.mark:hover svg [data-glyph]{fill:var(--accent);}
+
+/* small footnote, asymmetric to the left */
+.trust__note{
+  margin-top:56px;
+  font-size:12.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:44ch;
+}
+.trust__note strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+@media (max-width:640px){
+  .trust{padding:76px 0 68px;}
+  .trust__inner{padding:0 26px;}
+  .trust__head{
+    grid-template-columns:1fr;
+    gap:22px;
+    padding-bottom:38px;
+  }
+  .trust__line{
+    justify-self:start;
+    text-align:left;
+    font-size:21px;
+    max-width:100%;
+  }
+  .trust__row{
+    gap:30px 0;
+    padding-top:36px;
+  }
+  .mark{
+    flex:1 1 42%;
+    min-width:0;
+    padding:0 0 0 18px;
+    border-left:1px solid var(--line);
+  }
+  .mark:nth-child(odd){padding-left:0;border-left:none;}
+  .mark__name{font-size:17px;}
+  .trust__note{margin-top:40px;}
+}
+</style>
+</head>
+<body>
+
+  <section class="trust">
+    <div class="trust__inner">
+
+      <div class="trust__head">
+        <span class="trust__eyebrow">Trusted by</span>
+        <p class="trust__line">Six operators who moved their <em>numbers</em>, not just their homepage — and stayed past the first quarter.</p>
+      </div>
+
+      <div class="trust__row">
+
+        <!-- 1 · Meridian & Slate -->
+        <div class="mark">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <rect data-glyph x="2" y="2" width="7" height="7"/>
+            <rect data-glyph x="11" y="11" width="7" height="7"/>
+            <rect data-glyph x="11" y="2" width="7" height="7" opacity=".45"/>
+          </svg>
+          <span class="mark__name">Meridian <b>&amp; Slate</b><span class="mark__sub">Advisory</span></span>
+        </div>
+
+        <!-- 2 · Halden Roasters -->
+        <div class="mark">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <circle data-glyph cx="10" cy="10" r="8" fill="none" stroke="#B7B1A6" stroke-width="1.6"/>
+            <circle data-glyph cx="10" cy="10" r="2.6"/>
+          </svg>
+          <span class="mark__name">Halden Roasters<span class="mark__sub">Est. 2011</span></span>
+        </div>
+
+        <!-- 3 · Verano Field Co. -->
+        <div class="mark">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <path data-glyph d="M10 1 L18 15 H2 Z"/>
+          </svg>
+          <span class="mark__name">Verano Field<span class="mark__sub">Co.</span></span>
+        </div>
+
+        <!-- 4 · Northbound Freight -->
+        <div class="mark">
+          <svg width="22" height="20" viewBox="0 0 22 20" aria-hidden="true">
+            <path data-glyph d="M2 15 L8 4 L14 15 Z"/>
+            <path data-glyph d="M10 15 L15 6 L20 15 Z" opacity=".5"/>
+          </svg>
+          <span class="mark__name">Northbound<span class="mark__sub">Freight Group</span></span>
+        </div>
+
+        <!-- 5 · Osmund Labs -->
+        <div class="mark">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <rect data-glyph x="3" y="3" width="14" height="14" rx="7" fill="none" stroke="#B7B1A6" stroke-width="1.6"/>
+            <rect data-glyph x="8.4" y="8.4" width="3.2" height="3.2"/>
+          </svg>
+          <span class="mark__name">Osmund <b>Labs</b><span class="mark__sub">R&amp;D</span></span>
+        </div>
+
+        <!-- 6 · Kessler Wren -->
+        <div class="mark">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <path data-glyph d="M4 16 L10 4 L16 16" fill="none" stroke="#B7B1A6" stroke-width="1.7" stroke-linecap="square"/>
+            <line data-glyph x1="6.4" y1="11" x2="13.6" y2="11" stroke="#B7B1A6" stroke-width="1.7"/>
+          </svg>
+          <span class="mark__name">Kessler Wren<span class="mark__sub">Studio</span></span>
+        </div>
+
+      </div>
+
+      <p class="trust__note"><strong>A note on the logos above.</strong> Names invented for this template — swap in your own roster. The grid keeps its rhythm at four, five, or six.</p>
+
+    </div>
+  </section>
+
+</body>
+</html>

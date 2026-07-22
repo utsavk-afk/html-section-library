@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Footer — Dark / Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== CTA-FOOTER — DARK/LUXE ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+
+:root{
+  --ink:#121216;
+  --ink-panel:#17171c;
+  --line:#2a2a31;
+  --off:#F4F4F5;
+  --muted:#A1A1AA;
+  --amber:#F59E42;
+  --amber-ink:#1a1206;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+body{
+  background:var(--ink);
+  color:var(--off);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+.ctaf{
+  width:100%;
+  background:var(--ink);
+  display:flex;
+  justify-content:center;
+  padding:0 32px;
+}
+
+.ctaf__inner{
+  width:100%;
+  max-width:1440px;
+}
+
+/* --- CTA BAND --- */
+.ctaf__band{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:
+    radial-gradient(120% 140% at 88% -10%, rgba(245,158,66,.10), transparent 55%),
+    var(--ink-panel);
+  padding:56px 60px;
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:48px;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* thin amber index rail on the left edge */
+.ctaf__band::before{
+  content:"";
+  position:absolute;
+  left:0; top:26px; bottom:26px;
+  width:2px;
+  background:var(--amber);
+  border-radius:2px;
+}
+
+.ctaf__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.ctaf__eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 0 3px rgba(245,158,66,.14);
+}
+
+.ctaf__title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(30px,4.1vw,50px);
+  line-height:1.04;
+  letter-spacing:-.01em;
+  color:var(--off);
+  max-width:16ch;
+}
+.ctaf__title em{
+  font-style:italic;
+  color:var(--amber);
+}
+
+.ctaf__sub{
+  margin-top:16px;
+  font-size:15.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:46ch;
+}
+
+/* right column: action stack, right-aligned = asymmetric focal point */
+.ctaf__action{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:18px;
+}
+
+.ctaf__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  background:var(--amber);
+  color:var(--amber-ink);
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:16px;
+  letter-spacing:-.01em;
+  padding:16px 26px;
+  border-radius:12px;
+  border:none;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .18s ease, background .18s ease;
+}
+.ctaf__btn:hover{ transform:translateY(-2px); background:#f8ab5a; }
+.ctaf__btn svg{ width:17px;height:17px; }
+
+.ctaf__ghost{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--off);
+  font-size:14.5px;
+  font-weight:500;
+  text-decoration:none;
+  padding:8px 0;
+  border-bottom:1px solid transparent;
+  transition:border-color .18s ease, color .18s ease;
+}
+.ctaf__ghost:hover{ border-color:var(--muted); }
+
+.ctaf__meta{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.ctaf__meta strong{ color:var(--off); font-weight:600; }
+
+/* --- FOOTER --- */
+.ctaf__footer{
+  margin-top:36px;
+  border-top:1px solid var(--line);
+  padding:40px 4px 30px;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:40px;
+}
+
+.ctaf__brand .mark{
+  display:flex;align-items:center;gap:11px;
+  margin-bottom:14px;
+}
+.ctaf__brand .glyph{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--amber);
+  display:grid;place-items:center;
+  color:var(--amber-ink);
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:17px;
+}
+.ctaf__brand .name{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:19px;
+  letter-spacing:-.01em;
+  color:var(--off);
+}
+.ctaf__brand p{
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:30ch;
+}
+
+.ctaf__col h4{
+  font-size:11.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+  margin-bottom:16px;
+}
+.ctaf__col ul{ list-style:none; }
+.ctaf__col li{ margin-bottom:11px; }
+.ctaf__col a{
+  color:var(--off);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:400;
+  opacity:.86;
+  transition:opacity .16s ease, color .16s ease;
+}
+.ctaf__col a:hover{ opacity:1; color:var(--amber); }
+
+.ctaf__bar{
+  border-top:1px solid var(--line);
+  margin-top:8px;
+  padding:22px 4px 4px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.ctaf__bar small{
+  font-size:12.5px;
+  color:var(--muted);
+}
+.ctaf__socials{ display:flex; gap:10px; }
+.ctaf__socials a{
+  width:34px;height:34px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  display:grid;place-items:center;
+  color:var(--muted);
+  transition:border-color .16s ease, color .16s ease;
+}
+.ctaf__socials a:hover{ color:var(--off); border-color:var(--muted); }
+.ctaf__socials svg{ width:16px;height:16px; }
+
+@media (max-width:640px){
+  .ctaf{ padding:0 18px; }
+  .ctaf__band{
+    grid-template-columns:1fr;
+    gap:30px;
+    padding:36px 26px 34px;
+    border-radius:16px;
+  }
+  .ctaf__band::before{ top:20px;bottom:20px; }
+  .ctaf__action{ align-items:stretch; }
+  .ctaf__btn{ justify-content:center; }
+  .ctaf__footer{
+    grid-template-columns:1fr 1fr;
+    gap:30px 24px;
+    margin-top:28px;
+    padding-top:32px;
+  }
+  .ctaf__brand{ grid-column:1 / -1; }
+  .ctaf__bar{ padding-top:20px; }
+}
+</style>
+</head>
+<body>
+<section class="ctaf" aria-labelledby="ctaf-title">
+  <div class="ctaf__inner">
+
+    <!-- CTA BAND -->
+    <div class="ctaf__band">
+      <div class="ctaf__lead">
+        <span class="ctaf__eyebrow"><span class="dot"></span>Onboarding closes Friday, 5pm PT</span>
+        <h2 class="ctaf__title" id="ctaf-title">Ship your first automated audit <em>before</em> the coffee gets cold.</h2>
+        <p class="ctaf__sub">Connect a repo, pick a schedule, and Larkspur runs the full compliance sweep for you — no dashboards to babysit, no reports to chase down.</p>
+      </div>
+
+      <div class="ctaf__action">
+        <a class="ctaf__btn" href="#start">
+          Start the 14-day trial
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="ctaf__ghost" href="#demo">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg>
+          Watch the 90-second walkthrough
+        </a>
+        <p class="ctaf__meta"><strong>No card required.</strong> Cancel in two clicks. SOC 2 Type II.</p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="ctaf__footer">
+      <div class="ctaf__brand">
+        <div class="mark">
+          <span class="glyph">L</span>
+          <span class="name">Larkspur</span>
+        </div>
+        <p>Continuous audit tooling for teams that would rather build than paperwork.</p>
+      </div>
+
+      <div class="ctaf__col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Live audits</a></li>
+          <li><a href="#">Scheduling</a></li>
+          <li><a href="#">Integrations</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="ctaf__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Customers</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press kit</a></li>
+        </ul>
+      </div>
+
+      <div class="ctaf__col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Docs</a></li>
+          <li><a href="#">API status</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <div class="ctaf__bar">
+      <small>© 2026 Larkspur Labs, Inc. — Built in Lisbon &amp; Denver.</small>
+      <div class="ctaf__socials">
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.4L23 22h-6.8l-5.3-6.9L4.8 22H1.6l7.8-9L1 2h7l4.8 6.3L18.9 2Zm-1.2 18h1.9L7.4 3.9H5.4L17.7 20Z"/></svg></a>
+        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.24 8h4.5v13H.24V8Zm7.2 0h4.3v1.78h.06c.6-1.13 2.07-2.32 4.26-2.32 4.56 0 5.4 3 5.4 6.9V21h-4.5v-6.16c0-1.47-.03-3.36-2.05-3.36-2.05 0-2.37 1.6-2.37 3.25V21h-4.5V8Z"/></svg></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>
